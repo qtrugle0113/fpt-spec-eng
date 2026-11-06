@@ -1,0 +1,2912 @@
+openapi: 3.1.0
+info:
+  title: Hợp đồng Airflow Automation Tool
+  version: 1.0.0
+  description: Thiết kế trước implementation; quy tắc chi tiết ở rest-api.md và excel-definitions.md.
+servers:
+- url: http://localhost:8000/api/v1
+- url: /api/v1
+security: []
+paths:
+  /connections:
+    get:
+      operationId: get_connections
+      summary: Danh sách connections
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionPage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: search
+        in: query
+        schema:
+          type: string
+      - name: database_type
+        in: query
+        schema:
+          type: string
+      - name: status
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 200
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+    post:
+      operationId: post_connections
+      summary: Tạo connection
+      responses:
+        '201':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionCreate'
+  /connections/{id}:
+    get:
+      operationId: get_connections_id
+      summary: Chi tiết connection
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patch_connections_id
+      summary: Sửa connection theo revision
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: If-Match
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionPatch'
+    delete:
+      operationId: delete_connections_id
+      summary: Xóa connection không dependency
+      responses:
+        '204':
+          description: Thành công
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: If-Match
+        in: header
+        required: true
+        schema:
+          type: string
+  /connections/{id}/test:
+    post:
+      operationId: post_connections_id_test
+      summary: Kiểm tra kết nối thật
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestResult'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /files:
+    get:
+      operationId: get_files
+      summary: Danh sách file
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FilePage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 200
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+    post:
+      operationId: post_files
+      summary: Upload theo stream
+      responses:
+        '201':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                file:
+                  type: string
+                  format: binary
+                parser_json:
+                  type: string
+                  description: JSON theo ParserConfig
+              required:
+              - file
+              - parser_json
+  /files/{id}:
+    get:
+      operationId: get_files_id
+      summary: Thông tin file
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /files/{id}/preview:
+    get:
+      operationId: get_files_id_preview
+      summary: Preview tối đa100dòng
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreviewData'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: max_rows
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 100
+      - name: parser_json
+        in: query
+        description: Cấu hình dự kiến chỉ preview, không persist hoặc đổi revision.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParserConfig'
+  /files/{id}/validate:
+    post:
+      operationId: post_files_id_validate
+      summary: Kiểm tra toàn file
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidationRequest'
+  /definition-uploads/{id}:
+    get:
+      operationId: get_definition_uploads_id
+      summary: Thông tin workbook
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionUpload'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /definition-uploads/{id}/validate:
+    post:
+      operationId: post_definition_uploads_id_validate
+      summary: Kiểm tra workbook
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidationRequest'
+  /definition-uploads/{id}/issues:
+    get:
+      operationId: get_definition_uploads_id_issues
+      summary: Lỗi theo vị trí
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssuePage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 200
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+  /definition-uploads/{id}/table-preview:
+    get:
+      operationId: get_definition_uploads_id_table_preview
+      summary: Xem trước cấu hình đã xác thực
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionPreview'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /definition-uploads/{id}/ddl-preview:
+    get:
+      operationId: get_definition_uploads_id_ddl_preview
+      summary: Xem trước cấu hình đã xác thực
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionPreview'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /definition-uploads/{id}/etl-preview:
+    get:
+      operationId: get_definition_uploads_id_etl_preview
+      summary: Xem trước cấu hình đã xác thực
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionPreview'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /table-creation-jobs:
+    get:
+      operationId: get_table_creation_jobs
+      summary: Lịch sử tạo table bền
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/From'
+      - $ref: '#/components/parameters/To'
+      - name: upload_id
+        in: query
+        schema: {type: string, format: uuid}
+      - name: target_connection_id
+        in: query
+        schema: {type: string, format: uuid}
+      - name: state
+        in: query
+        schema: {type: string}
+      responses:
+        '200':
+          description: Lịch sử phân trang theo created_at và id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableCreationJobPage'
+        default:
+          $ref: '#/components/responses/SafeError'
+    post:
+      operationId: post_table_creation_jobs
+      summary: Xác nhận tạo tables
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableCreateRequest'
+  /table-creation-jobs/{id}:
+    get:
+      operationId: get_table_creation_jobs_id
+      summary: Kết quả từng table
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableCreationJob'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /dag-deployments:
+    post:
+      operationId: post_dag_deployments
+      summary: Xác nhận triển khai DAGs
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployRequest'
+  /dag-deployments/{id}:
+    get:
+      operationId: get_dag_deployments_id
+      summary: Kết quả deployment
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /dag-deployments/{id}/reconcile:
+    post:
+      operationId: post_dag_deployments_id_reconcile
+      summary: Đối soát deployment
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+  /etl-definitions/{id}/replacement-authorizations:
+    get:
+      operationId: get_etl_definitions_id_replacement_authorizations
+      summary: Danh sách quyền của DAG
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Quyền và trạng thái, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationPage'
+        default:
+          $ref: '#/components/responses/SafeError'
+    post:
+      operationId: post_etl_definitions_id_replacement_authorizations
+      summary: Xác nhận thay dữ liệu
+      responses:
+        '201':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizationRequest'
+  /operations/{id}:
+    get:
+      operationId: get_operations_id
+      summary: Trạng thái công việc nền
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /dags:
+    get:
+      operationId: get_dags
+      summary: Danh sách DAG thật
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DAGPage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: search
+        in: query
+        schema:
+          type: string
+      - name: ownership
+        in: query
+        schema:
+          type: string
+      - name: paused
+        in: query
+        schema:
+          type: string
+      - name: latest_status
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 200
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+  /dags/{dag_id}:
+    get:
+      operationId: get_dags_dag_id
+      summary: Chi tiết DAG
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DAG'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /dags/{dag_id}/runs:
+    get:
+      operationId: get_dags_dag_id_runs
+      summary: Lịch sử runs
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunPage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        schema:
+          type: string
+      - name: to
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 200
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+  /dags/{dag_id}/runs/{run_id}:
+    get:
+      operationId: get_dags_dag_id_runs_run_id
+      summary: Chi tiết run
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DAGRun'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /dags/{dag_id}/trigger:
+    post:
+      operationId: post_dags_dag_id_trigger
+      summary: Trigger một run
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerRequest'
+  /dags/{dag_id}/state:
+    patch:
+      operationId: patch_dags_dag_id_state
+      summary: Pause/unpause có xác nhận
+      responses:
+        '202':
+          description: Đã tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DagStateRequest'
+  /dags/{dag_id}/runs/{run_id}/tasks/{task_id}/logs:
+    get:
+      operationId: get_dags_dag_id_runs_run_id_tasks_task_id_logs
+      summary: Log đã che secrets
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogPage'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: dag_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attempt
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+      - name: token
+        in: query
+        schema:
+          type: string
+      - name: map_index
+        in: query
+        schema:
+          type: integer
+          minimum: -1
+          default: -1
+  /dashboard:
+    get:
+      operationId: get_dashboard
+      summary: Thống kê với phạm vi đầy đủ
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: string
+      - name: to
+        in: query
+        schema:
+          type: string
+      - name: timezone
+        in: query
+        schema:
+          type: string
+      - name: scope
+        in: query
+        schema:
+          type: string
+  /settings:
+    get:
+      operationId: get_settings
+      summary: Cấu hình mặc định
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      operationId: patch_settings
+      summary: Sửa cấu hình hợp lệ
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      parameters:
+      - name: If-Match
+        in: header
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SettingsPatch'
+  /health/live:
+    get:
+      operationId: get_health_live
+      summary: Kiểm tra live
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /health/ready:
+    get:
+      operationId: get_health_ready
+      summary: Kiểm tra ready
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /definition-uploads:
+    get:
+      operationId: get_definition_uploads
+      summary: Lịch sử upload định nghĩa
+      parameters:
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/From'
+      - $ref: '#/components/parameters/To'
+      - name: kind
+        in: query
+        schema: {type: string, enum: [TABLE, ETL]}
+      - name: status
+        in: query
+        schema: {type: string, enum: [UPLOADED, VALIDATING, VALIDATED, INVALID]}
+      responses:
+        '200':
+          description: Lịch sử upload phân trang
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionUploadPage'
+        default:
+          $ref: '#/components/responses/SafeError'
+    post:
+      operationId: post_definition_uploads
+      summary: Upload theo stream
+      responses:
+        '201':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefinitionUpload'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                file:
+                  type: string
+                  format: binary
+                kind:
+                  type: string
+                  enum:
+                  - TABLE
+                  - ETL
+              required:
+              - file
+              - kind
+  /templates/table-definition:
+    get:
+      operationId: download_table_definition
+      summary: Tải Excel Template1.0
+      responses:
+        '200':
+          description: Workbook thực tế
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+            ETag:
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+  /templates/etl-definition:
+    get:
+      operationId: download_etl_definition
+      summary: Tải Excel Template1.0
+      responses:
+        '200':
+          description: Workbook thực tế
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+            ETag:
+              schema:
+                type: string
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+  /files/{id}/parser:
+    patch:
+      operationId: patch_files_id_parser
+      summary: Xác nhận parser revision mới, không đổi content
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/IfMatch'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParserConfig'
+      responses:
+        '200':
+          description: Parser mới, validation và dependency cần xác minh lại
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+        default:
+          $ref: '#/components/responses/SafeError'
+  /table-definitions/{id}:
+    get:
+      operationId: get_table_definitions_id
+      summary: Chi tiết table và cấu trúc đã xác minh
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Định nghĩa lưu bền, kết quả tạo và introspection riêng biệt
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableDetail'
+        default:
+          $ref: '#/components/responses/SafeError'
+  /replacement-authorizations/{id}:
+    get:
+      operationId: get_replacement_authorizations_id
+      summary: Trạng thái quyền và reservation
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Quyền không chứa secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+        default:
+          $ref: '#/components/responses/SafeError'
+  /replacement-authorizations/{id}/revoke:
+    post:
+      operationId: post_replacement_authorizations_id_revoke
+      summary: Thu hồi quyền, không hủy transaction đã admission
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/IfMatch'
+      - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevokeAuthorizationRequest'
+      responses:
+        '200':
+          description: Thu hồi lưu bền; recovery evidence được giữ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authorization'
+        default:
+          $ref: '#/components/responses/SafeError'
+  /internal/runtime/bind:
+    post:
+      operationId: post_internal_runtime_bind
+      summary: Chốt binding không credentials
+      responses:
+        '200':
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuntimeBinding'
+        default:
+          description: Lỗi chuẩn hóa, không secret
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuntimeBindRequest'
+      servers:
+      - url: http://backend:8000
+      security:
+      - RuntimeBearer: []
+components:
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+    Limit:
+      name: limit
+      in: query
+      schema: {type: integer, minimum: 1, maximum: 200, default: 50}
+    Offset:
+      name: offset
+      in: query
+      schema: {type: integer, minimum: 0, default: 0}
+    From:
+      name: from
+      in: query
+      schema: {type: string, format: date-time}
+    To:
+      name: to
+      in: query
+      schema: {type: string, format: date-time}
+    IfMatch:
+      name: If-Match
+      in: header
+      required: true
+      schema: {type: string}
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: {type: string, format: uuid}
+  responses:
+    SafeError:
+      description: Lỗi chuẩn hóa tiếng Anh, không secret
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Issue:
+      type: object
+      additionalProperties: false
+      properties:
+        scope:
+          type: string
+          enum:
+          - workbook
+          - sheet
+          - cell
+          - resource
+        code:
+          type: string
+        message:
+          type: string
+        sheet:
+          type:
+          - string
+          - 'null'
+        row:
+          type:
+          - integer
+          - 'null'
+        column:
+          type:
+          - integer
+          - 'null'
+        column_name:
+          type:
+          - string
+          - 'null'
+      required:
+      - scope
+      - code
+      - message
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            request_id: &id010
+              type: string
+              format: uuid
+            retryable: &id011
+              type: boolean
+            operation_id:
+              type:
+              - string
+              - 'null'
+            details:
+              type: array
+              items:
+                $ref: '#/components/schemas/Issue'
+          required:
+          - code
+          - message
+          - request_id
+          - retryable
+      required:
+      - error
+    ConnectionCreate:
+      type: object
+      additionalProperties: false
+      properties:
+        code: &id001
+          type: string
+          minLength: 1
+          maxLength: 64
+        name: &id002
+          type: string
+          minLength: 1
+        database_type: &id003
+          type: string
+          enum:
+          - POSTGRESQL
+          - MYSQL
+        host: &id004
+          type: string
+          minLength: 1
+        port: &id005
+          type: integer
+          minimum: 1
+          maximum: 65535
+        database_name: &id006
+          type: string
+          minLength: 1
+        schema_name: &id007
+          type:
+          - string
+          - 'null'
+        username: &id008
+          type: string
+        description: &id009
+          type:
+          - string
+          - 'null'
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - name
+      - database_type
+      - host
+      - port
+      - database_name
+      - username
+    ConnectionPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        code: *id001
+        name: *id002
+        database_type: *id003
+        host: *id004
+        port: *id005
+        database_name: *id006
+        schema_name: *id007
+        username: *id008
+        description: *id009
+        password:
+          type: string
+          writeOnly: true
+      required: []
+    Connection:
+      type: object
+      additionalProperties: false
+      properties:
+        code: *id001
+        name: *id002
+        database_type: *id003
+        host: *id004
+        port: *id005
+        database_name: *id006
+        schema_name: *id007
+        username: *id008
+        description: *id009
+        id: *id010
+        revision:
+          type: integer
+          minimum: 1
+        has_password: *id011
+        dependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/DependencyRef'
+        needs_revalidation:
+          type: boolean
+        test_status:
+          type: string
+          enum:
+          - UNTESTED
+          - SUCCESS
+          - FAILED
+        tested_at:
+          type:
+          - string
+          - 'null'
+        created_at: &id012
+          type: string
+          format: date-time
+        updated_at: *id012
+      required:
+      - id
+      - code
+      - database_type
+      - revision
+      - has_password
+      - dependencies
+      - needs_revalidation
+    TestResult:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILED
+        tested_at: *id012
+        latency_ms:
+          type: integer
+          minimum: 0
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/Issue'
+          - type: 'null'
+      required:
+      - status
+      - tested_at
+    ParserConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        encoding:
+          type: string
+          default: utf-8
+        delimiter:
+          type: string
+          minLength: 1
+          maxLength: 1
+        header_present: *id011
+        quote_character:
+          type: string
+          minLength: 1
+          maxLength: 1
+        escape_character:
+          type:
+          - string
+          - 'null'
+        null_representation:
+          type: string
+      required:
+      - encoding
+      - delimiter
+      - header_present
+      - quote_character
+      - null_representation
+    File:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        file_name:
+          type: string
+        file_type:
+          type: string
+          enum:
+          - CSV
+          - TXT
+        size:
+          type: integer
+          minimum: 0
+        sha256:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+        parser:
+          $ref: '#/components/schemas/ParserConfig'
+        parser_revision:
+          type: integer
+          minimum: 1
+        revision:
+          type: integer
+          minimum: 1
+        needs_revalidation:
+          type: boolean
+        validation_status:
+          type: string
+          enum:
+          - PENDING
+          - VALID
+          - INVALID
+        uploaded_at: *id012
+        expires_at:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - file_name
+      - file_type
+      - size
+      - sha256
+      - parser
+      - parser_revision
+      - revision
+      - needs_revalidation
+    DefinitionUpload:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        kind:
+          type: string
+          enum:
+          - TABLE
+          - ETL
+        sha256:
+          type: string
+        template_version:
+          type:
+          - string
+          - 'null'
+        status:
+          type: string
+          enum:
+          - UPLOADED
+          - VALIDATING
+          - VALIDATED
+          - INVALID
+        created_at: *id012
+      required:
+      - id
+      - kind
+      - status
+    Operation:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        kind:
+          type: string
+        state:
+          type: string
+          enum:
+          - QUEUED
+          - RUNNING
+          - SUCCEEDED
+          - PARTIALLY_SUCCEEDED
+          - FAILED
+          - NEEDS_RECONCILIATION
+        progress:
+          type: object
+          additionalProperties: false
+          properties:
+            phase:
+              type: string
+            completed:
+              type: integer
+            total:
+              type:
+              - integer
+              - 'null'
+          required: []
+        result_links:
+          type: array
+          items:
+            type: string
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/ErrorResponse'
+          - type: 'null'
+        created_at: *id012
+        deadline_at:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - kind
+      - state
+      - created_at
+    ValidationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        target_connection_id: *id010
+        expected_sha256:
+          type: string
+        parser_revision:
+          type: integer
+          minimum: 1
+      required: []
+    TableCreateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        upload_id: *id010
+        confirmation_token:
+          type: string
+      required:
+      - upload_id
+      - confirmation_token
+    DeployRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        upload_id: *id010
+        dag_ids:
+          type: array
+          items:
+            type: string
+        confirmation_token:
+          type: string
+        support_objects_acknowledged: *id011
+      required:
+      - upload_id
+      - dag_ids
+      - confirmation_token
+      - support_objects_acknowledged
+    AuthorizationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        revision_id: *id010
+        physical_target_id:
+          type: string
+        scope:
+          type: string
+          enum:
+          - ONCE
+          - SCHEDULED
+        allow_empty:
+          type: boolean
+          default: false
+        allow_empty_acknowledged:
+          type: boolean
+          default: false
+        confirmation_token:
+          type: string
+          minLength: 1
+        acknowledged:
+          type: boolean
+          const: true
+      required:
+      - revision_id
+      - physical_target_id
+      - scope
+      - allow_empty
+      - acknowledged
+      - confirmation_token
+      allOf:
+      - if:
+          properties:
+            allow_empty: {const: true}
+          required: [allow_empty]
+        then:
+          properties:
+            allow_empty_acknowledged: {const: true}
+          required: [allow_empty_acknowledged]
+    Authorization:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        revision_id: *id010
+        scope:
+          type: string
+          enum:
+          - ONCE
+          - SCHEDULED
+        allow_empty: *id011
+        acknowledged_at: *id012
+        dag_id:
+          type: string
+        physical_target_id:
+          type: string
+        scope_sha256:
+          type: string
+          pattern: ^[a-f0-9]{64}$
+        schedule_sha256:
+          type: [string, 'null']
+        state:
+          type: string
+          enum: [GRANTED, RESERVED, CONSUMED, CLOSED, REVOKED, INVALIDATED]
+        reserved_run_id:
+          type: [string, 'null']
+        reserved_intent_id:
+          type: [string, 'null']
+          format: uuid
+        revision:
+          type: integer
+          minimum: 1
+        allow_empty_acknowledged_at:
+          type: [string, 'null']
+          format: date-time
+        consumed_at:
+          type: [string, 'null']
+          format: date-time
+        closed_at:
+          type: [string, 'null']
+          format: date-time
+        revoked_at:
+          type: [string, 'null']
+          format: date-time
+        invalidated_at:
+          type: [string, 'null']
+          format: date-time
+        replacement_in_progress:
+          type: [boolean, 'null']
+          description: null khi chưa xác minh; không suy false từ heartbeat cũ.
+      required:
+      - id
+      - revision_id
+      - scope
+      - allow_empty
+      - state
+      - revision
+      - dag_id
+      - physical_target_id
+      - scope_sha256
+      - replacement_in_progress
+    TriggerRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        expected_revision:
+          type: string
+        confirmation_token:
+          type: string
+        authorization_id: *id010
+      required:
+      - expected_revision
+      - confirmation_token
+    DagStateRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        is_paused: *id011
+        expected_revision:
+          type: string
+        confirmation_token:
+          type: string
+        authorization_id: *id010
+      required:
+      - is_paused
+      - expected_revision
+      - confirmation_token
+    Column:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        logical_type:
+          type: string
+        nullable: *id011
+        ordinal:
+          type: integer
+          minimum: 1
+        precision:
+          type:
+          - integer
+          - 'null'
+        scale:
+          type:
+          - integer
+          - 'null'
+        length:
+          type: [integer, 'null']
+          minimum: 1
+        primary_key_ordinal:
+          type: [integer, 'null']
+          minimum: 1
+        has_default:
+          type: boolean
+        default_literal:
+          $ref: '#/components/schemas/TypedLiteral'
+        description:
+          type: [string, 'null']
+      required:
+      - name
+      - logical_type
+      - nullable
+      - ordinal
+      - has_default
+      - primary_key_ordinal
+      allOf:
+      - if:
+          properties:
+            has_default: {const: true}
+          required: [has_default]
+        then:
+          required: [default_literal]
+    PreviewData:
+      type: object
+      additionalProperties: false
+      properties:
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type:
+              - string
+              - number
+              - integer
+              - boolean
+              - 'null'
+        limited: *id011
+        parser:
+          $ref: '#/components/schemas/ParserConfig'
+      required:
+      - columns
+      - rows
+      - limited
+      - parser
+    DefinitionPreview:
+      type: object
+      additionalProperties: false
+      properties:
+        upload_id: *id010
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              id:
+                type: string
+              target:
+                type: string
+              ddl:
+                type:
+                - string
+                - 'null'
+              config:
+                $ref: '#/components/schemas/ETLConfig'
+              columns:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Column'
+              warnings:
+                type: array
+                items:
+                  type: string
+              primary_key:
+                type: array
+                items: {type: string}
+              table_name:
+                type: string
+              target_schema:
+                type: string
+              target_connection_revision_id:
+                type: string
+                format: uuid
+              physical_target_id:
+                type: string
+              support_ddl:
+                type: array
+                items: {type: string}
+              existing_table:
+                type: [boolean, 'null']
+            required:
+            - id
+            - target
+            - warnings
+            oneOf:
+            - required: [config, support_ddl]
+              not:
+                required: [table_name]
+            - required: [table_name, target_schema, target_connection_revision_id, physical_target_id, columns, primary_key, existing_table]
+              not:
+                required: [config]
+        confirmation_token:
+          type: string
+        expires_at: *id012
+        dependency_fingerprint:
+          type: string
+      required:
+      - upload_id
+      - items
+      - confirmation_token
+      - expires_at
+    TableResult:
+      type: object
+      additionalProperties: false
+      properties:
+        table_id: *id010
+        table_name:
+          type: string
+        state:
+          type: string
+          enum:
+          - PENDING
+          - CREATING
+          - CREATED
+          - ALREADY_EXISTS
+          - FAILED
+          - UNKNOWN
+        ddl:
+          type: string
+        started_at:
+          type: [string, 'null']
+          format: date-time
+        finished_at:
+          type: [string, 'null']
+          format: date-time
+        error:
+          anyOf:
+          - $ref: '#/components/schemas/Issue'
+          - type: 'null'
+      required:
+      - table_name
+      - state
+    TableCreationJob:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        operation_id: *id010
+        upload_id: *id010
+        target_connection_revision_id: *id010
+        state:
+          type: string
+        created_at: *id012
+        started_at:
+          type: [string, 'null']
+          format: date-time
+        finished_at:
+          type: [string, 'null']
+          format: date-time
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableResult'
+      required:
+      - id
+      - operation_id
+      - results
+    Deployment:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id010
+        dag_id:
+          type: string
+        revision:
+          type: string
+        state:
+          type: string
+          enum:
+          - VALIDATION_FAILED
+          - READY_TO_DEPLOY
+          - DEPLOYMENT_PENDING
+          - DEPLOYED
+          - DEPLOYMENT_FAILED
+          - PARSE_ERROR
+        reconcile_required: *id011
+        airflow_version_id:
+          type:
+          - string
+          - 'null'
+        error_summary:
+          type:
+          - string
+          - 'null'
+        last_verified_at:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - dag_id
+      - revision
+      - state
+      - reconcile_required
+    DAG:
+      type: object
+      additionalProperties: false
+      properties:
+        dag_id:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        ownership:
+          type: string
+          enum:
+          - MANAGED
+          - EXTERNAL
+        is_paused: *id011
+        is_active:
+          type:
+          - boolean
+          - 'null'
+        schedule:
+          type:
+          - string
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+        definition_id:
+          type:
+          - string
+          - 'null'
+        latest_run_status:
+          type:
+          - string
+          - 'null'
+        next_scheduled_run:
+          type:
+          - string
+          - 'null'
+        airflow_url:
+          type: string
+          format: uri
+        last_successful_run:
+          anyOf:
+          - $ref: '#/components/schemas/RunReference'
+          - type: 'null'
+        last_successful_run_availability:
+          type: string
+          enum: [AVAILABLE, UNAVAILABLE, UNKNOWN]
+      required:
+      - dag_id
+      - ownership
+      - is_paused
+      - airflow_url
+      - last_successful_run
+      - last_successful_run_availability
+    TaskStatus:
+      type: object
+      additionalProperties: false
+      properties:
+        task_id:
+          type: string
+        state:
+          type:
+          - string
+          - 'null'
+        try_number:
+          type: integer
+        start_time:
+          type:
+          - string
+          - 'null'
+        end_time:
+          type:
+          - string
+          - 'null'
+        duration_ms:
+          type:
+          - integer
+          - 'null'
+        error_summary:
+          type: [string, 'null']
+      required:
+      - task_id
+      - state
+    ETLMetrics:
+      type: object
+      additionalProperties: false
+      properties:
+        extracted_rows:
+          type:
+          - integer
+          - 'null'
+        validated_rows:
+          type:
+          - integer
+          - 'null'
+        loaded_rows:
+          type:
+          - integer
+          - 'null'
+        failed_rows:
+          type:
+          - integer
+          - 'null'
+        staging_bytes:
+          type:
+          - integer
+          - 'null'
+        duration_ms:
+          type:
+          - integer
+          - 'null'
+        phase:
+          type: [string, 'null']
+        protected_bytes:
+          type: [integer, 'null']
+          minimum: 0
+        recovery_summary:
+          type: [string, 'null']
+      required: []
+    DAGRun:
+      type: object
+      additionalProperties: false
+      properties:
+        dag_id:
+          type: string
+        run_id:
+          type: string
+        state:
+          type: string
+        run_type:
+          type: string
+          enum: [backfill, scheduled, manual, operator_triggered, asset_triggered, asset_materialization]
+        error_summary:
+          type: [string, 'null']
+        start_time:
+          type:
+          - string
+          - 'null'
+        queued_time:
+          type:
+          - string
+          - 'null'
+        end_time:
+          type:
+          - string
+          - 'null'
+        duration_ms:
+          type:
+          - integer
+          - 'null'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskStatus'
+        metrics:
+          anyOf:
+          - $ref: '#/components/schemas/ETLMetrics'
+          - type: 'null'
+      required:
+      - dag_id
+      - run_id
+      - state
+      - run_type
+    LogPage:
+      type: object
+      additionalProperties: false
+      properties:
+        content:
+          type: array
+          items:
+            type: string
+        continuation_token:
+          type:
+          - string
+          - 'null'
+        available: *id011
+        truncated: *id011
+        unavailable_reason:
+          type: [string, 'null']
+      required:
+      - content
+      - available
+      - truncated
+    RunMetrics:
+      type: object
+      additionalProperties: false
+      properties:
+        total:
+          type:
+          - integer
+          - 'null'
+        successful:
+          type:
+          - integer
+          - 'null'
+        failed:
+          type:
+          - integer
+          - 'null'
+        running:
+          type:
+          - integer
+          - 'null'
+        queued:
+          type:
+          - integer
+          - 'null'
+        other:
+          type:
+          - integer
+          - 'null'
+        success_rate:
+          type:
+          - number
+          - 'null'
+      required: []
+    Dashboard:
+      type: object
+      additionalProperties: false
+      properties:
+        inventory:
+          type: object
+          additionalProperties: false
+          properties:
+            total:
+              type:
+              - integer
+              - 'null'
+            active:
+              type:
+              - integer
+              - 'null'
+            paused:
+              type:
+              - integer
+              - 'null'
+            other:
+              type:
+              - integer
+              - 'null'
+          required: []
+        run_metrics:
+          $ref: '#/components/schemas/RunMetrics'
+        lifetime_metrics:
+          $ref: '#/components/schemas/RunMetrics'
+        schedule_groups:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              group:
+                type: string
+                enum:
+                - Hourly
+                - Daily
+                - Weekly
+                - Monthly
+                - Custom
+                - Manual
+                - Unknown
+              dag_count:
+                type:
+                - integer
+                - 'null'
+              run_count:
+                type:
+                - integer
+                - 'null'
+            required: []
+        time_series:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              date:
+                type: string
+                format: date
+              metrics:
+                $ref: '#/components/schemas/RunMetrics'
+            required: []
+        recent_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DAGRun'
+        last_successful_run:
+          anyOf:
+          - $ref: '#/components/schemas/RunReference'
+          - type: 'null'
+        last_successful_run_availability:
+          type: string
+          enum: [AVAILABLE, UNAVAILABLE, UNKNOWN]
+        timezone:
+          type: string
+        from: *id012
+        to: *id012
+        completeness:
+          type: string
+          enum:
+          - COMPLETE
+          - INCOMPLETE
+          - UNAVAILABLE
+        unavailable_fields:
+          type: array
+          items:
+            type: string
+        fetched_at:
+          type:
+          - string
+          - 'null'
+        stale: *id011
+      required:
+      - inventory
+      - run_metrics
+      - completeness
+      - unavailable_fields
+      - stale
+      - last_successful_run
+      - last_successful_run_availability
+    SettingsPatch:
+      type: object
+      additionalProperties: false
+      properties:
+        default_batch_size: &id013
+          type: integer
+          minimum: 1
+          maximum: 10000
+        dashboard_refresh_interval: &id014
+          type: integer
+          minimum: 5
+          maximum: 3600
+        default_timezone: &id015
+          type: string
+        staging_retention_days: &id016
+          type: integer
+          minimum: 1
+          maximum: 365
+      required: []
+    Settings:
+      type: object
+      additionalProperties: false
+      properties:
+        default_batch_size: *id013
+        dashboard_refresh_interval: *id014
+        default_timezone: *id015
+        staging_retention_days: *id016
+        revision:
+          type: integer
+        airflow_connectivity_status:
+          type: string
+          enum:
+          - AVAILABLE
+          - UNAVAILABLE
+          - UNKNOWN
+        application_version:
+          type: string
+      required:
+      - revision
+      - application_version
+    Health:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum:
+          - ALIVE
+          - READY
+          - NOT_READY
+        dependencies:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - HEALTHY
+            - UNHEALTHY
+            - UNKNOWN
+      required:
+      - status
+    RuntimeBindRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        dag_id:
+          type: string
+        run_id:
+          type: string
+        task_id:
+          type: string
+        expected_revision:
+          type: string
+        dag_version_id: *id010
+      required:
+      - dag_id
+      - run_id
+      - task_id
+      - expected_revision
+    RuntimeBinding:
+      type: object
+      additionalProperties: false
+      properties:
+        binding_id: *id010
+        config_revision_id: *id010
+        source_revision_id:
+          type:
+          - string
+          - 'null'
+        target_revision_id: *id010
+        run_intent_id: *id010
+        run_uuid: *id010
+        authorization_id:
+          type: [string, 'null']
+          format: uuid
+        dataset_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - binding_id
+      - config_revision_id
+      - target_revision_id
+      - run_intent_id
+      - run_uuid
+    DependencyRef:
+      type: object
+      additionalProperties: false
+      properties:
+        resource_type: {type: string, enum: [DEFINITION, DAG, RUN]}
+        resource_id: {type: string}
+        label: {type: string}
+        url: {type: string}
+      required: [resource_type, resource_id, label]
+    TypedLiteral:
+      type: object
+      additionalProperties: false
+      properties:
+        logical_type:
+          type: string
+          enum: [integer, bigint, decimal, varchar, text, boolean, date, timestamp]
+        value:
+          type: [string, integer, boolean, 'null']
+          description: decimal/date/timestamp mã hóa bằng text lossless; không float.
+      required: [logical_type, value]
+      allOf:
+      - if:
+          properties:
+            logical_type: {enum: [decimal, varchar, text, date, timestamp]}
+          required: [logical_type]
+        then:
+          properties:
+            value: {type: [string, 'null']}
+      - if:
+          properties:
+            logical_type: {enum: [integer, bigint]}
+          required: [logical_type]
+        then:
+          properties:
+            value: {type: [integer, 'null']}
+      - if:
+          properties:
+            logical_type: {const: boolean}
+          required: [logical_type]
+        then:
+          properties:
+            value: {type: [boolean, 'null']}
+    ETLSource:
+      type: object
+      additionalProperties: false
+      properties:
+        type: {type: string, enum: [DB, CSV, TXT]}
+        connection_revision_id: {type: string, format: uuid}
+        schema: {type: string}
+        table: {type: string}
+        file_id: {type: string, format: uuid}
+        parser_revision: {type: integer, minimum: 1}
+        file_sha256: {type: string, pattern: '^[a-f0-9]{64}$'}
+      required: [type]
+      oneOf:
+      - properties:
+          type: {const: DB}
+        required: [connection_revision_id, schema, table]
+        not:
+          anyOf:
+          - required: [file_id]
+          - required: [parser_revision]
+          - required: [file_sha256]
+      - properties:
+          type: {enum: [CSV, TXT]}
+        required: [file_id, parser_revision, file_sha256]
+        not:
+          anyOf:
+          - required: [connection_revision_id]
+          - required: [schema]
+          - required: [table]
+    ETLTarget:
+      type: object
+      additionalProperties: false
+      properties:
+        connection_revision_id: {type: string, format: uuid}
+        schema: {type: string}
+        table: {type: string}
+        physical_target_id: {type: string}
+      required: [connection_revision_id, schema, table, physical_target_id]
+    ETLMapping:
+      type: object
+      additionalProperties: false
+      properties:
+        source_column: {type: [string, 'null']}
+        target_column: {type: string}
+        transformation: {type: string, enum: [DIRECT, CONSTANT, NULL_HANDLING, TYPE_CONVERSION]}
+        default_literal:
+          $ref: '#/components/schemas/TypedLiteral'
+        enabled: {type: boolean}
+      required: [target_column, transformation, enabled]
+      allOf:
+      - if:
+          properties:
+            transformation: {enum: [DIRECT, NULL_HANDLING, TYPE_CONVERSION]}
+            enabled: {const: true}
+          required: [transformation, enabled]
+        then:
+          properties:
+            source_column: {type: string, minLength: 1}
+          required: [source_column]
+      - if:
+          properties:
+            transformation: {enum: [CONSTANT, NULL_HANDLING]}
+            enabled: {const: true}
+          required: [transformation, enabled]
+        then:
+          required: [default_literal]
+    SourcePredicate:
+      type: object
+      additionalProperties: false
+      properties:
+        column: {type: string}
+        operator: {type: string, enum: ['=', '!=', '<', '<=', '>', '>=', IN, IS NULL, IS NOT NULL]}
+        value:
+          oneOf:
+          - $ref: '#/components/schemas/TypedLiteral'
+          - type: array
+            minItems: 1
+            maxItems: 1000
+            items:
+              $ref: '#/components/schemas/TypedLiteral'
+      required: [column, operator]
+      allOf:
+      - if:
+          properties:
+            operator: {enum: [IS NULL, IS NOT NULL]}
+          required: [operator]
+        then:
+          not:
+            required: [value]
+        else:
+          required: [value]
+      - if:
+          properties:
+            operator: {const: IN}
+          required: [operator]
+        then:
+          properties:
+            value:
+              type: array
+              minItems: 1
+              maxItems: 1000
+              items:
+                $ref: '#/components/schemas/TypedLiteral'
+        else:
+          properties:
+            value:
+              $ref: '#/components/schemas/TypedLiteral'
+    ETLConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        dag_id: {type: string, pattern: '^[A-Za-z0-9_.-]{1,200}$'}
+        source:
+          $ref: '#/components/schemas/ETLSource'
+        target:
+          $ref: '#/components/schemas/ETLTarget'
+        schedule: {type: string}
+        start_date: {type: [string, 'null'], format: date-time}
+        timezone: {type: string}
+        catchup: {type: boolean}
+        is_paused: {type: boolean}
+        load_strategy: {type: string, enum: [APPEND, UPSERT, FULL_REFRESH]}
+        conflict_keys:
+          type: array
+          items: {type: string}
+        batch_size: {type: integer, minimum: 1, maximum: 10000, default: 1000}
+        retry_count: {type: integer, minimum: 0, maximum: 10, default: 0}
+        retry_delay: {type: integer, minimum: 0, maximum: 3600, default: 60}
+        mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ETLMapping'
+        filter:
+          type: object
+          additionalProperties: false
+          properties:
+            and:
+              type: array
+              minItems: 1
+              maxItems: 20
+              items:
+                $ref: '#/components/schemas/SourcePredicate'
+          required: [and]
+      required: [dag_id, source, target, schedule, timezone, catchup, is_paused, load_strategy, conflict_keys, batch_size, retry_count, retry_delay, mappings]
+      allOf:
+      - if:
+          properties:
+            load_strategy: {const: UPSERT}
+          required: [load_strategy]
+        then:
+          properties:
+            conflict_keys: {type: array, minItems: 1, uniqueItems: true, items: {type: string, minLength: 1}}
+        else:
+          properties:
+            conflict_keys: {type: array, maxItems: 0}
+      - if:
+          properties:
+            schedule: {const: Manual}
+          required: [schedule]
+        else:
+          properties:
+            start_date: {type: string, format: date-time}
+          required: [start_date]
+      - if:
+          properties:
+            source:
+              properties:
+                type: {enum: [CSV, TXT]}
+              required: [type]
+          required: [source]
+        then:
+          not:
+            required: [filter]
+    RevokeAuthorizationRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        acknowledged: {type: boolean, const: true}
+      required: [acknowledged]
+    RunReference:
+      type: object
+      additionalProperties: false
+      properties:
+        dag_id: {type: string}
+        run_id: {type: string}
+        start_time: {type: [string, 'null'], format: date-time}
+        end_time: {type: [string, 'null'], format: date-time}
+        airflow_url: {type: string, format: uri}
+      required: [dag_id, run_id]
+    TableDetail:
+      type: object
+      additionalProperties: false
+      properties:
+        id: {type: string, format: uuid}
+        upload_id: {type: string, format: uuid}
+        table_name: {type: string}
+        target_connection_revision_id: {type: string, format: uuid}
+        target_schema: {type: string}
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Column'
+        primary_key:
+          type: array
+          items: {type: string}
+        creation_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableResult'
+        verification_status: {type: string, enum: [VERIFIED, UNAVAILABLE, NOT_CREATED, DRIFTED]}
+        verified_at: {type: [string, 'null'], format: date-time}
+        actual_columns:
+          type: [array, 'null']
+          items:
+            $ref: '#/components/schemas/Column'
+        unavailable_reason: {type: [string, 'null']}
+      required: [id, upload_id, table_name, target_connection_revision_id, target_schema, columns, primary_key, creation_results, verification_status]
+    DefinitionUploadPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DefinitionUpload'
+        total: {type: [integer, 'null']}
+        next_offset: {type: [integer, 'null']}
+      required: [items, total, next_offset]
+    TableCreationJobPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TableCreationJob'
+        total: {type: [integer, 'null']}
+        next_offset: {type: [integer, 'null']}
+      required: [items, total, next_offset]
+    AuthorizationPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Authorization'
+        total: {type: [integer, 'null']}
+        next_offset: {type: [integer, 'null']}
+      required: [items, total, next_offset]
+    ConnectionPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+        total:
+          type:
+          - integer
+          - 'null'
+        next_offset:
+          type:
+          - integer
+          - 'null'
+      required:
+      - items
+      - total
+      - next_offset
+    FilePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        total:
+          type:
+          - integer
+          - 'null'
+        next_offset:
+          type:
+          - integer
+          - 'null'
+      required:
+      - items
+      - total
+      - next_offset
+    IssuePage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Issue'
+        total:
+          type:
+          - integer
+          - 'null'
+        next_offset:
+          type:
+          - integer
+          - 'null'
+      required:
+      - items
+      - total
+      - next_offset
+    DAGPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DAG'
+        total:
+          type:
+          - integer
+          - 'null'
+        next_offset:
+          type:
+          - integer
+          - 'null'
+      required:
+      - items
+      - total
+      - next_offset
+    RunPage:
+      type: object
+      additionalProperties: false
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DAGRun'
+        total:
+          type:
+          - integer
+          - 'null'
+        next_offset:
+          type:
+          - integer
+          - 'null'
+      required:
+      - items
+      - total
+      - next_offset
+  securitySchemes:
+    RuntimeBearer:
+      type: http
+      scheme: bearer

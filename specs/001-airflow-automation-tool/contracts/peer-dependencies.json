@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-06",
+  "scope": "Metadata peer dependencies để đối chiếu compatibility; chưa resolve/build ứng dụng.",
+  "packages": [
+    {
+      "package": "react-dom",
+      "version": "19.2.0",
+      "peer_dependencies": {
+        "react": "^19.2.0"
+      },
+      "engines": {},
+      "url": "https://registry.npmjs.org/react-dom/19.2.0"
+    },
+    {
+      "package": "@vitejs/plugin-react",
+      "version": "5.1.1",
+      "peer_dependencies": {
+        "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+      },
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "url": "https://registry.npmjs.org/@vitejs%2Fplugin-react/5.1.1"
+    },
+    {
+      "package": "@tailwindcss/vite",
+      "version": "4.1.18",
+      "peer_dependencies": {
+        "vite": "^5.2.0 || ^6 || ^7"
+      },
+      "engines": {},
+      "url": "https://registry.npmjs.org/@tailwindcss%2Fvite/4.1.18"
+    },
+    {
+      "package": "@hookform/resolvers",
+      "version": "5.2.2",
+      "peer_dependencies": {
+        "react-hook-form": "^7.55.0"
+      },
+      "engines": {},
+      "url": "https://registry.npmjs.org/@hookform%2Fresolvers/5.2.2"
+    },
+    {
+      "package": "react-hook-form",
+      "version": "7.66.0",
+      "peer_dependencies": {
+        "react": "^16.8.0 || ^17 || ^18 || ^19"
+      },
+      "engines": {
+        "node": ">=18.0.0"
+      },
+      "url": "https://registry.npmjs.org/react-hook-form/7.66.0"
+    },
+    {
+      "package": "@tanstack/react-query",
+      "version": "5.90.10",
+      "peer_dependencies": {
+        "react": "^18 || ^19"
+      },
+      "engines": {},
+      "url": "https://registry.npmjs.org/@tanstack%2Freact-query/5.90.10"
+    },
+    {
+      "package": "react-router",
+      "version": "7.9.6",
+      "peer_dependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "url": "https://registry.npmjs.org/react-router/7.9.6"
+    }
+  ]
+}

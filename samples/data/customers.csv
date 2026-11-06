@@ -1,0 +1,6 @@
+customer_id,customer_name,balance,registered_at
+1,"Nguyễn, An",12345.6789,2026-01-01T12:30:00.123456
+2,"Line one
+Line two",0.0000,\N
+3,"Quote ""sample""",-12.3400,2026-01-03T00:00:00
+4,"\N",\N,2026-01-04T00:00:00

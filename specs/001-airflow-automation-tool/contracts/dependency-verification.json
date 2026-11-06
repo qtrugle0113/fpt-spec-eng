@@ -1,0 +1,227 @@
+{
+  "date": "2026-11-06",
+  "scope": "Kiểm tra sự tồn tại phiên bản và metadata; chưa resolve/build/test ứng dụng.",
+  "results": [
+    {
+      "kind": "npm",
+      "name": "react",
+      "requested": "19.2.0",
+      "verified": true,
+      "found": "19.2.0",
+      "engines": {
+        "node": ">=0.10.0"
+      },
+      "url": "https://registry.npmjs.org/react/19.2.0"
+    },
+    {
+      "kind": "npm",
+      "name": "react-dom",
+      "requested": "19.2.0",
+      "verified": true,
+      "found": "19.2.0",
+      "engines": null,
+      "url": "https://registry.npmjs.org/react-dom/19.2.0"
+    },
+    {
+      "kind": "npm",
+      "name": "typescript",
+      "requested": "5.9.3",
+      "verified": true,
+      "found": "5.9.3",
+      "engines": {
+        "node": ">=14.17"
+      },
+      "url": "https://registry.npmjs.org/typescript/5.9.3"
+    },
+    {
+      "kind": "npm",
+      "name": "vite",
+      "requested": "7.3.7",
+      "verified": true,
+      "found": "7.3.7",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "url": "https://registry.npmjs.org/vite/7.3.7"
+    },
+    {
+      "kind": "npm",
+      "name": "@vitejs/plugin-react",
+      "requested": "5.1.1",
+      "verified": true,
+      "found": "5.1.1",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "url": "https://registry.npmjs.org/@vitejs%2Fplugin-react/5.1.1"
+    },
+    {
+      "kind": "npm",
+      "name": "tailwindcss",
+      "requested": "4.1.18",
+      "verified": true,
+      "found": "4.1.18",
+      "engines": null,
+      "url": "https://registry.npmjs.org/tailwindcss/4.1.18"
+    },
+    {
+      "kind": "npm",
+      "name": "@tailwindcss/vite",
+      "requested": "4.1.18",
+      "verified": true,
+      "found": "4.1.18",
+      "engines": null,
+      "url": "https://registry.npmjs.org/@tailwindcss%2Fvite/4.1.18"
+    },
+    {
+      "kind": "npm",
+      "name": "shadcn",
+      "requested": "3.5.0",
+      "verified": true,
+      "found": "3.5.0",
+      "engines": null,
+      "url": "https://registry.npmjs.org/shadcn/3.5.0"
+    },
+    {
+      "kind": "npm",
+      "name": "react-router",
+      "requested": "7.9.6",
+      "verified": true,
+      "found": "7.9.6",
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "url": "https://registry.npmjs.org/react-router/7.9.6"
+    },
+    {
+      "kind": "npm",
+      "name": "@tanstack/react-query",
+      "requested": "5.90.10",
+      "verified": true,
+      "found": "5.90.10",
+      "engines": null,
+      "url": "https://registry.npmjs.org/@tanstack%2Freact-query/5.90.10"
+    },
+    {
+      "kind": "npm",
+      "name": "react-hook-form",
+      "requested": "7.66.0",
+      "verified": true,
+      "found": "7.66.0",
+      "engines": {
+        "node": ">=18.0.0"
+      },
+      "url": "https://registry.npmjs.org/react-hook-form/7.66.0"
+    },
+    {
+      "kind": "npm",
+      "name": "@hookform/resolvers",
+      "requested": "5.2.2",
+      "verified": true,
+      "found": "5.2.2",
+      "engines": null,
+      "url": "https://registry.npmjs.org/@hookform%2Fresolvers/5.2.2"
+    },
+    {
+      "kind": "npm",
+      "name": "zod",
+      "requested": "4.1.12",
+      "verified": true,
+      "found": "4.1.12",
+      "engines": null,
+      "url": "https://registry.npmjs.org/zod/4.1.12"
+    },
+    {
+      "kind": "npm",
+      "name": "@playwright/test",
+      "requested": "1.56.1",
+      "verified": true,
+      "found": "1.56.1",
+      "engines": {
+        "node": ">=18"
+      },
+      "url": "https://registry.npmjs.org/@playwright%2Ftest/1.56.1"
+    },
+    {
+      "kind": "pypi",
+      "name": "pytest",
+      "requested": "8.4.2",
+      "verified": true,
+      "found": "8.4.2",
+      "engines": null,
+      "url": "https://pypi.org/pypi/pytest/8.4.2/json"
+    },
+    {
+      "kind": "pypi",
+      "name": "uvicorn",
+      "requested": "0.38.0",
+      "verified": true,
+      "found": "0.38.0",
+      "engines": null,
+      "url": "https://pypi.org/pypi/uvicorn/0.38.0/json"
+    },
+    {
+      "kind": "pypi",
+      "name": "openpyxl",
+      "requested": "3.1.5",
+      "verified": true,
+      "found": "3.1.5",
+      "engines": null,
+      "url": "https://pypi.org/pypi/openpyxl/3.1.5/json"
+    },
+    {
+      "kind": "pypi",
+      "name": "defusedxml",
+      "requested": "0.7.1",
+      "verified": true,
+      "found": "0.7.1",
+      "engines": null,
+      "url": "https://pypi.org/pypi/defusedxml/0.7.1/json"
+    },
+    {
+      "kind": "docker",
+      "name": "python",
+      "requested": "3.12.12-slim-bookworm",
+      "verified": true,
+      "found": "3.12.12-slim-bookworm",
+      "engines": null,
+      "url": "https://hub.docker.com/v2/repositories/library/python/tags/3.12.12-slim-bookworm"
+    },
+    {
+      "kind": "docker",
+      "name": "node",
+      "requested": "22.21.1-bookworm-slim",
+      "verified": true,
+      "found": "22.21.1-bookworm-slim",
+      "engines": null,
+      "url": "https://hub.docker.com/v2/repositories/library/node/tags/22.21.1-bookworm-slim"
+    },
+    {
+      "kind": "docker",
+      "name": "postgres",
+      "requested": "17.6-bookworm",
+      "verified": true,
+      "found": "17.6-bookworm",
+      "engines": null,
+      "url": "https://hub.docker.com/v2/repositories/library/postgres/tags/17.6-bookworm"
+    },
+    {
+      "kind": "docker",
+      "name": "mysql",
+      "requested": "8.4.7",
+      "verified": true,
+      "found": "8.4.7",
+      "engines": null,
+      "url": "https://hub.docker.com/v2/repositories/library/mysql/tags/8.4.7"
+    },
+    {
+      "kind": "docker",
+      "name": "nginx",
+      "requested": "1.28.0-alpine",
+      "verified": true,
+      "found": "1.28.0-alpine",
+      "engines": null,
+      "url": "https://hub.docker.com/v2/repositories/library/nginx/tags/1.28.0-alpine"
+    }
+  ]
+}

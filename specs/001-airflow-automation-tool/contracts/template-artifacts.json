@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-06",
+  "tool": "openpyxl 3.1.5",
+  "scope": "Kiểm tra cấu trúc, header, version, validation và cross-sheet reference; chưa chạy parser/ETL ứng dụng.",
+  "artifacts": [
+    {
+      "path": "templates/Table Definition.xlsx",
+      "sha256": "562702c2d717ec0be87a5f0027b32eb0d7ad33375c11c24ce423e28950e435b1",
+      "bytes": 11600,
+      "example": false
+    },
+    {
+      "path": "samples/definitions/Table Definition.sample.xlsx",
+      "sha256": "57d2cbfa2d6a871efa2ca98eb66248b3fef23520bac873745e7c5e70ad5a8b2b",
+      "bytes": 12133,
+      "example": true
+    },
+    {
+      "path": "templates/ETL Definition.xlsx",
+      "sha256": "8bab3c153eae8b7ece9cdf5f454b6136463d02a45a11d1db8e2fcc7ea0f9ee83",
+      "bytes": 13067,
+      "example": false
+    },
+    {
+      "path": "samples/definitions/ETL Definition.sample.xlsx",
+      "sha256": "76f0f069713c040b44a512376169fadfa85b2b3fa79527cceb2a84d3e10a98bd",
+      "bytes": 13622,
+      "example": true
+    }
+  ]
+}
