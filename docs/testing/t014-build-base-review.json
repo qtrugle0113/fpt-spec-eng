@@ -1,0 +1,525 @@
+{
+  "note": "Không auto waive; từng advisory chờ reviewer, giữ nguyên full scan findings",
+  "entries": [
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2025-68121",
+      "severity": "CRITICAL",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-68121",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2025-61726",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-61726",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2025-61729",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-61729",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-111943",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-111943",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-25679",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-25679",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-27145",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27145",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-32280",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32280",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-32281",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32281",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-32283",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32283",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-33811",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33811",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-33814",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33814",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-33818",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33818",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-39820",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39820",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-39821",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39821",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-39822",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39822",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-39836",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39836",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-42499",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-42499",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-42504",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-42504",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-56853",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56853",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-56858",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56858",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-56859",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56859",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-56860",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56860",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-56862",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56862",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-78667",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78667",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-78669",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78669",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "postgres-build-base",
+      "advisory": "CVE-2026-97031",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97031",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2025-68121",
+      "severity": "CRITICAL",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-68121",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2025-61726",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-61726",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2025-61729",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-61729",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-111943",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-111943",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-25679",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-25679",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-27145",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27145",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-32280",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32280",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-32281",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32281",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-32283",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-32283",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-33811",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33811",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-33814",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33814",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-33818",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-33818",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-39820",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39820",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-39821",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39821",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-39822",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39822",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-39836",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-39836",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-42499",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-42499",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-42504",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-42504",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-56853",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56853",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-56858",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56858",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-56859",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56859",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-56860",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56860",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-56862",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56862",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-78667",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78667",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-78669",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78669",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    },
+    {
+      "target": "mysql-build-base",
+      "advisory": "CVE-2026-97031",
+      "severity": "HIGH",
+      "package": "stdlib v1.24.6 in old /usr/local/bin/gosu",
+      "status": "PROPOSED_NOT_REACHABLE_IN_BUILD — REVIEW_REQUIRED",
+      "evidence": "docker/gosu/Dockerfile: postgres target only COPY replaces binary; mysql target runs rpm removal with no mysql-shell scriptlets then COPY replaces binary; ENTRYPOINT not executed by RUN; runtime gosu is Go1.27.3 and hardening tests PASS",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97031",
+      "limitation": "Only the build-base target; does not waive any OS/library/runtime finding"
+    }
+  ]
+}

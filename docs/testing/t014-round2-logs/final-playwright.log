@@ -1,0 +1,21 @@
+podman : [4m>>>> Executing external compose provider "C:\\Users\\tieut\\AppData\\Local\\Microsoft\\WinGet\\Packages\\D
+ocker.DockerCompose_Microsoft.Winget.Source_8wekyb3d8bbwe\\docker-compose.exe". Please see podman-compose(1) for how
+to disable this message. <<<<
+At line:2 char:1351
++ ... TEXITCODE}; podman compose -p aat-phase1-t014-clean-99cdfef --profile ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([4m>>>> Execut...s message. <<<<:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+[0m Container aat-phase1-t014-clean-99cdfef-e2e-tests-run-ec491b832650 Creating
+ Container aat-phase1-t014-clean-99cdfef-e2e-tests-run-ec491b832650 Created
+
+Running 4 tests using 1 worker
+
+  ✓  1 [desktop] › bootstrap.spec.ts:3:5 › bootstrap shell routes remain usable (957ms)
+  ✓  2 [desktop] › bootstrap.spec.ts:11:5 › private runtime prefixes are blocked by nginx (93ms)
+  ✓  3 [mobile] › bootstrap.spec.ts:3:5 › bootstrap shell routes remain usable (409ms)
+  ✓  4 [mobile] › bootstrap.spec.ts:11:5 › private runtime prefixes are blocked by nginx (45ms)
+
+  4 passed (5.0s)

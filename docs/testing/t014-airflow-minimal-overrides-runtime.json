@@ -1,0 +1,92 @@
+{
+  "trial_only": true,
+  "project": "aat-phase1-security-trial-r2b",
+  "scope": "fresh init and real DB/Airflow authenticated health; not full contract or ETL acceptance",
+  "status": "PASS",
+  "services": [
+    {
+      "service": "secrets-init",
+      "image_id": "e65ce220a08762b46a9f7fc1f15c0fb44b154e05723c79cd65a92c358f5a9483",
+      "state": "exited",
+      "health": null,
+      "exit_code": 0
+    },
+    {
+      "service": "mysql",
+      "image_id": "85b4f66075e25236d5e109f111827c4c31bd6324ed48b780e5085859cdfb1ba7",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "postgres",
+      "image_id": "ba8f306d293e677e1a4fc99d27daa92dbca6c4003d459ec12633d02cb08c5d15",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "db-init",
+      "image_id": "e65ce220a08762b46a9f7fc1f15c0fb44b154e05723c79cd65a92c358f5a9483",
+      "state": "exited",
+      "health": null,
+      "exit_code": 0
+    },
+    {
+      "service": "app-init",
+      "image_id": "e65ce220a08762b46a9f7fc1f15c0fb44b154e05723c79cd65a92c358f5a9483",
+      "state": "exited",
+      "health": null,
+      "exit_code": 0
+    },
+    {
+      "service": "backend-worker",
+      "image_id": "e65ce220a08762b46a9f7fc1f15c0fb44b154e05723c79cd65a92c358f5a9483",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "airflow-init",
+      "image_id": "fa46fd3da16ae3104e39fb5fed43c44ab2683f9181261257f4f5e7b536ebb13b",
+      "state": "exited",
+      "health": null,
+      "exit_code": 0
+    },
+    {
+      "service": "airflow-scheduler",
+      "image_id": "fa46fd3da16ae3104e39fb5fed43c44ab2683f9181261257f4f5e7b536ebb13b",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "airflow-apiserver",
+      "image_id": "fa46fd3da16ae3104e39fb5fed43c44ab2683f9181261257f4f5e7b536ebb13b",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "airflow-dag-processor",
+      "image_id": "fa46fd3da16ae3104e39fb5fed43c44ab2683f9181261257f4f5e7b536ebb13b",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "e65ce220a08762b46a9f7fc1f15c0fb44b154e05723c79cd65a92c358f5a9483",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "d88f848127055ba1ff624e975d39c2e014d72d768613adf5f85c91158b53ee38",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    }
+  ]
+}
