@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "captured_at": "2026-11-08T13:33:49.737383+00:00",
+  "images": [
+    {
+      "ref": "docker.io/library/python:3.12.16-slim-bookworm",
+      "repo_digest": "docker.io/library/python@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4",
+      "image_id": "313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "docker.io/apache/airflow:slim-3.3.2-python3.12",
+      "repo_digest": "docker.io/apache/airflow@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f",
+      "image_id": "2568f68b627296ed2d3c0f4e1a0e2f86dc48b870b5ab9cea688244e320daaedb",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "docker.io/library/postgres:17.11-bookworm",
+      "repo_digest": "docker.io/library/postgres@sha256:665dc7b37ac52a17e298511414c21d23ffa4e6a6ef6225b3e5d59c7afb35e994",
+      "image_id": "018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "docker.io/library/mysql:8.4.13",
+      "repo_digest": "docker.io/library/mysql@sha256:72c368d898861f3b3a07af0e6d690400f44f048799ed46822783d9224cc2c86d",
+      "image_id": "0f1a0ccadda3a1734d1db557e203ec58621d56fa248525016e85fe4f631311ec",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "docker.io/library/node:22.23.4-bookworm-slim",
+      "repo_digest": "docker.io/library/node@sha256:5ec23b7c622b00547753bc6ffd78085dd868a68aeb41c8e0a1418f033e13d96d",
+      "image_id": "8700da48cc6592503feabf399d242414f932197c3b44f43970d2cbc5671e06b0",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "docker.io/library/nginx:1.30.6-alpine3.24",
+      "repo_digest": "docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+      "image_id": "1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4",
+      "platform": "linux/amd64"
+    },
+    {
+      "ref": "mcr.microsoft.com/playwright:v1.56.1-noble",
+      "repo_digest": "mcr.microsoft.com/playwright@sha256:42f02d323c310069b4d54c94bd91a608966a486c3492c48ae0b1cea747ec5ca2",
+      "image_id": "4967572bb0de50a2eab9cbfd8dbc573933f9eea87fa1ca11eeb746322225aed5",
+      "platform": "linux/amd64"
+    }
+  ]
+}

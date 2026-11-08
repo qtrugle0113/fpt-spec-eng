@@ -8,7 +8,12 @@ le quang trung <rikateamovt1@gmail.com>. GitHub device flow đã xác thực th�
 Npm12.2.2 build/audit Win/Linux PASS; OS Airflow13pins và gosu1.19 rebuild Go1.27.3,
 loại mysql-shell/Docker CLI/uv extra/prek tooling đang nghiệm thu trên source cuối.
 Official constraints và Playwright1.56.1 baseline vẫn nguyên; trial riêng không là pin áp dụng.
-T014 giữ BLOCKED, CI source cuối đang chuẩn bị; các số liệu P1–P7 bên dưới là lịch sử,
+CI Windows/Linux đã PASS tại SHA a3c421ed78def8cfc28c0555e82b37e4cff96e55 (run42491834726).
+Clean checkout cùng SHA đã PASS fresh/restart442.108s và UI/auth-login đúng38080;
+runtime8tests có6PASS/2FAIL: SSH125 transient và tên project không qua restore allowlist.
+Guard giữ nguyên, lượt cuối dùng tên project hợp lệ. Pip26.3 artifact hash đã build/pip-check
+và không thay app dependency graph, không thuộc constraints; đang nghiệm thu source cuối.
+T014 giữ BLOCKED, CI source mới phải chạy lại; các số liệu P1–P7 bên dưới là lịch sử,
 không tự kế thừa PASS cho source lượt2. Tiếp tục gate trước khi có kết luận cuối.
 
 ## Kết luận baseline P1–P7 trước lượt2

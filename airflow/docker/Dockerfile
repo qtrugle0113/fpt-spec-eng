@@ -33,3 +33,6 @@ USER airflow
 
 # uv extras and prek lint environment are not consumers of this LocalExecutor MVP.
 RUN python -m pip uninstall -y uv && rm -rf /home/airflow/.local/share/uv/tools/prek && rm -f /home/airflow/.local/bin/prek && python -m pip check
+
+COPY --chown=airflow:root airflow/docker/tooling.lock /opt/aat/tooling.lock
+RUN python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/tooling.lock && python -m pip check

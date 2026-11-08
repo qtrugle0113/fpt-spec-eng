@@ -1,0 +1,52 @@
+{
+  "version": "26.3",
+  "requires_python": ">=3.10",
+  "files": [
+    {
+      "comment_text": null,
+      "core-metadata": {
+        "sha256": "ad63a8564cd158c8de9e6a912e92776b4abc56cfa2d8286ef4c35bfb9cb9e439"
+      },
+      "digests": {
+        "blake2b_256": "0725ee8c38ae72d66b844ce8eb9711ba905dba21ca1a8a0c960057c41cd23337",
+        "md5": "dc9c3a72de035b8d769ffb43340eb141",
+        "sha256": "f3b60b20ffaadd4415ed7957212a38ac63fa4c5fa375bd0f4a797777940fad13"
+      },
+      "downloads": -1,
+      "filename": "pip-26.3-py3-none-any.whl",
+      "has_sig": false,
+      "md5_digest": "dc9c3a72de035b8d769ffb43340eb141",
+      "packagetype": "bdist_wheel",
+      "python_version": "py3",
+      "requires_python": ">=3.10",
+      "size": 1950951,
+      "upload_time": "2026-11-02T20:34:25",
+      "upload_time_iso_8601": "2026-11-02T20:34:25.728168Z",
+      "url": "https://files.pythonhosted.org/packages/07/25/ee8c38ae72d66b844ce8eb9711ba905dba21ca1a8a0c960057c41cd23337/pip-26.3-py3-none-any.whl",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    {
+      "comment_text": null,
+      "core-metadata": false,
+      "digests": {
+        "blake2b_256": "53c7f8d9e2e0e7c1ed8a22a10eeb3b5bf7860bc07d8446c7a978a882c5c8214b",
+        "md5": "329592944207f872a94cb63da2b978f0",
+        "sha256": "6c36ae7da8695be67e3cd9f7d87919667ced53f57ce2ede75d89b5912ed2bc4c"
+      },
+      "downloads": -1,
+      "filename": "pip-26.3.tar.gz",
+      "has_sig": false,
+      "md5_digest": "329592944207f872a94cb63da2b978f0",
+      "packagetype": "sdist",
+      "python_version": "source",
+      "requires_python": ">=3.10",
+      "size": 1934348,
+      "upload_time": "2026-11-02T20:34:27",
+      "upload_time_iso_8601": "2026-11-02T20:34:27.738302Z",
+      "url": "https://files.pythonhosted.org/packages/53/c7/f8d9e2e0e7c1ed8a22a10eeb3b5bf7860bc07d8446c7a978a882c5c8214b/pip-26.3.tar.gz",
+      "yanked": false,
+      "yanked_reason": null
+    }
+  ]
+}

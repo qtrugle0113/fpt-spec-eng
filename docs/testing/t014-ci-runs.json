@@ -1,0 +1,27 @@
+[
+  {
+    "id": 42491834726,
+    "head_sha": "a3c421ed78def8cfc28c0555e82b37e4cff96e55",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726",
+    "event": "push",
+    "name": "Ki\u1ec3m ch\u1ee9ng bytes artifact m\u1eabu",
+    "jobs": [
+      {
+        "id": 128765684035,
+        "name": "sample-bytes (windows-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684035"
+      },
+      {
+        "id": 128765684182,
+        "name": "sample-bytes (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684182"
+      }
+    ]
+  }
+]

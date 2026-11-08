@@ -558,3 +558,14 @@ Current project đọc `.tools/phase1-project.txt`, source fixture `.tools/phase
 old stack/volumes và preview4173 giữ nguyên. Báo cáo/lệnh/evidence hiện hành tại
 [phase1-report.md](../../docs/testing/phase1-report.md), quyết định tiếp tại
 [t014-remaining-blockers.md](../../docs/proposals/t014-remaining-blockers.md).
+
+
+### Lượt2 hardening — đang nghiệm thu trên feature branch
+
+Author được chỉ định: le quang trung <rikateamovt1@gmail.com>. Commit a3c421e đã push lên
+001-airflow-automation-tool-t014; CI Windows/Linux PASS đúng SHA, clean checkout raw
+sample3PASS/fresh-restart442.108s/UI Airflow public login PASS. Giữ T014[ ]/BLOCKED:
+source mới đang kiểm lại, security còn findings, chưa có approval override constraints/browser.
+Npm12.2.2 Win/Linux build/audit và scan thử PASS; Go1.27.3 rebuild gosu1.19, loại tool
+không dùng và OS Airflow lock có kiểm hardening thực. Pip26.3 vá vendor copies, app graph
+không đổi. Tất cả trial và số liệu chờ cập nhật cuối xem phase1-report, không mở Phase2.
