@@ -1,0 +1,14 @@
+.\.venv\Scripts\python.exe : test_existing_fresh_fixture_and_persistent_restart
+(tests.integration.test_bootstrap_startup.BootstrapStartupTests.test_existing_fresh_fixture_and_persistent_restart)
+... ok
+At line:2 char:528
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_existing_f...restart) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+----------------------------------------------------------------------
+Ran 1 test in 597.552s
+
+OK

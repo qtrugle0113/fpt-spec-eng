@@ -1,0 +1,13 @@
+.\.venv\Scripts\python.exe : test_image_import_and_liveness_without_product_readiness (tests.integration.test_backend_b
+ootstrap.BackendBootstrapTests.test_image_import_and_liveness_without_product_readiness) ... ok
+At line:2 char:153
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_image_impo...adiness) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+----------------------------------------------------------------------
+Ran 1 test in 14.609s
+
+OK

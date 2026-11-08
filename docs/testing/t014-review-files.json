@@ -1,0 +1,880 @@
+{
+  "head": "c00947a14bc6b1e5b85b7d1609ed0a1e06c0d444",
+  "branch": "main",
+  "approval": "NOT authorized to stage/commit/push/remote CI",
+  "scope_note": "All pending files for review, including changes predating this turn. Protected files are unchanged this turn; do not implicitly stage them. Patch in .tools/t014-review.patch is a scoped comparison with HEAD, not a delta solely from remediation. Large machine reports/binary artifacts listed here, excluded from text patch.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "git_status": " M",
+      "sha256": "d2f69a0dcbda0578c4af0a3e5045a5ec36019d28c162ad5ad2611100f36dad4d",
+      "bytes": 246,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": ".specify/memory/constitution.md",
+      "git_status": " M",
+      "sha256": "6f2bfddb5b63f4bb06a3ce3c08abaa4738930fe8d77495f9767aa0edac40281a",
+      "bytes": 23990,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "samples/data/customers.csv",
+      "git_status": " M",
+      "sha256": "e5a9d8f77e05faaaf973c9fdc08df3f5f2652963ad9fc309881241291cd954fc",
+      "bytes": 215,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "samples/data/customers.txt",
+      "git_status": " M",
+      "sha256": "704a390b7bace232b578d55270ffbacbe1d71d6e370be975ed38dcf250d94fcd",
+      "bytes": 213,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/checklists/spec-quality.md",
+      "git_status": " M",
+      "sha256": "3e0e4395e68b14083d44a521fa59501f0e91940322b58185ea05acabfc56bb23",
+      "bytes": 52750,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/contracts/airflow.md",
+      "git_status": " M",
+      "sha256": "470c80a2e189cd1c5dc1d85f7b9309dc7fc0ea5d2779f404602dc1e4462f1e98",
+      "bytes": 9181,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/contracts/dependency-verification.json",
+      "git_status": " M",
+      "sha256": "1e1fbd7b99af96c79accf059a357e9cb33b20940bd293ab38c481ae3d24aeedf",
+      "bytes": 6408,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/contracts/openapi.yaml",
+      "git_status": " M",
+      "sha256": "10daee2a8a72812f217d38e02aef494e694176a6186830f74edc84b505fa9990",
+      "bytes": 78993,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/contracts/rest-api.md",
+      "git_status": " M",
+      "sha256": "0807a4f8f535cf24a0b6aff6a78d03ef2f5faeaeaa059c16d76cfbd2444e61bb",
+      "bytes": 15190,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/contracts/runtime.md",
+      "git_status": " M",
+      "sha256": "31df09b6bcf753689d796d517a9ac8688499c963582a948e40e7ad73090371f9",
+      "bytes": 17444,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/plan.md",
+      "git_status": " M",
+      "sha256": "c73f75410123775ae9163428326fc5c0884647802357da74631c906ae31ffddc",
+      "bytes": 46286,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/quickstart.md",
+      "git_status": " M",
+      "sha256": "3532db3b27f6573cecf77c8bd30b1340752b3e3cf476fdc2eba03dea69182f6d",
+      "bytes": 15928,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/research.md",
+      "git_status": " M",
+      "sha256": "2f734c51724e790817ba7004c15888eccb4e85dbeb91bfb439ffb8a7100d58fa",
+      "bytes": 25344,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/spec.md",
+      "git_status": " M",
+      "sha256": "a0c4a69ae748f4829b3c370268999fbe453e6480616a10e22b018187730c8436",
+      "bytes": 93770,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "specs/001-airflow-automation-tool/tasks.md",
+      "git_status": " M",
+      "sha256": "7e0d1d8e5e13409e7d5f247e44d701a5463cb7bc2aa95533f6240f9d44c85774",
+      "bytes": 103935,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": ".dockerignore",
+      "git_status": "??",
+      "sha256": "c3b5b86b2e2054b28136368781f7a654a567fe110bd08f8415b004fc65a63df4",
+      "bytes": 214,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": ".env.example",
+      "git_status": "??",
+      "sha256": "2e64ec0c28c17bee7e4fe66f39c7d0b4b840a5a29a0b4a779b5372f7d6dfd9ef",
+      "bytes": 313,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": ".gitattributes",
+      "git_status": "??",
+      "sha256": "bda799a8ca0381cc783f4fc64ca9ac9c0b71158c579b0bee21d221f126389afd",
+      "bytes": 139,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": ".github/workflows/sample-artifacts.yml",
+      "git_status": "??",
+      "sha256": "ae821c180eac23b542a42859c57393a02d3ee1de9d561a3c9436daa7a64992d0",
+      "bytes": 704,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "README.md",
+      "git_status": "??",
+      "sha256": "5a0016c04c2dc3e00290b47ca24895c66ffe5342263df7959fef8913fa79b01e",
+      "bytes": 7994,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/Dockerfile",
+      "git_status": "??",
+      "sha256": "0d6b3f688b5d8e19d79f86520254303493a356d34f928923f17eb749b8a21782",
+      "bytes": 2043,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/airflow.cfg",
+      "git_status": "??",
+      "sha256": "2b86f673000537ece01fcf03cd73c37e8933c927e81ea6fec52632ca26e8e496",
+      "bytes": 514,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/constraints-3.12.sha256",
+      "git_status": "??",
+      "sha256": "ffc318ee914d3624f9092c918693256c766036b2ec83e0322ffe92128a4a510e",
+      "bytes": 88,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/constraints-3.12.txt",
+      "git_status": "??",
+      "sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+      "bytes": 18572,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/entrypoint.sh",
+      "git_status": "??",
+      "sha256": "03d4993fb44bd988da2a53cbd84555127cf4f959070df93709f1272a901cf965",
+      "bytes": 827,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/health.sh",
+      "git_status": "??",
+      "sha256": "c40653166a1541d74b46f65e1875e5076bfe481174910828c4deb0ffe511d041",
+      "bytes": 479,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/initialize.sh",
+      "git_status": "??",
+      "sha256": "9e55af8e2f2d04ed0e02678214d0417dcf4dda70fea70e77a9a9cc461f7ae2e5",
+      "bytes": 204,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/providers.in",
+      "git_status": "??",
+      "sha256": "8a0d4b3e4c68240efb2a73002d711e5579b4dd7bff9e1d5d1509b2c507d8cbfa",
+      "bytes": 244,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "airflow/docker/providers.lock",
+      "git_status": "??",
+      "sha256": "136009740ad37cbc688dcad46097ded93a5356c919a3c823acf9ee56cd85402d",
+      "bytes": 389,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/Dockerfile",
+      "git_status": "??",
+      "sha256": "ba32326adcd65dcb80e7d94cf0f172afac3c0c1df37dad2b25247eb8a397284b",
+      "bytes": 1313,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/pyproject.toml",
+      "git_status": "??",
+      "sha256": "f928bfe1dae46457ce88a4ef2549ce7de2aa711b398a088a85de9343328264f0",
+      "bytes": 793,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/requirements.in",
+      "git_status": "??",
+      "sha256": "44d55bdb802f212ab02b9f9559167454d267b9d6cbc84885f048defa6dbd0786",
+      "bytes": 299,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/requirements.lock",
+      "git_status": "??",
+      "sha256": "69f2fc8ff3ca9b72dfb153580d0462282136034f623a4009fdd9a52b218d9eb8",
+      "bytes": 3418,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/src/aat_api/__init__.py",
+      "git_status": "??",
+      "sha256": "716c7618e1e70c8a8171d754923e6f46471e4b04279c7892634818815df2908a",
+      "bytes": 105,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/src/aat_api/main.py",
+      "git_status": "??",
+      "sha256": "d3a495a86042ed7bd7d10ca55c8d8354a2f21aba505386d93938d8ad4660b53e",
+      "bytes": 308,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "backend/src/aat_api/py.typed",
+      "git_status": "??",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker-compose.yml",
+      "git_status": "??",
+      "sha256": "fc2a69fc60f6b0f2efa48dec052496a212d8814b45fecd47311382bab90630e1",
+      "bytes": 8782,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/check_airflow.py",
+      "git_status": "??",
+      "sha256": "2520baa51a260e5b908d54ff68ec174649edd9c7d064bfa1304758e6856381fa",
+      "bytes": 1292,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/check_databases.py",
+      "git_status": "??",
+      "sha256": "e05d542609c2a7f0942a4bda84a6f72fe2227e32b52a794cf4d55d121d853668",
+      "bytes": 3478,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/db_ready.py",
+      "git_status": "??",
+      "sha256": "f5f6c18110762dd31c431e7fafef56de279e424f782852fc330c6e9c08f7a420",
+      "bytes": 802,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/health.py",
+      "git_status": "??",
+      "sha256": "4cb980ac88d163d5ebf4ee2d1033f62f0c80a80b1f31f9869a28ab2d55f33534",
+      "bytes": 2197,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/initialize.py",
+      "git_status": "??",
+      "sha256": "9005995dbde8ec6243de00a7b1486f11e2e0af6d9ca0061299f70e5f02e396cc",
+      "bytes": 773,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/secrets.py",
+      "git_status": "??",
+      "sha256": "3374e66a8b8dda000fbb6fdb32a032205886831385093086eaac8c5196b087eb",
+      "bytes": 4489,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/bootstrap/worker.py",
+      "git_status": "??",
+      "sha256": "cfee75ff7258998d54cd83951421e6d3479195c7850ff76c20e00cf2a6e83c19",
+      "bytes": 395,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/images.lock",
+      "git_status": "??",
+      "sha256": "457cf1699f10e2e48b26631ad4fe571dd0fa21cd4122e771ebef0b8c598b4043",
+      "bytes": 2312,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/mysql/initialize.py",
+      "git_status": "??",
+      "sha256": "62d5886b0dec2cb3581b5bb6fd190134ce6fff7f9fd3e2c15e4e3b1fee713257",
+      "bytes": 1698,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/mysql/samples.sql",
+      "git_status": "??",
+      "sha256": "cc21067de6d4e6565c23a94735e758961f84bd839ac97f7a1312e203ec3f8438",
+      "bytes": 1686,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/nginx/default.conf",
+      "git_status": "??",
+      "sha256": "7bed027a9a2e2873d806324825f2f3ac318fa79272eb8f12b7cb65c377112435",
+      "bytes": 1065,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/postgres/initialize.py",
+      "git_status": "??",
+      "sha256": "ce05f70cdf396bc23ecb5fa7d9f839ead9a4300dae731d1b6e43c72fe8397517",
+      "bytes": 2743,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/postgres/samples.sql",
+      "git_status": "??",
+      "sha256": "d80d00b3a8e28df48dd3aeac6c38a4f379e1d7003f84323edca61e7c12e4abf3",
+      "bytes": 1547,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/tests/Dockerfile",
+      "git_status": "??",
+      "sha256": "f27b277017a20ae833b8ca67d5338d91494e98fb7aec0d93405cf236f0ab54ed",
+      "bytes": 1903,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/tests/os-packages.lock",
+      "git_status": "??",
+      "sha256": "c9532b4a0c5ebf92181e2a6dc3e58f30df48a5abd75afe676eab4abf6072fbff",
+      "bytes": 5306,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docker/tests/playwright.Dockerfile",
+      "git_status": "??",
+      "sha256": "e8f2daf72beea4e5789c531fcb0645634d7711fadd2aba69efb9eb9926829763",
+      "bytes": 841,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/podman-support.md",
+      "git_status": "??",
+      "sha256": "66c8a566d3c4ab4c59f55cf787f8f8e7431369484af96fb462832076ad4e0b29",
+      "bytes": 15522,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/t014-candidate-metadata.json",
+      "git_status": "??",
+      "sha256": "e6e5f14380d837b38660c7054b0c72c2f9fff60d970963c593e8b8179465828c",
+      "bytes": 12979,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/t014-remaining-blockers.md",
+      "git_status": "??",
+      "sha256": "10312e6137314c6825566397b205be0a3bb795d369fe5a446ae474fc9d2adea1",
+      "bytes": 3774,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/t014-remediation.md",
+      "git_status": "??",
+      "sha256": "062c6e14e15feeed2fb1ad37785b380d5385530fb81a461c9ecf557e29f38623",
+      "bytes": 22577,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/t014-triage-findings.json",
+      "git_status": "??",
+      "sha256": "36c497dc56ede90163e487f133928b91870a152343dbf04dec55b02a4135e233",
+      "bytes": 890429,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/proposals/t014-triage-packages.csv",
+      "git_status": "??",
+      "sha256": "059c3cfb177aaf02280fa60342252c75601ab8c3b670dcfa081fc4c266ec86af",
+      "bytes": 288755,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/full-candidate-scan-before-airflow-fix.json",
+      "git_status": "??",
+      "sha256": "f0e4e7cbc855f5747c7b8bf78fa2093b7a1213172876c5c7586c4020a35f84ec",
+      "bytes": 190528,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/images.lock.json",
+      "git_status": "??",
+      "sha256": "792c540621dfe08f122ec6a6e265a19d8e40deb24ec4126123de3d75dd6c631d",
+      "bytes": 2301,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/phase1-final-state.json",
+      "git_status": "??",
+      "sha256": "42b77d2a4c9194fa440c8e788493edb203872b8614eedcbc6ddf23312326e442",
+      "bytes": 2668,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/phase1-npm-audit.json",
+      "git_status": "??",
+      "sha256": "16e6afeace234016c1cef7cb1a707b6d8d9d53d0a6f43afbfc45d7564f0dbfcf",
+      "bytes": 9032,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/phase1-security.json",
+      "git_status": "??",
+      "sha256": "2d6b2a55732d2bf747769a29d2254a31ea5a40459c65934810a76d7312a9a598",
+      "bytes": 240877,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/history/pre-t014-remediation/phase1-source-hashes.json",
+      "git_status": "??",
+      "sha256": "fa4f5907c790f4a70507dc5777699d1daa9ac77e332e059f0342dad26add842e",
+      "bytes": 952,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-final-state.json",
+      "git_status": "??",
+      "sha256": "89ac97f768b4ecd18d331fb0acbd50179b153a5b38da25c754448affbcc46448",
+      "bytes": 7389,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-npm-audit.json",
+      "git_status": "??",
+      "sha256": "ce86031a69ddf9cc2c8d7e181ce9b7cf02249093ab44b87cd6e250237c21235f",
+      "bytes": 389,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-report.md",
+      "git_status": "??",
+      "sha256": "def605da30d861722e8e1a65933e2cbd98057547e7a3b8b9cc3d62f6db9f3062",
+      "bytes": 35090,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-security.json",
+      "git_status": "??",
+      "sha256": "bf71ec5a2922ec283707b9a7afff128b9058745f7a6827ef0c49edda3a0853e4",
+      "bytes": 191070,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-shell.json",
+      "git_status": "??",
+      "sha256": "c4d0fb87602277b32918c4c3702ec9d4ddf1b91ad9df457fc1cefb7740715c8e",
+      "bytes": 1595,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-source-hashes.json",
+      "git_status": "??",
+      "sha256": "9ed416eed2ffa383ceb8145e496caa7cc4dafba6d9dfa527947b775d15dc7da1",
+      "bytes": 1072,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/phase1-wheel-hashes.json",
+      "git_status": "??",
+      "sha256": "f3618a22f3928cd64a941c066304b9e73bd0965ee74217110359ba80f452148b",
+      "bytes": 388,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-build-input-hashes.json",
+      "git_status": "??",
+      "sha256": "d1545d064fe9e676e546823b2fa3acd97033ada042c2fecd218997265bf17610",
+      "bytes": 4464,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-npm-audit-production.json",
+      "git_status": "??",
+      "sha256": "ce86031a69ddf9cc2c8d7e181ce9b7cf02249093ab44b87cd6e250237c21235f",
+      "bytes": 389,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-os-resolution.txt",
+      "git_status": "??",
+      "sha256": "992355916cb8cea9d203096ab0b5fdf8fed6522d94f161b858960687349f6bb7",
+      "bytes": 37639,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-remediation-results.json",
+      "git_status": "??",
+      "sha256": "52f99c2ef92746a75c24bd7313d64b99b7bbb5cd1bd3d51130b5a953cd5beb54",
+      "bytes": 2929,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-security-airflow-final.json",
+      "git_status": "??",
+      "sha256": "f9f6ef579250404400da88f0452976bd04c9725fb2dadcdaea51916a1bf1e157",
+      "bytes": 50461,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-security-triage.csv",
+      "git_status": "??",
+      "sha256": "3a3ff46978ea139e9cc7dd4b301c09aed3e5e62d90cca41f21145a3404d481fb",
+      "bytes": 250239,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "docs/testing/t014-security-triage.json",
+      "git_status": "??",
+      "sha256": "78e1d91797160c36666be1e9bacd673fd90e3cbb92bea9d683203afac72c325c",
+      "bytes": 441486,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "etl_engine/pyproject.toml",
+      "git_status": "??",
+      "sha256": "083b52fd8e942dd72acf3c227ea9f076e2a371082dbfac06234a62f449c8943b",
+      "bytes": 558,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "etl_engine/requirements.in",
+      "git_status": "??",
+      "sha256": "0399dab28004ff5f09b226d6810b922a684ba6b78745cf202a25af57678a8f92",
+      "bytes": 179,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "etl_engine/requirements.lock",
+      "git_status": "??",
+      "sha256": "03e0689027686737e19b2860d76b7c636cb1d742837d4e143ca0663012b24175",
+      "bytes": 1682,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "etl_engine/src/aat_etl/__init__.py",
+      "git_status": "??",
+      "sha256": "710f326a54c0481d6415a67b9e37c13a37f48fa369012094f052f92d01397145",
+      "bytes": 99,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "etl_engine/src/aat_etl/py.typed",
+      "git_status": "??",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "git_status": "??",
+      "sha256": "a8b2ccc95d6f616119d7403da01374bdb5b27dc89fa16e2fff2e53da72e8486a",
+      "bytes": 768,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/index.html",
+      "git_status": "??",
+      "sha256": "8a1e15b10372f94d7795200b1ddd5fe49533cef90350c2ad9eecc57dd1c0e47f",
+      "bytes": 360,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "git_status": "??",
+      "sha256": "986c710a5b2da10b5a7f3230351c9a681e143673d1881ae21059cc187eba4474",
+      "bytes": 91594,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/package.json",
+      "git_status": "??",
+      "sha256": "05c1a57a34c477d3505df91cbee8c8dcd6a3436bfb12797698a7112fc6574ca9",
+      "bytes": 900,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/scripts/verify-shell.cjs",
+      "git_status": "??",
+      "sha256": "0cd5b2043fc1df5d2bf1286b74596a9066544462cdbd9db92336c66b1b65af88",
+      "bytes": 3276,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/src/app/App.tsx",
+      "git_status": "??",
+      "sha256": "a986ab4ef19e7cbcdf6e3beab84f87e54a2a47c8898ddd629d8a3d2b43168d6f",
+      "bytes": 3020,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "git_status": "??",
+      "sha256": "227f38484f8934d290bddc9c3f92763446777a2f295a82bc83c329a138a4583a",
+      "bytes": 1137,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/src/app/styles.css",
+      "git_status": "??",
+      "sha256": "a58aa7fbae7de412dc64c115f474cc919e02f63dfb9c0c6a561f5a76451c6057",
+      "bytes": 4058,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "git_status": "??",
+      "sha256": "61ca56412419d300eef8a88092345679067ad99df205cedc7f280dd1330d5af1",
+      "bytes": 669,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "git_status": "??",
+      "sha256": "5403e42156573fb94bc3376e49975bb43bc5375ec711a93ee6153d5a5c98da66",
+      "bytes": 331,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "git_status": "??",
+      "sha256": "17f7fff409cf4acde70741f4aed8b09d4d937f4189f468e4749a08f14c34d92d",
+      "bytes": 196,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "packages/aat_metadata/__init__.py",
+      "git_status": "??",
+      "sha256": "5d7a9d2dea0a84380e1e80ed6b886289551afe08243be31b6619d919dd49cc99",
+      "bytes": 113,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "packages/aat_metadata/py.typed",
+      "git_status": "??",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "packages/aat_metadata/pyproject.toml",
+      "git_status": "??",
+      "sha256": "7c37ed743557309bf53c5de0f4cbf1a3b8db635e8cd3152176276659aa24eeb5",
+      "bytes": 540,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "packages/aat_metadata/secrets/__init__.py",
+      "git_status": "??",
+      "sha256": "e065de0e16e955de49c445a49f551283d767127f8e1a7a46ba1bced48b426489",
+      "bytes": 74,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "packages/aat_metadata/secrets/codec.py",
+      "git_status": "??",
+      "sha256": "8b44dc7749ad85876a2f17a5390750290b19da281b18b0361bb06d7b031b60fe",
+      "bytes": 1394,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/__init__.py",
+      "git_status": "??",
+      "sha256": "13b2ab421a4cc9bea6734e966c770103813551069a33f82d4909fe36b04062cd",
+      "bytes": 62,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/conftest.py",
+      "git_status": "??",
+      "sha256": "66964a6739cb7ef2e73c5018c8732d5e0936b7891d6ef16b8ffa2fea6f48e417",
+      "bytes": 93,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/e2e/bootstrap.spec.ts",
+      "git_status": "??",
+      "sha256": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+      "bytes": 818,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/e2e/package-lock.json",
+      "git_status": "??",
+      "sha256": "dbdfe30ae3879f779fc58a0d1949f2cd683f4a41cabf21acc1373e610ebeb657",
+      "bytes": 2222,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/e2e/package.json",
+      "git_status": "??",
+      "sha256": "822118db4470304a1658871040cbddccfdcb507dc314cbae09a82198425e5026",
+      "bytes": 160,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/e2e/playwright.config.ts",
+      "git_status": "??",
+      "sha256": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6",
+      "bytes": 480,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/fixtures/compose-dependency-failure.yml",
+      "git_status": "??",
+      "sha256": "ebd9fb2e91c9509048e70202b435aa8fd65282a4c79211d4508fa456d56656d7",
+      "bytes": 374,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/__init__.py",
+      "git_status": "??",
+      "sha256": "385785a5907d342e92d3f27b47679131ad754e06efb922941fe414173df6fa69",
+      "bytes": 65,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_backend_bootstrap.py",
+      "git_status": "??",
+      "sha256": "0babb9306a79988e0c57b6200111c45ff8512676e717dd73c87153da96353c3a",
+      "bytes": 1726,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_bootstrap_health.py",
+      "git_status": "??",
+      "sha256": "6561d562d4a2c985607360789d33e292a222f4c926af73ad9c20e9284d585a22",
+      "bytes": 2940,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_bootstrap_secret_logs.py",
+      "git_status": "??",
+      "sha256": "52edf5752493970b1368b2ec6b854d25382408a55705351630dfe4fef960dc68",
+      "bytes": 2367,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_bootstrap_startup.py",
+      "git_status": "??",
+      "sha256": "9ad70b8047b37100a20cf7775cb97bbb910bf6be2a2eddb114986aede4231cf5",
+      "bytes": 5662,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_compose_bootstrap_wiring.py",
+      "git_status": "??",
+      "sha256": "37a6ba6ff2b38ecc735b5754267f8a4be27802fcb6c204bd153594c9b1f9acf0",
+      "bytes": 5131,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_database_bootstrap.py",
+      "git_status": "??",
+      "sha256": "531439ba58618e515bb55ac973c034a881d955c376e2265cdf0fcfd107fb0ec0",
+      "bytes": 5842,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_database_patch_restore.py",
+      "git_status": "??",
+      "sha256": "2c69472817078f16342cc065428d8838db89a835a1c9af972b67c602ca00cc7a",
+      "bytes": 3046,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_frontend_proxy.py",
+      "git_status": "??",
+      "sha256": "fc33c0dcd335a7312669a1a58343211bcbacebdc79ea25491b9fe8524ea1b409",
+      "bytes": 4943,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/integration/test_image_compatibility.py",
+      "git_status": "??",
+      "sha256": "6d9bed5ef8461fb56127f2103b98c8f7ba61cdc145c4f94ab1df180e5c4c47e5",
+      "bytes": 1981,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/tools/prepare_phase1_fixture.py",
+      "git_status": "??",
+      "sha256": "feadefaa315c720b04e06f3dc502c9a6b3ae696448883a41ef63847078b15b4e",
+      "bytes": 1446,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/tools/record_image_baseline.py",
+      "git_status": "??",
+      "sha256": "e992a21a176e58f19a6f8ef078123b0b7addae2e8ff174b735322ce7dce2d720",
+      "bytes": 1502,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/tools/scan_phase1_images.py",
+      "git_status": "??",
+      "sha256": "be6f349d80a4e622f44d8633a1eb8bb638990d285d5354bb29d8013d15dffccb",
+      "bytes": 4886,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "git_status": "??",
+      "sha256": "ba286403b449db24d982a091015e408187b5b68de83cd13d708969ae2e8339a7",
+      "bytes": 30,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/unit/test_bootstrap_secrets.py",
+      "git_status": "??",
+      "sha256": "40836a190b480774ee81716614dd333ed1a2c523b96a8b1dffc09fbf687abaf5",
+      "bytes": 1487,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/unit/test_package_boundaries.py",
+      "git_status": "??",
+      "sha256": "e5b8cd6731382f24c1628f7f5963b73adc659fe196a59d261a93e33f44168292",
+      "bytes": 1834,
+      "protected_unchanged_this_turn": false
+    },
+    {
+      "path": "tests/unit/test_sample_artifacts.py",
+      "git_status": "??",
+      "sha256": "36aa19a6d526ed6fbddf6cb8f0a96f941d8952731e697061e74d1a23a3d6339b",
+      "bytes": 1572,
+      "protected_unchanged_this_turn": false
+    }
+  ],
+  "review_patch": {
+    "path": ".tools/t014-review.patch",
+    "sha256": "3b14d0c881b99827cd48961d4de74d93a7d268d4c08c59a23ce4285c8122ad5e"
+  }
+}

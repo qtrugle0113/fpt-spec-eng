@@ -1,0 +1,77 @@
+{
+  "browser": "141.0.7390.37",
+  "results": [
+    {
+      "width": 1440,
+      "route": "/",
+      "heading": "Dashboard",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "route": "/connections",
+      "heading": "Connections",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "route": "/tables",
+      "heading": "Table Management",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "route": "/dag-builder",
+      "heading": "DAG Builder",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "route": "/monitoring",
+      "heading": "DAG Monitoring",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "route": "/settings",
+      "heading": "Settings",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "heading": "Dashboard",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/connections",
+      "heading": "Connections",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/tables",
+      "heading": "Table Management",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/dag-builder",
+      "heading": "DAG Builder",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/monitoring",
+      "heading": "DAG Monitoring",
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "route": "/settings",
+      "heading": "Settings",
+      "noHorizontalOverflow": true
+    }
+  ]
+}

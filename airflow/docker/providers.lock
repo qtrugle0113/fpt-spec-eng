@@ -1,0 +1,4 @@
+# Linux CPython3.12 artifacts; official constraints remain unchanged.
+apache-airflow-providers-standard==1.19.0 --hash=sha256:d5b3d8877bb7d644d25578483f420ca04fbf76eef56bf86c655321f18a7c9325
+psycopg2-binary==2.9.13 --hash=sha256:e3861eba31f8ea8663fd876166b032fd89179e42aa63764d6feb281f13f9eb60
+asyncpg==0.31.0 --hash=sha256:aad7a33913fb8bcb5454313377cc330fbb19a0cd5faa7272407d8a0c4257b671

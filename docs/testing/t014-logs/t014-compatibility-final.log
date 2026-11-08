@@ -1,0 +1,19 @@
+.\.venv\Scripts\python.exe : test_backend_and_airflow_dependencies_and_sdk
+(tests.integration.test_image_compatibility.ImageCompatibilityTests.test_backend_and_airflow_dependencies_and_sdk) ...
+ok
+At line:2 char:32
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_backend_an...and_sdk) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+test_playwright_client_and_real_browser
+(tests.integration.test_image_compatibility.ImageCompatibilityTests.test_playwright_client_and_real_browser) ... ok
+test_pulled_base_digests_match_lock_and_platform
+(tests.integration.test_image_compatibility.ImageCompatibilityTests.test_pulled_base_digests_match_lock_and_platform)
+... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 13.527s
+
+OK

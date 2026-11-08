@@ -9,15 +9,23 @@
 **Trạng thái**: Đã rà soát và làm rõ ngày 2026-11-06, sẵn sàng lập kế hoạch.
 
 **Đầu vào**: Yêu cầu sản phẩm qua `/speckit-specify` gồm 17 nhóm nội dung; chịu ràng buộc
-của Constitution 1.0.0.
+của Constitution 1.1.0.
 
 **Mục tiêu**: Data Engineer hoặc kỹ sư biết database cơ bản có thể quản lý connections,
 tạo table và DAG bằng Excel, chuyển dữ liệu thật, lập lịch và theo dõi kết quả mà không
 viết Python DAG hay SQL DDL. MVP phục vụ một operator local.
 
-**Giới hạn bước Specify**: Xác định WHAT và WHY. Airflow, Docker, PostgreSQL, MySQL và
+**Giới hạn bước Specify**: Xác định WHAT và WHY. Airflow, Linux containers, PostgreSQL, MySQL và
 staging trên đĩa là yêu cầu đầu vào. Framework, phiên bản, endpoint, thư viện và cấu trúc
 mã nguồn chưa được chọn. Không có screenshot, wireframe hoặc Excel mẫu có sẵn.
+
+## Đồng bộ runtime theo Constitution 1.1.0 ngày 2026-11-08
+
+Chủ dự án đã duyệt hỗ trợ Podman. Baseline local hiện chọn Podman; các lệnh trong Spec dùng
+`podman compose`. Baseline Docker vẫn được phép dùng `docker compose` tương ứng nếu công bố
+và nghiệm thu theo Constitution IX. PASS của một runtime không chứng minh runtime còn lại.
+Không đổi nghiệp vụ BR-08 hoặc các tiêu chí readiness/persistence/secrets/ETL; build/stack
+trên baseline Podman hiện chưa được kiểm chứng.
 
 ## Các nội dung đã làm rõ
 
@@ -73,8 +81,8 @@ Là operator, tôi muốn dùng một lệnh để có môi trường đầy đ�
 
 **Kịch bản chấp nhận**:
 
-1. **Cho trước** Docker và cổng cần thiết sẵn sàng, **khi** chạy
-   `docker compose up --build -d`, **thì** sau initialization/healthchecks hệ thống sử dụng
+1. **Cho trước** runtime/provider đã công bố và cổng cần thiết sẵn sàng, **khi** chạy
+   `podman compose up --build -d`, **thì** sau initialization/healthchecks hệ thống sử dụng
    được, không cần lệnh migration, seed hoặc cấu hình Airflow thủ công.
 2. **Cho trước** có dữ liệu người dùng, **khi** restart, **thì** metadata, file, DAG, logs và
    dữ liệu được lưu bền; initialization không ghi đè chúng.
@@ -371,7 +379,7 @@ không quyết định cấu trúc lưu trữ hoặc endpoint triển khai.
 - **FR-011**: File có reference duy nhất, File Name, File Type, File Size, Encoding, Delimiter,
   Header Present, Quote Character, Escape Character nếu cần, NULL Representation,
   Uploaded At, validation status và retention/expiry nếu áp dụng.
-- **FR-012**: File ở Docker-managed persistent storage, dùng được sau restart;
+- **FR-012**: File ở container-managed persistent storage, dùng được sau restart;
   reference xác định đúng nội dung upload, không chỉ tên file có thể trùng.
 - **FR-013**: Validate extension, kích thước, đường dẫn/quyền; không công bố upload chưa xong,
   không cho input chỉ định path ngoài khu vực cho phép; có cleanup upload lỗi.
@@ -566,7 +574,7 @@ không quyết định cấu trúc lưu trữ hoặc endpoint triển khai.
   không gộp canceled/upstream-failed thành success.
 - **FR-069**: Log theo DAG/run/task/attempt, che secrets, giới hạn tải; thiếu log có lý do,
   không giả dữ liệu khi Airflow down.
-- **FR-070**: Open in Airflow đúng DAG ID/base URL browser truy cập được, không hostname chỉ có trong Docker.
+- **FR-070**: Open in Airflow đúng DAG ID/base URL browser truy cập được, không hostname chỉ có trong network container.
 - **FR-071**: Dashboard KPI thật: Total/Active/Paused DAGs, Total DAG Runs, Successful/Failed/Running Runs, Success Rate.
 - **FR-072**: Date range/timezone, Manual Refresh, Auto Refresh, lần cập nhật cuối và
   loading/error/stale state; lỗi kết nối không biến thành số 0.
@@ -588,13 +596,13 @@ không quyết định cấu trúc lưu trữ hoặc endpoint triển khai.
 
 #### Môi trường, mẫu và tài liệu
 
-- **FR-081**: Một lệnh `docker compose up --build -d` chạy Frontend/Backend/Airflow/PostgreSQL/
+- **FR-081**: Một lệnh `podman compose up --build -d` chạy Frontend/Backend/Airflow/PostgreSQL/
   MySQL và phụ trợ cần thiết; không thêm lệnh thủ công sau initialization/healthchecks.
 - **FR-082**: PostgreSQL tách logical databases cho application metadata/Airflow metadata/ETL test;
   MySQL dùng ETL test; không trộn dữ liệu nghiệp vụ với bảng Airflow nội bộ.
 - **FR-083**: Persistent volumes: database, Airflow logs, generated DAGs, uploads, staging;
   tự init/migrate/configure Airflow/seed source-target và sample connections;
-  seed chạy lại an toàn, connection mẫu dùng địa chỉ nội bộ Docker đúng.
+  seed chạy lại an toàn, connection mẫu dùng địa chỉ service nội bộ đúng.
 - **FR-084**: Sample templates/datasets hỗ trợ table khác nhau cùng server, cross-server khác loại,
   mapping khác tên, NULL, khóa ghép, nhiều batch và dữ liệu lỗi.
 - **FR-085**: Có unit/integration/end-to-end tests tự động và tái hiện; ETL dùng DB thật,
@@ -648,7 +656,7 @@ không quyết định cấu trúc lưu trữ hoặc endpoint triển khai.
 - **FR-099**: First init/migrations/seed/config Airflow chạy đúng phụ thuộc và idempotent;
   healthcheck DB phải kết nối/truy vấn được, Backend cần schema/migration sẵn sàng, Airflow phải
   cung cấp chức năng tương ứng. ETL connection ngoài mẫu hỏng không làm core health giả là healthy/unhealthy;
-  hiển thị riêng connectivity. Internal traffic dùng service name/port Docker, browser dùng host URL.
+  hiển thị riêng connectivity. Internal traffic dùng service name/port container, browser dùng host URL.
 - **FR-100**: Restart dùng lại volume và secret key bền, không tự regenerate khóa làm mất quyền
   giải mã connections. Không tự xóa/reset volume khi migration/init lỗi; lỗi readiness có chẩn đoán.
   Recovery startup đối soát runs/deployments/staging trước retry/cleanup; phải kiểm thử restart
@@ -1009,8 +1017,10 @@ sản phẩm tại bước Specify. Chỉ ghi đạt khi có execution/bằng ch
   Môi trường mặc định chỉ công bố ứng dụng trên loopback; chưa nghiệm thu triển khai Internet.
   Kết nối dịch vụ/DB/Airflow vẫn cần credential phù hợp, không suy ra được bỏ xác thực service.
 
-- **AS-02**: Docker đã cài, operator có quyền mạng/DB và cổng phù hợp; ứng dụng không tự cài
-  Docker hay cấp quyền trên DB bên ngoài môi trường mẫu.
+- **AS-02**: Podman hoặc Docker và Compose provider đã cài/engine đã hoạt động theo README;
+  operator có quyền mạng/DB và cổng phù hợp. Ứng dụng không tự cài runtime/provider hoặc cấp
+  quyền trên DB bên ngoài môi trường mẫu. Khởi động engine/machine là điều kiện đầu vào,
+  không thay tự động initialization/migrations/seed bên trong ứng dụng.
 - **AS-03**: Một source/target mỗi DAG, không join; source=target cùng physical table bị chặn.
   Mỗi DB extraction dùng một consistent snapshot của một table trong một transaction nguồn;
   không hứa snapshot xuyên nhiều DB/DAG. Thay đổi dữ liệu sau mốc snapshot không thuộc dataset run.
@@ -1035,7 +1045,7 @@ sản phẩm tại bước Specify. Chỉ ghi đạt khi có execution/bằng ch
 - **AS-08**: Airflow thiếu schedule history/next run/timestamp thì công bố không khả dụng,
   không suy diễn giá trị quá khứ từ cấu hình hiện tại.
 - **AS-09**: Không screenshot/wireframe/Excel mẫu; thiết kế mới theo workflow. Stage ưu tiên
-  Docker/DB → connections/table → ETL/staging → DAG tích hợp thật → hoàn thiện Dashboard/
+  container/DB → connections/table → ETL/staging → DAG tích hợp thật → hoàn thiện Dashboard/
   Monitoring/UI. Validation/logging/status cơ bản phải đi cùng core.
 
 ### Phụ thuộc
@@ -1045,7 +1055,7 @@ sản phẩm tại bước Specify. Chỉ ghi đạt khi có execution/bằng ch
   không dùng bảng nội bộ Airflow cho nghiệp vụ ứng dụng.
 - Persistent disk storage, quota RAM/disk, quyền truy cập staging/upload cho execution.
 - Secret configuration và environment inputs được tài liệu hóa; startup tự xử lý phần nội bộ.
-- Constitution 1.0.0; mọi thay đổi phạm vi/hành vi phải cập nhật specification trước triển khai.
+- Constitution 1.1.0; mọi thay đổi phạm vi/hành vi phải cập nhật specification trước triển khai.
 
 - Hành vi transaction/snapshot được đối chiếu tài liệu chính thức; đây là cơ sở làm rõ,
   không khóa phiên bản triển khai: [PostgreSQL — Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html),

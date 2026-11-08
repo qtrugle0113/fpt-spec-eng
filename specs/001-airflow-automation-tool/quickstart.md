@@ -1,31 +1,42 @@
-﻿# Hướng dẫn khởi động và kiểm chứng
+# Hướng dẫn khởi động và kiểm chứng
 
-**Trạng thái tài liệu**: Hướng dẫn nghiệm thu cho implementation sắp thực hiện.
-Ở bước Plan đã có tài liệu, hợp đồng API và workbook .xlsx; chưa có docker-compose.yml,
-application source code, endpoint hoặc test suite. Các lệnh chạy ứng dụng bên dưới chỉ dùng
-sau khi các phase tương ứng được triển khai, không phải kết quả đã chạy thành công.
+**Trạng thái hiện hành**: Đã có source/Compose/test bootstrap Phase1; P1–P7 đã được duyệt
+và kiểm chứng lại. T014 vẫn BLOCKED bởi security findings và CI remote NOT_RUN; chưa vào
+Phase2. Các kịch bản nghiệp vụ dưới đây là tiêu chí cho phase tương ứng, chưa là sản phẩm PASS.
+Xem [báo cáo hiện hành](../../docs/testing/phase1-report.md). Candidate shell đang ở
+http://localhost:13000; stack cũ http://localhost:3000 và preview4173 được giữ nguyên.
 
 ## Điều kiện đầu vào
 
-- Docker Engine/Desktop với Linux containers và Composev2>=2.24; host khuyến nghị8CPU,
+- Podman WSL Linux containers, client5.8.3/server5.8.9 và Docker Compose provider5.6.0
+  theo baseline đã công bố; engine/machine đã hoạt động. Host khuyến nghị8CPU,
   12GiBRAM,80GiB disk trống. Có quyền pull/build images và các cổng3000/8000/8080 chưa bị chiếm.
 - Clone workspace implementation, đứng ở root. Không cần Python/Node trên host để dùng app.
 - Một operator local, app bind127.0.0.1; không dùng cấu hình này làm triển khai Internet.
 - .env là optional: default local đủ để boot, không bắt copy .env.example hoặc tự tạo secret.
   Secret key và account service tạo tự động trên volume, không in ra log.
 
+## Runtime và Compose provider
+
+Baseline hiện chọn Podman theo Constitution1.1.0 đã duyệt. `podman compose version` phải
+chọn đúng provider đã công bố; có thể pin executable bằng `PODMAN_COMPOSE_PROVIDER` cho
+phiên chạy. Ghi client/server/provider, OS/arch/rootful và actual resources trước build.
+Docker baseline khác vẫn có thể dùng `docker compose` tương ứng nếu được công bố/nghiệm thu;
+không coi PASS trên Podman là Docker-tested. Cài runtime/provider và engine startup là
+điều kiện đầu vào, không thay tự động app init. Không reset machine/volumes để chạy lại.
+
 ## Một lệnh khởi động
 
 ```powershell
-docker compose up --build -d
+podman compose up --build -d
 ```
 
 Lệnh detached kết thúc trước khi mọi initialization xong. Đợi trạng thái sẵn sàng bằng các
 lệnh đọc sau, không phải setup bổ sung:
 
 ```powershell
-docker compose ps -a
-docker compose logs --tail 100 secrets-init db-init app-init airflow-init
+podman compose ps -a
+podman compose logs --tail 100 secrets-init db-init app-init airflow-init
 Invoke-RestMethod http://localhost:8000/api/v1/health/ready
 ```
 
@@ -56,6 +67,15 @@ workbook không có công thức metadata. Download endpoint chỉ có sau imple
 
 Bằng chứng cấu trúc/hash/size nằm ở [template-artifacts.json](contracts/template-artifacts.json);
 đó không phải kết quả parser/application hoặc data transfer test.
+
+**EOL và checksum dataset mẫu (rà soát2026-11-08):** Git index của `samples/data/customers.csv`
+và `customers.txt` dùng LF, checkout Windows hiện tại dùng CRLF; raw checksum vì vậy khác
+manifest lịch sử LF tại [design-validation.json](contracts/design-validation.json). Chưa sửa
+hai file trong lượt thiết kế này. Bước implementation phải thêm quy tắc `.gitattributes`
+`samples/data/*.csv text eol=lf`, `samples/data/*.txt text eol=lf`, `*.xlsx -text`, rồi
+kiểm raw bytes/hash trên checkout sạch Windows/Linux và bytes trong image/volume seed.
+Không chữa hash mismatch bằng normalize file người dùng. Upload giữ bytes gốc; checksum
+và byte count luôn tính trên nội dung thực được lưu.
 
 ## Workflow nghiệm thu với dữ liệu mẫu
 
@@ -108,19 +128,31 @@ Các bước mới chỉ thực hiện khi task tương ứng đã implementatio
 Compose test profile dự kiến có backend-tests (backend test image với root tests/ và pytest),
 e2e-tests (Playwright1.56.1 image với browser cùng version). Chúng không cần cho startup mặc định.
 
+Runner/profile/config tối thiểu phải có từ Phase1, mở rộng fixtures/contracts ở Phase2,
+trước Connections E2E của Phase3. Dùng `@playwright/test==1.56.1` với image
+`mcr.microsoft.com/playwright:v1.56.1-noble`, baseURL nội bộ `http://frontend:80`;
+kiểm client/browser version và lock/digest khi build. Phase8 mở rộng regression trên runner
+đã có. Chỉ chạy selector của chức năng đã triển khai; runner smoke/collect không thay
+bằng chứng story E2E PASS. Các lệnh bên dưới vẫn là hướng dẫn tương lai.
+
 ```powershell
-docker compose --profile test run --rm backend-tests pytest tests/unit tests/api
-docker compose --profile test run --rm backend-tests pytest tests/integration tests/etl
-docker compose --profile test run --rm backend-tests pytest tests/airflow
-docker compose --profile test run --rm e2e-tests npx playwright test
+podman compose --profile test run --rm backend-tests pytest tests/unit tests/api
+podman compose --profile test run --rm backend-tests pytest tests/integration tests/etl
+podman compose --profile test run --rm backend-tests pytest tests/airflow
+podman compose --profile test run --rm e2e-tests npx playwright test
 ```
+
+Ví dụ gate Phase3 sau implementation: chạy
+`podman compose --profile test run --rm e2e-tests npx playwright test connections.spec.ts`
+và bộ API/integration Connections tương ứng. Không đợi T138 tạo runner mới để chạy gate này;
+task IDs có thể đổi ở lượt Tasks tiếp theo, thứ tự producer trước consumer phải được giữ.
 
 Stress test riêng chạy trên dataset>1GiB và >20batch với worker budget512MiB; không dùng test
 unit nhỏ làm bằng chứng bounded memory. Lưu maximum RSS, staging disk bytes/checksum, source
 snapshot/target counts và full output. Container test log không được ghi secret.
 
 ```powershell
-docker compose --profile test run --rm backend-tests pytest tests/stress -m large_data
+podman compose --profile test run --rm backend-tests pytest tests/stress -m large_data
 ```
 
 Fixtures độc lập, tên table/DAG duy nhất theo lượt test và cleanup chỉ namespace test đã tạo;
@@ -145,6 +177,10 @@ không DROP/DELETE/TRUNCATE dữ liệu người dùng để reset suite. Test f
 | Retry/clear sau FULL_REFRESH commit verified | Chỉ đối soát final ledger, không replacement lần hai |
 | SCHEDULED dùng manual/backfill hoặc scope đổi | Bị chặn trước target ghi; manual cần ONCE riêng |
 | Empty dataset hợp lệ/chưa xác nhận allow_empty | Chặn replacement nếu chưa acknowledgment riêng; lỗi source không là empty |
+| Authorization revoked/invalidated | Chặn admission mới; vẫn đối soát ledger/recovery, không thêm TTL hoặc state EXPIRED |
+| Confirmation token hết hạn | Request mới bị từ chối theo contract; replay cùng key/hash trả intent cũ, không giải phóng ONCE |
+| Private bind qua frontend | POST có/không bearer hợp lệ tới `/internal/runtime/bind` và `/api/v1/internal/runtime/bind` đều404; không upstream, redirect hoặc SPA fallback |
+| Private bind trực tiếp backend | Canonical root thiếu/sai bearer bị401/403; bearer hợp lệ kiểm identity/version; alias dưới `/api/v1` luôn404 |
 | Nguồn update giữa chunk | Dataset cùng snapshot, không ghép hai ảnh nguồn |
 | NULL/Unicode/decimal/CSV escaping | Round-trip exact hoặc lỗi conversion rõ, không thay dữ liệu im lặng |
 
@@ -154,9 +190,9 @@ Dùng volume/namespace test biệt lập để mô phỏng disk full và process
 ## Restart, trạng thái và phục hồi
 
 ```powershell
-docker compose restart
-docker compose ps -a
-docker compose logs --tail 100 backend-worker airflow-scheduler airflow-dag-processor
+podman compose restart
+podman compose ps -a
+podman compose logs --tail 100 backend-worker airflow-scheduler airflow-dag-processor
 ```
 
 Kỳ vọng metadata/files/DAG/log/secret key còn, seed không ghi đè, init/migrations idempotent;
@@ -167,7 +203,7 @@ keyring/private volume được quản lý an toàn; restore thiếu key cần c
 Dừng services giữ volumes:
 
 ```powershell
-docker compose down
+podman compose down
 ```
 
 Không dùng down -v trong luồng vận hành mặc định. Khi có NEEDS_RECONCILIATION, giữ staging/
@@ -180,4 +216,4 @@ Ghi ngày, build/commit, dependency locks/image digests, resources, testcase A�
 input/checksum/source snapshot, expected/actual values/rows, state/log/metrics và kết luận.
 NOT_RUN/BLOCKED/FAILED khác PASS; không chạy test thì không báo PASS.
 Tài liệu này và các artifact Plan chưa chứng minh MVP đã hoạt động. Chỉ bắt đầu triển khai
-sau khi tạo tasks có mục tiêu/đầu ra/tiêu chí kiểm chứng từ kế hoạch này.
+sau khi đồng bộ bản152task với cập nhật Plan2026-11-08, Analyze lại và xử lý cổng reviewer.

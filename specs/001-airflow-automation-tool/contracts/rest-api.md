@@ -95,6 +95,20 @@ Private endpoint `/internal/runtime/bind` dùng runtime service bearer từ secr
 reference/config. Credential lookup đi trực tiếp application metadata encrypted records theo
 role runtime, không có endpoint decrypt hoặc password export.
 
+URL canonical giữa containers là `http://backend:8000/internal/runtime/bind`.
+Operation OpenAPI đã có `servers: [{url: http://backend:8000}]`, override base `/api/v1`
+của public API; không ghép prefix public vào endpoint private. Backend đăng ký router
+runtime ngoài router `/api/v1`; `/api/v1/internal/runtime/bind` không có route alias.
+Nginx frontend trả 404 cho cả prefix `/internal/runtime` và `/api/v1/internal/runtime`
+(đúng prefix hoặc path con), trước public API proxy và SPA fallback, không redirect.
+Runtime gọi backend trực tiếp bằng bearer; việc backend publish loopback8000 cho operator
+không bỏ xác thực private endpoint.
+
+Kiểm chứng implementation: qua frontend3000, POST cả hai biến thể `/bind`, có và không
+bearer hợp lệ, đều404 và không tới backend; GET cũng không trả SPA fallback. Gọi trực tiếp
+backend canonical không bearer/sai bearer bị401/403, bearer hợp lệ vẫn phải qua kiểm tra
+identity/version; gọi trực tiếp biến thể `/api/v1/internal/runtime/bind` luôn404.
+
 ## Hợp đồng lỗi
 
 ErrorResponse gồm error.code ổn định, message tiếng Anh, request_id UUID,
@@ -141,6 +155,12 @@ xác nhận revision mới trước chạy, không sửa run đã bind. Payload 
 validation/byte cap như upload/execution; không echo source data vào query log.
 
 ## Hợp đồng ủy quyền FULL_REFRESH
+
+MVP không định nghĩa TTL, `expires_at` hoặc state EXPIRED cho authorization. Quyền bị
+chặn theo state/revocation/scope và các ranh giới BR-08. Confirmation token10phút là
+đối tượng khác: token hết hạn không thu hồi quyền đã cấp hoặc giải phóng ONCE reservation.
+Test phân biệt request mới với token hết hạn và replay cùng Idempotency-Key/hash trả
+intent cũ; không thêm cơ chế authorization expiration từ tên ca kiểm thử.
 
 AuthorizationRequest có confirmation_token hash-bound revision/physical target/schedule,
 acknowledged=true và allow_empty=false mặc định. Khi allow_empty=true cần

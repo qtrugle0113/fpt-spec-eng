@@ -1,0 +1,14 @@
+port 36059
+RemoteDisconnected Remote end closed connection without response
+HTTP 200 {"status":"live","stage":"bootstrap"}
+.\.venv\Scripts\python.exe : INFO:     Started server process [1]
+At line:17 char:6
++ '@ | .\.venv\Scripts\python.exe - *> .tools/t014-backend-diagnostic.l ...
++      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO:     Started server process [1]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     10.88.0.1:34736 - "GET /api/v1/health/live HTTP/1.1" 200 OK

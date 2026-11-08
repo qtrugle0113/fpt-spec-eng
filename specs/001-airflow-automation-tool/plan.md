@@ -1,11 +1,20 @@
-﻿# Kế hoạch triển khai: Airflow Automation Tool
+# Kế hoạch triển khai: Airflow Automation Tool
 
 **Nhánh/ngữ cảnh Spec Kit**: `001-airflow-automation-tool` | **Ngày**: 2026-11-06
+**Cập nhật thiết kế có mục tiêu**: 2026-11-08, sau Analyze bản152task; Git branch hiện tại `001-airflow-automation-tool-t014`.
 
 **Đặc tả**: [spec.md](spec.md), đã Clarify, gồm 5 quyết định vòng đời FULL_REFRESH tại BR-08.
-**Đầu vào bổ sung**: yêu cầu Plan17nhóm, Constitution1.0.0 và các finding Analyze cần đồng bộ
-thiết kế. Không tạo application source code, Dockerfile/Compose hoặc migrations; giữ nguyên
-[tasks.md](tasks.md) cho bước Tasks tiếp theo. Workbook .xlsx hiện có được tái sử dụng.
+**Đầu vào bổ sung**: yêu cầu Plan17nhóm, Constitution1.1.0 và các finding Analyze cần đồng bộ
+thiết kế. Bản Plan ban đầu chỉ tạo tài liệu; source/Compose và tiến độ implementation hiện
+được ghi tại [tasks.md](tasks.md) và báo cáo Phase1. Workbook .xlsx hiện có được tái sử dụng.
+
+## Remediation T014 đã duyệt — 2026-11-08
+
+P1–P7 đã được chủ dự án duyệt; triển khai và nghiệm thu đang diễn ra theo
+[phương án T014](../../docs/proposals/t014-remediation.md). Baseline bên dưới đã cập nhật
+candidate được duyệt; build/runtime/security có kết quả riêng trong
+`docs/testing/phase1-report.md`, không suy PASS từ bảng pin. T014 vẫn BLOCKED cho tới khi
+đủ evidence security và CI; không đổi Constitution/BR-08 hoặc mở Phase2.
 
 ## Tóm tắt
 
@@ -24,16 +33,16 @@ artifacts tiếng Việt; UI và workbook instructions tiếng Anh.
 
 | Mục | Quyết định |
 | --- | --- |
-| Ngôn ngữ/runtime | TypeScript5.9.3, Python3.12; backend image3.12.12; Node22.21.1 build |
+| Ngôn ngữ/runtime | TypeScript5.9.3, Python3.12; backend image3.12.16; Node22.23.4 build |
 | Frontend | React/DOM19.2.0, Vite7.3.7, plugin-react5.1.1, Tailwind/@tailwindcss/vite4.1.18 |
-| UI/data/form | shadcn CLI3.5.0, React Router7.9.6, TanStack Query5.90.10, RHF7.66.0, resolvers5.2.2, Zod4.1.12 |
+| UI/data/form | shadcn CLI3.5.0, React Router7.18.5, TanStack Query5.90.10, RHF7.66.0, resolvers5.2.2, Zod4.6.7 |
 | Backend | FastAPI0.136.3, Uvicorn0.38.0, Pydantic2.13.5, SQLAlchemy2.0.52, Alembic1.20.0 |
 | IO/security | openpyxl3.1.5, defusedxml0.7.1, psycopg[binary]3.3.5, PyMySQL1.1.3, cryptography50.0.1, httpx0.28.1 |
-| Orchestration | apache/airflow:3.3.2-python3.12, LocalExecutor, Task SDK, Public APIv2 |
-| Databases | postgres:17.6-bookworm, mysql:8.4.7 InnoDB/utf8mb4/strict mode |
-| Web image | nginx:1.28.0-alpine, SPA static và same-origin API reverse proxy |
+| Orchestration | apache/airflow:slim-3.3.2-python3.12, LocalExecutor, Task SDK, Public APIv2 |
+| Databases | postgres:17.11-bookworm, mysql:8.4.13 InnoDB/utf8mb4/strict mode |
+| Web image | nginx:1.30.6-alpine3.24, SPA static và same-origin API reverse proxy |
 | Kiểm thử | pytest8.4.2, Playwright1.56.1, DB/Airflow integration thật, schema/contract checks |
-| Nền tảng | Linux containers trên Docker Engine/Desktop; Composev2>=2.24; Windows source dùng Docker volumes cho IO |
+| Nền tảng | Linux/amd64 containers trên Podman WSL; client5.8.3/server5.8.9, Docker Compose provider5.6.0; named volumes cho IO. Docker baseline khác vẫn hợp lệ khi được công bố/kiểm theo Constitution1.1.0 |
 | Phạm vi | Một operator local, không login;6màn hình,8hướng ETL; một source/target mỗi DAG |
 | Hiệu năng | p95 list/detail/preview100dòng<=3giây trên fixture; connection<=30giây; registration<=120giây |
 | Tài nguyên | ETL512MiB/process, parallelism2; staging10GiB/run/20GiBglobal; chi tiết runtime.md |
@@ -58,7 +67,7 @@ Gate sau thiết kế dưới đây là đánh giá tính tuân thủ thiết k�
 | VI Toàn vẹn/secrets | Native locks+ledger, policy riêng, encrypted revisions, không API password | Đạt/Đạt |
 | VII Dữ liệu lớn | Snapshot streaming, typed disk staging/quota/recovery, không XCom dataset | Đạt/Đạt |
 | VIII Airflow | LocalExecutor/TaskSDK/PublicAPIv2; revision registration; không internal DB nghiệp vụ | Đạt/Đạt |
-| IX Docker | One-command init/migrations/seed/readiness/persistent volumes, không setup thủ công | Đạt/Đạt |
+| IX Linux containers | One-command init/migrations/seed/readiness/persistent volumes, không setup thủ công | Đạt/Đạt |
 | X Kiểm thử | A–AM, failure injection, unit/integration/E2E/stress, chưa chạy không báo PASS | Đạt/Đạt |
 | XI Tài liệu | Research/model/contracts/quickstart; README/architecture/troubleshooting implementation phải đồng bộ | Đạt/Đạt |
 | XII Phân kỳ |8phase theo phụ thuộc, core trước polish; mỗi phase có gate kiểm chứng | Đạt/Đạt |
@@ -66,8 +75,10 @@ Gate sau thiết kế dưới đây là đánh giá tính tuân thủ thiết k�
 Rà soát sau Clarify: nguyên tắc VI còn được bảo vệ bằng ONCE reservation trước trigger,
 admission/revoke serialize, ledger commit proof và allow_empty riêng; nguyên tắc III yêu cầu
 đồng bộ task trước implementation. Các kết luận Đạt ở bảng là chất lượng thiết kế, không
-phải reviewer checklist hoặc test runtime PASS. Tasks còn lệch với contract mới là cổng
-chưa hoàn tất của workflow, không được bỏ qua bằng việc kết thúc Plan.
+phải reviewer checklist hoặc test runtime PASS. Bản152task đã đồng bộ sau Clarify;
+lượt Plan2026-11-08 chỉ giao các điều chỉnh có mục tiêu ở cuối tài liệu cho bước Tasks.
+Gate trước implementation vẫn cần Tasks đồng bộ lượt này, Analyze lại và reviewer đánh giá
+checklist; không suy từ bảng thiết kế Đạt rằng gate triển khai đã mở.
 
 ## Cấu trúc dự án
 
@@ -160,13 +171,13 @@ Connection pool API metadata pool_size5/max_overflow5; external connection test 
 connect10giây, tổng30giây. Runtime source/target connection riêng từng run, không kế thừa
 SQLAlchemy pool qua scheduler fork; create sau task start, close tại end. Không log DSN/password.
 
-## Thiết kế Docker Compose
+## Thiết kế Compose và runtime container
 
 | Service | Image/code | Phụ thuộc/readiness | Volume/trách nhiệm |
 | --- | --- | --- | --- |
 | secrets-init | backend image bootstrap | one-shot, restart no | Tạo một lần key/DB passwords/JWT/runtime token trên private volumes, không in secret |
-| postgres | postgres:17.6-bookworm | secrets-init completed; SELECT1 thật | pg_data; app_metadata/airflow_metadata/etl_test |
-| mysql | mysql:8.4.7 | secrets-init completed; SELECT1 thật | mysql_data; etl_test, InnoDB/utf8mb4 |
+| postgres | postgres:17.11-bookworm | secrets-init completed; SELECT1 thật | pg_data; app_metadata/airflow_metadata/etl_test |
+| mysql | mysql:8.4.13 | secrets-init completed; SELECT1 thật | mysql_data; etl_test, InnoDB/utf8mb4 |
 | db-init | backend image | DBs healthy, one-shot | Tạo DB/users/grants idempotent, sample support objects; bootstrap secrets |
 | app-init | backend image | db-init completed | Alembic+seed connections/data/files/templates metadata, owner migration lock |
 | airflow-init | custom Airflow image | db-init completed | airflow db migrate, SimpleAuth users, config keys; không app tables |
@@ -185,7 +196,15 @@ service_completed_successfully theo loại; startup không phụ thuộc sleep c
 Network `aat_internal` bridge; DB không publish host port theo mặc định. Chỉ expose
 127.0.0.1:3000/8000/8080. Browser dùng localhost; backend dùng postgres:5432/mysql:3306,
 Airflow API airflow-apiserver:8080; Airflow Execution API cấu hình URL nội bộ api-server.
-Generated DAG/deep link không dùng hostname Docker làm browser URL.
+Generated DAG/deep link không dùng hostname container làm browser URL.
+
+Private runtime dùng URL canonical `http://backend:8000/internal/runtime/bind` ngoài router
+public `/api/v1`. Operation OpenAPI đã có server override; nhận định Analyze rằng thiếu
+override là sai và được rút lại. Nginx trả404 cho cả `/internal/runtime` và
+`/api/v1/internal/runtime` cùng path con trước API proxy/SPA fallback, không redirect.
+Không tạo alias private dưới public prefix; runtime gọi backend trực tiếp bằng bearer.
+Gate T005 tương lai kiểm cả hai biến thể qua frontend kể cả bearer hợp lệ, không có
+request upstream; canonical trực tiếp thiếu/sai bearer bị401/403, public alias luôn404.
 
 Named volumes: pg_data, mysql_data, generated_dags, airflow_logs, uploads, staging,
 app_keyring/runtime_secrets, backend_secrets, airflow_secrets, bootstrap_secrets.
@@ -355,7 +374,7 @@ theo cùng contract trước khi tuyên bố integration hoàn thành.
 | ETL | Engine trực tiếp và task trong Airflow |8routes, NULL/Unicode/decimal/CSV quote, value/count reconciliation |
 | Airflow | Image3.3.2 và APIv2 thật | Import errors, parsed revision, TI version, manual+cron, pause/trigger/log pagination |
 | Failure/recovery | Kill/network/commit-response-loss/disk full/schema drift | No blind replay, full-refresh rollback, same-target native lock, protected cleanup |
-| Docker startup | Fresh volumes/restart/migration failure | One command, real health, seed idempotent, secrets/volumes bền |
+| Container startup | Fresh volumes/restart/migration failure | One command, real health, seed idempotent, secrets/volumes bền |
 | E2E | Playwright1.56.1 against real stack | Upload→preview→create/deploy→run→monitor/dashboard/open Airflow; desktop1440/mobile390 |
 | Stress | Dataset>1GiB, worker budget512MiB, >20batches | RSS/actual disk/manifest/checksums/row counts/cleanup, không đọc toàn RAM |
 
@@ -382,14 +401,14 @@ chỉ kết thúc research/design; việc phân task chi tiết thực hiện sa
 
 | Phase | Phụ thuộc | Đầu ra | Gate nghiệm thu thực |
 | --- | --- | --- | --- |
-|1 Setup/Docker | Không | Monorepo/images/locks/Compose/secrets-init/DB-init/Airflow services/health | resolve/build/pip check/npm build; một lệnh lên DB/Airflow khỏe; startup lại giữ volumes; không secret committed |
-|2 Backend/metadata |1 | API shell, Alembic, repositories/revisions/Operation worker, seed | migrations/seed idempotent; CRUD/settings/job recovery API tests; app DB tách Airflow DB |
+|1 Setup/Containers | Không | Monorepo/images/locks/Compose/secrets-init/DB-init/Airflow services/health; test profile và runner tối thiểu | resolve/build/pip check/npm build; một lệnh lên DB/Airflow khỏe; startup lại giữ volumes; không secret committed; runner pytest/Playwright khởi chạy và collect được bootstrap/smoke tests phù hợp |
+|2 Backend/metadata |1 | API shell, Alembic, repositories/revisions/Operation worker, seed | schema/repository constraints và isolation app/Airflow DB; migrations/seed idempotent; Operation lease/idempotency/recovery; foundation liveness/readiness; chưa nghiệm thu Connections CRUD hoặc Settings API |
 |3 Connections |2 | CRUD/test/encryption/dependency/network rules/runtime lookup | PG/MySQL test thật và lỗi; revision/secret không leak; không cần Airflow restart khi tạo connection |
 |4 Excel/table |3 | Parser/schema1.0/template downloads/validation/DDL/create/history | A/B/P/AL; workbook nhiều table/PK ghép, invalid side-effect-free, partial DDL result hai DB |
 |5 ETL/staging |3,4 | Engine wheel, readers/map/staging/locks/support ledger/load/recovery |8routes chạy trực tiếp trên DB thật; stress/quota/commit loss/UPSERT/FULL_REFRESH failure tests |
 |6 DAG integration |5 | Factory/atomic deploy/API client/admission/revision/bind/manual+cron | Airflow parse/register đúng revision+execute ETL thật; pending/parse/API errors; old-clear reject |
 |7 Dashboard/Monitoring |6 | Public API aggregates/pagination/tasks/logs/control links | S/T/W/AJ/AK, state/timezone/lifetime/incomplete chuẩn, không query metadata nội bộ |
-|8 Frontend integration/stabilize |4–7 | Sáu trang hoàn chỉnh, docs/README/troubleshooting, E2E | Playwright real stack A–AM coverage; ngôn ngữ/responsive; security/performance/recovery evidence |
+|8 Frontend integration/stabilize |4–7 | Sáu trang hoàn chỉnh, docs/README/troubleshooting, mở rộng runner và regression E2E đã có | Playwright real stack A–AM coverage; ngôn ngữ/responsive; security/performance/recovery evidence |
 
 Phase1 có bootstrap tối thiểu DBs/Airflow; phase2 bổ sung application migrations/seeds đầy đủ,
 không yêu cầu phase1 đã có sản phẩm hoàn chỉnh. UI shell tối thiểu được dựng từphase1 và forms
@@ -402,7 +421,33 @@ interfaces, không yêu cầu target load thật khi policy chưa tồn tại. S
 chạy standalone transfer/failure/metrics verification; Tasks phải tách các checkpoint này
 để không tạo dependency vòng vì tiêu chí hoàn thành vượt phần đã triển khai.
 
-Compose profile test bổ sung backend-tests và e2e-tests như quickstart, không khởi động mặc định.
+Compose profile `test` có `backend-tests` và `e2e-tests` từ Phase1, không khởi động mặc định.
+Skeleton gồm Dockerfile backend tests copy root tests, Playwright Dockerfile/config, manifest/
+lock `@playwright/test==1.56.1` và image `mcr.microsoft.com/playwright:v1.56.1-noble` cùng
+browser version; code tests gọi `http://frontend:80` trong network Compose. Runner chạy được
+bootstrap/shell smoke phù hợp hiện có; collect/runner smoke không chứng minh story đã PASS.
+Phase2 mở rộng fixture metadata và harness contracts; Phase3 dùng runner này nghiệm thu
+Connections E2E trước gate sang Phase4. Phase8 chỉ mở rộng full regression, không tạo lần
+đầu runtime/config bắt buộc cho các gate trước. Chọn selector theo phase, không yêu cầu
+endpoint tương lai PASS và không dùng skip để tuyên bố story hoàn thành. Quickstart cung cấp
+lệnh container nên không cần cài Python/Node/browser trên host để chạy suite đã hỗ trợ.
+Fixtures dùng Compose project/volumes và table/DAG namespace riêng theo lượt; cleanup chỉ
+tài nguyên test sở hữu, không dữ liệu người dùng. Image client/browser phải resolve/pin và
+kiểm version tại build; version trong thiết kế chưa là bằng chứng image đã chạy.
+
+### Bytes và EOL của dataset mẫu
+
+CSV/TXT mẫu trong Git index dùng LF; checkout hiện tại trên Windows dùng CRLF nên SHA256
+raw khác [design-validation.json](contracts/design-validation.json). Đổi CRLF về LF trong
+bộ nhớ để chẩn đoán khớp hash cũ cho cả hai file; không sửa dataset trong lượt Plan này.
+Implementation phải thêm `.gitattributes` với `samples/data/*.csv text eol=lf` và
+`samples/data/*.txt text eol=lf`, giữ `.xlsx` binary (`*.xlsx -text`), rồi tạo checkout sạch
+hoặc materialize lại riêng sample paths sau khi bảo toàn thay đổi người dùng. Không dựa vào
+`core.autocrlf` riêng của developer. CI kiểm working-tree sample bytes chỉ LF và SHA256 raw
+khớp manifest trên Windows/Linux trước đóng image/seed; seed tính hash bytes thực được copy
+vào volume, không hardcode hash nếu bytes khác. Bằng chứng hiện có là lịch sử LF, không
+chứng minh bytes của checkout Windows hiện tại đã khớp. Thay chính sách EOL không cho phép
+normalize file upload của người dùng; content immutable/hash/byte count tính trên bytes lưu.
 
 ## Theo dõi độ phức tạp và kết luận thiết kế
 
@@ -418,14 +463,14 @@ kế/documented pins và kiểm lại, không đánh dấu phase hoàn thành. K
 chưa chốt; dữ liệu stress/benchmark và image digest là bằng chứng phải tạo ở implementation.
 
 
-## Kết quả kiểm chứng artifact tại bước Plan
+## Kết quả kiểm chứng artifact tại bước Plan trước lượt 2026-11-08
 
 - 4workbook thực tế đã được mở lại, kiểm version/header, data validation, không formula,
   cross-sheet sample references và checksum;2dataset CSV/TXT đã parse4record/file bằng parser chuẩn.
 - Lượt Plan ban đầu: OpenAPI3.1 có40operations/40schemas, đã chạy openapi-spec-validator0.7.2.
   Lượt đồng bộ sau Clarify mở rộng contract; xem kết quả kiểm chứng hiện tại thay vì coi
   con số ban đầu là hợp đồng bất biến.
-  Lượt hiện tại: OpenAPI47operations/53schemas hợp lệ với validator0.7.2;29schema cases
+  Lượt đồng bộ sau Clarify (ghi nhận lịch sử): OpenAPI47operations/53schemas hợp lệ với validator0.7.2;29schema cases
   đúng/sai đạt cho authorization acknowledgment, source union, mapping/filter, load keys,
   typed literals và required UI fields. Đây là schema validation, không phải runtime tests.
 - Registry verification23package/image entries thành công; peer metadata7package phù hợp
@@ -438,16 +483,112 @@ chưa chốt; dữ liệu stress/benchmark và image digest là bằng chứng p
   Đã kiểm31local links trong các Markdown được cập nhật: không broken links;4workbook và
   2dataset hashes khớp bằng chứng cũ, không chỉnh binary templates/samples.
 
-## Đồng bộ sau Clarify và việc còn lại ở Tasks
+## Lịch sử đồng bộ sau Clarify
 
 - A1: thiết kế reservation/admission/revoke/ONCE/SCHEDULED/allow_empty đã đưa vào Research,
   Data Model và Runtime/Airflow/API; Spec không bị đổi nghiệp vụ ở bước này.
 - F1/E1/F3/F4: contracts bổ sung dữ liệu UI/history/parser revision và tên technical ledger
   thống nhất. Đây là thiết kế cần được implementation/test, không phải findings đã PASS runtime.
-- F2: Plan xác định preparation checkpoint trước policy; bước Tasks phải sửa T074/T075/T081/
-  T083 theo đầu ra thực tế, không chỉ thêm cạnh làm graph cycle.
-- Tasks phải bổ sung RunIntent/Admission/ParserRevision models, authorization list/detail/
-  revoke, history/table detail/parser endpoints, typed UI fields và BR-08 failure/race tests.
-  Thay checks đóng đinh40operations/40schemas bằng đối chiếu contract hiện tại.
-- Chưa sửa Tasks hoặc checkbox reviewer. Sau `/speckit-tasks`, chạy `/speckit-analyze`
-  lại trước `/speckit-implement`. Không có NEEDS CLARIFICATION mới về nghiệp vụ.
+- Các ID/findings trong lượt137task là lịch sử. Bản152task đã tách preparation T081,
+  metrics T082 và recovery/dispatch T090/T092; đã bổ sung models, authorization/history/
+  parser APIs và BR-08 tests. Không coi các yêu cầu đồng bộ đó là chưa làm ở trạng thái hiện tại.
+
+## Kết quả rà soát có mục tiêu ngày 2026-11-08 và bàn giao Tasks
+
+I1 được rút lại ở phần thiếu server override: override đã tồn tại; cập nhật chỉ làm rõ
+canonical route, router boundary và ma trận chặn proxy. D1/I2 được xác minh từ gate E2E
+trước T138 và gate Phase2 đòi API ở phase sau. I3 được xác minh bằng raw SHA256 và EOL
+Git index/working tree. A1 là tên ca kiểm thử không có policy tương ứng: BR-08/model/API
+không có authorization TTL/EXPIRED; giữ revoke/invalidate/terminal states, không thêm TTL.
+Confirmation token10phút hết hạn không thu hồi quyền hoặc giải phóng ONCE; replay cùng
+request vẫn trả intent cũ. Không cần Clarify vì không đổi nghiệp vụ; nếu muốn TTL trong
+tương lai phải Clarify trước. I4 được xử lý bằng tách lịch sử khỏi trạng thái hiện hành.
+
+Constitution sau cập nhật: III/XI đạt ở phạm vi thiết kế vì các quyết định và bàn giao
+được ghi rõ; IV/VI đạt về thiết kế private bearer/router và giữ nguyên BR-08; IX/X/XII
+đạt về thiết kế bootstrap/product readiness, runner sớm và gate độc lập. Không có ngoại lệ
+Constitution; kết luận này không xác nhận runtime, reviewer approval hay Tasks đã đồng bộ.
+
+Bước `/speckit-tasks` tiếp theo phải cập nhật có mục tiêu, dùng ID152task hiện tại làm mốc:
+
+1. T005: hai prefix private trả404 qua frontend, không upstream/SPA fallback; direct
+   canonical kiểm bearer/identity, direct public alias404. Đồng bộ T103/T104 với canonical.
+2. Đưa phần tạo test profile/Playwright Dockerfile/config/lock của T138 lên Phase1 trước
+   E2E đầu tiên; T138 chỉ mở rộng regression. Ghi prerequisite cụ thể cho consumer, tránh
+   thêm cạnh ngược từ T046 về T138 gây cycle. Phase2 chỉ foundation; Phase3/7 mới CRUD/Settings.
+3. Gắn T098 làm prerequisite trực tiếp hoặc bắc cầu của ETL template consumer (T120);
+   đưa T069 vào chuỗi nghiệm thu Phase5 và bảo đảm T152 có đường dependency tới cả hai.
+4. T145 thay `authorization expired` bằng revoked/invalidated trước admission và kiểm
+   recovery sau revoke. Phân biệt test confirmation token hết hạn với replay cùng key/hash;
+   không tạo EXPIRED/TTL hoặc giải phóng reservation.
+5. Bổ sung truy vết NFR-005 ở mapping/load/recovery tests phù hợp, không tạo nghiệp vụ mới.
+6. Thêm đầu ra `.gitattributes`, kiểm sample LF/raw hashes trước build/seed, giữ XLSX binary;
+   cập nhật status tài liệu cần thiết, không tự sửa checkbox reviewer.
+7. Giữ 8phase, dependency IDs/gates và test-before-implementation nhất quán; nếu đánh lại
+   ID phải cập nhật mọi tham chiếu. Không dùng ID137task làm prerequisite hiện tại.
+
+Lượt này giữ nguyên `tasks.md`, Spec/BR-08, Constitution, Data Model, checklist và binary/
+dataset mẫu. Sau đồng bộ Tasks phải Analyze lại và reviewer xử lý checklist trước Implement.
+Thống kê trong `checklists/requirements.md` còn là lượt cũ (87FR/14BR/12SC/A–Z); Spec hiện
+có100FR/22BR/15SC/A–AM. Chủ sở hữu Specify/Clarify cập nhật ghi chú đó khi phù hợp; không
+coi16checkbox hiện có là chứng minh checklist đã được rà soát lại cho mọi thay đổi mới.
+
+### Kiểm chứng tài liệu trong lượt này
+
+- Chạy `setup-plan.ps1 -Json` bằng PowerShell process với ExecutionPolicy Bypass,
+  `SPECIFY_FEATURE_DIRECTORY=specs/001-airflow-automation-tool` và
+  `SPECIFY_FEATURE_NO_PERSIST=1`: resolve đúng Spec/Plan hiện có, không chép đè template
+  hoặc tạo feature.json. Ngữ cảnh feature001, Git branch hiện tại `001-airflow-automation-tool-t014`.
+- Script Python standard library chỉ đọc: kiểm28local Markdown links trong6file Markdown
+  đã sửa, không broken links;8phase còn nguyên;47operation IDs/53schema declarations.
+  Toàn bộ phần `components` OpenAPI không đổi so với HEAD; server override private tồn tại
+  cả trước/sau. OpenAPI chỉ bổ sung description, không đổi schema/URL/security.
+- SHA256 của4workbook khớp manifest lịch sử. Dataset CSV/TXT raw hashes lần lượt là
+  `91b62e717c072844533bf451c242107e193bacce0b7fe6adbd9ba827a5f479fd` và
+  `77b52a76946d08d1733973ce7bf43e0ef37cfc2506114df15833d39793d292bf`;
+  mỗi file có6CRLF, chuẩn hóa trong bộ nhớ khớp hash LF lịch sử. Sample bytes không đổi.
+- `git diff --check` không lỗi; chỉ7file thiết kế/contracts thay đổi. Spec, tasks, Data
+  Model và hai checklist không đổi nội dung so với HEAD. Không có extension hooks cấu hình.
+- Không có PyYAML/jsonschema/openapi-spec-validator trong Python hiện tại nên chưa chạy
+  lại YAML/OpenAPI schema validator. Đếm cấu trúc và so components không thay validator.
+  Chưa build image, resolve dependencies, chạy nginx/backend/Compose/pytest/Playwright hoặc
+  CI Windows/Linux. Mọi kiểm chứng runtime và EOL checkout sau implementation đều NOT_RUN.
+
+## Baseline Podman đã duyệt ngày 2026-11-08
+
+Constitution1.1.0 đã được chủ dự án duyệt theo [bản sửa](../../docs/proposals/podman-support.md).
+Baseline hiện chọn Podman client5.8.3/server5.8.9, WSL Linux/amd64, cgroupv2, rootful,
+provider Docker Compose5.6.0. Chỉ engine/provider đã phản hồi; build/stack compatibility
+vẫn NOT_RUN. Các ghi nhận Plan/implementation trước sửa đổi giữ nguyên là lịch sử.
+
+- Lệnh canonical: `podman compose up --build -d`; Docker baseline có thể dùng lệnh tương
+  ứng nhưng không được quảng bá đã được kiểm từ kết quả Podman. Giữ `docker-compose.yml`,
+  Dockerfiles và thư mục `docker/`; không đổi topology hoặc tách thêm stack riêng.
+- Preflight trước T002: engine/provider thật, registry access, Linux/Python3.12/amd64,
+  cgroupv2 và resources. Pin provider qua `PODMAN_COMPOSE_PROVIDER` trỏ executable thực đã
+  kiểm; ghi client/server/provider trong báo cáo. Không âm thầm đổi provider giữa lượt chạy.
+- Dùng fully qualified image refs, ví dụ `docker.io/library/postgres:17.11-bookworm`,
+  `docker.io/apache/airflow:slim-3.3.2-python3.12`; giữ version, resolve digest thật tại T014.
+- Provider phải thực hiện service_healthy/service_completed_successfully, one-shot failure
+  chặn consumer và profiles; phải kiểm thực, không thay bằng sleep hoặc YAML parse đơn thuần.
+- Named volumes nằm trong Linux VM, UID/GID/RO mounts và secret domains như thiết kế hiện
+  có; rootful engine không cho phép privileged/chmod777, admin key trong ETL hoặc nới grants.
+- Kiểm service DNS/internal URLs và loopback3000/8000/8080; private runtime giữ canonical
+  root và hai prefix nginx404. Không mở engine API/TCP không xác thực để chạy Compose.
+- Inspect actual cgroup memory enforcement, filesystem/disk/RSS limits và free space; memory
+  metadata machine2GiB không đồng nhất với MemTotal thực8.280.391.680bytes lúc kiểm. Dung lượng
+  disk100GiB không chứng minh free80GiB. Giữ khuyến nghị host8CPU/12GiB/80GiB free; chỉ giảm
+  parallelism1 theo thiết kế hiện có sau cấu hình/kiểm chứng, không giảm gate integrity.
+- Fresh/restart/persistence/secret-loss/init-fail/commit recovery dùng baseline/provider đã
+  pin và namespace test riêng; lệnh down mặc định giữ volumes, không reset để chữa lỗi.
+
+Tuân thủ sau sửa đổi: IX/XII đạt ở phạm vi thiết kế vì thêm lựa chọn runtime có evidence
+bắt buộc; VI/VII/VIII/X giữ nguyên. Build/nginx/DB/Airflow/Compose readiness/stress/recovery
+chưa được nghiệm thu; T002/T005 chưa chuyển PASS từ kết quả preflight.
+
+### Hardening tương thích lượt2
+
+Npm12.2.2 trên Node22.23.4; Airflow OS patch lock, loại optional Docker CLI/uv/prek;
+DB child images cùng server versions, gosu1.19 rebuild Go1.27.3 và bỏ mysql-shell.
+Go source commit/hash và toolchain digest tại docker/gosu/source.lock.json.
+Constraints và client/browser baseline không đổi; trial chỉ là evidence chờ duyệt.

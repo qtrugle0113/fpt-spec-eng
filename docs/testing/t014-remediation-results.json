@@ -1,0 +1,104 @@
+{
+  "scope": "Bootstrap Phase1 only; P1-P7 approved",
+  "gate": "BLOCKED",
+  "ci_remote": "NOT_RUN",
+  "checks": [
+    {
+      "name": "npm ci/build/typecheck fixture",
+      "status": "PASS",
+      "node": "22.23.4",
+      "npm": "10.9.4"
+    },
+    {
+      "name": "npm full/production audit",
+      "status": "PASS",
+      "vulnerabilities": 0,
+      "evidence": [
+        "phase1-npm-audit.json",
+        "t014-npm-audit-production.json"
+      ]
+    },
+    {
+      "name": "Zod4.6.7 + resolvers5.2.2 valid/invalid input",
+      "status": "PASS"
+    },
+    {
+      "name": "initial fresh startup before asyncpg fix",
+      "status": "FAIL",
+      "log": "t014-logs/t014-startup.log"
+    },
+    {
+      "name": "fresh startup and persistent restart final",
+      "status": "PASS",
+      "seconds": 597.552,
+      "log": "t014-logs/t014-startup-final.log"
+    },
+    {
+      "name": "wiring/fault/secrets/old DB restore",
+      "status": "PASS",
+      "tests": 6,
+      "seconds": 49.297,
+      "log": "t014-logs/t014-runtime-gates.log"
+    },
+    {
+      "name": "final SDK/digest/browser compatibility",
+      "status": "PASS",
+      "tests": 3,
+      "seconds": 13.527,
+      "log": "t014-logs/t014-compatibility-final.log"
+    },
+    {
+      "name": "pytest test profile",
+      "status": "PASS",
+      "tests": 7,
+      "log": "t014-logs/t014-pytest-final.log"
+    },
+    {
+      "name": "Playwright test profile",
+      "status": "PASS",
+      "tests": 4,
+      "log": "t014-logs/t014-playwright-final.log"
+    },
+    {
+      "name": "nginx shell desktop/mobile/search/menu",
+      "status": "PASS",
+      "route_viewports": 12,
+      "browser": "141.0.7390.37",
+      "log": "t014-logs/t014-shell-final.log"
+    },
+    {
+      "name": "standalone HTTP integration retries",
+      "status": "FAIL then PASS",
+      "note": "SSH/HTTP transient failures retained; final backend1PASS, proxy4PASS",
+      "logs": [
+        "t014-logs/t014-api-proxy-retry.log",
+        "t014-logs/t014-backend-final-test.log"
+      ]
+    },
+    {
+      "name": "Windows host venv pytest",
+      "status": "FAIL",
+      "passed": 6,
+      "failed": 1,
+      "reason": "cryptography absent; host Python3.13 is not Linux/Python3.12 baseline"
+    },
+    {
+      "name": "workspace root npm ci",
+      "status": "FAIL",
+      "reason": "EPERM locked lightningcss native file; no ACL reset/deletion attempted"
+    },
+    {
+      "name": "workspace root Compose startup",
+      "status": "BLOCKED",
+      "reason": "historical ACL cache issue; tested clean fixture separately, no clean Git checkout yet"
+    },
+    {
+      "name": "image vulnerability scan execution",
+      "status": "PASS",
+      "targets": 12,
+      "source_image_id_mismatches": 0,
+      "security_assessment": "BLOCKED",
+      "evidence": "phase1-security.json"
+    }
+  ]
+}

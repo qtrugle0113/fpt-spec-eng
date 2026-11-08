@@ -1,0 +1,64 @@
+podman : [4m>>>> Executing external compose provider "C:\\Users\\tieut\\AppData\\Local\\Microsoft\\WinGet\\Packages\\D
+ocker.DockerCompose_Microsoft.Winget.Source_8wekyb3d8bbwe\\docker-compose.exe". Please see podman-compose(1) for how
+to disable this message. <<<<
+At line:2 char:414
++ ... TEXITCODE}; podman compose -f "$fixture/docker-compose.yml" -p aat-ph ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([4m>>>> Execut...s message. <<<<:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+[0m Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Running
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Running
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Running
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Running
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Running
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Started
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-e2e-tests-run-090a3e44e524 Creating
+ Container aat-phase1-t014-final-cf8461ea-e2e-tests-run-090a3e44e524 Created
+
+Running 4 tests using 1 worker
+
+  ✓  1 [desktop] › bootstrap.spec.ts:3:5 › bootstrap shell routes remain usable (737ms)
+  ✓  2 [desktop] › bootstrap.spec.ts:11:5 › private runtime prefixes are blocked by nginx (71ms)
+  ✓  3 [mobile] › bootstrap.spec.ts:3:5 › bootstrap shell routes remain usable (568ms)
+  ✓  4 [mobile] › bootstrap.spec.ts:11:5 › private runtime prefixes are blocked by nginx (55ms)
+
+  4 passed (4.7s)

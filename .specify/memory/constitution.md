@@ -1,12 +1,13 @@
-﻿<!--
-Báo cáo tác động đồng bộ
-- Phiên bản: mẫu chưa ban hành → 1.0.0; ban hành Constitution đầu tiên.
-- Nguyên tắc: thay năm vị trí mẫu bằng 12 nguyên tắc theo yêu cầu dự án.
-- Phần bổ sung: ràng buộc kiến trúc; quy trình và cổng chất lượng; quản trị.
-- Phần loại bỏ: nội dung ví dụ và các placeholder của mẫu; không có quy định cũ bị bãi bỏ.
-- Đồng bộ: các template và lệnh phụ thuộc đọc Constitution khi chạy; không sửa chúng ở bước này.
-- Công việc còn treo: không có placeholder hoặc quyết định quản trị bị trì hoãn.
-- Ghi chú: báo cáo này phục vụ rà soát, cần xóa trước khi commit Constitution.
+<!--
+Báo cáo tác động đồng bộ — sửa đổi đã được chủ dự án duyệt ngày 2026-11-08.
+- Phiên bản: 1.0.0 → 1.1.0 (MINOR): bổ sung Podman, giữ lựa chọn Docker và mọi gate an toàn.
+- IX: Docker một lệnh → Linux containers một lệnh trên runtime/provider công bố.
+- XII, ràng buộc kiến trúc và cổng nghiệm thu: thuật ngữ runtime trung lập.
+- Đồng bộ Spec/Plan/Tasks/Research/Quickstart/README và bằng chứng reviewer bị ảnh hưởng.
+- Không thay BR-08, API/Excel schema, readiness, persistence, secrets, quotas hoặc tests.
+- Bản duyệt và ma trận chuyển đổi: docs/proposals/podman-support.md.
+- Không có placeholder quản trị còn treo; compatibility runtime vẫn phải kiểm thực tế.
+- Báo cáo tác động này là ghi chú review, bỏ trước khi commit Constitution đã sửa đổi.
 -->
 
 # Hiến chương dự án Airflow Automation Tool
@@ -154,28 +155,39 @@ trên đĩa, xử lý song song, cleanup, hết đĩa và khả năng phục h�
 **Kiểm chứng:** kiểm thử DAG hợp lệ được đăng ký và chạy trong Airflow;
 DAG parse lỗi hoặc không đăng ký trong thời hạn không được báo triển khai thành công.
 
-### IX. Môi trường Docker khởi động bằng một lệnh
+### IX. Môi trường Linux containers khởi động bằng một lệnh
 
-Toàn bộ môi trường PHẢI chạy được bằng lệnh:
+- Môi trường PHẢI chạy bằng Linux containers trên Docker Engine/Desktop hoặc Podman.
+  README PHẢI công bố runtime, phiên bản engine/client và Compose provider đã nghiệm thu.
+- Khi engine đã hoạt động và điều kiện đầu vào đã chuẩn bị theo README, toàn bộ stack
+  PHẢI khởi động bằng đúng một lệnh của runtime đã chọn:
 
-```sh
-docker compose up --build -d
-```
+  `docker compose up --build -d` hoặc `podman compose up --build -d`.
 
-- Môi trường PHẢI bao gồm Frontend, Backend, Airflow, PostgreSQL, MySQL và các service
-  phụ trợ cần thiết cho kiến trúc được chọn.
-- PHẢI tự động initialization, chạy database migrations, cấu hình persistent volumes,
-  healthchecks và nhận cấu hình qua environment variables.
-- Với Docker và cấu hình đầu vào đã được chuẩn bị theo README, lần khởi động đầu tiên
-  PHẢI tự hoàn tất; KHÔNG ĐƯỢC yêu cầu chạy migration, tạo schema hoặc cấu hình service
-  thủ công sau khi khởi động. Môi trường mẫu PHẢI có cấu hình mặc định an toàn để kiểm thử.
-- Initialization, migrations và seed PHẢI chạy lại an toàn, không xóa hoặc ghi đè dữ liệu
-  người dùng. Sample data và sample configurations PHẢI tách biệt với dữ liệu thực tế.
-- Container chạy không đồng nghĩa service sẵn sàng; healthchecks PHẢI phản ánh khả năng
-  phục vụ. Dữ liệu cần lưu PHẢI tồn tại sau khi khởi động lại container.
+  Đây là hai lựa chọn thay thế; KHÔNG ĐƯỢC yêu cầu chạy cả hai để khởi động một môi trường.
+- Môi trường PHẢI gồm Frontend, Backend, Airflow, PostgreSQL, MySQL và các service phụ trợ
+  cần thiết. PHẢI tự initialization, migrations, seed, cấu hình persistent volumes và
+  healthchecks theo dependency; nhận cấu hình qua environment variables/secret files.
+- Lần khởi động đầu tiên PHẢI tự hoàn tất phần nội bộ ứng dụng, KHÔNG ĐƯỢC yêu cầu chạy
+  migration, tạo schema hoặc cấu hình service thủ công sau lệnh startup. Cài runtime,
+  Compose provider và khởi động engine/machine là điều kiện đầu vào được công bố,
+  tương tự khởi động Docker daemon, không phải bước setup nghiệp vụ ngầm.
+- Init/migrations/seed PHẢI chạy lại an toàn, không xóa hoặc ghi đè dữ liệu người dùng;
+  sample namespace PHẢI tách dữ liệu thực. Dữ liệu, uploads, DAGs, logs, staging và key
+  cần lưu PHẢI bền qua restart; engine/provider không được làm thay đổi nghĩa vụ recovery.
+- Container running KHÔNG thay service readiness. Healthchecks PHẢI phản ánh khả năng
+  phục vụ; startup dependencies, init Exited(0), restart behavior và resource limits
+  PHẢI được kiểm bằng runtime/provider thật được công bố, không suy từ Compose config.
+- Quyền volume/UID/GID, secret mounts, network isolation và loopback exposure PHẢI được
+  giữ đúng thiết kế. KHÔNG ĐƯỢC dùng privileged, tắt healthcheck/constraint, chmod777,
+  bỏ memory/disk limits hoặc xóa volumes để né khác biệt runtime.
+- Nghiệm thu PHẢI ghi runtime/provider/phiên bản và kết quả thực. PASS trên một tổ hợp
+  KHÔNG chứng minh tổ hợp khác đã được kiểm. Chỉ cần nghiệm thu baseline được công bố
+  cho lần bàn giao; KHÔNG ĐƯỢC quảng bá runtime khác đã tương thích khi chưa có evidence.
 
-**Kiểm chứng:** khởi động mới bằng một lệnh, chờ service khỏe, chạy luồng mẫu,
-khởi động lại và xác minh tính bền vững dữ liệu cùng tính an toàn của initialization.
+**Kiểm chứng:** fresh startup đúng một lệnh trên baseline đã công bố, init/readiness thật,
+workflow mẫu khi đủ chức năng, restart và xác minh persistence/secret/recovery. Không còn
+mandatory test chưa chạy trong phạm vi tuyên bố hoàn thành.
 
 ### X. Kiểm thử thực tế và báo cáo trung thực
 
@@ -211,7 +223,7 @@ các lỗi đã mô tả mà không cần bước cài đặt ngầm.
 
 - PHẢI chia dự án thành các giai đoạn có phạm vi, phụ thuộc, đầu ra và tiêu chí nghiệm thu
   riêng; mỗi giai đoạn PHẢI kiểm thử được khi các phụ thuộc đã sẵn sàng.
-- Thứ tự ưu tiên PHẢI là Docker environment và database → connections → tạo table
+- Thứ tự ưu tiên PHẢI là môi trường Linux containers và database → connections → tạo table
   từ Excel → ETL Engine và staging → sinh DAG và tích hợp Airflow thực tế
   → hoàn thiện Dashboard, Monitoring và UI/UX.
 - Validation, bảo mật, logging và phản hồi trạng thái cơ bản PHẢI đi cùng chức năng lõi,
@@ -234,7 +246,7 @@ ranh giới module, cơ chế quản lý secrets, chiến lược DAG deployment
 Framework Frontend/Backend và chi tiết hạ tầng chưa được chọn tại bước Constitution;
 quyết định sau này PHẢI có lý do và tuân thủ toàn bộ nguyên tắc trên.
 
-Việc database nằm trong cùng môi trường Docker không cho phép ứng dụng truy cập trực tiếp
+Việc database nằm trong cùng môi trường container không cho phép ứng dụng truy cập trực tiếp
 các bảng nội bộ Airflow. Staging, dữ liệu ứng dụng và metadata Airflow PHẢI có ranh giới
 trách nhiệm, quyền truy cập và vòng đời được tài liệu hóa.
 
@@ -249,7 +261,7 @@ trách nhiệm, quyền truy cập và vòng đời được tài liệu hóa.
 3. **Trong triển khai:** PHẢI cập nhật đồng bộ đặc tả, kế hoạch và tài liệu khi thay đổi;
    task chỉ được đánh dấu hoàn thành khi tiêu chí kiểm chứng của task đã đạt.
 4. **Trước nghiệm thu:** PHẢI chạy các kiểm thử áp dụng, đối chiếu kết quả dữ liệu,
-   xác minh đăng ký/thực thi DAG, staging, an toàn credentials và khởi động Docker theo phạm vi.
+   xác minh đăng ký/thực thi DAG, staging, an toàn credentials và khởi động trên runtime/provider đã công bố theo phạm vi.
 5. **Trước bàn giao:** PHẢI có báo cáo kiểm thử trung thực, tài liệu cập nhật và đánh giá
    tuân thủ Constitution. Mục bắt buộc còn thiếu PHẢI được ghi rõ; không được báo hoàn thành.
 
@@ -276,4 +288,4 @@ không được dùng để bỏ yêu cầu bắt buộc của sản phẩm khi 
 - Bản 1.0.0 là lần ban hành đầu tiên theo yêu cầu của chủ dự án. Bước này chỉ thiết lập
   quy tắc quản trị; chưa phải bằng chứng triển khai hoặc nghiệm thu chức năng ứng dụng.
 
-**Phiên bản**: 1.0.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-06
+**Phiên bản**: 1.1.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-08

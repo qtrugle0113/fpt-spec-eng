@@ -1,0 +1,302 @@
+name: ${COMPOSE_PROJECT_NAME:-aat}
+
+x-backend: &backend
+  image: localhost/aat-backend:0.1.0
+  build:
+    context: .
+    dockerfile: backend/Dockerfile
+  networks: [aat_internal]
+
+x-airflow: &airflow
+  environment:
+    AIRFLOW__API__BASE_URL: http://localhost:${AAT_AIRFLOW_PORT:-8080}
+  image: localhost/aat-airflow:0.1.0
+  build:
+    context: .
+    dockerfile: airflow/docker/Dockerfile
+  networks: [aat_internal]
+  restart: unless-stopped
+  volumes:
+    - airflow_secrets:/secrets/airflow:ro
+    - type: volume
+      source: generated_dags
+      target: /opt/airflow/dags
+      read_only: true
+      volume: {nocopy: true}
+    - type: volume
+      source: airflow_logs
+      target: /opt/airflow/logs
+      read_only: false
+      volume: {nocopy: true}
+  depends_on:
+    airflow-init: {condition: service_completed_successfully}
+
+services:
+  secrets-init:
+    <<: *backend
+    user: '0:0'
+    restart: 'no'
+    command: [python, -m, docker.bootstrap.secrets]
+    volumes:
+      - bootstrap_secrets:/secrets/bootstrap_secrets
+      - backend_secrets:/secrets/backend_secrets
+      - runtime_secrets:/secrets/runtime_secrets
+      - airflow_secrets:/secrets/airflow_secrets
+      - app_keyring:/secrets/app_keyring
+      - postgres_secrets:/secrets/postgres_secrets
+      - mysql_secrets:/secrets/mysql_secrets
+
+  postgres:
+    image: localhost/aat-postgres:17.11
+    build: {context: ., dockerfile: docker/gosu/Dockerfile, target: postgres}
+    restart: unless-stopped
+    networks: [aat_internal]
+    mem_limit: 1g
+    environment:
+      POSTGRES_PASSWORD_FILE: /secrets/postgres_admin
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - postgres_secrets:/secrets:ro
+    depends_on:
+      secrets-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD-SHELL, "PGPASSWORD=$$(cat /secrets/postgres_admin) psql -h 127.0.0.1 -U postgres -d postgres -tAc 'SELECT 1' | grep -qx 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+  mysql:
+    image: localhost/aat-mysql:8.4.13
+    build: {context: ., dockerfile: docker/gosu/Dockerfile, target: mysql}
+    restart: unless-stopped
+    networks: [aat_internal]
+    mem_limit: 1g
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_0900_ai_ci', '--sql-mode=STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION']
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /secrets/mysql_admin
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - mysql_secrets:/secrets:ro
+    depends_on:
+      secrets-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD-SHELL, "MYSQL_PWD=$$(cat /secrets/mysql_admin) mysql --protocol=tcp -h 127.0.0.1 -u root -Nse 'SELECT 1' | grep -qx 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  db-init:
+    <<: *backend
+    restart: 'no'
+    command: [python, /opt/aat/docker/bootstrap/initialize.py]
+    environment:
+      AAT_INIT_MODE: databases
+    volumes:
+      - bootstrap_secrets:/secrets/bootstrap_secrets:ro
+    depends_on:
+      postgres: {condition: service_healthy}
+      mysql: {condition: service_healthy}
+
+  app-init:
+    <<: *backend
+    user: '0:0'
+    restart: 'no'
+    command: [python, /opt/aat/docker/bootstrap/initialize.py]
+    volumes:
+      - type: volume
+        source: generated_dags
+        target: /data/generated_dags
+        read_only: false
+        volume: {nocopy: true}
+      - type: volume
+        source: uploads
+        target: /data/uploads
+        read_only: false
+        volume: {nocopy: true}
+      - type: volume
+        source: staging
+        target: /data/staging
+        read_only: false
+        volume: {nocopy: true}
+      - type: volume
+        source: airflow_logs
+        target: /data/airflow_logs
+        read_only: false
+        volume: {nocopy: true}
+    depends_on:
+      db-init: {condition: service_completed_successfully}
+
+  airflow-init:
+    <<: *airflow
+    restart: 'no'
+    command: [aat-initialize]
+    depends_on:
+      db-init: {condition: service_completed_successfully}
+      app-init: {condition: service_completed_successfully}
+
+  airflow-apiserver:
+    <<: *airflow
+    command: [api-server]
+    mem_limit: 1g
+    ports: ['127.0.0.1:${AAT_AIRFLOW_PORT:-8080}:8080']
+    healthcheck:
+      test: [CMD, bash, /opt/aat/health.sh, api]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  airflow-scheduler:
+    <<: *airflow
+    command: [scheduler]
+    mem_limit: 2g
+    volumes:
+      - airflow_secrets:/secrets/airflow:ro
+      - type: volume
+        source: generated_dags
+        target: /opt/airflow/dags
+        read_only: true
+        volume: {nocopy: true}
+      - type: volume
+        source: airflow_logs
+        target: /opt/airflow/logs
+        read_only: false
+        volume: {nocopy: true}
+      - runtime_secrets:/secrets/runtime:ro
+      - app_keyring:/secrets/app_keyring:ro
+      - type: volume
+        source: uploads
+        target: /data/uploads
+        read_only: true
+        volume: {nocopy: true}
+      - type: volume
+        source: staging
+        target: /data/staging
+        read_only: false
+        volume: {nocopy: true}
+    healthcheck:
+      test: [CMD, bash, /opt/aat/health.sh, scheduler]
+      interval: 15s
+      timeout: 15s
+      retries: 10
+      start_period: 30s
+
+  airflow-dag-processor:
+    <<: *airflow
+    command: [dag-processor]
+    mem_limit: 1g
+    healthcheck:
+      test: [CMD, bash, /opt/aat/health.sh, dag-processor]
+      interval: 15s
+      timeout: 15s
+      retries: 10
+      start_period: 30s
+
+  backend-worker:
+    <<: *backend
+    restart: unless-stopped
+    mem_limit: 512m
+    command: [python, /opt/aat/docker/bootstrap/worker.py]
+    volumes:
+      - backend_secrets:/secrets/backend:ro
+      - app_keyring:/secrets/app_keyring:ro
+      - type: volume
+        source: generated_dags
+        target: /data/generated_dags
+        read_only: false
+        volume: {nocopy: true}
+      - type: volume
+        source: uploads
+        target: /data/uploads
+        read_only: false
+        volume: {nocopy: true}
+      - type: volume
+        source: staging
+        target: /data/staging
+        read_only: false
+        volume: {nocopy: true}
+    depends_on:
+      app-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, python, /opt/aat/docker/bootstrap/health.py, worker]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    <<: *backend
+    restart: unless-stopped
+    mem_limit: 512m
+    ports: ['127.0.0.1:${AAT_BACKEND_PORT:-8000}:8000']
+    volumes:
+      - backend_secrets:/secrets/backend:ro
+      - app_keyring:/secrets/app_keyring:ro
+      - type: volume
+        source: uploads
+        target: /data/uploads
+        read_only: false
+        volume: {nocopy: true}
+    depends_on:
+      app-init: {condition: service_completed_successfully}
+      backend-worker: {condition: service_healthy}
+      airflow-apiserver: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, /opt/aat/docker/bootstrap/health.py, live]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  frontend:
+    image: localhost/aat-frontend:0.1.0
+    build: {context: ., dockerfile: frontend/Dockerfile}
+    restart: unless-stopped
+    mem_limit: 128m
+    networks: [aat_internal]
+    ports: ['127.0.0.1:${AAT_FRONTEND_PORT:-3000}:80']
+    depends_on:
+      backend: {condition: service_healthy}
+    healthcheck:
+      test: [CMD-SHELL, 'wget -q -O /dev/null http://127.0.0.1/ && wget -q -O /dev/null http://127.0.0.1/api/v1/health/live']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend-tests:
+    image: localhost/aat-backend-tests:0.1.0
+    build: {context: ., dockerfile: docker/tests/Dockerfile}
+    profiles: [test]
+    networks: [aat_internal]
+    volumes:
+      - bootstrap_secrets:/secrets/bootstrap_secrets:ro
+      - backend_secrets:/secrets/backend_secrets:ro
+    depends_on:
+      frontend: {condition: service_healthy}
+
+  e2e-tests:
+    image: localhost/aat-e2e:0.1.0
+    build: {context: ., dockerfile: docker/tests/playwright.Dockerfile}
+    profiles: [test]
+    networks: [aat_internal]
+    depends_on:
+      frontend: {condition: service_healthy}
+
+networks:
+  aat_internal: {driver: bridge}
+
+volumes:
+  pg_data:
+  mysql_data:
+  generated_dags:
+  airflow_logs:
+  uploads:
+  staging:
+  bootstrap_secrets:
+  backend_secrets:
+  runtime_secrets:
+  airflow_secrets:
+  app_keyring:
+  postgres_secrets:
+  mysql_secrets:

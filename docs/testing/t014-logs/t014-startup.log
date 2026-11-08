@@ -1,0 +1,63 @@
+.\.venv\Scripts\python.exe : test_existing_fresh_fixture_and_persistent_restart
+(tests.integration.test_bootstrap_startup.BootstrapStartupTests.test_existing_fresh_fixture_and_persistent_restart)
+... FAIL
+At line:2 char:357
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_existing_f...start) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+======================================================================
+FAIL: test_existing_fresh_fixture_and_persistent_restart
+(tests.integration.test_bootstrap_startup.BootstrapStartupTests.test_existing_fresh_fixture_and_persistent_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\integration\test_bootstrap_startup.py", line 99, in
+test_existing_fresh_fixture_and_persistent_restart
+    self.compose('up', '--build', '-d')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\integration\test_bootstrap_startup.py", line 23, in compose
+    return self.run_command('compose', '-p', self.project, *args)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\integration\test_bootstrap_startup.py", line 19, in
+run_command
+    self.fail(f'Command failed ({result.returncode}): {result.stderr[-2000:]}')
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Command failed (1): -postgres-1 Started
+ Container aat-phase1-t014-cf8461ea-mysql-1 Started
+ Container aat-phase1-t014-cf8461ea-mysql-1 Waiting
+ Container aat-phase1-t014-cf8461ea-postgres-1 Waiting
+ Container aat-phase1-t014-cf8461ea-postgres-1 Healthy
+ Container aat-phase1-t014-cf8461ea-mysql-1 Healthy
+ Container aat-phase1-t014-cf8461ea-db-init-1 Starting
+ Container aat-phase1-t014-cf8461ea-db-init-1 Started
+ Container aat-phase1-t014-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-cf8461ea-app-init-1 Starting
+ Container aat-phase1-t014-cf8461ea-app-init-1 Started
+ Container aat-phase1-t014-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Starting
+ Container aat-phase1-t014-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-cf8461ea-backend-worker-1 Starting
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Started
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Waiting
+ Container aat-phase1-t014-cf8461ea-backend-worker-1 Started
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Error service "airflow-init" didn't complete successfully: exit 1
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Error service "airflow-init" didn't complete successfully: exit 1
+ Container aat-phase1-t014-cf8461ea-airflow-init-1 Error service "airflow-init" didn't complete successfully: exit 1
+service "airflow-init" didn't complete successfully: exit 1
+Error: executing C:\Users\tieut\AppData\Local\Microsoft\WinGet\Packages\Docker.DockerCompose_Microsoft.Winget.Source_8w
+ekyb3d8bbwe\docker-compose.exe -p aat-phase1-t014-cf8461ea up --build -d: exit status 1
+
+
+----------------------------------------------------------------------
+Ran 1 test in 567.185s
+
+FAILED (failures=1)

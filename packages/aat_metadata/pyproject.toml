@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aat-metadata"
+version = "0.1.0"
+description = "Metadata dùng chung giữa backend và ETL runtime"
+requires-python = ">=3.12"
+dependencies = ["SQLAlchemy==2.0.52", "cryptography==50.0.1"]
+
+[tool.setuptools]
+package-dir = {aat_metadata = "."}
+
+[tool.setuptools.packages.find]
+where = [".."]
+include = ["aat_metadata", "aat_metadata.*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+aat_metadata = ["py.typed"]

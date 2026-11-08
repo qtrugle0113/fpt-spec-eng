@@ -1,0 +1,69 @@
+podman : [4m>>>> Executing external compose provider "C:\\Users\\tieut\\AppData\\Local\\Microsoft\\WinGet\\Packages\\D
+ocker.DockerCompose_Microsoft.Winget.Source_8wekyb3d8bbwe\\docker-compose.exe". Please see podman-compose(1) for how
+to disable this message. <<<<
+At line:2 char:216
++ ... RT='13000'; podman compose -f "$fixture/docker-compose.yml" -p aat-ph ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([4m>>>> Execut...s message. <<<<:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+[0m Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Running
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Running
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Running
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Running
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Running
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Running
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-secrets-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-mysql-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-postgres-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-db-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Starting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Started
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-airflow-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-app-init-1 Exited
+ Container aat-phase1-t014-final-cf8461ea-backend-worker-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-airflow-apiserver-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-backend-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Waiting
+ Container aat-phase1-t014-final-cf8461ea-frontend-1 Healthy
+ Container aat-phase1-t014-final-cf8461ea-backend-tests-run-a108bd3b5bc6 Creating
+ Container aat-phase1-t014-final-cf8461ea-backend-tests-run-a108bd3b5bc6 Created
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 7 items
+
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed PASSED [ 14%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_distribution_boundaries PASSED [ 28%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_frontend_manifest_uses_planned_runtime PASSED [ 42%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_shared_packages_import_without_api_or_airflow PASSED [ 57%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_binary_workbooks_match_manifest PASSED [ 71%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_checkout_policy_is_explicit PASSED [ 85%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_raw_sample_bytes_match_manifest PASSED [100%]
+
+============================== 7 passed in 0.16s ===============================

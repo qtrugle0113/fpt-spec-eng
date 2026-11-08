@@ -1,0 +1,5 @@
+# Minimal bootstrap: LocalExecutor standard operators and PostgreSQL metadata driver.
+# Versions from unchanged official Airflow3.3.2 Python3.12 constraints.
+apache-airflow-providers-standard==1.19.0
+psycopg2-binary==2.9.13
+asyncpg==0.31.0

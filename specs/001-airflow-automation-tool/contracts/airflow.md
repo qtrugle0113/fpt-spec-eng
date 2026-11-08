@@ -6,6 +6,11 @@ Public API base nội bộ `http://airflow-apiserver:8080/api/v2`; browser UI ba
 `http://localhost:8080`. Backend là client duy nhất phục vụ browser, runtime bind endpoint
 cũng xác minh identity qua client này. Không gọi `/ui`, không query Airflow metadata DB.
 
+Runtime gọi trực tiếp `http://backend:8000/internal/runtime/bind`, ngoài `/api/v1` và không
+qua frontend. Operation OpenAPI có server override; hai prefix private/root và public alias
+đều bị frontend chặn theo [REST API](rest-api.md). URL bind là API ứng dụng private,
+không phải Airflow Execution API hoặc Public APIv2.
+
 SimpleAuthManager với service user `aat_service` role admin trong môi trường local tin cậy;
 password seed một lần qua private file theo định dạng provider. Backend POST /auth/token,
 nhận JWT, giữ memory, refresh trước hết hạn hoặc retry auth một lần sau401; không trả token

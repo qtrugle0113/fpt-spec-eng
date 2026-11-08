@@ -1275,6 +1275,11 @@ paths:
     post:
       operationId: post_internal_runtime_bind
       summary: Chốt binding không credentials
+      description: >-
+        URL canonical http://backend:8000/internal/runtime/bind dùng server override
+        của operation, không kế thừa /api/v1. Backend đăng ký route ngoài public router.
+        Frontend nginx chặn cả /internal/runtime và /api/v1/internal/runtime cùng các
+        path con; không proxy, redirect hoặc trả SPA fallback cho các đường dẫn này.
       responses:
         '200':
           description: Thành công

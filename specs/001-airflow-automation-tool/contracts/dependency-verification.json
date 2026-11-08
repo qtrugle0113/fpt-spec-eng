@@ -223,5 +223,12 @@
       "engines": null,
       "url": "https://hub.docker.com/v2/repositories/library/nginx/tags/1.28.0-alpine"
     }
-  ]
+  ],
+  "remediation": {
+    "date": "2026-11-08",
+    "approval": "P1-P7 approved by project owner",
+    "candidate_metadata": "../../../docs/proposals/t014-candidate-metadata.json",
+    "runtime_evidence": "../../../docs/testing/phase1-report.md",
+    "note": "Original results below are historical metadata; approved baseline is Plan and images.lock. Metadata is not runtime/security PASS."
+  }
 }

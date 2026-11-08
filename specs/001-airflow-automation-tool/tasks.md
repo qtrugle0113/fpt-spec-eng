@@ -1,8 +1,9 @@
 # Danh sách task: Airflow Automation Tool
 
 **Ngày tạo**: 2026-11-06.
+**Đồng bộ có mục tiêu**: 2026-11-08 theo Plan sau Analyze; giữ nguyên 152 task và ID T001–T152.
 **Đầu vào**: [Specification và Clarification](spec.md), [Plan](plan.md), [Research](research.md), [Data Model](data-model.md), [Quickstart](quickstart.md), [Constitution](../../.specify/memory/constitution.md), [REST API](contracts/rest-api.md), [OpenAPI](contracts/openapi.yaml), [Airflow](contracts/airflow.md), [Runtime](contracts/runtime.md), [Excel](contracts/excel-definitions.md).
-**Trạng thái**: Task dự kiến, chưa implementation hoặc kiểm thử sản phẩm. Mọi checkbox ban đầu chưa đánh dấu.
+**Trạng thái**: T001–T013 đã kiểm chứng trong phạm vi bootstrap; T014 BLOCKED bởi security findings và CI remote NOT_RUN. Gate Phase1 chưa đạt; US1/MVP chưa hoàn thành. Startup tại workspace gốc còn lỗi ACL cache; kết quả fixture sạch được báo riêng.
 **Tổ chức**: Giữ đúng 8 implementation phase của Plan và yêu cầu người dùng; trong phase chia nhóm user story thay vì tạo thêm phase riêng cho từng story. US1–US11 tương ứng US-01–US-11 trong Spec. US1 được hoàn thiện qua infrastructure và kiểm chứng cuối; US3/US7/US8 cùng xây engine nhưng có nhóm task và tiêu chí độc lập.
 
 ## Quy ước định dạng và thực thi
@@ -20,25 +21,25 @@
 ## Phase 1 — Hạ tầng
 
 **Mục tiêu/US liên quan**: Nền tảng US1; stack local khởi động được, chưa tuyên bố workflow sản phẩm hoàn chỉnh.
-**Điều kiện bắt đầu**: Spec/Plan được chấp thuận; Docker Linux containers, Compose v2>=2.24, quyền pull/build và cổng 3000/8000/8080 sẵn sàng.
-**Kết quả dự kiến**: Source skeleton có typing/build, image pin/lock, DB/Airflow thật, init idempotent và volumes/secrets.
+**Điều kiện bắt đầu**: Spec/Plan được chấp thuận; Podman WSL Linux/amd64 và Compose provider đã pin theo Plan (hoặc baseline Docker đã công bố), quyền pull/build và cổng 3000/8000/8080 sẵn sàng.
+**Kết quả dự kiến**: Source skeleton có typing/build, image pin/lock, DB/Airflow thật, init idempotent và volumes/secrets; sample EOL ổn định, pytest/Playwright runner và test profile tối thiểu.
 **Cách kiểm tra/test**: T013/T014; resolve/build/pip check/npm build; một lệnh startup và restart trên volume test riêng.
-**Điều kiện hoàn thành**: T001–T014 có bằng chứng; DB/Airflow readiness thật, không setup ngầm; bootstrap backend chỉ liveness, chưa giả readiness sản phẩm.
+**Điều kiện hoàn thành**: T001–T014 có bằng chứng; DB/Airflow readiness thật, không setup ngầm; bootstrap backend chỉ liveness, chưa giả readiness sản phẩm; runner khởi chạy/collect và shell smoke được nhưng chưa nghiệm thu story chưa triển khai.
 
-- [ ] T001 Tạo monorepo và manifest package tại `frontend\package.json`, `backend\pyproject.toml`, `packages\aat_metadata\pyproject.toml`, `etl_engine\pyproject.toml`, `tests\conftest.py`; đúng module/import boundary Plan, metadata/engine wheel 0.1.0; Phụ thuộc: không; Truy vết: NFR-010, Constitution IV; Kiểm chứng: cài editable/build skeleton và import không kéo FastAPI/Airflow vào engine.
-- [ ] T002 [P] Khóa dependency Python/backend/runtime tại `backend\requirements.lock`, `etl_engine\requirements.lock`, `airflow\docker\constraints-3.12.txt`; dùng pin Research, hashes và constraints Airflow 3.3.2, không cài lúc startup; Phụ thuộc: T001; Truy vết: NFR-010, Research §2; Kiểm chứng: resolve và pip check hai môi trường, lưu hash constraints.
-- [ ] T003 [P] Khởi tạo SPA có TypeScript, router, TanStack Query, form và tokens tại `frontend\src\app\App.tsx`, `frontend\src\app\router.tsx`, `frontend\src\app\styles.css`, `frontend\package-lock.json`; sáu route, tên ứng dụng trung tính, UI tiếng Anh; Phụ thuộc: T001; Truy vết: FR-002, NFR-001–NFR-002; Kiểm chứng: npm ci, typecheck/build và shell 1440/390 px.
-- [ ] T004 Tạo backend/ETL/test Dockerfile tại `backend\Dockerfile`, `docker\tests\Dockerfile`, liveness bootstrap trong `backend\src\aat_api\main.py`; copy root tests vào test image; Phụ thuộc: T002; Truy vết: FR-081, FR-085; Kiểm chứng: build/import wheel và liveness, không báo schema/worker ready giả.
-- [ ] T005 [P] Tạo image web và proxy tại `frontend\Dockerfile`, `docker\nginx\default.conf`; build Node 22.21.1, nginx 1.28.0, same-origin `/api/v1`, không proxy `/internal/runtime`; Phụ thuộc: T003; Truy vết: FR-081, NFR-003; Kiểm chứng: SPA route fallback, API proxy và private route bị chặn.
-- [ ] T006 Tạo custom Airflow image tại `airflow\docker\Dockerfile`, `airflow\docker\entrypoint.sh`; pin 3.3.2-python3.12, cài wheel và SDK theo constraints, không làm resolver đổi Airflow; Phụ thuộc: T002; Truy vết: FR-081, NFR-008; Kiểm chứng: pip check, airflow version và import SDK/engine.
-- [ ] T007 [P] Tạo bootstrap key/account tại `docker\bootstrap\secrets.py`, `.env.example` và primitive Fernet encrypt/decrypt tại `packages\aat_metadata\secrets\codec.py` để app-init dùng ngay; default local không cần copy .env, key_id và secretfile persistent theo domain, không regenerate khi dữ liệu mã hóa tồn tại; Phụ thuộc: T004; Truy vết: FR-100, NFR-003; Kiểm chứng: tạo một lần, chạy lại không đổi bytes, ciphertext seed decrypt được, lỗi thiếu key rõ, log không lộ secret.
-- [ ] T008 [P] Tạo PostgreSQL init/roles/sample tại `docker\postgres\initialize.py`, `docker\postgres\samples.sql`; tách app_metadata/airflow_metadata/etl_test và `_aat_control`, least privilege, natural-key seed; Phụ thuộc: T004; Truy vết: FR-082–FR-084, FR-099; Kiểm chứng: chạy lại không ghi đè, runtime không đọc bảng Airflow, customers_source/target namespace mẫu đúng.
-- [ ] T009 [P] Tạo MySQL init/roles/sample tại `docker\mysql\initialize.py`, `docker\mysql\samples.sql`; InnoDB/utf8mb4/strict mode, support objects đúng Data Model, credentials từ file; Phụ thuộc: T004; Truy vết: FR-033, FR-083–FR-084, BR-15; Kiểm chứng: grants, engine và seed idempotent giữ dữ liệu đã sửa.
-- [ ] T010 [P] Tạo Airflow initialization tại `airflow\docker\initialize.sh`, `airflow\docker\airflow.cfg`; official db migrate, SimpleAuth local users/service JWT, LocalExecutor parallelism2, API/scheduler/dag-processor; Phụ thuộc: T006, T007; Truy vết: FR-099, NFR-008; Kiểm chứng: migration lại an toàn, auth thật, không anonymous all-admin.
-- [ ] T011 Tạo `docker-compose.yml` với secrets-init/db-init/bootstrap app-init/airflow-init, backend-worker skeleton và web; health/completed dependencies, named volumes, RO mounts/UID, loopback ports và mem_limit scheduler2GiB/DB1GiB; Phụ thuộc: T005, T007, T008, T009, T010; Truy vết: FR-081–FR-083, FR-099–FR-100, NFR-004; Kiểm chứng: compose config, bootstrap seed không xóa dữ liệu; app-init chưa có app schema phải được ghi rõ và sẽ hoàn thiện T030.
-- [ ] T012 Tạo health probes tại `docker\bootstrap\health.py`, `airflow\docker\health.sh`; DB query thật, Airflow JSON metadatabase/scheduler/dag_processor và heartbeat CLI, tách live/ready, hostname container/browser; Phụ thuộc: T011; Truy vết: FR-099, NFR-006; Kiểm chứng: dependency down làm probe đúng, HTTP200 không che unhealthy.
-- [ ] T013 Tạo smoke test `tests\integration\test_bootstrap_startup.py`; dùng project/volumes test riêng, chạy đúng `docker compose up --build -d`, chờ init Exited(0), DB queries, Airflow auth/API/UI; Phụ thuộc: T012; Truy vết: US-01, SC-001, FR-081; Kiểm chứng: fresh/restart không setup thủ công, lỗi init có chẩn đoán và không reset volume.
-- [ ] T014 Kiểm tra build/dependency/image baseline và ghi vận hành bootstrap tại `tests\integration\test_image_compatibility.py`, `docker\images.lock`, `README.md`; resolve digest thật, scan dependency/image bằng công cụ môi trường được chấp thuận, không bịa PASS; Phụ thuộc: T013; Truy vết: NFR-010, Constitution X–XI, Research §10; Kiểm chứng: npm build/typecheck, pip check backend/Airflow, digest/hash và giới hạn scan ghi rõ.
+- [x] T001 Tạo monorepo và manifest package tại `frontend\package.json`, `backend\pyproject.toml`, `packages\aat_metadata\pyproject.toml`, `etl_engine\pyproject.toml`, `tests\conftest.py`; đúng module/import boundary Plan, metadata/engine wheel 0.1.0; viết kiểm tra bytes/hash mẫu tại `tests\unit\test_sample_artifacts.py` trước chính sách EOL rồi tạo `.gitattributes` với `samples/data/*.csv text eol=lf`, `samples/data/*.txt text eol=lf`, `*.xlsx -text`; materialize riêng sample paths hoặc checkout sạch sau bảo toàn thay đổi người dùng; Phụ thuộc: không; Truy vết: FR-084, NFR-010, Constitution IV; Kiểm chứng: cài editable/build skeleton và import không kéo FastAPI/Airflow vào engine; mẫu raw LF/hash khớp manifest lịch sử, XLSX bytes không đổi, không normalize upload người dùng; CI Windows/Linux kiểm lại T014.
+- [x] T002 [P] Khóa dependency Python/backend/runtime tại `backend\requirements.lock`, `etl_engine\requirements.lock`, `airflow\docker\constraints-3.12.txt`; preflight Podman client/server/provider đã công bố, Linux/amd64/Python3.12 và registry access; dùng pin Research, hashes và constraints Airflow 3.3.2, không cài lúc startup; Phụ thuộc: T001; Truy vết: NFR-010, Research §2; Kiểm chứng: resolve và pip check hai môi trường, lưu hash constraints.
+- [x] T003 [P] Khởi tạo SPA có TypeScript, router, TanStack Query, form và tokens tại `frontend\src\app\App.tsx`, `frontend\src\app\router.tsx`, `frontend\src\app\styles.css`, `frontend\package-lock.json`; sáu route, tên ứng dụng trung tính, UI tiếng Anh; Phụ thuộc: T001; Truy vết: FR-002, NFR-001–NFR-002; Kiểm chứng: npm ci, typecheck/build và shell 1440/390 px.
+- [x] T004 Tạo backend/ETL/test Dockerfile tại `backend\Dockerfile`, `docker\tests\Dockerfile`, liveness bootstrap trong `backend\src\aat_api\main.py`; Podman build theo baseline, copy root tests vào test image; tạo runner E2E tại `docker\tests\playwright.Dockerfile`, `tests\e2e\package.json`, `tests\e2e\package-lock.json`, `tests\e2e\playwright.config.ts` với @playwright/test1.56.1 và image mcr.microsoft.com/playwright:v1.56.1-noble cùng browser, baseURL http://frontend:80; Phụ thuộc: T002; Truy vết: FR-081, FR-085, NFR-010; Kiểm chứng: build/import wheel và liveness, npm ci/version/client-browser compatibility, runner pytest/Playwright khởi chạy không cài Python/Node/browser trên host; không báo schema/worker ready giả, compose wiring/smoke hoàn thiện T011/T013.
+- [x] T005 [P] Tạo image web và proxy tại `frontend\Dockerfile`, `docker\nginx\default.conf`; Podman build với fully qualified image refs, giữ Node 22.21.1/nginx 1.28.0; same-origin `/api/v1`; chặn cả prefix `/internal/runtime` và `/api/v1/internal/runtime` cùng path con trước proxy/SPA fallback; Phụ thuộc: T003; Truy vết: FR-081, NFR-003; Kiểm chứng: SPA route fallback/API proxy đúng, GET/POST hai biến thể private có/không bearer hợp lệ đều404, không redirect/SPA fallback và không request upstream; kiểm direct canonical bearer/alias sau khi có runtime route tại T103.
+- [x] T006 Tạo custom Airflow image tại `airflow\docker\Dockerfile`, `airflow\docker\entrypoint.sh`; Podman build docker.io/apache/airflow:3.3.2-python3.12, cài wheel và SDK theo constraints, không làm resolver đổi Airflow; Phụ thuộc: T002; Truy vết: FR-081, NFR-008; Kiểm chứng: pip check, airflow version và import SDK/engine.
+- [x] T007 [P] Tạo bootstrap key/account tại `docker\bootstrap\secrets.py`, `.env.example` và primitive Fernet encrypt/decrypt tại `packages\aat_metadata\secrets\codec.py` để app-init dùng ngay; default local không cần copy .env, key_id và secretfile persistent theo domain, không regenerate khi dữ liệu mã hóa tồn tại; Phụ thuộc: T004; Truy vết: FR-100, NFR-003; Kiểm chứng: tạo một lần, chạy lại không đổi bytes, ciphertext seed decrypt được, lỗi thiếu key rõ, log không lộ secret.
+- [x] T008 [P] Tạo PostgreSQL init/roles/sample tại `docker\postgres\initialize.py`, `docker\postgres\samples.sql`; tách app_metadata/airflow_metadata/etl_test và `_aat_control`, least privilege, natural-key seed; Phụ thuộc: T004; Truy vết: FR-082–FR-084, FR-099; Kiểm chứng: chạy lại không ghi đè, runtime không đọc bảng Airflow, customers_source/target namespace mẫu đúng.
+- [x] T009 [P] Tạo MySQL init/roles/sample tại `docker\mysql\initialize.py`, `docker\mysql\samples.sql`; InnoDB/utf8mb4/strict mode, support objects đúng Data Model, credentials từ file; Phụ thuộc: T004; Truy vết: FR-033, FR-083–FR-084, BR-15; Kiểm chứng: grants, engine và seed idempotent giữ dữ liệu đã sửa.
+- [x] T010 [P] Tạo Airflow initialization tại `airflow\docker\initialize.sh`, `airflow\docker\airflow.cfg`; official db migrate, SimpleAuth local users/service JWT, LocalExecutor parallelism2, API/scheduler/dag-processor; Phụ thuộc: T006, T007; Truy vết: FR-099, NFR-008; Kiểm chứng: migration lại an toàn, auth thật, không anonymous all-admin.
+- [x] T011 Tạo `docker-compose.yml` với secrets-init/db-init/bootstrap app-init/airflow-init, backend-worker skeleton và web; health/completed dependencies, named volumes, RO mounts/UID, loopback ports và mem_limit scheduler2GiB/DB1GiB; thêm profile test gồm backend-tests/e2e-tests từ runner T004, cùng network frontend, test project/volumes và fixture namespace riêng, không chạy mặc định; Phụ thuộc: T004, T005, T007, T008, T009, T010; Truy vết: FR-081–FR-083, FR-085, FR-099–FR-100, NFR-004, NFR-010; Kiểm chứng: podman compose config/build test services với provider đã pin; kiểm thực service_healthy/service_completed_successfully, one-shot failure chặn consumer, actual cgroup limits/UID/GID/RO mounts/loopback; pytest/Playwright collect qua profile không host setup, cleanup chỉ tài nguyên test sở hữu; bootstrap seed không xóa dữ liệu; app-init chưa có app schema phải được ghi rõ và sẽ hoàn thiện T030.
+- [x] T012 Tạo health probes tại `docker\bootstrap\health.py`, `airflow\docker\health.sh`; DB query thật, Airflow JSON metadatabase/scheduler/dag_processor và heartbeat CLI, tách live/ready, hostname container/browser; Phụ thuộc: T011; Truy vết: FR-099, NFR-006; Kiểm chứng: dependency down làm probe đúng, HTTP200 không che unhealthy; probes thực trên Podman/provider baseline, không thay bằng sleep hoặc bỏ healthcheck.
+- [x] T013 Tạo smoke test `tests\integration\test_bootstrap_startup.py` và `tests\e2e\bootstrap.spec.ts`; dùng project/volumes test riêng, chạy đúng `podman compose up --build -d`, chờ init Exited(0), DB queries, Airflow auth/API/UI; chạy pytest/Playwright shell/proxy smoke qua profile test T011, không yêu cầu endpoint story tương lai; Phụ thuộc: T012, T004, T011; Truy vết: US-01, SC-001, FR-081, FR-085; Kiểm chứng: ghi client/server/provider; fresh/restart trên Podman không setup thủ công, lỗi init có chẩn đoán và không reset volume; runner/browser thực chạy shell1440/390 và proxy guards, smoke không thay bằng chứng Connections hoặc product readiness.
+- [ ] T014 Kiểm tra build/dependency/image baseline và ghi vận hành bootstrap tại `tests\integration\test_image_compatibility.py`, `docker\images.lock`, `README.md`; tạo CI checkout Windows/Linux kiểm `.gitattributes`/sample raw LF/hash/XLSX tại `.github\workflows\sample-artifacts.yml`, tái sử dụng test T001; dùng fully qualified refs, resolve digest thật cả Playwright image; ghi client/server/provider compatibility và actual resource enforcement, scan dependency/image bằng công cụ môi trường được chấp thuận, không bịa PASS; Phụ thuộc: T013; Truy vết: FR-084, NFR-010, Constitution X–XI, Research §10; Kiểm chứng: npm build/typecheck, pip check backend/Airflow, client/browser1.56.1, sample hashes checkout→image nhất quán không normalize, CI chưa chạy ghi NOT_RUN/BLOCKED; digest/hash và giới hạn scan ghi rõ.
 
 ## Phase 2 — Nền tảng Backend
 
@@ -46,7 +47,7 @@
 **Điều kiện bắt đầu**: T014 đạt; contracts và Data Model là đầu vào canonical.
 **Kết quả dự kiến**: Application metadata riêng, API typed, errors an toàn, worker durable, schema/migration readiness.
 **Cách kiểm tra/test**: T015/T016 viết trước triển khai; T034 chạy unit/API/integration thật.
-**Điều kiện hoàn thành**: T015–T034 đạt, schema đầy đủ và worker phục hồi không replay side effect chưa rõ.
+**Điều kiện hoàn thành**: T015–T034 đạt, schema/repository/migrations/seed và Operation recovery đúng, worker phục hồi không replay side effect chưa rõ; chưa nghiệm thu Connections CRUD hoặc Settings API thuộc Phase3/7.
 
 - [ ] T015 [P] Viết contract harness tại `tests\api\test_openapi_contract.py`; lấy operation/schema từ `specs\001-airflow-automation-tool\contracts\openapi.yaml` hiện tại, không hardcode40 hoặc47/53; phát hiện missing operation/required fields/extra fields/write-only secret/status/ETag/idempotency drift; Phụ thuộc: T014; Truy vết: FR-085, NFR-010; Kiểm chứng: schema mismatch cố ý bị phát hiện; baseline hiện tại47operations/53schemas chỉ là thông tin, endpoints story được chạy khi story tương ứng hoàn thiện.
 - [ ] T016 [P] Viết integration nền tảng tại `tests\integration\test_metadata_foundation.py`; isolation app/Airflow DB, FK RESTRICT, migration concurrency, operation lease/restart, safe errors; Phụ thuộc: T014; Truy vết: FR-082, FR-099–FR-100, NFR-003; Kiểm chứng: thiếu foundation làm test fail đúng nguyên nhân, không mock DB.
@@ -63,11 +64,11 @@
 - [ ] T027 [P] Tạo Setting ORM tại `packages\aat_metadata\models\settings.py`; “whitelist key; không lưu secret; default mới không mutate deployed config”; tạo validators settings batch1..10000/refresh5..3600/retention1..365/timezone IANA tại `backend\src\aat_api\schemas\settings.py`; Phụ thuộc: T016; Truy vết: FR-079–FR-080, BR-14; Kiểm chứng: reject field lạ, readonly connectivity không PATCH.
 - [ ] T028 Tạo DB session/repository revisions tại `packages\aat_metadata\repositories\base.py`, `packages\aat_metadata\repositories\revisions.py`; UTC/UUID/JSONB, FK RESTRICT, request session ngắn, ETag optimistic409/412; Phụ thuộc: T018, T019, T020, T022, T024, T025, T027, T021, T023, T026; Truy vết: NFR-007, BR-01–BR-02, BR-10; Kiểm chứng: lost update và delete referenced records fail, runtime mở session riêng.
 - [ ] T029 Tạo Alembic migrations tại `backend\alembic\env.py`, `backend\alembic\versions\0001_metadata.py`; toàn entity/index Data Model, counts>=0/scale<=precision/nonempty keys, app DB không chứa Airflow history; Phụ thuộc: T028; Truy vết: FR-082, FR-099, NFR-010; Kiểm chứng: upgrade head trên DB mới và hiện hữu, constraint/index phản chiếu ORM.
-- [ ] T030 Hoàn thiện app-init/seed tại `docker\bootstrap\app_init.py`, `backend\src\aat_api\services\seed.py`, `docker-compose.yml`; migration owner advisory lock, seed pg_etl/mysql_etl và file UUID mẫu/checksum/FileParserRevision1, insert missing không overwrite; Phụ thuộc: T029, T007; Truy vết: FR-083–FR-084, FR-099–FR-100; Kiểm chứng: hai init cạnh tranh/restart và sample registry đúng Quickstart.
+- [ ] T030 Hoàn thiện app-init/seed tại `docker\bootstrap\app_init.py`, `backend\src\aat_api\services\seed.py`, `docker-compose.yml`; migration owner advisory lock, seed pg_etl/mysql_etl và file UUID mẫu/checksum/FileParserRevision1, insert missing không overwrite, tính checksum/bytes trên file LF thực được copy vào volume, so manifest sample T001/T014, không normalize upload; Phụ thuộc: T029, T007; Truy vết: FR-083–FR-084, FR-099–FR-100; Kiểm chứng: hai init cạnh tranh/restart và sample registry đúng Quickstart.
 - [ ] T031 Tạo repository quyền/intent/admission tại `packages\aat_metadata\repositories\authorizations.py`, `packages\aat_metadata\repositories\replacement_runs.py`, hoàn thiện runtime grants trong `docker\bootstrap\app_init.py`; SELECT FOR UPDATE cùng row quyền cho reserve/revoke/admit, state transitions Data Model, epoch mới sau rollback verified/quyền còn hiệu lực, không transaction phân tán/release vì heartbeat; Phụ thuộc: T017, T029, T028, T030; Truy vết: BR-08, FR-053–FR-054, FR-095–FR-096; Kiểm chứng: chạy T017 PostgreSQL thật; reservation không đổi Run ID, admission/revoke có thứ tự, runtime role không cấp/sửa scope/allow_empty hoặc xóa evidence.
 - [ ] T032 Tạo error/logging/origin middleware tại `backend\src\aat_api\errors.py`, `backend\src\aat_api\logging.py`, `backend\src\aat_api\middleware.py`; English ErrorResponse/request_id/location/retryable, redact DSN/path/secret, CORS/origin mutation protection; Phụ thuộc: T018; Truy vết: NFR-001, NFR-003, Constitution IV; Kiểm chứng: exception không phân loại có safe message và logging, không broad silent fallback.
 - [ ] T033 Tạo Operation worker/lease/confirmation tại `backend\src\aat_api\workers\main.py`, `backend\src\aat_api\services\operations.py`, `backend\src\aat_api\services\confirmation.py`, `backend\src\aat_api\routes\operations.py`; signed token10phút hash-bound, SKIP LOCKED, state graph Data Model, không BackgroundTasks/ETL scheduler; Phụ thuộc: T028, T032; Truy vết: BR-02, FR-041, FR-096; Kiểm chứng: cùng key/payload reuse, khác409, stale token409, unknown side effect NEEDS_RECONCILIATION không replay.
-- [ ] T034 Hoàn thiện foundation readiness và chạy bộ nền tại `backend\src\aat_api\services\health.py`, `tests\integration\test_foundation_ready.py`; app DB/head/worker heartbeat/Airflow readiness, external ETL connectivity riêng; Phụ thuộc: T030, T033, T012, T031; Truy vết: FR-099–FR-100, NFR-006; Kiểm chứng: T015/T016/T017 và health tests PASS thật, dependency lỗi không restart cascade hoặc reset dữ liệu.
+- [ ] T034 Hoàn thiện foundation readiness và chạy bộ nền tại `backend\src\aat_api\services\health.py`, `tests\integration\test_foundation_ready.py`; app DB/head/worker heartbeat/Airflow readiness, external ETL connectivity riêng; mở rộng fixture metadata và harness profile test T011, chỉ chạy foundation selectors, không yêu cầu Connections CRUD/Settings API; Phụ thuộc: T030, T033, T012, T031; Truy vết: FR-099–FR-100, NFR-006; Kiểm chứng: T015/T016/T017 và health tests PASS thật, dependency lỗi không restart cascade hoặc reset dữ liệu.
 
 ## Phase 3 — Connections, US2 (P1)
 
@@ -87,7 +88,7 @@
 - [ ] T043 [US2] Tạo Connections routes/Test Connection tại `backend\src\aat_api\routes\connections.py`; dùng service shared, status/tested_at thật, required dependencies resource refs và needs_revalidation đúng OpenAPI, GET không secret; Phụ thuộc: T042; Truy vết: FR-005–FR-009; Kiểm chứng: T035/T036 chạy qua HTTP và DB thật, UI xem dependency trước sửa/xóa không cần gây lỗi409.
 - [ ] T044 [US2] Sinh typed OpenAPI client tại `frontend\src\lib\api.generated.ts`, `frontend\src\lib\api.ts`; codegen từ contract, ErrorResponse và polling helpers, không any/secret cache; Phụ thuộc: T043, T003; Truy vết: NFR-010, Constitution IV; Kiểm chứng: typecheck và client nhận status/error chuẩn.
 - [ ] T045 [US2] Tạo trang/forms Connections tại `frontend\src\features\connections\ConnectionForm.tsx`, `frontend\src\pages\Connections.tsx`; search/filter/details/test timestamp/Add/Edit/Delete/dependency warning, pending/error/readonly password; Phụ thuộc: T044; Truy vết: US-02, FR-005–FR-009, NFR-002; Kiểm chứng: UI English, keyboard, API thật, không optimistic success.
-- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
+- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045, T013; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: chạy `podman compose --profile test run --rm e2e-tests npx playwright test connections.spec.ts` trên runner T004/T011 đã có; T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
 
 ## Phase 4 — Table Management, US4 (P1)
 
@@ -132,14 +133,14 @@
 
 ### US6 — DB-to-DB, mapping và staging
 
-- [ ] T070 [P] [US6] Viết snapshot/staging/type tests tại `tests\etl\test_snapshot_staging.py`, `tests\unit\test_mapping.py`; concurrent source update, session lost, manifest incomplete/corrupt, Unicode/NULL/decimal/temporal/drift; Phụ thuộc: T060; Truy vết: FR-042–FR-048, FR-055, FR-089–FR-092, SC-013–SC-015; Kiểm chứng: chạy PG/MySQL thật và expected typed round-trip.
+- [ ] T070 [P] [US6] Viết snapshot/staging/type tests tại `tests\etl\test_snapshot_staging.py`, `tests\unit\test_mapping.py`; concurrent source update, session lost, manifest incomplete/corrupt, Unicode/NULL/decimal/temporal/drift; Phụ thuộc: T060; Truy vết: NFR-005, FR-042–FR-048, FR-055, FR-089–FR-092, SC-013–SC-015; Kiểm chứng: chạy PG/MySQL thật và expected typed round-trip.
 - [ ] T071 [US6] Tạo typed execution/source/target/mapping contracts tại `etl_engine\src\aat_etl\contracts\config.py`; ETLConfig/ETLSource/ETLTarget/ETLMapping/SourcePredicate/TypedLiteral theo OpenAPI và Excel→enum mapping, schedule/source union/strategy ranges/whitelist/canonical hash; Phụ thuộc: T070, T022; Truy vết: FR-031–FR-033, FR-042–FR-048; Kiểm chứng: source DB+file/UPSERT thiếu key/Constant thiếu literal/file filter bị từ chối, decimal/date/time lossless, không arbitrary Python/SQL.
 - [ ] T072 [P] [US6] Tạo PG snapshot reader tại `etl_engine\src\aat_etl\readers\postgres.py`; read-only REPEATABLE READ/server cursor, projected row size guard trước materialize, byte-bounded fetch, parameterized filter; Phụ thuộc: T071, T038; Truy vết: FR-055, FR-088, FR-090, BR-16; Kiểm chứng: source update không ghép snapshot và no-key table vẫn đọc đúng.
 - [ ] T073 [P] [US6] Tạo MySQL snapshot reader tại `etl_engine\src\aat_etl\readers\mysql.py`; InnoDB REPEATABLE READ/SSCursor, một source session, size guard/collation/UTC temporal, reject unsupported engine; Phụ thuộc: T071, T039; Truy vết: FR-033, FR-055, FR-090, BR-15–BR-17; Kiểm chứng: snapshot thật, reconnect bỏ incomplete không ghép dữ liệu.
 - [ ] T074 [US6] Tạo schema introspection/preflight tại `etl_engine\src\aat_etl\readers\schema.py`; used columns/type/nullable/key fingerprint, source=target physical alias reject, schema drift revalidation trước run/load; Phụ thuộc: T072, T073; Truy vết: FR-033, FR-091, BR-09; Kiểm chứng: key/type/endpoint thay đổi fail, không ALTER hoặc auto-map lại.
 - [ ] T075 [US6] Tạo staging writer/reader tại `etl_engine\src\aat_etl\staging\manager.py`; aat-jsonl/1 typed arrays, hashed DAG/run/dataset path/temp attempt, fsync/rename/checksum/manifest COMPLETE sau toàn files, immutable reuse; Phụ thuộc: T070, T071, T025; Truy vết: FR-055, FR-057, FR-089–FR-090; Kiểm chứng: disk volume thật, truncated file bị chặn và extract fail target không ghi.
 - [ ] T076 [US6] Tạo quota/RSS supervision tại `etl_engine\src\aat_etl\staging\quota.py`, `etl_engine\src\aat_etl\resources.py`; chunk1000/max10000/buffer8MiB/row1MiB/RSS512MiB/run10GiB/global20GiB/reserve1GiB, reservation atomic cả protected/temp; Phụ thuộc: T075; Truy vết: FR-088, FR-094, NFR-004; Kiểm chứng: ENOSPC/race/large row fail an toàn trước OOM, không fallback RAM.
-- [ ] T077 [US6] Tạo mapping/type conversion/filter tại `etl_engine\src\aat_etl\mapping\mapper.py`, `etl_engine\src\aat_etl\mapping\types.py`; exact-name implicit hoặc enabled explicit, Constant/NULL/direct/conversion, AND whitelist, no truncate/round/timezone inference; Phụ thuộc: T071, T074; Truy vết: FR-042–FR-048, BR-05, BR-17; Kiểm chứng: T070, mapped non-key giữ cột unmapped và unsupported value fail vị trí.
+- [ ] T077 [US6] Tạo mapping/type conversion/filter tại `etl_engine\src\aat_etl\mapping\mapper.py`, `etl_engine\src\aat_etl\mapping\types.py`; exact-name implicit hoặc enabled explicit, Constant/NULL/direct/conversion, AND whitelist, no truncate/round/timezone inference; Phụ thuộc: T071, T074; Truy vết: NFR-005, FR-042–FR-048, BR-05, BR-17; Kiểm chứng: T070, mapped non-key giữ cột unmapped và unsupported value fail vị trí.
 - [ ] T078 [US6] Tạo full-dataset validation tại `etl_engine\src\aat_etl\mapping\validation.py`; DB staging validate trước load, target-typed disk scratch cho UPSERT chosen key/collation, quota10GiB/5triệu rows, NULL/duplicates fail trước target; Phụ thuộc: T075, T076, T077, T074; Truy vết: FR-052, BR-18, Runtime §Mapping; Kiểm chứng: duplicate xa nhiều chunk/case-insensitive thật, không Python set toàn tập.
 - [ ] T079 [US6] Tạo target native lock/session tại `etl_engine\src\aat_etl\loaders\session.py`; PG namespace/OID/MySQL GET_LOCK canonical DB/table, same writer session, timeout300giây, reconnect phải reconcile/reacquire; Phụ thuộc: T074; Truy vết: BR-09, SC-014; Kiểm chứng: aliases cùng lock, lock owner unknown không chiếm theo heartbeat.
 - [ ] T080 [US6] Tạo support DDL/signature/ledger tại `etl_engine\src\aat_etl\loaders\ledger.py`; PG _aat_control.batch_commits/run_commits/support_schema_version, MySQL _aat_batch_commits/_aat_run_commits/_aat_support_schema_version dùng cùng mapping/signature1 với init; PK batch(target_identity,run_uuid,dataset_sha,batch_index), run(target_identity,run_uuid), hashes hex64, support sau consent; Phụ thuộc: T079, T078; Truy vết: FR-051–FR-054, Data Model §Support objects; Kiểm chứng: collision/quyền/tên alias cũ chặn; DB fixture DML+marker cùng transaction, app metrics không commit proof.
@@ -148,14 +149,14 @@
 
 ### US8 — Load strategy và phục hồi
 
-- [ ] T083 [P] [US8] Viết policy/failure tests tại `tests\etl\test_load_policies.py`, `tests\etl\test_commit_recovery.py`; APPEND duplicate/unique, UPSERT nhiều keys/collation, FULL_REFRESH old/new visibility/empty/extract fail, commit lost/kill; Phụ thuộc: T060; Truy vết: FR-049–FR-054, ma trận J–M/AC/AG/AH/AI; Kiểm chứng: expected target values/ledger cho hai DB thật.
+- [ ] T083 [P] [US8] Viết policy/failure tests tại `tests\etl\test_load_policies.py`, `tests\etl\test_commit_recovery.py`; APPEND duplicate/unique, UPSERT nhiều keys/collation, FULL_REFRESH old/new visibility/empty/extract fail, commit lost/kill; Phụ thuộc: T060; Truy vết: NFR-005, FR-049–FR-054, ma trận J–M/AC/AG/AH/AI; Kiểm chứng: expected target values/ledger cho hai DB thật.
 - [ ] T084 [P] [US8] Viết FULL_REFRESH admission tests tại `tests\etl\test_replacement_admission.py`; bind fixture app DB, native target lock, admission response loss/revoke trước-sau điểm chấp thuận, revoked retry không ghi mới, final-marker verified clear không replacement lần hai; Phụ thuộc: T083, T031, T080; Truy vết: BR-08, FR-053–FR-054, SC-014; Kiểm chứng: collect/red trước adapter; chạy hai DB thật khi T085/T089 có, không dùng Airflow status làm commit proof.
 - [ ] T085 [US8] Tạo admission adapter tại `etl_engine\src\aat_etl\loaders\replacement_admission.py`; dùng repository T031, target lock/ledger trước app authorization row lock, immutable epoch/hash/session/owner, admission commit verified rồi mới target transaction; Phụ thuộc: T084, T031, T079, T080; Truy vết: BR-08, FR-053–FR-054; Kiểm chứng: app DB unavailable trước admit không ghi/fallback cache, lost admission response đọc identity, retry epoch mới chỉ sau rollback/old writer kết thúc/quyền còn hiệu lực.
 - [ ] T086 [US8] Tạo APPEND writer tại `etl_engine\src\aat_etl\loaders\append.py`; deterministic batch hash/order, insert+marker commit từng batch, unique rollback batch, retry skip marker exact, rerun mới cảnh báo duplicate; Phụ thuộc: T083, T080; Truy vết: FR-050–FR-051, BR-06–BR-07; Kiểm chứng: partial giữ batch trước, không INSERT IGNORE/UPSERT/xóa bù.
 - [ ] T087 [P] [US8] Tạo UPSERT PG tại `etl_engine\src\aat_etl\loaders\upsert_postgres.py`; ON CONFLICT chosen real key, update mapped non-key, key-only DO NOTHING đúng chosen conflict, DML+marker atomic; Phụ thuộc: T083, T080; Truy vết: FR-052, BR-17; Kiểm chứng: khóa ghép/rerun3lần/value đúng, unique phụ không update nhầm.
 - [ ] T088 [P] [US8] Tạo UPSERT MySQL tại `etl_engine\src\aat_etl\loaders\upsert_mysql.py`; UPDATE JOIN chosen key rồi INSERT thiếu trong cùng transaction, không REPLACE/ON DUPLICATE KEY UPDATE, rollback unique phụ; Phụ thuộc: T083, T080; Truy vết: FR-052, BR-15, Research §7; Kiểm chứng: nhiều independent keys/collation/NULL/duplicates và số key ổn định.
-- [ ] T089 [US8] Tạo FULL_REFRESH tại `etl_engine\src\aat_etl\loaders\full_refresh.py`; full mapped staging/allow_empty acknowledgment trước target, native lock→final ledger→T085 admission→DELETE/chunks/verify/final marker một commit, reject inbound FK/unsafe trigger/engine; Phụ thuộc: T083, T080, T077, T085; Truy vết: FR-053–FR-054, BR-08, BR-15; Kiểm chứng: T084 PASS, verified commit chỉ đối soát retry/clear, revoke trước admission chặn/sau admission không hứa rollback, không TRUNCATE/DROP/ALTER/rename/tắt FK.
-- [ ] T090 [US8] Tạo retry/recovery coordinator tại `etl_engine\src\aat_etl\recovery\coordinator.py`; retries0..10/delay0..3600giây, fail non-safe sớm, immutable binding/dataset, old session+ledger reconcile, NEEDS_RECONCILIATION giữ artifact; Phụ thuộc: T086, T087, T088, T089, T082; Truy vết: FR-051, FR-060, FR-095, BR-07, BR-19; Kiểm chứng: commit lost không blind replay, nguồn mới chỉ extraction trước target ghi.
+- [ ] T089 [US8] Tạo FULL_REFRESH tại `etl_engine\src\aat_etl\loaders\full_refresh.py`; full mapped staging/allow_empty acknowledgment trước target, native lock→final ledger→T085 admission→DELETE/chunks/verify/final marker một commit, reject inbound FK/unsafe trigger/engine; Phụ thuộc: T083, T080, T077, T085; Truy vết: NFR-005, FR-053–FR-054, BR-08, BR-15; Kiểm chứng: T084 PASS, verified commit chỉ đối soát retry/clear, revoke trước admission chặn/sau admission không hứa rollback, không TRUNCATE/DROP/ALTER/rename/tắt FK.
+- [ ] T090 [US8] Tạo retry/recovery coordinator tại `etl_engine\src\aat_etl\recovery\coordinator.py`; retries0..10/delay0..3600giây, fail non-safe sớm, immutable binding/dataset, old session+ledger reconcile, NEEDS_RECONCILIATION giữ artifact; Phụ thuộc: T086, T087, T088, T089, T082; Truy vết: NFR-005, FR-051, FR-060, FR-095, BR-07, BR-19; Kiểm chứng: commit lost không blind replay, nguồn mới chỉ extraction trước target ghi.
 - [ ] T091 [US8] Tạo startup reconciliation/GC tại `backend\src\aat_api\workers\recovery.py`, `etl_engine\src\aat_etl\staging\cleanup.py`; trong120giây từ dependencies ready đối soát hoặc lý do blocked, staging7ngày sau hết recovery/source unreferenced30ngày/ledger>=30ngày, protected không xóa; Phụ thuộc: T090, T033, T065; Truy vết: FR-061, FR-094–FR-095, FR-100, BR-14, BR-19; Kiểm chứng: kill không finally/orphan/GC error có logs/report và không reclaim active owner.
 - [ ] T092 [US8] Gắn writers/policy dispatch/cancel/resource close vào preparation `etl_engine\src\aat_etl\engine.py`; đối soát intent/binding/final ledger trước preparation khi retry run đã commit, ledger/admission/recovery state và metrics, không đổi dataset sau partial, cancel đúng strategy/ONCE terminal CLOSED hoặc CONSUMED; Phụ thuộc: T090, T091, T081, T082, T085; Truy vết: FR-049–FR-062, BR-08; Kiểm chứng: T083/T084 PASS, standalone load/metrics/failure DB thật, verified commit/revoked chỉ đối soát không replacement mới, no replay khi projection fail.
 
@@ -163,7 +164,7 @@
 
 - [ ] T093 [US7] Gắn file pipeline tại `etl_engine\src\aat_etl\readers\file_source.py`; full format/schema checksum trước run, typed per-row APPEND/UPSERT partial, UPSERT full-key validation, FULL_REFRESH full mapped disk trước publication; Phụ thuộc: T063, T065, T078, T092; Truy vết: FR-056, BR-18, US-07; Kiểm chứng: CSV/TXT→PG/MySQL, source thiếu fail không empty.
 - [ ] T094 [US7] Viết/chạy tám route engine tại `tests\etl\test_transfer_routes.py`, tài liệu tại `docs\operations\etl-engine.md`; C–H/U, mapping khác tên/NULL/decimal/quoted tokens/khóa ghép/3policies và đối soát target; Phụ thuộc: T093, T082; Truy vết: FR-001, SC-003, SC-005, SC-015; Kiểm chứng: mọi route engine trực tiếp thật, chưa nhận Airflow E2E hoàn thành.
-- [ ] T095 [US6] Viết/chạy stress/staging evidence tại `tests\stress\test_disk_staging.py`, `tests\etl\test_storage_failures.py`; dataset>1GiB và>20batch/RSS<=512MiB, files/checksums thật và được loader dùng, quota/full/corrupt/lost volume/concurrent aliases; Phụ thuộc: T094, T076, T091; Truy vết: SC-007, SC-013–SC-015, ma trận O/V/AA/AD/AE/AH/AI; Kiểm chứng: RSS/actual disk/row reconciliation/cleanup artifacts, không proxy bằng test nhỏ.
+- [ ] T095 [US6] Viết/chạy stress/staging evidence tại `tests\stress\test_disk_staging.py`, `tests\etl\test_storage_failures.py`; dataset>1GiB và>20batch/RSS<=512MiB, files/checksums thật và được loader dùng, quota/full/corrupt/lost volume/concurrent aliases; Phụ thuộc: T094, T076, T091, T069; Truy vết: SC-007, SC-013–SC-015, ma trận O/V/AA/AD/AE/AH/AI; Kiểm chứng: RSS/actual disk/row reconciliation/cleanup artifacts, không proxy bằng test nhỏ.
 
 ## Phase 6 — DAG Builder và Airflow, US5 (P1)
 
@@ -180,8 +181,8 @@
 - [ ] T100 [US5] Tạo canonical DAG config/preview tại `backend\src\aat_api\services\etl_preview.py`; nguồn writable/readable/schema/key/introspection/fingerprint, missing target hướng Table Management, scope/allow_empty/support DDL/diff warnings; Phụ thuộc: T099, T074, T080, T042; Truy vết: FR-029, FR-033, FR-049, BR-02; Kiểm chứng: source=target alias/unsafe FULL_REFRESH blocked, confirmation hash đúng.
 - [ ] T101 [US5] Tạo Airflow client auth/base tại `backend\src\aat_api\airflow_client\client.py`; JWT SimpleAuth memory/401 refresh1lần, connect3/read10giây, GET retry<=3/Retry-After, percent-encoded IDs, schema/hash3.3.2; Phụ thuộc: T097, T010, T032; Truy vết: NFR-008, FR-096; Kiểm chứng: token không frontend/log,403 khác unavailable, không retry POST mù.
 - [ ] T102 [US5] Tạo client deployment/control primitives tại `backend\src\aat_api\airflow_client\deployment.py`; DAG/details/dagVersions number/TI/importErrors/health/pause verify và runs pagination; Phụ thuộc: T101; Truy vết: FR-036–FR-039, FR-097; Kiểm chứng: latest_dag_version UUID/number, file matching và HTTP200 unhealthy đúng schema.
-- [ ] T103 [US5] Tạo runtime binding endpoint/repository tại `backend\src\aat_api\routes\runtime.py`, `packages\aat_metadata\repositories\bindings.py`; bearer/TI.dag_version.id/wrapper/gate/API run_type, scheduled đúng SCHEDULED/manual đúng ONCE intent, không quyền thì first bind reject; existing binding sau consumed/revoked vẫn cho đối soát nhưng không admission ghi mới; Phụ thuộc: T102, T025, T100, T031; Truy vết: FR-008, FR-040, FR-057, FR-097, BR-08; Kiểm chứng: run_intent_id/run_uuid required, config/source/target first bind/dataset COMPLETE trước ghi, old-clear revision mismatch/token sai blocked, không credentials.
-- [ ] T104 [US5] Tạo runtime secret lookup/task adapter tại `etl_engine\src\aat_etl\runtime.py`; direct encrypted app metadata role/keyfile, bind rồi engine session riêng/repository admission T085, không API password hoặc restart Airflow khi connection mới; Phụ thuộc: T103, T037, T092, T093, T085; Truy vết: NFR-003, NFR-008, BR-08; Kiểm chứng: trước bind dependency down fail-safe; đã binding không giữ HTTP request nhưng app DB down trước admission không fallback quyền cache.
+- [ ] T103 [US5] Tạo runtime binding endpoint/repository tại `backend\src\aat_api\routes\runtime.py`, `packages\aat_metadata\repositories\bindings.py`; canonical `http://backend:8000/internal/runtime/bind`, router ngoài `/api/v1`, operation server override hiện hữu; bearer/TI.dag_version.id/wrapper/gate/API run_type, scheduled đúng SCHEDULED/manual đúng ONCE intent, không quyền thì first bind reject; existing binding sau consumed/revoked vẫn cho đối soát nhưng không admission ghi mới; Phụ thuộc: T102, T025, T100, T031; Truy vết: FR-008, FR-040, FR-057, FR-097, BR-08; Kiểm chứng: run_intent_id/run_uuid required, config/source/target first bind/dataset COMPLETE trước ghi, old-clear revision mismatch/token sai blocked, không credentials; direct canonical thiếu/sai bearer401/403, alias `/api/v1/internal/runtime/bind`404, frontend hai prefix đều404 kể cả bearer hợp lệ và không upstream/SPA fallback.
+- [ ] T104 [US5] Tạo runtime secret lookup/task adapter tại `etl_engine\src\aat_etl\runtime.py`; bind trực tiếp canonical `http://backend:8000/internal/runtime/bind` không qua frontend hoặc prefix `/api/v1`; direct encrypted app metadata role/keyfile, bind rồi engine session riêng/repository admission T085, không API password hoặc restart Airflow khi connection mới; Phụ thuộc: T103, T037, T092, T093, T085; Truy vết: NFR-003, NFR-008, BR-08; Kiểm chứng: trước bind dependency down fail-safe; đã binding không giữ HTTP request nhưng app DB down trước admission không fallback quyền cache.
 - [ ] T105 [US5] Tạo fixed factory/wrapper tại `backend\src\aat_api\deployments\factory.py`, `airflow\dags\aat_wrapper_template.py`; SDK một execute_etl task, JSON canonical config/IDs/hash/owner, max_active_runs1/catchupfalse/paused, không code/secret từ cell; Phụ thuộc: T100, T104; Truy vết: FR-029–FR-037, Constitution V/VIII; Kiểm chứng: import generated Python thật trong image và source không credentials.
 - [ ] T106 [US5] Tạo atomic file writer tại `backend\src\aat_api\deployments\storage.py`; internal UUID filename/allowlisted root/temp fsync/os.replace/same volume/parent fsync/hash; Phụ thuộc: T105; Truy vết: FR-038–FR-041, NFR-007; Kiểm chứng: interrupt trước/sau rename không file nửa chừng hoặc outside root.
 - [ ] T107 [US5] Tạo admission/redeploy controller tại `backend\src\aat_api\deployments\admission.py`; compare revision, block concurrent edit, pause confirm, drain queued/running, race startup gate, reject external ownership và run active; Phụ thuộc: T102, T103, T106, T024; Truy vết: FR-036, FR-097, BR-10, BR-20; Kiểm chứng: không tự cancel để deploy, failed giữ paused/last verified.
@@ -197,7 +198,7 @@
 - [ ] T117 [US5] Tạo confirmation/deployment UI tại `frontend\src\features\dags\DeploymentPanel.tsx`, `frontend\src\pages\DagBuilder.tsx`; support consent và AuthorizationPanel T116, scope/revision/allow_empty riêng, polling bounded/unknown/reconcile/new paused/Open Airflow; Phụ thuộc: T115, T116; Truy vết: FR-035–FR-041, FR-053–FR-054, NFR-002; Kiểm chứng: English pending/parse/timeout không success giả, activation FULL_REFRESH cần SCHEDULED.
 - [ ] T118 [US5] Viết/chạy Airflow ETL integration tại `tests\airflow\test_execution.py`, `tests\airflow\test_revision_lifecycle.py`; rebuild image wheel hiện tại, manual+cron/scheduled/TI binding/old-clear/redeploy/API lost và tám route thật; Phụ thuộc: T117, T104; Truy vết: SC-003, SC-009, SC-014, ma trận N/W/AJ/AK; Kiểm chứng: parse/version+run/task trạng thái thật và target values, không chỉ registration.
 - [ ] T119 [US5] Viết/chạy Airflow authorization lifecycle integration tại `tests\airflow\test_authorization_lifecycle.py`; early trigger T112→reservation→bind→native lock→admission→target ledger, scheduled/manual/backfill discrimination, double submit/revoke barriers/admission response loss/target commit loss/clear success/extraction retry/terminal close; Phụ thuộc: T118, T112, T111, T085; Truy vết: BR-08, FR-053–FR-054, SC-006, SC-014; Kiểm chứng: PG/MySQL/Airflow thật, chỉ một run/commit, ONCE không chuyển run, SCHEDULED không manual, protected evidence giữ sau revoke.
-- [ ] T120 [US5] Viết/chạy wizard E2E và docs tại `tests\e2e\dag_builder.spec.ts`, `docs\operations\dag-deployment.md`; template download→validate→consent/quyền→register→Airflow link, source invalid/external ID/stale confirm, ONCE trigger/SCHEDULED activation khác nhau; Phụ thuộc: T118, T119; Truy vết: US-05, SC-002, BR-08, ma trận W/AL; Kiểm chứng: <=10phút thao tác fixture chuẩn, T096/T097/T119/E2E PASS.
+- [ ] T120 [US5] Viết/chạy wizard E2E và docs tại `tests\e2e\dag_builder.spec.ts`, `docs\operations\dag-deployment.md`; template download→validate→consent/quyền→register→Airflow link, source invalid/external ID/stale confirm, ONCE trigger/SCHEDULED activation khác nhau; Phụ thuộc: T118, T119, T098; Truy vết: US-05, SC-002, BR-08, ma trận W/AL; Kiểm chứng: <=10phút thao tác fixture chuẩn, T096/T097/T119/E2E PASS.
 
 ## Phase 7 — Monitoring, Dashboard và Settings
 
@@ -239,21 +240,21 @@
 **Cách kiểm tra/test**: T138–T149 trên stack thật; T150/T151 tài liệu; T152 cổng cuối.
 **Điều kiện hoàn thành**: Không mandatory test NOT_RUN/BLOCKED/FAILED; no Critical/High chưa giải quyết; không tuyên bố MVP hoàn thành chỉ với US1 hoặc core slice.
 
-- [ ] T138 Tạo Compose test profile/Playwright runtime tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; backend-tests root tests và e2e-tests browser/client1.56.1, fixture namespace riêng/cleanup không user data; Phụ thuộc: T132, T137, T004; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
+- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.56.1, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
 - [ ] T139 [P] Tạo/chạy regression UI/API mới tại `tests\e2e\history_parser_authorization.spec.ts`; browser mới history/table detail, parser candidate/PATCH/stale/active-recovery guards, ONCE reserve/retry/rerun cần quyền mới, scheduled allow_empty consent/list/revoke warning và typed fields/dashboard lifetime; Phụ thuộc: T138, T058, T067, T116, T119; Truy vết: FR-015–FR-017, FR-028, FR-053–FR-054, FR-075, BR-08; Kiểm chứng: stack thật/browser1440/390, no secret hoặc success giả, readonly/unknown/stale feedback English.
-- [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `docker compose up --build -d`, services READY thật và workflow sample sau init không setup thêm.
+- [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
 - [ ] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
 - [ ] T142 [P] Tạo/chạy cross-DB Airflow regression tại `tests\airflow\test_cross_database.py`; PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG, source!=target, mappings/PK ghép/NULL/decimal/temporal; Phụ thuộc: T138; Truy vết: FR-001, SC-003, SC-015, ma trận C–F/I/AE; Kiểm chứng: 4routes target count/value/key và staging evidence thật.
 - [ ] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
 - [ ] T144 [P] Tạo/chạy Airflow retry/commit-loss regression tại `tests\airflow\test_retry_recovery.py`; source/target down, kill không finally, app metric fail, stable retry binding/checkpoint, rerun mới/cảnh báo APPEND; Phụ thuộc: T138; Truy vết: FR-051, FR-060, SC-014, ma trận K/R/AH/AJ; Kiểm chứng: no blind duplicate replay, commit uncertain giữ PROTECTED và đối soát120giây hoặc lý do blocked.
-- [ ] T145 [P] Tạo/chạy FULL_REFRESH regression tại `tests\airflow\test_full_refresh_recovery.py`; pre-extract/mapped validation/mid-insert/COMMIT lost/zero-row/authorization expired/dependency reject, reader old/new ở isolation hỗ trợ; Phụ thuộc: T138; Truy vết: FR-053–FR-054, SC-006, SC-013, ma trận L/M/AC; Kiểm chứng: old data giữ/phục hồi, một replacement commit, unknown không success hoặc replay.
+- [ ] T145 [P] Tạo/chạy FULL_REFRESH regression tại `tests\airflow\test_full_refresh_recovery.py`; pre-extract/mapped validation/mid-insert/COMMIT lost/zero-row/authorization revoked/invalidated trước admission và recovery sau revoke/dependency reject, reader old/new ở isolation hỗ trợ; Phụ thuộc: T138; Truy vết: NFR-005, FR-053–FR-054, SC-006, SC-013, ma trận L/M/AC; Kiểm chứng: old data giữ/phục hồi, một replacement commit, unknown không success hoặc replay; không tạo TTL/EXPIRED cho authorization; confirmation token10phút hết hạn chặn request mới nhưng replay cùng Idempotency-Key/hash trả intent cũ, không giải phóng ONCE.
 - [ ] T146 [P] Tạo/chạy concurrency/revision regression tại `tests\airflow\test_concurrent_runs.py`; hai managed DAG/connection aliases cùng target, manual+scheduled, redeploy drain/old-clear/credential change,300giây lock wait; Phụ thuộc: T138; Truy vết: BR-09, BR-20–BR-21, SC-014, ma trận AI/AJ/AK; Kiểm chứng: một writer, run không mất/gộp, no target/revision đổi giữa run.
 - [ ] T147 [P] Tạo/chạy Airflow large-data regression tại `tests\stress\test_airflow_memory.py`; dataset>1GiB/>20batches, RSS512MiB/process/parallelism2/scheduler2GiB, quota/reserve/scratch/disk staging loader/checksum/retention GC; Phụ thuộc: T138; Truy vết: SC-007, NFR-004, ma trận O/V/AD/AH; Kiểm chứng: RSS/bytes/manifest/row metrics thực, kill trước OOM an toàn và protected không GC.
 - [ ] T148 [P] Tạo/chạy security/language/contract audit tại `tests\integration\test_security_surfaces.py`, `tests\e2e\language.spec.ts`, `tests\api\test_contract_drift.py`; password DB/DAG/API/log/XCom scans, injection/macro/path/origin/service token/runtime scope grants, Markdown tiếng Việt/UI+Excel tiếng Anh; Phụ thuộc: T138; Truy vết: SC-004, SC-011, NFR-001, NFR-003, ma trận P/Y/Z/AL; Kiểm chứng: không secret leak/input nguy hiểm không side effect, runtime operations/required schemas so contract hiện tại không hardcode số lượng.
 - [ ] T149 [P] Tạo/chạy performance/status regression tại `tests\integration\test_response_limits.py`; p95 list/detail/preview100<=3giây, connection<=30giây/deploy<=120giây, Dashboard all-page truth/incomplete/stale/lifetime, resources/fixture công bố; Phụ thuộc: T138; Truy vết: SC-008, SC-010, NFR-009, ma trận S/Q/W; Kiểm chứng: không dùng cached/mock số liệu thay proof hoặc timeout để giả fail đã rollback.
 - [ ] T150 [P] Hoàn thiện README/architecture/API/Excel/operations docs tại `README.md`, `docs\architecture.md`, `docs\api.md`, `docs\excel-definitions.md`, `docs\operations\troubleshooting.md`; Vietnamese, startup/no hidden setup/load/keys backup-restore/recovery/cleanup/limits/revision tradeoff, không mô tả chưa test như hoàn thành; Phụ thuộc: T138; Truy vết: FR-086–FR-087, Constitution XI; Kiểm chứng: link checker và người khác theo workflow/error instructions tái hiện được.
 - [ ] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm.
-- [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, checklist reviewer không tự đánh dấu.
+- [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, checklist reviewer không tự đánh dấu.
 
 ## Dependency và thứ tự thực hiện
 
@@ -286,6 +287,9 @@ US1–US11 → final acceptance
 - US7 cần file parser/validation, engine và policies, không coi fixture file nhỏ là bằng chứng stress.
 - US9 cần client/deployment/binding đã xây phase6. US10/US11 có nhánh test độc lập, nhưng E2E cuối dùng Airflow thật.
 - P2 không phải ngoài MVP. Không được bỏ Dashboard/Settings khi tuyên bố hoàn thành toàn sản phẩm.
+- Runner đi theo T004 → T011 → T013 → T014 trước foundation và T046; không thêm cạnh ngược
+  từ E2E sớm về T138. T095 hội tụ cả engine lẫn File Sources E2E T069; T120 cần template
+  download T098. T152 vì vậy có dependency bắc cầu tới toàn bộ 151 task trước.
 
 ### Ví dụ song song theo story
 
@@ -324,7 +328,7 @@ Các nhóm dưới đây là chỉ mục bổ sung, không thay traceability và
 | FR-071–FR-078 | T129–T131 | T128, T132, T149 |
 | FR-079–FR-080 | T027, T134–T136 | T133, T137 |
 | FR-081–FR-084 | T004–T012, T029–T030, T049, T098, T151 | T013–T014, T140–T143 |
-| FR-085–FR-087 | T138, T150–T152 | T140–T149, T152 |
+| FR-085–FR-087 | T004, T011, T138, T150–T152 | T013, T140–T149, T152 |
 | FR-088–FR-090 | T072–T073, T075–T076 | T070, T095, T147 |
 | FR-091–FR-093 | T063, T074, T077–T078, T082 | T062, T070, T094, T142–T143 |
 | FR-094–FR-095 | T076, T090–T091 | T095, T144, T147 |
@@ -332,6 +336,7 @@ Các nhóm dưới đây là chỉ mục bổ sung, không thay traceability và
 | FR-099–FR-100 | T007–T012, T029–T034, T091 | T013, T016, T140 |
 | NFR-001–NFR-003 | T003, T032, T037, T040, T050, T077, T136, T150 | T046, T060, T137, T148 |
 | NFR-004–NFR-007 | T075–T076, T080, T082, T090–T091 | T095, T140, T144–T147 |
+| NFR-005 — Toàn vẹn | T077, T089–T090 | T070, T083, T145 |
 | NFR-008–NFR-010 | T002–T006, T028, T101–T109, T122, T129 | T014–T016, T118, T149, T152 |
 | SC-001–SC-004 | Hạ tầng/seed/templates/parser/engine/wizard | T140–T143, T048, T120, T148 |
 | SC-005–SC-007 | Policies/recovery/staging | T083, T094–T095, T144–T147 |
@@ -366,17 +371,21 @@ Các nhóm dưới đây là chỉ mục bổ sung, không thay traceability và
 ### Lệnh runner dự kiến sau implementation
 
 ```powershell
-docker compose up --build -d
-docker compose --profile test run --rm backend-tests pytest tests/unit tests/api
-docker compose --profile test run --rm backend-tests pytest tests/integration tests/etl
-docker compose --profile test run --rm backend-tests pytest tests/airflow
-docker compose --profile test run --rm e2e-tests npx playwright test
-docker compose --profile test run --rm backend-tests pytest tests/stress -m large_data
+podman compose up --build -d
+podman compose --profile test run --rm backend-tests pytest tests/unit tests/api
+podman compose --profile test run --rm backend-tests pytest tests/integration tests/etl
+podman compose --profile test run --rm backend-tests pytest tests/airflow
+podman compose --profile test run --rm e2e-tests npx playwright test
+podman compose --profile test run --rm backend-tests pytest tests/stress -m large_data
 ```
 
 Khi làm task riêng, chọn file/selector nhỏ nhất bao phủ thay đổi; các thư mục trong lệnh container tuân layout Linux của test image. Lệnh trên là kế hoạch tương lai, chưa phải kết quả đã chạy.
+Runner/profile tối thiểu có từ Phase1 tại T004/T011 và được nghiệm thu bootstrap T013;
+Phase2 chỉ mở rộng fixture/harness nền. Chọn selector phù hợp chức năng đã triển khai,
+không yêu cầu future endpoint PASS, không dùng skip để nghiệm thu story. Manifest/lock
+E2E riêng ở `tests\e2e`, cài bằng npm ci trong image, client/browser1.56.1 đồng bộ.
 
-## Đồng bộ với Plan sau Clarify
+## Thống kê task hiện hành và lịch sử sau Clarify
 
 - Tổng cộng **152 task**: **34** setup/foundation, **103** gắn user story và **15** final integration; **53** task có `[P]`.
 - Số task theo phase 1–8: **14 / 20 / 12 / 14 / 35 / 25 / 17 / 15**.
@@ -390,7 +399,7 @@ Khi làm task riêng, chọn file/selector nhỏ nhất bao phủ thay đổi; c
   T092 mới nghiệm thu load thật. Không tạo cycle bằng cách để preparation cần dispatch.
 - Trigger T112 và activation T113 có worker/routes ở phase6 trước cron/manual tests T118;
   phase7 T124/T125 tái sử dụng, không dời tích hợp cần thiết tới sau consumer.
-- Bổ sung explicit lifecycle/schema/repository/race tests, history/table detail, parser
+- Lượt sau Clarify đã bổ sung explicit lifecycle/schema/repository/race tests, history/table detail, parser
   revision, authorization UI/revoke và regression BR-08. Không thay đổi Spec/Plan/Contracts,
   binary samples, source code hoặc reviewer checklist trong lượt Tasks này.
 
@@ -411,4 +420,141 @@ prerequisite của lượt hiện tại. Dùng bảng này khi đối chiếu fi
 
 - Không tự đánh dấu checklist reviewer [spec-quality.md](checklists/spec-quality.md). `[x]` của reviewer đánh giá chất lượng requirement, không chứng minh runtime hoàn thành.
 - Task chỉ hoàn thành khi đầu ra và kiểm chứng tương ứng đã đạt; failure evidence phải được giữ an toàn, không xóa artifact recovery để “làm sạch”.
-- Lượt đồng bộ này giữ 8 phase, bổ sung task model/repository/contract/UI/tests của Plan mới và sửa checkpoint preparation trước writer. Task IDs được đánh lại theo thứ tự xuất hiện và mọi tham chiếu được đồng bộ; tất cả vẫn chưa đánh dấu. Không thêm source code.
+- Việc đánh lại ID và bổ sung models/API/tests sau Clarify là lịch sử của bản152task.
+  Lượt đồng bộ2026-11-08 giữ nguyên toàn bộ ID,8phase và checkbox chưa đánh dấu; chỉ cập
+  nhật task descriptions/dependencies theo Plan, không thêm source code.
+
+## Đồng bộ có mục tiêu theo Plan ngày 2026-11-08
+
+- Private runtime: T005 chặn cả root/public-prefix variants; T103/T104 giữ canonical root,
+  server override đã tồn tại. Không lặp kết luận Analyze sai rằng OpenAPI thiếu override.
+- Runner: T004 tạo Dockerfile/config/manifest/lock, T011 tạo test profile, T013 kiểm smoke,
+  T014 kiểm reproducibility/CI; T046 dùng ngay runner hiện có, T138 chỉ mở rộng regression.
+- Foundation T034 không nghiệm thu Connections CRUD hoặc Settings API; các API đó vẫn
+  nằm Phase3/7. Backend Phase1 chỉ liveness; product readiness hoàn thiện T034.
+- T095 phụ thuộc T069 để nghiệm thu File Sources trước Phase6; T120 phụ thuộc T098 để
+  ETL template download sẵn sàng. Không đánh lại ID hoặc thêm dependency tới task tương lai.
+- T145 dùng revoked/invalidated và đối soát sau revoke, không có authorization TTL/EXPIRED;
+  confirmation token hết hạn khác replay cùng key/hash giữ intent/reservation. BR-08 giữ nguyên.
+- NFR-005 được dẫn trực tiếp tại T070/T077/T083/T089/T090/T145. T001/T014/T030 quy định
+  sample EOL/hash từ checkout→image→volume; `.gitattributes`/CI là đầu ra implementation
+  tương lai, không có sample bytes hoặc policy file nào được sửa trong lượt Tasks này.
+- Không thay đổi Spec, Plan, Research, Data Model, contracts, Quickstart, Constitution,
+  reviewer checklist hoặc ghi nhận kiểm chứng lịch sử của Plan trong lượt này.
+- Bước tiếp theo: `/speckit-analyze` trên bản152task đã cập nhật, reviewer đánh giá checklist,
+  rồi triển khai Phase1 T001–T014 theo gate; bootstrap không phải MVP đầy đủ.
+
+### Kiểm chứng cấu trúc Tasks trong lượt đồng bộ
+
+- Script Python chỉ đọc xác nhận152ID liên tiếp/duy nhất, đủ checkbox chưa đánh dấu,
+  đường dẫn/nhãn story, dependency/truy vết/kiểm chứng ở mỗi dòng;8phase và53nhãn `[P]`.
+- Không ID phụ thuộc bị thiếu, không cạnh tới task phía sau hoặc chính nó, không cycle;
+  T152 có151task tổ tiên. T095 nhận T069, T120 nhận T098, T046 nhận runner T004/T011/T013
+  mà không phụ thuộc T138. Các liên kết Markdown local tồn tại.
+- Mã tham chiếu trực tiếp hoặc khoảng mã trong các dòng task bao phủ100FR/10NFR/15SC,
+  tổng125/125; đây là kiểm truy vết, không xác nhận đủ mọi hành vi hoặc test đã PASS.
+- `git diff --check` không lỗi. Không có extension hooks cấu hình. Chưa chạy build,
+  pytest/Playwright, CI EOL hoặc kiểm thử sản phẩm; không đánh dấu task/checklist hoàn thành.
+
+## Tiến độ Phase1 ngày 2026-11-08
+
+- T001 hoàn thành trong phạm vi skeleton: manifests, wheels0.1.0/editable installs,
+  import boundaries và sample raw LF/hash đã kiểm trên Windows/Python3.13.15.
+  T003 hoàn thành shell sáu route, npm ci/typecheck/build và Chromium1440/390.
+- T002 có constraints chính thức và lock có hash cho Linux x86_64/CPython3.12, đã resolve
+  và tải lại offline require-hashes; chưa install/pip check backend/custom Airflow thật
+  vì không có Docker/Compose. Giữ checkbox chưa đánh dấu, trạng thái BLOCKED.
+- T005 đã soạn frontend Dockerfile/nginx guards; build image/nginx runtime/proxy tests
+  BLOCKED vì thiếu Docker. Không lấy Vite preview thay bằng chứng nginx.
+- T004/T006–T014 chưa thực thi do prerequisite chưa nghiệm thu; không chuyển Phase2.
+  Runner Playwright dùng riêng để kiểm shell T003 không thay runner/profile container T004/T011.
+- Báo cáo lệnh, phiên bản, kết quả và giới hạn: [Báo cáo Phase1](../../docs/testing/phase1-report.md).
+  Checklist reviewer giữ nguyên; Phase1/US1/MVP chưa hoàn thành.
+
+## Đồng bộ Podman theo Constitution1.1.0 đã duyệt
+
+Giữ152ID,8phase, phụ thuộc và checkbox T001/T003 hiện có. Baseline Plan dùng Podman;
+runner examples hiện dùng `podman compose`, không là bằng chứng đã chạy. Bản ghi thiếu
+Docker trong tiến độ trước sửa đổi là lịch sử; Podman hiện phản hồi nhưng T002/T005 còn
+chưa nghiệm thu runtime, không tự đổi thành PASS. T004/T006–T014 vẫn tuân dependency.
+T007–T010 phải kiểm roles/secret/UID/GID/persistence trên baseline Podman, giữ least privilege;
+T046/T138/T141–T152 giữ selectors/fixtures/project-volumes isolation và A–AM/BR-08.
+Sau đồng bộ phải Analyze và rà soát reviewer trước tiếp tục Phase1; không vào Phase2.
+
+## Cập nhật thực thi Podman 2026-11-08 — trạng thái hiện hành
+
+- T002 PASS: backend Linux/Python3.12.12 cài 32 dependency từ lock/hash, pip check sạch;
+  image chính thức Airflow3.3.2/Python3.12.14 kiểm lock runtime/constraints và pip check sạch,
+  airflow version vẫn3.3.2. Không đổi pin; SHA256 constraints giữ nguyên.
+- T005 PASS: image frontend build thật; 4test nginx PASS, bao gồm GET/POST private prefixes
+  có/không bearer, không request upstream; public proxy giữ path và SPA deep link đúng.
+  Bearer dùng fixture cô lập; kiểm authorization trực tiếp trên endpoint thật vẫn thuộc T103.
+- Các ghi nhận thiếu Docker trước đây là lịch sử, không còn là blocker T002/T005.
+- T004/T006 và gate Phase1 chưa kết luận; xem báo cáo thực thi hiện hành.
+
+- T004 PASS: backend wheel/liveness test1PASS, pytest runner6PASS, Playwright collect4test
+  và Chromium141.0.7390.37 chạy thật trong image1.56.1.
+- T006 PASS: custom image build/pip check/SDK+engine import và entrypoint airflow version3.3.2.
+- T007 primitive/init test RED thiếu module trước implementation; GREEN1PASS trên Linux
+  container overlay source, chưa thay bằng chứng Compose/volume permissions T011.
+
+- T007 PASS: primitive/init GREEN trên Linux, named-volume secrets-init Exited(0),
+  credential file được DB thật sử dụng thành công; random dùng os.urandom để tránh tên
+  secrets.py che module chuẩn khi chạy trực tiếp. Không in secret.
+- T008/T009 DB fixture sạch PASS44.33giây: init2lần, giữ sample edit, PG runtime không
+  connect Airflow DB, MySQL grants/InnoDB/utf8mb4/strict. Đang bổ sung kiểm signature
+  collision và tích hợp Airflow; chưa đóng gate Phase1.
+
+- T008/T009 PASS trên DB fixture thật: roles/grants/sample init idempotent, giữ sửa đổi,
+  InnoDB/utf8mb4/strict; support signature1 được kiểm sau init, collision test bổ sung.
+- T010 PASS: fixture bật AAT_TEST_AIRFLOW=1 chạy148.50giây; official migration2lần Exited(0),
+  API anonymous bị chặn, JWT service auth/API/UI thật PASS, LocalExecutor/parallelism2.
+- T011 đang nghiệm thu Compose. Workspace có .pytest_cache ACL không đọc/di chuyển được
+  làm Compose build context FAIL trước build, kể cả đã ignore. Không reset ACL. Dùng
+  fixture source sạch byte-for-byte để tiếp tục kiểm stack; không báo workspace startup PASS.
+
+## Nghiệm thu tiếp tục 2026-11-08 — cập nhật hiện hành
+
+- T011/T012 PASS trên bản nocopy cuối:4test wiring/fault injection PASS34.72s; secret
+  domains riêng, init exit23 chặn consumer, cgroup limits/UID/RO/loopback và probes thật.
+- T013 PASS: project fresh aat-phase1-800be543, startup chuẩn và restart giữ volumes
+  PASS249.15s; secret hashes, DB edits và artifacts giữ nguyên. Test profile chạy7unit
+  PASS, DB init/grants/signature collision PASS, Airflow auth/API/UI PASS và4Playwright
+  desktop/mobile PASS4.2s; secret values không có trong service logs.
+- T014: compatibility3test PASS13.06s;7digest thật đã ghi docker/images.lock. Npm
+  typecheck/build PASS, audit exit1 với2HIGH (react-router,zod). Không đổi pin. Image
+  vulnerability scan đang chạy; workflow Windows/Linux đã tạo, CI remote NOT_RUN.
+- Workspace gốc vẫn chưa có bằng chứng startup mới: lỗi ACL cache đã ghi riêng; không
+  reset ACL hoặc dùng PASS fixture để thay kết quả workspace. Reviewer không thay đổi.
+
+### Kết luận cuối lượt tiếp tục
+
+T001–T013 PASS trong phạm vi bootstrap; T014 giữ [ ] và BLOCKED. Security scan7image
+đã chạy với IDs khớp hiện tại, có HIGH/CRITICAL cần triage; npm audit2gói HIGH, không
+đổi pin. CI Windows/Linux NOT_RUN dù workflow đã tạo/parse. Workspace gốc còn ACL cache
+blocker; không lấy PASS fixture sạch thay startup tại workspace. Gate Phase1 BLOCKED,
+không vào Phase2, không coi bootstrap là US1/MVP. Bằng chứng/kế hoạch đóng blocker tại
+[phase1-report.md](../../docs/testing/phase1-report.md), máy đọc final-state/security JSON
+cùng thư mục. Reviewer checklist/Constitution giữ nguyên trong lượt này.
+
+
+### Trạng thái hiện hành sau remediation P1–P7 đã duyệt — 2026-11-08
+
+Các kết luận trước mục này là lịch sử. P1–P7 đã áp dụng: Router7.18.5/Zod4.6.7,
+Python3.12.16/Node22.23.4/npm10.9.4, PG17.11/MySQL8.4.13/nginx1.30.6-alpine3.24,
+Airflow slim3.3.2 với standard/psycopg2/asyncpg theo official constraints không đổi,
+Playwright client/browser1.56.1 giữ nguyên và runner OS lock. FROM/DB refs enforce digest.
+
+T011/T012/T013 nghiệm thu lại PASS trên candidate fixture:6runtime tests, fresh/restart
+597.552s, pytest7PASS/Playwright4PASS qua test profile; shell12checks và DB backup/restore
+cũ→candidate namespace PASS. Compatibility3PASS13.527s,8source/runtime hashes và12scan
+IDs khớp. Npm full/production audit0vulnerabilities. Lượt đầu thiếu asyncpg/CRLF lock và
+SSH/HTTP failures giữ đúng FAIL lịch sử; không nới test/gate.
+
+T014 vẫn[ ]/BLOCKED: security12targets còn634HIGH/CRITICAL occurrences (7final targets368),
+CI remote Windows/Linux NOT_RUN; root ACL startup vẫn BLOCKED, fixture không thay clean
+Git checkout. Không override constraints, commit/push, Phase2 hoặc sửa reviewer/Constitution.
+Current project đọc `.tools/phase1-project.txt`, source fixture `.tools/phase1-compose-dir.txt`;
+old stack/volumes và preview4173 giữ nguyên. Báo cáo/lệnh/evidence hiện hành tại
+[phase1-report.md](../../docs/testing/phase1-report.md), quyết định tiếp tại
+[t014-remaining-blockers.md](../../docs/proposals/t014-remaining-blockers.md).

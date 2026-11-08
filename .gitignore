@@ -4,6 +4,7 @@
 
 node_modules/
 .venv/
+.tools/
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -12,3 +13,17 @@ build/
 *.egg-info/
 
 *.log
+
+coverage/
+htmlcov/
+.coverage
+test-results/
+playwright-report/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Explicit verification logs reviewed for publication; generated runtime logs remain ignored.
+!docs/testing/t014-logs/*.log
+!docs/testing/t014-round2-logs/*.log

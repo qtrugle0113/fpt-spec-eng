@@ -1,0 +1,10 @@
+services:
+  failing-init:
+    image: docker.io/library/python:3.12.16-slim-bookworm
+    command: [python, -c, 'raise SystemExit(23)']
+    restart: 'no'
+  consumer:
+    image: docker.io/library/python:3.12.16-slim-bookworm
+    command: [python, -c, 'print("CONSUMER_MUST_NOT_START")']
+    depends_on:
+      failing-init: {condition: service_completed_successfully}

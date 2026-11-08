@@ -1,0 +1,31 @@
+.\.venv\Scripts\python.exe : test_image_import_and_liveness_without_product_readiness (tests.integration.test_backend_b
+ootstrap.BackendBootstrapTests.test_image_import_and_liveness_without_product_readiness) ... FAIL
+At line:2 char:32
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_image_impo...iness) ... FAIL:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+test_nginx_configuration_is_valid
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_nginx_configuration_is_valid) ... ok
+test_private_prefixes_do_not_reach_upstream
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_private_prefixes_do_not_reach_upstream) ... ok
+test_public_proxy_preserves_path
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_public_proxy_preserves_path) ... ok
+test_spa_deep_link (tests.integration.test_frontend_proxy.FrontendProxyTests.test_spa_deep_link) ... ok
+
+======================================================================
+FAIL: test_image_import_and_liveness_without_product_readiness (tests.integration.test_backend_bootstrap.BackendBootstr
+apTests.test_image_import_and_liveness_without_product_readiness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\integration\test_backend_bootstrap.py", line 32, in
+test_image_import_and_liveness_without_product_readiness
+    self.fail("Liveness bootstrap unavailable")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Liveness bootstrap unavailable
+
+----------------------------------------------------------------------
+Ran 5 tests in 132.725s
+
+FAILED (failures=1)

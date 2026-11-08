@@ -1,0 +1,255 @@
+{
+  "python": {
+    "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/python",
+    "matching_tags": [
+      "Tags: 3.12.16-trixie, 3.12-trixie",
+      "Tags: 3.12.16-slim-trixie, 3.12-slim-trixie, 3.12.16-slim, 3.12-slim",
+      "Tags: 3.12.16-bookworm, 3.12-bookworm",
+      "Tags: 3.12.16-slim-bookworm, 3.12-slim-bookworm",
+      "Tags: 3.12.16-alpine3.24, 3.12-alpine3.24, 3.12.16-alpine, 3.12-alpine",
+      "Tags: 3.12.16-alpine3.23, 3.12-alpine3.23"
+    ]
+  },
+  "postgres": {
+    "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/postgres",
+    "matching_tags": [
+      "Tags: 17.11, 17, 17.11-trixie, 17-trixie",
+      "Tags: 17.11-bookworm, 17-bookworm",
+      "Tags: 17.11-alpine3.24, 17-alpine3.24, 17.11-alpine, 17-alpine",
+      "Tags: 17.11-alpine3.23, 17-alpine3.23"
+    ]
+  },
+  "mysql": {
+    "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/mysql",
+    "matching_tags": [
+      "Tags: 8.4.13, 8.4, 8, 8.4.13-oraclelinux9, 8.4-oraclelinux9, 8-oraclelinux9, 8.4.13-oracle, 8.4-oracle, 8-oracle"
+    ]
+  },
+  "nginx": {
+    "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/nginx",
+    "matching_tags": [
+      "Tags: 1.30.6, stable, 1.30, 1.30.6-trixie, stable-trixie, 1.30-trixie",
+      "Tags: 1.30.6-perl, stable-perl, 1.30-perl, 1.30.6-trixie-perl, stable-trixie-perl, 1.30-trixie-perl",
+      "Tags: 1.30.6-otel, stable-otel, 1.30-otel, 1.30.6-trixie-otel, stable-trixie-otel, 1.30-trixie-otel",
+      "Tags: 1.30.6-alpine, stable-alpine, 1.30-alpine, 1.30.6-alpine3.24, stable-alpine3.24, 1.30-alpine3.24",
+      "Tags: 1.30.6-alpine-perl, stable-alpine-perl, 1.30-alpine-perl, 1.30.6-alpine3.24-perl, stable-alpine3.24-perl, 1.30-alpine3.24-perl",
+      "Tags: 1.30.6-alpine-slim, stable-alpine-slim, 1.30-alpine-slim, 1.30.6-alpine3.24-slim, stable-alpine3.24-slim, 1.30-alpine3.24-slim",
+      "Tags: 1.30.6-alpine-otel, stable-alpine-otel, 1.30-alpine-otel, 1.30.6-alpine3.24-otel, stable-alpine3.24-otel, 1.30-alpine3.24-otel"
+    ]
+  },
+  "node": {
+    "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/node",
+    "matching_tags": [
+      "Tags: 24-alpine3.23, 24.22-alpine3.23, 24.22.2-alpine3.23, krypton-alpine3.23",
+      "Tags: 24-alpine, 24-alpine3.24, 24.22-alpine, 24.22-alpine3.24, 24.22.2-alpine, 24.22.2-alpine3.24, krypton-alpine, krypton-alpine3.24",
+      "Tags: 24, 24-bookworm, 24.22, 24.22-bookworm, 24.22.2, 24.22.2-bookworm, krypton, krypton-bookworm",
+      "Tags: 24-bookworm-slim, 24-slim, 24.22-bookworm-slim, 24.22-slim, 24.22.2-bookworm-slim, 24.22.2-slim, krypton-bookworm-slim, krypton-slim",
+      "Tags: 24-trixie, 24.22-trixie, 24.22.2-trixie, krypton-trixie",
+      "Tags: 24-trixie-slim, 24.22-trixie-slim, 24.22.2-trixie-slim, krypton-trixie-slim",
+      "Tags: 22-alpine3.23, 22.23-alpine3.23, 22.23.4-alpine3.23, jod-alpine3.23",
+      "Tags: 22-alpine, 22-alpine3.24, 22.23-alpine, 22.23-alpine3.24, 22.23.4-alpine, 22.23.4-alpine3.24, jod-alpine, jod-alpine3.24",
+      "Tags: 22, 22-bookworm, 22.23, 22.23-bookworm, 22.23.4, 22.23.4-bookworm, jod, jod-bookworm",
+      "Tags: 22-bookworm-slim, 22-slim, 22.23-bookworm-slim, 22.23-slim, 22.23.4-bookworm-slim, 22.23.4-slim, jod-bookworm-slim, jod-slim",
+      "Tags: 22-trixie, 22.23-trixie, 22.23.4-trixie, jod-trixie",
+      "Tags: 22-trixie-slim, 22.23-trixie-slim, 22.23.4-trixie-slim, jod-trixie-slim"
+    ]
+  },
+  "manifest_candidates": [
+    {
+      "ref": "docker.io/library/python:3.12.16-slim-bookworm",
+      "index_digest": "sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df",
+      "linux_amd64": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018",
+            "org.opencontainers.image.base.name": "debian:bookworm-slim",
+            "org.opencontainers.image.created": "2026-11-05T07:52:18Z",
+            "org.opencontainers.image.revision": "3d7e95597e56a415d9e4abc0f15877e005d2cb2e",
+            "org.opencontainers.image.source": "https://github.com/docker-library/python.git#3d7e95597e56a415d9e4abc0f15877e005d2cb2e:3.12/slim-bookworm",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/python",
+            "org.opencontainers.image.version": "3.12.16-slim-bookworm"
+          },
+          "digest": "sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 1752
+        }
+      ],
+      "verification": "registry metadata only; not pulled/built/scanned"
+    },
+    {
+      "ref": "docker.io/library/postgres:17.11-bookworm",
+      "index_digest": "sha256:665dc7b37ac52a17e298511414c21d23ffa4e6a6ef6225b3e5d59c7afb35e994",
+      "linux_amd64": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018",
+            "org.opencontainers.image.base.name": "debian:bookworm-slim",
+            "org.opencontainers.image.created": "2026-11-05T07:30:06Z",
+            "org.opencontainers.image.revision": "2603e26e245e558218728ee14e0a42dcb020dc7f",
+            "org.opencontainers.image.source": "https://github.com/docker-library/postgres.git#2603e26e245e558218728ee14e0a42dcb020dc7f:17/bookworm",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/postgres",
+            "org.opencontainers.image.version": "17.11-bookworm"
+          },
+          "digest": "sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 3641
+        }
+      ],
+      "verification": "registry metadata only; not pulled/built/scanned"
+    },
+    {
+      "ref": "docker.io/library/mysql:8.4.13",
+      "index_digest": "sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+      "linux_amd64": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:bb3d452d39d721b06733f754e1d4c5098915c7895e2cca9b33e6bd07696cbcaa",
+            "org.opencontainers.image.base.name": "oraclelinux:9-slim",
+            "org.opencontainers.image.created": "2026-11-03T00:25:49Z",
+            "org.opencontainers.image.revision": "c92fbc392511086e6c1500f28a21421413f0bb51",
+            "org.opencontainers.image.source": "https://github.com/docker-library/mysql.git#c92fbc392511086e6c1500f28a21421413f0bb51:8.4",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/mysql",
+            "org.opencontainers.image.version": "8.4.13"
+          },
+          "digest": "sha256:72c368d898861f3b3a07af0e6d690400f44f048799ed46822783d9224cc2c86d",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 2857
+        }
+      ],
+      "verification": "registry metadata only; not pulled/built/scanned"
+    },
+    {
+      "ref": "docker.io/library/nginx:1.30.6-alpine3.24",
+      "index_digest": "sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+      "linux_amd64": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:95af6eee6124ea2ebdee9a62c3de9684a6387a0d1531be13a6fd207c4a2fffaa",
+            "org.opencontainers.image.base.name": "nginx:1.30.6-alpine-slim",
+            "org.opencontainers.image.created": "2026-11-05T19:55:22Z",
+            "org.opencontainers.image.revision": "4b9f658be76820b24e4ef4605413a5c08707a512",
+            "org.opencontainers.image.source": "https://github.com/nginx/docker-nginx.git#4b9f658be76820b24e4ef4605413a5c08707a512:stable/alpine",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/nginx",
+            "org.opencontainers.image.version": "1.30.6-alpine"
+          },
+          "digest": "sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 2493
+        }
+      ],
+      "verification": "registry metadata only; not pulled/built/scanned"
+    },
+    {
+      "ref": "docker.io/apache/airflow:3.3.2-python3.12",
+      "index_digest": "sha256:9df9c8be4096b9cc626bd7cb1f2b8c712eef66c59c615f8c7e6200871ca10bd1",
+      "linux_amd64": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:0a74ea83fbc3343071d53b2f5deaf72f51b0025c62f390debf75505f84f17870",
+          "size": 4086,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        }
+      ],
+      "verification": "registry metadata only; not pulled/built/scanned"
+    },
+    {
+      "ref": "docker.io/library/node:22.23.4-bookworm-slim",
+      "index_digest": "sha256:5ec23b7c622b00547753bc6ffd78085dd868a68aeb41c8e0a1418f033e13d96d",
+      "linux_amd64": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:c67e92c8099ba22853ab4cfda7cfb494d253d6012ca82dee98ba8976772af018",
+            "org.opencontainers.image.base.name": "debian:bookworm-slim",
+            "org.opencontainers.image.created": "2026-11-05T07:41:31Z",
+            "org.opencontainers.image.revision": "80f02a542da739e6a662451d1db66456a0dea253",
+            "org.opencontainers.image.source": "https://github.com/nodejs/docker-node.git#80f02a542da739e6a662451d1db66456a0dea253:22/bookworm-slim",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/node",
+            "org.opencontainers.image.version": "22-bookworm-slim"
+          },
+          "digest": "sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 1929
+        }
+      ],
+      "verification": "metadata only"
+    },
+    {
+      "ref": "docker.io/apache/airflow:slim-3.3.2-python3.12",
+      "index_digest": "sha256:a54e7bd6c4d7a17e55cd14b0ead257877b8f8111680d2692cbdba2ff32bd3ff3",
+      "linux_amd64": [
+        {
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "digest": "sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f",
+          "size": 4085,
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        }
+      ],
+      "verification": "metadata only"
+    }
+  ],
+  "node22_tags": [
+    "Tags: 22-bookworm-slim, 22-slim, 22.23-bookworm-slim, 22.23-slim, 22.23.4-bookworm-slim, 22.23.4-slim, jod-bookworm-slim, jod-slim"
+  ],
+  "captured_at": "2026-11-08T13:12:51.733183+00:00",
+  "status": "PROPOSED; registry metadata only; not runtime/security PASS",
+  "npm_candidates": [
+    {
+      "package": "react-router",
+      "baseline": "7.9.6",
+      "candidate": "7.18.5",
+      "advisory_floor": "7.18.0",
+      "registry": "https://registry.npmjs.org/react-router/7.18.5",
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "integrity": "sha512-dTgvcXDOrLPrlLHrcZAqWveiK1hMSqN+rGAJzegP8HtmNkfRxOoshGWBNX3ZJ0cZjOHkRdlUJtaIhZMLLyGyPw==",
+      "verification": "registry existence/metadata and upstream advisory review; no install/build/runtime test"
+    },
+    {
+      "package": "zod",
+      "baseline": "4.1.12",
+      "candidate": "4.6.7",
+      "advisory_floor": "4.6.6",
+      "registry": "https://registry.npmjs.org/zod/4.6.7",
+      "engines": {},
+      "peerDependencies": {},
+      "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+      "verification": "registry existence/metadata and upstream advisory review; no install/build/runtime test"
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "captured_at": "2026-11-08T13:56:43.922050+00:00",
+  "candidate_project": "aat-phase1-t014-final-cf8461ea",
+  "retained_project": "aat-phase1-800be543",
+  "scan_id_mismatches": [],
+  "projects": {
+    "aat-phase1-t014-final-cf8461ea": [
+      {
+        "service": "secrets-init",
+        "image_id": "afd5dabfcd9fbf2dec32a8647596f137b2c75cbedfa63bfe52485e680d0574cc",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "mysql",
+        "image_id": "0f1a0ccadda3a1734d1db557e203ec58621d56fa248525016e85fe4f631311ec",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "postgres",
+        "image_id": "018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "db-init",
+        "image_id": "afd5dabfcd9fbf2dec32a8647596f137b2c75cbedfa63bfe52485e680d0574cc",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "app-init",
+        "image_id": "afd5dabfcd9fbf2dec32a8647596f137b2c75cbedfa63bfe52485e680d0574cc",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "backend-worker",
+        "image_id": "afd5dabfcd9fbf2dec32a8647596f137b2c75cbedfa63bfe52485e680d0574cc",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-init",
+        "image_id": "c73834c7141519c50901db748728d217914df1336dc2cdbda93e62ceb6cfbebe",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-apiserver",
+        "image_id": "c73834c7141519c50901db748728d217914df1336dc2cdbda93e62ceb6cfbebe",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "18080"
+            }
+          ]
+        }
+      },
+      {
+        "service": "airflow-dag-processor",
+        "image_id": "c73834c7141519c50901db748728d217914df1336dc2cdbda93e62ceb6cfbebe",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-scheduler",
+        "image_id": "c73834c7141519c50901db748728d217914df1336dc2cdbda93e62ceb6cfbebe",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "backend",
+        "image_id": "afd5dabfcd9fbf2dec32a8647596f137b2c75cbedfa63bfe52485e680d0574cc",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "8000/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "18000"
+            }
+          ]
+        }
+      },
+      {
+        "service": "frontend",
+        "image_id": "d88f848127055ba1ff624e975d39c2e014d72d768613adf5f85c91158b53ee38",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "80/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "13000"
+            }
+          ]
+        }
+      }
+    ],
+    "aat-phase1-800be543": [
+      {
+        "service": "secrets-init",
+        "image_id": "535288e1b5c32ff107a7b88c844298c660f8f2bb7c667de718dff37731ccd50e",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "mysql",
+        "image_id": "0de4015d5b1f0fa462e43b48c29f8f66eacdd16d11e07aedf3b13533adadd504",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "postgres",
+        "image_id": "567d5d704a3e5a4864393b623a0d50eb1b5a4ad134cdac7cf19555cb2d8ffe9e",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "db-init",
+        "image_id": "535288e1b5c32ff107a7b88c844298c660f8f2bb7c667de718dff37731ccd50e",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "app-init",
+        "image_id": "535288e1b5c32ff107a7b88c844298c660f8f2bb7c667de718dff37731ccd50e",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "backend-worker",
+        "image_id": "535288e1b5c32ff107a7b88c844298c660f8f2bb7c667de718dff37731ccd50e",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-init",
+        "image_id": "acd41d2b2d13d0ca56e70f17e3bbf2b7a3d40b9d33df77f4430d08e1f764cebd",
+        "state": "exited",
+        "exit_code": 0,
+        "health": null,
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-dag-processor",
+        "image_id": "acd41d2b2d13d0ca56e70f17e3bbf2b7a3d40b9d33df77f4430d08e1f764cebd",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "airflow-apiserver",
+        "image_id": "acd41d2b2d13d0ca56e70f17e3bbf2b7a3d40b9d33df77f4430d08e1f764cebd",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "8080"
+            }
+          ]
+        }
+      },
+      {
+        "service": "airflow-scheduler",
+        "image_id": "acd41d2b2d13d0ca56e70f17e3bbf2b7a3d40b9d33df77f4430d08e1f764cebd",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {}
+      },
+      {
+        "service": "backend",
+        "image_id": "535288e1b5c32ff107a7b88c844298c660f8f2bb7c667de718dff37731ccd50e",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "8000/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "8000"
+            }
+          ]
+        }
+      },
+      {
+        "service": "frontend",
+        "image_id": "6561e7883c6da41944962dc030370c748f4d38a7a70f2fa4fb89537c602af582",
+        "state": "running",
+        "exit_code": 0,
+        "health": "healthy",
+        "port_bindings": {
+          "80/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "3000"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "protected_files_unchanged": true,
+  "phase1_gate": "BLOCKED",
+  "ci": "NOT_RUN"
+}

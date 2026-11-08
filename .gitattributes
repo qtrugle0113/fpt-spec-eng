@@ -1,0 +1,7 @@
+* text=auto eol=lf
+samples/data/*.csv text eol=lf
+samples/data/*.txt text eol=lf
+*.xlsx -text
+*.sh text eol=lf
+docker/tests/os-packages.lock text eol=lf
+airflow/docker/os-packages.lock text eol=lf

@@ -1,0 +1,25 @@
+.\.venv\Scripts\python.exe : test_failed_init_blocks_consumer
+(tests.integration.test_compose_bootstrap_wiring.ComposeDependencyTests.test_failed_init_blocks_consumer) ... ok
+At line:2 char:255
++ ... NG='utf-8'; .\.venv\Scripts\python.exe -m unittest tests.integration. ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_failed_ini...onsumer) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+test_real_stack_health_limits_mounts_ports_and_order (tests.integration.test_compose_bootstrap_wiring.ComposeStackWirin
+gTests.test_real_stack_health_limits_mounts_ports_and_order) ... ok
+test_http200_does_not_hide_stale_scheduler
+(tests.integration.test_bootstrap_health.BootstrapHealthTests.test_http200_does_not_hide_stale_scheduler) ... ok
+test_mysql_down_fails_query_probe_but_live_remains_live
+(tests.integration.test_bootstrap_health.BootstrapHealthTests.test_mysql_down_fails_query_probe_but_live_remains_live)
+... ok
+test_secret_values_are_absent_from_service_logs
+(tests.integration.test_bootstrap_secret_logs.BootstrapSecretLogTests.test_secret_values_are_absent_from_service_logs)
+... ok
+test_old_sample_database_restores_into_candidate_namespace (tests.integration.test_database_patch_restore.DatabasePatch
+RestoreTests.test_old_sample_database_restores_into_candidate_namespace) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 49.297s
+
+OK

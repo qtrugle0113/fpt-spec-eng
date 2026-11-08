@@ -8,7 +8,10 @@ một task `execute_etl` để giữ connection snapshot/native target lock tron
 Không chia extract/load thành các task có thể chuyển worker rồi mất session/lock.
 
 Trước execution, gọi private bind endpoint bằng service token từ secret file để backend
-kiểm `dag_id/run_id/task_id`, TI dag_version.id và revision đã deployed qua Public API.
+nhận tại URL canonical `http://backend:8000/internal/runtime/bind` (ngoài `/api/v1`,
+operation OpenAPI đã override server). Không gọi qua frontend proxy; prefix private
+và biến thể `/api/v1/internal/runtime` đều bị nginx chặn theo [REST API](rest-api.md).
+Backend kiểm `dag_id/run_id/task_id`, TI dag_version.id và revision đã deployed qua Public API.
 Backend trả binding/config IDs không credentials. Package metadata đọc encrypted immutable
 connection revisions bằng role riêng của app_metadata, giải mã keyfile tại memory.
 Một run chỉ có một binding; attempt khác phải khớp config/source/target/dataset identity.
@@ -56,7 +59,7 @@ không dùng manifest app DB thay bằng chứng file tồn tại. Quota tính c
 | heartbeat/stale | 10giây / 120giây | Stale không chứng minh worker chết/commit rollback |
 
 Scheduler parallelism2, mem_limit2GiB, DBs mỗi1GiB, host khuyến nghị8CPU/12GiBRAM/80GiB disk.
-Một worker RSS512MiB là budget, không tuyên bố Docker có hard per-process limit riêng với
+Một worker RSS512MiB là budget, không tuyên bố runtime container có hard per-process limit riêng với
 LocalExecutor; supervisor theo dõi RSS và abort an toàn trước cgroup scheduler OOM, test bắt buộc.
 Môi trường nhỏ hơn có thể giảm parallelism1, không giảm quy tắc integrity.
 
@@ -131,6 +134,10 @@ có thể có khoảng trống sau rollback; không dùng số liên tiếp làm
 
 ## Reservation và admission FULL_REFRESH
 
+MVP không thêm TTL/EXPIRED cho authorization; revoked/invalidated/terminal states theo
+BR-08 quyết định quyền ghi. Confirmation token10phút hết hạn là kiểm tra request khác,
+không làm mất binding hoặc giải phóng reservation. Replay cùng key/hash trả intent cũ.
+
 Theo Spec BR-08 và [Data Model](../data-model.md), ONCE reservation gắn RunIntent bền ngay
 khi tiếp nhận trigger, trước POST Airflow. Runtime bind xác minh TI version và run type
 qua Public API; manual FULL_REFRESH không có ONCE intent đúng run bị từ chối, kể cả run
@@ -197,3 +204,11 @@ trigger timeout giữ RunIntent, revoke trước/sau admission, admission commit
 target commit-response-loss, clear run success không replacement lần hai, SCHEDULED không
 cho manual/backfill và allow_empty đúng scope. Lưu identity/status/evidence không credentials.
 
+
+## Baseline container theo Constitution1.1.0
+
+Baseline hiện chọn Podman Linux/amd64 và Compose provider theo Plan; Docker baseline khác
+phải công bố/kiểm riêng. Chỉ thay công cụ build/start/test, không đổi snapshot/native lock/
+ledger/admission/role/secret/quotas hoặc recovery. Resource limits, volume persistence và
+UID/GID/RO mounts cần được kiểm bằng runtime/provider thật; engine rootful không cho phép
+privileged hoặc bỏ kiểm quyền. Engine/provider đã phản hồi không chứng minh ETL đã chạy.

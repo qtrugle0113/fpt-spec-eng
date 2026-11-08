@@ -1,0 +1,14 @@
+{
+  "project": "aat-phase1-t014-final-cf8461ea",
+  "scope": "Eight listed source/runtime checks only; host-run extra integration tests recorded separately",
+  "source_vs_runtime": {
+    "docker/bootstrap/secrets.py": "3374e66a8b8dda000fbb6fdb32a032205886831385093086eaac8c5196b087eb",
+    "docker/bootstrap/health.py": "4cb980ac88d163d5ebf4ee2d1033f62f0c80a80b1f31f9869a28ab2d55f33534",
+    "airflow/docker/health.sh": "c40653166a1541d74b46f65e1875e5076bfe481174910828c4deb0ffe511d041",
+    "airflow/docker/airflow.cfg": "2b86f673000537ece01fcf03cd73c37e8933c927e81ea6fec52632ca26e8e496",
+    "docker/nginx/default.conf": "7bed027a9a2e2873d806324825f2f3ac318fa79272eb8f12b7cb65c377112435",
+    "tests/integration/test_image_compatibility.py": "6d9bed5ef8461fb56127f2103b98c8f7ba61cdc145c4f94ab1df180e5c4c47e5",
+    "tests/integration/test_bootstrap_secret_logs.py": "52edf5752493970b1368b2ec6b854d25382408a55705351630dfe4fef960dc68",
+    "tests/integration/test_bootstrap_startup.py": "9ad70b8047b37100a20cf7775cb97bbb910bf6be2a2eddb114986aede4231cf5"
+  }
+}

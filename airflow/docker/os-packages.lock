@@ -1,0 +1,14 @@
+# Debian bookworm signed security repository resolution, 2026-11-08.
+libperl5.36=5.36.0-7+deb12u4
+perl=5.36.0-7+deb12u4
+perl-base=5.36.0-7+deb12u4
+perl-modules-5.36=5.36.0-7+deb12u4
+libapt-pkg6.0=2.6.2
+apt=2.6.2
+apt-utils=2.6.2
+libpcre2-8-0=10.42-1+deb12u2
+apt-transport-https=2.6.2
+libbrotli1=1.0.9-2+deb12u1
+libexpat1=2.5.0-1+deb12u5
+libssl3=3.0.22-1~deb12u2
+openssl=3.0.22-1~deb12u2

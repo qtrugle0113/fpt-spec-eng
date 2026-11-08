@@ -1,0 +1,116 @@
+{
+  "captured_at": "2026-11-08T12:49:07.826980+00:00",
+  "project": "aat-phase1-800be543",
+  "podman": {
+    "Client": {
+      "APIVersion": "5.8.3",
+      "Version": "5.8.3",
+      "GoVersion": "go1.26.4",
+      "GitCommit": "93dbfd0d86ee57f8f91801f61ce57dd880a4725f",
+      "BuiltTime": "Sat Jun 13 02:52:07 2026",
+      "Built": 1781286727,
+      "OsArch": "windows/amd64",
+      "Os": "windows"
+    },
+    "Server": {
+      "APIVersion": "5.8.9",
+      "Version": "5.8.9",
+      "GoVersion": "go1.26.9-X:nodwarf5",
+      "GitCommit": "40030f4073bd4e1bf4f2fd9df2f6952b4d9d350a",
+      "BuiltTime": "Mon Oct 12 09:00:00 2026",
+      "Built": 1791763200,
+      "OsArch": "linux/amd64",
+      "Os": "linux"
+    }
+  },
+  "services": {
+    "secrets-init": {
+      "status": "exited",
+      "exit_code": 0,
+      "health": null
+    },
+    "mysql": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "postgres": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "db-init": {
+      "status": "exited",
+      "exit_code": 0,
+      "health": null
+    },
+    "app-init": {
+      "status": "exited",
+      "exit_code": 0,
+      "health": null
+    },
+    "backend-worker": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "airflow-init": {
+      "status": "exited",
+      "exit_code": 0,
+      "health": null
+    },
+    "airflow-dag-processor": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "airflow-apiserver": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "airflow-scheduler": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "backend": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    },
+    "frontend": {
+      "status": "running",
+      "exit_code": 0,
+      "health": "healthy"
+    }
+  },
+  "http": {
+    "http://127.0.0.1:3000/": 200,
+    "http://127.0.0.1:4173/": 200,
+    "http://127.0.0.1:8080/": 200,
+    "http://127.0.0.1:8000/api/v1/health/live": 200,
+    "http://127.0.0.1:8000/api/v1/health/ready": 404,
+    "http://127.0.0.1:3000/internal/runtime/bind": 404,
+    "http://127.0.0.1:3000/api/v1/internal/runtime/bind": 404
+  },
+  "reviewer_checklists": "UNCHANGED",
+  "scan_image_ids": "MATCH_CURRENT",
+  "gate_phase1": "BLOCKED",
+  "tasks_complete": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "task_T014": "BLOCKED"
+}

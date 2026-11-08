@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  color: #17243a;
+  background: #f4f6fa;
+  font-synthesis: none;
+  --accent: #285de5;
+  --border: #dce3ed;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #6d9dff; outline-offset: 4px; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 5; padding: 12px; background: white; }
+.skip-link:focus { top: 10px; }
+.app-shell { display: flex; min-height: 100dvh; }
+.sidebar { width: 260px; flex-shrink: 0; padding: 32px 20px 24px; color: #d5dff0; background: #101c32; display: flex; flex-direction: column; }
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 650; line-height: 1.4; }
+.brand-mark { display: grid; place-items: center; width: 40px; height: 40px; background: var(--accent); border-radius: 11px; font-size: 24px; }
+.nav-caption { margin: 42px 12px 14px; font-size: 11px; letter-spacing: .16em; color: #93a5c4; }
+.navigation-search { margin: 0 8px 20px; }
+.navigation-search label { display: block; font-size: 12px; margin-bottom: 8px; color: #a8b8d0; }
+.navigation-search input { min-width: 0; width: 100%; padding: 10px; background: #192941; border: 1px solid #35465e; color: #fff; border-radius: 8px; }
+.navigation-search input::placeholder { color: #a8b8d0; }
+nav { display: flex; flex-direction: column; gap: 6px; }
+nav a { display: block; padding: 13px 14px; border-radius: 8px; color: #c3cfe2; text-decoration: none; font-size: 14px; }
+nav a:hover { background: #1a2b45; }
+nav a.active { background: #254980; color: #fff; box-shadow: inset 3px 0 #80a9ff; }
+.nav-empty { padding: 12px; font-size: 14px; }
+.sidebar-footer { margin-top: auto; padding: 44px 12px 0; font-size: 12px; color: #a0b0c8; }
+.local-dot { display: inline-block; margin-right: 8px; width: 7px; height: 7px; border-radius: 50%; background: #91a4c3; }
+main { flex: 1; min-width: 0; }
+.workspace-bar { min-height: 74px; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border); background: #fff; font-size: 13px; }
+.service-label { border: 1px solid var(--border); border-radius: 20px; padding: 7px 12px; color: #66758b; }
+.workspace-page { max-width: 1320px; padding: 48px 44px; margin: auto; }
+.eyebrow { color: #6b7d98; font-size: 11px; letter-spacing: .14em; margin: 0 0 12px; font-weight: 650; }
+h1 { font-size: clamp(26px, 3vw, 34px); line-height: 1.2; font-weight: 650; letter-spacing: -.035em; margin: 0 0 12px; }
+.page-description { color: #66758b; font-size: 15px; line-height: 1.7; margin: 0; }
+.unavailable-panel { margin-top: 38px; padding: 64px 24px; border: 1px solid var(--border); border-radius: var(--radius); text-align: center; background: #fff; }
+.panel-icon { display: grid; place-items: center; margin: auto auto 20px; width: 56px; height: 56px; border-radius: 16px; background: #edf2fe; color: var(--accent); font-size: 28px; }
+h2 { font-size: 19px; font-weight: 600; margin: 0 0 10px; }
+.unavailable-panel p { max-width: 390px; margin: auto; color: #697992; line-height: 1.8; font-size: 14px; }
+.mobile-header { display: none; }
+@media (max-width: 720px) {
+  .app-shell { display: block; }
+  .mobile-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px; background: #101c32; color: #fff; font-size: 13px; }
+  .mobile-header button { padding: 9px 11px; flex-shrink: 0; border: 1px solid #526784; border-radius: 8px; background: #192941; color: #fff; }
+  .sidebar { display: none; width: 100%; padding: 20px 16px; }
+  .sidebar.is-open { display: flex; }
+  .sidebar .brand, .nav-caption, .sidebar-footer { display: none; }
+  .workspace-bar { min-height: 64px; padding: 0 18px; font-size: 12px; }
+  .service-label { font-size: 11px; padding: 6px 9px; }
+  .workspace-page { padding: 32px 18px; }
+  .unavailable-panel { padding: 44px 20px; margin-top: 28px; }
+}

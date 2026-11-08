@@ -1,11 +1,21 @@
-﻿# Nghiên cứu và quyết định kỹ thuật
+# Nghiên cứu và quyết định kỹ thuật
 
-**Ngày**: 2026-11-06. **Phạm vi**: Spec đã Clarify, Constitution 1.0.0.
+**Ngày**: 2026-11-06. **Phạm vi**: Spec đã Clarify, Constitution 1.1.0; các kết quả trước sửa đổi là lịch sử.
 Tài liệu ghi quyết định thiết kế, không xác nhận hệ thống đã được build hoặc integration test.
+
+**Remediation T014 ngày 2026-11-08 đã được duyệt P1–P7:**
+[Phương án](../../docs/proposals/t014-remediation.md) và metadata/triage đi kèm giữ lại
+làm provenance trước thay đổi. Quyết định hiện tại: Router7.18.5/Zod4.6.7, Python3.12.16,
+Node22.23.4/npm12.2.2, PG17.11/MySQL8.4.13, nginx1.30.6-alpine3.24; thử Airflow slim3.3.2
+với provider lock và constraints chính thức không đổi. Playwright client/browser giữ1.56.1,
+runner OS được khóa phiên bản; global npm không cần dùng bị loại khỏi final runner,
+build stage vẫn phải scan. Candidate không tự mang trạng thái compatibility/security PASS.
+Không override constraints hoặc tự nâng core/browser khi còn blocker. Báo cáo thực thi
+hiện hành ở `docs/testing/phase1-report.md`; các NOT_RUN trong thiết kế ban đầu là lịch sử.
 
 ## 1. Nền tảng điều phối và phiên bản
 
-**Quyết định**: Apache Airflow `3.3.2`, image `apache/airflow:3.3.2-python3.12`,
+**Quyết định**: Apache Airflow `3.3.2`, image `apache/airflow:slim-3.3.2-python3.12`,
 Python 3.12; LocalExecutor, parallelism 2, mỗi DAG một task `execute_etl`, max_active_runs 1.
 ETL package và metadata package đóng wheel `0.1.0`, cài trong cùng custom image Airflow.
 
@@ -189,13 +199,13 @@ server validator vẫn là nơi quyết định. Không có câu hỏi nghiệp 
 | TypeScript / Vite / plugin-react | 5.9.3 / 7.3.7 / 5.1.1 |
 | Tailwind / @tailwindcss/vite | 4.1.18 / 4.1.18 |
 | shadcn CLI | 3.5.0; component source được commit, không coi CLI là runtime library |
-| React Router | react-router 7.9.6, declarative mode |
+| React Router | react-router 7.18.5, declarative mode |
 | TanStack Query | @tanstack/react-query 5.90.10 |
-| Form / resolver / Zod | react-hook-form 7.66.0 / @hookform/resolvers 5.2.2 / zod 4.1.12 |
-| Frontend build image | node:22.21.1-bookworm-slim |
-| Static web image | nginx:1.28.0-alpine |
-| Backend image | python:3.12.12-slim-bookworm |
-| PostgreSQL / MySQL image | postgres:17.6-bookworm / mysql:8.4.7 |
+| Form / resolver / Zod | react-hook-form 7.66.0 / @hookform/resolvers 5.2.2 / zod 4.6.7 |
+| Frontend build image | node:22.23.4-bookworm-slim |
+| Static web image | nginx:1.30.6-alpine3.24 |
+| Backend image | python:3.12.16-slim-bookworm |
+| PostgreSQL / MySQL image | postgres:17.11-bookworm / mysql:8.4.13 |
 | FastAPI / Pydantic | 0.136.3 / 2.13.5 |
 | SQLAlchemy / Alembic | 2.0.52 / 1.20.0 |
 | psycopg[binary] / PyMySQL | 3.3.5 / 1.1.3 |
@@ -203,12 +213,12 @@ server validator vẫn là nơi quyết định. Không có câu hỏi nghiệp 
 | cryptography / httpx / python-multipart | 50.0.1 / 0.28.1 / 0.0.32 |
 | Uvicorn / pytest | 0.38.0 / 8.4.2 |
 | Playwright | @playwright/test 1.56.1, browser install cùng version; container mcr.microsoft.com/playwright:v1.56.1-noble nếu dùng CI |
-| Airflow runtime | apache/airflow:3.3.2-python3.12, constraints3.3.2/Python3.12 |
+| Airflow runtime | apache/airflow:slim-3.3.2-python3.12, constraints3.3.2/Python3.12 |
 
 Metadata npm/PyPI và23 package/image requests đã kiểm tra tồn tại thành công, nguồn và
 kết quả từng mục ở [dependency-verification.json](contracts/dependency-verification.json).
 Backend shared pins lấy từ constraints chính thức; không khẳng định metadata existence bằng
-build compatibility. Vite/plugin yêu cầu Node20.19+ hoặc22.12+; Node22.21.1 đáp ứng.
+build compatibility. Vite/plugin yêu cầu Node20.19+ hoặc22.12+; Node22.23.4 đáp ứng.
 Resolver/Zod4, React19, Tailwind4 và Vite7 được chọn cùng generation; verify peerDependencies,
 npm ci/build/typecheck và pip check trên cả backend/Airflow là gate Phase1, chưa chạy ở Plan.
 
@@ -260,6 +270,47 @@ typed thiếu trong Analyze; không thay requirement gốc hoặc stack. Tên ta
 được chuẩn hóa tại Data Model. Số operation/schema phải lấy từ contract hiện tại, không
 đóng đinh baseline 40 khi thiết kế đã mở rộng. Workbook1.0 và sample bytes không thay đổi.
 
+## 12. Rà soát có mục tiêu sau Analyze bản152task (2026-11-08)
+
+### Private runtime và namespace
+
+**Quyết định:** Giữ `http://backend:8000/internal/runtime/bind` là URL canonical;
+operation OpenAPI đã override server về `http://backend:8000`. Router private nằm ngoài
+`/api/v1`; frontend trả404 cho cả `/internal/runtime` và `/api/v1/internal/runtime` cùng
+path con trước proxy/fallback. Kiểm qua frontend kể cả khi có bearer hợp lệ; gọi trực tiếp
+canonical vẫn kiểm bearer và identity/version. Không tạo public alias.
+
+**Lý do:** Kiểm lại artifact thấy override đã tồn tại; nhận định Analyze thiếu override
+được rút lại. Phần cần làm rõ là yêu cầu proxy và kiểm chứng hai biến thể, không phải đổi
+URL hiện hữu. **Phương án loại:** di chuyển private endpoint vào public router hoặc chỉ
+kiểm một prefix, khiến alias/fallback có thể không được kiểm thử.
+
+### Runner sớm và gate foundation
+
+**Quyết định:** Phase1 tạo runner pytest/Playwright và Compose test profile tối thiểu;
+Phase2 mở rộng fixtures/harness nền; Phase3 nghiệm thu Connections E2E trên runner đã có.
+Playwright client/browser/image cùng1.56.1, fixtures project/volumes/namespaces độc lập.
+Phase8 chỉ mở rộng regression. Gate Phase2 chỉ schema/repositories/migrations/seed/
+Operation recovery/readiness; Connections CRUD và Settings API nghiệm thu tại Phase3/7.
+
+**Lý do:** T138 hiện nằm sau các gate E2E bắt buộc, gate Phase2 còn nhắc API chưa triển khai.
+**Phương án loại:** đợi Phase8 hoặc lặng lẽ cài runner local ngoài task, vì không tái lập
+được prerequisite. Chỉ đổi vị trí hạ tầng kiểm thử, không thay ưu tiên core hoặc8phase.
+
+### Bytes mẫu và phạm vi authorization
+
+**Quyết định:** Thiết kế `.gitattributes` pin LF cho `samples/data/*.csv` và `*.txt`,
+giữ XLSX binary; xác minh SHA256 raw giữa checkout Windows/Linux và seed. Không normalize
+upload. Lượt này không đổi sample bytes. Authorization giữ state BR-08, không thêm TTL/
+EXPIRED; sửa tên test `authorization expired` thành revoked/invalidated và tách test token
+xác nhận10phút hết hạn khỏi idempotency replay.
+
+**Lý do:** Git index LF/working tree CRLF giải thích chính xác hai sample hashes lệch;
+normalize trong bộ nhớ để chẩn đoán khớp manifest lịch sử, không chứng minh raw bytes khớp.
+BR-08/model/API không định nghĩa authorization expiration. **Phương án loại:** cập nhật
+manifest theo EOL mỗi máy hoặc suy TTL quyền từ token xác nhận, vì làm mất tính tái lập
+hoặc đổi nghiệp vụ. Không có unknown nghiệp vụ mới cần nghiên cứu/Clarify trong phạm vi này.
+
 ## Kết luận nghiên cứu
 
 Các quyết định blocking đã được chốt. Không còn placeholder hoặc câu hỏi nghiệp vụ;
@@ -269,5 +320,28 @@ của implementation, không là bằng chứng đã có. Các thiết kế ti�
 Đối chiếu bổ sung peerDependencies từ registry ở [peer-dependencies.json](contracts/peer-dependencies.json):
 react-dom19.2 yêu cầu React^19.2; plugin-react5.1.1 và Tailwind Vite4.1.18 đều nhận Vite7;
 resolver5.2.2 nhận RHF^7.55, RHF7.66/TanStack5.90/Router7.9 nhận React19;
-Node22.21.1 vượt minimum22.12 của Vite/plugin. Đây là kiểm metadata peer ranges,
+Node22.23.4 vượt minimum22.12 của Vite/plugin. Đây là kiểm metadata peer ranges,
 không thay npm resolver/full build/transitive lock hoặc test compatibility trên containers.
+
+## 13. Podman theo bản sửa đã duyệt ngày 2026-11-08
+
+**Quyết định:** Cho phép Docker hoặc Podman theo Constitution1.1.0; baseline dự án hiện
+chọn Podman client5.8.3/server5.8.9 trên WSL Linux/amd64/cgroupv2/rootful và provider Docker
+Compose5.6.0. Giữ Compose/Dockerfile hiện có, named volumes/health/init/resources/secret
+semantics. Lệnh startup baseline là `podman compose up --build -d`; pin provider và ghi đủ
+phiên bản trong evidence. Fully qualified registry refs/digests tránh short-name ambiguity.
+
+**Lý do:** Engine/provider đã phản hồi trên máy hiện tại, không cần cài Docker Desktop;
+quy tắc Docker-only trước đây cần sửa quản trị trước khi nghiệm thu Podman. Chủ dự án đã
+phê duyệt [bản sửa](../../docs/proposals/podman-support.md); thêm lựa chọn nên tăng MINOR,
+không nới safety hoặc đổi BR-08. Memory metadata WSL khác memory engine quan sát được,
+cần kiểm actual cgroup/free disk thay vì suy từ config.
+
+**Phương án loại:** alias Docker rồi coi đã test Docker; đổi provider/rootful machine toàn
+cục không ghi nhận; bỏ service_healthy/limits/volume permissions để stack chạy. Build,
+install/pip check Linux, nginx và toàn stack vẫn NOT_RUN, client/server khác phiên bản
+phải kiểm compatibility thực tế chứ không tự đổi version.
+
+**Nguồn:** [Podman5.8.3 compose](https://docs.podman.io/en/v5.8.3/markdown/podman-compose.1.html)
+quy định external provider/selection; [Podman Desktop Compose](https://podman-desktop.io/docs/compose/setting-up-compose)
+hướng dẫn xác minh provider. Không dùng tài liệu hoặc lệnh help thay integration tests.

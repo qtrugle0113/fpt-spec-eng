@@ -1,0 +1,352 @@
+﻿Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages will be upgraded:
+  apt base-files bsdutils ca-certificates coreutils curl diffutils dirmngr
+  dpkg gcc-14-base git git-man gpg gpg-agent gpgconf gpgv
+  gstreamer1.0-plugins-base gstreamer1.0-plugins-good gzip krb5-locales
+  libaom3 libapparmor1 libapt-pkg6.0t64 libasound2-data libasound2t64
+  libatomic1 libattr1 libaudit-common libaudit1 libavahi-client3
+  libavahi-common-data libavahi-common3 libblkid1 libbrotli1 libbz2-1.0
+  libc-bin libc6 libcaca0 libcap2 libcap2-bin libcups2t64 libcurl3t64-gnutls
+  libcurl4t64 libde265-0 libdrm-amdgpu1 libdrm-common libdrm-intel1 libdrm2
+  libegl-mesa0 libevent-2.1-7t64 libexpat1 libfdisk1 libfreetype6 libgbm1
+  libgcc-s1 libgcrypt20 libgdk-pixbuf-2.0-0 libgdk-pixbuf2.0-common
+  libgfortran5 libgl1-mesa-dri libglib2.0-0t64 libglx-mesa0 libgnutls30t64
+  libgomp1 libgraphite2-3 libgssapi-krb5-2 libgstreamer-gl1.0-0
+  libgstreamer-plugins-base1.0-0 libgstreamer-plugins-good1.0-0 libgtk-4-1
+  libgtk-4-common libk5crypto3 libkmod2 libkrb5-3 libkrb5support0 liblcms2-2
+  libldap-common libldap2 libllvm20 liblzma5 libmount1 libncurses6
+  libncursesw6 libnghttp2-14 libnss3 libnuma1 libopenjp2-7 libp11-kit0
+  libpam-modules libpam-modules-bin libpam-runtime libpam-systemd libpam0g
+  libpciaccess0 libpcre2-8-0 libperl5.38t64 libpipewire-0.3-0t64
+  libpng16-16t64 libproc2-0 libpython3-stdlib libpython3.12-minimal
+  libpython3.12-stdlib librabbitmq4 librsvg2-2 libsmartcols1 libsodium23
+  libsoup-3.0-0 libsoup-3.0-common libspa-0.2-modules libsqlite3-0 libssh-4
+  libssh-gcrypt-4 libssl3t64 libstdc++6 libsystemd-shared libsystemd0
+  libtasn1-6 libtiff6 libtinfo6 libudev1 libuuid1 libva-drm2 libva-x11-2
+  libva2 libvpx9 libx11-6 libx11-data libx11-xcb1 libxfont2 libxml2 libxpm4
+  libxslt1.1 libxtst6 mesa-libgallium mount ncurses-base ncurses-bin nodejs
+  openssh-client openssl perl perl-base perl-modules-5.38 procps python3
+  python3-minimal python3.12 python3.12-minimal sed systemd systemd-dev
+  systemd-sysv tar tzdata util-linux wget xserver-common xvfb zlib1g
+159 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Inst libatomic1 [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libgomp1 [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libgfortran5 [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst gcc-14-base [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libstdc++6:amd64 libgcc-s1:amd64 ]
+Conf gcc-14-base (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libstdc++6:amd64 libgcc-s1:amd64 ]
+Inst libgcc-s1 [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libstdc++6:amd64 ]
+Conf libgcc-s1 (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libstdc++6:amd64 ]
+Inst libstdc++6 [14.2.0-4ubuntu2~24.04] (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libstdc++6 (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libc6 [2.39-0ubuntu8.6] (2.39-0ubuntu8.9 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libc6 (2.39-0ubuntu8.9 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst base-files [13ubuntu10.3] (13ubuntu10.5 Ubuntu:24.04/noble-updates [amd64])
+Conf base-files (13ubuntu10.5 Ubuntu:24.04/noble-updates [amd64])
+Inst bsdutils [1:2.39.3-9ubuntu6.3] (1:2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf bsdutils (1:2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst coreutils [9.4-3ubuntu6.1] (9.4-3ubuntu6.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf coreutils (9.4-3ubuntu6.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst diffutils [1:3.10-1build1] (1:3.10-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf diffutils (1:3.10-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libbz2-1.0 [1.0.8-5.1build0.1] (1.0.8-5.1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libbz2-1.0 (1.0.8-5.1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgcrypt20 [1.10.3-2build1] (1.10.3-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgcrypt20 (1.10.3-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst liblzma5 [5.6.1+really5.4.5-1ubuntu0.2] (5.6.1+really5.4.5-1ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf liblzma5 (5.6.1+really5.4.5-1ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libapparmor1 [4.0.1really4.0.1-0ubuntu0.24.04.4] (4.0.1really4.0.1-0ubuntu0.24.04.9 Ubuntu:24.04/noble-updates [amd64])
+Inst libaudit-common [1:3.1.2-2.1build1.1] (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [all])
+Conf libaudit-common (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [all])
+Inst libaudit1 [1:3.1.2-2.1build1.1] (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [amd64])
+Conf libaudit1 (1:3.1.2-2.1ubuntu0.1 Ubuntu:24.04/noble-updates [amd64])
+Inst libblkid1 [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libblkid1 (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libcap2 [1:2.66-5ubuntu2.2] (1:2.66-5ubuntu2.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libcap2 (1:2.66-5ubuntu2.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libssl3t64 [3.0.13-0ubuntu3.6] (3.0.13-0ubuntu3.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libssl3t64 (3.0.13-0ubuntu3.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libkmod2 [31+20240202-2ubuntu7.1] (31+20240202-2ubuntu7.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libmount1 [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libmount1 (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libpam0g [1.5.3-5ubuntu5.5] (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpam0g (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libpam-systemd [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst systemd-sysv [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst systemd-dev [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all]) []
+Inst systemd [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libsystemd-shared [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libpam-modules-bin [1.5.3-5ubuntu5.5] (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libpam-modules:amd64 on libpam-modules-bin:amd64] [libpam-modules:amd64 ]
+Conf libpam-modules-bin (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libpam-modules:amd64 ]
+Inst libpam-modules [1.5.3-5ubuntu5.5] (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Conf libpam-modules (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libpam-runtime [1.5.3-5ubuntu5.5] (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all]) []
+Conf libpam-runtime (1.5.3-5ubuntu5.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all]) []
+Inst libuuid1 [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Conf libuuid1 (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libfdisk1 [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst mount [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libsystemd0 [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsystemd0 (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libudev1 [255.4-1ubuntu8.11] (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libudev1 (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst zlib1g [1:1.3.dfsg-3.1ubuntu2.1] (1:1.3.dfsg-3.1ubuntu2.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf zlib1g (1:1.3.dfsg-3.1ubuntu2.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libapt-pkg6.0t64 [2.8.3] (2.8.4ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libapt-pkg6.0t64 (2.8.4ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst tar [1.35+dfsg-3build1] (1.35+dfsg-3ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf tar (1.35+dfsg-3ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst dpkg [1.22.6ubuntu6.5] (1.22.6ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf dpkg (1.22.6ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst gzip [1.12-1ubuntu3.1] (1.12-1ubuntu3.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gzip (1.12-1ubuntu3.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst ncurses-bin [6.4+20240113-1ubuntu2] (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf ncurses-bin (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libperl5.38t64 [5.38.2-3.2ubuntu0.2] (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [perl:amd64 ]
+Inst perl [5.38.2-3.2ubuntu0.2] (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst perl-base [5.38.2-3.2ubuntu0.2] (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Conf perl-base (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst perl-modules-5.38 [5.38.2-3.2ubuntu0.2] (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst sed [4.9-2build1] (4.9-2ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf sed (4.9-2ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst util-linux [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf util-linux (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libc-bin [2.39-0ubuntu8.6] (2.39-0ubuntu8.9 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libc-bin (2.39-0ubuntu8.9 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst ncurses-base [6.4+20240113-1ubuntu2] (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf ncurses-base (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst gpgv [2.4.4-2ubuntu17.3] (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gpgv (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libp11-kit0 [0.25.3-4ubuntu2.1] (0.25.3-4ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libp11-kit0 (0.25.3-4ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libtasn1-6 [4.19.0-3ubuntu0.24.04.1] (4.19.0-3ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libtasn1-6 (4.19.0-3ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgnutls30t64 [3.8.3-1.1ubuntu3.4] (3.8.3-1.1ubuntu3.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgnutls30t64 (3.8.3-1.1ubuntu3.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst apt [2.8.3] (2.8.4ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf apt (2.8.4ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst python3-minimal [3.12.3-0ubuntu2] (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [python3:amd64 on python3-minimal:amd64] [python3:amd64 ]
+Conf python3-minimal (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [python3:amd64 ]
+Inst python3 [3.12.3-0ubuntu2] (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst tzdata [2025b-0ubuntu0.24.04.1] (2026e-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all]) []
+Inst libncurses6 [6.4+20240113-1ubuntu2] (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libncursesw6 [6.4+20240113-1ubuntu2] (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libtinfo6 [6.4+20240113-1ubuntu2] (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Conf libtinfo6 (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libsqlite3-0 [3.45.1-1ubuntu2.5] (3.45.1-1ubuntu2.9 Ubuntu:24.04/noble-updates [amd64]) []
+Inst python3.12 [3.12.3-1ubuntu0.8] (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libpython3.12-stdlib [3.12.3-1ubuntu0.8] (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst python3.12-minimal [3.12.3-1ubuntu0.8] (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libpython3.12-minimal [3.12.3-1ubuntu0.8] (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libexpat1 [2.6.1-2ubuntu0.3] (2.6.1-2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libpython3-stdlib [3.12.3-0ubuntu2] (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libattr1 [1:2.5.2-1build1.1] (1:2.5.2-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libattr1 (1:2.5.2-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libpcre2-8-0 [10.42-4ubuntu2.1] (10.42-4ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpcre2-8-0 (10.42-4ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libsmartcols1 [2.39.3-9ubuntu6.3] (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsmartcols1 (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libproc2-0 [2:4.0.4-4ubuntu3.2] (2:4.0.4-4ubuntu3.3 Ubuntu:24.04/noble-updates [amd64])
+Inst procps [2:4.0.4-4ubuntu3.2] (2:4.0.4-4ubuntu3.3 Ubuntu:24.04/noble-updates [amd64])
+Inst openssl [3.0.13-0ubuntu3.6] (3.0.13-0ubuntu3.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst ca-certificates [20240203] (20260816ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst krb5-locales [1.20.1-6ubuntu2.6] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [all])
+Inst libcap2-bin [1:2.66-5ubuntu2.2] (1:2.66-5ubuntu2.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libglib2.0-0t64 [2.80.0-6ubuntu3.4] (2.80.0-6ubuntu3.10 Ubuntu:24.04/noble-updates [amd64])
+Inst libgssapi-krb5-2 [1.20.1-6ubuntu2.6] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libkrb5-3 [1.20.1-6ubuntu2.6] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libkrb5support0 [1.20.1-6ubuntu2.6] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64]) [libk5crypto3:amd64 ]
+Inst libk5crypto3 [1.20.1-6ubuntu2.6] (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Inst libxml2 [2.9.14+dfsg-1.3ubuntu3.5] (2.9.14+dfsg-1.3ubuntu3.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libdrm-common [2.4.122-1~ubuntu0.24.04.1] (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst libdrm2 [2.4.122-1~ubuntu0.24.04.1] (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libnghttp2-14 [1.59.0-1ubuntu0.2] (1.59.0-1ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libnuma1 [2.0.18-1build1] (2.0.18-1ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [amd64])
+Inst libpng16-16t64 [1.6.43-5build1] (1.6.43-5ubuntu0.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libx11-6 [2:1.8.7-1build1] (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [libx11-xcb1:amd64 ]
+Inst libx11-xcb1 [2:1.8.7-1build1] (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libx11-data [2:1.8.7-1build1] (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst libbrotli1 [1.1.0-2build2] (1.1.0-2ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libldap2 [2.6.7+dfsg-1~exp1ubuntu8.2] (2.6.10+dfsg-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [amd64])
+Inst libssh-4 [0.10.6-2ubuntu0.1] (0.10.6-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libcurl3t64-gnutls [8.5.0-2ubuntu10.6] (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst git-man [1:2.43.0-1ubuntu7.3] (1:2.43.0-1ubuntu7.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst git [1:2.43.0-1ubuntu7.3] (1:2.43.0-1ubuntu7.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst openssh-client [1:9.6p1-3ubuntu13.14] (1:9.6p1-3ubuntu13.20 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst wget [1.21.4-1ubuntu4.1] (1.21.4-1ubuntu4.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst curl [8.5.0-2ubuntu10.6] (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libcurl4t64 [8.5.0-2ubuntu10.6] (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst dirmngr [2.4.4-2ubuntu17.3] (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst gpg [2.4.4-2ubuntu17.3] (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst gpgconf [2.4.4-2ubuntu17.3] (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) [gpg-agent:amd64 ]
+Inst gpg-agent [2.4.4-2ubuntu17.3] (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgstreamer-plugins-base1.0-0 [1.24.2-1ubuntu0.3] (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst gstreamer1.0-plugins-base [1.24.2-1ubuntu0.3] (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libcaca0 [0.99.beta20-4build2] (0.99.beta20-4ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgdk-pixbuf2.0-common [2.42.10+dfsg-3ubuntu3.2] (2.42.10+dfsg-3ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst libtiff6 [4.5.1+git230720-4ubuntu2.4] (4.5.1+git230720-4ubuntu2.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgdk-pixbuf-2.0-0 [2.42.10+dfsg-3ubuntu3.2] (2.42.10+dfsg-3ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst gstreamer1.0-plugins-good [1.24.2-1ubuntu1.2] (1.24.2-1ubuntu1.8 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libgstreamer-plugins-good1.0-0 [1.24.2-1ubuntu1.2] (1.24.2-1ubuntu1.8 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libvpx9 [1.14.0-1ubuntu2.2] (1.14.0-1ubuntu2.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libxtst6 [2:1.2.3-1.1build1] (2:1.2.3-1.1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libsoup-3.0-common [3.4.4-5ubuntu0.5] (3.4.4-5ubuntu0.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst libsoup-3.0-0 [3.4.4-5ubuntu0.5] (3.4.4-5ubuntu0.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libaom3 [3.8.2-2ubuntu0.1] (3.8.2-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libasound2t64 [1.2.11-1ubuntu0.1] (1.2.11-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libasound2-data [1.2.11-1ubuntu0.1] (1.2.11-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Inst libavahi-client3 [0.8-13ubuntu6] (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libavahi-common3 [0.8-13ubuntu6] (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libavahi-common-data [0.8-13ubuntu6] (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libcups2t64 [2.4.7-1.2ubuntu7.4] (2.4.7-1.2ubuntu7.14 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libde265-0 [1.0.15-1build3] (1.0.15-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libdrm-amdgpu1 [2.4.122-1~ubuntu0.24.04.1] (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libpciaccess0 [0.17-3ubuntu0.24.04.2] (0.17-3ubuntu0.24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Inst libdrm-intel1 [2.4.122-1~ubuntu0.24.04.1] (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgl1-mesa-dri [25.0.7-0ubuntu0.24.04.2] (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libglx-mesa0 [25.0.7-0ubuntu0.24.04.2] (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libllvm20 [1:20.1.2-0ubuntu1~24.04.2] (1:20.1.2-0ubuntu1~24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libegl-mesa0 [25.0.7-0ubuntu0.24.04.2] (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64]) []
+Inst libgbm1 [25.0.7-0ubuntu0.24.04.2] (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64]) []
+Inst mesa-libgallium [25.0.7-0ubuntu0.24.04.2] (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Inst libevent-2.1-7t64 [2.1.12-stable-9ubuntu2] (2.1.12-stable-9ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libfreetype6 [2.13.2+dfsg-1build3] (2.13.2+dfsg-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgraphite2-3 [1.3.14-2build1] (1.3.14-2ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgstreamer-gl1.0-0 [1.24.2-1ubuntu0.3] (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libgtk-4-common [4.14.5+ds-0ubuntu0.5] (4.14.5+ds-0ubuntu0.10 Ubuntu:24.04/noble-updates [all])
+Inst libgtk-4-1 [4.14.5+ds-0ubuntu0.5] (4.14.5+ds-0ubuntu0.10 Ubuntu:24.04/noble-updates [amd64])
+Inst liblcms2-2 [2.14-2build1] (2.14-2ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libldap-common [2.6.7+dfsg-1~exp1ubuntu8.2] (2.6.10+dfsg-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [all])
+Inst libnss3 [2:3.98-1build1] (2:3.98-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libpipewire-0.3-0t64 [1.0.5-1ubuntu3.1] (1.0.5-1ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64]) []
+Inst libspa-0.2-modules [1.0.5-1ubuntu3.1] (1.0.5-1ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst librabbitmq4 [0.11.0-1build2] (0.11.0-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst librsvg2-2 [2.58.0+dfsg-1build1] (2.58.0+dfsg-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libsodium23 [1.0.18-1build3] (1.0.18-1ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libssh-gcrypt-4 [0.10.6-2ubuntu0.1] (0.10.6-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libva2 [2.20.0-2build1] (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libva-drm2 [2.20.0-2build1] (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libva-x11-2 [2.20.0-2build1] (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libxfont2 [1:2.0.6-1build1] (1:2.0.6-1+deb13u1build0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libxpm4 [1:3.5.17-1build2] (1:3.5.17-1ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst libxslt1.1 [1.1.39-0exp1ubuntu0.24.04.2] (1.1.39-0exp1ubuntu0.24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Inst nodejs [22.20.0-1nodesource1] (22.23.4-1nodesource1 . nodistro:nodistro [amd64])
+Inst xserver-common [2:21.1.12-1ubuntu1.4] (2:21.1.12-1ubuntu1.9 Ubuntu:24.04/noble-updates [all])
+Inst xvfb [2:21.1.12-1ubuntu1.4] (2:21.1.12-1ubuntu1.9 Ubuntu:24.04/noble-updates [amd64])
+Inst libopenjp2-7 [2.5.0-2ubuntu0.4] (2.5.0-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libatomic1 (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgomp1 (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgfortran5 (14.2.0-4ubuntu2~24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libapparmor1 (4.0.1really4.0.1-0ubuntu0.24.04.9 Ubuntu:24.04/noble-updates [amd64])
+Conf libkmod2 (31+20240202-2ubuntu7.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpam-systemd (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf systemd-sysv (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf systemd-dev (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf systemd (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsystemd-shared (255.4-1ubuntu8.18 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libfdisk1 (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf mount (2.39.3-9ubuntu6.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libperl5.38t64 (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf perl (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf perl-modules-5.38 (5.38.2-3.2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf python3 (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf tzdata (2026e-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libncurses6 (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libncursesw6 (6.4+20240113-1ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsqlite3-0 (3.45.1-1ubuntu2.9 Ubuntu:24.04/noble-updates [amd64])
+Conf python3.12 (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpython3.12-stdlib (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf python3.12-minimal (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpython3.12-minimal (3.12.3-1ubuntu0.17 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libexpat1 (2.6.1-2ubuntu0.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpython3-stdlib (3.12.3-0ubuntu2.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libproc2-0 (2:4.0.4-4ubuntu3.3 Ubuntu:24.04/noble-updates [amd64])
+Conf procps (2:4.0.4-4ubuntu3.3 Ubuntu:24.04/noble-updates [amd64])
+Conf openssl (3.0.13-0ubuntu3.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf ca-certificates (20260816ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf krb5-locales (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [all])
+Conf libcap2-bin (1:2.66-5ubuntu2.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libglib2.0-0t64 (2.80.0-6ubuntu3.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libgssapi-krb5-2 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libkrb5-3 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libkrb5support0 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libk5crypto3 (1.20.1-6ubuntu2.10 Ubuntu:24.04/noble-updates [amd64])
+Conf libxml2 (2.9.14+dfsg-1.3ubuntu3.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libdrm-common (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libdrm2 (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libnghttp2-14 (1.59.0-1ubuntu0.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libnuma1 (2.0.18-1ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [amd64])
+Conf libpng16-16t64 (1.6.43-5ubuntu0.7 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libx11-6 (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libx11-xcb1 (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libx11-data (2:1.8.7-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libbrotli1 (1.1.0-2ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libldap2 (2.6.10+dfsg-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [amd64])
+Conf libssh-4 (0.10.6-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libcurl3t64-gnutls (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf git-man (1:2.43.0-1ubuntu7.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf git (1:2.43.0-1ubuntu7.4 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf openssh-client (1:9.6p1-3ubuntu13.20 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf wget (1.21.4-1ubuntu4.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf curl (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libcurl4t64 (8.5.0-2ubuntu10.16 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf dirmngr (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gpg (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gpgconf (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gpg-agent (2.4.4-2ubuntu17.6 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgstreamer-plugins-base1.0-0 (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gstreamer1.0-plugins-base (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libcaca0 (0.99.beta20-4ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgdk-pixbuf2.0-common (2.42.10+dfsg-3ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libtiff6 (4.5.1+git230720-4ubuntu2.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgdk-pixbuf-2.0-0 (2.42.10+dfsg-3ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf gstreamer1.0-plugins-good (1.24.2-1ubuntu1.8 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgstreamer-plugins-good1.0-0 (1.24.2-1ubuntu1.8 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libvpx9 (1.14.0-1ubuntu2.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libxtst6 (2:1.2.3-1.1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsoup-3.0-common (3.4.4-5ubuntu0.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libsoup-3.0-0 (3.4.4-5ubuntu0.10 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libaom3 (3.8.2-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libasound2t64 (1.2.11-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libasound2-data (1.2.11-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [all])
+Conf libavahi-client3 (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libavahi-common3 (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libavahi-common-data (0.8-13ubuntu6.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libcups2t64 (2.4.7-1.2ubuntu7.14 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libde265-0 (1.0.15-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libdrm-amdgpu1 (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpciaccess0 (0.17-3ubuntu0.24.04.3 Ubuntu:24.04/noble-updates [amd64])
+Conf libdrm-intel1 (2.4.125-1ubuntu0.1~24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgl1-mesa-dri (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Conf libglx-mesa0 (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Conf libllvm20 (1:20.1.2-0ubuntu1~24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libegl-mesa0 (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Conf libgbm1 (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Conf mesa-libgallium (25.2.8-0ubuntu0.24.04.4 Ubuntu:24.04/noble-updates [amd64])
+Conf libevent-2.1-7t64 (2.1.12-stable-9ubuntu2.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libfreetype6 (2.13.2+dfsg-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgraphite2-3 (1.3.14-2ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgstreamer-gl1.0-0 (1.24.2-1ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libgtk-4-common (4.14.5+ds-0ubuntu0.10 Ubuntu:24.04/noble-updates [all])
+Conf libgtk-4-1 (4.14.5+ds-0ubuntu0.10 Ubuntu:24.04/noble-updates [amd64])
+Conf liblcms2-2 (2.14-2ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libldap-common (2.6.10+dfsg-0ubuntu0.24.04.1 Ubuntu:24.04/noble-updates [all])
+Conf libnss3 (2:3.98-1ubuntu0.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libpipewire-0.3-0t64 (1.0.5-1ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libspa-0.2-modules (1.0.5-1ubuntu3.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf librabbitmq4 (0.11.0-1ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf librsvg2-2 (2.58.0+dfsg-1ubuntu0.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libsodium23 (1.0.18-1ubuntu0.24.04.1 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libssh-gcrypt-4 (0.10.6-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libva2 (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libva-drm2 (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libva-x11-2 (2.20.0-2ubuntu0.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libxfont2 (1:2.0.6-1+deb13u1build0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libxpm4 (1:3.5.17-1ubuntu0.24.04.2 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf libxslt1.1 (1.1.39-0exp1ubuntu0.24.04.3 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
+Conf nodejs (22.23.4-1nodesource1 . nodistro:nodistro [amd64])
+Conf xserver-common (2:21.1.12-1ubuntu1.9 Ubuntu:24.04/noble-updates [all])
+Conf xvfb (2:21.1.12-1ubuntu1.9 Ubuntu:24.04/noble-updates [amd64])
+Conf libopenjp2-7 (2.5.0-2ubuntu0.5 Ubuntu:24.04/noble-updates, Ubuntu:24.04/noble-security [amd64])
