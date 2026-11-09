@@ -1,0 +1,61 @@
+python : test_changed_upstream_or_extra_override_fail_closed 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_changed_upstream_or_extra_override_fail_closed) ... 
+ERROR
+At line:2 char:1
++ python -m unittest tests.unit.test_airflow_constraints -v *> .tools/t ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_changed_up...osed) ... ERROR:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_committed_override_artifacts_match_policy 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_committed_override_artifacts_match_policy) ... ERROR
+test_only_approved_pins_change_and_upstream_unchanged 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_only_approved_pins_change_and_upstream_unchanged) 
+... ERROR
+
+======================================================================
+ERROR: test_changed_upstream_or_extra_override_fail_closed 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_changed_upstream_or_extra_override_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\TrungLQ13\Desktop\workplaces\spec-engineer\tests\unit\test_airflow_constraints.py", line 18, in setUp
+    spec.loader.exec_module(self.module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1019, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1156, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1214, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 
+'C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\airflow\\docker\\build_constraints.py'
+
+======================================================================
+ERROR: test_committed_override_artifacts_match_policy 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_committed_override_artifacts_match_policy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\TrungLQ13\Desktop\workplaces\spec-engineer\tests\unit\test_airflow_constraints.py", line 18, in setUp
+    spec.loader.exec_module(self.module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1019, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1156, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1214, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 
+'C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\airflow\\docker\\build_constraints.py'
+
+======================================================================
+ERROR: test_only_approved_pins_change_and_upstream_unchanged 
+(tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_only_approved_pins_change_and_upstream_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\TrungLQ13\Desktop\workplaces\spec-engineer\tests\unit\test_airflow_constraints.py", line 18, in setUp
+    spec.loader.exec_module(self.module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 1019, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1156, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1214, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: 
+'C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\airflow\\docker\\build_constraints.py'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (errors=3)

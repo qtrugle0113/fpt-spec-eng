@@ -1,0 +1,37 @@
+[
+  {
+    "name": "frontend-build",
+    "dockerfile": "frontend/Dockerfile",
+    "target": "build",
+    "ref": "localhost/aat-frontend-build:0.1.0",
+    "image_id": "6232dc8e1ae8c4ac8ea31245364e661d7a15566c6ec21b2800cf50bc1458e539"
+  },
+  {
+    "name": "backend-wheels",
+    "dockerfile": "backend/Dockerfile",
+    "target": "wheels",
+    "ref": "localhost/aat-backend-wheels:0.1.0",
+    "image_id": "a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1"
+  },
+  {
+    "name": "airflow-wheels",
+    "dockerfile": "airflow/docker/Dockerfile",
+    "target": "wheels",
+    "ref": "localhost/aat-airflow-wheels:0.1.0",
+    "image_id": "4f924a1f266b648d5fe405657b5d15ba2a1d52a316e96c2420c73b2aa89bc68b"
+  },
+  {
+    "name": "e2e-dependencies",
+    "dockerfile": "docker/tests/playwright.Dockerfile",
+    "target": "dependencies",
+    "ref": "localhost/aat-e2e-dependencies:0.1.0",
+    "image_id": "eeaff03ea5c857a7177298bec449f238fc6474df209ddf02c1c4dee0d7d36815"
+  },
+  {
+    "name": "gosu-build",
+    "dockerfile": "docker/gosu/Dockerfile",
+    "target": "gosu-build",
+    "ref": "localhost/aat-gosu-build:0.1.0",
+    "image_id": "4df75bf7e1bf9a7bfa791c57e8cb6537b2d7927e701f64e63cfba0fdc9f4a73d"
+  }
+]

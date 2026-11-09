@@ -1,0 +1,12 @@
+test_lock_drift_missing_and_duplicate_entries_are_rejected (tests.unit.test_image_baseline.ImageBaselineTests.test_lock_drift_missing_and_duplicate_entries_are_rejected) ... ok
+test_pinned_sources_and_internal_stages_match_lock (tests.unit.test_image_baseline.ImageBaselineTests.test_pinned_sources_and_internal_stages_match_lock) ... ok
+test_unpinned_and_conflicting_from_are_rejected (tests.unit.test_image_baseline.ImageBaselineTests.test_unpinned_and_conflicting_from_are_rejected) ... ok
+test_changed_upstream_or_extra_override_fail_closed (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_changed_upstream_or_extra_override_fail_closed) ... ok
+test_committed_override_artifacts_match_policy (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_committed_override_artifacts_match_policy) ... ok
+test_only_approved_pins_change_and_upstream_unchanged (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_only_approved_pins_change_and_upstream_unchanged) ... ok
+test_source_pins_match_image_lock (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.071s
+
+OK

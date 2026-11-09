@@ -2,6 +2,6 @@
   "name": "aat-e2e",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {"@playwright/test": "1.56.1"},
+  "devDependencies": {"@playwright/test": "1.65.0"},
   "scripts": {"test": "playwright test"}
 }

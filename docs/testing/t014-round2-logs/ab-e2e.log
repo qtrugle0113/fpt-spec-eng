@@ -1,0 +1,13 @@
+[4m>>>> Executing external compose provider "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-phase1-t014-ab-20261109-e2e-tests-run-2784407d1cc9 Creating 
+ Container aat-phase1-t014-ab-20261109-e2e-tests-run-2784407d1cc9 Created 
+
+Running 4 tests using 1 worker
+
+  ✓  1 [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable (1.0s)
+  ✓  2 [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx (194ms)
+  ✓  3 [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable (555ms)
+  ✓  4 [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx (99ms)
+
+  4 passed (3.7s)

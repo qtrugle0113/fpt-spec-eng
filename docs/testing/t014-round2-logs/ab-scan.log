@@ -1,0 +1,742 @@
+SCAN_PREFLIGHT_PASS 20 targets
+SCAN_START python-build-base 313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18
+python : Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+At line:9 char:96
++ ... rity.json'; python tests/tools/scan_phase1_images.py *> .tools/t014-a ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Copying blob sh...3bebaea4ffd62c2:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying config sha256:313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18
+Writing manifest to image destination
+2026-11-09T01:17:52Z	INFO	[vulndb] Need to update DB
+2026-11-09T01:17:52Z	INFO	[vulndb] Downloading vulnerability DB...
+2026-11-09T01:17:52Z	INFO	[vulndb] Downloading artifact...	repo="mirror.gcr.io/aquasec/trivy-db:2"
+575.27 KiB / 132.14 MiB [>___________________________________________________________] 0.43% ? p/s ?3.16 MiB / 132.14 
+MiB [->____________________________________________________________] 2.39% ? p/s ?7.06 MiB / 132.14 MiB 
+[--->__________________________________________________________] 5.35% ? p/s ?10.80 MiB / 132.14 MiB 
+[--->____________________________________________] 8.17% 17.07 MiB p/s ETA 7s14.05 MiB / 132.14 MiB 
+[---->__________________________________________] 10.63% 17.07 MiB p/s ETA 6s17.61 MiB / 132.14 MiB 
+[------>________________________________________] 13.33% 17.07 MiB p/s ETA 6s21.35 MiB / 132.14 MiB 
+[------->_______________________________________] 16.16% 17.10 MiB p/s ETA 6s25.44 MiB / 132.14 MiB 
+[--------->_____________________________________] 19.25% 17.10 MiB p/s ETA 6s28.03 MiB / 132.14 MiB 
+[--------->_____________________________________] 21.22% 17.10 MiB p/s ETA 6s32.04 MiB / 132.14 MiB 
+[----------->___________________________________] 24.25% 17.15 MiB p/s ETA 5s35.49 MiB / 132.14 MiB 
+[------------>__________________________________] 26.86% 17.15 MiB p/s ETA 5s38.84 MiB / 132.14 MiB 
+[------------->_________________________________] 29.40% 17.15 MiB p/s ETA 5s42.19 MiB / 132.14 MiB 
+[--------------->_______________________________] 31.93% 17.13 MiB p/s ETA 5s45.55 MiB / 132.14 MiB 
+[---------------->______________________________] 34.47% 17.13 MiB p/s ETA 5s48.96 MiB / 132.14 MiB 
+[----------------->_____________________________] 37.05% 17.13 MiB p/s ETA 4s52.32 MiB / 132.14 MiB 
+[------------------>____________________________] 39.60% 17.11 MiB p/s ETA 4s55.69 MiB / 132.14 MiB 
+[------------------->___________________________] 42.14% 17.11 MiB p/s ETA 4s58.50 MiB / 132.14 MiB 
+[-------------------->__________________________] 44.27% 17.11 MiB p/s ETA 4s61.92 MiB / 132.14 MiB 
+[---------------------->________________________] 46.86% 17.04 MiB p/s ETA 4s68.12 MiB / 132.14 MiB 
+[------------------------>______________________] 51.55% 17.04 MiB p/s ETA 3s73.49 MiB / 132.14 MiB 
+[-------------------------->____________________] 55.62% 17.04 MiB p/s ETA 3s78.67 MiB / 132.14 MiB 
+[--------------------------->___________________] 59.54% 17.74 MiB p/s ETA 3s83.96 MiB / 132.14 MiB 
+[----------------------------->_________________] 63.54% 17.74 MiB p/s ETA 2s88.48 MiB / 132.14 MiB 
+[------------------------------->_______________] 66.96% 17.74 MiB p/s ETA 2s94.11 MiB / 132.14 MiB 
+[--------------------------------->_____________] 71.22% 18.26 MiB p/s ETA 2s99.70 MiB / 132.14 MiB 
+[----------------------------------->___________] 75.45% 18.26 MiB p/s ETA 1s101.96 MiB / 132.14 MiB 
+[----------------------------------->__________] 77.16% 18.26 MiB p/s ETA 1s106.38 MiB / 132.14 MiB 
+[------------------------------------->________] 80.50% 18.40 MiB p/s ETA 1s110.73 MiB / 132.14 MiB 
+[-------------------------------------->_______] 83.79% 18.40 MiB p/s ETA 1s116.03 MiB / 132.14 MiB 
+[---------------------------------------->_____] 87.81% 18.40 MiB p/s ETA 0s121.27 MiB / 132.14 MiB 
+[------------------------------------------>___] 91.77% 18.82 MiB p/s ETA 0s126.02 MiB / 132.14 MiB 
+[------------------------------------------->__] 95.37% 18.82 MiB p/s ETA 0s130.59 MiB / 132.14 MiB 
+[--------------------------------------------->] 98.83% 18.82 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 18.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 18.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 18.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 17.56 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 17.56 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 17.56 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 16.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 16.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 16.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 15.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 15.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 15.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 14.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 14.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 14.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 13.45 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 13.45 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 13.45 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 12.58 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 12.58 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 12.58 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.77 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 11.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 10.30 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 10.30 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------->] 100.00% 10.30 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 9.01 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 8.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 8.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 8.43 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.89 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.89 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.89 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.38 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.38 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 7.38 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.46 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.46 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.46 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.04 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.04 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 6.04 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.65 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.65 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.65 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.29 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.29 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 5.29 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.95 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.95 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.95 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.63 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.33 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.33 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.33 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.05 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.05 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 4.05 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.79 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.79 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.79 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.31 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.31 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.31 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.10 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.10 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 3.10 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.90 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.71 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.71 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.71 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.54 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.37 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.22 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.22 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.22 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.08 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.08 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 2.08 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.94 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.94 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.94 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.82 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.82 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.82 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.70 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.70 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[--------------------------------------------->] 100.00% 1.70 MiB p/s ETA 0s132.14 MiB / 132.14 MiB 
+[-------------------------------------------------] 100.00% 4.59 MiB p/s 29s2026-11-09T01:18:23Z	INFO	[vulndb] 
+Artifact successfully downloaded	repo="mirror.gcr.io/aquasec/trivy-db:2"
+2026-11-09T01:18:23Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:18:24Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:18:24Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:18:24Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T01:18:24Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:18:24Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:18:24Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE python-build-base
+SCAN_START airflow-build-base 2568f68b627296ed2d3c0f4e1a0e2f86dc48b870b5ab9cea688244e320daaedb
+Copying blob sha256:1d69a5fd31932841d7825ef4780c06f008eea65aaa9f3110fe09d5832ed5c7d8
+Copying blob sha256:9d10507386ad441ce3ef3b5858ac8259b2502ed4a36a879ca6378f48d2affebe
+Copying blob sha256:1a3a5ed9170bb58e09d4a807986d64957513d0ead0c8cfe2f496f0c7999080d8
+Copying blob sha256:0afb0d80537768884eb8107223558f9a6387ac786b4437f650e662077415d804
+Copying blob sha256:63ef0bcb513106fc40e1eede2c07c94c0d183c828bb64484371399a593857fb2
+Copying blob sha256:95708753b4aee85109ae4ab37bb23eef32f55e5e2ff607de9b94125ad4668fdf
+Copying blob sha256:8186f36c19d14e971d68316fbe731cdd6149a21b3606d16d68582ecb87b3286b
+Copying blob sha256:66d1ca6056613e7268be0b433dca4ba0cfaf350d271f34b248e4ad8d02f233fd
+Copying blob sha256:cbf1ebf6b59169e20a328a4f961bf7f25c3a35dc384eecd0920d1e63195c4d0f
+Copying blob sha256:87dc098c5a48b1382c91f61d2c281caaf7e92edd6f4ae080d3b0d5b37c9ed4b5
+Copying blob sha256:0cdadfdd72b5c1c5b09df02a45133f47566c6386f0585dac38d9ff79e8577ab9
+Copying blob sha256:8f5b86bffd523ca4608102d69b9a24c714befe295e3ef01eca4b3e116043f71f
+Copying blob sha256:72907a17317a430d79df73100015a773df0ae8080333ccf432c70e8b07a3ec4a
+Copying blob sha256:ff402478d5f67b4b55bc42c2ec3b32138bc420784d839b8d3526fae3bcd25418
+Copying blob sha256:6059f6f8ff872b5ec09a8a100c16055002f4f267bedc180616288791b6da521e
+Copying blob sha256:a2e2b08dd32e0175dea257e55ab856ebb0cee7ed6a54ae95d1b96dca1bb7022f
+Copying blob sha256:3d0107bb873e165f3b9f78d06cf3dfdcade19ca04d2e80879607b12346601179
+Copying blob sha256:79301fad5981b74a92d938ddb27f53df7bd0f722068f73cd9122ee412a410518
+Copying blob sha256:cb0672e19494513ca4570ee3171d11de24708470347d0b1c0bb0d08ad8605304
+Copying blob sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef
+Copying config sha256:2568f68b627296ed2d3c0f4e1a0e2f86dc48b870b5ab9cea688244e320daaedb
+Writing manifest to image destination
+2026-11-09T01:18:49Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:18:54Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:18:54Z	WARN	Third-party SBOM may lead to inaccurate vulnerability detection
+2026-11-09T01:18:54Z	WARN	Recommend using Trivy to generate SBOMs
+2026-11-09T01:18:57Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:18:57Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=189
+2026-11-09T01:18:57Z	INFO	Number of language-specific files	num=6
+2026-11-09T01:18:57Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:18:57Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:18:57Z	INFO	[rustbinary] Detecting vulnerabilities...
+2026-11-09T01:18:57Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE airflow-build-base
+SCAN_START nginx-build-base 1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4
+Copying blob sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064
+Copying blob sha256:495c4fa2cdd4685f4fe4eabd11e86f59285fab926335bba75d4160d5ff3b6154
+Copying blob sha256:8a4b8e348afac340cd546c8d53f590002cbd871c2eb6978b916961073e8a3b16
+Copying blob sha256:58eeef868683cc63489dafb4f1d7dd419f989548f0702cc3182476b4dae141f5
+Copying blob sha256:3831075a57f3b915290905a7c4072930c51d329dccead9f41eb439925205711a
+Copying blob sha256:3abae6d8a7fc137a1bd5f4a86932b1b8b7c1da3191b6590d9195f263519b4257
+Copying blob sha256:8f5b99f326f295649f3ca11561d758e897be5cb851fcc0c2497b9214fdcacd64
+Copying blob sha256:7249c65f5b3fbe84a1b5dcedaa13a7ce52fee36aeaa1cf590fb04ad689bad31e
+Copying config sha256:1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4
+Writing manifest to image destination
+2026-11-09T01:19:01Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:19:01Z	INFO	Detected OS	family="alpine" version="3.24.4"
+2026-11-09T01:19:01Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.24" repository="3.24" pkg_num=71
+2026-11-09T01:19:01Z	INFO	Number of language-specific files	num=0
+2026-11-09T01:19:01Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+SCAN_COMPLETE nginx-build-base
+SCAN_START playwright-build-base 6c366017b41688a05fd66e4d942e35f17fdb1f3c5ad0ec9a39674f36e5ff446c
+Copying blob sha256:5cac300e390e2fd748b258618f403b7813229929ad6de903b0c52a210a930824
+Copying blob sha256:5f4be2c3badedfd7149d008a4902427c98e708c70031dc19b4264160a545df19
+Copying blob sha256:2b5cc719d3fafebfc5a3dff7545e23e656fd613979ae4523a963d6ca9f7d269e
+Copying blob sha256:f5e6b7252e974bb2b11304b8fe6f9175aef2e9df41b051fd5f1fb05d6ca0c286
+Copying blob sha256:39795eda17516365edc17a39140891d24d96da639e4a9afb0483e70d134ecafe
+Copying blob sha256:877e159434e1d370d60bb1b7f52c7e994c3a3232585d4215973a42c2dae6f063
+Copying blob sha256:404990335452f05d7e285a4ce9c183ecaa5cccabec4c50a8f05f9b8da0b44bf4
+Copying blob sha256:6281746d9ace79ed4a5edaad508bd6a6f1347494c578959c11817b2864a14a58
+Copying config sha256:6c366017b41688a05fd66e4d942e35f17fdb1f3c5ad0ec9a39674f36e5ff446c
+Writing manifest to image destination
+2026-11-09T01:20:16Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:20:48Z	INFO	Detected OS	family="ubuntu" version="26.04"
+2026-11-09T01:20:48Z	INFO	[ubuntu] Detecting vulnerabilities...	os_version="26.04" pkg_num=525
+2026-11-09T01:20:49Z	INFO	Number of language-specific files	num=2
+2026-11-09T01:20:49Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:20:49Z	INFO	[node-pkg] Detecting vulnerabilities...
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE playwright-build-base
+SCAN_START go-build-base ff83b502cc6317906d9588103ac5dfcf1bed82cd2ecd386f144647f4cf91c5ef
+Copying blob sha256:05f9043663c0a4a3f7a75f1fe7cf08b5a69419f2e31425412598b5443e1887bc
+Copying blob sha256:74a1cce49db916676932c971e576f97b650bfdb55e355ee56d3b022d4c01ad1f
+Copying blob sha256:131853779658ab455b50696ca52922ea83febf8922703598ea672657331befbc
+Copying blob sha256:0fd33444b1ac5a4c08df670aa6639cfb83926482364ea4d7248ec22a90c4f98d
+Copying blob sha256:18f1d4d65e2dcd0c975641af4dbcc84b4165b8fe37596492d94f38d87633a5b0
+Copying blob sha256:4a1a398207e7345ce1f099e66104aaa603055940a8907f94b14000210a5f7275
+Copying blob sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef
+Copying config sha256:ff83b502cc6317906d9588103ac5dfcf1bed82cd2ecd386f144647f4cf91c5ef
+Writing manifest to image destination
+2026-11-09T01:21:32Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:21:34Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:21:35Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:21:35Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=205
+2026-11-09T01:21:35Z	INFO	Number of language-specific files	num=10
+2026-11-09T01:21:35Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:21:35Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE go-build-base
+SCAN_START node-build-base 8700da48cc6592503feabf399d242414f932197c3b44f43970d2cbc5671e06b0
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:e597c47e115a320990201d8c37e21c6a41a739f901c93686c3f73aabe1e4f6c3
+Copying blob sha256:0e1faafd1d11dd793a3eb58a862e50f675dba83256b366243299f018ea23f876
+Copying blob sha256:ce67f65846ad6e526c5f9e127a761680c76dea4bc3990218589ccd7c4fe90933
+Copying blob sha256:33226972b872a353657b544d699b29a0675ebc9d8fbd284f718f188cff7b42ce
+Copying config sha256:8700da48cc6592503feabf399d242414f932197c3b44f43970d2cbc5671e06b0
+Writing manifest to image destination
+2026-11-09T01:21:43Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:21:47Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:21:47Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=88
+2026-11-09T01:21:47Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:21:47Z	INFO	[node-pkg] Detecting vulnerabilities...
+2026-11-09T01:21:47Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE node-build-base
+SCAN_START frontend-build 6232dc8e1ae8c4ac8ea31245364e661d7a15566c6ec21b2800cf50bc1458e539
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:e597c47e115a320990201d8c37e21c6a41a739f901c93686c3f73aabe1e4f6c3
+Copying blob sha256:0e1faafd1d11dd793a3eb58a862e50f675dba83256b366243299f018ea23f876
+Copying blob sha256:ce67f65846ad6e526c5f9e127a761680c76dea4bc3990218589ccd7c4fe90933
+Copying blob sha256:33226972b872a353657b544d699b29a0675ebc9d8fbd284f718f188cff7b42ce
+Copying blob sha256:a0282c16853f0c735475290bab9f4c8dc3a3f3f40852be191161b3f79d7f7e4f
+Copying blob sha256:14091f3ad12b269208ece4aac9c4d2b074ee2b3c671e72c672c86d9ca4ebd6f2
+Copying blob sha256:db6ed5c9cbc2491705e0e3dce7ac6c700b2c9e4bb0f7318bc80f4c1ccd9d6089
+Copying blob sha256:c2a8cfd0be3e81a59be6e26004560b9421a9e72275e057beeefb7ae509b2530f
+Copying blob sha256:2ec54caa401b303f969ae3d29c2aa832b689e157e51f01624dbe09727cf3e80f
+Copying config sha256:6232dc8e1ae8c4ac8ea31245364e661d7a15566c6ec21b2800cf50bc1458e539
+Writing manifest to image destination
+2026-11-09T01:22:03Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:22:04Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:22:04Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=88
+2026-11-09T01:22:04Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:22:04Z	INFO	[node-pkg] Detecting vulnerabilities...
+2026-11-09T01:22:04Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE frontend-build
+SCAN_START backend-wheels a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying blob sha256:89f00738d29c1f5721ba3642a2ee61a90ecbac7886d42ed2ebadb268474b5c68
+Copying blob sha256:705b1f13d35a10ff72ca93d7ca24801b411a1d3fe5480b1859710357b7a0afb8
+Copying blob sha256:e4882bf738ef13831950a97fdba03c73b0bc6c4d856bde0b7be739b2c4b8ed53
+Copying blob sha256:05cb5cabd99cd87b7cc9fafb6ac48263584b1147dfbef611bda4d29b66832105
+Copying blob sha256:e6095064e1c3a684234032a2d8796d4b1137bd6974264ae3d6b775f38e0cdddf
+Copying config sha256:a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1
+Writing manifest to image destination
+2026-11-09T01:22:11Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:22:11Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:22:11Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:22:11Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T01:22:11Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:22:11Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:22:11Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE backend-wheels
+SCAN_START airflow-wheels 4f924a1f266b648d5fe405657b5d15ba2a1d52a316e96c2420c73b2aa89bc68b
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying blob sha256:89f00738d29c1f5721ba3642a2ee61a90ecbac7886d42ed2ebadb268474b5c68
+Copying blob sha256:705b1f13d35a10ff72ca93d7ca24801b411a1d3fe5480b1859710357b7a0afb8
+Copying blob sha256:e4882bf738ef13831950a97fdba03c73b0bc6c4d856bde0b7be739b2c4b8ed53
+Copying blob sha256:6cffd17bb8d09e0c5af01a5422167ce2ce27e71942601851baf60227956d7796
+Copying config sha256:4f924a1f266b648d5fe405657b5d15ba2a1d52a316e96c2420c73b2aa89bc68b
+Writing manifest to image destination
+2026-11-09T01:22:20Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:22:21Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:22:21Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T01:22:21Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:22:21Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:22:21Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE airflow-wheels
+SCAN_START e2e-dependencies eeaff03ea5c857a7177298bec449f238fc6474df209ddf02c1c4dee0d7d36815
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:e597c47e115a320990201d8c37e21c6a41a739f901c93686c3f73aabe1e4f6c3
+Copying blob sha256:0e1faafd1d11dd793a3eb58a862e50f675dba83256b366243299f018ea23f876
+Copying blob sha256:ce67f65846ad6e526c5f9e127a761680c76dea4bc3990218589ccd7c4fe90933
+Copying blob sha256:33226972b872a353657b544d699b29a0675ebc9d8fbd284f718f188cff7b42ce
+Copying blob sha256:e41c287a493edd08100270deb5466c9fb7fc3a274fba57b3e4f72923e0d5ab74
+Copying blob sha256:486835684e9b4f657d3ff0b2fce7d939b3b041ceadbe3327645de39a6b7d984f
+Copying config sha256:eeaff03ea5c857a7177298bec449f238fc6474df209ddf02c1c4dee0d7d36815
+Writing manifest to image destination
+2026-11-09T01:22:30Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:22:31Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:22:31Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=88
+2026-11-09T01:22:31Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:22:31Z	INFO	[node-pkg] Detecting vulnerabilities...
+2026-11-09T01:22:31Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE e2e-dependencies
+SCAN_START backend 89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying blob sha256:748828d99866844212d561dc79ea0f60a05e157d2e158637bdce90145deba22a
+Copying blob sha256:4cb59362a45318175d0641f802084c69cad840976069caa51b6f59d737b45b47
+Copying blob sha256:323f9e942f826b961236c4e7dd5c74fd5777fa425798ff17600ea879b9cb038c
+Copying blob sha256:f7a12e76fcfadf0b9005d8e83cd77ed744d3d2fab1c30ded1416223e267b672e
+Copying blob sha256:4b51c5d0b7c65d08228cde4725eb8a3e0d11e97d1531a80bc34a7eeb14f65b81
+Copying config sha256:89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431
+Writing manifest to image destination
+2026-11-09T01:22:41Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:22:42Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:22:42Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:22:42Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T01:22:42Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:22:42Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:22:42Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE backend
+SCAN_START airflow e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2
+Copying blob sha256:1d69a5fd31932841d7825ef4780c06f008eea65aaa9f3110fe09d5832ed5c7d8
+Copying blob sha256:9d10507386ad441ce3ef3b5858ac8259b2502ed4a36a879ca6378f48d2affebe
+Copying blob sha256:1a3a5ed9170bb58e09d4a807986d64957513d0ead0c8cfe2f496f0c7999080d8
+Copying blob sha256:0afb0d80537768884eb8107223558f9a6387ac786b4437f650e662077415d804
+Copying blob sha256:63ef0bcb513106fc40e1eede2c07c94c0d183c828bb64484371399a593857fb2
+Copying blob sha256:95708753b4aee85109ae4ab37bb23eef32f55e5e2ff607de9b94125ad4668fdf
+Copying blob sha256:8186f36c19d14e971d68316fbe731cdd6149a21b3606d16d68582ecb87b3286b
+Copying blob sha256:66d1ca6056613e7268be0b433dca4ba0cfaf350d271f34b248e4ad8d02f233fd
+Copying blob sha256:cbf1ebf6b59169e20a328a4f961bf7f25c3a35dc384eecd0920d1e63195c4d0f
+Copying blob sha256:87dc098c5a48b1382c91f61d2c281caaf7e92edd6f4ae080d3b0d5b37c9ed4b5
+Copying blob sha256:0cdadfdd72b5c1c5b09df02a45133f47566c6386f0585dac38d9ff79e8577ab9
+Copying blob sha256:8f5b86bffd523ca4608102d69b9a24c714befe295e3ef01eca4b3e116043f71f
+Copying blob sha256:72907a17317a430d79df73100015a773df0ae8080333ccf432c70e8b07a3ec4a
+Copying blob sha256:ff402478d5f67b4b55bc42c2ec3b32138bc420784d839b8d3526fae3bcd25418
+Copying blob sha256:6059f6f8ff872b5ec09a8a100c16055002f4f267bedc180616288791b6da521e
+Copying blob sha256:a2e2b08dd32e0175dea257e55ab856ebb0cee7ed6a54ae95d1b96dca1bb7022f
+Copying blob sha256:3d0107bb873e165f3b9f78d06cf3dfdcade19ca04d2e80879607b12346601179
+Copying blob sha256:79301fad5981b74a92d938ddb27f53df7bd0f722068f73cd9122ee412a410518
+Copying blob sha256:cb0672e19494513ca4570ee3171d11de24708470347d0b1c0bb0d08ad8605304
+Copying blob sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef
+Copying blob sha256:e1e2c6f256f8784e785c98ac3866a3c094ed9f85190d58f221c6e6b6cf8b2dfe
+Copying blob sha256:89b00e0fdf05ebb57df5ea0dddcb85c78ae9f1beebf5c068933524ac645cfa0e
+Copying blob sha256:7d1cd334d00a3d9ad62724c35ce416fd0dfff63c28396242368860147e624e96
+Copying blob sha256:10f81c53760301e1b34e39de0e70f0c94d33815272a3eb4ad3b814e269941a92
+Copying blob sha256:6998d19d39864f8b2edb63734dab9ff48f25f458116868d9db49d71f35edd57b
+Copying blob sha256:5b9369e10eaa4271ee884933f55ba87b4a645a117adca76abd7851b003d39273
+Copying blob sha256:1286b634cc5976b84d9f457de647db1cd4c5b5a60ff5d25a1d75e36ad9c4f5ae
+Copying blob sha256:91e1647f20e6b00dd8080781d5bde99a2851bf70bad36cae63432f11b7aac8c5
+Copying blob sha256:307a8b9cdb6f4e0b0925898241acdc783c496702ce90550581a937422cd9769a
+Copying blob sha256:9b80aa7b3e20f51d963b83c16428d3296b70225c78152b6a4a3b34dcce6fbd95
+Copying blob sha256:120138ca4ab181efca50c2f5692dafb812fcc84f86a6cff0b9598f2d43e5bd6c
+Copying blob sha256:fea7d26aa3502adb89b26b524bf4a0c417472b926b98e84939923df0a4b9a3f4
+Copying blob sha256:3edc9190982a61dedad0763fc06747618da45b5a437a919e735c5cbf0d5e8cca
+Copying blob sha256:d15446e05ed22d7781b21616a808954308f6f9fb14a0716e9a8288d442bc6546
+Copying blob sha256:7dedf8ea3577dbcf7cce024dd0f44ae25fd71e3980f9abe966637a0357122a56
+Copying blob sha256:dadf029441f99f988adaad18535472d5f83af8c423a8ddd41317536fbd9f3d21
+Copying blob sha256:880078cbe2ab0476ffd1ec2d7e6db21acfe49a425ba7320003dc54f30944db99
+Copying blob sha256:d2134406c652989ba456d297bed8ab06531d5138788f633d97b19ea24249a072
+Copying blob sha256:67b6d9b1fdbbece019b09fe889d826ab0e4fd6523660a035a37bced1a7cc7878
+Copying config sha256:e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2
+Writing manifest to image destination
+2026-11-09T01:23:15Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:23:18Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:23:19Z	WARN	Third-party SBOM may lead to inaccurate vulnerability detection
+2026-11-09T01:23:19Z	WARN	Recommend using Trivy to generate SBOMs
+2026-11-09T01:23:19Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:23:19Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=189
+2026-11-09T01:23:19Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:23:19Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:23:19Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE airflow
+SCAN_START frontend d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2
+Copying blob sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064
+Copying blob sha256:495c4fa2cdd4685f4fe4eabd11e86f59285fab926335bba75d4160d5ff3b6154
+Copying blob sha256:8a4b8e348afac340cd546c8d53f590002cbd871c2eb6978b916961073e8a3b16
+Copying blob sha256:58eeef868683cc63489dafb4f1d7dd419f989548f0702cc3182476b4dae141f5
+Copying blob sha256:3831075a57f3b915290905a7c4072930c51d329dccead9f41eb439925205711a
+Copying blob sha256:3abae6d8a7fc137a1bd5f4a86932b1b8b7c1da3191b6590d9195f263519b4257
+Copying blob sha256:8f5b99f326f295649f3ca11561d758e897be5cb851fcc0c2497b9214fdcacd64
+Copying blob sha256:7249c65f5b3fbe84a1b5dcedaa13a7ce52fee36aeaa1cf590fb04ad689bad31e
+Copying blob sha256:2e9065eb8c662b4e817a52d0e8254177afb2709effcab5554eb94bad4c2d2abd
+Copying blob sha256:779cbd31e1ab0d9d97d010359fa3d63e669ed13cbd56c004c890271301ac5105
+Copying config sha256:d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2
+Writing manifest to image destination
+2026-11-09T01:23:24Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:23:24Z	INFO	Detected OS	family="alpine" version="3.24.4"
+2026-11-09T01:23:24Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.24" repository="3.24" pkg_num=71
+2026-11-09T01:23:24Z	INFO	Number of language-specific files	num=0
+2026-11-09T01:23:24Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+SCAN_COMPLETE frontend
+SCAN_START postgres 87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:93101ae271b7421ebdecedd03a20c1b33f6a897abdd327e16f380926117c327b
+Copying blob sha256:6c40055ea71daff03852b2b532d7b9fec331e19ee514bdc9523ca0831458247f
+Copying blob sha256:c8c545c47f8420f4607bac4e6cb011af8a82aba61c6387f70d2050a73e9a2a6e
+Copying blob sha256:d4d9c49cd940725241742863ad2ad902282a879de1a4fadc6643e97e3db843fc
+Copying blob sha256:be26bafc4b4c666f80e1213cccf5f95900a20b54be9459f7cf57b6cc7c3cdcad
+Copying blob sha256:7d7bea144f4d3c39e759a2a2b2047378bfe8a7c3721fb48b08253c5ca4fec76c
+Copying blob sha256:7a08331cfee6c82e95ca5bb1eba4f7ef337fa772e77b9aec7a0f9bf1d8109e19
+Copying blob sha256:0f43caec4d1cbe09b8fcef450f944ffbd4ccc1b3c520366a23d21c1997c9e6c6
+Copying blob sha256:ab47dd69b23fd0c3147fbbd3abcc764aeba901fd026e1ad6c513e49ff786e1fe
+Copying blob sha256:70c28ffa6ef03927d3bba78398691cddecc706d47034cc9ee181070a8b866358
+Copying blob sha256:487c7d3faf186c928c7499e608e0384a7254d825acb2b7d8af2a1b06ab72e37b
+Copying blob sha256:85d62ae3eb6081b487420e4ed1647d193fe782c35af2f12adf1649461485dafc
+Copying blob sha256:dd18efe781165a4700dbae3751a409878a6ca92983b22690362bcfa47eee0101
+Copying blob sha256:298347508d5a09a10e4aa6cc0e1265977a248a392340e82d8dcb7c831faf7a89
+Copying config sha256:87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03
+Writing manifest to image destination
+2026-11-09T01:23:39Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:23:40Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:23:40Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=144
+2026-11-09T01:23:41Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:23:41Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:23:41Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE postgres
+SCAN_START postgres-build-base 018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:93101ae271b7421ebdecedd03a20c1b33f6a897abdd327e16f380926117c327b
+Copying blob sha256:6c40055ea71daff03852b2b532d7b9fec331e19ee514bdc9523ca0831458247f
+Copying blob sha256:c8c545c47f8420f4607bac4e6cb011af8a82aba61c6387f70d2050a73e9a2a6e
+Copying blob sha256:d4d9c49cd940725241742863ad2ad902282a879de1a4fadc6643e97e3db843fc
+Copying blob sha256:be26bafc4b4c666f80e1213cccf5f95900a20b54be9459f7cf57b6cc7c3cdcad
+Copying blob sha256:7d7bea144f4d3c39e759a2a2b2047378bfe8a7c3721fb48b08253c5ca4fec76c
+Copying blob sha256:7a08331cfee6c82e95ca5bb1eba4f7ef337fa772e77b9aec7a0f9bf1d8109e19
+Copying blob sha256:0f43caec4d1cbe09b8fcef450f944ffbd4ccc1b3c520366a23d21c1997c9e6c6
+Copying blob sha256:ab47dd69b23fd0c3147fbbd3abcc764aeba901fd026e1ad6c513e49ff786e1fe
+Copying blob sha256:70c28ffa6ef03927d3bba78398691cddecc706d47034cc9ee181070a8b866358
+Copying blob sha256:487c7d3faf186c928c7499e608e0384a7254d825acb2b7d8af2a1b06ab72e37b
+Copying blob sha256:85d62ae3eb6081b487420e4ed1647d193fe782c35af2f12adf1649461485dafc
+Copying blob sha256:dd18efe781165a4700dbae3751a409878a6ca92983b22690362bcfa47eee0101
+Copying config sha256:018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9
+Writing manifest to image destination
+2026-11-09T01:23:57Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:23:58Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:23:58Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=144
+2026-11-09T01:23:58Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:23:58Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:23:58Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE postgres-build-base
+SCAN_START mysql-build-base 0f1a0ccadda3a1734d1db557e203ec58621d56fa248525016e85fe4f631311ec
+Copying blob sha256:cecc8e2556a87b1d7fe523b620974dd69b96cddb1b96ee5d680b9d523b29a72c
+Copying blob sha256:a29793a512755393b8d8aa785a346683fa90a9e0f848a4bf7ab7c50b6406f2ea
+Copying blob sha256:c3a2e3ecb4e70deb78cb616656f02913bb7479605d06c5980280c794b2713c16
+Copying blob sha256:869a9a4f67cfdeb0b03fbd6487026a51acfbd6cdaddf7cef6b1c29621ac9fd22
+Copying blob sha256:44ace0eae2357a948e322cc946dec87027d0464fc30e41f3c542aec01ac316d3
+Copying blob sha256:a1617c8fdf9523cba50029efbd1375e9cdc6d7592856172d7cb8f01e5ed4e266
+Copying blob sha256:abffd2fb6c8f7b651c3ac7705584017f2111f2ac555ab0de39c54bcf06296995
+Copying blob sha256:2b0da76e421ca4e5b8325c8bbaf0d8dd34e279cd31a4ce3dd63dcb926a3dc885
+Copying blob sha256:644aebd394242e13565ac2f1a397067663100374d3cf3d294d295448a14a1bcb
+Copying blob sha256:9fe653ae7e170583ef1d77605ec94e85e5ebef33b27317a1be8ff5e22f4c3f10
+Copying config sha256:0f1a0ccadda3a1734d1db557e203ec58621d56fa248525016e85fe4f631311ec
+Writing manifest to image destination
+2026-11-09T01:24:22Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:24:26Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:24:34Z	INFO	Detected OS	family="oracle" version="9.8"
+2026-11-09T01:24:34Z	INFO	[oracle] Detecting vulnerabilities...	os_version="9" pkg_num=113
+2026-11-09T01:24:34Z	INFO	Number of language-specific files	num=2
+2026-11-09T01:24:34Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:24:34Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:24:34Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE mysql-build-base
+SCAN_START gosu-build 4df75bf7e1bf9a7bfa791c57e8cb6537b2d7927e701f64e63cfba0fdc9f4a73d
+Copying blob sha256:05f9043663c0a4a3f7a75f1fe7cf08b5a69419f2e31425412598b5443e1887bc
+Copying blob sha256:74a1cce49db916676932c971e576f97b650bfdb55e355ee56d3b022d4c01ad1f
+Copying blob sha256:131853779658ab455b50696ca52922ea83febf8922703598ea672657331befbc
+Copying blob sha256:0fd33444b1ac5a4c08df670aa6639cfb83926482364ea4d7248ec22a90c4f98d
+Copying blob sha256:18f1d4d65e2dcd0c975641af4dbcc84b4165b8fe37596492d94f38d87633a5b0
+Copying blob sha256:4a1a398207e7345ce1f099e66104aaa603055940a8907f94b14000210a5f7275
+Copying blob sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef
+Copying blob sha256:0b37d7f1edbb0250738118c8563caf3a63904a44ed9b496a3675c27932b49a26
+Copying blob sha256:7a9a7eb7c5c89a3e5500d855d1fb2cd4acab4678b85acdfb5bdc3aedac8dfc86
+Copying blob sha256:f2fb9490e909e020232264b64ddbe275bc8168cb783669d691909c7d4b8c5ef9
+Copying config sha256:4df75bf7e1bf9a7bfa791c57e8cb6537b2d7927e701f64e63cfba0fdc9f4a73d
+Writing manifest to image destination
+2026-11-09T01:25:07Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:25:08Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:25:08Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=205
+2026-11-09T01:25:09Z	INFO	Number of language-specific files	num=11
+2026-11-09T01:25:09Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:25:09Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE gosu-build
+SCAN_START mysql c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f
+Copying blob sha256:cecc8e2556a87b1d7fe523b620974dd69b96cddb1b96ee5d680b9d523b29a72c
+Copying blob sha256:a29793a512755393b8d8aa785a346683fa90a9e0f848a4bf7ab7c50b6406f2ea
+Copying blob sha256:c3a2e3ecb4e70deb78cb616656f02913bb7479605d06c5980280c794b2713c16
+Copying blob sha256:869a9a4f67cfdeb0b03fbd6487026a51acfbd6cdaddf7cef6b1c29621ac9fd22
+Copying blob sha256:44ace0eae2357a948e322cc946dec87027d0464fc30e41f3c542aec01ac316d3
+Copying blob sha256:a1617c8fdf9523cba50029efbd1375e9cdc6d7592856172d7cb8f01e5ed4e266
+Copying blob sha256:abffd2fb6c8f7b651c3ac7705584017f2111f2ac555ab0de39c54bcf06296995
+Copying blob sha256:2b0da76e421ca4e5b8325c8bbaf0d8dd34e279cd31a4ce3dd63dcb926a3dc885
+Copying blob sha256:644aebd394242e13565ac2f1a397067663100374d3cf3d294d295448a14a1bcb
+Copying blob sha256:9fe653ae7e170583ef1d77605ec94e85e5ebef33b27317a1be8ff5e22f4c3f10
+Copying blob sha256:1e266b265abe7df38ab0a6db469833fc343d5bac0440b02bbca8fbe242ec8083
+Copying blob sha256:20875e46b0c8701db9119b442b38d818000292c5c38f2f8dd217f1e62597873e
+Copying config sha256:c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f
+Writing manifest to image destination
+2026-11-09T01:25:36Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:25:38Z	INFO	Detected OS	family="oracle" version="9.8"
+2026-11-09T01:25:38Z	INFO	[oracle] Detecting vulnerabilities...	os_version="9" pkg_num=113
+2026-11-09T01:25:39Z	INFO	Number of language-specific files	num=1
+2026-11-09T01:25:39Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:25:39Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE mysql
+SCAN_START backend-tests ca9e4099efd441991b6005347b0ed66a6acdfa26115216f865748591ce635cc3
+Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying blob sha256:17caad7de757930f866be22f30575b31ff43e51ab894aa05d43a2eb425d73a3f
+Copying blob sha256:7f16ed5397270f9e1a01f0491215c9efe24cbdaa50d507c99240e5eee6e5d4ca
+Copying blob sha256:229e1c58208e47debafbf9acd83e97550a8a9683f3044f4ecb9df00b62314525
+Copying blob sha256:108877b8a832b6ab7e178e246e1f343eec1b4d306d203b524d1f9db492582472
+Copying blob sha256:942e71646b8610d4dd00edc55a99bc3ea7dbca6ed5d91d84f0d09dbf4492416b
+Copying blob sha256:95fff65e997c8ec70618e268f4aa3e306f7e6c7690e1720b585328474d5e8b0a
+Copying blob sha256:137e1fe6217b58f51538f163fc7f48a37f1879dffd23d6fe356dc3f5f1a7e735
+Copying blob sha256:9f037b02692baba489dafdaed4bb3bc6697635f561bbbbc11964ff4723b78ba4
+Copying blob sha256:f7f18c2269b7fdfd29ed35fce2336ca2b288d290c7cac05a61bdd5268bf79fb0
+Copying blob sha256:64cf26d2f6cc8129c8aebf7de0aadb68efb223c74c113e25889787d1770bf201
+Copying blob sha256:4990e0deb06115c9f8652afa31124eeec0454506a5e794928c9eb7c1510be810
+Copying blob sha256:ab2942fa513fc9ba27d5e472ba38d1b62da9be8b01567ffe3f93d3fc20b1e1f0
+Copying blob sha256:c005efecaf9e38f9877088744c503d2a739dde01edafe0b80e6f5a1a21592cd9
+Copying blob sha256:07d852918e29dd82d619adf530b881b61e6444ffccb85a1eda0cca7d5ef32cfa
+Copying blob sha256:44cb866c2077aa032c728abd0443c93761673f9e050b898789c0b32edddea76e
+Copying blob sha256:3608fa4042107b2b3e3e2fa78bf22a0418030b430a103948e61b3614344dbf96
+Copying config sha256:ca9e4099efd441991b6005347b0ed66a6acdfa26115216f865748591ce635cc3
+Writing manifest to image destination
+2026-11-09T01:25:53Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:25:54Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T01:25:54Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T01:25:54Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T01:25:55Z	INFO	Number of language-specific files	num=2
+2026-11-09T01:25:55Z	INFO	[node-pkg] Detecting vulnerabilities...
+2026-11-09T01:25:55Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T01:25:55Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE backend-tests
+SCAN_START e2e-tests 0d47c54224c26040bb23d6c4672372926cc494e6d2572b0b7ba8ae9f7eab8e16
+Copying blob sha256:5cac300e390e2fd748b258618f403b7813229929ad6de903b0c52a210a930824
+Copying blob sha256:5f4be2c3badedfd7149d008a4902427c98e708c70031dc19b4264160a545df19
+Copying blob sha256:2b5cc719d3fafebfc5a3dff7545e23e656fd613979ae4523a963d6ca9f7d269e
+Copying blob sha256:f5e6b7252e974bb2b11304b8fe6f9175aef2e9df41b051fd5f1fb05d6ca0c286
+Copying blob sha256:39795eda17516365edc17a39140891d24d96da639e4a9afb0483e70d134ecafe
+Copying blob sha256:877e159434e1d370d60bb1b7f52c7e994c3a3232585d4215973a42c2dae6f063
+Copying blob sha256:404990335452f05d7e285a4ce9c183ecaa5cccabec4c50a8f05f9b8da0b44bf4
+Copying blob sha256:6281746d9ace79ed4a5edaad508bd6a6f1347494c578959c11817b2864a14a58
+Copying blob sha256:2ea16d14d201b439d3f5bfe91ace3bca4706b45d41956da266d4fea63809a89f
+Copying blob sha256:e2518f7ba5ba4f6b4eebb85ef574bb7e62de67d1fb328cb07e32e5fbccd5aeec
+Copying blob sha256:ab48bcae13bb34802f679d777dcb99637c40f9af5ecc89c12ccfdfcb4ab2334e
+Copying blob sha256:34a2cc505bc45a6edea8201bcc5eafce6cdb7d80bdbe69c3821f2eb5609319da
+Copying config sha256:0d47c54224c26040bb23d6c4672372926cc494e6d2572b0b7ba8ae9f7eab8e16
+Writing manifest to image destination
+2026-11-09T01:27:22Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T01:28:16Z	INFO	Detected OS	family="ubuntu" version="26.04"
+2026-11-09T01:28:16Z	INFO	[ubuntu] Detecting vulnerabilities...	os_version="26.04" pkg_num=525
+2026-11-09T01:28:16Z	INFO	Number of language-specific files	num=2
+2026-11-09T01:28:16Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T01:28:16Z	INFO	[node-pkg] Detecting vulnerabilities...
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE e2e-tests
+SCAN_REPORT_WRITTEN docs\testing\t014-ab-security.json

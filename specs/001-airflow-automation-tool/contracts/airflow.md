@@ -23,6 +23,12 @@ Image pin `apache/airflow:3.3.2-python3.12`, schema nguồn đúng
 [OpenAPI 3.3.2](https://raw.githubusercontent.com/apache/airflow/3.3.2/airflow-core/src/airflow/api_fastapi/core_api/openapi/v2-rest-api-generated.yaml).
 Implementation lưu bản schema/hash và test contract với image, không dùng schema latest động.
 
+T014 A đã được duyệt ngày2026-11-09: custom slim3.3.2/Python3.12 giữ core/SDK/API và
+file constraints upstream, tạo constraints hiệu lực riêng chỉ đổi certifi2026.10.18 và
+urllib3 2.8.0 theo `airflow/docker/constraints-policy.json`. Artifacts có hashes trong
+`overrides.lock`; build sinh provenance, kiểm pip check và auth/readiness trên image cuối.
+Đây là thay đổi dependency, không thay endpoint hoặc hợp đồng xác thực trên.
+
 ## Endpoint mapping
 
 Tất cả path bên dưới nối sau `/api/v2`; path segment phải percent-encode.

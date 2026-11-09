@@ -1,0 +1,19 @@
+STEP 1/6: FROM docker.io/library/golang:1.27.3-bookworm@sha256:025eefc1e8dbe63201734a72aaa0a55d7a077f2d8410432f8ae2f3e939f32871 AS gosu-build
+STEP 2/6: ENV GOTOOLCHAIN=local CGO_ENABLED=0 GOOS=linux GOARCH=amd64
+--> Using cache a137af4f6b1a6b057c5c1bd0e0104ed1bb60c15fb69a16b09f304d1d8082879f
+--> a137af4f6b1a
+STEP 3/6: ADD https://codeload.github.com/tianon/gosu/tar.gz/6456aaa0f3c854d199d0f037f068eb97515b7513 /tmp/gosu.tar.gz
+--> Using cache 71527b9244959667672bf57bcce4160a6ce372106f334423fd1a43fe571876ea
+--> 71527b924495
+STEP 4/6: RUN echo "33d7537d588ea49458b9509bcf4554bdf5ceacc66da71e5caa1058ea3b689c3b  /tmp/gosu.tar.gz" | sha256sum -c - && mkdir /src && tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src
+--> Using cache 0c37c5d2f2521e6f261eb7f53fff071d050edeb1c28ede851b6ccc117aaaf033
+--> 0c37c5d2f252
+STEP 5/6: WORKDIR /src
+--> Using cache 17365c8a38aafa23f26b91f49fd89e9666b02f97aa3bc02ec27e0ca35c081ee7
+--> 17365c8a38aa
+STEP 6/6: RUN go mod download && go build -trimpath -buildvcs=false -ldflags="-s -w -X main.Version=1.19" -o /gosu . && /gosu --version
+--> Using cache 4df75bf7e1bf9a7bfa791c57e8cb6537b2d7927e701f64e63cfba0fdc9f4a73d
+COMMIT localhost/aat-gosu-build:0.1.0
+--> 4df75bf7e1bf
+Successfully tagged localhost/aat-gosu-build:0.1.0
+4df75bf7e1bf9a7bfa791c57e8cb6537b2d7927e701f64e63cfba0fdc9f4a73d

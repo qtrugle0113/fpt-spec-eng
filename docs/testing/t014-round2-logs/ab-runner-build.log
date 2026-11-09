@@ -1,0 +1,74 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 72a40010e2df16cce0a76cd4b0c3ac20f7685711f65003da855608b0fb8a78b8
+--> 72a40010e2df
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache a1afa3dbf79eb4051d55eea8e9e5cdb337d86e15358c57d2e42957c176e13da7
+--> a1afa3dbf79e
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache a32ebb9e62373a8c1b2e7678d928315f3081757e931a2107b988894ef764a2e4
+--> a32ebb9e6237
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache c740b206b5b1ffc88996c1e1a3cc21b4bc9c4c0ede1573e254cdcc20cac04825
+--> c740b206b5b1
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache f517cdc8f3c28fb357882c85162c3e0c2e5629fe16f5ea29d97a0e05ad948c09
+--> f517cdc8f3c2
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1
+--> a73ffe4ea532
+[2/2] STEP 1/22: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4
+[2/2] STEP 2/22: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache 9431daf9a75e13b3f6611294e94c78e947e5167f72a5d5ef3f705b855d60b57a
+--> 9431daf9a75e
+[2/2] STEP 3/22: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache ccf0487d5a587548d8651a6832ce914fc68631b89b920045d26ff11e332053e6
+--> ccf0487d5a58
+[2/2] STEP 4/22: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache 6ff0b226eae8564b8b72152184cabd5613a3c0dce73e24e78dd317ece035213b
+--> 6ff0b226eae8
+[2/2] STEP 5/22: COPY --from=wheels /wheels /wheels
+--> Using cache 86fbbbd5adb5af0e8181f1ed9d73ee2471ab24b3ab6003b21036453a2d3c232c
+--> 86fbbbd5adb5
+[2/2] STEP 6/22: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+--> Using cache 1e399d9f13c8263dafdb8d155327a1abbaf2f83cb55be1dddeb2b952d2a4ed3a
+--> 1e399d9f13c8
+[2/2] STEP 7/22: COPY docker /opt/aat/docker
+--> Using cache 3dc88d852fce8674627642e121a36fc09d0ced4448db38eb39dc9e15ededceaa
+--> 3dc88d852fce
+[2/2] STEP 8/22: WORKDIR /opt/aat
+--> Using cache 204359d59719a9d9e33c4e1dcaa2810b47eadb8cc1baaf4308e4741cf0d5a817
+--> 204359d59719
+[2/2] STEP 9/22: USER root
+--> Using cache 0dbcecda63170656e41a253a151319ba2822e99bb8ee0c21d3f833beff9d108f
+--> 0dbcecda6317
+[2/2] STEP 10/22: RUN python -m pip install --no-cache-dir pytest==8.4.2 && python -m pip check
+--> Using cache 3daf0cd76ae5a5ba04da4705ac0d7b97d452c7eca44364e4cfe563323e281226
+--> 3daf0cd76ae5
+[2/2] STEP 11/22: COPY tests /opt/aat/tests
+--> 2b95215fd550
+[2/2] STEP 12/22: COPY airflow/docker/build_constraints.py airflow/docker/constraints-policy.json airflow/docker/constraints-3.12.txt airflow/docker/overrides.lock /opt/aat/airflow/docker/
+--> 7cd2a3b67118
+[2/2] STEP 13/22: COPY samples /opt/aat/samples
+--> 073175312d7e
+[2/2] STEP 14/22: COPY templates /opt/aat/templates
+--> 7f390beb5f53
+[2/2] STEP 15/22: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> 116bda8ed066
+[2/2] STEP 16/22: COPY frontend/package.json /opt/aat/frontend/package.json
+--> 8fcd60888e3a
+[2/2] STEP 17/22: COPY backend/pyproject.toml /opt/aat/backend/pyproject.toml
+--> 6a875633514d
+[2/2] STEP 18/22: COPY etl_engine/pyproject.toml /opt/aat/etl_engine/pyproject.toml
+--> 109edb06f0a7
+[2/2] STEP 19/22: COPY packages/aat_metadata/pyproject.toml /opt/aat/packages/aat_metadata/pyproject.toml
+--> 1ef9055aeacb
+[2/2] STEP 20/22: COPY .gitattributes /opt/aat/.gitattributes
+--> 32900c392905
+[2/2] STEP 21/22: USER 50000:50000
+--> 03c8e094b45f
+[2/2] STEP 22/22: CMD ["python", "-m", "pytest", "-p", "no:cacheprovider", "tests/unit", "-v"]
+[2/2] COMMIT localhost/aat-backend-tests:0.1.0
+--> c894519c228f
+Successfully tagged localhost/aat-backend-tests:0.1.0
+c894519c228fcc84c9aa3d16b670fe9d4508c72fcb315d9fe3a58fbefb546a2c

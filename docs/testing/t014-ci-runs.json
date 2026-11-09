@@ -1,52 +1,82 @@
 [
   {
-    "id": 42493618597,
-    "head_sha": "99cdfefc1c287033f35cad4085fa9ef242db8c56",
+    "id": 42495227273,
+    "head_sha": "b29ae868bcf4a86f0bdb42dfedc4f58ed5dd0b4b",
     "status": "completed",
     "conclusion": "success",
-    "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597",
+    "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42495227273",
     "event": "push",
-    "name": "Ki\u1ec3m ch\u1ee9ng bytes artifact m\u1eabu",
+    "name": "Kiểm chứng bytes artifact mẫu",
     "jobs": [
       {
-        "id": 128771048174,
+        "id": 128776021852,
         "name": "sample-bytes (ubuntu-latest)",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597/job/128771048174"
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42495227273/job/128776021852"
       },
       {
-        "id": 128771048603,
+        "id": 128776022053,
         "name": "sample-bytes (windows-latest)",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597/job/128771048603"
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42495227273/job/128776022053"
       }
     ]
   },
   {
-    "id": 42491834726,
-    "head_sha": "a3c421ed78def8cfc28c0555e82b37e4cff96e55",
-    "status": "completed",
-    "conclusion": "success",
-    "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726",
-    "event": "push",
-    "name": "Ki\u1ec3m ch\u1ee9ng bytes artifact m\u1eabu",
-    "jobs": [
+    "value": [
       {
-        "id": 128765684035,
-        "name": "sample-bytes (windows-latest)",
+        "id": 42493618597,
+        "head_sha": "99cdfefc1c287033f35cad4085fa9ef242db8c56",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684035"
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597",
+        "event": "push",
+        "name": "Kiểm chứng bytes artifact mẫu",
+        "jobs": [
+          {
+            "id": 128771048174,
+            "name": "sample-bytes (ubuntu-latest)",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597/job/128771048174"
+          },
+          {
+            "id": 128771048603,
+            "name": "sample-bytes (windows-latest)",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597/job/128771048603"
+          }
+        ]
       },
       {
-        "id": 128765684182,
-        "name": "sample-bytes (ubuntu-latest)",
+        "id": 42491834726,
+        "head_sha": "a3c421ed78def8cfc28c0555e82b37e4cff96e55",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684182"
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726",
+        "event": "push",
+        "name": "Kiểm chứng bytes artifact mẫu",
+        "jobs": [
+          {
+            "id": 128765684035,
+            "name": "sample-bytes (windows-latest)",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684035"
+          },
+          {
+            "id": 128765684182,
+            "name": "sample-bytes (ubuntu-latest)",
+            "status": "completed",
+            "conclusion": "success",
+            "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42491834726/job/128765684182"
+          }
+        ]
       }
-    ]
+    ],
+    "Count": 2
   }
 ]

@@ -9,14 +9,17 @@ FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4
 USER root
 COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
 RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/
+RUN python /opt/aat/build_constraints.py /opt/aat
 USER airflow
 COPY --chown=airflow:root airflow/docker/providers.lock /opt/aat/providers.lock
-COPY --chown=airflow:root airflow/docker/constraints-3.12.txt /opt/aat/constraints-3.12.txt
+COPY --chown=airflow:root airflow/docker/overrides.lock /opt/aat/overrides.lock
 COPY --chown=airflow:root etl_engine/requirements.lock /opt/aat/requirements.lock
 COPY --from=wheels --chown=airflow:root /wheels/aat_metadata-0.1.0-py3-none-any.whl /wheels/aat_metadata-0.1.0-py3-none-any.whl
 COPY --from=wheels --chown=airflow:root /wheels/aat_etl_engine-0.1.0-py3-none-any.whl /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
-RUN python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/providers.lock -c /opt/aat/constraints-3.12.txt && \
-    python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock -c /opt/aat/constraints-3.12.txt && \
+RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/overrides.lock -c /opt/aat/constraints-effective-3.12.txt && \
+    python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/providers.lock -c /opt/aat/constraints-effective-3.12.txt && \
+    python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock -c /opt/aat/constraints-effective-3.12.txt && \
     python -m pip install --no-deps /wheels/*.whl && python -m pip check && \
     python -c "import airflow, airflow.sdk, aat_metadata, aat_etl; assert airflow.__version__ == '3.3.2'"
 COPY --chown=airflow:root airflow/docker/entrypoint.sh /opt/aat/entrypoint.sh

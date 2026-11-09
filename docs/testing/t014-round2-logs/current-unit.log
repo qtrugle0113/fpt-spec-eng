@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 10 items
+
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed PASSED [ 10%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_lock_drift_missing_and_duplicate_entries_are_rejected PASSED [ 20%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_pinned_sources_and_internal_stages_match_lock PASSED [ 30%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_unpinned_and_conflicting_from_are_rejected PASSED [ 40%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_distribution_boundaries PASSED [ 50%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_frontend_manifest_uses_planned_runtime PASSED [ 60%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_shared_packages_import_without_api_or_airflow PASSED [ 70%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_binary_workbooks_match_manifest PASSED [ 80%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_checkout_policy_is_explicit PASSED [ 90%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_raw_sample_bytes_match_manifest PASSED [100%]
+
+============================== 10 passed in 0.31s ==============================

@@ -16,6 +16,29 @@ candidate được duyệt; build/runtime/security có kết quả riêng trong
 `docs/testing/phase1-report.md`, không suy PASS từ bảng pin. T014 vẫn BLOCKED cho tới khi
 đủ evidence security và CI; không đổi Constitution/BR-08 hoặc mở Phase2.
 
+## A/B đã được chủ dự án duyệt ngày 2026-11-09
+
+Tiếp tục T014 theo [phương án A/B](../../docs/proposals/t014-round2-approval.md).
+A giữ nguyên Airflow3.3.2/core/SDK và file constraints upstream SHA256
+`821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c`.
+Constraints hiệu lực được tạo từ upstream, chỉ thay certifi2026.7.22→2026.10.18 và
+urllib3 2.7.0→2.8.0; override artifacts khóa hashes riêng, kiểm resolver và pip check.
+Không nối hai constraints xung đột hoặc sửa upstream. B dùng đồng bộ Playwright1.65.0,
+image v1.65.0-resolute theo digest đã thử, Chromium158.0.8127.18, apt/libapt-pkg7.0
+3.2.1ubuntu0.1. Cập nhật lock frontend/E2E và kiểm browser thực.
+Podman6.1.1/Compose5.6.0 là tổ hợp đang tái kiểm trên máy hiện tại; không tự kế thừa
+PASS baseline lịch sử. A/B không miễn trừ findings OS/build hoặc mở gate Phase1.
+
+## Remediation bổ sung trong T014 — 2026-11-09
+
+Theo quyền cập nhật dependency/base/toolchain trong hội thoại, bổ sung override
+dnspython2.8.0→2.9.0 có hash/provenance riêng để vá CVE-2026-114605.
+Toolchain gosu giữ Go1.27.3, chuyển Bookworm sang Alpine3.24 sau scan candidate
+0 HIGH/0 CRITICAL; CGO_ENABLED=0 và source gosu1.19 bất biến.
+Giữ core3.3.2/SDK1.3.2, upstream constraints bất biến; kiểm candidate cô lập.
+[Phương án và giới hạn nâng core](../../docs/proposals/t014-round3-remediation.md)
+phân biệt remediation được phép với đề xuất Airflow3.4 chưa được duyệt.
+
 ## Tóm tắt
 
 Modular monolith với React/TypeScript SPA, FastAPI API và một backend-worker cùng codebase,
@@ -41,7 +64,7 @@ artifacts tiếng Việt; UI và workbook instructions tiếng Anh.
 | Orchestration | apache/airflow:slim-3.3.2-python3.12, LocalExecutor, Task SDK, Public APIv2 |
 | Databases | postgres:17.11-bookworm, mysql:8.4.13 InnoDB/utf8mb4/strict mode |
 | Web image | nginx:1.30.6-alpine3.24, SPA static và same-origin API reverse proxy |
-| Kiểm thử | pytest8.4.2, Playwright1.56.1, DB/Airflow integration thật, schema/contract checks |
+| Kiểm thử | pytest8.4.2, Playwright1.65.0, DB/Airflow integration thật, schema/contract checks |
 | Nền tảng | Linux/amd64 containers trên Podman WSL; client5.8.3/server5.8.9, Docker Compose provider5.6.0; named volumes cho IO. Docker baseline khác vẫn hợp lệ khi được công bố/kiểm theo Constitution1.1.0 |
 | Phạm vi | Một operator local, không login;6màn hình,8hướng ETL; một source/target mỗi DAG |
 | Hiệu năng | p95 list/detail/preview100dòng<=3giây trên fixture; connection<=30giây; registration<=120giây |
@@ -375,7 +398,7 @@ theo cùng contract trước khi tuyên bố integration hoàn thành.
 | Airflow | Image3.3.2 và APIv2 thật | Import errors, parsed revision, TI version, manual+cron, pause/trigger/log pagination |
 | Failure/recovery | Kill/network/commit-response-loss/disk full/schema drift | No blind replay, full-refresh rollback, same-target native lock, protected cleanup |
 | Container startup | Fresh volumes/restart/migration failure | One command, real health, seed idempotent, secrets/volumes bền |
-| E2E | Playwright1.56.1 against real stack | Upload→preview→create/deploy→run→monitor/dashboard/open Airflow; desktop1440/mobile390 |
+| E2E | Playwright1.65.0 against real stack | Upload→preview→create/deploy→run→monitor/dashboard/open Airflow; desktop1440/mobile390 |
 | Stress | Dataset>1GiB, worker budget512MiB, >20batches | RSS/actual disk/manifest/checksums/row counts/cleanup, không đọc toàn RAM |
 
 Spec A–AM là ma trận bắt buộc; group A/B/P/AL cho Excel/table; C–H/U cho8routes;
@@ -423,7 +446,7 @@ chạy standalone transfer/failure/metrics verification; Tasks phải tách các
 
 Compose profile `test` có `backend-tests` và `e2e-tests` từ Phase1, không khởi động mặc định.
 Skeleton gồm Dockerfile backend tests copy root tests, Playwright Dockerfile/config, manifest/
-lock `@playwright/test==1.56.1` và image `mcr.microsoft.com/playwright:v1.56.1-noble` cùng
+lock `@playwright/test==1.65.0` và image `mcr.microsoft.com/playwright:v1.65.0-resolute` cùng
 browser version; code tests gọi `http://frontend:80` trong network Compose. Runner chạy được
 bootstrap/shell smoke phù hợp hiện có; collect/runner smoke không chứng minh story đã PASS.
 Phase2 mở rộng fixture metadata và harness contracts; Phase3 dùng runner này nghiệm thu

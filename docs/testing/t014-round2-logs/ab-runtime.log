@@ -1,0 +1,12 @@
+test_failed_init_blocks_consumer (tests.integration.test_compose_bootstrap_wiring.ComposeDependencyTests.test_failed_init_blocks_consumer) ... ok
+test_real_stack_health_limits_mounts_ports_and_order (tests.integration.test_compose_bootstrap_wiring.ComposeStackWiringTests.test_real_stack_health_limits_mounts_ports_and_order) ... ok
+test_http200_does_not_hide_stale_scheduler (tests.integration.test_bootstrap_health.BootstrapHealthTests.test_http200_does_not_hide_stale_scheduler) ... ok
+test_mysql_down_fails_query_probe_but_live_remains_live (tests.integration.test_bootstrap_health.BootstrapHealthTests.test_mysql_down_fails_query_probe_but_live_remains_live) ... ok
+test_secret_values_are_absent_from_service_logs (tests.integration.test_bootstrap_secret_logs.BootstrapSecretLogTests.test_secret_values_are_absent_from_service_logs) ... ok
+test_gosu_rebuilt_with_patched_go_preserves_drop_uid (tests.integration.test_database_image_hardening.DatabaseImageHardeningTests.test_gosu_rebuilt_with_patched_go_preserves_drop_uid) ... ok
+test_mysql_shell_removed_without_removing_server_or_client (tests.integration.test_database_image_hardening.DatabaseImageHardeningTests.test_mysql_shell_removed_without_removing_server_or_client) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 71.677s
+
+OK

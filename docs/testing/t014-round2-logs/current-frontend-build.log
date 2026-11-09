@@ -1,0 +1,47 @@
+[1/2] STEP 1/7: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS build
+[1/2] STEP 2/7: WORKDIR /app
+--> b30c8ea4c7a0
+[1/2] STEP 3/7: COPY frontend/package.json frontend/package-lock.json ./
+--> a0981d399191
+[1/2] STEP 4/7: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+
+removed 65 packages, and changed 92 packages in 7s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+added 96 packages in 10s
+npm warn install-scripts 1 package had install scripts blocked because they are not covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+--> c6619e568cb0
+[1/2] STEP 5/7: COPY frontend/index.html frontend/tsconfig.json frontend/vite.config.ts ./
+--> 631c124cdc39
+[1/2] STEP 6/7: COPY frontend/src ./src
+--> 5857b25fcbd7
+[1/2] STEP 7/7: RUN npm run build
+npm notice run aat-frontend@0.1.0 build
+npm notice run tsc --noEmit && vite build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 86 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:   0.30 kB
+dist/assets/index-d4I8hLaU.css    7.35 kB │ gzip:   2.42 kB
+dist/assets/index-CNBk4xuM.js   336.76 kB │ gzip: 108.45 kB
+✓ built in 2.77s
+--> 603302aa2a14
+[2/2] STEP 1/5: FROM docker.io/library/nginx:1.30.6-alpine3.24@sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7
+[2/2] STEP 2/5: COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+--> 35d050869242
+[2/2] STEP 3/5: COPY --from=build /app/dist /usr/share/nginx/html
+--> 8ed65d23e4a2
+[2/2] STEP 4/5: EXPOSE 80
+--> 1918568d7192
+[2/2] STEP 5/5: HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3   CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
+[2/2] COMMIT localhost/aat-frontend:t014-b29ae86
+--> 6f331328f534
+Successfully tagged localhost/aat-frontend:t014-b29ae86
+6f331328f53403802fe8c7c0b67869ad5025b38780903728c7b244cf6c46d4c5

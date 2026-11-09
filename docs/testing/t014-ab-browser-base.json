@@ -1,0 +1,17 @@
+{
+  "captured_at": "2026-11-09T01:02:17.000822+00:00",
+  "approval": "docs/proposals/t014-round2-approval.md",
+  "old_browser_base": {
+    "ref": "mcr.microsoft.com/playwright:v1.56.1-noble",
+    "repo_digest": "mcr.microsoft.com/playwright@sha256:42f02d323c310069b4d54c94bd91a608966a486c3492c48ae0b1cea747ec5ca2",
+    "image_id": "4967572bb0de50a2eab9cbfd8dbc573933f9eea87fa1ca11eeb746322225aed5",
+    "platform": "linux/amd64"
+  },
+  "new_browser_base": {
+    "ref": "mcr.microsoft.com/playwright:v1.65.0-resolute",
+    "repo_digest": "mcr.microsoft.com/playwright@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218",
+    "image_id": "6c366017b41688a05fd66e4d942e35f17fdb1f3c5ad0ec9a39674f36e5ff446c",
+    "platform": "linux/amd64"
+  },
+  "scope": "Pinned browser base inspect; final runtime/browser/scan validation recorded separately"
+}

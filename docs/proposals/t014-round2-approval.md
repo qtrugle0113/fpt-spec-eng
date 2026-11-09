@@ -1,4 +1,11 @@
-# T014 lượt2 — phương án cần duyệt sau thử nghiệm
+# T014 lượt2 — phương án A/B đã được duyệt
+
+**Chủ dự án đã duyệt A và B trong hội thoại ngày 2026-11-09 (Asia/Yakutsk).**
+Triển khai theo phạm vi bên dưới, giữ upstream constraints và không tự miễn trừ finding.
+Các số liệu trial/phần “Xin duyệt” bên dưới là provenance trước quyết định, không phải
+kết quả build/test của implementation mới. Trạng thái triển khai xem báo cáo T014 hiện hành.
+
+A/B đã triển khai và kiểm thực tế; [kết quả, scan/triage và giới hạn còn lại](../testing/t014-ab-report.md).
 
 Ngày: 2026-11-09 (KST). Các trial dưới đây **chưa áp dụng vào baseline**.
 Baseline vẫn Airflow3.3.2/official constraints và Playwright1.56.1/Chromium141.0.7390.37.

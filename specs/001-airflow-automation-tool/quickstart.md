@@ -1,10 +1,19 @@
 # Hướng dẫn khởi động và kiểm chứng
 
 **Trạng thái hiện hành**: Đã có source/Compose/test bootstrap Phase1; P1–P7 đã được duyệt
-và kiểm chứng lại. T014 vẫn BLOCKED bởi security findings và CI remote NOT_RUN; chưa vào
+và kiểm chứng lại. T014 vẫn BLOCKED bởi security findings và các gate tái kiểm; CI tại
+HEAD b29ae86 đã PASS, working tree lượt mới chưa chạy CI remote. Chưa vào
 Phase2. Các kịch bản nghiệp vụ dưới đây là tiêu chí cho phase tương ứng, chưa là sản phẩm PASS.
 Xem [báo cáo hiện hành](../../docs/testing/phase1-report.md). Candidate shell đang ở
-http://localhost:13000; stack cũ http://localhost:3000 và preview4173 được giữ nguyên.
+http://localhost:13000 trong môi trường nghiệm thu cũ; địa chỉ này không chứng minh dịch vụ
+đang chạy trên máy hiện tại. Xem [kết quả tiếp tục ngày 2026-11-09](../../docs/testing/t014-current-report.md)
+cho môi trường Podman6.1.1 và phạm vi đã kiểm thực tế.
+
+A/B đã duyệt và triển khai: Playwright1.65.0/Resolute và hai override Airflow theo policy
+riêng, upstream constraints giữ nguyên hash. Fresh/restart đã PASS trên Podman6.1.1 với
+provider5.6.0 trong project test `aat-phase1-t014-ab-20261109`, ports13000/18000/18080.
+Xem [báo cáo A/B](../../docs/testing/t014-ab-report.md) trước khi tiếp tục fixture này;
+không suy bootstrap PASS thành gate security/CI hoặc workflow nghiệp vụ hoàn thành.
 
 ## Điều kiện đầu vào
 

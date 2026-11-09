@@ -1,0 +1,18 @@
+python : test_nginx_configuration_is_valid 
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_nginx_configuration_is_valid) ... ok
+At line:2 char:78
++ ... tend:0.1.0; python -m unittest tests.integration.test_frontend_proxy  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_nginx_conf...s_valid) ... ok:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+test_private_prefixes_do_not_reach_upstream 
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_private_prefixes_do_not_reach_upstream) ... ok
+test_public_proxy_preserves_path 
+(tests.integration.test_frontend_proxy.FrontendProxyTests.test_public_proxy_preserves_path) ... ok
+test_spa_deep_link (tests.integration.test_frontend_proxy.FrontendProxyTests.test_spa_deep_link) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 25.291s
+
+OK

@@ -1,5 +1,10 @@
 # Blocker còn lại sau P1–P7
 
+**Phạm vi lịch sử:** bảng dưới đây ghi trạng thái ngay sau P1–P7, trước lượt2 và trước
+CI đã PASS. Trạng thái hiện hành xem [báo cáo T014 ngày 2026-11-09](../testing/t014-current-report.md);
+quyết định A/B đã được duyệt và triển khai, xem [báo cáo A/B](../testing/t014-ab-report.md)
+và [phương án lượt2](t014-round2-approval.md). Không dùng bảng lịch sử làm gate hiện hành.
+
 P1–P7 đã áp dụng và kiểm chứng bootstrap; T014 vẫn BLOCKED. Không thay phiên bản ngoài
 phương án đã duyệt, override constraints, tự miễn trừ finding hoặc chạy CI remote.
 Nguồn hiện hành: `docs/testing/phase1-security.json`, `t014-security-triage.csv` và

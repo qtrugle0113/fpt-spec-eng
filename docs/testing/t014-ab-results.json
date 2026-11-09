@@ -1,0 +1,391 @@
+{
+  "captured_at": "2026-11-09T01:40:03.026477+00:00",
+  "task": "T014",
+  "status": "BLOCKED",
+  "phase1_gate": "BLOCKED",
+  "phase2_started": false,
+  "ab_approval": "User approved A/B in conversation on 2026-11-09",
+  "head_sha": "b29ae868bcf4a86f0bdb42dfedc4f58ed5dd0b4b",
+  "branch": "001-airflow-automation-tool-t014",
+  "working_tree_changes_included": true,
+  "project": "aat-phase1-t014-ab-20261109",
+  "environment": {
+    "client": "6.1.1",
+    "server": "6.1.1",
+    "compose": "5.6.0",
+    "compose_sha256": "8aeaa0055e660e12cf07cd70680dc8333957fe6718528b91ec3da084eab62483",
+    "arch": "amd64",
+    "cpus": 12,
+    "memory_bytes": 8162783232,
+    "cgroups": "v2",
+    "rootless": false
+  },
+  "verification": {
+    "fresh_restart_persistence": {
+      "status": "PASS",
+      "seconds": 752.059
+    },
+    "unit_profile": {
+      "status": "PASS",
+      "passed": 13
+    },
+    "e2e_profile": {
+      "status": "PASS",
+      "passed": 4
+    },
+    "runtime_fault_gates": {
+      "status": "PASS",
+      "passed": 7
+    },
+    "image_compatibility": {
+      "status": "PASS",
+      "passed": 5
+    },
+    "shell": {
+      "status": "PASS",
+      "routes_viewports": 12,
+      "page_errors": 0
+    },
+    "airflow_service_auth": {
+      "status": "PASS"
+    },
+    "airflow_operator_ui": {
+      "status": "PASS"
+    },
+    "npm_full_production_audit": {
+      "status": "PASS",
+      "vulnerabilities": 0
+    },
+    "scanner_execution": {
+      "status": "PASS",
+      "targets": 20
+    },
+    "ci_head": {
+      "status": "PASS",
+      "sha": "b29ae868bcf4a86f0bdb42dfedc4f58ed5dd0b4b",
+      "scope": "Sample artifact bytes matrix only"
+    },
+    "ci_working_tree": {
+      "status": "NOT_RUN"
+    },
+    "old_database_patch_restore_rerun": {
+      "status": "NOT_RUN",
+      "reason": "Old fixture absent on this machine"
+    },
+    "clean_git_checkout_ab": {
+      "status": "NOT_RUN",
+      "reason": "New A/B source is not committed; fresh startup used the working tree"
+    }
+  },
+  "security": {
+    "high_critical_occurrences": 1327,
+    "final_image_occurrences": 248,
+    "review_groups": 341,
+    "approved_waivers": 0
+  },
+  "scan_id_mismatches": [],
+  "services": [
+    {
+      "service": "airflow-apiserver",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 1073741824,
+      "port_bindings": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18080"
+          }
+        ]
+      }
+    },
+    {
+      "service": "airflow-dag-processor",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 1073741824,
+      "port_bindings": {}
+    },
+    {
+      "service": "airflow-init",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "state": "exited",
+      "exit_code": 0,
+      "health": null,
+      "memory_limit": 0,
+      "port_bindings": {}
+    },
+    {
+      "service": "airflow-scheduler",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 2147483648,
+      "port_bindings": {}
+    },
+    {
+      "service": "app-init",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "state": "exited",
+      "exit_code": 0,
+      "health": null,
+      "memory_limit": 0,
+      "port_bindings": {}
+    },
+    {
+      "service": "backend",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 536870912,
+      "port_bindings": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18000"
+          }
+        ]
+      }
+    },
+    {
+      "service": "backend-worker",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 536870912,
+      "port_bindings": {}
+    },
+    {
+      "service": "db-init",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "state": "exited",
+      "exit_code": 0,
+      "health": null,
+      "memory_limit": 0,
+      "port_bindings": {}
+    },
+    {
+      "service": "frontend",
+      "image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 134217728,
+      "port_bindings": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "13000"
+          }
+        ]
+      }
+    },
+    {
+      "service": "mysql",
+      "image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 1073741824,
+      "port_bindings": {}
+    },
+    {
+      "service": "postgres",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "memory_limit": 1073741824,
+      "port_bindings": {}
+    },
+    {
+      "service": "secrets-init",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "state": "exited",
+      "exit_code": 0,
+      "health": null,
+      "memory_limit": 0,
+      "port_bindings": {}
+    }
+  ],
+  "preexisting_containers_retained": [
+    {
+      "name": "local_postgres_1",
+      "state": "exited",
+      "image_id": "066167ff39c2a612402ce99b734ea1cff92a9d1f2ac52f697a5f0384f0d88d6b"
+    },
+    {
+      "name": "local_redis_1",
+      "state": "exited",
+      "image_id": "e965140ddfcc015d5ad17b0d56f3d0195834a0bdcba3c490b253e45ce81138b0"
+    },
+    {
+      "name": "local_agent-service_1",
+      "state": "exited",
+      "image_id": "5c360de5c218610d1ce9fae0978c3dfe6b2e0ab304783d4480743ad5c96be6d9"
+    },
+    {
+      "name": "local_backend_1",
+      "state": "exited",
+      "image_id": "bab47070104b90fd9449b8d78187e6a9a76b35aabc8e0da6563b5dce02b1054e"
+    },
+    {
+      "name": "local_frontend_1",
+      "state": "exited",
+      "image_id": "359d20c66598afa32ece66e0d64476767ad81d699ac9382e487fee782ede08aa"
+    },
+    {
+      "name": "local_playwright-runner_1",
+      "state": "exited",
+      "image_id": "2ea3ae3004f8a33785b54911f1b531dc3a91192a46c44089d8a0b4720102168a"
+    }
+  ],
+  "runtime_airflow_source_hashes": {
+    "airflow/docker/constraints-3.12.txt": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+    "airflow/docker/constraints-policy.json": "23d1c3a87fc10615c1fef96381aec75e00dbefca0ad4532d5caeadeb59b7e366",
+    "airflow/docker/build_constraints.py": "0657c4a0263f65b4c36fa4c85e9a81fef6d4fd6935e103b038b1d1fda6c7f014",
+    "airflow/docker/overrides.lock": "04667cb8e49188ee7ecc9ddd4294611fc9a3f647d99e97ac3e2c79f18969e581"
+  },
+  "runner_test_source_hashes": {
+    "tests/conftest.py": "66964a6739cb7ef2e73c5018c8732d5e0936b7891d6ef16b8ffa2fea6f48e417",
+    "tests/__init__.py": "13b2ab421a4cc9bea6734e966c770103813551069a33f82d4909fe36b04062cd",
+    "tests/integration/test_backend_bootstrap.py": "0babb9306a79988e0c57b6200111c45ff8512676e717dd73c87153da96353c3a",
+    "tests/integration/test_bootstrap_health.py": "b8d7d9a7a4ad3b0d651b471c6df3183be6905a6f23907a364278a6b69f7a15ac",
+    "tests/integration/test_bootstrap_secret_logs.py": "52edf5752493970b1368b2ec6b854d25382408a55705351630dfe4fef960dc68",
+    "tests/integration/test_bootstrap_startup.py": "9ad70b8047b37100a20cf7775cb97bbb910bf6be2a2eddb114986aede4231cf5",
+    "tests/integration/test_compose_bootstrap_wiring.py": "37a6ba6ff2b38ecc735b5754267f8a4be27802fcb6c204bd153594c9b1f9acf0",
+    "tests/integration/test_database_bootstrap.py": "8f52bd1e8327b2d617c4e01e26f9041a9eae9eadf0767532426c086522c76e92",
+    "tests/integration/test_database_image_hardening.py": "03f04a8e4aa9f614cb05fd03892e2631ff6d9af78e4a30d55593ee9e62b6d4d6",
+    "tests/integration/test_database_patch_restore.py": "2c69472817078f16342cc065428d8838db89a835a1c9af972b67c602ca00cc7a",
+    "tests/integration/test_frontend_proxy.py": "ea0f4aa304bf2e9ad294d4c876db5d75d3adecafeafb299ea8de6247e0d45656",
+    "tests/integration/test_image_compatibility.py": "b5fc8461eaa766a42ac21193c8b64536c229ed9889a80f7cdee40ee1dcd73153",
+    "tests/integration/__init__.py": "385785a5907d342e92d3f27b47679131ad754e06efb922941fe414173df6fa69",
+    "tests/tools/prepare_phase1_fixture.py": "feadefaa315c720b04e06f3dc502c9a6b3ae696448883a41ef63847078b15b4e",
+    "tests/tools/record_image_baseline.py": "eca5be56907e827c7e2221e7ac88ed0a82adbfa9be35257412cfab0a22b0fe92",
+    "tests/tools/scan_phase1_images.py": "289081430a5c7dbf07917bfce8223d779a3a5befa8f6e693a5b039ef62575466",
+    "tests/unit/test_airflow_constraints.py": "874667ed38e52ead054dbb3401bfb60793229292d0810f048226edc76c5efcc2",
+    "tests/unit/test_bootstrap_secrets.py": "40836a190b480774ee81716614dd333ed1a2c523b96a8b1dffc09fbf687abaf5",
+    "tests/unit/test_image_baseline.py": "de45cea40a110210466707be8977a6d6c61a323064a86b486e00782359568ad1",
+    "tests/unit/test_package_boundaries.py": "e5b8cd6731382f24c1628f7f5963b73adc659fe196a59d261a93e33f44168292",
+    "tests/unit/test_sample_artifacts.py": "36aa19a6d526ed6fbddf6cb8f0a96f941d8952731e697061e74d1a23a3d6339b",
+    "tests/unit/__init__.py": "ba286403b449db24d982a091015e408187b5b68de83cd13d708969ae2e8339a7"
+  },
+  "frontend_asset_sha256": {
+    "./index.html": "874c762d16675e4062fe35f624d814b51bfdb8287ecd7afe51a04f0aa3b01e2c",
+    "./assets/index-d4I8hLaU.css": "9d42ab5f6dd13f7d05725363b7231d9f4eeb6ae297afae011edf0c7e7565ebb3",
+    "./assets/index-CNBk4xuM.js": "b12d66624b471786d424bfcb9f6804773612f314f55c0d184218cd37477cd2d4"
+  },
+  "nginx_stock_asset_sha256": {
+    "./50x.html": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed"
+  },
+  "source_sha256": {
+    ".dockerignore": "c3b5b86b2e2054b28136368781f7a654a567fe110bd08f8415b004fc65a63df4",
+    ".gitattributes": "2c2aa18ed3324856c63cadd4a3cfdb6a724acdde70f191beb36411fb638f0c5e",
+    ".github/workflows/sample-artifacts.yml": "7cc36166d8ee112c65efcc67b03c14b00546200706f2c9b8bfe99541e3c43ade",
+    "airflow/docker/Dockerfile": "f099f76fb0d2e5d3dcf985e294f4ee31454ea350a42aec89b29df6356c9695be",
+    "airflow/docker/airflow.cfg": "2b86f673000537ece01fcf03cd73c37e8933c927e81ea6fec52632ca26e8e496",
+    "airflow/docker/build_constraints.py": "0657c4a0263f65b4c36fa4c85e9a81fef6d4fd6935e103b038b1d1fda6c7f014",
+    "airflow/docker/constraints-3.12.sha256": "06533079010a130fedb7cb4d19065f6352a8f180cea451d008d12381a119ca84",
+    "airflow/docker/constraints-3.12.txt": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+    "airflow/docker/constraints-policy.json": "23d1c3a87fc10615c1fef96381aec75e00dbefca0ad4532d5caeadeb59b7e366",
+    "airflow/docker/entrypoint.sh": "03d4993fb44bd988da2a53cbd84555127cf4f959070df93709f1272a901cf965",
+    "airflow/docker/health.sh": "c40653166a1541d74b46f65e1875e5076bfe481174910828c4deb0ffe511d041",
+    "airflow/docker/initialize.sh": "9e55af8e2f2d04ed0e02678214d0417dcf4dda70fea70e77a9a9cc461f7ae2e5",
+    "airflow/docker/os-packages.lock": "121cc964b28d3b64cc15fd9a6187cab370e262c4b026cac84b22c454086e4222",
+    "airflow/docker/overrides.lock": "04667cb8e49188ee7ecc9ddd4294611fc9a3f647d99e97ac3e2c79f18969e581",
+    "airflow/docker/providers.in": "3ff48d7fa3768db35f3bf642bc403a0468670a24aa2b32cf8e99fcdc4cb37f82",
+    "airflow/docker/providers.lock": "136009740ad37cbc688dcad46097ded93a5356c919a3c823acf9ee56cd85402d",
+    "airflow/docker/tooling.lock": "321898f94f26b2e9bcddb2b214e5e7c73ab240555ccb17fb9038a2445d50391a",
+    "backend/Dockerfile": "77a29df2759db8a733222aa21a51f27dd6bacc374e0a0e5aee93bddeef8fb5cc",
+    "backend/pyproject.toml": "f928bfe1dae46457ce88a4ef2549ce7de2aa711b398a088a85de9343328264f0",
+    "backend/requirements.in": "44d55bdb802f212ab02b9f9559167454d267b9d6cbc84885f048defa6dbd0786",
+    "backend/requirements.lock": "ed66f333ca4032712d4cccc80f8fc34ec763c750f9a7a277b64d90bd9c5e4f6c",
+    "backend/src/aat_api/__init__.py": "716c7618e1e70c8a8171d754923e6f46471e4b04279c7892634818815df2908a",
+    "backend/src/aat_api/main.py": "d3a495a86042ed7bd7d10ca55c8d8354a2f21aba505386d93938d8ad4660b53e",
+    "backend/src/aat_api/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docker-compose.yml": "05e14783777ef4febe57cd3e631d68eb9876d242378a392e19bb2ae6f5edcf5f",
+    "docker/bootstrap/check_airflow.py": "2520baa51a260e5b908d54ff68ec174649edd9c7d064bfa1304758e6856381fa",
+    "docker/bootstrap/check_databases.py": "e05d542609c2a7f0942a4bda84a6f72fe2227e32b52a794cf4d55d121d853668",
+    "docker/bootstrap/db_ready.py": "f5f6c18110762dd31c431e7fafef56de279e424f782852fc330c6e9c08f7a420",
+    "docker/bootstrap/health.py": "4cb980ac88d163d5ebf4ee2d1033f62f0c80a80b1f31f9869a28ab2d55f33534",
+    "docker/bootstrap/initialize.py": "9005995dbde8ec6243de00a7b1486f11e2e0af6d9ca0061299f70e5f02e396cc",
+    "docker/bootstrap/secrets.py": "9bd0093764a4a053af81ac46adad9850dc4127ac1412b7b3a9b1485ae28fbace",
+    "docker/bootstrap/worker.py": "cfee75ff7258998d54cd83951421e6d3479195c7850ff76c20e00cf2a6e83c19",
+    "docker/gosu/Dockerfile": "5814fcec9383b1d537eee4b1d223eedbb8730ccab8a5b4f95b1d47614163cdb5",
+    "docker/gosu/source.lock.json": "b3b479e3a80d507489e4880eb32edb4c38e43b8ecd434d62379b3a11d298d1e1",
+    "docker/images.lock": "05847987e0f4cf348eb403c4e04b819fa13bb0f65d2dca60c8cb0bb6a0b5c993",
+    "docker/mysql/initialize.py": "62d5886b0dec2cb3581b5bb6fd190134ce6fff7f9fd3e2c15e4e3b1fee713257",
+    "docker/mysql/samples.sql": "cc21067de6d4e6565c23a94735e758961f84bd839ac97f7a1312e203ec3f8438",
+    "docker/nginx/default.conf": "7bed027a9a2e2873d806324825f2f3ac318fa79272eb8f12b7cb65c377112435",
+    "docker/postgres/initialize.py": "ce05f70cdf396bc23ecb5fa7d9f839ead9a4300dae731d1b6e43c72fe8397517",
+    "docker/postgres/samples.sql": "d80d00b3a8e28df48dd3aeac6c38a4f379e1d7003f84323edca61e7c12e4abf3",
+    "docker/tests/Dockerfile": "debeb26b7b1ef59c0b8a56005b97bb9aa1e2b2b91c1267512602faa8199fa0da",
+    "docker/tests/os-packages.lock": "46be761838c5e175e4f93f3b7f1d6f2a8bb54c2bd24d68e432b69d8c2ee5c5c4",
+    "docker/tests/playwright.Dockerfile": "ab08ee02b7c8302b9040b40dfff7ac4ee58db8ee7ec6e2eff386de58daf1c57e",
+    "etl_engine/pyproject.toml": "083b52fd8e942dd72acf3c227ea9f076e2a371082dbfac06234a62f449c8943b",
+    "etl_engine/requirements.in": "0399dab28004ff5f09b226d6810b922a684ba6b78745cf202a25af57678a8f92",
+    "etl_engine/requirements.lock": "30945a7771f40f5a8a7ccbeb01f55681cb56d01b06ffc9295c6e96647d4f29c9",
+    "etl_engine/src/aat_etl/__init__.py": "710f326a54c0481d6415a67b9e37c13a37f48fa369012094f052f92d01397145",
+    "etl_engine/src/aat_etl/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/Dockerfile": "507672df4d2e53001af324ded8ac84acc831e6d4f53a77c222635b567c4a0a4e",
+    "frontend/package-lock.json": "b1625833fb66f0c3952be5f6b98149c1359813559866cfb2366c81106cdae799",
+    "frontend/package.json": "4b1888397a3db568db3d0400b490ff346cbcd33bd041bec498a70d5d6541e552",
+    "frontend/src/app/App.tsx": "a986ab4ef19e7cbcdf6e3beab84f87e54a2a47c8898ddd629d8a3d2b43168d6f",
+    "frontend/src/app/router.tsx": "227f38484f8934d290bddc9c3f92763446777a2f295a82bc83c329a138a4583a",
+    "frontend/src/app/styles.css": "a58aa7fbae7de412dc64c115f474cc919e02f63dfb9c0c6a561f5a76451c6057",
+    "frontend/src/main.tsx": "61ca56412419d300eef8a88092345679067ad99df205cedc7f280dd1330d5af1",
+    "frontend/tsconfig.json": "5403e42156573fb94bc3376e49975bb43bc5375ec711a93ee6153d5a5c98da66",
+    "frontend/vite.config.ts": "17f7fff409cf4acde70741f4aed8b09d4d937f4189f468e4749a08f14c34d92d",
+    "packages/aat_metadata/__init__.py": "5d7a9d2dea0a84380e1e80ed6b886289551afe08243be31b6619d919dd49cc99",
+    "packages/aat_metadata/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages/aat_metadata/pyproject.toml": "7c37ed743557309bf53c5de0f4cbf1a3b8db635e8cd3152176276659aa24eeb5",
+    "packages/aat_metadata/secrets/__init__.py": "e065de0e16e955de49c445a49f551283d767127f8e1a7a46ba1bced48b426489",
+    "packages/aat_metadata/secrets/codec.py": "8b44dc7749ad85876a2f17a5390750290b19da281b18b0361bb06d7b031b60fe",
+    "tests/__init__.py": "13b2ab421a4cc9bea6734e966c770103813551069a33f82d4909fe36b04062cd",
+    "tests/conftest.py": "66964a6739cb7ef2e73c5018c8732d5e0936b7891d6ef16b8ffa2fea6f48e417",
+    "tests/e2e/bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "tests/e2e/package-lock.json": "2e25f57c65d2adccc00bd53c6c9c3c120ee40ce44037024ff7f83c7b305d1140",
+    "tests/e2e/package.json": "a3f3c60db8d45bed8c6e80b2ed7afb76dfe830fcaf820c4f1efdd6df2e5538b2",
+    "tests/e2e/playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6",
+    "tests/fixtures/compose-dependency-failure.yml": "4985b651690281d937ff4c26f7e95e9789bdca2f54990d7af5c756b2628f9f88",
+    "tests/integration/__init__.py": "385785a5907d342e92d3f27b47679131ad754e06efb922941fe414173df6fa69",
+    "tests/integration/test_backend_bootstrap.py": "0babb9306a79988e0c57b6200111c45ff8512676e717dd73c87153da96353c3a",
+    "tests/integration/test_bootstrap_health.py": "b8d7d9a7a4ad3b0d651b471c6df3183be6905a6f23907a364278a6b69f7a15ac",
+    "tests/integration/test_bootstrap_secret_logs.py": "52edf5752493970b1368b2ec6b854d25382408a55705351630dfe4fef960dc68",
+    "tests/integration/test_bootstrap_startup.py": "9ad70b8047b37100a20cf7775cb97bbb910bf6be2a2eddb114986aede4231cf5",
+    "tests/integration/test_compose_bootstrap_wiring.py": "37a6ba6ff2b38ecc735b5754267f8a4be27802fcb6c204bd153594c9b1f9acf0",
+    "tests/integration/test_database_bootstrap.py": "8f52bd1e8327b2d617c4e01e26f9041a9eae9eadf0767532426c086522c76e92",
+    "tests/integration/test_database_image_hardening.py": "03f04a8e4aa9f614cb05fd03892e2631ff6d9af78e4a30d55593ee9e62b6d4d6",
+    "tests/integration/test_database_patch_restore.py": "2c69472817078f16342cc065428d8838db89a835a1c9af972b67c602ca00cc7a",
+    "tests/integration/test_frontend_proxy.py": "ea0f4aa304bf2e9ad294d4c876db5d75d3adecafeafb299ea8de6247e0d45656",
+    "tests/integration/test_image_compatibility.py": "b5fc8461eaa766a42ac21193c8b64536c229ed9889a80f7cdee40ee1dcd73153",
+    "tests/tools/prepare_phase1_fixture.py": "feadefaa315c720b04e06f3dc502c9a6b3ae696448883a41ef63847078b15b4e",
+    "tests/tools/record_image_baseline.py": "eca5be56907e827c7e2221e7ac88ed0a82adbfa9be35257412cfab0a22b0fe92",
+    "tests/tools/scan_phase1_images.py": "289081430a5c7dbf07917bfce8223d779a3a5befa8f6e693a5b039ef62575466",
+    "tests/unit/__init__.py": "ba286403b449db24d982a091015e408187b5b68de83cd13d708969ae2e8339a7",
+    "tests/unit/test_airflow_constraints.py": "874667ed38e52ead054dbb3401bfb60793229292d0810f048226edc76c5efcc2",
+    "tests/unit/test_bootstrap_secrets.py": "40836a190b480774ee81716614dd333ed1a2c523b96a8b1dffc09fbf687abaf5",
+    "tests/unit/test_image_baseline.py": "de45cea40a110210466707be8977a6d6c61a323064a86b486e00782359568ad1",
+    "tests/unit/test_package_boundaries.py": "e5b8cd6731382f24c1628f7f5963b73adc659fe196a59d261a93e33f44168292",
+    "tests/unit/test_sample_artifacts.py": "36aa19a6d526ed6fbddf6cb8f0a96f941d8952731e697061e74d1a23a3d6339b"
+  },
+  "protected_sha256": {
+    ".specify/memory/constitution.md": "03ea6b216e695ae726555508929f31674cbd0b67dde73b3a4cd3aa47e160148c",
+    "airflow/docker/constraints-3.12.txt": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+    "specs\\001-airflow-automation-tool\\checklists\\requirements.md": "15add8042e08968e4431c26826690689e02f97cf1d444c11d79e54dc0d8fce0b",
+    "specs\\001-airflow-automation-tool\\checklists\\spec-quality.md": "3fbface0d2d2fa89958322bd7051f1a9a7835a181231c8032daccee70b61e51e",
+    "samples\\data\\customers.csv": "e5a9d8f77e05faaaf973c9fdc08df3f5f2652963ad9fc309881241291cd954fc",
+    "samples\\data\\customers.txt": "704a390b7bace232b578d55270ffbacbe1d71d6e370be975ed38dcf250d94fcd",
+    "samples\\definitions\\ETL Definition.sample.xlsx": "76f0f069713c040b44a512376169fadfa85b2b3fa79527cceb2a84d3e10a98bd",
+    "samples\\definitions\\Table Definition.sample.xlsx": "57d2cbfa2d6a871efa2ca98eb66248b3fef23520bac873745e7c5e70ad5a8b2b",
+    "templates\\ETL Definition.xlsx": "8bab3c153eae8b7ece9cdf5f454b6136463d02a45a11d1db8e2fcc7ea0f9ee83",
+    "templates\\Table Definition.xlsx": "562702c2d717ec0be87a5f0027b32eb0d7ad33375c11c24ce423e28950e435b1"
+  }
+}

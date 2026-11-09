@@ -1,0 +1,489 @@
+[1/2] STEP 1/6: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/6: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+Collecting build==1.3.0
+  Downloading build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting setuptools==80.9.0
+  Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting wheel==0.45.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting packaging>=19.1 (from build==1.3.0)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyproject_hooks (from build==1.3.0)
+  Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+Downloading build-1.3.0-py3-none-any.whl (23 kB)
+Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 4.7 MB/s eta 0:00:00
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+Installing collected packages: wheel, setuptools, pyproject_hooks, packaging, build
+Successfully installed build-1.3.0 packaging-26.3 pyproject_hooks-1.3.3 setuptools-80.9.0 wheel-0.45.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 72a40010e2df
+[1/2] STEP 3/6: WORKDIR /build
+--> a1afa3dbf79e
+[1/2] STEP 4/6: COPY packages/aat_metadata /build/packages/aat_metadata
+--> a32ebb9e6237
+[1/2] STEP 5/6: COPY etl_engine /build/etl_engine
+--> c740b206b5b1
+[1/2] STEP 6/6: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine
+* Getting build dependencies for wheel...
+running egg_info
+creating ../aat_metadata.egg-info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_metadata
+copying ./__init__.py -> build/lib/aat_metadata
+creating build/lib/aat_metadata/secrets
+copying ./secrets/codec.py -> build/lib/aat_metadata/secrets
+copying ./secrets/__init__.py -> build/lib/aat_metadata/secrets
+running egg_info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+copying ./py.typed -> build/lib/aat_metadata
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_metadata
+creating build/bdist.linux-x86_64/wheel/aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/codec.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/py.typed -> build/bdist.linux-x86_64/wheel/./aat_metadata
+copying build/lib/aat_metadata/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata
+running install_egg_info
+Copying ../aat_metadata.egg-info to build/bdist.linux-x86_64/wheel/./aat_metadata-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_metadata-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-9nynxvh2/aat_metadata-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_metadata/__init__.py'
+adding 'aat_metadata/py.typed'
+adding 'aat_metadata/secrets/__init__.py'
+adding 'aat_metadata/secrets/codec.py'
+adding 'aat_metadata-0.1.0.dist-info/METADATA'
+adding 'aat_metadata-0.1.0.dist-info/WHEEL'
+adding 'aat_metadata-0.1.0.dist-info/top_level.txt'
+adding 'aat_metadata-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_metadata-0.1.0-py3-none-any.whl
+* Getting build dependencies for wheel...
+running egg_info
+creating src/aat_etl_engine.egg-info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_etl
+copying src/aat_etl/__init__.py -> build/lib/aat_etl
+running egg_info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+copying src/aat_etl/py.typed -> build/lib/aat_etl
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_etl
+copying build/lib/aat_etl/py.typed -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+running install_egg_info
+Copying src/aat_etl_engine.egg-info to build/bdist.linux-x86_64/wheel/./aat_etl_engine-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_etl_engine-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-b3ebds69/aat_etl_engine-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_etl/__init__.py'
+adding 'aat_etl/py.typed'
+adding 'aat_etl_engine-0.1.0.dist-info/METADATA'
+adding 'aat_etl_engine-0.1.0.dist-info/WHEEL'
+adding 'aat_etl_engine-0.1.0.dist-info/top_level.txt'
+adding 'aat_etl_engine-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_etl_engine-0.1.0-py3-none-any.whl
+--> 4f924a1f266b
+[2/2] STEP 1/25: FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f
+[2/2] STEP 2/25: USER root
+--> 9c9fb6079836
+[2/2] STEP 3/25: COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
+--> 1c06270509c7
+[2/2] STEP 4/25: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+Get:2 https://download.docker.com/linux/debian bookworm InRelease [46.6 kB]
+Get:3 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+Get:4 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+Get:5 https://packages.microsoft.com/debian/12/prod bookworm InRelease [3618 B]
+Get:6 https://download.docker.com/linux/debian bookworm/stable amd64 Packages [87.3 kB]
+Get:7 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+Get:8 https://packages.microsoft.com/debian/12/prod bookworm/main all Packages [576 B]
+Get:9 https://packages.microsoft.com/debian/12/prod bookworm/main amd64 Packages [647 kB]
+Get:10 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [363 kB]
+Get:12 https://packages.microsoft.com/debian/12/prod bookworm/main arm64 Packages [512 kB]
+Get:13 https://apt.postgresql.org/pub/repos/apt bookworm-pgdg InRelease [189 kB]
+Get:14 https://apt.postgresql.org/pub/repos/apt bookworm-pgdg/main arm64 Packages [926 kB]
+Get:15 https://archive.mariadb.org/mariadb-10.11/repo/debian bookworm InRelease [15.6 kB]
+Get:16 https://apt.postgresql.org/pub/repos/apt bookworm-pgdg/main amd64 Packages [939 kB]
+Get:17 https://archive.mariadb.org/mariadb-10.11/repo/debian bookworm/main arm64 Packages [17.7 kB]
+Get:18 https://archive.mariadb.org/mariadb-10.11/repo/debian bookworm/main amd64 Packages [19.9 kB]
+Fetched 12.8 MB in 3s (4710 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  apt-doc aptitude | synaptic | wajig dpkg-dev powermgmt-base perl-doc
+  libterm-readline-gnu-perl | libterm-readline-perl-perl make
+  libtap-harness-archive-perl
+The following packages will be upgraded:
+  apt apt-transport-https apt-utils libapt-pkg6.0 libbrotli1 libexpat1
+  libpcre2-8-0 libperl5.36 libssl3 openssl perl perl-base perl-modules-5.36
+13 upgraded, 0 newly installed, 0 to remove and 9 not upgraded.
+Need to get 15.6 MB of archives.
+After this operation, 55.3 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian-security bookworm-security/main amd64 libperl5.36 amd64 5.36.0-7+deb12u4 [4208 kB]
+Get:2 http://deb.debian.org/debian-security bookworm-security/main amd64 perl amd64 5.36.0-7+deb12u4 [239 kB]
+Get:3 http://deb.debian.org/debian-security bookworm-security/main amd64 perl-base amd64 5.36.0-7+deb12u4 [1610 kB]
+Get:4 http://deb.debian.org/debian-security bookworm-security/main amd64 perl-modules-5.36 all 5.36.0-7+deb12u4 [2817 kB]
+Get:5 http://deb.debian.org/debian-security bookworm-security/main amd64 libapt-pkg6.0 amd64 2.6.2 [907 kB]
+Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 apt amd64 2.6.2 [1373 kB]
+Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 apt-utils amd64 2.6.2 [310 kB]
+Get:8 http://deb.debian.org/debian-security bookworm-security/main amd64 libpcre2-8-0 amd64 10.42-1+deb12u2 [262 kB]
+Get:9 http://deb.debian.org/debian-security bookworm-security/main amd64 apt-transport-https all 2.6.2 [25.6 kB]
+Get:10 http://deb.debian.org/debian-security bookworm-security/main amd64 libbrotli1 amd64 1.0.9-2+deb12u1 [275 kB]
+Get:11 http://deb.debian.org/debian-security bookworm-security/main amd64 libexpat1 amd64 2.5.0-1+deb12u5 [108 kB]
+Get:12 http://deb.debian.org/debian-security bookworm-security/main amd64 libssl3 amd64 3.0.22-1~deb12u2 [2040 kB]
+Get:13 http://deb.debian.org/debian-security bookworm-security/main amd64 openssl amd64 3.0.22-1~deb12u2 [1442 kB]
+Fetched 15.6 MB in 1s (11.7 MB/s)
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12575 files and directories currently installed.)
+Preparing to unpack .../libperl5.36_5.36.0-7+deb12u4_amd64.deb ...
+Unpacking libperl5.36:amd64 (5.36.0-7+deb12u4) over (5.36.0-7+deb12u3) ...
+Preparing to unpack .../perl_5.36.0-7+deb12u4_amd64.deb ...
+Unpacking perl (5.36.0-7+deb12u4) over (5.36.0-7+deb12u3) ...
+Preparing to unpack .../perl-base_5.36.0-7+deb12u4_amd64.deb ...
+Unpacking perl-base (5.36.0-7+deb12u4) over (5.36.0-7+deb12u3) ...
+Setting up perl-base (5.36.0-7+deb12u4) ...
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12575 files and directories currently installed.)
+Preparing to unpack .../perl-modules-5.36_5.36.0-7+deb12u4_all.deb ...
+Unpacking perl-modules-5.36 (5.36.0-7+deb12u4) over (5.36.0-7+deb12u3) ...
+Preparing to unpack .../libapt-pkg6.0_2.6.2_amd64.deb ...
+Unpacking libapt-pkg6.0:amd64 (2.6.2) over (2.6.1) ...
+Setting up libapt-pkg6.0:amd64 (2.6.2) ...
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12575 files and directories currently installed.)
+Preparing to unpack .../archives/apt_2.6.2_amd64.deb ...
+Unpacking apt (2.6.2) over (2.6.1) ...
+Setting up apt (2.6.2) ...
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12575 files and directories currently installed.)
+Preparing to unpack .../apt-utils_2.6.2_amd64.deb ...
+Unpacking apt-utils (2.6.2) over (2.6.1) ...
+Preparing to unpack .../libpcre2-8-0_10.42-1+deb12u2_amd64.deb ...
+Unpacking libpcre2-8-0:amd64 (10.42-1+deb12u2) over (10.42-1+deb12u1) ...
+Setting up libpcre2-8-0:amd64 (10.42-1+deb12u2) ...
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12575 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.6.2_all.deb ...
+Unpacking apt-transport-https (2.6.2) over (2.6.1) ...
+Preparing to unpack .../libbrotli1_1.0.9-2+deb12u1_amd64.deb ...
+Unpacking libbrotli1:amd64 (1.0.9-2+deb12u1) over (1.0.9-2+b6) ...
+Preparing to unpack .../libexpat1_2.5.0-1+deb12u5_amd64.deb ...
+Unpacking libexpat1:amd64 (2.5.0-1+deb12u5) over (2.5.0-1+deb12u3) ...
+Preparing to unpack .../libssl3_3.0.22-1~deb12u2_amd64.deb ...
+Unpacking libssl3:amd64 (3.0.22-1~deb12u2) over (3.0.20-1~deb12u2) ...
+Preparing to unpack .../openssl_3.0.22-1~deb12u2_amd64.deb ...
+Unpacking openssl (3.0.22-1~deb12u2) over (3.0.20-1~deb12u2) ...
+Setting up libexpat1:amd64 (2.5.0-1+deb12u5) ...
+Setting up apt-utils (2.6.2) ...
+Setting up apt-transport-https (2.6.2) ...
+Setting up libbrotli1:amd64 (1.0.9-2+deb12u1) ...
+Setting up libssl3:amd64 (3.0.22-1~deb12u2) ...
+Setting up perl-modules-5.36 (5.36.0-7+deb12u4) ...
+Setting up openssl (3.0.22-1~deb12u2) ...
+Setting up libperl5.36:amd64 (5.36.0-7+deb12u4) ...
+Setting up perl (5.36.0-7+deb12u4) ...
+Processing triggers for libc-bin (2.36-9+deb12u14) ...
+--> e551946cc7f6
+[2/2] STEP 5/25: COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/
+--> 7f9ec31fcc4a
+[2/2] STEP 6/25: RUN python /opt/aat/build_constraints.py /opt/aat
+--> 3dfb78c10888
+[2/2] STEP 7/25: USER airflow
+--> 5261be1642dc
+[2/2] STEP 8/25: COPY --chown=airflow:root airflow/docker/providers.lock /opt/aat/providers.lock
+--> 161bb0f7dc79
+[2/2] STEP 9/25: COPY --chown=airflow:root airflow/docker/overrides.lock /opt/aat/overrides.lock
+--> 2cc80e8ebba8
+[2/2] STEP 10/25: COPY --chown=airflow:root etl_engine/requirements.lock /opt/aat/requirements.lock
+--> 522c914fbeb9
+[2/2] STEP 11/25: COPY --from=wheels --chown=airflow:root /wheels/aat_metadata-0.1.0-py3-none-any.whl /wheels/aat_metadata-0.1.0-py3-none-any.whl
+--> 52a818ab723f
+[2/2] STEP 12/25: COPY --from=wheels --chown=airflow:root /wheels/aat_etl_engine-0.1.0-py3-none-any.whl /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+--> e268612dd171
+[2/2] STEP 13/25: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/overrides.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/providers.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-deps /wheels/*.whl && python -m pip check &&     python -c "import airflow, airflow.sdk, aat_metadata, aat_etl; assert airflow.__version__ == '3.3.2'"
+Collecting certifi==2026.10.18 (from -r /opt/aat/overrides.lock (line 2))
+  Downloading certifi-2026.10.18-py3-none-any.whl (134 kB)
+Collecting urllib3==2.8.0 (from -r /opt/aat/overrides.lock (line 3))
+  Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Installing collected packages: urllib3, certifi
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.7.0
+    Uninstalling urllib3-2.7.0:
+      Successfully uninstalled urllib3-2.7.0
+  Attempting uninstall: certifi
+    Found existing installation: certifi 2026.7.22
+    Uninstalling certifi-2026.7.22:
+      Successfully uninstalled certifi-2026.7.22
+
+Successfully installed certifi-2026.10.18 urllib3-2.8.0
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Requirement already satisfied: apache-airflow-providers-standard==1.19.0 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/providers.lock (line 2)) (1.19.0)
+Collecting psycopg2-binary==2.9.13 (from -r /opt/aat/providers.lock (line 3))
+  Downloading psycopg2_binary-2.9.13-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 15.6 MB/s  0:00:00
+Collecting asyncpg==0.31.0 (from -r /opt/aat/providers.lock (line 4))
+  Downloading asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl (3.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 15.7 MB/s  0:00:00
+Installing collected packages: psycopg2-binary, asyncpg
+
+Successfully installed asyncpg-0.31.0 psycopg2-binary-2.9.13
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Requirement already satisfied: annotated-types==0.8.0 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 4)) (0.8.0)
+Requirement already satisfied: cffi==2.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 5)) (2.1.1)
+Requirement already satisfied: cryptography==50.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 6)) (50.0.1)
+Requirement already satisfied: greenlet==3.5.5 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 7)) (3.5.5)
+Collecting psycopg==3.3.5 (from -r /opt/aat/requirements.lock (line 8))
+  Downloading psycopg-3.3.5-py3-none-any.whl (213 kB)
+Collecting psycopg-binary==3.3.5 (from -r /opt/aat/requirements.lock (line 9))
+  Downloading psycopg_binary-3.3.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 18.4 MB/s  0:00:00
+Requirement already satisfied: pycparser==3.0 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 10)) (3.0)
+Requirement already satisfied: pydantic==2.13.5 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 11)) (2.13.5)
+Requirement already satisfied: pydantic_core==2.46.5 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 12)) (2.46.5)
+Collecting PyMySQL==1.1.3 (from -r /opt/aat/requirements.lock (line 13))
+  Downloading pymysql-1.1.3-py3-none-any.whl (45 kB)
+Requirement already satisfied: SQLAlchemy==2.0.52 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 14)) (2.0.52)
+Requirement already satisfied: typing_extensions==4.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 15)) (4.16.0)
+Requirement already satisfied: typing-inspection==0.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 16)) (0.4.4)
+Requirement already satisfied: tzdata==2026.4 in /home/airflow/.local/lib/python3.12/site-packages (from -r /opt/aat/requirements.lock (line 17)) (2026.4)
+Installing collected packages: PyMySQL, psycopg-binary, psycopg
+
+Successfully installed PyMySQL-1.1.3 psycopg-3.3.5 psycopg-binary-3.3.5
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine
+
+Successfully installed aat-etl-engine-0.1.0 aat-metadata-0.1.0
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> ddc1147e8d52
+[2/2] STEP 14/25: COPY --chown=airflow:root airflow/docker/entrypoint.sh /opt/aat/entrypoint.sh
+--> bfb7d006032d
+[2/2] STEP 15/25: COPY --chown=airflow:root airflow/docker/initialize.sh /opt/aat/initialize.sh
+--> 76f253b6ab4d
+[2/2] STEP 16/25: COPY --chown=airflow:root airflow/docker/airflow.cfg /opt/airflow/airflow.cfg
+--> 030686625182
+[2/2] STEP 17/25: COPY --chown=airflow:root airflow/docker/health.sh /opt/aat/health.sh
+--> 5a94533e32c8
+[2/2] STEP 18/25: COPY --chown=airflow:root docker/bootstrap/health.py /opt/aat/health.py
+--> c76f5690bcfb
+[2/2] STEP 19/25: ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bin/bash", "/opt/aat/entrypoint.sh"]
+--> bd1fd077f75e
+[2/2] STEP 20/25: USER root
+--> dd2de404f1c5
+[2/2] STEP 21/25: RUN apt-get purge -y docker-ce-cli && test ! -e /usr/bin/docker
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  docker-ce-cli*
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 47.6 MB disk space will be freed.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 12572 files and directories currently installed.)
+Removing docker-ce-cli (5:29.8.1-1~debian.12~bookworm) ...
+--> 8ebcd2ed5e97
+[2/2] STEP 22/25: USER airflow
+--> f83ee2eae68d
+[2/2] STEP 23/25: RUN python -m pip uninstall -y uv && rm -rf /home/airflow/.local/share/uv/tools/prek && rm -f /home/airflow/.local/bin/prek && python -m pip check
+Found existing installation: uv 0.12.10
+Uninstalling uv-0.12.10:
+  Successfully uninstalled uv-0.12.10
+No broken requirements found.
+--> 249fdf09d2e5
+[2/2] STEP 24/25: COPY --chown=airflow:root airflow/docker/tooling.lock /opt/aat/tooling.lock
+--> bbd1b946f6cd
+[2/2] STEP 25/25: RUN python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/tooling.lock && python -m pip check
+Collecting pip==26.3 (from -r /opt/aat/tooling.lock (line 1))
+  Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 20.2 MB/s  0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.2.1
+    Uninstalling pip-26.2.1:
+      Successfully uninstalled pip-26.2.1
+Successfully installed pip-26.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+[2/2] COMMIT localhost/aat-airflow:0.1.0
+--> 6ae000219adf
+Successfully tagged localhost/aat-airflow:0.1.0
+6ae000219adfe33ffbf592c88268753a41fc9a4a8bdc613ccc83b038d4f8699e

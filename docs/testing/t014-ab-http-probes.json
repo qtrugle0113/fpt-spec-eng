@@ -1,0 +1,18 @@
+[
+  {
+    "url": "http://127.0.0.1:13000/",
+    "status": 200
+  },
+  {
+    "url": "http://127.0.0.1:18000/api/v1/health/live",
+    "status": 200
+  },
+  {
+    "url": "http://127.0.0.1:18000/api/v1/health/ready",
+    "status": 404
+  },
+  {
+    "url": "http://127.0.0.1:18080/",
+    "status": 200
+  }
+]

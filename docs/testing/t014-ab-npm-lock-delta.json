@@ -1,0 +1,46 @@
+{
+  "frontend/package-lock.json": [
+    {
+      "path": "node_modules/@playwright/test",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    },
+    {
+      "path": "node_modules/playwright",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    },
+    {
+      "path": "node_modules/playwright-core",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    },
+    {
+      "path": "node_modules/playwright/node_modules/fsevents",
+      "before": "2.3.2",
+      "after": null
+    }
+  ],
+  "tests/e2e/package-lock.json": [
+    {
+      "path": "node_modules/@playwright/test",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    },
+    {
+      "path": "node_modules/fsevents",
+      "before": "2.3.2",
+      "after": null
+    },
+    {
+      "path": "node_modules/playwright",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    },
+    {
+      "path": "node_modules/playwright-core",
+      "before": "1.56.1",
+      "after": "1.65.0"
+    }
+  ]
+}

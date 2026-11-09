@@ -1,0 +1,22 @@
+{
+  "approval": ["docs/proposals/t014-round2-approval.md", "docs/proposals/t014-round3-remediation.md"],
+  "approved_on": "2026-11-09",
+  "upstream_sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+  "overrides": {
+    "dnspython": {
+      "from": "2.8.0",
+      "to": "2.9.0",
+      "artifact_sha256": "9a4aedb833c3c1b49214d04d44d3032ab7a9135f7c1d29a549b4ff78fd82fda9"
+    },
+    "certifi": {
+      "from": "2026.7.22",
+      "to": "2026.10.18",
+      "artifact_sha256": "73191c47aaa79da394e8fee2dbc2ec827432cab56311122c9e47abf79e390f62"
+    },
+    "urllib3": {
+      "from": "2.7.0",
+      "to": "2.8.0",
+      "artifact_sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3"
+    }
+  }
+}

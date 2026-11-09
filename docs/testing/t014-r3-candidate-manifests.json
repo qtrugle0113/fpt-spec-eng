@@ -1,0 +1,37 @@
+[
+  {
+    "ref": "docker.io/library/python:3.12.16-slim-trixie",
+    "platform": "linux/amd64",
+    "digest": "sha256:05a994d2344eb364cc186910f4fc8786a38215f39f00d0acc25bff33a08f4177",
+    "index_digest": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+    "status": "RESOLVED_NOT_TESTED"
+  },
+  {
+    "ref": "docker.io/library/node:22.23.4-trixie-slim",
+    "platform": "linux/amd64",
+    "digest": "sha256:8658a93ea0778be81c513e04eba758202973b91f8c83144f5a41efbb5d2bf0a9",
+    "index_digest": "sha256:be1e2a3dc2c4fd68cdfadad2a696a280e0d2749098bee509230174d72fb768c6",
+    "status": "RESOLVED_NOT_TESTED"
+  },
+  {
+    "ref": "docker.io/library/golang:1.27.3-alpine3.24",
+    "platform": "linux/amd64",
+    "digest": "sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936",
+    "index_digest": "sha256:fa3d596898d9f126af7c01d14ee7597bab3f39cccf392ef36b69fe77cd681f18",
+    "status": "RESOLVED_NOT_TESTED"
+  },
+  {
+    "ref": "docker.io/library/postgres:17.11-trixie",
+    "platform": "linux/amd64",
+    "digest": "sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1",
+    "index_digest": "sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f",
+    "status": "RESOLVED_NOT_TESTED"
+  },
+  {
+    "ref": "docker.io/apache/airflow:slim-3.4.0-python3.12",
+    "platform": "linux/amd64",
+    "digest": "sha256:f22518ba835f4b73d6b75ff32c6b4eda10a5ef0abac18f2d7c11ceced8b651b2",
+    "index_digest": "sha256:2d3e42b9de0eca948b9a869817068fedcb8a8eac9827b1e6215de3329d59335f",
+    "status": "RESOLVED_NOT_TESTED"
+  }
+]

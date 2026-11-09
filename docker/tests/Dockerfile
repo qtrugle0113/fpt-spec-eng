@@ -19,6 +19,7 @@ WORKDIR /opt/aat
 USER root
 RUN python -m pip install --no-cache-dir pytest==8.4.2 && python -m pip check
 COPY tests /opt/aat/tests
+COPY airflow/docker/build_constraints.py airflow/docker/constraints-policy.json airflow/docker/constraints-3.12.txt airflow/docker/overrides.lock /opt/aat/airflow/docker/
 COPY samples /opt/aat/samples
 COPY templates /opt/aat/templates
 COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json

@@ -1,5 +1,22 @@
 # Nghiên cứu và quyết định kỹ thuật
 
+## A/B đã được duyệt ngày 2026-11-09 — quyết định hiện hành
+
+Chủ dự án duyệt [A/B](../../docs/proposals/t014-round2-approval.md). File upstream
+constraints3.3.2/Python3.12 giữ nguyên SHA256; policy riêng tạo bản hiệu lực chỉ đổi
+certifi2026.7.22→2026.10.18 và urllib3 2.7.0→2.8.0. Mọi pin khác giữ nguyên.
+Override wheels có hashes và provenance PyPI riêng; resolve engine/metadata/providers
+với bản hiệu lực rồi kiểm pip check, core/SDK3.3.2 và auth/readiness thật.
+Quyết định này thay giới hạn “không override” ở phần lịch sử bên dưới, không cho phép
+override package khác hoặc nâng Airflow core.
+
+Playwright client1.65.0 trong frontend và E2E; browser image1.65.0-resolute khóa manifest
+Linux/amd64 `fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218`,
+Chromium158.0.8127.18; OS lock apt/libapt-pkg7.0=3.2.1ubuntu0.1 theo candidate đã thử.
+Không tái dùng Noble package lock trên Resolute. Build stages/final runner phải scan lại
+đúng image IDs; UI/private-proxy smoke và browser version phải kiểm thực tế.
+A/B không chấp nhận findings còn lại; T014 giữ BLOCKED cho tới khi toàn bộ gate đạt.
+
 **Ngày**: 2026-11-06. **Phạm vi**: Spec đã Clarify, Constitution 1.1.0; các kết quả trước sửa đổi là lịch sử.
 Tài liệu ghi quyết định thiết kế, không xác nhận hệ thống đã được build hoặc integration test.
 
@@ -7,10 +24,11 @@ Tài liệu ghi quyết định thiết kế, không xác nhận hệ thống đ
 [Phương án](../../docs/proposals/t014-remediation.md) và metadata/triage đi kèm giữ lại
 làm provenance trước thay đổi. Quyết định hiện tại: Router7.18.5/Zod4.6.7, Python3.12.16,
 Node22.23.4/npm12.2.2, PG17.11/MySQL8.4.13, nginx1.30.6-alpine3.24; thử Airflow slim3.3.2
-với provider lock và constraints chính thức không đổi. Playwright client/browser giữ1.56.1,
+với provider lock và file constraints chính thức không đổi. A/B mới tạo constraints hiệu lực
+riêng và nâng Playwright client/browser1.65.0 theo quyết định hiện hành ở đầu tài liệu,
 runner OS được khóa phiên bản; global npm không cần dùng bị loại khỏi final runner,
 build stage vẫn phải scan. Candidate không tự mang trạng thái compatibility/security PASS.
-Không override constraints hoặc tự nâng core/browser khi còn blocker. Báo cáo thực thi
+Chỉ cho phép hai override A và cặp browser B đã duyệt; không tự nâng Airflow core. Báo cáo thực thi
 hiện hành ở `docs/testing/phase1-report.md`; các NOT_RUN trong thiết kế ban đầu là lịch sử.
 
 ## 1. Nền tảng điều phối và phiên bản
@@ -212,7 +230,7 @@ server validator vẫn là nơi quyết định. Không có câu hỏi nghiệp 
 | openpyxl / defusedxml | 3.1.5 / 0.7.1 |
 | cryptography / httpx / python-multipart | 50.0.1 / 0.28.1 / 0.0.32 |
 | Uvicorn / pytest | 0.38.0 / 8.4.2 |
-| Playwright | @playwright/test 1.56.1, browser install cùng version; container mcr.microsoft.com/playwright:v1.56.1-noble nếu dùng CI |
+| Playwright | @playwright/test 1.65.0, browser install cùng version; container mcr.microsoft.com/playwright:v1.65.0-resolute nếu dùng CI |
 | Airflow runtime | apache/airflow:slim-3.3.2-python3.12, constraints3.3.2/Python3.12 |
 
 Metadata npm/PyPI và23 package/image requests đã kiểm tra tồn tại thành công, nguồn và
@@ -225,7 +243,7 @@ npm ci/build/typecheck và pip check trên cả backend/Airflow là gate Phase1,
 Pin là baseline tái lập, không khẳng định là patch mới nhất hoặc đã security scan. Phase1
 scan image/dependency và cập nhật patch nếu cần bằng decision log/lockfile; không dùng latest.
 OCI digest được resolve và ghi vào lock của implementation từ tag exact, không bịa digest.
-Playwright browser/image phải đúng1.56.1, không ghép browser latest với client cũ.
+Playwright browser/image phải đúng1.65.0 theo B đã duyệt, không ghép browser latest với client cũ.
 
 **Nguồn bổ sung**: [Vite7/Node requirements](https://v7.vite.dev/guide/migration),
 [metadata React](https://registry.npmjs.org/react/19.2.0),
@@ -289,7 +307,7 @@ kiểm một prefix, khiến alias/fallback có thể không được kiểm th�
 
 **Quyết định:** Phase1 tạo runner pytest/Playwright và Compose test profile tối thiểu;
 Phase2 mở rộng fixtures/harness nền; Phase3 nghiệm thu Connections E2E trên runner đã có.
-Playwright client/browser/image cùng1.56.1, fixtures project/volumes/namespaces độc lập.
+Playwright client/browser/image cùng1.65.0 theo B đã duyệt, fixtures project/volumes/namespaces độc lập.
 Phase8 chỉ mở rộng regression. Gate Phase2 chỉ schema/repositories/migrations/seed/
 Operation recovery/readiness; Connections CRUD và Settings API nghiệm thu tại Phase3/7.
 
@@ -310,6 +328,15 @@ normalize trong bộ nhớ để chẩn đoán khớp manifest lịch sử, khô
 BR-08/model/API không định nghĩa authorization expiration. **Phương án loại:** cập nhật
 manifest theo EOL mỗi máy hoặc suy TTL quyền từ token xác nhận, vì làm mất tính tái lập
 hoặc đổi nghiệp vụ. Không có unknown nghiệp vụ mới cần nghiên cứu/Clarify trong phạm vi này.
+
+## Remediation dependency T014 bổ sung — 2026-11-09
+
+dnspython2.9.0 vá CVE-2026-114605 theo
+[maintainer advisory](https://github.com/rthalley/dnspython/security/advisories/GHSA-45c3-73f7-pv4m).
+Chọn override có hash riêng, không sửa constraints upstream hoặc nâng Airflow core.
+Không cài setuptools top-level để giả vá bản ghi `AnalyzedBy: sbom` của artifact khác.
+Phương án core/OS và bằng chứng cần kiểm tại
+[round3 remediation](../../docs/proposals/t014-round3-remediation.md).
 
 ## Kết luận nghiên cứu
 

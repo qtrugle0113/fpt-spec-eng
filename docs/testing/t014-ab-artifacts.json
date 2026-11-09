@@ -1,0 +1,43 @@
+{
+  "captured_at": "2026-11-09T00:56:14.486478+00:00",
+  "approval": "docs/proposals/t014-round2-approval.md",
+  "upstream_constraints_sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+  "artifacts": [
+    {
+      "package": "certifi",
+      "version": "2026.10.18",
+      "metadata_url": "https://pypi.org/pypi/certifi/2026.10.18/json",
+      "filename": "certifi-2026.10.18-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/08/ba/95dd616042484f7c83a06974388b37b837732740ee70bc5dc715b5fcd55a/certifi-2026.10.18-py3-none-any.whl",
+      "sha256": "73191c47aaa79da394e8fee2dbc2ec827432cab56311122c9e47abf79e390f62",
+      "requires_python": ">=3.7",
+      "requires_dist": null
+    },
+    {
+      "package": "urllib3",
+      "version": "2.8.0",
+      "metadata_url": "https://pypi.org/pypi/urllib3/2.8.0/json",
+      "filename": "urllib3-2.8.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+      "sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "brotli>=1.2.0; platform_python_implementation == \"CPython\" and extra == \"brotli\"",
+        "brotlicffi>=1.2.0.0; platform_python_implementation != \"CPython\" and extra == \"brotli\"",
+        "h2<5,>=4; extra == \"h2\"",
+        "pysocks!=1.5.7,<2.0,>=1.5.6; extra == \"socks\"",
+        "backports-zstd>=1.0.0; python_version < \"3.14\" and extra == \"zstd\""
+      ]
+    }
+  ],
+  "browser": {
+    "client": "1.65.0",
+    "chromium": "158.0.8127.18",
+    "image": "mcr.microsoft.com/playwright:v1.65.0-resolute",
+    "digest": "sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218",
+    "os_lock": {
+      "apt": "3.2.1ubuntu0.1",
+      "libapt-pkg7.0": "3.2.1ubuntu0.1"
+    }
+  }
+}

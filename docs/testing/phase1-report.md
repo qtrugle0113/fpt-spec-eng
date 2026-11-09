@@ -1,5 +1,18 @@
 # Báo cáo Phase1 sau remediation P1–P7 — 2026-11-08
 
+## Kết quả tiếp tục ngày 2026-11-09 — nguồn trạng thái hiện hành
+
+[Triển khai A/B đã được duyệt](t014-ab-report.md) là kết quả mới nhất: fresh/restart752.059s,
+13unit/4E2E/5compatibility/7runtime tests và UI Airflow auth PASS. Upstream constraints giữ
+nguyên hash; certifi2026.10.18/urllib3 2.8.0 và Playwright1.65.0/Resolute đã áp dụng.
+Security và CI source mới vẫn là gate riêng; không tuyên bố Phase1 hoàn thành.
+
+[Báo cáo T014 hiện hành](t014-current-report.md) ghi các sửa đổi lock/CI, kết quả build,
+10unit tests/4proxy tests PASS và scan mới của ba targets. CI Windows/Linux đã PASS tại
+HEAD b29ae86; thay đổi working tree lượt mới chưa chạy CI remote. Podman hiện6.1.1,
+khác baseline lịch sử. Security và các gate chưa tái kiểm vẫn chặn T014/Phase1.
+Các mục bên dưới là lịch sử, không tự kế thừa PASS hoặc NOT_RUN cho source/máy hiện tại.
+
 ## Lượt2 đang nghiệm thu — trạng thái hiện hành
 
 Chủ dự án đã cho phép compatible security patches và commit/feature branch/push/CI.

@@ -1,0 +1,172 @@
+{
+  "captured_at": "2026-11-09T00:48:24.888150+00:00",
+  "head_sha": "b29ae868bcf4a86f0bdb42dfedc4f58ed5dd0b4b",
+  "branch": "001-airflow-automation-tool-t014",
+  "working_tree_changes_included": true,
+  "task": "T014",
+  "task_status": "BLOCKED",
+  "phase1_gate": "BLOCKED",
+  "phase2_started": false,
+  "environment": {
+    "podman_client": "6.1.1",
+    "podman_server": "6.1.1",
+    "arch": "amd64",
+    "cgroups": "v2",
+    "rootless": false,
+    "memory_bytes": 8162783232,
+    "compose_provider": ".tools/docker-compose-5.6.0.exe",
+    "compose_version": "5.6.0",
+    "compose_sha256": "8aeaa0055e660e12cf07cd70680dc8333957fe6718528b91ec3da084eab62483",
+    "matches_historical_runtime_baseline": false
+  },
+  "checklists": {
+    "requirements.md": {
+      "checked": 16,
+      "unchecked": 0
+    },
+    "spec-quality.md": {
+      "checked": 48,
+      "unchecked": 0
+    }
+  },
+  "hooks_file_exists": false,
+  "verification": {
+    "runner_unit_tests": {
+      "status": "PASS",
+      "passed": 10,
+      "runtime": "CPython3.12.16/Linux"
+    },
+    "frontend_proxy_tests": {
+      "status": "PASS",
+      "passed": 4,
+      "scope": "nginx with isolated upstream fixture"
+    },
+    "lock_ci_selector_local": {
+      "status": "PASS",
+      "passed": 4
+    },
+    "frontend_build_typecheck": {
+      "status": "PASS",
+      "node": "22.23.4",
+      "npm": "12.2.2"
+    },
+    "npm_full_audit": {
+      "status": "PASS",
+      "vulnerabilities": 0
+    },
+    "registry_bases": {
+      "status": "PASS",
+      "count": 8,
+      "scope": "manifest/config hashes and Linux/amd64; not local runtime"
+    },
+    "compose_config": {
+      "status": "PASS"
+    },
+    "ci_head": {
+      "status": "PASS",
+      "head_sha": "b29ae868bcf4a86f0bdb42dfedc4f58ed5dd0b4b",
+      "run_id": 42495227273,
+      "os": [
+        "ubuntu-latest",
+        "windows-latest"
+      ]
+    },
+    "ci_working_tree": {
+      "status": "NOT_RUN",
+      "reason": "No commit containing the current changes"
+    },
+    "full_runtime_bootstrap": {
+      "status": "NOT_RUN",
+      "reason": "Different Podman environment; no baseline AAT stack or old fixture available"
+    },
+    "full_image_compatibility": {
+      "status": "NOT_RUN",
+      "reason": "Only source-lock selector and registry provenance verified"
+    },
+    "full_baseline_scan": {
+      "status": "NOT_RUN",
+      "reason": "Only three rebuilt targets scanned this turn"
+    }
+  },
+  "scanned_images": [
+    {
+      "name": "backend-tests-current",
+      "ref": "localhost/aat-backend-tests:t014-b29ae86",
+      "image_id": "e048df9c77c19076580017d07164ab7e491130a7fcc87b9bbcf53dc9266a56b7",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 40,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      },
+      "security_assessment": "BLOCKED"
+    },
+    {
+      "name": "frontend-current",
+      "ref": "localhost/aat-frontend:t014-b29ae86",
+      "image_id": "6f331328f53403802fe8c7c0b67869ad5025b38780903728c7b244cf6c46d4c5",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "security_assessment": "PASS"
+    },
+    {
+      "name": "frontend-build-current",
+      "ref": "localhost/aat-frontend-build:t014-b29ae86",
+      "image_id": "603302aa2a1462000927c5f16c4f33988da2b221c9945c67d220b6a258b05606",
+      "counts": {
+        "LOW": 85,
+        "HIGH": 34,
+        "MEDIUM": 97,
+        "CRITICAL": 1
+      },
+      "security_assessment": "BLOCKED"
+    }
+  ],
+  "scan_id_mismatches": [],
+  "runner_source_hashes": [
+    {
+      "path": "tests/tools/record_image_baseline.py",
+      "source_sha256": "65827631f33124870922689f59e89866c0b9e801b3f33c6164f51519b73f88bf",
+      "image_sha256": "65827631f33124870922689f59e89866c0b9e801b3f33c6164f51519b73f88bf",
+      "match": true
+    },
+    {
+      "path": "tests/unit/test_image_baseline.py",
+      "source_sha256": "de45cea40a110210466707be8977a6d6c61a323064a86b486e00782359568ad1",
+      "image_sha256": "de45cea40a110210466707be8977a6d6c61a323064a86b486e00782359568ad1",
+      "match": true
+    }
+  ],
+  "source_sha256": {
+    "tests/tools/record_image_baseline.py": "65827631f33124870922689f59e89866c0b9e801b3f33c6164f51519b73f88bf",
+    "tests/unit/test_image_baseline.py": "de45cea40a110210466707be8977a6d6c61a323064a86b486e00782359568ad1",
+    "tests/integration/test_image_compatibility.py": "a54dda29d266789b1272fd21e1a7b6f55a899c4cb9583875273be31e5462d314",
+    "docker/images.lock": "c50781d810b48a5847de538ffa9a10103a4f135cc632526a7fb77bfa6233a823",
+    ".github/workflows/sample-artifacts.yml": "3c4f9c0a7020d15863e9a1c73b892d80786e8878d591eecd5cc451a51a635cd9",
+    "backend/Dockerfile": "77a29df2759db8a733222aa21a51f27dd6bacc374e0a0e5aee93bddeef8fb5cc",
+    "frontend/Dockerfile": "507672df4d2e53001af324ded8ac84acc831e6d4f53a77c222635b567c4a0a4e",
+    "docker/tests/Dockerfile": "ddfb3d99f705adf80788e8964f4598f40dc68d88547019e8ded49d27c14d5084",
+    "docker/tests/playwright.Dockerfile": "c8d7bf102542b70468c6b6b4fe3abd06c689b8b7f499fab60ad7079e794a7e5e",
+    "docker/gosu/Dockerfile": "5814fcec9383b1d537eee4b1d223eedbb8730ccab8a5b4f95b1d47614163cdb5",
+    "airflow/docker/Dockerfile": "2d2b4286f61369be26da23bd3a82ca0fe8813689dea50478d05e66ccf551b3ed",
+    "backend/requirements.lock": "ed66f333ca4032712d4cccc80f8fc34ec763c750f9a7a277b64d90bd9c5e4f6c",
+    "frontend/package-lock.json": "7bba2809249f4eea82b3478561c85d577ded42fd8e5517d2d0be6d82dee211fa",
+    "tests/e2e/package-lock.json": "dbdfe30ae3879f779fc58a0d1949f2cd683f4a41cabf21acc1373e610ebeb657",
+    "airflow/docker/constraints-3.12.txt": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c"
+  },
+  "retained_containers": [
+    "local_postgres_1",
+    "local_redis_1",
+    "local_agent-service_1",
+    "local_backend_1",
+    "local_frontend_1",
+    "local_playwright-runner_1"
+  ],
+  "blockers": [
+    "Security findings remain in rebuilt backend-tests and frontend-build images; no waivers applied",
+    "Airflow overrides and paired Playwright/browser upgrade remain pending decisions A/B",
+    "Full runtime/provider compatibility and full baseline scan must be completed on the final source",
+    "New source/workflow changes need remote CI on their own commit"
+  ]
+}

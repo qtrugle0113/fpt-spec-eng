@@ -1,21 +1,29 @@
 # Airflow Automation Tool
 
 T001–T013 đã kiểm chứng trong phạm vi bootstrap. **Phase 1 chưa được nghiệm thu**: T014
-còn đánh giá security findings và CI Windows/Linux chưa chạy. Chưa triển khai Phase 2,
+còn security findings và các gate tái kiểm. CI Windows/Linux tại HEAD `b29ae86` đã PASS;
+thay đổi T014 trong working tree lượt này chưa chạy CI remote. Chưa triển khai Phase 2,
 US-01 hoặc MVP. UI hiện là shell sáu màn hình; chưa có Connections CRUD, DAG Builder,
 ETL hoặc Dashboard metrics hoạt động. Bằng chứng ở [báo cáo Phase 1](docs/testing/phase1-report.md).
 Các service cards trên shell còn là trạng thái tĩnh chưa nối API, không phải kết quả health probe.
 
+Kết quả tiếp tục ngày 2026-11-09: [báo cáo T014 hiện hành](docs/testing/t014-current-report.md).
+Môi trường máy này là Podman6.1.1/Compose5.6.0: A/B đã triển khai, fresh/restart/persistence,
+13unit/4E2E/5compatibility/7runtime tests và UI Airflow auth PASS. Chi tiết tại
+[báo cáo A/B](docs/testing/t014-ab-report.md). Candidate test ở13000/18000/18080;
+các địa chỉ/stack khác trong phần lịch sử không chứng minh dịch vụ hiện đang chạy.
+
 ## Baseline và điều kiện đầu vào
 
-- Podman client5.8.3/server5.8.9, WSL Linux/amd64, rootful/cgroupv2; external provider
-  Docker Compose5.6.0. Không cần Docker Desktop. Docker baseline chưa được kiểm riêng.
+- Lượt A/B đã kiểm bootstrap trên Podman client/server6.1.1, WSL Linux/amd64,
+  rootful/cgroupv2 và Docker Compose5.6.0. Tổ hợp5.8.3/5.8.9 thuộc bằng chứng lịch sử;
+  không suy PASS giữa hai môi trường. Không cần Docker Desktop; Docker baseline chưa kiểm riêng.
 - Engine/machine đã chạy, quyền pull/build và cổng loopback3000/8000/8080 còn trống.
   Khuyến nghị theo Plan:8CPU,12GiBRAM,80GiB disk trống. Engine kiểm thực tế báo12CPU,
   khoảng7,7GiBRAM; metadata machine khác engine nên không dùng để suy ra resource limit.
 - Không cần Python/Node/browser trên host để chạy stack hoặc test profile. Không cần copy
   `.env.example`; secret local được sinh một lần trên named volumes, không in giá trị.
-- Bảy base/build/browser image digests thật ở [images.lock](docker/images.lock). Lock Python
+- Tám base/build/browser image digests thật ở [images.lock](docker/images.lock). Lock Python
   chỉ hỗ trợ Linux x86_64/CPython3.12; backend và Airflow là hai môi trường riêng.
 
 Chọn đúng provider trong phiên PowerShell; kiểm version trước khi startup:
@@ -25,6 +33,12 @@ $env:PODMAN_COMPOSE_PROVIDER=(Get-Command docker-compose.exe).Source
 podman version
 podman compose version
 ```
+
+Trên máy của lượt A/B, provider portable đã xác minh nằm ở
+`.tools/docker-compose-5.6.0.exe`; dùng `(Resolve-Path .tools/docker-compose-5.6.0.exe).Path`
+cho `PODMAN_COMPOSE_PROVIDER`. File này là công cụ local không nằm trong Git; checkout mới
+cần chuẩn bị Compose5.6.0 theo điều kiện đầu vào. Để tiếp tục project test hiện có, dùng
+đúng project/ports trong [báo cáo A/B](docs/testing/t014-ab-report.md), tránh tạo stack trùng.
 
 ## Một lệnh startup
 
@@ -86,8 +100,8 @@ podman compose --profile test run --rm --no-deps backend-tests
 podman compose --profile test run --rm --no-deps e2e-tests
 ```
 
-Runner chứa root tests và Playwright client1.56.1/browser Chromium141.0.7390.37 từ image
-v1.56.1-noble. Test profile không chạy mặc định; E2E dùng http://frontend:80 trong network.
+Runner chứa root tests và Playwright client1.65.0/browser Chromium158.0.8127.18 từ image
+v1.65.0-resolute theo B đã duyệt. Test profile không chạy mặc định; E2E dùng http://frontend:80 trong network.
 Fixture hiện hành đọc từ `.tools/phase1-project.txt`; đặt COMPOSE_PROJECT_NAME đúng project
 khi tiếp tục fixture, không tạo stack trùng cổng. Các kiểm thử host điều phối Podman:
 
@@ -142,5 +156,6 @@ không có consumer trong LocalExecutor MVP. PostgreSQL17.11/MySQL8.4.13 dùng c
 được build tại docker/gosu/Dockerfile: gosu1.19 cùng source commit/hash, Go1.27.3; MySQL
 không cài mysql-shell không có dependent/consumer. Public Airflow base URL nhận đúng
 AAT_AIRFLOW_PORT khi dùng project test port khác; default8080 không đổi.
-Playwright baseline vẫn1.56.1; các trial1.65/override Python không phải baseline đã duyệt.
+Chủ dự án đã duyệt A/B ngày2026-11-09: Playwright1.65.0/Resolute và hai override
+certifi2026.10.18/urllib3 2.8.0 bằng constraints hiệu lực riêng; upstream giữ nguyên hash.
 T014 còn BLOCKED; trạng thái kiểm chứng/CI mới xem báo cáo Phase1, không dùng PASS cũ.
