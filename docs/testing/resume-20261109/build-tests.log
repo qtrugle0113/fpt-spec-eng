@@ -1,0 +1,463 @@
+﻿[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+Trying to pull docker.io/library/python@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4...
+Getting image source signatures
+Copying blob sha256:88d15687540999237909e04714b1393c610db9dc2e13d82acd6356fa9bf8f092
+Copying blob sha256:a47be7bff94f52aefb243d8b245b01c74976150bb88de60875c5eb7ac964f91e
+Copying blob sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3
+Copying blob sha256:8691b22c22a3e005c632ab6bc07b085b98dae9cc02d1d84de175849f997439c7
+Copying config sha256:313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18
+Writing manifest to image destination
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+Collecting build==1.3.0
+  Downloading build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting setuptools==80.9.0
+  Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting wheel==0.45.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting packaging>=19.1 (from build==1.3.0)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyproject_hooks (from build==1.3.0)
+  Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+Downloading build-1.3.0-py3-none-any.whl (23 kB)
+Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 12.4 MB/s eta 0:00:00
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+Installing collected packages: wheel, setuptools, pyproject_hooks, packaging, build
+Successfully installed build-1.3.0 packaging-26.3 pyproject_hooks-1.3.3 setuptools-80.9.0 wheel-0.45.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 42dcf461eb1c
+[1/2] STEP 3/7: WORKDIR /build
+--> 05c0d7f64e5d
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> 015df7409f87
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> cc4e3e61ab33
+[1/2] STEP 6/7: COPY backend /build/backend
+--> 3ee66541b780
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+* Getting build dependencies for wheel...
+running egg_info
+creating ../aat_metadata.egg-info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_metadata
+copying ./__init__.py -> build/lib/aat_metadata
+creating build/lib/aat_metadata/models
+copying ./models/authorizations.py -> build/lib/aat_metadata/models
+copying ./models/definitions.py -> build/lib/aat_metadata/models
+copying ./models/settings.py -> build/lib/aat_metadata/models
+copying ./models/etl.py -> build/lib/aat_metadata/models
+copying ./models/guards.py -> build/lib/aat_metadata/models
+copying ./models/file_parsers.py -> build/lib/aat_metadata/models
+copying ./models/registry.py -> build/lib/aat_metadata/models
+copying ./models/operations.py -> build/lib/aat_metadata/models
+copying ./models/base.py -> build/lib/aat_metadata/models
+copying ./models/__init__.py -> build/lib/aat_metadata/models
+copying ./models/replacement_runs.py -> build/lib/aat_metadata/models
+copying ./models/runtime.py -> build/lib/aat_metadata/models
+copying ./models/connections.py -> build/lib/aat_metadata/models
+creating build/lib/aat_metadata/repositories
+copying ./repositories/revisions.py -> build/lib/aat_metadata/repositories
+copying ./repositories/grants.py -> build/lib/aat_metadata/repositories
+copying ./repositories/authorizations.py -> build/lib/aat_metadata/repositories
+copying ./repositories/base.py -> build/lib/aat_metadata/repositories
+copying ./repositories/__init__.py -> build/lib/aat_metadata/repositories
+copying ./repositories/replacement_runs.py -> build/lib/aat_metadata/repositories
+creating build/lib/aat_metadata/secrets
+copying ./secrets/__init__.py -> build/lib/aat_metadata/secrets
+copying ./secrets/codec.py -> build/lib/aat_metadata/secrets
+running egg_info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+copying ./py.typed -> build/lib/aat_metadata
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_metadata
+creating build/bdist.linux-x86_64/wheel/aat_metadata/models
+copying build/lib/aat_metadata/models/authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/definitions.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/settings.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/etl.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/guards.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/file_parsers.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/registry.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/operations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/base.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/replacement_runs.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/runtime.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/connections.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+creating build/bdist.linux-x86_64/wheel/aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/revisions.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/grants.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/base.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/replacement_runs.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+creating build/bdist.linux-x86_64/wheel/aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/codec.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata
+copying build/lib/aat_metadata/py.typed -> build/bdist.linux-x86_64/wheel/./aat_metadata
+running install_egg_info
+Copying ../aat_metadata.egg-info to build/bdist.linux-x86_64/wheel/./aat_metadata-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_metadata-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-vd65v3pj/aat_metadata-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_metadata/__init__.py'
+adding 'aat_metadata/py.typed'
+adding 'aat_metadata/models/__init__.py'
+adding 'aat_metadata/models/authorizations.py'
+adding 'aat_metadata/models/base.py'
+adding 'aat_metadata/models/connections.py'
+adding 'aat_metadata/models/definitions.py'
+adding 'aat_metadata/models/etl.py'
+adding 'aat_metadata/models/file_parsers.py'
+adding 'aat_metadata/models/guards.py'
+adding 'aat_metadata/models/operations.py'
+adding 'aat_metadata/models/registry.py'
+adding 'aat_metadata/models/replacement_runs.py'
+adding 'aat_metadata/models/runtime.py'
+adding 'aat_metadata/models/settings.py'
+adding 'aat_metadata/repositories/__init__.py'
+adding 'aat_metadata/repositories/authorizations.py'
+adding 'aat_metadata/repositories/base.py'
+adding 'aat_metadata/repositories/grants.py'
+adding 'aat_metadata/repositories/replacement_runs.py'
+adding 'aat_metadata/repositories/revisions.py'
+adding 'aat_metadata/secrets/__init__.py'
+adding 'aat_metadata/secrets/codec.py'
+adding 'aat_metadata-0.1.0.dist-info/METADATA'
+adding 'aat_metadata-0.1.0.dist-info/WHEEL'
+adding 'aat_metadata-0.1.0.dist-info/top_level.txt'
+adding 'aat_metadata-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_metadata-0.1.0-py3-none-any.whl
+* Getting build dependencies for wheel...
+running egg_info
+creating src/aat_etl_engine.egg-info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_etl
+copying src/aat_etl/__init__.py -> build/lib/aat_etl
+running egg_info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+copying src/aat_etl/py.typed -> build/lib/aat_etl
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_etl
+copying build/lib/aat_etl/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/py.typed -> build/bdist.linux-x86_64/wheel/./aat_etl
+running install_egg_info
+Copying src/aat_etl_engine.egg-info to build/bdist.linux-x86_64/wheel/./aat_etl_engine-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_etl_engine-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-omamrtph/aat_etl_engine-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_etl/__init__.py'
+adding 'aat_etl/py.typed'
+adding 'aat_etl_engine-0.1.0.dist-info/METADATA'
+adding 'aat_etl_engine-0.1.0.dist-info/WHEEL'
+adding 'aat_etl_engine-0.1.0.dist-info/top_level.txt'
+adding 'aat_etl_engine-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_etl_engine-0.1.0-py3-none-any.whl
+* Getting build dependencies for wheel...
+running egg_info
+creating src/aat_api.egg-info
+writing src/aat_api.egg-info/PKG-INFO
+writing dependency_links to src/aat_api.egg-info/dependency_links.txt
+writing requirements to src/aat_api.egg-info/requires.txt
+writing top-level names to src/aat_api.egg-info/top_level.txt
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+reading manifest file 'src/aat_api.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_api
+copying src/aat_api/logging.py -> build/lib/aat_api
+copying src/aat_api/errors.py -> build/lib/aat_api
+copying src/aat_api/main.py -> build/lib/aat_api
+copying src/aat_api/middleware.py -> build/lib/aat_api
+copying src/aat_api/__init__.py -> build/lib/aat_api
+creating build/lib/aat_api/workers
+copying src/aat_api/workers/main.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/__init__.py -> build/lib/aat_api/workers
+creating build/lib/aat_api/routes
+copying src/aat_api/routes/health.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/operations.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/__init__.py -> build/lib/aat_api/routes
+creating build/lib/aat_api/schemas
+copying src/aat_api/schemas/settings.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/__init__.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/common.py -> build/lib/aat_api/schemas
+creating build/lib/aat_api/services
+copying src/aat_api/services/health.py -> build/lib/aat_api/services
+copying src/aat_api/services/seed.py -> build/lib/aat_api/services
+copying src/aat_api/services/operations.py -> build/lib/aat_api/services
+copying src/aat_api/services/__init__.py -> build/lib/aat_api/services
+copying src/aat_api/services/confirmation.py -> build/lib/aat_api/services
+running egg_info
+writing src/aat_api.egg-info/PKG-INFO
+writing dependency_links to src/aat_api.egg-info/dependency_links.txt
+writing requirements to src/aat_api.egg-info/requires.txt
+writing top-level names to src/aat_api.egg-info/top_level.txt
+reading manifest file 'src/aat_api.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+copying src/aat_api/py.typed -> build/lib/aat_api
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_api
+copying build/lib/aat_api/logging.py -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/errors.py -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/main.py -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/workers
+copying build/lib/aat_api/workers/main.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/middleware.py -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/routes
+copying build/lib/aat_api/routes/health.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/operations.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/py.typed -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/schemas
+copying build/lib/aat_api/schemas/settings.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/common.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+creating build/bdist.linux-x86_64/wheel/aat_api/services
+copying build/lib/aat_api/services/health.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/seed.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/operations.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/confirmation.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+running install_egg_info
+Copying src/aat_api.egg-info to build/bdist.linux-x86_64/wheel/./aat_api-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_api-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-xux4zcnz/aat_api-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_api/__init__.py'
+adding 'aat_api/errors.py'
+adding 'aat_api/logging.py'
+adding 'aat_api/main.py'
+adding 'aat_api/middleware.py'
+adding 'aat_api/py.typed'
+adding 'aat_api/routes/__init__.py'
+adding 'aat_api/routes/health.py'
+adding 'aat_api/routes/operations.py'
+adding 'aat_api/schemas/__init__.py'
+adding 'aat_api/schemas/common.py'
+adding 'aat_api/schemas/settings.py'
+adding 'aat_api/services/__init__.py'
+adding 'aat_api/services/confirmation.py'
+adding 'aat_api/services/health.py'
+adding 'aat_api/services/operations.py'
+adding 'aat_api/services/seed.py'
+adding 'aat_api/workers/__init__.py'
+adding 'aat_api/workers/main.py'
+adding 'aat_api-0.1.0.dist-info/METADATA'
+adding 'aat_api-0.1.0.dist-info/WHEEL'
+adding 'aat_api-0.1.0.dist-info/top_level.txt'
+adding 'aat_api-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_api-0.1.0-py3-none-any.whl
+--> b0fd4d53a106
+[2/2] STEP 1/25: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4
+[2/2] STEP 2/25: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> e72e451dd0d9
+[2/2] STEP 3/25: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> 042e76b6adbf
+[2/2] STEP 4/25: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+Collecting alembic==1.20.0 (from -r /opt/aat/requirements.lock (line 4))
+  Downloading alembic-1.20.0-py3-none-any.whl (268 kB)
+Collecting annotated-doc==0.0.5 (from -r /opt/aat/requirements.lock (line 5))
+  Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Collecting annotated-types==0.8.0 (from -r /opt/aat/requirements.lock (line 6))
+  Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Collecting anyio==4.16.0 (from -r /opt/aat/requirements.lock (line 7))
+  Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Collecting certifi==2026.10.23 (from -r /opt/aat/requirements.lock (line 8))
+  Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Collecting cffi==2.1.1 (from -r /opt/aat/requirements.lock (line 9))
+  Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Collecting click==8.5.1 (from -r /opt/aat/requirements.lock (line 10))
+  Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Collecting cryptography==50.0.1 (from -r /opt/aat/requirements.lock (line 11))
+  Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 12.1 MB/s eta 0:00:00
+Collecting defusedxml==0.7.1 (from -r /opt/aat/requirements.lock (line 12))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting et_xmlfile==2.0.0 (from -r /opt/aat/requirements.lock (line 13))
+  Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+Collecting fastapi==0.136.3 (from -r /opt/aat/requirements.lock (line 14))
+  Downloading fastapi-0.136.3-py3-none-any.whl (117 kB)
+Collecting greenlet==3.5.6 (from -r /opt/aat/requirements.lock (line 15))
+  Downloading greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.4/621.4 kB 13.1 MB/s eta 0:00:00
+Collecting h11==0.16.0 (from -r /opt/aat/requirements.lock (line 16))
+  Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Collecting httpcore==1.0.9 (from -r /opt/aat/requirements.lock (line 17))
+  Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Collecting httpx==0.28.1 (from -r /opt/aat/requirements.lock (line 18))
+  Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Collecting idna==3.20 (from -r /opt/aat/requirements.lock (line 19))
+  Downloading idna-3.20-py3-none-any.whl (69 kB)
+Collecting Mako==1.4.3 (from -r /opt/aat/requirements.lock (line 20))
+  Downloading mako-1.4.3-py3-none-any.whl (80 kB)
+Collecting MarkupSafe==3.0.4 (from -r /opt/aat/requirements.lock (line 21))
+  Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Collecting openpyxl==3.1.5 (from -r /opt/aat/requirements.lock (line 22))
+  Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Collecting psycopg==3.3.5 (from -r /opt/aat/requirements.lock (line 23))
+  Downloading psycopg-3.3.5-py3-none-any.whl (213 kB)
+Collecting psycopg-binary==3.3.5 (from -r /opt/aat/requirements.lock (line 24))
+  Downloading psycopg_binary-3.3.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 11.7 MB/s eta 0:00:00
+Collecting pycparser==3.12 (from -r /opt/aat/requirements.lock (line 25))
+  Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Collecting pydantic==2.13.5 (from -r /opt/aat/requirements.lock (line 26))
+  Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+Collecting pydantic_core==2.46.5 (from -r /opt/aat/requirements.lock (line 27))
+  Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.5 MB/s eta 0:00:00
+Collecting PyMySQL==1.1.3 (from -r /opt/aat/requirements.lock (line 28))
+  Downloading pymysql-1.1.3-py3-none-any.whl (45 kB)
+Collecting python-multipart==0.0.32 (from -r /opt/aat/requirements.lock (line 29))
+  Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Collecting SQLAlchemy==2.0.52 (from -r /opt/aat/requirements.lock (line 30))
+  Downloading sqlalchemy-2.0.52-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 12.4 MB/s eta 0:00:00
+Collecting starlette==1.10.0 (from -r /opt/aat/requirements.lock (line 31))
+  Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+Collecting typing_extensions==4.16.0 (from -r /opt/aat/requirements.lock (line 32))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting typing-inspection==0.4.5 (from -r /opt/aat/requirements.lock (line 33))
+  Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Collecting tzdata==2026.6 (from -r /opt/aat/requirements.lock (line 34))
+  Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Collecting uvicorn==0.38.0 (from -r /opt/aat/requirements.lock (line 35))
+  Downloading uvicorn-0.38.0-py3-none-any.whl (68 kB)
+Installing collected packages: tzdata, typing_extensions, python-multipart, PyMySQL, pycparser, psycopg-binary, MarkupSafe, idna, h11, greenlet, et_xmlfile, defusedxml, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, SQLAlchemy, pydantic_core, psycopg, openpyxl, Mako, httpcore, cffi, anyio, starlette, pydantic, httpx, cryptography, alembic, fastapi
+Successfully installed Mako-1.4.3 MarkupSafe-3.0.4 PyMySQL-1.1.3 SQLAlchemy-2.0.52 alembic-1.20.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 cffi-2.1.1 click-8.5.1 cryptography-50.0.1 defusedxml-0.7.1 et_xmlfile-2.0.0 fastapi-0.136.3 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 openpyxl-3.1.5 psycopg-3.3.5 psycopg-binary-3.3.5 pycparser-3.12 pydantic-2.13.5 pydantic_core-2.46.5 python-multipart-0.0.32 starlette-1.10.0 typing-inspection-0.4.5 typing_extensions-4.16.0 tzdata-2026.6 uvicorn-0.38.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> e3b986bf5663
+[2/2] STEP 5/25: COPY --from=wheels /wheels /wheels
+--> 832cb024e2d8
+[2/2] STEP 6/25: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 9043e0e42e33
+[2/2] STEP 7/25: COPY docker /opt/aat/docker
+--> f466181ea67d
+[2/2] STEP 8/25: COPY backend/alembic /opt/aat/backend/alembic
+--> 61d6767ab18e
+[2/2] STEP 9/25: WORKDIR /opt/aat
+--> 164abfc361fa
+[2/2] STEP 10/25: USER root
+--> 1a62d6fa19ff
+[2/2] STEP 11/25: RUN python -m pip install --no-cache-dir pytest==8.4.2 && python -m pip check
+Collecting pytest==8.4.2
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting iniconfig>=1 (from pytest==8.4.2)
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=20 (from pytest==8.4.2)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==8.4.2)
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.7.2 (from pytest==8.4.2)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 7.5 MB/s eta 0:00:00
+Installing collected packages: pygments, pluggy, packaging, iniconfig, pytest
+Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-8.4.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> 0f057194dc39
+[2/2] STEP 12/25: COPY tests /opt/aat/tests
+--> 3da648a7ce17
+[2/2] STEP 13/25: COPY airflow/docker/build_constraints.py airflow/docker/constraints-policy.json airflow/docker/constraints-3.12.txt airflow/docker/overrides.lock /opt/aat/airflow/docker/
+--> a0e711035bdb
+[2/2] STEP 14/25: COPY airflow/docker/install_security_patch.py airflow/docker/Dockerfile /opt/aat/airflow/docker/
+--> 6d4c1e742b45
+[2/2] STEP 15/25: COPY airflow/docker/security/brotli.lock.json /opt/aat/airflow/docker/security/brotli.lock.json
+--> ef46d3e0e961
+[2/2] STEP 16/25: COPY samples /opt/aat/samples
+--> e5c8d0b9b39f
+[2/2] STEP 17/25: COPY templates /opt/aat/templates
+--> 90f572a4b6f5
+[2/2] STEP 18/25: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> 7d45acd94c61
+[2/2] STEP 19/25: COPY frontend/package.json /opt/aat/frontend/package.json
+--> 68a0578ca2d1
+[2/2] STEP 20/25: COPY backend/pyproject.toml /opt/aat/backend/pyproject.toml
+--> 794c8df0abfb
+[2/2] STEP 21/25: COPY etl_engine/pyproject.toml /opt/aat/etl_engine/pyproject.toml
+--> 320fb85555ef
+[2/2] STEP 22/25: COPY packages/aat_metadata/pyproject.toml /opt/aat/packages/aat_metadata/pyproject.toml
+--> df628ecf2ce7
+[2/2] STEP 23/25: COPY .gitattributes /opt/aat/.gitattributes
+--> c3b50fa3073f
+[2/2] STEP 24/25: USER 50000:50000
+--> 6aae1dc56a24
+[2/2] STEP 25/25: CMD ["python", "-m", "pytest", "-p", "no:cacheprovider", "tests/unit", "-v"]
+[2/2] COMMIT localhost/aat-backend-tests-resume-candidate:0.1.0
+--> 6b65b34da83e
+Successfully tagged localhost/aat-backend-tests-resume-candidate:0.1.0
+6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e
+

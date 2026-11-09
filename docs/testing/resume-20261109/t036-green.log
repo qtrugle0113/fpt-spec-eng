@@ -1,0 +1,30 @@
+test_dns_failure_has_safe_bounded_result (tests.integration.test_connections.ConnectionAdapterTests.test_dns_failure_has_safe_bounded_result) ... ok
+test_mysql_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_handshake_timeout_is_bounded_without_mocking_driver) ... FAIL
+test_mysql_success_auth_database_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_success_auth_database_and_closed_port) ... ok
+test_policy_rejects_url_path_metadata_and_unapproved_hosts (tests.integration.test_connections.ConnectionAdapterTests.test_policy_rejects_url_path_metadata_and_unapproved_hosts) ... ok
+test_postgres_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_handshake_timeout_is_bounded_without_mocking_driver) ... ok
+test_postgres_success_auth_database_schema_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_success_auth_database_schema_and_closed_port) ... ok
+test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected (tests.integration.test_connections.ConnectionAdapterTests.test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected) ... ok
+test_missing_old_key_and_tampered_tokens_do_not_generate_replacements (tests.unit.test_secret_codec.SecretRotationTests.test_missing_old_key_and_tampered_tokens_do_not_generate_replacements) ... ok
+test_rotation_uses_existing_current_key_and_keeps_history (tests.unit.test_secret_codec.SecretRotationTests.test_rotation_uses_existing_current_key_and_keeps_history) ... ok
+
+======================================================================
+FAIL: test_mysql_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_handshake_timeout_is_bounded_without_mocking_driver)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 80, in test_mysql_handshake_timeout_is_bounded_without_mocking_driver
+    self.handshake_timeout(self.mysql,self.mysql_config)
+  File "/tmp/tests/integration/test_connections.py", line 95, in handshake_timeout
+    self.check(adapter,dict(config,host=host,port=listener.getsockname()[1]),self.password,'FAILED','TIMEOUT')
+  File "/tmp/tests/integration/test_connections.py", line 36, in check
+    if code:self.assertEqual(result.code,code)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'CONNECTION_LOST' != 'TIMEOUT'
+- CONNECTION_LOST
++ TIMEOUT
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 15.365s
+
+FAILED (failures=1)

@@ -1,0 +1,46 @@
+﻿============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 37 items
+
+tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_changed_upstream_or_extra_override_fail_closed PASSED [  2%]
+tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_committed_override_artifacts_match_policy PASSED [  5%]
+tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_only_approved_pins_change_and_upstream_unchanged PASSED [  8%]
+tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_airflow_stage_patches_offline_before_first_network_command PASSED [ 10%]
+tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_tampered_archive_fails_before_package_manager PASSED [ 13%]
+tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_unapproved_package_version_or_architecture_fails_closed PASSED [ 16%]
+tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_verified_archive_installs_and_checks_exact_version PASSED [ 18%]
+tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_wrong_installed_version_is_not_success PASSED [ 21%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_admission_unknown_outcome_requires_verification PASSED [ 24%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_close_requires_terminal_no_retry_and_known_outcome PASSED [ 27%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_completed_admission_is_never_reused_for_dml PASSED [ 29%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_created_and_verified_rejection_are_distinct PASSED [ 32%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_submission_timeout_requires_reconciliation_not_new_reservation PASSED [ 35%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_once_reserves_and_safe_extraction_retry_keeps_reservation PASSED [ 37%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_only_verified_commit_consumes_once PASSED [ 40%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_reserved_once_never_returns_to_granted PASSED [ 43%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoke_and_invalidate_block_future_admission PASSED [ 45%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_invalidated_consumed_closed_never_grant_new_work PASSED [ 48%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_unknown_commit_cannot_close_but_verified_commit_can_reconcile PASSED [ 51%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_scheduled_success_does_not_consume_schedule_grant PASSED [ 54%]
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed PASSED [ 56%]
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_owner_domain_is_separate_from_backend_and_runtime PASSED [ 59%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_datetime_normalizes_offsets_and_serializes_utc_z PASSED [ 62%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_datetime_rejects_naive_date_epoch_and_invalid_values PASSED [ 64%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_error_envelope_required_uuid_fields_and_location PASSED [ 67%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_pagination_defaults_limits_and_query_strings PASSED [ 70%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_unknown_total_is_null_not_zero_and_page_forbids_extra_fields PASSED [ 72%]
+tests/unit/test_common_schemas.py::CommonSchemaTests::test_uuid_validates_and_serializes_canonically PASSED [ 75%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_lock_drift_missing_and_duplicate_entries_are_rejected PASSED [ 78%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_pinned_sources_and_internal_stages_match_lock PASSED [ 81%]
+tests/unit/test_image_baseline.py::ImageBaselineTests::test_unpinned_and_conflicting_from_are_rejected PASSED [ 83%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_distribution_boundaries PASSED [ 86%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_frontend_manifest_uses_planned_runtime PASSED [ 89%]
+tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_shared_packages_import_without_api_or_airflow PASSED [ 91%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_binary_workbooks_match_manifest PASSED [ 94%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_checkout_policy_is_explicit PASSED [ 97%]
+tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_raw_sample_bytes_match_manifest PASSED [100%]
+
+============================== 37 passed in 0.35s ==============================
+

@@ -1,0 +1,14 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+  "runner_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+  "workbook_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "T053-T054",
+  "test_paths": [
+    "tests.integration.test_table_ddl"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261109\\t053-t054-green.log",
+  "existing_services_modified": false
+}

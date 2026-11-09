@@ -1,0 +1,77 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_exact_256_mib_upload_bound_without_buffering_whole_source (tests.integration.test_file_sources.FileStorageTests.test_exact_256_mib_upload_bound_without_buffering_whole_source) ... ok
+test_expired_file_referenced_by_definition_or_binding_is_not_collectable (tests.integration.test_file_sources.FileStorageTests.test_expired_file_referenced_by_definition_or_binding_is_not_collectable) ... ERROR
+test_interrupted_upload_does_not_publish_or_leave_partial_content (tests.integration.test_file_sources.FileStorageTests.test_interrupted_upload_does_not_publish_or_leave_partial_content) ... ok
+
+======================================================================
+ERROR: test_expired_file_referenced_by_definition_or_binding_is_not_collectable (tests.integration.test_file_sources.FileStorageTests.test_expired_file_referenced_by_definition_or_binding_is_not_collectable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (83c09483-9532-4ce1-b0c2-e9bb94ab975b, 8a5898d8-c4aa-4089-a549-f8ba13934da0, file_fixture_7066f9c16aa34084b73ee558ec3f3c4a, manual__a3491b66ac5748dbbdb6f6005a7bfc66, manual, 8352183f-1d4c-4c08-b6a4-b41155559f97, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-09 13:57:44.232837+00, null, 9fc22caa-0b98-43e8-8b6d-b487e12f751d, 2026-11-09 13:57:44.232837+00, 2026-11-09 13:57:44.232837+00).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_file_sources.py", line 60, in test_expired_file_referenced_by_definition_or_binding_is_not_collectable
+    test_files.FilesAPITests.dependency_fixture(self,file,active=True,uncertain=True)
+  File "/tmp/tests/api/test_files.py", line 147, in dependency_fixture
+    session.add(intent);session.flush()
+                        ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 465, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 641, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 94, in save_obj
+    _emit_insert_statements(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1234, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.IntegrityError: (psycopg.errors.NotNullViolation) null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (83c09483-9532-4ce1-b0c2-e9bb94ab975b, 8a5898d8-c4aa-4089-a549-f8ba13934da0, file_fixture_7066f9c16aa34084b73ee558ec3f3c4a, manual__a3491b66ac5748dbbdb6f6005a7bfc66, manual, 8352183f-1d4c-4c08-b6a4-b41155559f97, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-09 13:57:44.232837+00, null, 9fc22caa-0b98-43e8-8b6d-b487e12f751d, 2026-11-09 13:57:44.232837+00, 2026-11-09 13:57:44.232837+00).
+[SQL: INSERT INTO run_intents (operation_id, run_uuid, dag_id, airflow_run_id, run_type, etl_revision_id, authorization_id, request_sha256, state, last_reconciled_at, id) VALUES (%(operation_id)s::UUID, %(run_uuid)s::UUID, %(dag_id)s::VARCHAR, %(airflow_run_id)s::VARCHAR, %(run_type)s::VARCHAR, %(etl_revision_id)s::UUID, %(authorization_id)s::UUID, %(request_sha256)s::VARCHAR, %(state)s::VARCHAR, %(last_reconciled_at)s::TIMESTAMP WITH TIME ZONE, %(id)s::UUID) RETURNING run_intents.reserved_at, run_intents.created_at, run_intents.updated_at]
+[SQL parameters hidden due to hide_parameters=True]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.889s
+
+FAILED (errors=1)

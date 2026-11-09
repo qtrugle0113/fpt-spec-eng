@@ -1,0 +1,22 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": null,
+  "runner_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+  "workbook_test_dependencies": {
+    "source_image_id": "18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "UPLOAD-PRESERVATION",
+  "test_paths": [
+    "tests.integration.test_file_sources.FileStorageTests.test_storage_key_collision_does_not_delete_another_partial_upload",
+    "tests.api.test_tables.TableAPITests.test_lost_metadata_commit_ack_keeps_completed_workbook"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261109\\upload-preservation-green.log",
+  "existing_services_modified": false
+}

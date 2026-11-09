@@ -1,0 +1,13 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 5 items
+
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_actual_migration_matches_registered_models_and_is_idempotent PASSED [ 20%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict PASSED [ 40%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_missing_original_key_fails_without_regeneration_or_metadata_changes PASSED [ 60%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist PASSED [ 80%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_seed_preserves_operator_settings_and_existing_sample_identities PASSED [100%]
+
+============================== 5 passed in 7.25s ===============================

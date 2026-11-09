@@ -1,0 +1,21 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+  "runner_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+  "workbook_test_dependencies": {
+    "source_image_id": "18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "T047-DEBUG",
+  "test_paths": [
+    "tests.api.test_tables.TableAPITests.test_invalid_workbook_has_safe_locations_and_no_preview"
+  ],
+  "test_exit_code": 1,
+  "log": "docs\\testing\\resume-20261109\\t047-debug-green.log",
+  "existing_services_modified": false
+}

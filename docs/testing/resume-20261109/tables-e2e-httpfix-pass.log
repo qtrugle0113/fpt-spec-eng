@@ -1,0 +1,14 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/10] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/10] [desktop] › tables.spec.ts:4:1 › Workbook upload above the proxy default size reaches the streaming API
+[4/10] [desktop] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL
+[5/10] [desktop] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview
+[6/10] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[7/10] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[8/10] [mobile] › tables.spec.ts:4:1 › Workbook upload above the proxy default size reaches the streaming API
+[9/10] [mobile] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL
+[10/10] [mobile] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview
+  10 passed (27.6s)

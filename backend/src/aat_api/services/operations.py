@@ -35,7 +35,7 @@ class Operations:
     def finish(self,identity,owner,*,state,error_code=None):
         if state not in ('SUCCEEDED','PARTIALLY_SUCCEEDED','FAILED','NEEDS_RECONCILIATION'):raise ValueError('Invalid terminal state')
         result=row(self.connection,"""UPDATE operations SET state=%s,error_code=%s,
-            error_summary=CASE WHEN %s IS NOT NULL THEN 'operation.failed' ELSE NULL END,heartbeat_at=now()
+            error_summary=CASE WHEN %s::text IS NOT NULL THEN 'operation.failed' ELSE NULL END,heartbeat_at=now()
             WHERE id=%s AND state='RUNNING' AND lease_owner=%s AND lease_until>now() RETURNING *""",(state,error_code,error_code,identity,owner))
         if result is None:raise ValueError('OPERATION_LEASE_LOST')
         return result

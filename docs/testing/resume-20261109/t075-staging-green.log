@@ -1,0 +1,9 @@
+test_checksum_corruption_and_binding_mismatch_rejected_before_rows (tests.etl.test_snapshot_staging.TypedStagingTests.test_checksum_corruption_and_binding_mismatch_rejected_before_rows) ... ok
+test_incomplete_extraction_does_not_publish_complete_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_incomplete_extraction_does_not_publish_complete_manifest) ... ok
+test_missing_file_and_manifest_schema_drift_are_rejected (tests.etl.test_snapshot_staging.TypedStagingTests.test_missing_file_and_manifest_schema_drift_are_rejected) ... ok
+test_typed_roundtrip_preserves_values_null_and_safe_paths (tests.etl.test_snapshot_staging.TypedStagingTests.test_typed_roundtrip_preserves_values_null_and_safe_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.194s
+
+OK

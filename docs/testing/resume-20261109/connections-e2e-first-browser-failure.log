@@ -1,0 +1,30 @@
+
+Running 6 tests using 1 worker
+
+[1/6] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/6] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/6] [desktop] › connections.spec.ts:4:1 › Connections CRUD and real database verification
+  1) [desktop] › connections.spec.ts:4:1 › Connections CRUD and real database verification ─────────
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByRole('form', { name: 'Add connection' }).getByLabel('Database type', { exact: true })
+
+
+      14 |     await form.getByLabel('Connection code', { exact: true }).fill(code);
+      15 |     await form.getByLabel('Connection name', { exact: true }).fill(`E2E ${database}`);
+    > 16 |     await form.getByLabel('Database type', { exact: true }).selectOption(database);
+         |                                                             ^
+      17 |     await form.getByLabel('Database name', { exact: true }).fill('etl_test');
+      18 |     await form.getByLabel('Username', { exact: true }).fill('aat_etl');
+      19 |     await form.getByLabel('Password', { exact: true }).fill(password);
+        at /tests/connections.spec.ts:16:61
+
+    Error Context: test-results/connections-Connections-CRUD-and-real-database-verification-desktop/error-context.md
+
+
+[4/6] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[5/6] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[6/6] [mobile] › connections.spec.ts:4:1 › Connections CRUD and real database verification

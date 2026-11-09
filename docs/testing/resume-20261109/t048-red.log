@@ -1,0 +1,64 @@
+test_twenty_invalid_workbooks_have_locations_and_no_validated_tables (tests.unit.test_table_workbook.TableWorkbookTests.test_twenty_invalid_workbooks_have_locations_and_no_validated_tables) ... FAIL
+test_valid_workbook_typed_defaults_and_composite_key_order (tests.unit.test_table_workbook.TableWorkbookTests.test_valid_workbook_typed_defaults_and_composite_key_order) ... FAIL
+test_zip_payloads_and_formula_are_rejected_before_parse_side_effects (tests.unit.test_table_workbook.TableWorkbookTests.test_zip_payloads_and_formula_are_rejected_before_parse_side_effects) ... FAIL
+test_mysql_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_mysql_real_ddl_and_existing_data_preserved) ... FAIL
+test_postgres_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_postgres_real_ddl_and_existing_data_preserved) ... FAIL
+
+======================================================================
+FAIL: test_twenty_invalid_workbooks_have_locations_and_no_validated_tables (tests.unit.test_table_workbook.TableWorkbookTests.test_twenty_invalid_workbooks_have_locations_and_no_validated_tables)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_table_workbook.py", line 31, in setUp
+    self.module=implementation()
+                ^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_table_workbook.py", line 25, in implementation
+    if name.startswith(error.name):raise AssertionError('T050/T051 workbook validation missing') from None
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T050/T051 workbook validation missing
+
+======================================================================
+FAIL: test_valid_workbook_typed_defaults_and_composite_key_order (tests.unit.test_table_workbook.TableWorkbookTests.test_valid_workbook_typed_defaults_and_composite_key_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_table_workbook.py", line 31, in setUp
+    self.module=implementation()
+                ^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_table_workbook.py", line 25, in implementation
+    if name.startswith(error.name):raise AssertionError('T050/T051 workbook validation missing') from None
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T050/T051 workbook validation missing
+
+======================================================================
+FAIL: test_zip_payloads_and_formula_are_rejected_before_parse_side_effects (tests.unit.test_table_workbook.TableWorkbookTests.test_zip_payloads_and_formula_are_rejected_before_parse_side_effects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_table_workbook.py", line 31, in setUp
+    self.module=implementation()
+                ^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_table_workbook.py", line 25, in implementation
+    if name.startswith(error.name):raise AssertionError('T050/T051 workbook validation missing') from None
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T050/T051 workbook validation missing
+
+======================================================================
+FAIL: test_mysql_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_mysql_real_ddl_and_existing_data_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_table_ddl.py", line 18, in setUp
+    if error.name.startswith('aat_api.'):raise AssertionError('T051/T053/T054 DDL implementation missing') from None
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T051/T053/T054 DDL implementation missing
+
+======================================================================
+FAIL: test_postgres_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_postgres_real_ddl_and_existing_data_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_table_ddl.py", line 18, in setUp
+    if error.name.startswith('aat_api.'):raise AssertionError('T051/T053/T054 DDL implementation missing') from None
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T051/T053/T054 DDL implementation missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (failures=5)

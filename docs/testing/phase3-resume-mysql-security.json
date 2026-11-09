@@ -1,0 +1,22 @@
+{
+  "captured_at": "2026-11-09T11:25:33.320015+00:00",
+  "scanner": "ghcr.io/aquasecurity/trivy@sha256:2e6c00d711ab4ae41d8a30c2c1fd3bd3b62704c177bb120f95012e939edfb3df",
+  "scanner_digest": "ghcr.io/aquasecurity/trivy@sha256:2e6c00d711ab4ae41d8a30c2c1fd3bd3b62704c177bb120f95012e939edfb3df",
+  "scanner_version_db": "Version: 0.76.1\nVulnerability DB:\n  Version: 2\n  UpdatedAt: 2026-11-09 06:57:06.372182267 +0000 UTC\n  NextUpdate: 2026-11-10 06:57:06.372182027 +0000 UTC\n  DownloadedAt: 2026-11-09 11:25:25.888432444 +0000 UTC",
+  "scope": "OS and language vulnerabilities; all severities, no ignore-unfixed",
+  "images": [
+    {
+      "name": "resume-mysql",
+      "ref": "localhost/aat-mysql-resume-candidate:8.4.13",
+      "image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+      "counts": {
+        "MEDIUM": 31,
+        "UNKNOWN": 1
+      },
+      "high_critical": [],
+      "scan_execution": "PASS",
+      "security_assessment": "PASS"
+    }
+  ],
+  "raw_reports": ".tools/security/<name>.json"
+}

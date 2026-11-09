@@ -1,0 +1,13 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": null,
+  "runner_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "T040",
+  "test_paths": [
+    "tests.unit.test_connection_schemas"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261109\\t040-green.log",
+  "existing_services_modified": false
+}

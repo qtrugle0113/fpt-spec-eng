@@ -1,0 +1,166 @@
+test_mysql_nontransactional_source_is_rejected (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_nontransactional_source_is_rejected) ... ok
+test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key) ... ERROR
+test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect) ... ERROR
+test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key) ... ERROR
+test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect) ... ERROR
+
+======================================================================
+ERROR: test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 59, in test_mysql_snapshot_survives_concurrent_updates_without_primary_key
+    def test_mysql_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('mysql')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 45, in snapshot
+    rows=iter(reader.rows());first=next(rows)
+                                   ^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 91, in rows
+    except Exception:raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset.') from None
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset.
+
+======================================================================
+ERROR: test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1130, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 712, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 505, in rollback
+    self._read_ok_packet()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 465, in _read_ok_packet
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 751, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 805, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 73, in test_mysql_source_session_loss_fails_without_reconnect
+    def test_mysql_source_session_loss_fails_without_reconnect(self):self.disconnect('mysql')
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 63, in disconnect
+    with module.SnapshotReader(engine,schema='public' if kind=='postgres' else 'etl_test',table=table,columns=['id','amount','note'],chunk_rows=1) as reader:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 104, in __exit__
+    try:self.connection.rollback()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1024, in rollback
+    self._transaction.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2621, in rollback
+    self._do_rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2740, in _do_rollback
+    self._close_impl(try_deactivate=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2723, in _close_impl
+    self._connection_rollback_impl()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2715, in _connection_rollback_impl
+    self.connection._rollback_impl()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1132, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1130, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 712, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 505, in rollback
+    self._read_ok_packet()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 465, in _read_ok_packet
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 751, in _read_packet
+    packet_header = self._read_bytes(4)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 805, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+======================================================================
+ERROR: test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 58, in test_postgres_snapshot_survives_concurrent_updates_without_primary_key
+    def test_postgres_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('postgres')
+                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 45, in snapshot
+    rows=iter(reader.rows());first=next(rows)
+                                   ^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 91, in rows
+    except Exception:raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset.') from None
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset.
+
+======================================================================
+ERROR: test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1130, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 712, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 310, in rollback
+    self.wait(self._rollback_gen())
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 484, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "psycopg_binary/_psycopg/waiting.pyx", line 241, in psycopg_binary._psycopg.wait_c
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/_connection_base.py", line 619, in _rollback_gen
+    yield from self._exec_command(b"ROLLBACK")
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/_connection_base.py", line 489, in _exec_command
+    raise e.error_from_result(result, encoding=self.pgconn._encoding)
+psycopg.errors.AdminShutdown: terminating connection due to administrator command
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 72, in test_postgres_source_session_loss_fails_without_reconnect
+    def test_postgres_source_session_loss_fails_without_reconnect(self):self.disconnect('postgres')
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 63, in disconnect
+    with module.SnapshotReader(engine,schema='public' if kind=='postgres' else 'etl_test',table=table,columns=['id','amount','note'],chunk_rows=1) as reader:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 104, in __exit__
+    try:self.connection.rollback()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1024, in rollback
+    self._transaction.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2621, in rollback
+    self._do_rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2740, in _do_rollback
+    self._close_impl(try_deactivate=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2723, in _close_impl
+    self._connection_rollback_impl()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2715, in _connection_rollback_impl
+    self.connection._rollback_impl()
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1132, in _rollback_impl
+    self._handle_dbapi_exception(e, None, None, None, None)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1130, in _rollback_impl
+    self.engine.dialect.do_rollback(self.connection)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 712, in do_rollback
+    dbapi_connection.rollback()
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 310, in rollback
+    self.wait(self._rollback_gen())
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 484, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "psycopg_binary/_psycopg/waiting.pyx", line 241, in psycopg_binary._psycopg.wait_c
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/_connection_base.py", line 619, in _rollback_gen
+    yield from self._exec_command(b"ROLLBACK")
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/_connection_base.py", line 489, in _exec_command
+    raise e.error_from_result(result, encoding=self.pgconn._encoding)
+sqlalchemy.exc.OperationalError: (psycopg.errors.AdminShutdown) terminating connection due to administrator command
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.736s
+
+FAILED (errors=4)

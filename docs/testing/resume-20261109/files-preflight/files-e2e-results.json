@@ -1,0 +1,14 @@
+{
+  "project": "aat-files-e2e-49517e85",
+  "status": "PREPARED_NOT_RUN",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352",
+    "frontend": "03bd4469931a7e3f0f6681f0158c808864b1acd6e44bcfed9464d87c74754cc8",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  }
+}

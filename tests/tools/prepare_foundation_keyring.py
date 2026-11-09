@@ -15,4 +15,5 @@ key_id=uuid4().hex
 if os.environ.get('AAT_FOUNDATION_INITIALIZE')=='1':
     from docker.bootstrap.app_init import initialize
     initialize()
-os.execv(sys.executable,[sys.executable,'-m','pytest',*sys.argv[1:]])
+runner='unittest' if os.environ.get('AAT_FOUNDATION_TEST_RUNNER')=='unittest' else 'pytest'
+os.execv(sys.executable,[sys.executable,'-m',runner,*sys.argv[1:]])

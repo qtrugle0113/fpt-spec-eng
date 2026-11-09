@@ -1,5 +1,23 @@
 # Airflow Automation Tool
 
+**Cập nhật Phase5, 2026-11-10:** File Sources đã khép T061–T069: source regression
+116PASS, E2E12PASS và persistence2PASS sau recreate backend/worker, desktop/mobile,
+cleanup0. Tiếp tests/typed contracts engine T070/T071.
+Xem [checkpoint Files](docs/testing/phase5-file-sources-report.md) và
+[review image](docs/testing/phase5-us3-image-review.md). T014_FULL vẫn BLOCKED;
+các snapshot bên dưới giữ lịch sử.
+
+**Cập nhật mới nhất:** Connections đã qua E2E6/6 trên desktop/mobile với PG/MySQL
+thật; đã hoàn thành đến T046 theo dependency local. Tiếp tục Table Management.
+T014_FULL còn BLOCKED; các mốc chờ E2E bên dưới là snapshot cũ.
+
+**Tiến độ hiện hành 2026-11-09:** foundation T015–T034 đã kiểm trên máy mới
+Podman CLI6.1.1/server6.1.4/Compose5.6.0 rootful. Backend Connections đã kiểm23cases
+trên PG/MySQL thật; UI/typecheck/build đã có, T045/T046 còn chờ E2E và review Backend
+runtime ID mới. T014_FULL/security còn BLOCKED, không tuyên bố MVP hoàn thành.
+Xem [báo cáo mới](docs/testing/phase3-connections-report.md) và
+[hướng dẫn Connections](docs/operations/connections.md). Các mốc bên dưới giữ lịch sử.
+
 T001–T013 đã kiểm chứng trong phạm vi bootstrap. **Phase 1 chưa được nghiệm thu**: T014
 còn security findings và các gate tái kiểm. CI Windows/Linux tại HEAD `b29ae86` đã PASS;
 thay đổi T014 trong working tree lượt này chưa chạy CI remote. Phase 2 mới viết tests

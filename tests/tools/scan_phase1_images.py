@@ -4,6 +4,7 @@ from collections import Counter
 from datetime import datetime, timezone
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import uuid
@@ -70,7 +71,13 @@ def scan() -> None:
     OUT.mkdir(parents=True,exist_ok=True)
     prefix = 'aat-phase1-scan-' + uuid.uuid4().hex[:8]
     inputs, reports, cache = (prefix+'-'+name for name in ('input','reports','cache'))
-    for name in (inputs,reports,cache):
+    reused_cache=os.environ.get('AAT_SCAN_CACHE_VOLUME')
+    if reused_cache:
+        if not re.fullmatch(r'aat-phase1-scan-[0-9a-f]{8}-cache',reused_cache):
+            raise ValueError('Only an explicit scanner-owned cache volume may be reused')
+        run('volume','inspect',reused_cache)
+        cache=reused_cache
+    for name in (inputs,reports) if reused_cache else (inputs,reports,cache):
         run('volume','create',name)
     (OUT/'scan-resources.json').write_text(json.dumps({'input':inputs,'reports':reports,'cache':cache},indent=2))
     mountpoint = json.loads(run('volume','inspect',inputs))[0]['Mountpoint']
@@ -104,7 +111,7 @@ def scan() -> None:
         record['security_assessment'] = 'BLOCKED' if record['high_critical'] else 'PASS'
     summary = {'captured_at':datetime.now(timezone.utc).isoformat(),'scanner':SCANNER,
                'scanner_digest':digest,'scanner_version_db':version,'scope':'OS and language vulnerabilities; all severities, no ignore-unfixed',
-               'images':records,'raw_reports':'.tools/security/<name>.json'}
+               'images':records,'raw_reports':'.tools/security/<name>.json','cache_volume':cache}
     report_path.write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     # Chỉ xóa volumes archive/report do lượt scan này tạo; cache DB giữ để tái kiểm.
     run('volume','rm',inputs,reports)

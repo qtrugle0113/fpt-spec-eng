@@ -1,0 +1,25 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_aliases_cannot_concurrently_admit_creation_for_same_physical_table (tests.api.test_tables.TableAPITests.test_aliases_cannot_concurrently_admit_creation_for_same_physical_table) ... ok
+test_history_filter_pagination_and_request_boundaries (tests.api.test_tables.TableAPITests.test_history_filter_pagination_and_request_boundaries) ... ok
+test_invalid_workbook_has_safe_locations_and_no_preview (tests.api.test_tables.TableAPITests.test_invalid_workbook_has_safe_locations_and_no_preview) ... ok
+test_mysql_create_and_persistent_history (tests.api.test_tables.TableAPITests.test_mysql_create_and_persistent_history) ... ok
+test_mysql_partial_job_preserves_created_table_and_reports_permission_failure (tests.api.test_tables.TableAPITests.test_mysql_partial_job_preserves_created_table_and_reports_permission_failure) ... ok
+test_postgres_create_and_persistent_history (tests.api.test_tables.TableAPITests.test_postgres_create_and_persistent_history) ... ok
+test_stale_confirmation_rejects_changed_connection_without_creating_job (tests.api.test_tables.TableAPITests.test_stale_confirmation_rejects_changed_connection_without_creating_job) ... ok
+test_template_binary_checksum_and_schema (tests.api.test_tables.TableAPITests.test_template_binary_checksum_and_schema) ... ok
+test_unknown_mysql_ddl_is_durable_and_idempotent_replay_does_not_execute (tests.api.test_tables.TableAPITests.test_unknown_mysql_ddl_is_durable_and_idempotent_replay_does_not_execute) ... ok
+test_mysql_all_types_and_lossless_defaults (tests.integration.test_table_ddl.TableDDLTests.test_mysql_all_types_and_lossless_defaults) ... ok
+test_mysql_lost_response_after_real_implicit_commit_is_unknown (tests.integration.test_table_ddl.TableDDLTests.test_mysql_lost_response_after_real_implicit_commit_is_unknown) ... ok
+test_mysql_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_mysql_real_ddl_and_existing_data_preserved) ... ok
+test_postgres_all_types_and_lossless_defaults (tests.integration.test_table_ddl.TableDDLTests.test_postgres_all_types_and_lossless_defaults) ... ok
+test_postgres_real_ddl_and_existing_data_preserved (tests.integration.test_table_ddl.TableDDLTests.test_postgres_real_ddl_and_existing_data_preserved) ... ok
+test_repository_sample_and_template_guidance_are_reused (tests.unit.test_table_workbook.TableWorkbookTests.test_repository_sample_and_template_guidance_are_reused) ... ok
+test_twenty_invalid_workbooks_have_locations_and_no_validated_tables (tests.unit.test_table_workbook.TableWorkbookTests.test_twenty_invalid_workbooks_have_locations_and_no_validated_tables) ... ok
+test_valid_workbook_typed_defaults_and_composite_key_order (tests.unit.test_table_workbook.TableWorkbookTests.test_valid_workbook_typed_defaults_and_composite_key_order) ... ok
+test_zip_payloads_and_formula_are_rejected_before_parse_side_effects (tests.unit.test_table_workbook.TableWorkbookTests.test_zip_payloads_and_formula_are_rejected_before_parse_side_effects) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 21.336s
+
+OK

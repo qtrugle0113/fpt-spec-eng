@@ -26,7 +26,7 @@ def install_handlers(app):
 
     @app.exception_handler(HTTPException)
     async def http_error(request,exc):
-        messages={404:'Resource not found.',405:'Method not allowed.',401:'Authentication required.',403:'Access denied.'}
+        messages={404:'Resource not found.',405:'Method not allowed.',401:'Authentication required.',403:'Access denied.',413:'Upload exceeds the allowed size.'}
         return response(request,'HTTP_'+str(exc.status_code),messages.get(exc.status_code,'Request failed.'),exc.status_code)
 
     @app.exception_handler(RequestValidationError)
@@ -34,7 +34,8 @@ def install_handlers(app):
         # Only declared contract field names are reflected; never input values,
         # arbitrary extra keys, raw parser messages or exception context.
         safe={'path','query','body','id','limit','offset','default_batch_size','dashboard_refresh_interval',
-              'default_timezone','staging_retention_days','acknowledged','allow_empty','confirmation_token'}
+              'default_timezone','staging_retention_days','acknowledged','allow_empty','confirmation_token',
+              'max_rows','parser_json','encoding','delimiter','header_present','quote_character','escape_character','null_representation'}
         details=[]
         for error in exc.errors()[:20]:
             location='.'.join(str(part) for part in error['loc'] if part in safe)

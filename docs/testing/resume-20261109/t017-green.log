@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests
+plugins: anyio-4.16.0
+collecting ... collected 28 items
+
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_admission_unknown_outcome_requires_verification PASSED [  3%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_close_requires_terminal_no_retry_and_known_outcome PASSED [  7%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_completed_admission_is_never_reused_for_dml PASSED [ 10%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_created_and_verified_rejection_are_distinct PASSED [ 14%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_submission_timeout_requires_reconciliation_not_new_reservation PASSED [ 17%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_once_reserves_and_safe_extraction_retry_keeps_reservation PASSED [ 21%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_only_verified_commit_consumes_once PASSED [ 25%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_reserved_once_never_returns_to_granted PASSED [ 28%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoke_and_invalidate_block_future_admission PASSED [ 32%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_invalidated_consumed_closed_never_grant_new_work PASSED [ 35%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_unknown_commit_cannot_close_but_verified_commit_can_reconcile PASSED [ 39%]
+../../tmp/tests/unit/test_authorization_states.py::AuthorizationStateTests::test_scheduled_success_does_not_consume_schedule_grant PASSED [ 42%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_acknowledged_empty_permission_only_applies_to_reserved_run PASSED [ 46%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_admission_before_revoke_can_reconcile_but_not_be_reused PASSED [ 50%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_concurrent_same_request_reuses_one_stable_intent PASSED [ 53%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_empty_replacement_needs_explicit_scoped_acknowledgment PASSED [ 57%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_authorization_before_intent_and_binding PASSED [ 60%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_intent_before_binding_after_authorization PASSED [ 64%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reservation_idempotency_and_payload_conflict PASSED [ 67%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reserved_once_cannot_move_to_new_run PASSED [ 71%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_revoke_before_admission_denies_new_write_and_preserves_evidence PASSED [ 75%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_runtime_role_cannot_grant_change_scope_or_delete_evidence PASSED [ 78%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_grant_rejects_manual_and_scope_schedule_drift PASSED [ 82%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_runs_get_distinct_intents_without_consuming_grant PASSED [ 85%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_terminal_authorizations_reject_new_reservation PASSED [ 89%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_two_transactions_compete_for_once_exactly_one_reservation PASSED [ 92%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_unknown_commit_blocks_new_epoch_and_protects_binding PASSED [ 96%]
+../../tmp/tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_verified_rollback_requires_new_epoch_and_live_grant PASSED [100%]
+
+============================== 28 passed in 1.30s ==============================

@@ -1,0 +1,47 @@
+﻿[1/2] STEP 1/6: FROM docker.io/library/golang:1.27.3-alpine3.24@sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936 AS gosu-build
+Trying to pull docker.io/library/golang@sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936...
+Getting image source signatures
+Copying blob sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1
+Copying blob sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17
+Copying blob sha256:91cd85cbb99965c7b0f724a0fc60517c2c41f3d77b2da9236eaa8717a3de2357
+Copying blob sha256:82e0bb27ae78502103ed383ed33346f88a83943fb7bd93977850d5890ee8fb3b
+Copying blob sha256:3f6fea6449ae0cdc0aa3243e118dd884d76a5a908c6e37b868632ec1dde4363f
+Copying config sha256:8db2494859f5857dcf770d774a9d7c2c952a0f23a40b02de187bb41d76eac422
+Writing manifest to image destination
+[1/2] STEP 2/6: ENV GOTOOLCHAIN=local CGO_ENABLED=0 GOOS=linux GOARCH=amd64
+--> 7a25b84d9034
+[1/2] STEP 3/6: ADD https://codeload.github.com/tianon/gosu/tar.gz/6456aaa0f3c854d199d0f037f068eb97515b7513 /tmp/gosu.tar.gz
+--> 7ff9c5c22546
+[1/2] STEP 4/6: RUN echo "33d7537d588ea49458b9509bcf4554bdf5ceacc66da71e5caa1058ea3b689c3b  /tmp/gosu.tar.gz" | sha256sum -c - && mkdir /src && tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src
+/tmp/gosu.tar.gz: OK
+--> 5761e11fa109
+[1/2] STEP 5/6: WORKDIR /src
+--> 03ef6f34eef6
+[1/2] STEP 6/6: RUN go mod download && go build -trimpath -buildvcs=false -ldflags="-s -w -X main.Version=1.19" -o /gosu . && /gosu --version
+1.19 (go1.27.3 on linux/amd64; gc)
+--> 0a2ad02edf25
+[2/2] STEP 1/2: FROM docker.io/library/postgres:17.11-bookworm@sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a AS postgres
+Trying to pull docker.io/library/postgres@sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a...
+Getting image source signatures
+Copying blob sha256:2c502f9a03997d04aa06168b69da9969a6f0801fb54ea2dfac97aa19b0b1bc94
+Copying blob sha256:dd051e1b8c92ff101fa3071ab97ea4924885942f15644e01c3dc095764e863e3
+Copying blob sha256:41e20cc910884a955c3810fda7b7caaf986fcc354f76346b36ad48ef3fd85053
+Copying blob sha256:4fd88e65335919095974515153c41c2514c5d7bf466c75a7b3f67a0a72f35e29
+Copying blob sha256:cecd59c0f4e809bc4ce5e9076339ba2cc5058ad986b1059ecd39bbb87bb4b8c2
+Copying blob sha256:fe98381fbf47280a0ebfed1dbc0dbb44c5f748a989f9b4094629bcc1a7c2f8f2
+Copying blob sha256:9e606760473177dfbbd3084581ed541bfd18aa1d52544ded376f4722e573e9c3
+Copying blob sha256:32564e1f6308579cbeb7cb5ea592449a52254f68f40e63426b2a68077e5d663f
+Copying blob sha256:80ed7b53ecf0b278aaa5809e28681d596e6959dfba77f3d390b8243c01412df7
+Copying blob sha256:46db58682565015f7a7801f2d255213f953f9d0226f60f062878a1eb601cdb97
+Copying blob sha256:f17bd255b710312b09f9869fd2bbf9b219277a6284e827d73b23ff59d380298e
+Copying blob sha256:277e6d7346904444bb91b878b996120bcf530d9cd0d0d05085a6b9f2f75985af
+Copying blob sha256:f4368716ea81f6efdbd410538ba52e75e9ed07ca493ed70ffd6a412e037ad8c4
+Copying blob sha256:c200e4e2b35b95dd752d69e1051a92a2ae17729cf0eddeda491df531b283c906
+Copying config sha256:018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9
+Writing manifest to image destination
+[2/2] STEP 2/2: COPY --from=gosu-build --chmod=0755 /gosu /usr/local/bin/gosu
+[2/2] COMMIT localhost/aat-postgres-resume-candidate:17.11
+--> c93823be91b7
+Successfully tagged localhost/aat-postgres-resume-candidate:17.11
+c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce
+

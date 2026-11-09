@@ -1,0 +1,373 @@
+{
+  "images": [
+    {
+      "name": "us3-backend",
+      "candidate_image_id": "69d9ebf0936c222d8b33b104f95b09735051e3caf395896cba4adc9e730cd73f",
+      "baseline_image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 40,
+        "MEDIUM": 122,
+        "CRITICAL": 2
+      },
+      "high_critical": [
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "bsdutils",
+          "InstalledVersion": "1:2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "bsdutils",
+          "InstalledVersion": "1:2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "bsdutils",
+          "InstalledVersion": "1:2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-41992",
+          "PkgName": "gzip",
+          "InstalledVersion": "1.12-1",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-41992"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-54369",
+          "PkgName": "libacl1",
+          "InstalledVersion": "2.3.1-3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-54369"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "libblkid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "libblkid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "libblkid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "libmount1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "libmount1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "libmount1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-69720",
+          "PkgName": "libncursesw6",
+          "InstalledVersion": "6.4-4",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "libsmartcols1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "libsmartcols1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "libsmartcols1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-7458",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-7458"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-11822",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11822"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-11824",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11824"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-119373",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119373"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-119374",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119374"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-119379",
+          "PkgName": "libsqlite3-0",
+          "InstalledVersion": "3.40.1-2+deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119379"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-16742",
+          "PkgName": "libsystemd0",
+          "InstalledVersion": "252.39-1~deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-16742"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-69720",
+          "PkgName": "libtinfo6",
+          "InstalledVersion": "6.4-4",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-16742",
+          "PkgName": "libudev1",
+          "InstalledVersion": "252.39-1~deb12u2",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-16742"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "libuuid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "libuuid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "libuuid1",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "mount",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "mount",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "mount",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-69720",
+          "PkgName": "ncurses-base",
+          "InstalledVersion": "6.4-4",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-69720",
+          "PkgName": "ncurses-bin",
+          "InstalledVersion": "6.4-4",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-9538",
+          "PkgName": "perl-base",
+          "InstalledVersion": "5.36.0-7+deb12u4",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-9538"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "util-linux",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "util-linux",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "util-linux",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53613",
+          "PkgName": "util-linux-extra",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-53615",
+          "PkgName": "util-linux-extra",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-78410",
+          "PkgName": "util-linux-extra",
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410"
+        },
+        {
+          "VulnerabilityID": "CVE-2023-45853",
+          "PkgName": "zlib1g",
+          "InstalledVersion": "1:1.2.13.dfsg-1",
+          "FixedVersion": null,
+          "Severity": "CRITICAL",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-45853"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-76844",
+          "PkgName": "zlib1g",
+          "InstalledVersion": "1:1.2.13.dfsg-1",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-76844"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-85091",
+          "PkgName": "zlib1g",
+          "InstalledVersion": "1:1.2.13.dfsg-1",
+          "FixedVersion": null,
+          "Severity": "HIGH",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-85091"
+        }
+      ],
+      "added": [],
+      "removed": [],
+      "owner_mapping": "PENDING",
+      "security_assessment": "BLOCKED"
+    },
+    {
+      "name": "us3-frontend",
+      "candidate_image_id": "03bd4469931a7e3f0f6681f0158c808864b1acd6e44bcfed9464d87c74754cc8",
+      "baseline_image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "high_critical": [],
+      "added": [],
+      "removed": [],
+      "owner_mapping": "NOT_REQUIRED",
+      "security_assessment": "PASS"
+    }
+  ],
+  "scope": "Exact finding/package/version/severity/fix comparison; no exception automatically inherited",
+  "review_deadline": "2026-11-16",
+  "exception_expiry": "2026-11-23T00:00:00+09:00"
+}

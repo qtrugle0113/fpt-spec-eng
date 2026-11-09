@@ -105,7 +105,7 @@ services:
     <<: *backend
     user: '0:0'
     restart: 'no'
-    command: [python, /opt/aat/docker/bootstrap/app_init.py]
+    command: [python, -m, docker.bootstrap.app_init]
     volumes:
       - app_owner_secrets:/secrets/app-owner:ro
       - backend_secrets:/secrets/backend:ro
@@ -203,6 +203,8 @@ services:
     <<: *backend
     restart: unless-stopped
     mem_limit: 512m
+    environment:
+      AAT_DB_ALLOWED_HOSTS: ${AAT_DB_ALLOWED_HOSTS:-postgres,mysql}
     command: [python, -m, aat_api.workers.main]
     volumes:
       - backend_secrets:/secrets/backend:ro
@@ -236,6 +238,7 @@ services:
     mem_limit: 512m
     environment:
       AAT_ALLOWED_ORIGINS: http://localhost:${AAT_FRONTEND_PORT:-3000},http://127.0.0.1:${AAT_FRONTEND_PORT:-3000}
+      AAT_DB_ALLOWED_HOSTS: ${AAT_DB_ALLOWED_HOSTS:-postgres,mysql}
     ports: ['127.0.0.1:${AAT_BACKEND_PORT:-8000}:8000']
     volumes:
       - backend_secrets:/secrets/backend:ro

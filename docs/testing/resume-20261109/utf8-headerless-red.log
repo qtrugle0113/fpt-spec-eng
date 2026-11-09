@@ -1,0 +1,21 @@
+test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected (tests.unit.test_delimited_reader.DelimitedReaderTests.test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected) ... FAIL
+
+======================================================================
+FAIL: test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected (tests.unit.test_delimited_reader.DelimitedReaderTests.test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_delimited_reader.py", line 42, in test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected
+    self.assertEqual(self.records(data,header_present=False)[0].values,['\ufeff\\N','value'])
+AssertionError: Lists differ: [None, 'value'] != ['\ufeff\\N', 'value']
+
+First differing element 0:
+None
+'\ufeff\\N'
+
+- [None, 'value']
++ ['\ufeff\\N', 'value']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.237s
+
+FAILED (failures=1)

@@ -1,0 +1,18 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": null,
+  "runner_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "PHASE2-FOUNDATION-CORE",
+  "test_paths": [
+    "/tmp/tests/integration/test_metadata_foundation.py",
+    "/tmp/tests/unit/test_authorization_states.py",
+    "/tmp/tests/integration/test_authorization_repository.py",
+    "/tmp/tests/integration/test_phase2_repositories.py",
+    "/tmp/tests/integration/test_phase2_operations.py",
+    "/tmp/tests/integration/test_phase2_api.py"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261109\\phase2-foundation-core-green.log",
+  "existing_services_modified": false
+}

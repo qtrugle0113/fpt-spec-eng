@@ -1,0 +1,101 @@
+test_dns_failure_has_safe_bounded_result (tests.integration.test_connections.ConnectionAdapterTests.test_dns_failure_has_safe_bounded_result) ... FAIL
+test_mysql_success_auth_database_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_success_auth_database_and_closed_port) ... FAIL
+test_policy_rejects_url_path_metadata_and_unapproved_hosts (tests.integration.test_connections.ConnectionAdapterTests.test_policy_rejects_url_path_metadata_and_unapproved_hosts) ... FAIL
+test_postgres_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_handshake_timeout_is_bounded_without_mocking_driver) ... FAIL
+test_postgres_success_auth_database_schema_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_success_auth_database_schema_and_closed_port) ... FAIL
+test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected (tests.integration.test_connections.ConnectionAdapterTests.test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected) ... FAIL
+test_missing_old_key_and_tampered_tokens_do_not_generate_replacements (tests.unit.test_secret_codec.SecretRotationTests.test_missing_old_key_and_tampered_tokens_do_not_generate_replacements) ... FAIL
+test_rotation_uses_existing_current_key_and_keeps_history (tests.unit.test_secret_codec.SecretRotationTests.test_rotation_uses_existing_current_key_and_keeps_history) ... FAIL
+
+======================================================================
+FAIL: test_dns_failure_has_safe_bounded_result (tests.integration.test_connections.ConnectionAdapterTests.test_dns_failure_has_safe_bounded_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_mysql_success_auth_database_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_success_auth_database_and_closed_port)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_policy_rejects_url_path_metadata_and_unapproved_hosts (tests.integration.test_connections.ConnectionAdapterTests.test_policy_rejects_url_path_metadata_and_unapproved_hosts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_postgres_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_handshake_timeout_is_bounded_without_mocking_driver)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_postgres_success_auth_database_schema_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_success_auth_database_schema_and_closed_port)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected (tests.integration.test_connections.ConnectionAdapterTests.test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_connections.py", line 23, in setUp
+    self.pg=required('aat_api.services.connections.postgres')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_connections.py", line 16, in required
+    if name.startswith(exc.name):raise AssertionError('Connections implementation missing: '+name) from None
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Connections implementation missing: aat_api.services.connections.postgres
+
+======================================================================
+FAIL: test_missing_old_key_and_tampered_tokens_do_not_generate_replacements (tests.unit.test_secret_codec.SecretRotationTests.test_missing_old_key_and_tampered_tokens_do_not_generate_replacements)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_secret_codec.py", line 38, in test_missing_old_key_and_tampered_tokens_do_not_generate_replacements
+    self.assertTrue(callable(getattr(codec,'rotate',None)),'T037 rotation missing')
+AssertionError: False is not true : T037 rotation missing
+
+======================================================================
+FAIL: test_rotation_uses_existing_current_key_and_keeps_history (tests.unit.test_secret_codec.SecretRotationTests.test_rotation_uses_existing_current_key_and_keeps_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_secret_codec.py", line 21, in test_rotation_uses_existing_current_key_and_keeps_history
+    self.assertTrue(callable(getattr(current,'rotate',None)),'T037 rotation missing')
+AssertionError: False is not true : T037 rotation missing
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.007s
+
+FAILED (failures=8)

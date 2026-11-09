@@ -1,0 +1,8 @@
+test_twenty_invalid_workbooks_have_locations_and_no_validated_tables (tests.unit.test_table_workbook.TableWorkbookTests.test_twenty_invalid_workbooks_have_locations_and_no_validated_tables) ... ok
+test_valid_workbook_typed_defaults_and_composite_key_order (tests.unit.test_table_workbook.TableWorkbookTests.test_valid_workbook_typed_defaults_and_composite_key_order) ... ok
+test_zip_payloads_and_formula_are_rejected_before_parse_side_effects (tests.unit.test_table_workbook.TableWorkbookTests.test_zip_payloads_and_formula_are_rejected_before_parse_side_effects) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.811s
+
+OK

@@ -1,0 +1,70 @@
+test_global_20gib_counts_protected_and_active_allocations (tests.etl.test_resource_quota.QuotaTests.test_global_20gib_counts_protected_and_active_allocations) ... FAIL
+test_idempotent_reservation_and_release_preserve_evidence (tests.etl.test_resource_quota.QuotaTests.test_idempotent_reservation_and_release_preserve_evidence) ... FAIL
+test_per_run_10gib_boundary_is_atomic_under_concurrency (tests.etl.test_resource_quota.QuotaTests.test_per_run_10gib_boundary_is_atomic_under_concurrency) ... FAIL
+test_actual_512mib_process_is_stopped_before_container_oom (tests.etl.test_resource_quota.RSSSupervisionTests.test_actual_512mib_process_is_stopped_before_container_oom) ... FAIL
+test_normal_child_completes_without_false_memory_failure (tests.etl.test_resource_quota.RSSSupervisionTests.test_normal_child_completes_without_false_memory_failure) ... FAIL
+
+======================================================================
+FAIL: test_global_20gib_counts_protected_and_active_allocations (tests.etl.test_resource_quota.QuotaTests.test_global_20gib_counts_protected_and_active_allocations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_resource_quota.py", line 24, in setUp
+    self.quota=implementation('staging.quota')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_resource_quota.py", line 17, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('T076 implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T076 implementation missing: staging.quota
+
+======================================================================
+FAIL: test_idempotent_reservation_and_release_preserve_evidence (tests.etl.test_resource_quota.QuotaTests.test_idempotent_reservation_and_release_preserve_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_resource_quota.py", line 24, in setUp
+    self.quota=implementation('staging.quota')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_resource_quota.py", line 17, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('T076 implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T076 implementation missing: staging.quota
+
+======================================================================
+FAIL: test_per_run_10gib_boundary_is_atomic_under_concurrency (tests.etl.test_resource_quota.QuotaTests.test_per_run_10gib_boundary_is_atomic_under_concurrency)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_resource_quota.py", line 24, in setUp
+    self.quota=implementation('staging.quota')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_resource_quota.py", line 17, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('T076 implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T076 implementation missing: staging.quota
+
+======================================================================
+FAIL: test_actual_512mib_process_is_stopped_before_container_oom (tests.etl.test_resource_quota.RSSSupervisionTests.test_actual_512mib_process_is_stopped_before_container_oom)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_resource_quota.py", line 68, in test_actual_512mib_process_is_stopped_before_container_oom
+    resources=implementation('resources')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_resource_quota.py", line 17, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('T076 implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T076 implementation missing: resources
+
+======================================================================
+FAIL: test_normal_child_completes_without_false_memory_failure (tests.etl.test_resource_quota.RSSSupervisionTests.test_normal_child_completes_without_false_memory_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_resource_quota.py", line 79, in test_normal_child_completes_without_false_memory_failure
+    resources=implementation('resources');result=resources.run_supervised([sys.executable,'-c','pass'])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_resource_quota.py", line 17, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('T076 implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T076 implementation missing: resources
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=5)

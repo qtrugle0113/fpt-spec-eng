@@ -1,0 +1,12 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "runner_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "T030-OWNER",
+  "test_paths": [
+    "/tmp/tests/integration/test_owner_initialization.py"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261109\\t030-owner-green.log",
+  "existing_services_modified": false
+}

@@ -1,0 +1,264 @@
+test_canonical_hash_ignores_object_order_but_preserves_semantic_values (tests.unit.test_mapping.ExecutionContractTests.test_canonical_hash_ignores_object_order_but_preserves_semantic_values) ... FAIL
+test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals (tests.unit.test_mapping.ExecutionContractTests.test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals) ... FAIL
+test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs (tests.unit.test_mapping.ExecutionContractTests.test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs) ... FAIL
+test_source_union_and_strategy_keys_are_strict (tests.unit.test_mapping.ExecutionContractTests.test_source_union_and_strategy_keys_are_strict) ... FAIL
+test_typed_literal_never_coerces_float_bool_or_numeric_string (tests.unit.test_mapping.ExecutionContractTests.test_typed_literal_never_coerces_float_bool_or_numeric_string) ... FAIL
+test_direct_mapping_does_not_guess_numeric_strings (tests.unit.test_mapping.LosslessTypeTests.test_direct_mapping_does_not_guess_numeric_strings) ... FAIL
+test_exact_decimal_integer_unicode_and_null (tests.unit.test_mapping.LosslessTypeTests.test_exact_decimal_integer_unicode_and_null) ... FAIL
+test_explicit_mapping_preserves_unmapped_target_columns (tests.unit.test_mapping.LosslessTypeTests.test_explicit_mapping_preserves_unmapped_target_columns) ... FAIL
+test_iso_temporal_values_keep_microseconds_and_offset (tests.unit.test_mapping.LosslessTypeTests.test_iso_temporal_values_keep_microseconds_and_offset) ... FAIL
+test_no_rounding_truncation_timezone_inference_or_invalid_calendar (tests.unit.test_mapping.LosslessTypeTests.test_no_rounding_truncation_timezone_inference_or_invalid_calendar) ... FAIL
+test_mysql_nontransactional_source_is_rejected (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_nontransactional_source_is_rejected) ... FAIL
+test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key) ... FAIL
+test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect) ... FAIL
+test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key) ... FAIL
+test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect) ... FAIL
+test_checksum_corruption_and_binding_mismatch_rejected_before_rows (tests.etl.test_snapshot_staging.TypedStagingTests.test_checksum_corruption_and_binding_mismatch_rejected_before_rows) ... FAIL
+test_incomplete_extraction_does_not_publish_complete_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_incomplete_extraction_does_not_publish_complete_manifest) ... FAIL
+test_missing_file_and_manifest_schema_drift_are_rejected (tests.etl.test_snapshot_staging.TypedStagingTests.test_missing_file_and_manifest_schema_drift_are_rejected) ... FAIL
+test_typed_roundtrip_preserves_values_null_and_safe_paths (tests.etl.test_snapshot_staging.TypedStagingTests.test_typed_roundtrip_preserves_values_null_and_safe_paths) ... FAIL
+
+======================================================================
+FAIL: test_canonical_hash_ignores_object_order_but_preserves_semantic_values (tests.unit.test_mapping.ExecutionContractTests.test_canonical_hash_ignores_object_order_but_preserves_semantic_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 25, in setUp
+    def setUp(self):self.config=module('contracts.config')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: contracts.config
+
+======================================================================
+FAIL: test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals (tests.unit.test_mapping.ExecutionContractTests.test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 25, in setUp
+    def setUp(self):self.config=module('contracts.config')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: contracts.config
+
+======================================================================
+FAIL: test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs (tests.unit.test_mapping.ExecutionContractTests.test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 25, in setUp
+    def setUp(self):self.config=module('contracts.config')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: contracts.config
+
+======================================================================
+FAIL: test_source_union_and_strategy_keys_are_strict (tests.unit.test_mapping.ExecutionContractTests.test_source_union_and_strategy_keys_are_strict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 25, in setUp
+    def setUp(self):self.config=module('contracts.config')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: contracts.config
+
+======================================================================
+FAIL: test_typed_literal_never_coerces_float_bool_or_numeric_string (tests.unit.test_mapping.ExecutionContractTests.test_typed_literal_never_coerces_float_bool_or_numeric_string)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 25, in setUp
+    def setUp(self):self.config=module('contracts.config')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: contracts.config
+
+======================================================================
+FAIL: test_direct_mapping_does_not_guess_numeric_strings (tests.unit.test_mapping.LosslessTypeTests.test_direct_mapping_does_not_guess_numeric_strings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 69, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_exact_decimal_integer_unicode_and_null (tests.unit.test_mapping.LosslessTypeTests.test_exact_decimal_integer_unicode_and_null)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 69, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_explicit_mapping_preserves_unmapped_target_columns (tests.unit.test_mapping.LosslessTypeTests.test_explicit_mapping_preserves_unmapped_target_columns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 69, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_iso_temporal_values_keep_microseconds_and_offset (tests.unit.test_mapping.LosslessTypeTests.test_iso_temporal_values_keep_microseconds_and_offset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 69, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_no_rounding_truncation_timezone_inference_or_invalid_calendar (tests.unit.test_mapping.LosslessTypeTests.test_no_rounding_truncation_timezone_inference_or_invalid_calendar)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 69, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 13, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_mysql_nontransactional_source_is_rejected (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_nontransactional_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 76, in test_mysql_nontransactional_source_is_rejected
+    module=implementation('readers.mysql');engine=self.engine('mysql');name='myisam_'+uuid4().hex
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: readers.mysql
+
+======================================================================
+FAIL: test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 59, in test_mysql_snapshot_survives_concurrent_updates_without_primary_key
+    def test_mysql_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('mysql')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 42, in snapshot
+    module=implementation('readers.'+kind);engine=self.engine(kind);table=self.table(engine)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: readers.mysql
+
+======================================================================
+FAIL: test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 73, in test_mysql_source_session_loss_fails_without_reconnect
+    def test_mysql_source_session_loss_fails_without_reconnect(self):self.disconnect('mysql')
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 62, in disconnect
+    module=implementation('readers.'+kind);engine=self.engine(kind);table=self.table(engine)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: readers.mysql
+
+======================================================================
+FAIL: test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 58, in test_postgres_snapshot_survives_concurrent_updates_without_primary_key
+    def test_postgres_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('postgres')
+                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 42, in snapshot
+    module=implementation('readers.'+kind);engine=self.engine(kind);table=self.table(engine)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: readers.postgres
+
+======================================================================
+FAIL: test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 72, in test_postgres_source_session_loss_fails_without_reconnect
+    def test_postgres_source_session_loss_fails_without_reconnect(self):self.disconnect('postgres')
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 62, in disconnect
+    module=implementation('readers.'+kind);engine=self.engine(kind);table=self.table(engine)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: readers.postgres
+
+======================================================================
+FAIL: test_checksum_corruption_and_binding_mismatch_rejected_before_rows (tests.etl.test_snapshot_staging.TypedStagingTests.test_checksum_corruption_and_binding_mismatch_rejected_before_rows)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 84, in setUp
+    self.manager=implementation('staging.manager')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: staging.manager
+
+======================================================================
+FAIL: test_incomplete_extraction_does_not_publish_complete_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_incomplete_extraction_does_not_publish_complete_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 84, in setUp
+    self.manager=implementation('staging.manager')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: staging.manager
+
+======================================================================
+FAIL: test_missing_file_and_manifest_schema_drift_are_rejected (tests.etl.test_snapshot_staging.TypedStagingTests.test_missing_file_and_manifest_schema_drift_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 84, in setUp
+    self.manager=implementation('staging.manager')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: staging.manager
+
+======================================================================
+FAIL: test_typed_roundtrip_preserves_values_null_and_safe_paths (tests.etl.test_snapshot_staging.TypedStagingTests.test_typed_roundtrip_preserves_values_null_and_safe_paths)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 84, in setUp
+    self.manager=implementation('staging.manager')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 18, in implementation
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: staging.manager
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.009s
+
+FAILED (failures=19)

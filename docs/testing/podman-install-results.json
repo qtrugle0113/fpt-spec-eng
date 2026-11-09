@@ -1,0 +1,43 @@
+﻿{
+    "date":  "2026-11-09",
+    "podman_cli":  {
+                       "version":  "6.1.1",
+                       "sha256_archive":  "68766f21aebec379ec34cfee46d0550b025ec6d79c02fbdcb61a80bc7191ef01",
+                       "installed":  true,
+                       "user_path_updated":  true
+                   },
+    "compose":  {
+                    "version":  "5.6.0",
+                    "sha256":  "8aeaa0055e660e12cf07cd70680dc8333957fe6718528b91ec3da084eab62483",
+                    "installed":  true,
+                    "provider_user_environment_configured":  true
+                },
+    "windows":  {
+                    "VirtualMachinePlatform":  "Enabled",
+                    "WSL":  "Enabled",
+                    "hypervisorlaunchtype":  "auto",
+                    "VirtualizationFirmwareEnabled":  true,
+                    "HypervisorPresent":  true
+                },
+    "machine":  {
+                    "requested_provider":  "wsl",
+                    "requested_rootful":  true,
+                    "created":  true,
+                    "started":  true,
+                    "failure":  null,
+                    "engine_version":  "6.1.4",
+                    "rootless":  false,
+                    "default_connection":  "podman-machine-default-root"
+                },
+    "next_action":  "Podman rootful đã sẵn sàng; cần build/pull lại image dự án và khôi phục fixture trước khi chạy integration Phase2.",
+    "project_images":  "NOT_BUILT_ON_NEW_MACHINE",
+    "reboot_performed":  false,
+    "verification":  {
+                         "memory_limit_bytes":  134217728,
+                         "cgroups":  "v2",
+                         "project_compose_config":  "PASS",
+                         "smoke_cleanup":  "PASS",
+                         "compose_runtime_smoke":  "PASS",
+                         "container_uid":  0
+                     }
+}

@@ -1,0 +1,383 @@
+{
+  "project": "aat-us2-e2e-cd58aad3",
+  "status": "STARTUP_FAILED",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2",
+    "frontend": "3dc8e51aa5c51190eddd9aa374e6d6d18568a31512a668e0cba6e3e3fe8497da",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "services": [
+    {
+      "Command": "\"api-server\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "526857e8f3a0",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "org.opencontainers.image.ref.name=airflow,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,com.docker.compose.container-number=1,com.docker.compose.version=5.6.0,org.opencontainers.image.created=,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,org.apache.airflow.image=airflow,com.docker.compose.oneoff=False,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,com.docker.compose.service=airflow-apiserver,org.apache.airflow.component=airflow,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.python.version=3.12.14,org.opencontainers.image.title=Production Airflow Image,org.opencontainers.image.version=3.3.2,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,io.buildah.version=1.45.2,org.apache.airflow.module=airflow,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.source=https://github.com/apache/airflow,org.opencontainers.image.url=https://airflow.apache.org,org.apache.airflow.distro=debian,org.apache.airflow.main-image.build-id=,org.apache.airflow.uid=50000,org.apache.airflow.version=3.3.2,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.vendor=Apache Software Foundation,com.docker.compose.config-hash=d453f80290edd5907d389018bd1251f04ca66348dd9366a503abd9870e0d97e1",
+      "LocalVolumes": "3",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-airflow-apiserver-1",
+      "Names": "aat-us2-e2e-cd58aad3-airflow-apiserver-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "airflow-apiserver",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"dag-processor\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "1de154045ee7",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.version=5.6.0,org.opencontainers.image.title=Production Airflow Image,org.opencontainers.image.version=3.3.2,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.version=3.3.2,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,com.docker.compose.service=airflow-dag-processor,org.apache.airflow.module=airflow,org.opencontainers.image.created=,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,com.docker.compose.config-hash=8da8ee51977e59cbac35b36989253cc42f5c215fdf0574c78900207c2c2c380d,com.docker.compose.container-number=1,org.apache.airflow.distro=debian,org.apache.airflow.main-image.build-id=,org.opencontainers.image.vendor=Apache Software Foundation,org.apache.airflow.component=airflow,org.opencontainers.image.url=https://airflow.apache.org,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,org.apache.airflow.python.version=3.12.14,org.apache.airflow.uid=50000,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,org.opencontainers.image.licenses=Apache-2.0,io.buildah.version=1.45.2,org.apache.airflow.image=airflow,org.opencontainers.image.source=https://github.com/apache/airflow",
+      "LocalVolumes": "3",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-airflow-dag-processor-1",
+      "Names": "aat-us2-e2e-cd58aad3-airflow-dag-processor-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "airflow-dag-processor",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"aat-initialize\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "6cb0bf522635",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "org.apache.airflow.component=airflow,org.apache.airflow.distro=debian,org.opencontainers.image.title=Production Airflow Image,com.docker.compose.service=airflow-init,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,org.opencontainers.image.url=https://airflow.apache.org,org.opencontainers.image.version=3.3.2,com.docker.compose.version=5.6.0,org.opencontainers.image.ref.name=airflow,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,org.apache.airflow.module=airflow,org.apache.airflow.python.version=3.12.14,org.opencontainers.image.licenses=Apache-2.0,io.buildah.version=1.45.2,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.config-hash=fd3d228bcf8feca0046dd2abd0afee31b8936027f9fc3b0a1560c8ab8b25424f,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,org.apache.airflow.main-image.build-id=,org.apache.airflow.version=3.3.2,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,org.apache.airflow.image=airflow,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.uid=50000,org.opencontainers.image.created=,com.docker.compose.container-number=1,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.opencontainers.image.vendor=Apache Software Foundation,com.docker.compose.depends_on=app-init:service_completed_successfully:false,db-init:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project=aat-us2-e2e-cd58aad3",
+      "LocalVolumes": "3",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-airflow-init-1",
+      "Names": "aat-us2-e2e-cd58aad3-airflow-init-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "airflow-init",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"scheduler\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "4cdb53139a65",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.module=airflow,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.vendor=Apache Software Foundation,com.docker.compose.config-hash=129b01cfc83f2455aa4c4ba5dd7661fdf61585a79dc41ee5cbb0ce025a2f3e26,com.docker.compose.version=5.6.0,org.apache.airflow.distro=debian,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,io.buildah.version=1.45.2,org.apache.airflow.version=3.3.2,org.opencontainers.image.url=https://airflow.apache.org,org.apache.airflow.python.version=3.12.14,org.apache.airflow.uid=50000,org.opencontainers.image.created=,org.opencontainers.image.title=Production Airflow Image,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.main-image.build-id=,com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,org.opencontainers.image.version=3.3.2,org.apache.airflow.image=airflow,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.service=airflow-scheduler,org.apache.airflow.component=airflow,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,com.docker.compose.oneoff=False,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.container-number=1,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools",
+      "LocalVolumes": "7",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-airflow-scheduler-1",
+      "Names": "aat-us2-e2e-cd58aad3-airflow-scheduler-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "airflow-scheduler",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"python /opt/aat/doc\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 1,
+      "Health": "",
+      "ID": "dcc292ad7e52",
+      "Image": "localhost/aat-backend-us2-candidate:0.1.0",
+      "Labels": "com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=app-init,com.docker.compose.version=5.6.0,com.docker.compose.depends_on=db-init:service_completed_successfully:false,com.docker.compose.project=aat-us2-e2e-cd58aad3,io.buildah.version=1.45.2,com.docker.compose.config-hash=316223e16a5ee6098895f95c8c141f692355847996154864a0fba97a65ae9640,com.docker.compose.container-number=1,com.docker.compose.image=sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2,com.docker.compose.oneoff=False",
+      "LocalVolumes": "7",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-app-init-1",
+      "Names": "aat-us2-e2e-cd58aad3-app-init-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "app-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (1) Less than a second ago"
+    },
+    {
+      "Command": "\"python -m uvicorn a\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "f127eac21ee3",
+      "Image": "localhost/aat-backend-us2-candidate:0.1.0",
+      "Labels": "com.docker.compose.depends_on=airflow-apiserver:service_healthy:false,app-init:service_completed_successfully:false,backend-worker:service_healthy:false,com.docker.compose.image=sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=backend,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=0d3c3d50fba09e5e98a4f6d30ab8f837e386673bfc20874792c84454efad4dcc,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.container-number=1",
+      "LocalVolumes": "3",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-backend-1",
+      "Names": "aat-us2-e2e-cd58aad3-backend-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "backend",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"python -m aat_api.w\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "6501fa6e2716",
+      "Image": "localhost/aat-backend-us2-candidate:0.1.0",
+      "Labels": "com.docker.compose.config-hash=ff5cf5324528e578503a6d83a85773c80336afa0c7ee2c97e4e0bcc15fc809cb,com.docker.compose.container-number=1,com.docker.compose.image=sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.service=backend-worker,io.buildah.version=1.45.2,com.docker.compose.depends_on=app-init:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.version=5.6.0",
+      "LocalVolumes": "5",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-backend-worker-1",
+      "Names": "aat-us2-e2e-cd58aad3-backend-worker-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "backend-worker",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"python /opt/aat/doc\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "973b7eb60e16",
+      "Image": "localhost/aat-backend-us2-candidate:0.1.0",
+      "Labels": "io.buildah.version=1.45.2,com.docker.compose.config-hash=bb52a53db16004400f25e33e18f9e44eb09c23697329724400daccd000180d0f,com.docker.compose.container-number=1,com.docker.compose.depends_on=postgres:service_healthy:false,mysql:service_healthy:false,com.docker.compose.image=sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=db-init,com.docker.compose.oneoff=False,com.docker.compose.version=5.6.0",
+      "LocalVolumes": "1",
+      "Mounts": "aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-db-init-1",
+      "Names": "aat-us2-e2e-cd58aad3-db-init-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "db-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) 2 seconds ago"
+    },
+    {
+      "Command": "\"nginx -g daemon off;\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "7929ab517a98",
+      "Image": "localhost/aat-frontend-us2-candidate:0.1.0",
+      "Labels": "com.docker.compose.config-hash=51a55ba0f3b5563eb8427755761b2a11c70e0b968171c36073d1da36e42683e5,com.docker.compose.container-number=1,com.docker.compose.image=sha256:3dc8e51aa5c51190eddd9aa374e6d6d18568a31512a668e0cba6e3e3fe8497da,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,io.buildah.version=1.45.2,com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=frontend,com.docker.compose.version=5.6.0,maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Name": "aat-us2-e2e-cd58aad3-frontend-1",
+      "Names": "aat-us2-e2e-cd58aad3-frontend-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "80/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 80,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "frontend",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"--character-set-ser\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "a24b20bdf557",
+      "Image": "localhost/aat-mysql-resume-candidate:8.4.13",
+      "Labels": "com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=mysql,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=4ae936861f1d32f7df04f8aac7c48671b6d4371306e6e77a90ce191edf24d6f3,com.docker.compose.container-number=1,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.depends_on=secrets-init:service_completed_successfully:false,com.docker.compose.image=sha256:76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf,com.docker.compose.oneoff=False,com.docker.compose.project=aat-us2-e2e-cd58aad3",
+      "LocalVolumes": "2",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-mysql-1",
+      "Names": "aat-us2-e2e-cd58aad3-mysql-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "3306/tcp, 33060/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 3306,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 33060,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "mysql",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 27 seconds"
+    },
+    {
+      "Command": "\"postgres\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "30d3709c23ba",
+      "Image": "localhost/aat-postgres-resume-candidate:17.11",
+      "Labels": "com.docker.compose.oneoff=False,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.service=postgres,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=e167e0c70077f5d411c961142393091dbbfc349233928d0303b33ba42b2354fe,com.docker.compose.container-number=1,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.depends_on=secrets-init:service_completed_successfully:false,com.docker.compose.image=sha256:c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+      "LocalVolumes": "2",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-postgres-1",
+      "Names": "aat-us2-e2e-cd58aad3-postgres-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "5432/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 5432,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "postgres",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 27 seconds"
+    },
+    {
+      "Command": "\"python -m docker.bo\u2026\"",
+      "CreatedAt": "2026-11-09 21:14:35 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "e28da5f186fa",
+      "Image": "localhost/aat-backend-us2-candidate:0.1.0",
+      "Labels": "com.docker.compose.container-number=1,com.docker.compose.image=sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2,com.docker.compose.project=aat-us2-e2e-cd58aad3,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-us2-e2e-cd58aad3.json,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,io.buildah.version=1.45.2,com.docker.compose.config-hash=2b99953e9b182fb24f9500cbe7fd8290ccdd4b9abd7c65d5ca7ecf0ab11c646a,com.docker.compose.depends_on=,com.docker.compose.oneoff=False,com.docker.compose.service=secrets-init,com.docker.compose.version=5.6.0",
+      "LocalVolumes": "8",
+      "Mounts": "aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026,aat-us2-e2e-cd\u2026",
+      "Name": "aat-us2-e2e-cd58aad3-secrets-init-1",
+      "Names": "aat-us2-e2e-cd58aad3-secrets-init-1",
+      "Networks": "aat-us2-e2e-cd58aad3_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-us2-e2e-cd58aad3",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "29 seconds ago",
+      "Service": "secrets-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) 27 seconds ago"
+    }
+  ],
+  "cleanup_exit_code": 0
+}

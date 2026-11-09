@@ -1,0 +1,94 @@
+﻿SCAN_PREFLIGHT_PASS 3 targets
+SCAN_START us2-backend 18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2
+python : Copying blob sha256:1d7b9dd8778ebc4d9bf2f64436dd358640718cb349f5640b33bebaea4ffd62c2
+At line:2 char:1
++ python -X utf8 -c "import sys,os,json; from pathlib import Path; sys. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Copying blob sh...3bebaea4ffd62c2:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Copying blob sha256:a3cfe73133965fb536427fde3fe66b2949ea6178f568733760bf45f5c8b5c405
+Copying blob sha256:5e63f01f0cee6291b52c44ffeee48c9eb7b94cdb19478259bcfce37db9eb680e
+Copying blob sha256:311a92d269bd002ca4ff3d801c6320df734027d3b425ff1ec860368f12b07a26
+Copying blob sha256:a7566c3d3555713ac1b6e16bfb1261ba72691ebc806a0a7cd5f5efbea4bc2d13
+Copying blob sha256:2e027646028403a346dac7277f4b8fe38d9feaa9d3eef30b91b2905c61875ffa
+Copying blob sha256:70f3f3df160382be3630d970e7ac3f8fa7ab90278f5407e18f721c31ca8ea327
+Copying blob sha256:8b388e09b6f35d7e780fa2aaed002d979e0e79ac628d7cb034ada90a1619a292
+Copying blob sha256:2d9f402a861ee810792709c034901705094a54f8214cafb179b9abbac3f87592
+Copying blob sha256:8aa05ac24f081fbd58e933012603d52d726ea50d662630c4974760ba813c7920
+Copying blob sha256:fc86b174a53c413998bdd93e5df12b9775a3eac0f3ab7f82bbe5a79c30c242a7
+Copying blob sha256:de43794a05dba93056311ca4a1d3b948d135f236874f6c2a6f78606924678dc6
+Copying config sha256:18fa537b59b8405da24bed0295e1234ec84e52d3538197cf25b50b1385a3b7e2
+Writing manifest to image destination
+2026-11-09T12:03:53Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T12:03:54Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional 
+terms. Use `--debug` flag to see all affected packages.
+2026-11-09T12:03:54Z	INFO	Detected OS	family="debian" version="12.15"
+2026-11-09T12:03:54Z	INFO	[debian] Detecting vulnerabilities...	os_version="12" pkg_num=105
+2026-11-09T12:03:54Z	INFO	Number of language-specific files	num=1
+2026-11-09T12:03:54Z	INFO	[python-pkg] Detecting vulnerabilities...
+2026-11-09T12:03:54Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE us2-backend
+SCAN_START us2-frontend 3dc8e51aa5c51190eddd9aa374e6d6d18568a31512a668e0cba6e3e3fe8497da
+Copying blob sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064
+Copying blob sha256:495c4fa2cdd4685f4fe4eabd11e86f59285fab926335bba75d4160d5ff3b6154
+Copying blob sha256:8a4b8e348afac340cd546c8d53f590002cbd871c2eb6978b916961073e8a3b16
+Copying blob sha256:58eeef868683cc63489dafb4f1d7dd419f989548f0702cc3182476b4dae141f5
+Copying blob sha256:3831075a57f3b915290905a7c4072930c51d329dccead9f41eb439925205711a
+Copying blob sha256:3abae6d8a7fc137a1bd5f4a86932b1b8b7c1da3191b6590d9195f263519b4257
+Copying blob sha256:8f5b99f326f295649f3ca11561d758e897be5cb851fcc0c2497b9214fdcacd64
+Copying blob sha256:7249c65f5b3fbe84a1b5dcedaa13a7ce52fee36aeaa1cf590fb04ad689bad31e
+Copying blob sha256:bede91f9122d4787b730cb56cc7c23d33250ea4a2d3aac971babaf384c35174b
+Copying blob sha256:fa41217cb63d4b5838ff69e79c62cd9123cd074114957f7f4e86c6c06f21d966
+Copying config sha256:3dc8e51aa5c51190eddd9aa374e6d6d18568a31512a668e0cba6e3e3fe8497da
+Writing manifest to image destination
+2026-11-09T12:03:58Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T12:03:58Z	INFO	Detected OS	family="alpine" version="3.24.4"
+2026-11-09T12:03:58Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.24" repository="3.24" pkg_num=71
+2026-11-09T12:03:58Z	INFO	Number of language-specific files	num=0
+2026-11-09T12:03:58Z	WARN	Using severities from other vendors for some vulnerabilities. Read 
+https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE us2-frontend
+SCAN_START us2-e2e 960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415
+Copying blob sha256:5cac300e390e2fd748b258618f403b7813229929ad6de903b0c52a210a930824
+Copying blob sha256:5f4be2c3badedfd7149d008a4902427c98e708c70031dc19b4264160a545df19
+Copying blob sha256:2b5cc719d3fafebfc5a3dff7545e23e656fd613979ae4523a963d6ca9f7d269e
+Copying blob sha256:f5e6b7252e974bb2b11304b8fe6f9175aef2e9df41b051fd5f1fb05d6ca0c286
+Copying blob sha256:39795eda17516365edc17a39140891d24d96da639e4a9afb0483e70d134ecafe
+Copying blob sha256:877e159434e1d370d60bb1b7f52c7e994c3a3232585d4215973a42c2dae6f063
+Copying blob sha256:404990335452f05d7e285a4ce9c183ecaa5cccabec4c50a8f05f9b8da0b44bf4
+Copying blob sha256:6281746d9ace79ed4a5edaad508bd6a6f1347494c578959c11817b2864a14a58
+Copying blob sha256:15fab1cd14d006ab995d2a65260281f72e95f2d7ff763a5847f99c125aebd135
+Copying blob sha256:b7fd66490f25dc6ddf927ee553abe824424978ec09fb22e0022069f0083d9ddc
+Copying blob sha256:5aa04842847bd52f6b4f0ac10fa9888dcbd8c8bae540986b9eb4d13cc020bb2c
+Copying blob sha256:af268040b4adc4e054892a4ef4f0bfb3faf7edef873bfc9914a302a9fca05e50
+Copying config sha256:960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415
+Writing manifest to image destination
+2026-11-09T12:05:21Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-09T12:05:38Z	INFO	Detected OS	family="ubuntu" version="26.04"
+2026-11-09T12:05:38Z	INFO	[ubuntu] Detecting vulnerabilities...	os_version="26.04" pkg_num=525
+2026-11-09T12:05:38Z	INFO	Number of language-specific files	num=2
+2026-11-09T12:05:38Z	INFO	[gobinary] Detecting vulnerabilities...
+2026-11-09T12:05:38Z	INFO	[node-pkg] Detecting vulnerabilities...
+
+📣 [34mNotices:[0m
+  - Version 0.76.2 of Trivy is now available, current version is 0.76.1
+
+To suppress version checks, run Trivy scans with the --skip-version-check flag
+
+SCAN_COMPLETE us2-e2e
+SCAN_REPORT_WRITTEN docs\testing\phase3-us2-image-security.json
+

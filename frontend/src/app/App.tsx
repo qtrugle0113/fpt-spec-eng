@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, Outlet } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { requestJSON } from "../lib/api";
+import type { components } from "../lib/api.generated";
 
 // Danh sách navigation không là dữ liệu nghiệp vụ hoặc mock API.
 const navigation = [
@@ -13,6 +16,8 @@ const navigation = [
 ] as const;
 
 export function App() {
+  const backend = useQuery({ queryKey: ['backend-liveness'], retry: false, refetchInterval: 30_000,
+    queryFn: async ({ signal }) => (await requestJSON<components['schemas']['Health']>('/health/live', { signal })).data });
   const [menuOpen, setMenuOpen] = useState(false);
   const { register, watch } = useForm<{ search: string }>({ defaultValues: { search: "" } });
   const search = watch("search").trim().toLowerCase();
@@ -43,7 +48,7 @@ export function App() {
         <div className="sidebar-footer"><span className="local-dot" aria-hidden="true" />Local workspace</div>
       </aside>
       <main id="main-content" tabIndex={-1}>
-        <div className="workspace-bar"><span>Workspace</span><span className="service-label">Service not connected</span></div>
+        <div className="workspace-bar"><span>Workspace</span><span className="service-label">{backend.isPending ? 'Checking backend…' : backend.data?.status === 'ALIVE' ? 'Backend available' : 'Backend unavailable'}</span></div>
         <Outlet />
       </main>
     </div>

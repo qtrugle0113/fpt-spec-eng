@@ -1,0 +1,23 @@
+test_mysql_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_filter_is_bound_and_can_use_unprojected_columns) ... ok
+test_mysql_nontransactional_source_is_rejected (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_nontransactional_source_is_rejected) ... ok
+test_mysql_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_oversized_cell_is_null_on_wire_before_materialization) ... ok
+test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key) ... ok
+test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect) ... ok
+test_postgres_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_filter_is_bound_and_can_use_unprojected_columns) ... ok
+test_postgres_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_oversized_cell_is_null_on_wire_before_materialization) ... ok
+test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key) ... ok
+test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect) ... ok
+test_canonical_hash_ignores_object_order_but_preserves_semantic_values (tests.unit.test_mapping.ExecutionContractTests.test_canonical_hash_ignores_object_order_but_preserves_semantic_values) ... ok
+test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals (tests.unit.test_mapping.ExecutionContractTests.test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals) ... ok
+test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected (tests.unit.test_mapping.ExecutionContractTests.test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected) ... ok
+test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs (tests.unit.test_mapping.ExecutionContractTests.test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs) ... /home/airflow/.local/lib/python3.12/site-packages/psycopg/_server_cursor_base.py:55: ResourceWarning: <psycopg.ServerCursor object at 0x7882cf5d3e50> was deleted while still open. Please use 'with' or '.close()' to close the cursor properly
+  __warn(
+ok
+test_source_union_and_strategy_keys_are_strict (tests.unit.test_mapping.ExecutionContractTests.test_source_union_and_strategy_keys_are_strict) ... ok
+test_typed_literal_never_coerces_float_bool_or_numeric_string (tests.unit.test_mapping.ExecutionContractTests.test_typed_literal_never_coerces_float_bool_or_numeric_string) ... ok
+test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema (tests.unit.test_mapping.ExecutionContractTests.test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.024s
+
+OK

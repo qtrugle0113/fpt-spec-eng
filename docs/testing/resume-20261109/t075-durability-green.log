@@ -1,0 +1,14 @@
+test_checksum_corruption_and_binding_mismatch_rejected_before_rows (tests.etl.test_snapshot_staging.TypedStagingTests.test_checksum_corruption_and_binding_mismatch_rejected_before_rows) ... ok
+test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled (tests.etl.test_snapshot_staging.TypedStagingTests.test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled) ... ok
+test_corrupt_last_part_is_rejected_before_first_row_is_yielded (tests.etl.test_snapshot_staging.TypedStagingTests.test_corrupt_last_part_is_rejected_before_first_row_is_yielded) ... ok
+test_decimal_float_and_type_coercion_fail_without_complete_publication (tests.etl.test_snapshot_staging.TypedStagingTests.test_decimal_float_and_type_coercion_fail_without_complete_publication) ... ok
+test_incomplete_extraction_does_not_publish_complete_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_incomplete_extraction_does_not_publish_complete_manifest) ... ok
+test_missing_file_and_manifest_schema_drift_are_rejected (tests.etl.test_snapshot_staging.TypedStagingTests.test_missing_file_and_manifest_schema_drift_are_rejected) ... ok
+test_process_exit_before_complete_never_publishes_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_process_exit_before_complete_never_publishes_manifest) ... ok
+test_serialized_record_limit_is_enforced_without_publishing_complete (tests.etl.test_snapshot_staging.TypedStagingTests.test_serialized_record_limit_is_enforced_without_publishing_complete) ... ok
+test_typed_roundtrip_preserves_values_null_and_safe_paths (tests.etl.test_snapshot_staging.TypedStagingTests.test_typed_roundtrip_preserves_values_null_and_safe_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.458s
+
+OK

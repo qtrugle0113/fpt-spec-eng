@@ -1,0 +1,20 @@
+{
+  "candidate": {
+    "name": "resume-mysql",
+    "ref": "localhost/aat-mysql-resume-candidate:8.4.13",
+    "image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+    "counts": {
+      "MEDIUM": 31,
+      "UNKNOWN": 1
+    },
+    "high_critical": [],
+    "scan_execution": "PASS",
+    "security_assessment": "PASS"
+  },
+  "baseline_image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+  "added": [],
+  "removed": [],
+  "approval_status": "NO_HIGH_CRITICAL_EXCEPTION_REQUIRED",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16"
+}

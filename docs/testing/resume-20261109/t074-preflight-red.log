@@ -1,0 +1,65 @@
+test_mysql_connection_aliases_cannot_read_and_write_same_table (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_connection_aliases_cannot_read_and_write_same_table) ... FAIL
+test_mysql_key_drift_and_missing_used_column_fail (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_key_drift_and_missing_used_column_fail) ... FAIL
+test_mysql_used_type_drift_changes_hash_unmapped_column_does_not (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_used_type_drift_changes_hash_unmapped_column_does_not) ... FAIL
+test_postgres_connection_aliases_cannot_read_and_write_same_table (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_connection_aliases_cannot_read_and_write_same_table) ... FAIL
+test_postgres_key_drift_and_missing_used_column_fail (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_key_drift_and_missing_used_column_fail) ... FAIL
+test_postgres_used_type_drift_changes_hash_unmapped_column_does_not (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_used_type_drift_changes_hash_unmapped_column_does_not) ... FAIL
+
+======================================================================
+FAIL: test_mysql_connection_aliases_cannot_read_and_write_same_table (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_connection_aliases_cannot_read_and_write_same_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+======================================================================
+FAIL: test_mysql_key_drift_and_missing_used_column_fail (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_key_drift_and_missing_used_column_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+======================================================================
+FAIL: test_mysql_used_type_drift_changes_hash_unmapped_column_does_not (tests.etl.test_schema_preflight.SchemaPreflightTests.test_mysql_used_type_drift_changes_hash_unmapped_column_does_not)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+======================================================================
+FAIL: test_postgres_connection_aliases_cannot_read_and_write_same_table (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_connection_aliases_cannot_read_and_write_same_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+======================================================================
+FAIL: test_postgres_key_drift_and_missing_used_column_fail (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_key_drift_and_missing_used_column_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+======================================================================
+FAIL: test_postgres_used_type_drift_changes_hash_unmapped_column_does_not (tests.etl.test_schema_preflight.SchemaPreflightTests.test_postgres_used_type_drift_changes_hash_unmapped_column_does_not)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_schema_preflight.py", line 15, in setUp
+    if error.name.startswith('aat_etl'):raise AssertionError('T074 schema preflight implementation missing') from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T074 schema preflight implementation missing
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+FAILED (failures=6)

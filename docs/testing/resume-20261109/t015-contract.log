@@ -1,0 +1,14 @@
+test_if_match_and_idempotency_are_required (test_openapi_contract.OpenAPIContractTests.test_if_match_and_idempotency_are_required) ... ok
+test_inventory_is_derived_and_operation_ids_unique (test_openapi_contract.OpenAPIContractTests.test_inventory_is_derived_and_operation_ids_unique) ... ok
+test_missing_operation_is_detected (test_openapi_contract.OpenAPIContractTests.test_missing_operation_is_detected) ... ok
+test_required_field_and_extra_field_drift_are_detected (test_openapi_contract.OpenAPIContractTests.test_required_field_and_extra_field_drift_are_detected) ... ok
+test_safe_error_and_story_selection_positive_controls (test_openapi_contract.OpenAPIContractTests.test_safe_error_and_story_selection_positive_controls) ... ok
+test_schema_drift_in_implementation_is_detected (test_openapi_contract.OpenAPIContractTests.test_schema_drift_in_implementation_is_detected) ... ok
+test_uuid_idempotency_format_and_response_etag_drift (test_openapi_contract.OpenAPIContractTests.test_uuid_idempotency_format_and_response_etag_drift) ... ok
+test_write_only_secret_cannot_be_returned (test_openapi_contract.OpenAPIContractTests.test_write_only_secret_cannot_be_returned) ... ok
+test_wrong_success_status_is_not_accepted_by_default_error (test_openapi_contract.OpenAPIContractTests.test_wrong_success_status_is_not_accepted_by_default_error) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.504s
+
+OK

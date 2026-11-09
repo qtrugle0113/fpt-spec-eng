@@ -1,0 +1,8 @@
+test_bad_types_ranges_fields_and_hosts_rejected (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_bad_types_ranges_fields_and_hosts_rejected) ... ok
+test_patch_distinguishes_omitted_nullable_and_empty_password (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_patch_distinguishes_omitted_nullable_and_empty_password) ... ok
+test_required_values_trim_and_password_is_not_in_repr (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_required_values_trim_and_password_is_not_in_repr) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

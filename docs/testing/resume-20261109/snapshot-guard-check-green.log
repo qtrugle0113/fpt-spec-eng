@@ -1,0 +1,163 @@
+test_mysql_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_filter_is_bound_and_can_use_unprojected_columns) ... ERROR
+test_mysql_nontransactional_source_is_rejected (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_nontransactional_source_is_rejected) ... ok
+test_mysql_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_oversized_cell_is_null_on_wire_before_materialization) ... ERROR
+test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key) ... ERROR
+test_mysql_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_source_session_loss_fails_without_reconnect) ... ok
+test_postgres_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_filter_is_bound_and_can_use_unprojected_columns) ... ERROR
+test_postgres_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_oversized_cell_is_null_on_wire_before_materialization) ... FAIL
+test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key) ... ERROR
+test_postgres_source_session_loss_fails_without_reconnect (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_source_session_loss_fails_without_reconnect) ... ok
+
+======================================================================
+ERROR: test_mysql_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_filter_is_bound_and_can_use_unprojected_columns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 115, in test_mysql_filter_is_bound_and_can_use_unprojected_columns
+    def test_mysql_filter_is_bound_and_can_use_unprojected_columns(self):self.filtered('mysql')
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 108, in filtered
+    self.assertEqual(list(reader.rows()),[])
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 94, in rows
+    raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset. ['+code+']') from None
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset. [IndexError]
+
+======================================================================
+ERROR: test_mysql_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_oversized_cell_is_null_on_wire_before_materialization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/cursors.py", line 157, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.DataError: (1406, "Data too long for column 'note' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 101, in test_mysql_oversized_cell_is_null_on_wire_before_materialization
+    def test_mysql_oversized_cell_is_null_on_wire_before_materialization(self):self.guard('mysql')
+                                                                               ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 85, in guard
+    connection.execute(text(f'INSERT INTO {name} VALUES (:note)'),{'note':'x'*(2*1024*1024)})
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/cursors.py", line 157, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/cursors.py", line 328, in _query
+    conn.query(q)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.DataError: (pymysql.err.DataError) (1406, "Data too long for column 'note' at row 1")
+[SQL: INSERT INTO guard_38dbeedca2fc490ca234f0b0716928ab VALUES (%(note)s)]
+[SQL parameters hidden due to hide_parameters=True]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+
+======================================================================
+ERROR: test_mysql_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_mysql_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 59, in test_mysql_snapshot_survives_concurrent_updates_without_primary_key
+    def test_mysql_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('mysql')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 45, in snapshot
+    rows=iter(reader.rows());first=next(rows)
+                                   ^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 94, in rows
+    raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset. ['+code+']') from None
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset. [IndexError]
+
+======================================================================
+ERROR: test_postgres_filter_is_bound_and_can_use_unprojected_columns (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_filter_is_bound_and_can_use_unprojected_columns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 114, in test_postgres_filter_is_bound_and_can_use_unprojected_columns
+    def test_postgres_filter_is_bound_and_can_use_unprojected_columns(self):self.filtered('postgres')
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 108, in filtered
+    self.assertEqual(list(reader.rows()),[])
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 94, in rows
+    raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset. ['+code+']') from None
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset. [IndexError]
+
+======================================================================
+ERROR: test_postgres_snapshot_survives_concurrent_updates_without_primary_key (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_snapshot_survives_concurrent_updates_without_primary_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 58, in test_postgres_snapshot_survives_concurrent_updates_without_primary_key
+    def test_postgres_snapshot_survives_concurrent_updates_without_primary_key(self):self.snapshot('postgres')
+                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 45, in snapshot
+    rows=iter(reader.rows());first=next(rows)
+                                   ^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/readers/database.py", line 94, in rows
+    raise SourceReadError('Source snapshot could not be read completely; discard the incomplete dataset. ['+code+']') from None
+aat_etl.readers.database.SourceReadError: Source snapshot could not be read completely; discard the incomplete dataset. [IndexError]
+
+======================================================================
+FAIL: test_postgres_oversized_cell_is_null_on_wire_before_materialization (tests.etl.test_snapshot_staging.SnapshotTests.test_postgres_oversized_cell_is_null_on_wire_before_materialization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 100, in test_postgres_oversized_cell_is_null_on_wire_before_materialization
+    def test_postgres_oversized_cell_is_null_on_wire_before_materialization(self):self.guard('postgres')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_snapshot_staging.py", line 97, in guard
+    self.assertEqual(len(transported),1);self.assertIsNone(transported[0][0]);self.assertGreater(transported[0][-1],1024*1024)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.664s
+
+FAILED (failures=1, errors=5)

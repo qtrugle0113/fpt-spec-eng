@@ -3,7 +3,7 @@
 import json
 from pathlib import Path
 
-from cryptography.fernet import Fernet, InvalidToken
+from cryptography.fernet import Fernet, InvalidToken, MultiFernet
 
 
 class SecretCodec:
@@ -31,3 +31,11 @@ class SecretCodec:
             return self._fernet(key_id).decrypt(ciphertext.encode()).decode()
         except (InvalidToken, UnicodeError) as exc:
             raise ValueError('Secret cannot be decrypted with the required key') from exc
+
+    def rotate(self, key_id: str, ciphertext: str) -> tuple[str, str]:
+        """Return a new token under the current existing key; never mutate history."""
+        try:
+            ring = MultiFernet([self._fernet(self.current), self._fernet(key_id)])
+            return self.current, ring.rotate(ciphertext.encode()).decode()
+        except (InvalidToken, UnicodeError, ValueError):
+            raise ValueError('Secret cannot be rotated with the required keys') from None

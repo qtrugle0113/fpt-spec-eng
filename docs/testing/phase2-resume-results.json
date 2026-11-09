@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-09",
+  "branch": "001-airflow-automation-tool-t014",
+  "scope": "T022-T034; kh?ng Phase3",
+  "checklists": {
+    "requirements.md": {
+      "checked": 16,
+      "unchecked": 0
+    },
+    "spec-quality.md": {
+      "checked": 48,
+      "unchecked": 0
+    }
+  },
+  "fresh_checks": {
+    "stdlib_unittest": {
+      "run": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "python_ast": {
+      "files": 50,
+      "status": "PASS"
+    }
+  },
+  "sample_repair": "Kh?i ph?c bytes t? HEAD sau ki?m hash manifest v? x?c nh?n kh?c bi?t ch? CRLF/LF; kh?ng ??i n?i dung Git.",
+  "historical_T034": {
+    "passed": 2,
+    "source": "docs/testing/t014-round2-logs/local-t034-green.log",
+    "rerun_this_session": false
+  },
+  "runtime": {
+    "windows_podman_in_path": false,
+    "windows_docker_in_path": false,
+    "ubuntu_podman_in_path": false,
+    "ubuntu_docker_in_path": false
+  },
+  "integration_rerun": "BLOCKED_RUNTIME_UNAVAILABLE",
+  "T022_T034_completion": "Ch?a ?? b?ng ch?ng ?? ??ng checkbox",
+  "T014_FULL": "BLOCKED"
+}

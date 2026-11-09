@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import { App, WorkspacePage } from "./App";
+import { Connections } from "../pages/Connections";
+import { Tables } from "../pages/Tables";
+import { DagBuilder } from "../pages/DagBuilder";
 
 export const sections = [
   { path: "/", label: "Dashboard", detail: "An overview of your workflows and executions." },
@@ -16,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       ...sections.map(({ path, label, detail }) => ({
         path,
-        element: <WorkspacePage title={label} description={detail} />,
+        element: path === '/connections' ? <Connections /> : path === '/tables' ? <Tables /> : path === '/dag-builder' ? <DagBuilder /> : <WorkspacePage title={label} description={detail} />,
       })),
       { path: "*", element: <WorkspacePage title="Page not found" description="Choose a page from the navigation to continue." /> },
     ],

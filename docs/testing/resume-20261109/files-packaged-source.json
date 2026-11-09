@@ -1,0 +1,337 @@
+{
+  "image_id": "b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352",
+  "inspection": "Container created and copied only; image was not executed",
+  "files": [
+    {
+      "path": "aat_api/__init__.py",
+      "source_sha256": "716c7618e1e70c8a8171d754923e6f46471e4b04279c7892634818815df2908a",
+      "packaged_sha256": "716c7618e1e70c8a8171d754923e6f46471e4b04279c7892634818815df2908a",
+      "match": true
+    },
+    {
+      "path": "aat_api/ddl/__init__.py",
+      "source_sha256": "1ec22ef424046223189a50b1ab8b59ef76fdb55753c074638d78826a989bf19b",
+      "packaged_sha256": "1ec22ef424046223189a50b1ab8b59ef76fdb55753c074638d78826a989bf19b",
+      "match": true
+    },
+    {
+      "path": "aat_api/ddl/common.py",
+      "source_sha256": "3fa669eccc7958705f7a6cd388a3df5603fbaf1365b09119611ec057eff0145e",
+      "packaged_sha256": "3fa669eccc7958705f7a6cd388a3df5603fbaf1365b09119611ec057eff0145e",
+      "match": true
+    },
+    {
+      "path": "aat_api/ddl/mysql.py",
+      "source_sha256": "40eab08f170c8c8e175f8ab37a43023e24e37f2bac9428251c3da28870191a06",
+      "packaged_sha256": "40eab08f170c8c8e175f8ab37a43023e24e37f2bac9428251c3da28870191a06",
+      "match": true
+    },
+    {
+      "path": "aat_api/ddl/postgres.py",
+      "source_sha256": "3a95800b5ae682dd518d8b899dcb33bf0cfe2884e449030ce3458aa1e2872dc6",
+      "packaged_sha256": "3a95800b5ae682dd518d8b899dcb33bf0cfe2884e449030ce3458aa1e2872dc6",
+      "match": true
+    },
+    {
+      "path": "aat_api/errors.py",
+      "source_sha256": "0538e7a6fc2f6aab5f9e13de293a8348014989e099b13ba45ad862301f64a2a6",
+      "packaged_sha256": "0538e7a6fc2f6aab5f9e13de293a8348014989e099b13ba45ad862301f64a2a6",
+      "match": true
+    },
+    {
+      "path": "aat_api/logging.py",
+      "source_sha256": "129ff92e76dc62fa403508762082f777c645ccd7bda4bfd438c5b83d845051c8",
+      "packaged_sha256": "129ff92e76dc62fa403508762082f777c645ccd7bda4bfd438c5b83d845051c8",
+      "match": true
+    },
+    {
+      "path": "aat_api/main.py",
+      "source_sha256": "4acd76d5c51596756408d8d4df3137385052fbc6ef98581b4daa93af93409215",
+      "packaged_sha256": "4acd76d5c51596756408d8d4df3137385052fbc6ef98581b4daa93af93409215",
+      "match": true
+    },
+    {
+      "path": "aat_api/middleware.py",
+      "source_sha256": "ac0a8b2e9af6dba670541e766419351ee35b8258081031e4363af8444e613d98",
+      "packaged_sha256": "ac0a8b2e9af6dba670541e766419351ee35b8258081031e4363af8444e613d98",
+      "match": true
+    },
+    {
+      "path": "aat_api/py.typed",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/__init__.py",
+      "source_sha256": "03a8f81789f647e6b8246c53a89eaa9545a8792cee6b170e5404a4ef8ba4d0d7",
+      "packaged_sha256": "03a8f81789f647e6b8246c53a89eaa9545a8792cee6b170e5404a4ef8ba4d0d7",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/connections.py",
+      "source_sha256": "c35122ea09dffb48017c9eff4f5cdbfc660727a70a2a4be96a00e0f17ef38340",
+      "packaged_sha256": "c35122ea09dffb48017c9eff4f5cdbfc660727a70a2a4be96a00e0f17ef38340",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/definition_uploads.py",
+      "source_sha256": "9da2f41bf73c8ed141cc08660baff9b65fb0287a332c187d3d8fc45859e5e69b",
+      "packaged_sha256": "9da2f41bf73c8ed141cc08660baff9b65fb0287a332c187d3d8fc45859e5e69b",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/file_parsers.py",
+      "source_sha256": "32430a3346090f7bdca3fcca66fc528a818bbe007135f5e9010f1de54723cf3a",
+      "packaged_sha256": "32430a3346090f7bdca3fcca66fc528a818bbe007135f5e9010f1de54723cf3a",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/files.py",
+      "source_sha256": "dd63ac6735e5ca64593f7155e0130ef446aec54f40fb040b5082e21879ec2f28",
+      "packaged_sha256": "dd63ac6735e5ca64593f7155e0130ef446aec54f40fb040b5082e21879ec2f28",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/health.py",
+      "source_sha256": "7f1f6fcf31a209790e8a416b505b6c5c70eb2953dab3eed809770421357d7891",
+      "packaged_sha256": "7f1f6fcf31a209790e8a416b505b6c5c70eb2953dab3eed809770421357d7891",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/operations.py",
+      "source_sha256": "fada97dbd4c065e455c32a675566fceb8c03c9d7ac308bf31323774bb4a27d0c",
+      "packaged_sha256": "fada97dbd4c065e455c32a675566fceb8c03c9d7ac308bf31323774bb4a27d0c",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/table_history.py",
+      "source_sha256": "94d5773ff0821324bac5da8777f71d60749ffe17ed71a78a9c7e1ef86a31e0af",
+      "packaged_sha256": "94d5773ff0821324bac5da8777f71d60749ffe17ed71a78a9c7e1ef86a31e0af",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/tables.py",
+      "source_sha256": "af037601c3aa16b1713e616727cf6a3ff1a1e3f6f0b97906baaeabcb83a78785",
+      "packaged_sha256": "af037601c3aa16b1713e616727cf6a3ff1a1e3f6f0b97906baaeabcb83a78785",
+      "match": true
+    },
+    {
+      "path": "aat_api/routes/templates.py",
+      "source_sha256": "d25d93d97dc193a6b3268f7b6bcf34ec900e9625e0b5dab42ab9aff3e21fd69d",
+      "packaged_sha256": "d25d93d97dc193a6b3268f7b6bcf34ec900e9625e0b5dab42ab9aff3e21fd69d",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/__init__.py",
+      "source_sha256": "ca2a73893de922adf005b0d5c6203b247cdd790a0019d30a08501f48661c56a9",
+      "packaged_sha256": "ca2a73893de922adf005b0d5c6203b247cdd790a0019d30a08501f48661c56a9",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/common.py",
+      "source_sha256": "d8fa904951b45103f84c9a334d7179d8f31dfc79aedf286cd75a3aca376c8f22",
+      "packaged_sha256": "d8fa904951b45103f84c9a334d7179d8f31dfc79aedf286cd75a3aca376c8f22",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/connections.py",
+      "source_sha256": "dc4d0ed3307fa7a0379f91ab90c690d254eff166e379fa199c0455b8a3313b26",
+      "packaged_sha256": "dc4d0ed3307fa7a0379f91ab90c690d254eff166e379fa199c0455b8a3313b26",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/definitions.py",
+      "source_sha256": "0e466eb2d10d2ac3c318da7d56cb9a26db86a1f297447ce6192059d9b5be1741",
+      "packaged_sha256": "0e466eb2d10d2ac3c318da7d56cb9a26db86a1f297447ce6192059d9b5be1741",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/files.py",
+      "source_sha256": "d3368598d46ce03df97090254ee0b58cc30c376ba25d0b3121d9234526b03864",
+      "packaged_sha256": "d3368598d46ce03df97090254ee0b58cc30c376ba25d0b3121d9234526b03864",
+      "match": true
+    },
+    {
+      "path": "aat_api/schemas/settings.py",
+      "source_sha256": "145a2b28d5876886ac396ee1c356aefd6c254605e3b652537adaf6e9d2675d10",
+      "packaged_sha256": "145a2b28d5876886ac396ee1c356aefd6c254605e3b652537adaf6e9d2675d10",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/__init__.py",
+      "source_sha256": "5ee368b8b403ddb926e38792d6c660d7a6ec88ea5bd628ded82a91e52931d2f1",
+      "packaged_sha256": "5ee368b8b403ddb926e38792d6c660d7a6ec88ea5bd628ded82a91e52931d2f1",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/confirmation.py",
+      "source_sha256": "cf901b4e59b8af990e3619a82e34a536537363271fde5f7008a14f5f2a32375d",
+      "packaged_sha256": "cf901b4e59b8af990e3619a82e34a536537363271fde5f7008a14f5f2a32375d",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/__init__.py",
+      "source_sha256": "52abe02bab35978343a76912c9df31df326f80a3da05ad6adbdb496a0ef6d44a",
+      "packaged_sha256": "52abe02bab35978343a76912c9df31df326f80a3da05ad6adbdb496a0ef6d44a",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/dependencies.py",
+      "source_sha256": "7a2e83e1565197b95e560e099cba19322aa5a90fb32949ad69033cb66abdfd11",
+      "packaged_sha256": "7a2e83e1565197b95e560e099cba19322aa5a90fb32949ad69033cb66abdfd11",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/mysql.py",
+      "source_sha256": "0c38cd4337319b3b445f3c0de8b0fc4ec1744ae68846942a17d83a31e2af2561",
+      "packaged_sha256": "0c38cd4337319b3b445f3c0de8b0fc4ec1744ae68846942a17d83a31e2af2561",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/policy.py",
+      "source_sha256": "9c0d292e6d057397c14cbdb7c56144c0103b127935119d74727bdbb1c5790215",
+      "packaged_sha256": "9c0d292e6d057397c14cbdb7c56144c0103b127935119d74727bdbb1c5790215",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/postgres.py",
+      "source_sha256": "9f55e6cc2fad44b39453fb53537e72f593ae9f2cca9a42045e24acf9408769a7",
+      "packaged_sha256": "9f55e6cc2fad44b39453fb53537e72f593ae9f2cca9a42045e24acf9408769a7",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/connections/service.py",
+      "source_sha256": "9dae032b86393b057ee0b1df137d7205b952af419ae61d16720209b45992887d",
+      "packaged_sha256": "9dae032b86393b057ee0b1df137d7205b952af419ae61d16720209b45992887d",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/definition_uploads.py",
+      "source_sha256": "10e83545acc7c1b35706823f8bf5a1e8b055c2cbc86df18525e1724b064f0a72",
+      "packaged_sha256": "10e83545acc7c1b35706823f8bf5a1e8b055c2cbc86df18525e1724b064f0a72",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/file_parsers.py",
+      "source_sha256": "909cc3afe3bca3eec2fd3d82b0f0932c5d90ddc3ae535379e36e67dcbba120d3",
+      "packaged_sha256": "909cc3afe3bca3eec2fd3d82b0f0932c5d90ddc3ae535379e36e67dcbba120d3",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/files.py",
+      "source_sha256": "751328545a4b7eb3077cd64c056d10a5e1dda11f93244d6bb200bc85c634ce78",
+      "packaged_sha256": "751328545a4b7eb3077cd64c056d10a5e1dda11f93244d6bb200bc85c634ce78",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/health.py",
+      "source_sha256": "b0dd6eff7972811ad8b781dc00f6c4e53f68720d95c8afd901e6ca65b831e87b",
+      "packaged_sha256": "b0dd6eff7972811ad8b781dc00f6c4e53f68720d95c8afd901e6ca65b831e87b",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/operations.py",
+      "source_sha256": "383e29f3f71e4e9bf79b925dccc72c0cf63e44f8c754db952969d8f50b8de40c",
+      "packaged_sha256": "383e29f3f71e4e9bf79b925dccc72c0cf63e44f8c754db952969d8f50b8de40c",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/seed.py",
+      "source_sha256": "b6f0737903866e6305c6b45a03538aae89da4c6cb06c6c562e3c69ef13142838",
+      "packaged_sha256": "b6f0737903866e6305c6b45a03538aae89da4c6cb06c6c562e3c69ef13142838",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/table_history.py",
+      "source_sha256": "d2b024ec63e85f3c4b15568b195958fa863baa912873efe6cf4b33c6666a7ba0",
+      "packaged_sha256": "d2b024ec63e85f3c4b15568b195958fa863baa912873efe6cf4b33c6666a7ba0",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/table_introspection.py",
+      "source_sha256": "bd802247b588270e652df4b0a28730d94c31b6cf1ad69a1217f04144c59fc6fc",
+      "packaged_sha256": "bd802247b588270e652df4b0a28730d94c31b6cf1ad69a1217f04144c59fc6fc",
+      "match": true
+    },
+    {
+      "path": "aat_api/services/table_preview.py",
+      "source_sha256": "a22f5f374cef15925da425791d710139207e57bb9db2dcdf3bb160f8770aef02",
+      "packaged_sha256": "a22f5f374cef15925da425791d710139207e57bb9db2dcdf3bb160f8770aef02",
+      "match": true
+    },
+    {
+      "path": "aat_api/validation/__init__.py",
+      "source_sha256": "9780d50c16be3955ea3a59dafe8a6fee5952fd8004ae7cbeeb18276227ed3786",
+      "packaged_sha256": "9780d50c16be3955ea3a59dafe8a6fee5952fd8004ae7cbeeb18276227ed3786",
+      "match": true
+    },
+    {
+      "path": "aat_api/validation/messages.py",
+      "source_sha256": "b238d39184679103bcede070393348c337ad3f1d7f3cfd4783295ee5149c319e",
+      "packaged_sha256": "b238d39184679103bcede070393348c337ad3f1d7f3cfd4783295ee5149c319e",
+      "match": true
+    },
+    {
+      "path": "aat_api/validation/tables.py",
+      "source_sha256": "82a3cf9d9f007a002a815a5d826d2be7295899aa4722000c341c7911bff96430",
+      "packaged_sha256": "82a3cf9d9f007a002a815a5d826d2be7295899aa4722000c341c7911bff96430",
+      "match": true
+    },
+    {
+      "path": "aat_api/validation/workbook.py",
+      "source_sha256": "b1cc0b754a01b348d6b177fea06328c13f873c3fb7cab4624ad960a411bf0852",
+      "packaged_sha256": "b1cc0b754a01b348d6b177fea06328c13f873c3fb7cab4624ad960a411bf0852",
+      "match": true
+    },
+    {
+      "path": "aat_api/workers/__init__.py",
+      "source_sha256": "3468174c762bd5c2de4e7e75ac369cb1f0790a9be7be899f505a5560cb40fe91",
+      "packaged_sha256": "3468174c762bd5c2de4e7e75ac369cb1f0790a9be7be899f505a5560cb40fe91",
+      "match": true
+    },
+    {
+      "path": "aat_api/workers/files.py",
+      "source_sha256": "e01da2c519864cd16774ebca9cf6f57864811f189a64a9964fd30ca2adfc6910",
+      "packaged_sha256": "e01da2c519864cd16774ebca9cf6f57864811f189a64a9964fd30ca2adfc6910",
+      "match": true
+    },
+    {
+      "path": "aat_api/workers/main.py",
+      "source_sha256": "10660d8b8b4bbba6d76c7f78163f2d2720a4a4426dcd2a5bfa5abe82e536291f",
+      "packaged_sha256": "10660d8b8b4bbba6d76c7f78163f2d2720a4a4426dcd2a5bfa5abe82e536291f",
+      "match": true
+    },
+    {
+      "path": "aat_api/workers/tables.py",
+      "source_sha256": "b18d219d5e1005284fa34d7ca5925d941080ac9e10e4ad6e73422a049992dd29",
+      "packaged_sha256": "b18d219d5e1005284fa34d7ca5925d941080ac9e10e4ad6e73422a049992dd29",
+      "match": true
+    },
+    {
+      "path": "aat_etl/__init__.py",
+      "source_sha256": "710f326a54c0481d6415a67b9e37c13a37f48fa369012094f052f92d01397145",
+      "packaged_sha256": "710f326a54c0481d6415a67b9e37c13a37f48fa369012094f052f92d01397145",
+      "match": true
+    },
+    {
+      "path": "aat_etl/py.typed",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "path": "aat_etl/readers/__init__.py",
+      "source_sha256": "265c3867bb5a9328b4aeb2fa6f62e26d5f8c23a668377cf95e039f806653e6e2",
+      "packaged_sha256": "265c3867bb5a9328b4aeb2fa6f62e26d5f8c23a668377cf95e039f806653e6e2",
+      "match": true
+    },
+    {
+      "path": "aat_etl/readers/delimited.py",
+      "source_sha256": "7d0ab0393b8b9a43ab79533d1663ff106088c0a9b4ec4144926915836e883eec",
+      "packaged_sha256": "7d0ab0393b8b9a43ab79533d1663ff106088c0a9b4ec4144926915836e883eec",
+      "match": true
+    }
+  ],
+  "all_match": true
+}

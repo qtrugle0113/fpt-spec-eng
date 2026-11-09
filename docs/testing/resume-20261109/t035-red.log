@@ -1,0 +1,219 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_active_binding_blocks_location_change_and_keeps_credential_reference (tests.api.test_connections.ConnectionAPITests.test_active_binding_blocks_location_change_and_keeps_credential_reference) ... FAIL
+test_connection_test_reports_real_success_and_safe_auth_failure (tests.api.test_connections.ConnectionAPITests.test_connection_test_reports_real_success_and_safe_auth_failure) ... FAIL
+test_create_detail_and_filtered_pagination (tests.api.test_connections.ConnectionAPITests.test_create_detail_and_filtered_pagination) ... FAIL
+test_delete_requires_current_etag_and_hides_deleted_connection (tests.api.test_connections.ConnectionAPITests.test_delete_requires_current_etag_and_hides_deleted_connection) ... FAIL
+test_duplicate_trimmed_case_insensitive_code_conflicts (tests.api.test_connections.ConnectionAPITests.test_duplicate_trimmed_case_insensitive_code_conflicts) ... FAIL
+test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) ... 
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('port',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('port',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('name',)) ... FAIL
+  test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('unknown',)) ... FAIL
+test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) ... FAIL
+test_location_change_invalidates_scope_but_keeps_historical_config (tests.api.test_connections.ConnectionAPITests.test_location_change_invalidates_scope_but_keeps_historical_config) ... FAIL
+test_patch_blank_password_preserves_secret_and_rejects_stale_etag (tests.api.test_connections.ConnectionAPITests.test_patch_blank_password_preserves_secret_and_rejects_stale_etag) ... FAIL
+test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change (tests.api.test_connections.ConnectionAPITests.test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change) ... FAIL
+
+======================================================================
+FAIL: test_active_binding_blocks_location_change_and_keeps_credential_reference (tests.api.test_connections.ConnectionAPITests.test_active_binding_blocks_location_change_and_keeps_credential_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 183, in test_active_binding_blocks_location_change_and_keeps_credential_reference
+    created=self.create();identity=created.json()['id'];fixture=self.dag_fixture(identity,active=True)
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_connection_test_reports_real_success_and_safe_auth_failure (tests.api.test_connections.ConnectionAPITests.test_connection_test_reports_real_success_and_safe_auth_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 82, in test_connection_test_reports_real_success_and_safe_auth_failure
+    created=self.create()
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_create_detail_and_filtered_pagination (tests.api.test_connections.ConnectionAPITests.test_create_detail_and_filtered_pagination)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 51, in test_create_detail_and_filtered_pagination
+    created=self.create();identity=created.json()['id']
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_delete_requires_current_etag_and_hides_deleted_connection (tests.api.test_connections.ConnectionAPITests.test_delete_requires_current_etag_and_hides_deleted_connection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 76, in test_delete_requires_current_etag_and_hides_deleted_connection
+    created=self.create();identity=created.json()['id']
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_duplicate_trimmed_case_insensitive_code_conflicts (tests.api.test_connections.ConnectionAPITests.test_duplicate_trimmed_case_insensitive_code_conflicts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 62, in test_duplicate_trimmed_case_insensitive_code_conflicts
+    self.create()
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('port',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('port',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('host',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('name',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely) (fields=('unknown',))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 95, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    self.request('post','/connections',422,payload=self.payload(**changes),validate_request=False)
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 422 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_invalid_fields_hosts_and_missing_if_match_fail_safely (tests.api.test_connections.ConnectionAPITests.test_invalid_fields_hosts_and_missing_if_match_fail_safely)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 96, in test_invalid_fields_hosts_and_missing_if_match_fail_safely
+    created=self.create()
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_location_change_invalidates_scope_but_keeps_historical_config (tests.api.test_connections.ConnectionAPITests.test_location_change_invalidates_scope_but_keeps_historical_config)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 171, in test_location_change_invalidates_scope_but_keeps_historical_config
+    created=self.create();identity=created.json()['id'];fixture=self.dag_fixture(identity)
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_patch_blank_password_preserves_secret_and_rejects_stale_etag (tests.api.test_connections.ConnectionAPITests.test_patch_blank_password_preserves_secret_and_rejects_stale_etag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 66, in test_patch_blank_password_preserves_secret_and_rejects_stale_etag
+    created=self.create();identity=created.json()['id'];etag=created.headers['etag']
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+======================================================================
+FAIL: test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change (tests.api.test_connections.ConnectionAPITests.test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_connections.py", line 105, in test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change
+    created=self.create();identity=created.json()['id']
+            ^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 46, in create
+    response=self.request('post','/connections',201,payload=self.payload(**changes))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_connections.py", line 36, in request
+    self.assertEqual(response.status_code,expected,'Unexpected connection HTTP status')
+AssertionError: 404 != 201 : Unexpected connection HTTP status
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.332s
+
+FAILED (failures=16)

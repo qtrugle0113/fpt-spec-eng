@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [desktop] › files-persistence.spec.ts:6:1 › Real file bytes and parser references survive backend container recreation
+[2/2] [mobile] › files-persistence.spec.ts:6:1 › Real file bytes and parser references survive backend container recreation
+  2 passed (17.9s)

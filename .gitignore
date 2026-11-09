@@ -27,3 +27,5 @@ Thumbs.db
 # Explicit verification logs reviewed for publication; generated runtime logs remain ignored.
 !docs/testing/t014-logs/*.log
 !docs/testing/t014-round2-logs/*.log
+!docs/testing/resume-20261109/*.log
+!docs/testing/resume-20261109/**/*.log

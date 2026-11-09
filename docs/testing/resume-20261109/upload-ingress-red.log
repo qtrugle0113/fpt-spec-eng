@@ -1,0 +1,25 @@
+test_chunked_quota_does_not_forward_excess_or_buffer_whole_upload (tests.unit.test_upload_body_limit.UploadBodyLimitTests.test_chunked_quota_does_not_forward_excess_or_buffer_whole_upload) ... FAIL
+test_declared_oversize_is_rejected_before_consuming_any_body (tests.unit.test_upload_body_limit.UploadBodyLimitTests.test_declared_oversize_is_rejected_before_consuming_any_body) ... FAIL
+
+======================================================================
+FAIL: test_chunked_quota_does_not_forward_excess_or_buffer_whole_upload (tests.unit.test_upload_body_limit.UploadBodyLimitTests.test_chunked_quota_does_not_forward_excess_or_buffer_whole_upload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_upload_body_limit.py", line 13, in setUp
+    if not hasattr(module,'UploadBodyLimitMiddleware'):raise AssertionError('Upload ingress limit is not implemented')
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Upload ingress limit is not implemented
+
+======================================================================
+FAIL: test_declared_oversize_is_rejected_before_consuming_any_body (tests.unit.test_upload_body_limit.UploadBodyLimitTests.test_declared_oversize_is_rejected_before_consuming_any_body)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_upload_body_limit.py", line 13, in setUp
+    if not hasattr(module,'UploadBodyLimitMiddleware'):raise AssertionError('Upload ingress limit is not implemented')
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Upload ingress limit is not implemented
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.482s
+
+FAILED (failures=2)

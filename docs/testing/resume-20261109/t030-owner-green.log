@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 1 item
+
+../../tmp/tests/integration/test_owner_initialization.py::OwnerInitializationTests::test_owner_concurrent_migration_seed_and_runtime_grants PASSED [100%]
+
+============================== 1 passed in 1.49s ===============================

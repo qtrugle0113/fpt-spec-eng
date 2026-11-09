@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/opt/aat/tests/tools/foundation_profile_entry.py", line 11, in <module>
+    with psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN'],autocommit=True) as c:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/psycopg/connection.py", line 122, in connect
+    raise last_ex.with_traceback(None)
+psycopg.OperationalError: connection failed: connection to server at "10.89.1.2", port 5432 failed: FATAL:  password authentication failed for user "postgres"

@@ -18,6 +18,7 @@ RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pi
 COPY docker /opt/aat/docker
 COPY backend/alembic /opt/aat/backend/alembic
 COPY samples /opt/aat/samples
+COPY templates /opt/aat/templates
 COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
 WORKDIR /opt/aat
 USER 50000:50000

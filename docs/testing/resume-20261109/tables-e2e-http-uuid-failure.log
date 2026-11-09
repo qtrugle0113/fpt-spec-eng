@@ -1,0 +1,123 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/10] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/10] [desktop] › tables.spec.ts:4:1 › Workbook upload above the proxy default size reaches the streaming API
+[4/10] [desktop] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL
+  1) [desktop] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Review tables', exact: true })
+    Expected: visible
+    Timeout: 35000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Review tables', exact: true }) with timeout 35000ms
+      - waiting for getByRole('heading', { name: 'Review tables', exact: true })
+
+
+      34 |     await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(target.id);
+      35 |     await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
+    > 36 |     await expect(page.getByRole('heading', { name: 'Review tables', exact: true })).toBeVisible({ timeout: 35000 });
+         |                                                                                     ^
+      37 |     await expect(page.getByText('Primary key: cust_id', { exact: true }).first()).toBeVisible();
+      38 |     await page.getByRole('checkbox', { name: 'I reviewed the target tables and generated SQL.' }).check();
+      39 |     const createdResponse = page.waitForResponse(response => response.url().endsWith('/api/v1/table-creation-jobs') && response.request().method() === 'POST');
+        at /tests/tables.spec.ts:36:85
+
+    Error Context: test-results/tables-Table-workbook-crea-6d580-n-real-PostgreSQL-and-MySQL-desktop/error-context.md
+
+
+[5/10] [desktop] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview
+  2) [desktop] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Validation issues' })
+    Expected substring: "Instructions, row 1, column 2"
+    Timeout: 35000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Validation issues' }) with timeout 35000ms
+      - waiting for getByRole('region', { name: 'Validation issues' })
+
+
+      73 |   await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(target.id);
+      74 |   await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
+    > 75 |   await expect(page.getByRole('region', { name: 'Validation issues' })).toContainText('Instructions, row 1, column 2', { timeout: 35000 });
+         |                                                                         ^
+      76 |   await expect(page.getByRole('button', { name: 'Confirm and create tables', exact: true })).toHaveCount(0);
+      77 | });
+      78 |
+        at /tests/tables.spec.ts:75:73
+
+    Error Context: test-results/tables-Invalid-workbook-ex-b83fc--without-a-creation-preview-desktop/error-context.md
+
+
+[6/10] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[7/10] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[8/10] [mobile] › tables.spec.ts:4:1 › Workbook upload above the proxy default size reaches the streaming API
+[9/10] [mobile] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL
+  3) [mobile] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Review tables', exact: true })
+    Expected: visible
+    Timeout: 35000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Review tables', exact: true }) with timeout 35000ms
+      - waiting for getByRole('heading', { name: 'Review tables', exact: true })
+
+
+      34 |     await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(target.id);
+      35 |     await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
+    > 36 |     await expect(page.getByRole('heading', { name: 'Review tables', exact: true })).toBeVisible({ timeout: 35000 });
+         |                                                                                     ^
+      37 |     await expect(page.getByText('Primary key: cust_id', { exact: true }).first()).toBeVisible();
+      38 |     await page.getByRole('checkbox', { name: 'I reviewed the target tables and generated SQL.' }).check();
+      39 |     const createdResponse = page.waitForResponse(response => response.url().endsWith('/api/v1/table-creation-jobs') && response.request().method() === 'POST');
+        at /tests/tables.spec.ts:36:85
+
+    Error Context: test-results/tables-Table-workbook-crea-6d580-n-real-PostgreSQL-and-MySQL-mobile/error-context.md
+
+
+[10/10] [mobile] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview
+  4) [mobile] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Validation issues' })
+    Expected substring: "Instructions, row 1, column 2"
+    Timeout: 35000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Validation issues' }) with timeout 35000ms
+      - waiting for getByRole('region', { name: 'Validation issues' })
+
+
+      73 |   await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(target.id);
+      74 |   await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
+    > 75 |   await expect(page.getByRole('region', { name: 'Validation issues' })).toContainText('Instructions, row 1, column 2', { timeout: 35000 });
+         |                                                                         ^
+      76 |   await expect(page.getByRole('button', { name: 'Confirm and create tables', exact: true })).toHaveCount(0);
+      77 | });
+      78 |
+        at /tests/tables.spec.ts:75:73
+
+    Error Context: test-results/tables-Invalid-workbook-ex-b83fc--without-a-creation-preview-mobile/error-context.md
+
+
+  4 failed
+    [desktop] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL 
+    [desktop] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview 
+    [mobile] › tables.spec.ts:12:1 › Table workbook creation and persistent history on real PostgreSQL and MySQL 
+    [mobile] › tables.spec.ts:65:1 › Invalid workbook exposes safe locations without a creation preview 
+  6 passed (2.5m)

@@ -1,5 +1,57 @@
 # Checkpoint Phase2 đang thực hiện — 2026-11-09
 
+**Hiện hành Phase5, 2026-11-10:** Files đã khép T061–T069: source regression116PASS, browser12PASS và persistence2PASS sau recreate backend/worker, desktop/mobile, ảnh đã kiểm và cleanup0. Backend Files `b194…b352` được owner xác nhận đúng ID; Frontend0HIGH/CRITICAL. Tiếp T070/T071 engine. Đọc [checkpoint Phase5](phase5-file-sources-report.md); không hỏi lại ID đã duyệt. T014_FULL vẫn BLOCKED. Các khối dưới là lịch sử.
+
+**Hiện hành:** foundation và Connections đến T046 đã hoàn thành theo từng task;
+T014_FULL vẫn BLOCKED. Owner đã xác nhận Backend runtime mới; Connections E2E6/6PASS
+desktop/mobile, cleanup0, không ports public. Task tiếp theo T047/T048 của Table
+Management. Các khối chờ Backend mapping/E2E bên dưới là lịch sử.
+
+**Hiện hành sau mất mạng:** foundation đã đóng, T035–T044 đã kiểm và cập nhật checkbox.
+Connections23/23PASS, foundation regression47/47PASS, frontend build/typecheckPASS.
+T045/T046 chưa đóng: chờ mapping Backend runtime mới để chạy E2E trên artifacts đã
+build/scan. Không hỏi lại ba image đã được duyệt. Xem
+[checkpoint Phase3](phase3-connections-report.md) và [review Backend](phase3-us2-image-review.md).
+Các khối “T034 còn mở” bên dưới là lịch sử.
+
+**Foundation hiện đã đạt:** owner xác nhận thêm ID Airflow theo hồ sơ. Live readiness
+2/2PASS, aggregate49/49PASS, Compose profile51/51PASS và response contract1/1PASS.
+Đã sửa hai lỗi fixture/profile (worker trong installed wheel và credential fixture
+idempotent); các lượt FAIL giữ riêng cùng thư mục bằng chứng. Đóng T034 và mở Phase3
+theo phạm vi T152 đã được chủ dự án cho phép. T014_FULL vẫn BLOCKED/security ngoại lệ
+local còn hạn; đây không phải nghiệm thu MVP hoặc public deployment.
+
+**Cập nhật sau xác nhận owner:** mapping backend-tests/PostgreSQL mới đã được duyệt
+đúng hai ID theo hội thoại, không hỏi lại. Owner-role initialization 1PASS (hai
+initializer cạnh tranh bằng non-superuser), T015 9PASS, T018 7PASS. Đã đóng thêm
+T028/T029/T030/T031/T033 theo bằng chứng mới; chỉ T034 còn mở trong Phase2.
+Airflow candidate build/scan xong, 110HIGH/CRITICAL giống baseline (0 thêm/0 bớt),
+đang chờ xác nhận riêng cho ID mới tại [hồ sơ Airflow](phase2-resume-airflow-review.md).
+Driver `tests/tools/run_airflow_foundation.py` đã chuẩn bị để chạy readiness,
+aggregate và Compose profile trên network/DB tmpfs riêng, không publish ports.
+
+**Lượt implement mới, ưu tiên hơn các snapshot dưới đây:** chủ dự án đã mở phạm vi
+đến T152 trong hội thoại, giữ dependency và mọi gate an toàn. Hai image mới đã build
+và scan; delta HIGH/CRITICAL bằng baseline (0 thêm/0 bớt), đang chờ owner xác nhận
+mapping theo [hồ sơ review](phase2-resume-security-review.md). Không tự kế thừa ngoại lệ.
+T022 23PASS, T023–T026 16PASS, T027 2PASS, T032 6PASS, T033 3PASS, T017 28PASS,
+migration/seed/key-loss 5PASS; unit toàn image 37PASS. T034/Airflow trên máy mới chưa
+nghiệm thu; không mở Phase3 trước foundation gate. Kết quả mới tại `resume-20261109/`.
+
+**Cập nhật môi trường sau bật ảo hóa:** Podman machine WSL2 đã chạy rootful,
+CLI 6.1.1/server 6.1.4/Compose 5.6.0. Container UID0, cgroupv2 và giới hạn RAM
+128MiB đã kiểm thật; Compose runtime smoke và config dự án PASS. Điểm chặn thiếu
+runtime bên dưới đã được giải quyết. Machine mới chưa có image/network fixture của
+phiên trước; cần khôi phục trước integration, không suy nghiệm thu từ smoke engine.
+Xem [bằng chứng cài đặt](podman-install-results.json).
+
+**Tiếp nhận mới trên checkout HEAD `b389d2e`:** Git ban đầu sạch; log T034 GREEN
+đã hoàn tất 2/2 PASS trong phiên trước. Lượt mới khôi phục đúng bytes LF của mẫu
+từ Git và chạy 12/12 kiểm tra nguồn PASS, cú pháp 50 file PASS. Chưa thể chạy lại
+integration vì Windows/Ubuntu WSL không có Podman/Docker trong PATH. Giữ nguyên
+checkbox chưa hoàn thành; xem [báo cáo tiếp nhận](phase2-resume-report.md).
+Các số liệu dưới đây là checkpoint của phiên trước, không phải kết quả chạy mới.
+
 Phạm vi chủ dự án đã duyệt: liên tục T022–T034; không Phase3. Đọc
 [scope](../decisions/phase2-local-scope.json), activation và Git diff trước khi tiếp nhận.
 Không reset/revert, không apply lại patch. T014_FULL BLOCKED/security FAIL.

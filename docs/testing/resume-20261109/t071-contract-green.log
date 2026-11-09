@@ -1,0 +1,10 @@
+test_canonical_hash_ignores_object_order_but_preserves_semantic_values (tests.unit.test_mapping.ExecutionContractTests.test_canonical_hash_ignores_object_order_but_preserves_semantic_values) ... ok
+test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals (tests.unit.test_mapping.ExecutionContractTests.test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals) ... ok
+test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs (tests.unit.test_mapping.ExecutionContractTests.test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs) ... ok
+test_source_union_and_strategy_keys_are_strict (tests.unit.test_mapping.ExecutionContractTests.test_source_union_and_strategy_keys_are_strict) ... ok
+test_typed_literal_never_coerces_float_bool_or_numeric_string (tests.unit.test_mapping.ExecutionContractTests.test_typed_literal_never_coerces_float_bool_or_numeric_string) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.167s
+
+OK

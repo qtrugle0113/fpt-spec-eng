@@ -1,0 +1,14 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+  "runner_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+  "workbook_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "SNAPSHOT-GUARD-CHECK",
+  "test_paths": [
+    "tests.etl.test_snapshot_staging.SnapshotTests"
+  ],
+  "test_exit_code": 1,
+  "log": "docs\\testing\\resume-20261109\\snapshot-guard-check-green.log",
+  "existing_services_modified": false
+}

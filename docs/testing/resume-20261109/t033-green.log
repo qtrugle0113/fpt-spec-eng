@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 3 items
+
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_claim_skip_locked_owner_and_expired_lease PASSED [ 33%]
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_confirmation_hash_scope_expiry_and_signature PASSED [ 66%]
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_idempotency_replay_and_conflict PASSED [100%]
+
+============================== 3 passed in 0.15s ===============================

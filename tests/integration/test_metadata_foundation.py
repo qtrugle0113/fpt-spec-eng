@@ -107,8 +107,10 @@ class MetadataFoundationTests(unittest.TestCase):
                 c.execute('DELETE FROM operations WHERE id=%s', (operation_id,))
 
     def test_worker_restart_does_not_replay_unknown_side_effect(self):
-        entry = ROOT / 'backend/src/aat_api/workers/main.py'
-        self.assertTrue(entry.exists(), 'T033 durable Operation worker is not implemented; bootstrap heartbeat is insufficient')
+        from importlib.util import find_spec
+        module = find_spec('aat_api.workers.main')
+        self.assertTrue(module is not None and module.origin and Path(module.origin).is_file(),
+                        'T033 importable worker is missing from source or installed wheel')
         with self.connect() as c:
             self.require_tables(c, 'operations')
             operation_id = uuid4()

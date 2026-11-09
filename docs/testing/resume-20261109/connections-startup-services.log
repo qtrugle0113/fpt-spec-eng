@@ -1,0 +1,105 @@
+mysql-1  | 2026-11-09 12:14:36+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+mysql-1  | 2026-11-09 12:14:37+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql-1  | 2026-11-09 12:14:37+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+mysql-1  | 2026-11-09 12:14:37+00:00 [Note] [Entrypoint]: Initializing database files
+mysql-1  | 2026-11-09T12:14:37.496101Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+mysql-1  | 2026-11-09T12:14:37.497308Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.13) initializing of server in progress as process 80
+mysql-1  | 2026-11-09T12:14:37.497310Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1  | 2026-11-09T12:14:37.524464Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1  | 2026-11-09T12:14:38.214685Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1  | 2026-11-09T12:14:39.842535Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+mysql-1  | 2026-11-09T12:14:47.915085Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+mysql-1  | 2026-11-09 12:14:47+00:00 [Note] [Entrypoint]: Database files initialized
+mysql-1  | 2026-11-09 12:14:47+00:00 [Note] [Entrypoint]: Starting temporary server
+mysql-1  | 2026-11-09T12:14:47.987940Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+mysql-1  | 2026-11-09T12:14:48.242086Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 127
+mysql-1  | 2026-11-09T12:14:48.242089Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1  | 2026-11-09T12:14:48.373012Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1  | 2026-11-09T12:14:50.308376Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1  | 2026-11-09T12:14:50.813827Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql-1  | 2026-11-09T12:14:50.813872Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql-1  | 2026-11-09T12:14:50.818184Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql-1  | 2026-11-09T12:14:50.840729Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+mysql-1  | 2026-11-09T12:14:50.840853Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+mysql-1  | 2026-11-09 12:14:50+00:00 [Note] [Entrypoint]: Temporary server started.
+mysql-1  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysql-1  | 
+mysql-1  | 2026-11-09 12:14:53+00:00 [Note] [Entrypoint]: Stopping temporary server
+mysql-1  | 2026-11-09T12:14:53.069762Z 10 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).
+mysql-1  | 2026-11-09T12:14:54.078595Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.
+secrets-init-1  | Bootstrap secrets initialized; values suppressed
+mysql-1         | 2026-11-09T12:14:54.078632Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+mysql-1         | 2026-11-09 12:14:55+00:00 [Note] [Entrypoint]: Temporary server stopped
+mysql-1         | 
+mysql-1         | 2026-11-09 12:14:55+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+mysql-1         | 
+mysql-1         | 2026-11-09T12:14:55.090316Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+mysql-1         | 2026-11-09T12:14:55.333421Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1
+mysql-1         | 2026-11-09T12:14:55.333424Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1         | 2026-11-09T12:14:55.338972Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1         | 2026-11-09T12:14:55.773846Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1         | 2026-11-09T12:14:56.175371Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql-1         | 2026-11-09T12:14:56.175415Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql-1         | 2026-11-09T12:14:56.180499Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql-1         | 2026-11-09T12:14:56.219776Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+mysql-1         | 2026-11-09T12:14:56.219998Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+postgres-1      | The files belonging to this database system will be owned by user "postgres".
+postgres-1      | This user must also own the server process.
+postgres-1      | 
+postgres-1      | The database cluster will be initialized with locale "en_US.utf8".
+postgres-1      | The default database encoding has accordingly been set to "UTF8".
+postgres-1      | The default text search configuration will be set to "english".
+postgres-1      | 
+postgres-1      | Data page checksums are disabled.
+postgres-1      | 
+postgres-1      | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+postgres-1      | creating subdirectories ... ok
+postgres-1      | selecting dynamic shared memory implementation ... posix
+postgres-1      | selecting default "max_connections" ... 100
+postgres-1      | selecting default "shared_buffers" ... 128MB
+postgres-1      | selecting default time zone ... Etc/UTC
+postgres-1      | creating configuration files ... ok
+db-init-1       | PostgreSQL bootstrap complete; existing sample data preserved
+db-init-1       | MySQL bootstrap complete; existing sample data preserved
+postgres-1      | running bootstrap script ... ok
+postgres-1      | performing post-bootstrap initialization ... ok
+postgres-1      | syncing data to disk ... ok
+postgres-1      | 
+postgres-1      | 
+postgres-1      | Success. You can now start the database server using:
+postgres-1      | 
+postgres-1      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+postgres-1      | 
+postgres-1      | initdb: warning: enabling "trust" authentication for local connections
+postgres-1      | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+postgres-1      | waiting for server to start....2026-11-09 12:14:38.587 UTC [47] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+postgres-1      | 2026-11-09 12:14:38.596 UTC [47] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1      | 2026-11-09 12:14:38.610 UTC [50] LOG:  database system was shut down at 2026-11-09 12:14:37 UTC
+postgres-1      | 2026-11-09 12:14:38.619 UTC [47] LOG:  database system is ready to accept connections
+postgres-1      |  done
+postgres-1      | server started
+postgres-1      | 
+postgres-1      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+postgres-1      | 
+postgres-1      | 2026-11-09 12:14:38.759 UTC [47] LOG:  received fast shutdown request
+postgres-1      | waiting for server to shut down....2026-11-09 12:14:38.762 UTC [47] LOG:  aborting any active transactions
+postgres-1      | 2026-11-09 12:14:38.764 UTC [47] LOG:  background worker "logical replication launcher" (PID 53) exited with exit code 1
+postgres-1      | 2026-11-09 12:14:38.765 UTC [48] LOG:  shutting down
+postgres-1      | 2026-11-09 12:14:38.768 UTC [48] LOG:  checkpoint starting: shutdown immediate
+postgres-1      | 2026-11-09 12:14:38.803 UTC [48] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.012 s, sync=0.006 s, total=0.039 s; sync files=2, longest=0.005 s, average=0.003 s; distance=0 kB, estimate=0 kB; lsn=0/14E6FE8, redo lsn=0/14E6FE8
+postgres-1      | 2026-11-09 12:14:38.810 UTC [47] LOG:  database system is shut down
+postgres-1      |  done
+postgres-1      | server stopped
+postgres-1      | 
+postgres-1      | PostgreSQL init process complete; ready for start up.
+postgres-1      | 
+postgres-1      | 2026-11-09 12:14:39.011 UTC [1] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+postgres-1      | 2026-11-09 12:14:39.011 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1      | 2026-11-09 12:14:39.012 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres-1      | 2026-11-09 12:14:39.054 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1      | 2026-11-09 12:14:39.063 UTC [61] LOG:  database system was shut down at 2026-11-09 12:14:38 UTC
+postgres-1      | 2026-11-09 12:14:39.070 UTC [1] LOG:  database system is ready to accept connections
+app-init-1      | Application initialization failed (ModuleNotFoundError); restore/check original metadata and keys
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m
