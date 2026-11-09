@@ -1,0 +1,68 @@
+{
+  "sources": [
+    {
+      "version": "3.3.2",
+      "url": "https://raw.githubusercontent.com/apache/airflow/3.3.2/airflow-core/src/airflow/api_fastapi/core_api/openapi/v2-rest-api-generated.yaml",
+      "sha256": "ba5593d18690897f7ecad0c1bb2f62bf25a0a9dc33490376122dfa88d1fc3d8b",
+      "paths": 88,
+      "schemas": 163
+    },
+    {
+      "version": "3.4.0",
+      "url": "https://raw.githubusercontent.com/apache/airflow/3.4.0/airflow-core/src/airflow/api_fastapi/core_api/openapi/v2-rest-api-generated.yaml",
+      "sha256": "f738b072239d7ec60dc6a88fff8049ed5c01908400390a8b606e95b816454b0f",
+      "paths": 94,
+      "schemas": 200
+    }
+  ],
+  "status": "STATIC_REVIEW_ONLY_NOT_RUNTIME_ACCEPTANCE",
+  "removed_paths": [],
+  "added_paths": [
+    "/api/v2/backfills/{backfill_id}/dag_runs",
+    "/api/v2/dagBundles",
+    "/api/v2/dagBundles/{bundle_name}",
+    "/api/v2/dagBundles/{bundle_name}/files",
+    "/api/v2/dags/bulk",
+    "/api/v2/dags/{dag_id}/dagVersions/diff"
+  ],
+  "changed_schemas": [
+    "AssetEventResponse",
+    "AssetStateStoreLastUpdatedBy",
+    "BackfillPostBody",
+    "BaseInfoResponse",
+    "BulkTaskInstanceBody",
+    "ClearTaskInstancesBody",
+    "DAGDetailsResponse",
+    "DAGPatchBody",
+    "DAGResponse",
+    "DAGRunResponse",
+    "DAGSourceResponse",
+    "DAGWarningResponse",
+    "DagProcessorInfoResponse",
+    "DagRunAssetReference",
+    "DagScheduleAssetReference",
+    "DagWarningType",
+    "EventLogResponse",
+    "ExternalViewResponse",
+    "ImportErrorResponse",
+    "JobResponse",
+    "MaterializeAssetBody",
+    "PatchTaskInstanceBody",
+    "PluginResponse",
+    "PoolBody",
+    "ReactAppResponse",
+    "SchedulerInfoResponse",
+    "TaskInstanceHistoryResponse",
+    "TaskInstanceResponse",
+    "TaskOutletAssetReference",
+    "TriggerDAGRunPostBody",
+    "TriggererInfoResponse",
+    "UpdateHITLDetailPayload",
+    "VariableBody",
+    "XComCreateBody",
+    "XComResponse",
+    "XComResponseNative",
+    "XComResponseString",
+    "XComUpdateBody"
+  ]
+}

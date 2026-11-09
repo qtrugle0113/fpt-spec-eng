@@ -1,0 +1,26 @@
+[
+  {
+    "port": 23000,
+    "path": "/",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "port": 28000,
+    "path": "/api/v1/health/live",
+    "status": 200,
+    "expected": 200
+  },
+  {
+    "port": 28000,
+    "path": "/api/v1/health/ready",
+    "status": 404,
+    "expected": 404
+  },
+  {
+    "port": 28080,
+    "path": "/",
+    "status": 200,
+    "expected": 200
+  }
+]

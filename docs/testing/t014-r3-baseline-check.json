@@ -1,0 +1,7 @@
+{
+  "protected_mismatches": [],
+  "image_id_mismatches": [
+    "airflow-wheels"
+  ],
+  "timing_note": "Captured after this turn rebuilt airflow-wheels; its timestamp-dependent image ID changed through our build. Protected artifacts unchanged; other pre-existing image IDs matched the A/B snapshot at capture."
+}

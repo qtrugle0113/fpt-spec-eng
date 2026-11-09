@@ -29,6 +29,10 @@ urllib3 2.8.0 theo `airflow/docker/constraints-policy.json`. Artifacts có hashe
 `overrides.lock`; build sinh provenance, kiểm pip check và auth/readiness trên image cuối.
 Đây là thay đổi dependency, không thay endpoint hoặc hợp đồng xác thực trên.
 
+Remediation bổ sung ngày2026-11-09 thêm dnspython2.8.0→2.9.0 vào policy hiệu lực và
+hash lock riêng theo quyền cập nhật dependency của chủ dự án; upstream/core/SDK/API
+giữ nguyên. Xem [phương án vòng3](../../../docs/proposals/t014-round3-remediation.md).
+
 ## Endpoint mapping
 
 Tất cả path bên dưới nối sau `/api/v2`; path segment phải percent-encode.

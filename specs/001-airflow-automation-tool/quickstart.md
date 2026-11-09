@@ -2,8 +2,10 @@
 
 **Trạng thái hiện hành**: Đã có source/Compose/test bootstrap Phase1; P1–P7 đã được duyệt
 và kiểm chứng lại. T014 vẫn BLOCKED bởi security findings và các gate tái kiểm; CI tại
-HEAD b29ae86 đã PASS, working tree lượt mới chưa chạy CI remote. Chưa vào
+implementation commit d57db09 đã PASS Windows/Linux. Chưa vào
 Phase2. Các kịch bản nghiệp vụ dưới đây là tiêu chí cho phase tương ứng, chưa là sản phẩm PASS.
+Kết quả mới nhất: [remediation vòng3](../../docs/testing/t014-r3-report.md), gồm
+dnspython2.9.0, Go Alpine và project test riêng ports23000/28000/28080.
 Xem [báo cáo hiện hành](../../docs/testing/phase1-report.md). Candidate shell đang ở
 http://localhost:13000 trong môi trường nghiệm thu cũ; địa chỉ này không chứng minh dịch vụ
 đang chạy trên máy hiện tại. Xem [kết quả tiếp tục ngày 2026-11-09](../../docs/testing/t014-current-report.md)

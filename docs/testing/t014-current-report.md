@@ -1,4 +1,17 @@
-# Trạng thái T014 sau khi triển khai A/B — 2026-11-09
+# Trạng thái T014 sau remediation vòng3 — 2026-11-09
+
+**T014/Phase1 vẫn BLOCKED bởi security. Implementation d57db09 đã commit/push và CI
+Windows/Linux PASS; clean checkout static/sample tests PASS. Chưa triển khai Phase2.**
+
+Kết quả mới nhất: [báo cáo vòng3](t014-r3-report.md), [results/IDs](t014-r3-results.json),
+[scan20targets](t014-r3-security.json), [149nhóm vendor review](t014-r3-vendor-review.json).
+Đã vá dnspython2.9.0 và chuyển Go toolchain sang Alpine3.24; giữ Airflow3.3.2/upstream
+constraints. Fresh/restart1310.699s,13unit/5compatibility/7runtime/4E2E, auth/operator UI,
+frontend build và npm audit đều PASS. Scan final IDs khớp, HIGH/CRITICAL1327→784;
+7final images/runners còn247occurrences, chưa có reviewer waiver. Không tự đóng gate.
+Candidate riêng23000/28000/28080; stack A/B và dữ liệu/volumes/secrets hiện có được giữ.
+
+## Snapshot sau A/B, trước remediation vòng3
 
 **A/B đã được chủ dự án duyệt và triển khai. T014/Phase1 vẫn BLOCKED bởi security và CI source mới.**
 

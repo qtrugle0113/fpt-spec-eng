@@ -1,0 +1,17 @@
+[
+  {
+    "image": "localhost/aat-gosu-build:0.1.0",
+    "binary": "/gosu",
+    "sha256": "84eabf2e35384d13842aa23d47e669b090643b7d6fdf70cf36abe75027690e1e"
+  },
+  {
+    "image": "localhost/aat-postgres:17.11",
+    "binary": "/usr/local/bin/gosu",
+    "sha256": "84eabf2e35384d13842aa23d47e669b090643b7d6fdf70cf36abe75027690e1e"
+  },
+  {
+    "image": "localhost/aat-mysql:8.4.13",
+    "binary": "/usr/local/bin/gosu",
+    "sha256": "84eabf2e35384d13842aa23d47e669b090643b7d6fdf70cf36abe75027690e1e"
+  }
+]

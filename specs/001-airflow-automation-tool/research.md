@@ -28,7 +28,8 @@ với provider lock và file constraints chính thức không đổi. A/B mới 
 riêng và nâng Playwright client/browser1.65.0 theo quyết định hiện hành ở đầu tài liệu,
 runner OS được khóa phiên bản; global npm không cần dùng bị loại khỏi final runner,
 build stage vẫn phải scan. Candidate không tự mang trạng thái compatibility/security PASS.
-Chỉ cho phép hai override A và cặp browser B đã duyệt; không tự nâng Airflow core. Báo cáo thực thi
+Ngoại lệ A/B ban đầu gồm hai override và cặp browser B; quyền remediation bổ sung và
+dnspython2.9.0 được ghi ở mục T014 bổ sung bên dưới. Không tự nâng Airflow core. Báo cáo thực thi
 hiện hành ở `docs/testing/phase1-report.md`; các NOT_RUN trong thiết kế ban đầu là lịch sử.
 
 ## 1. Nền tảng điều phối và phiên bản

@@ -1,5 +1,10 @@
 # Danh sách task: Airflow Automation Tool
 
+**Trạng thái mới nhất vòng3:** T014 `[ ]`/BLOCKED bởi security784occurrences;
+CI Windows/Linux d57db09 và clean checkout PASS. Chỉ tiếp tục T014, chưa mở Phase2.
+Xem [báo cáo vòng3](../../docs/testing/t014-r3-report.md); các đoạn tiến độ A/B cũ bên
+dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối file.
+
 **Ngày tạo**: 2026-11-06.
 **Đồng bộ có mục tiêu**: 2026-11-08 theo Plan sau Analyze; giữ nguyên 152 task và ID T001–T152.
 **Đầu vào**: [Specification và Clarification](spec.md), [Plan](plan.md), [Research](research.md), [Data Model](data-model.md), [Quickstart](quickstart.md), [Constitution](../../.specify/memory/constitution.md), [REST API](contracts/rest-api.md), [OpenAPI](contracts/openapi.yaml), [Airflow](contracts/airflow.md), [Runtime](contracts/runtime.md), [Excel](contracts/excel-definitions.md).
@@ -591,3 +596,12 @@ Scan đủ20targets với IDs cuối khớp: tổng1327HIGH/CRITICAL occurrences
 CI source mới và clean checkout immutable SHA chưa chạy vì working tree chưa commit.
 T014 giữ[ ]/BLOCKED, không mở Phase2. Lệnh, logs, image IDs/hashes và bước tiếp theo tại
 [báo cáo A/B](../../docs/testing/t014-ab-report.md).
+# Trạng thái tiếp tục T014 — remediation vòng3, 2026-11-09
+
+T014 giữ `[ ]`, chưa mở Phase2. Commit triển khai d57db09 đã push, CI Windows/Linux
+và clean checkout static PASS. Bổ sung dnspython2.9.0 và Go1.27.3-Alpine3.24;
+fresh/restart1310.699s,13unit/5compatibility/7runtime/4E2E, auth/UI/build/audit PASS.
+Scan20targets đúng IDs cuối:784HIGH/CRITICAL occurrences (7final images/runners247),
+149review groups chưa được reviewer duyệt đầy đủ. Gate security FAIL, Phase1 BLOCKED.
+[Báo cáo hiện hành](../../docs/testing/t014-r3-report.md),
+[results](../../docs/testing/t014-r3-results.json). Không sửa tiêu chí nghiệm thu/checklists.

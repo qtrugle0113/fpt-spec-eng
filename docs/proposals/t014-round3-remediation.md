@@ -37,6 +37,22 @@ Các base Python/Node/Go/Postgres có thể đánh giá Trixie độc lập dư�
 không trộn repository Trixie vào image Bookworm để nâng từng thư viện ABI.
 Raw base findings vẫn thuộc phạm vi scan; không bỏ vì final đã được vá.
 
+## Bằng chứng review bổ sung
+
+[Đối chiếu schema chính thức](../testing/t014-r3-airflow-api-candidate.json) cho thấy
+3.3.2 có 88 paths/163 schemas, 3.4.0 có 94/200. Không mất path nhưng nhiều schemas
+đang được dự án sử dụng thay đổi (DAGResponse, DAGRunResponse, TaskInstanceResponse,
+TriggerDAGRunPostBody). Vì vậy chưa nâng core hoặc suy tương thích từ tên endpoint.
+Manifest 3.4.0 đã resolve ở candidate manifests, runtime/migration/scan core candidate
+chưa chạy. Trixie vẫn có findings như bảng dưới, nâng core đơn lẻ chưa đủ đóng gate.
+
+[Inventory setuptools](../testing/t014-r3-setuptools-inventory.json) và
+[SBOM/vendor inventory của pip](../testing/t014-r3-pip-sbom-review.json) định vị bản ghi
+70.3.0 trong pip/_vendor/bom.cdx.json; vendor.txt và pkg_resources vẫn có mặt.
+Không có directory pip/_vendor/setuptools. Đây là bằng chứng để reviewer xem xét
+phạm vi code PackageIndex theo advisory, chưa là kết luận not-affected được duyệt.
+Không sửa/xóa SBOM, không hạ severity hoặc miễn trừ finding này.
+
 ## Kết quả đánh giá base trước implementation
 
 [Scan candidate theo IDs](../testing/t014-r3-candidate-security.json): Python Trixie

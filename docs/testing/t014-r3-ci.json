@@ -1,0 +1,24 @@
+[
+  {
+    "id": 42548651297,
+    "head_sha": "d57db0949bc310da752de578c3522920041e9ca2",
+    "name": "Kiểm chứng bytes artifact mẫu",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42548651297",
+    "jobs": [
+      {
+        "name": "sample-bytes (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42548651297/job/128939069654"
+      },
+      {
+        "name": "sample-bytes (windows-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "html_url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42548651297/job/128939069824"
+      }
+    ]
+  }
+]

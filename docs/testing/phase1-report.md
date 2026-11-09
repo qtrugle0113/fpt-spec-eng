@@ -1,6 +1,10 @@
 # Báo cáo Phase1 sau remediation P1–P7 — 2026-11-08
 
-## Kết quả tiếp tục ngày 2026-11-09 — nguồn trạng thái hiện hành
+**Nguồn hiện hành: [remediation vòng3](t014-r3-report.md). CI/clean checkout và các
+gate đã chạy PASS; security còn784HIGH/CRITICAL occurrences, T014/Phase1 BLOCKED.**
+Các kết quả A/B và P1–P7 bên dưới là snapshot lịch sử.
+
+## Snapshot A/B ngày 2026-11-09 — trước remediation vòng3
 
 [Triển khai A/B đã được duyệt](t014-ab-report.md) là kết quả mới nhất: fresh/restart752.059s,
 13unit/4E2E/5compatibility/7runtime tests và UI Airflow auth PASS. Upstream constraints giữ
@@ -479,3 +483,8 @@ Final-state kiểm4init Exited(0),8service healthy, HTTP shell3000/preview4173/A
 200, live200/ready404 và hai private frontend paths404; reviewer hashes không đổi.
 Không có Phase2 implementation hoặc thay đổi DAG Builder. Gate Phase1 vẫn BLOCKED,
 T014 giữ [ ]; tài liệu/compatibility validation không được coi là product runtime PASS.
+# Kết quả mới nhất — remediation T014 vòng3
+
+Xem [báo cáo vòng3](t014-r3-report.md): CI/clean checkout và các gate đã chạy PASS;
+security còn784HIGH/CRITICAL occurrences trên20targets, T014/Phase1 vẫn BLOCKED.
+Các snapshot bên dưới giữ provenance lịch sử, không thay kết quả/IDs vòng3.

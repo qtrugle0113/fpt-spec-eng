@@ -159,3 +159,8 @@ AAT_AIRFLOW_PORT khi dùng project test port khác; default8080 không đổi.
 Chủ dự án đã duyệt A/B ngày2026-11-09: Playwright1.65.0/Resolute và hai override
 certifi2026.10.18/urllib3 2.8.0 bằng constraints hiệu lực riêng; upstream giữ nguyên hash.
 T014 còn BLOCKED; trạng thái kiểm chứng/CI mới xem báo cáo Phase1, không dùng PASS cũ.
+
+Remediation tiếp theo ngày2026-11-09 bổ sung dnspython2.9.0 vào policy/hash riêng và
+chuyển toolchain gosu Go1.27.3 sang Alpine3.24 theo digest đã scan; giữ DB/core versions.
+CI Windows/Linux của implementation commit d57db09 đã PASS. T014 chưa đóng vì security;
+xem [báo cáo vòng3](docs/testing/t014-r3-report.md) để biết đúng IDs/phạm vi kiểm thử.
