@@ -1,0 +1,126 @@
+{
+  "captured_at": "2026-11-09T06:23:44.499510+00:00",
+  "task": "T017",
+  "task_authoring": "COMPLETE",
+  "implementation_T018_onwards": "NOT_STARTED",
+  "scope": "docs/decisions/t017-local-test-scope.json",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "collection": {
+    "status": "PASS",
+    "total": 28,
+    "unit": 12,
+    "integration": 16
+  },
+  "functional": {
+    "status": "FAIL_EXPECTED_TDD_RED",
+    "failed": 28,
+    "passed": 0,
+    "collection_errors": 0,
+    "reason": "T031 authorizations/replacement_runs repository and state implementation missing"
+  },
+  "postgres_probe": "PASS_REAL_POSTGRES_BEFORE_EACH_INTEGRATION_MISSING_IMPLEMENTATION_ASSERTION",
+  "behavior_branches": {
+    "two_transaction_ONCE_reservation": "NOT_RUN",
+    "concurrent_idempotency": "NOT_RUN",
+    "lock_order_both_stages": "NOT_RUN",
+    "revoke_admission_epoch": "NOT_RUN",
+    "runtime_privilege_DML": "NOT_RUN",
+    "reason": "Blocked before fixtures/DML in setUp by missing T031; no functional PASS inferred"
+  },
+  "T016_regression": {
+    "passed": 1,
+    "failed": 6,
+    "status": "UNCHANGED_EXPECTED_TDD_RED"
+  },
+  "fixture": {
+    "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+    "runner_image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+    "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+    "task": "T017",
+    "test_paths": [
+      "/tmp/tests/unit/test_authorization_states.py",
+      "/tmp/tests/integration/test_authorization_repository.py"
+    ],
+    "test_exit_code": 1,
+    "log": "docs/testing/t014-round2-logs/local-t017-authorization-red.log",
+    "existing_services_modified": false
+  },
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "security_approval_scope_changed": false,
+  "NOT_RUN": [
+    "current-source CI",
+    "current-source clean checkout",
+    "new image builds/scans",
+    "foundation T034 acceptance"
+  ],
+  "source_sha256": {
+    "tests/unit/test_authorization_states.py": "3946eb37d0b4c5dc12cdad33c05fc87db3d235e78daeaa9996f383b4ba370a4f",
+    "tests/integration/test_authorization_repository.py": "a45f36a0b13169b5d2c886c9000d97925c6bf31d905dd5bdcb100d376c2b53b5",
+    "tests/tools/run_metadata_foundation.py": "c23f6e5d60cb00ca2b79583450330f709779068aa993268645d0cf3fbf2400d5",
+    "docs/decisions/t017-local-test-scope.json": "2510fb04e25a2a7517cec1ed5cb235dd134d0cacc81c701ae2327ef710237705"
+  },
+  "service_preservation": {
+    "aat-phase1-t014-ab-20261109": {
+      "healthy": 8,
+      "successful_init": 4,
+      "image_ids": {
+        "aat-phase1-t014-ab-20261109-secrets-init-1": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+        "aat-phase1-t014-ab-20261109-postgres-1": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+        "aat-phase1-t014-ab-20261109-mysql-1": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+        "aat-phase1-t014-ab-20261109-db-init-1": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+        "aat-phase1-t014-ab-20261109-app-init-1": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+        "aat-phase1-t014-ab-20261109-backend-worker-1": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+        "aat-phase1-t014-ab-20261109-airflow-init-1": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+        "aat-phase1-t014-ab-20261109-airflow-dag-processor-1": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+        "aat-phase1-t014-ab-20261109-airflow-scheduler-1": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+        "aat-phase1-t014-ab-20261109-airflow-apiserver-1": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+        "aat-phase1-t014-ab-20261109-backend-1": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+        "aat-phase1-t014-ab-20261109-frontend-1": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+      }
+    },
+    "aat-phase1-t014-r3-20261109": {
+      "healthy": 8,
+      "successful_init": 4,
+      "image_ids": {
+        "aat-phase1-t014-r3-20261109-secrets-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-r3-20261109-mysql-1": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+        "aat-phase1-t014-r3-20261109-postgres-1": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+        "aat-phase1-t014-r3-20261109-db-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-r3-20261109-app-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-r3-20261109-airflow-init-1": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+        "aat-phase1-t014-r3-20261109-backend-worker-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-r3-20261109-airflow-dag-processor-1": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+        "aat-phase1-t014-r3-20261109-airflow-apiserver-1": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+        "aat-phase1-t014-r3-20261109-airflow-scheduler-1": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+        "aat-phase1-t014-r3-20261109-backend-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-r3-20261109-frontend-1": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+      }
+    },
+    "aat-phase1-t014-local-20261109": {
+      "healthy": 8,
+      "successful_init": 4,
+      "image_ids": {
+        "aat-phase1-t014-local-20261109-secrets-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-local-20261109-postgres-1": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+        "aat-phase1-t014-local-20261109-mysql-1": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+        "aat-phase1-t014-local-20261109-db-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-local-20261109-app-init-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-local-20261109-backend-worker-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-local-20261109-airflow-init-1": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+        "aat-phase1-t014-local-20261109-airflow-dag-processor-1": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+        "aat-phase1-t014-local-20261109-airflow-apiserver-1": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+        "aat-phase1-t014-local-20261109-airflow-scheduler-1": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+        "aat-phase1-t014-local-20261109-backend-1": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+        "aat-phase1-t014-local-20261109-frontend-1": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+      }
+    }
+  },
+  "fixture_cleanup": "PASS_NO_T016_T017_CONTAINERS_REMAIN",
+  "hooks_before_after": "NOT_REGISTERED",
+  "next_task": "T018_NOT_STARTED",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "log": "docs/testing/t014-round2-logs/local-t017-authorization-red.log"
+}

@@ -1,0 +1,719 @@
+{
+  "captured_at": "2026-11-09T07:54:50.600794+00:00",
+  "containers": [
+    {
+      "name": "aat-phase1-t014-ab-20261109-secrets-init-1",
+      "image": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/airflow_secrets",
+        "/secrets/app_keyring",
+        "/secrets/postgres_secrets",
+        "/secrets/mysql_secrets",
+        "/secrets/bootstrap_secrets",
+        "/secrets/backend_secrets",
+        "/secrets/runtime_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-postgres-1",
+      "image": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "5432/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/postgresql/data",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-mysql-1",
+      "image": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "3306/tcp": null,
+        "33060/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/mysql",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-db-init-1",
+      "image": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/bootstrap_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-app-init-1",
+      "image": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/data/staging",
+        "/data/airflow_logs",
+        "/data/generated_dags",
+        "/data/uploads"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-backend-worker-1",
+      "image": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/backend",
+        "/secrets/app_keyring",
+        "/data/generated_dags",
+        "/data/uploads",
+        "/data/staging"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-airflow-init-1",
+      "image": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 0,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-airflow-dag-processor-1",
+      "image": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-airflow-scheduler-1",
+      "image": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 2147483648,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/data/staging",
+        "/opt/airflow/dags",
+        "/secrets/runtime",
+        "/secrets/app_keyring",
+        "/secrets/airflow",
+        "/opt/airflow/logs",
+        "/data/uploads"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-airflow-apiserver-1",
+      "image": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18080"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/secrets/airflow",
+        "/opt/airflow/dags",
+        "/opt/airflow/logs"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-backend-1",
+      "image": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18000"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/secrets/app_keyring",
+        "/data/uploads",
+        "/secrets/backend"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-ab-20261109-frontend-1",
+      "image": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 134217728,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "13000"
+          }
+        ]
+      },
+      "mount_destinations": []
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-secrets-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/mysql_secrets",
+        "/secrets/bootstrap_secrets",
+        "/secrets/backend_secrets",
+        "/secrets/runtime_secrets",
+        "/secrets/airflow_secrets",
+        "/secrets/app_keyring",
+        "/secrets/postgres_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-mysql-1",
+      "image": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "3306/tcp": null,
+        "33060/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/mysql",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-postgres-1",
+      "image": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "5432/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/postgresql/data",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-db-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/bootstrap_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-app-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/data/airflow_logs",
+        "/data/generated_dags",
+        "/data/uploads",
+        "/data/staging"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-airflow-init-1",
+      "image": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 0,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-backend-worker-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/data/uploads",
+        "/data/staging",
+        "/secrets/backend",
+        "/secrets/app_keyring",
+        "/data/generated_dags"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-airflow-dag-processor-1",
+      "image": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-airflow-apiserver-1",
+      "image": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "28080"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/opt/airflow/logs",
+        "/opt/airflow/dags",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-airflow-scheduler-1",
+      "image": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 2147483648,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/data/staging",
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/runtime",
+        "/secrets/app_keyring",
+        "/secrets/airflow",
+        "/data/uploads"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-backend-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "28000"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/data/uploads",
+        "/secrets/app_keyring",
+        "/secrets/backend"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-r3-20261109-frontend-1",
+      "image": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 134217728,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "23000"
+          }
+        ]
+      },
+      "mount_destinations": []
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-secrets-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/runtime_secrets",
+        "/secrets/airflow_secrets",
+        "/secrets/app_keyring",
+        "/secrets/postgres_secrets",
+        "/secrets/mysql_secrets",
+        "/secrets/bootstrap_secrets",
+        "/secrets/backend_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-postgres-1",
+      "image": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "5432/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/postgresql/data",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-mysql-1",
+      "image": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 1073741824,
+      "ports": {
+        "3306/tcp": null,
+        "33060/tcp": null
+      },
+      "mount_destinations": [
+        "/var/lib/mysql",
+        "/secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-db-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/bootstrap_secrets"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-app-init-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "0:0",
+      "memory": 0,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/data/generated_dags",
+        "/data/uploads",
+        "/data/staging",
+        "/data/airflow_logs"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-backend-worker-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": null
+      },
+      "mount_destinations": [
+        "/secrets/app_keyring",
+        "/data/uploads",
+        "/data/staging",
+        "/data/generated_dags",
+        "/secrets/backend"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-init-1",
+      "image": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "status": "exited",
+      "health": null,
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 0,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-dag-processor-1",
+      "image": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-apiserver-1",
+      "image": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 1073741824,
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "48080"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-scheduler-1",
+      "image": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "airflow",
+      "memory": 2147483648,
+      "ports": {
+        "8080/tcp": null
+      },
+      "mount_destinations": [
+        "/data/staging",
+        "/opt/airflow/dags",
+        "/opt/airflow/logs",
+        "/secrets/airflow",
+        "/secrets/runtime",
+        "/secrets/app_keyring",
+        "/data/uploads"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-backend-1",
+      "image": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "50000:50000",
+      "memory": 536870912,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "48000"
+          }
+        ]
+      },
+      "mount_destinations": [
+        "/secrets/backend",
+        "/secrets/app_keyring",
+        "/data/uploads"
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-frontend-1",
+      "image": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "status": "running",
+      "health": "healthy",
+      "exit_code": 0,
+      "privileged": false,
+      "user": "",
+      "memory": 134217728,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "43000"
+          }
+        ]
+      },
+      "mount_destinations": []
+    }
+  ],
+  "controls_checked": [
+    "loopback published ports",
+    "not privileged",
+    "no engine socket mounts",
+    "existing image IDs",
+    "review and expiry",
+    "approved mapping SHA256"
+  ],
+  "original_services_modified": false
+}

@@ -19,12 +19,13 @@ FK dependency dùng RESTRICT; không cascade xóa Definition/connection làm m�
 | Thực thể/bảng | Thuộc tính chính | Ràng buộc và quan hệ |
 | --- | --- | --- |
 | Connection / connections | id, code, normalized_code, name, database_type, current_revision_id, description, deleted_at | unique normalized_code; PG/MYSQL; code bất biến khi có dependency |
-| ConnectionRevision / connection_revisions | id, connection_id, revision, host, port, database_name, schema_name, username, secret_id, physical_server_fingerprint, test_status, tested_at | unique connection_id/revision; immutable endpoint/credential; port1–65535; secret FK |
+| ConnectionRevision / connection_revisions | id, connection_id, revision, database_type, host, port, database_name, schema_name, username, secret_id, physical_server_fingerprint, test_status, tested_at | unique connection_id/revision; immutable endpoint/credential, kể cả database_type snapshot để sửa type không đổi run cũ (FR-008); port1–65535; secret FK |
 | ConnectionSecret / connection_secrets | id, ciphertext, key_id, created_at, retired_at | Fernet token; không plaintext; chỉ backend/runtime role đọc, không public serializer |
-| UploadedFile / uploaded_files | id, original_name, safe_storage_key, sha256, bytes, extension, encoding, delimiter, header_present, quote_char, escape_char, null_token, parser_revision, validation_status, expires_at | storage_key do server sinh; filename không thành path; immutable content; parser sửa tạo revision |
+| UploadedFile / uploaded_files | id, original_name, safe_storage_key, sha256, bytes, extension, encoding, delimiter, header_present, quote_char, escape_char, null_token, parser_revision, parser_file_id, revision, validation_status, expires_at | storage_key do server sinh; filename không thành path; immutable content; parser sửa tạo revision; revision cho ETag, parser_file_id nội bộ do DB tính |
+| FileParserRevision / file_parser_revisions | id, file_id, revision, encoding, delimiter, header_present, quote_char, escape_char, null_token, config_sha256, created_at | unique file/revision; immutable snapshot và hash; FK file RESTRICT, current-parser composite FK RESTRICT |
 | DefinitionUpload / definition_uploads | id, kind, uploaded_file_id, template_version, workbook_sha256, status, validation_report_key | TABLE/ETL; version1.0; validation gắn file/checksum, report không chứa cell secret |
 | DefinitionIssue / definition_issues | id, upload_id, code, scope, sheet, row, column, column_name, severity, message_key, safe_context | row/column bắt đầu1; lỗi workbook có location null và scope=workbook; không echo dữ liệu nhạy cảm |
-| TableDefinition / table_definitions | id, upload_id, target_connection_revision_id, target_schema, table_name, description, definition_hash | unique upload/physical table identity; chỉ tạo mới table |
+| TableDefinition / table_definitions | id, upload_id, target_connection_revision_id, target_schema, table_name, physical_table_identity, description, definition_hash | unique upload/physical table identity; chỉ tạo mới table |
 | TableColumn / table_columns | id, table_definition_id, name, ordinal, logical_type, length, precision, scale, nullable, primary_key_ordinal, default_literal, description | unique name/ordinal/table; key không nullable; default tagged JSON; PK ghép thứ tự ordinal |
 | ETLDefinition / etl_definitions | id, dag_id, current_revision_id, owner=aat, lifecycle | dag_id unique local; collision external kiểm thêm Airflow; không cascade xóa lịch sử |
 | ETLDefinitionRevision / etl_definition_revisions | id, definition_id, revision, upload_id, config_json, config_sha256, schema_fingerprint_source, schema_fingerprint_target, dependency_fingerprint, status | immutable canonical config; JSON chứa IDs/reference, không secret; unique definition/revision/hash |
@@ -34,7 +35,41 @@ FK dependency dùng RESTRICT; không cascade xóa Definition/connection làm m�
 
 `config_json` chứa source union DB hoặc FILE, target, schedule union Manual/cron, timezone,
 start_date/catchup, strategy/conflict_keys, batch/retry, mapping/filter và IDs các dependency.
+
+Chi tiết ORM T020: UploadedFile giữ snapshot parser ban đầu bất biến; parser mới phải dùng
+FileParserRevision của T021, không sửa đè snapshot/content cũ. safe_storage_key là token opaque
+do server sinh, không ghép original_name vào path. TableDefinition bổ sung physical_table_identity
+nội bộ từ fingerprint server đã xác minh, database/schema/table để unique theo upload không bị
+vượt qua bằng credential revision mới; chưa xác minh fingerprint thì chưa lưu target definition.
+Tên schema/table giữ nguyên theo dialect; canonicalization và xác minh server thật thuộc adapters.
+Issue.safe_context chỉ cho metadata count/limit và expected_type/actual_type có whitelist,
+không raw cell value/credential. default_literal SQL NULL là không có default; JSON tagged value=null
+là explicit null, decimal giữ text lossless. Các chi tiết này không triển khai parser/DDL nghiệp vụ.
 Cột enum/config được validate Pydantic trước lưu; SQL identifiers không nhận dotted SQL fragment.
+
+Chi tiết ORM Phase2: ETL config lưu JSONB object canonical theo PostgreSQL JSONB text UTF-8,
+SHA256 do DB tính/đối chiếu đầu vào; từ chối credential keys lồng nhau và credential DSN.
+Đây là boundary lưu trữ, không thay full ETLConfig validator T071. Unique revision theo
+(definition_id, revision) và (definition_id, config_sha256); mapping là một phần snapshot
+bất biến, enabled target unique qua partial index, disabled rows vẫn giữ provenance.
+FK current revision gồm definition_id để không trỏ revision của Definition khác.
+
+Chi tiết Phase2 quyền/runtime: authorization scope và acknowledgment là snapshot bất biến;
+đổi scope phải tạo quyền mới và invalidate quyền cũ. reserved_intent_id khi đã gán không
+được xóa/chuyển; FK vòng authorization/intent là RESTRICT deferred. Dataset pointer phải
+thuộc đúng binding; file_parser_revision của binding lưu UUID FileParserRevision để FK
+giữ cả revision cũ. ReplacementAdmission bổ sung writer_finished làm bằng chứng điều kiện
+cho epoch retry; trường này không thay target-ledger proof. Audit safe_summary lưu message key,
+không lưu nguyên exception/payload. Worker chỉ xử lý kinds có handler, không replay operation
+NEEDS_RECONCILIATION. Các gate target lock/commit proof vẫn thuộc phase engine sau.
+
+Wiring Phase2: app-init dùng owner secret domain riêng `/secrets/app-owner`, chỉ chứa
+app_owner; backend/worker không mount owner/admin secret. Domain này bổ sung cho namespace
+mới, không tự sửa secret volumes của các project đang chạy. Worker heartbeat nền lưu bảng
+worker_heartbeats (UUID/id, owner_process_id ngẫu nhiên mỗi process, heartbeat_at) để backend
+kiểm freshness qua DB thay vì đọc `/tmp` của container khác. DAGDeployment bổ sung dag_id
+nội bộ do DB suy ra từ ETL revision cho unique active deployment theo DAG, kể cả khác revision.
+Dataset COMPLETE không quay lại INCOMPLETE hoặc đổi content/binding pointer.
 
 `physical_server_fingerprint` dùng server/database identity được adapter xác minh. Quyền ghi
 cuối cùng do native lock ngay trên target quyết định: PG table OID trong database hiện tại,
@@ -127,6 +162,22 @@ immutable config. Content sha256 không đổi. Sửa parser bị chặn khi fil
 revision mới làm validation/confirmation/DAG dependency stale, không mutate binding cũ.
 Preview có thể dùng parser dự kiến không lưu để operator xác nhận trước PATCH; các parser
 revision còn binding/recovery tham chiếu phải giữ. Schema workbook1.0 không thay đổi.
+
+Chi tiết lưu trữ T021: `revision` là version của UploadedFile cho ETag, bắt đầu1 và tăng
+ở mỗi UPDATE thực; ORM kiểm version cũ để phát hiện lost update. `parser_revision` trỏ tới
+snapshot riêng. Với CSV/TXT, cột nội bộ `parser_file_id` do DB tính bằng id; composite FK
+(parser_file_id, parser_revision) RESTRICT tới (file_id, revision), deferred để tạo file và
+revision1 trong cùng transaction. Với XLSX, parser_file_id là NULL vì workbook không dùng
+delimited parser. Chỉ commit CSV/TXT khi đã có snapshot; snapshot1 khớp parser ban đầu.
+Đổi parser lưu snapshot mới rồi đổi con trỏ trong cùng transaction, không sửa snapshot cũ;
+con trỏ chỉ tăng. Validation/dependency stale và khóa active/recovery thuộc T067/T042,
+không được suy từ ORM thành nghiệm thu các service đó.
+
+Hash parser là SHA256 UTF-8 của PostgreSQL JSONB array text theo thứ tự cố định
+[encoding, delimiter, header_present, quote_char, escape_char, null_token]; DB sinh và kiểm
+hash đầu vào nếu có. SQL NULL escape khác chuỗi rỗng, NULL token giữ nguyên text kể cả `\\N`.
+History không cho UPDATE bất kỳ field; xóa revision hiện hành bị FK RESTRICT. Khi có model
+binding/recovery, các FK RESTRICT riêng phải bảo vệ revision cũ; nhánh đó chưa kiểm ở T021.
 
 Các history APIs đọc DefinitionUpload/TableCreationJob/TableCreationResult/TableDefinition,
 phân trang/sort created_at+id và filter target/upload/state; không dựa IDs trong browser storage.

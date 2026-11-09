@@ -1,0 +1,93 @@
+{
+  "captured_at": "2026-11-09T07:13:33.485442+00:00",
+  "task": "T019",
+  "status": "PARTIAL",
+  "task_checkbox": "UNCHECKED",
+  "reason": "Code-change denial with actual business dependency has not been exercised; no fake dependency table and no T020 implementation",
+  "scope": "docs/decisions/t019-local-scope.json",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "checks": {
+    "RED_before_models": {
+      "failed": 14,
+      "reason": "Missing T019 models"
+    },
+    "real_postgres_real_ORM_DDL": {
+      "passed": 15,
+      "status": "PASS"
+    },
+    "code_change_with_real_business_dependency": {
+      "status": "NOT_RUN"
+    },
+    "T016_regression": {
+      "passed": 1,
+      "failed": 6,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T017_regression": {
+      "failed": 28,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T018": {
+      "status": "REUSED_PASS_UNCHANGED_SOURCE",
+      "evidence": "docs/testing/t018-results.json"
+    }
+  },
+  "fixture": {
+    "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+    "runner_image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+    "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+    "task": "T019",
+    "test_paths": [
+      "/tmp/tests/integration/test_connection_models.py"
+    ],
+    "test_exit_code": 0,
+    "log": "docs/testing/t014-round2-logs/local-t019-orm-green.log",
+    "existing_services_modified": false
+  },
+  "source_sha256": {
+    "packages/aat_metadata/models/__init__.py": "b8754cf2a046c0f97a7c0c5436df86647de444ae41c03b34a3c664f342b3740b",
+    "packages/aat_metadata/models/base.py": "f7119e9f92f16b0230dd702db8ec21278b058a21359ffc4f627c584a651c09ee",
+    "packages/aat_metadata/models/connections.py": "e30c083bafdd7ffb348ed9500d2a6d534649df72d571fd5dfb4a6ccc4b62a28a",
+    "tests/integration/test_connection_models.py": "4c72ef016bc73d1ad082f304650d38d704db88d7cf7e1d076d491b9a8b451ce4",
+    "tests/integration/test_authorization_repository.py": "93f025170a2120ee5c38c5f53b5781bd460a0e8a885fe5eeb26e3a7291d387a0",
+    "tests/tools/run_metadata_foundation.py": "5588c37691b7b564446f03a5abcd053900b6a804af9362f66dd9056a6ecd954e",
+    "specs/001-airflow-automation-tool/data-model.md": "f57f834f301771aabc361be10a4c7ab2f7b7d1c5e2cb5b5e460a65749de9f4f5"
+  },
+  "unchanged_primitive": "packages/aat_metadata/secrets/codec.py",
+  "canonical_design_delta": "ConnectionRevision.database_type snapshot added before field implementation to preserve FR-008 old-run endpoint type",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "not_run": [
+    "Code guard positive branch with real business dependency",
+    "Full backend/runtime role grant acceptance T030/T031",
+    "Alembic T029",
+    "Foundation T034",
+    "New builds/scans/CI/clean checkout"
+  ],
+  "service_preservation": {
+    "aat-phase1-t014-ab-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-r3-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-local-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    }
+  },
+  "fixture_cleanup": "PASS",
+  "new_dependency_or_image": false,
+  "post_hooks": "NOT_REGISTERED",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "task_counts": {
+    "total": 152,
+    "checked": 17,
+    "T019": "UNCHECKED_PARTIAL"
+  },
+  "next_task": "T020 if separately authorized, with affected T019 dependency guard test; T020 depends on T016"
+}

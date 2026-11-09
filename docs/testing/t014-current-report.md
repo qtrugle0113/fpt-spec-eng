@@ -1,3 +1,42 @@
+# T014 hiện hành — conditional local review, 2026-11-09
+
+**Cập nhật hiện hành T021 — 2026-11-09:** hoàn thành phạm vi ORM source/constraints:
+47/47 PG tests PASS (16 mới và31 regression T019/T020). Parser history/hash bất biến và
+UploadedFile.revision cho ETag đã kiểm; binding/recovery/service/API/migrations NOT_RUN.
+T0161PASS/6RED, T01728RED không đổi. Chưa triển khai T022 trở đi, chưa build/deploy/scan/CI mới.
+T014_FULL BLOCKED/security FAIL; quyền local giữ hạn23/11 00:00 UTC+09/review16/11,
+không mở rộng ngoại lệ hoặc image IDs. [Báo cáo T021](t021-report.md), [kết quả](t021-results.json).
+Các khối phía dưới là snapshot lịch sử.
+
+Cập nhật [T020/T019](t020-report.md):31PG checks PASS, T019 đã khép dependency branch bằng
+TableDefinition thật. Không triển khai T021 hoặc build/deploy mới. T014_FULL BLOCKED/security FAIL.
+
+Cập nhật [T019 ORM](t019-report.md):15PG checks PASS, task còn PARTIAL chờ kiểm code có
+dependency nghiệp vụ thật. Không build/deploy/scan mới; T014_FULL BLOCKED/security FAIL.
+
+Cập nhật [T018 schemas/health routing](t018-report.md): source-only checks PASS,
+readiness503 chưa đủ foundation; không build/deploy mới. T014_FULL BLOCKED/security FAIL.
+CI/scan mới NOT_RUN; quyền local không đổi hạn/scope ngoại lệ.
+
+Cập nhật T017: [tests state/repository đã viết, collect/RED đúng thiếu T031](t017-report.md).
+T014_FULL BLOCKED/security FAIL; quyền local còn hạn, không mở rộng findings/IDs.
+Chưa triển khai T018 trở đi; chức năng foundation chưa đạt.
+
+**Cập nhật sau xác nhận chủ dự án:** M0 PASS; PHASE2_LOCAL_ELIGIBILITY AUTHORIZED đến
+2026-11-23 00:00 UTC+09 (review16/11), chỉ T015/T016 trong lượt này. LEX-003 đóng theo
+mitigation local, D3/LEX-079 và mapping exact3IDs đã được reviewer/chủ dự án xác nhận.
+T014_FULL BLOCKED/security FAIL. T015 harness9PASS; T0161PASS/6FAIL RED dự kiến.
+Xem [báo cáo mới nhất](t015-t016-report.md),
+[quyết định kích hoạt](../decisions/t014-local-activation.json).
+Các đoạn pending review/BLOCKED local phía dưới là lịch sử trước xác nhận bổ sung.
+
+**T014_FULL BLOCKED; security FAIL; PHASE2_LOCAL_ELIGIBILITY BLOCKED.**
+D1/D2/D4 đã duyệt, D3/LEX-079 và LEX-003 còn cần reviewer xác nhận.
+Xem [hồ sơ kết luận cần review](t014-local-gate-review.md),
+[results và exact IDs](t014-local-gate-results.json), [delta findings](t014-local-findings-delta.json).
+Affected tests PASS; CI/clean checkout source mới và full scan 21 targets NOT_RUN.
+T015/T016 chưa triển khai. Các kết quả R3 dưới đây là lịch sử, không đại diện CI source mới.
+
 # Trạng thái T014 sau remediation vòng3 — 2026-11-09
 
 **T014/Phase1 vẫn BLOCKED bởi security. Implementation d57db09 đã commit/push và CI
@@ -169,3 +208,12 @@ Kết quả máy đọc: [t014-current-results.json](t014-current-results.json).
    chạy lại Windows/Linux CI trên SHA chứa thay đổi mới. Không dùng CI HEAD cũ thay CI source mới.
 
 T014 giữ chưa hoàn thành; các task Phase2 giữ nguyên.
+
+## Trạng thái quyền phát triển local, tách khỏi gate đầy đủ
+
+T014_FULL/security giữ kết quả đầy đủ theo snapshot đã kiểm, không đổi thành PASS.
+Quyền tiếp tục local chỉ xác định bằng quyết định chủ dự án còn hiệu lực và evidence
+khép LEX-003/D3/controls theo docs/proposals/t014-conditional-local-gate.md.
+Nếu thiếu quyết định hoặc điều kiện kích hoạt thì PHASE2_LOCAL_ELIGIBILITY vẫn BLOCKED.
+Khi được kích hoạt phải ghi owner/reviewer/approval/expiry/baseline và IDs rõ trong báo cáo;
+quyền này không phải nghiệm thu đầy đủ Phase1 hoặc toàn bộ MVP.

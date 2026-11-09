@@ -1,5 +1,13 @@
 # Nghiên cứu và quyết định kỹ thuật
 
+Hiện hành2026-11-09: owner đã xác nhận LEX-003, LEX-079 và mapping ba candidate IDs;
+quyền local có hạn được kích hoạt theo [hồ sơ](../../docs/decisions/t014-local-activation.json).
+T014_FULL BLOCKED/security FAIL; chỉ viết tests T015/T016 lượt này.
+Test drivers tái sử dụng đúng images đã duyệt: contract trên Airflow candidate network=none;
+foundation trên backend-tests candidate + PostgreSQL baseline, tmpfs/internal network riêng.
+Không thêm dependency hoặc rebuild; wiring contract dependencies vào profile runner T034
+còn phải làm trước gate đó. Chi tiết [báo cáo](../../docs/testing/t015-t016-report.md).
+
 ## A/B đã được duyệt ngày 2026-11-09 — quyết định hiện hành
 
 Chủ dự án duyệt [A/B](../../docs/proposals/t014-round2-approval.md). File upstream
@@ -373,3 +381,16 @@ phải kiểm compatibility thực tế chứ không tự đổi version.
 **Nguồn:** [Podman5.8.3 compose](https://docs.podman.io/en/v5.8.3/markdown/podman-compose.1.html)
 quy định external provider/selection; [Podman Desktop Compose](https://podman-desktop.io/docs/compose/setting-up-compose)
 hướng dẫn xác minh provider. Không dùng tài liệu hoặc lệnh help thay integration tests.
+
+## Quyết định ngoại lệ local có hạn
+
+LEX-003 dùng backport Bookworm cùng version trong OS lock, không nâng distro/core.
+Đã resolve artifact và chain Debian InRelease→Packages→deb SHA256; cài offline trước
+network trong Airflow stage. Quyết định D1/D2/D4 tại `docs/decisions/t014-local-gate-approval.md`;
+reviewer chưa ký LEX-003/D3, nên chưa mở Phase2.
+
+Cơ chế chỉ có hiệu lực khi chủ dự án ký quyết định theo đề xuất conditional local.
+Risk acceptance khác reviewed not-affected; NO_FIX/build-only không tự miễn trừ.
+Giữ raw scan/severity/SBOM, T014_FULL BLOCKED khi chưa đủ full acceptance.
+Không nâng core hoặc rebase hàng loạt chỉ để kích hoạt local. Theo dõi owner/hạn/thu hồi
+và khép full security trước khi mở rộng triển khai.

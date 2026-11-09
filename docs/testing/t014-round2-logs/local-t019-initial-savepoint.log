@@ -1,0 +1,129 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 14 items
+
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_code_can_change_before_business_dependency_and_updated_at_is_aware PASSED [  7%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection PASSED [ 14%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_current_revision_must_belong_to_same_connection PASSED [ 21%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_and_nonempty_required_values_are_db_constraints PASSED [ 28%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential FAILED [ 35%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_normalized_code_is_trimmed_case_insensitive_unique_in_db PASSED [ 42%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_orm_revision_update_is_also_blocked_but_test_status_is_mutable PASSED [ 50%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_plaintext_secret_rejected_by_model_and_database PASSED [ 57%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_port_boundaries_are_enforced_by_postgresql PASSED [ 64%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history FAILED [ 71%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_revision_unique_per_connection_and_positive PASSED [ 78%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_and_connection_fk_reject_orphans PASSED [ 85%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_not_readable_by_airflow_or_public_default_grants PASSED [ 92%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable FAILED [100%]
+
+=================================== FAILURES ===================================
+_ ConnectionModelTests.test_direct_sql_cannot_mutate_revision_endpoint_or_credential _
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+The above exception was the direct cause of the following exception:
+/tmp/tests/integration/test_connection_models.py:127: in test_direct_sql_cannot_mutate_revision_endpoint_or_credential
+    self.connection.execute(text('UPDATE connection_revisions SET ' + column + '=:v WHERE id=:id'), {'v': value, 'id': revision.id})
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1421: in execute
+    return meth(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1848: in _execute_context
+    return self._exec_single_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   sqlalchemy.exc.InternalError: (psycopg.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+E   [SQL: UPDATE connection_revisions SET port=%(v)s WHERE id=%(id)s]
+E   [SQL parameters hidden due to hide_parameters=True]
+E   (Background on this error at: https://sqlalche.me/e/20/2j85)
+_ ConnectionModelTests.test_restrict_delete_preserves_revision_and_secret_history _
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+The above exception was the direct cause of the following exception:
+/tmp/tests/integration/test_connection_models.py:113: in test_restrict_delete_preserves_revision_and_secret_history
+    self.connection.execute(text('DELETE FROM ' + table + ' WHERE id=:id'), {'id': identity})
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1421: in execute
+    return meth(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1848: in _execute_context
+    return self._exec_single_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   sqlalchemy.exc.InternalError: (psycopg.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+E   [SQL: DELETE FROM connection_secrets WHERE id=%(id)s]
+E   [SQL parameters hidden due to hide_parameters=True]
+E   (Background on this error at: https://sqlalche.me/e/20/2j85)
+_____ ConnectionModelTests.test_stored_ciphertext_and_key_id_are_immutable _____
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+
+The above exception was the direct cause of the following exception:
+/tmp/tests/integration/test_connection_models.py:160: in test_stored_ciphertext_and_key_id_are_immutable
+    self.connection.execute(text('UPDATE connection_secrets SET ' + column + '=:v WHERE id=:id'), {'v': value, 'id': secret.id})
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1421: in execute
+    return meth(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1848: in _execute_context
+    return self._exec_single_context(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   sqlalchemy.exc.InternalError: (psycopg.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+E   [SQL: UPDATE connection_secrets SET key_id=%(v)s WHERE id=%(id)s]
+E   [SQL parameters hidden due to hide_parameters=True]
+E   (Background on this error at: https://sqlalche.me/e/20/2j85)
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable
+========================= 3 failed, 11 passed in 1.30s =========================

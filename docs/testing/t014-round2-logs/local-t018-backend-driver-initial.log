@@ -1,0 +1,29 @@
+test_common_schemas (unittest.loader._FailedTest.test_common_schemas) ... ERROR
+test_health_source (unittest.loader._FailedTest.test_health_source) ... ERROR
+
+======================================================================
+ERROR: test_common_schemas (unittest.loader._FailedTest.test_common_schemas)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_common_schemas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'tests.unit.test_common_schemas'
+
+
+======================================================================
+ERROR: test_health_source (unittest.loader._FailedTest.test_health_source)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_health_source
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'tests.integration.test_health_source'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

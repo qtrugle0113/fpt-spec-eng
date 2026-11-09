@@ -39,6 +39,7 @@ services:
     command: [python, -m, docker.bootstrap.secrets]
     volumes:
       - bootstrap_secrets:/secrets/bootstrap_secrets
+      - app_owner_secrets:/secrets/app_owner_secrets
       - backend_secrets:/secrets/backend_secrets
       - runtime_secrets:/secrets/runtime_secrets
       - airflow_secrets:/secrets/airflow_secrets
@@ -104,8 +105,11 @@ services:
     <<: *backend
     user: '0:0'
     restart: 'no'
-    command: [python, /opt/aat/docker/bootstrap/initialize.py]
+    command: [python, /opt/aat/docker/bootstrap/app_init.py]
     volumes:
+      - app_owner_secrets:/secrets/app-owner:ro
+      - backend_secrets:/secrets/backend:ro
+      - app_keyring:/secrets/app_keyring:ro
       - type: volume
         source: generated_dags
         target: /data/generated_dags
@@ -199,7 +203,7 @@ services:
     <<: *backend
     restart: unless-stopped
     mem_limit: 512m
-    command: [python, /opt/aat/docker/bootstrap/worker.py]
+    command: [python, -m, aat_api.workers.main]
     volumes:
       - backend_secrets:/secrets/backend:ro
       - app_keyring:/secrets/app_keyring:ro
@@ -230,6 +234,8 @@ services:
     <<: *backend
     restart: unless-stopped
     mem_limit: 512m
+    environment:
+      AAT_ALLOWED_ORIGINS: http://localhost:${AAT_FRONTEND_PORT:-3000},http://127.0.0.1:${AAT_FRONTEND_PORT:-3000}
     ports: ['127.0.0.1:${AAT_BACKEND_PORT:-8000}:8000']
     volumes:
       - backend_secrets:/secrets/backend:ro
@@ -244,7 +250,7 @@ services:
       backend-worker: {condition: service_healthy}
       airflow-apiserver: {condition: service_healthy}
     healthcheck:
-      test: [CMD, python, /opt/aat/docker/bootstrap/health.py, live]
+      test: [CMD, python, /opt/aat/docker/bootstrap/health.py, ready]
       interval: 10s
       timeout: 3s
       retries: 5
@@ -294,6 +300,7 @@ volumes:
   uploads:
   staging:
   bootstrap_secrets:
+  app_owner_secrets:
   backend_secrets:
   runtime_secrets:
   airflow_secrets:

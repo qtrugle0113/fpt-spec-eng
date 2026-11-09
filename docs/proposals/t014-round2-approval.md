@@ -99,3 +99,10 @@ CI sample bytes Windows/Linux đã PASS ở SHA `99cdfefc1c287033f35cad4085fa9ef
 [run42493618597](https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597).
 CI này không phải full bootstrap hoặc security PASS; các thay đổi source sau đó phải có
 run mới đúng SHA và chạy lại kiểm chứng bị ảnh hưởng.
+
+## Phạm vi quyết định local sau này
+
+Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
+của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
+phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
+147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.

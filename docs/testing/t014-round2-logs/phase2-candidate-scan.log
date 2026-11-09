@@ -1,0 +1,8 @@
+SCAN_PREFLIGHT_PASS 3 targets
+SCAN_START phase2-backend-wheels 2d8379549a70e80b3720b3ee2295eb012cdbbbf95eb6936dc7004cfac183eabb
+SCAN_COMPLETE phase2-backend-wheels
+SCAN_START phase2-backend 8e2bb8d21f53dab57f313b4096a91a7c2d9ae67f3c9edcec7d5a70d21fa02655
+SCAN_COMPLETE phase2-backend
+SCAN_START phase2-backend-tests b5ac9f5d1a769d38f31e4392bf14bf82dd0e4959b007e85a9f3671bb410109a3
+SCAN_COMPLETE phase2-backend-tests
+SCAN_REPORT_WRITTEN docs\testing\phase2-candidate-security.json

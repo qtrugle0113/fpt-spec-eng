@@ -1,0 +1,38 @@
+[
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 48080
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 48000
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 43000
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 28080
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 28000
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 23000
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 18080
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 18000
+  },
+  {
+    "LocalAddress": "127.0.0.1",
+    "LocalPort": 13000
+  }
+]

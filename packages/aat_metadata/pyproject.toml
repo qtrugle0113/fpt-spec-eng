@@ -7,7 +7,7 @@ name = "aat-metadata"
 version = "0.1.0"
 description = "Metadata dùng chung giữa backend và ETL runtime"
 requires-python = ">=3.12"
-dependencies = ["SQLAlchemy==2.0.52", "cryptography==50.0.1"]
+dependencies = ["SQLAlchemy==2.0.52", "cryptography==50.0.1", "psycopg[binary]==3.3.5"]
 
 [tool.setuptools]
 package-dir = {aat_metadata = "."}

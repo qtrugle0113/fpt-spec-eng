@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 2 items
+
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict PASSED [ 50%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist PASSED [100%]
+
+============================== 2 passed in 5.77s ===============================

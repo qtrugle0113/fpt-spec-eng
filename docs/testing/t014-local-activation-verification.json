@@ -1,0 +1,373 @@
+{
+  "captured_at": "2026-11-09T05:51:47.332986+00:00",
+  "source_hash_mismatches": [],
+  "candidate_ids_verified": [
+    {
+      "name": "local-airflow-security-stage",
+      "ref": "localhost/aat-airflow-local-security-base:0.1.0",
+      "image_id": "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+      "counts": {
+        "HIGH": 146,
+        "LOW": 325,
+        "MEDIUM": 339,
+        "UNKNOWN": 7,
+        "CRITICAL": 21
+      }
+    },
+    {
+      "name": "local-airflow-final",
+      "ref": "localhost/aat-airflow-local-candidate:0.1.0",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 105,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      }
+    },
+    {
+      "name": "local-backend-tests",
+      "ref": "localhost/aat-backend-tests-local-candidate:0.1.0",
+      "image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 40,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      }
+    }
+  ],
+  "containers": [
+    {
+      "name": "aat-phase1-t014-local-20261109-secrets-init-1",
+      "state": "exited",
+      "health": null,
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "user": "0:0",
+      "memory_limit": 0,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/secrets/runtime_secrets",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/airflow_secrets",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/app_keyring",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/postgres_secrets",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/mysql_secrets",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/bootstrap_secrets",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/backend_secrets",
+          "read_write": true
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-postgres-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "user": "",
+      "memory_limit": 1073741824,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/var/lib/postgresql/data",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-mysql-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+      "user": "",
+      "memory_limit": 1073741824,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/var/lib/mysql",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-db-init-1",
+      "state": "exited",
+      "health": null,
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "user": "50000:50000",
+      "memory_limit": 0,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/secrets/bootstrap_secrets",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-app-init-1",
+      "state": "exited",
+      "health": null,
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "user": "0:0",
+      "memory_limit": 0,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/data/generated_dags",
+          "read_write": true
+        },
+        {
+          "destination": "/data/uploads",
+          "read_write": true
+        },
+        {
+          "destination": "/data/staging",
+          "read_write": true
+        },
+        {
+          "destination": "/data/airflow_logs",
+          "read_write": true
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-backend-worker-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "user": "50000:50000",
+      "memory_limit": 536870912,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/secrets/app_keyring",
+          "read_write": false
+        },
+        {
+          "destination": "/data/uploads",
+          "read_write": true
+        },
+        {
+          "destination": "/data/staging",
+          "read_write": true
+        },
+        {
+          "destination": "/data/generated_dags",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/backend",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-init-1",
+      "state": "exited",
+      "health": null,
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "user": "airflow",
+      "memory_limit": 0,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/opt/airflow/dags",
+          "read_write": false
+        },
+        {
+          "destination": "/opt/airflow/logs",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/airflow",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-dag-processor-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "user": "airflow",
+      "memory_limit": 1073741824,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/opt/airflow/dags",
+          "read_write": false
+        },
+        {
+          "destination": "/opt/airflow/logs",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/airflow",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-apiserver-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "user": "airflow",
+      "memory_limit": 1073741824,
+      "privileged": false,
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "48080"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "destination": "/opt/airflow/dags",
+          "read_write": false
+        },
+        {
+          "destination": "/opt/airflow/logs",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/airflow",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-airflow-scheduler-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "user": "airflow",
+      "memory_limit": 2147483648,
+      "privileged": false,
+      "ports": {},
+      "mounts": [
+        {
+          "destination": "/data/staging",
+          "read_write": true
+        },
+        {
+          "destination": "/opt/airflow/dags",
+          "read_write": false
+        },
+        {
+          "destination": "/opt/airflow/logs",
+          "read_write": true
+        },
+        {
+          "destination": "/secrets/airflow",
+          "read_write": false
+        },
+        {
+          "destination": "/secrets/runtime",
+          "read_write": false
+        },
+        {
+          "destination": "/secrets/app_keyring",
+          "read_write": false
+        },
+        {
+          "destination": "/data/uploads",
+          "read_write": false
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-backend-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "user": "50000:50000",
+      "memory_limit": 536870912,
+      "privileged": false,
+      "ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "48000"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "destination": "/secrets/backend",
+          "read_write": false
+        },
+        {
+          "destination": "/secrets/app_keyring",
+          "read_write": false
+        },
+        {
+          "destination": "/data/uploads",
+          "read_write": true
+        }
+      ]
+    },
+    {
+      "name": "aat-phase1-t014-local-20261109-frontend-1",
+      "state": "running",
+      "health": "healthy",
+      "image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2",
+      "user": "",
+      "memory_limit": 134217728,
+      "privileged": false,
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "43000"
+          }
+        ]
+      },
+      "mounts": []
+    }
+  ],
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "status": "PASS",
+  "data_scope": "Existing synthetic bootstrap samples only; no external inputs authorized",
+  "review_source": "Explicit project-owner message confirming LEX-003, LEX-079 and316 C occurrences on3 exact IDs",
+  "prior_runtime_evidence": "docs/testing/t014-local-gate-results.json"
+}

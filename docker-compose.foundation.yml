@@ -1,0 +1,54 @@
+name: ${COMPOSE_PROJECT_NAME:-aat-foundation}
+
+services:
+  fixture-secrets:
+    image: localhost/aat-backend-tests-phase2-candidate:0.1.0
+    profiles: [foundation]
+    user: '0:0'
+    network_mode: none
+    mem_limit: 128m
+    command: [python, -c, "import os,secrets,pathlib; p=pathlib.Path('/run/fixture/password'); p.write_text(secrets.token_urlsafe(32)); os.chown(p,50000,50000); p.chmod(0o400); os.chown('/run/fixture',50000,50000); os.chmod('/run/fixture',0o700)"]
+    volumes: [fixture_credentials:/run/fixture]
+
+  foundation-postgres:
+    image: localhost/aat-postgres:17.11
+    profiles: [foundation]
+    mem_limit: 256m
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/fixture/password
+      POSTGRES_DB: app_metadata
+    volumes: [fixture_credentials:/run/fixture:ro]
+    tmpfs: ['/var/lib/postgresql/data:rw,size=268435456']
+    networks: [fixture]
+    depends_on:
+      fixture-secrets: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres, -d, app_metadata]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  foundation-tests:
+    image: localhost/aat-backend-tests-phase2-candidate:0.1.0
+    profiles: [foundation]
+    mem_limit: 512m
+    environment:
+      AAT_FOUNDATION_DISPOSABLE: '1'
+      AAT_APP_KEYRING: /tmp/aat-test-keyring
+      AAT_UPLOADS_ROOT: /tmp/aat-test-uploads
+      AAT_AIRFLOW_HEALTH_URL: http://aat-phase1-t014-local-20261109-airflow-apiserver-1:8080/api/v2/monitor/health
+      PYTHONPATH: /opt/aat
+    command: [python, /opt/aat/tests/tools/foundation_profile_entry.py]
+    volumes: [fixture_credentials:/run/fixture:ro]
+    networks: [fixture, airflow_reference]
+    depends_on:
+      foundation-postgres: {condition: service_healthy}
+
+networks:
+  fixture: {internal: true}
+  airflow_reference:
+    external: true
+    name: aat-phase1-t014-local-20261109_aat_internal
+
+volumes:
+  fixture_credentials:

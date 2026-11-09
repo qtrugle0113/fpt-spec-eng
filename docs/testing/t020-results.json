@@ -1,0 +1,101 @@
+{
+  "captured_at": "2026-11-09T07:28:42.006424+00:00",
+  "tasks": [
+    "T020",
+    "affected T019 closure"
+  ],
+  "status": "PASS_ORM_SOURCE_AND_CONSTRAINTS_ONLY",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "scope": "docs/decisions/t020-local-scope.json",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "checks": {
+    "RED_before_implementation": {
+      "passed": 15,
+      "failed": 16
+    },
+    "T020_and_affected_T019": {
+      "status": "PASS",
+      "passed": 31,
+      "new": 16,
+      "regression_T019": 15
+    },
+    "T019_actual_business_dependency": {
+      "status": "PASS",
+      "ORM": true,
+      "direct_SQL": true,
+      "fake_dependency_table": false
+    },
+    "T016": {
+      "passed": 1,
+      "failed": 6,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T017": {
+      "failed": 28,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T018": {
+      "status": "REUSED_PASS_SOURCE_UNCHANGED"
+    }
+  },
+  "fixture": {
+    "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+    "runner_image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+    "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+    "task": "T020",
+    "test_paths": [
+      "/tmp/tests/integration/test_connection_models.py",
+      "/tmp/tests/integration/test_definition_models.py"
+    ],
+    "test_exit_code": 0,
+    "log": "docs/testing/t014-round2-logs/local-t020-orm-green.log",
+    "existing_services_modified": false
+  },
+  "source_sha256": {
+    "packages/aat_metadata/models/definitions.py": "6027570bad1a046419c41476bcaa2afd934f377ed12d21a0e8322fb8de3190ef",
+    "tests/integration/test_definition_models.py": "f5bdd23cb6ec2370cfac628d87e48045ec018b122b97d9da5879d6701006a709",
+    "tests/integration/test_authorization_repository.py": "ca544aee2f39e25dfb781fd47b0a17724d49f4e72298569bdf6b11e7599ac3b6",
+    "tests/tools/run_metadata_foundation.py": "6b358e60b2b970e871985bf0505393674ad9081ff034543820d67da346db1e8f",
+    "specs/001-airflow-automation-tool/data-model.md": "bc3493948167c4a7cc32e536dd024fd7254530b6fd1e198974a8bf5638d50c4c"
+  },
+  "production_T019_models_changed": false,
+  "new_images_or_dependency": false,
+  "findings_approval_changed": false,
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "NOT_RUN": [
+    "T021 parser revision/history",
+    "T029 Alembic",
+    "T034 foundation readiness",
+    "T042 dependency admission/concurrency/full role checks",
+    "new build/scan/CI/clean checkout",
+    "target table DDL/parser/API acceptance"
+  ],
+  "service_preservation": {
+    "aat-phase1-t014-ab-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-r3-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-local-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    }
+  },
+  "fixture_cleanup": "PASS",
+  "post_hooks": "NOT_REGISTERED",
+  "task_counts": {
+    "total": 152,
+    "checked": 19,
+    "T014": "UNCHECKED",
+    "T019": "CHECKED",
+    "T020": "CHECKED",
+    "T021_onward": "UNCHECKED"
+  },
+  "next_task": "T021_NOT_STARTED"
+}

@@ -228,3 +228,18 @@ input/checksum/source snapshot, expected/actual values/rows, state/log/metrics v
 NOT_RUN/BLOCKED/FAILED khác PASS; không chạy test thì không báo PASS.
 Tài liệu này và các artifact Plan chưa chứng minh MVP đã hoạt động. Chỉ bắt đầu triển khai
 sau khi đồng bộ bản152task với cập nhật Plan2026-11-08, Analyze lại và xử lý cổng reviewer.
+
+## Quyền phát triển local có điều kiện
+
+Hiện hành2026-11-09: M0 khép theo chủ dự án; quyền local đến2026-11-23 00:00 UTC+09,
+review16/11, scope lượt này chỉ viết tests T015/T016. [Activation](../../docs/decisions/t014-local-activation.json)
+và [lệnh/kết quả tests](../../docs/testing/t015-t016-report.md). T014_FULL vẫn BLOCKED,
+security FAIL; chưa nghiệm thu foundation hoặc chức năng sản phẩm.
+
+Chỉ dùng khi có quyết định chủ dự án còn hạn và các điều kiện kích hoạt đã khép,
+theo docs/proposals/t014-conditional-local-gate.md. Đề xuất DRAFT không phải approval.
+Nhãn: bootstrap PASS; security FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS; T014_FULL BLOCKED;
+PHASE2_LOCAL_ELIGIBILITY chỉ AUTHORIZED khi owner/reviewer/baseline/controls/hạn đầy đủ.
+Migrations nghiệp vụ dùng namespace/volumes mới, giữ stack A/B/R3. Không dữ liệu thật,
+public/tunnel. Chưa nghiệm thu toàn bộ MVP; hết hạn/vượt scope thì dừng phần phụ thuộc,
+review lại, không tự gia hạn hoặc bỏ scanner.

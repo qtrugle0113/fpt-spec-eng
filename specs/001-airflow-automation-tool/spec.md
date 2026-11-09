@@ -1075,3 +1075,12 @@ sản phẩm tại bước Specify. Chỉ ghi đạt khi có execution/bằng ch
 
 Các giả định được ghi rõ để chủ dự án rà soát. Không có câu hỏi chặn lập Plan;
 việc hoàn thành tài liệu không có nghĩa MVP đã triển khai hoặc kiểm thử thành công.
+
+## Mốc phát triển/demo local có điều kiện
+
+Chỉ sau khi chủ dự án duyệt hồ sơ T014 local theo Constitution, cho phép mốc demo
+local/một operator/dữ liệu tổng hợp/loopback theo hạn và baseline đã duyệt.
+Không thu hẹp FR/US/NFR/SC, tám hướng ETL hoặc BR-08. Không dùng demo một bảng làm
+nghiệm thu MVP. Chức năng/secrets/data integrity/recovery phải kiểm theo phase.
+Không dữ liệu quan trọng/public/LAN/tunnel/endpoint không tin cậy. Trạng thái full gate
+và NOT_RUN vẫn công bố theo bằng chứng, không dùng quyền local như security PASS.

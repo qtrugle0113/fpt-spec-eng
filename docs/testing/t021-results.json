@@ -1,0 +1,120 @@
+{
+  "captured_at": "2026-11-09T07:57:55.895278+00:00",
+  "task": "T021",
+  "status": "PASS_ORM_SOURCE_AND_CONSTRAINTS_ONLY",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "baseline_commit": "b0c947d23f1e9c23e9ce0a57b634f9e7a4c7b4ab",
+  "scope": "docs/decisions/t021-local-scope.json",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "checks": {
+    "RED_before_implementation": {
+      "passed": 31,
+      "failed": 14,
+      "reason": "FileParserRevision missing"
+    },
+    "final_T021_and_T019_T020_regression": {
+      "status": "PASS",
+      "passed": 47,
+      "T021": 16,
+      "T019": 15,
+      "T020": 16
+    },
+    "real_commit_and_new_sessions": "PASS",
+    "T016": {
+      "passed": 1,
+      "failed": 6,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T017": {
+      "failed": 28,
+      "status": "UNCHANGED_EXPECTED_RED",
+      "concurrency_and_role_branches": "NOT_RUN"
+    },
+    "T018": "REUSED_PASS_ALL_RECORDED_SOURCE_HASHES_MATCH",
+    "syntax": "PASS",
+    "approval_mapping_and_T014_control_sources": "PASS_HASHES_UNCHANGED",
+    "upstream_constraints": "PASS_UNCHANGED",
+    "checklists": {
+      "requirements.md": [
+        16,
+        16,
+        0
+      ],
+      "spec-quality.md": [
+        48,
+        48,
+        0
+      ]
+    },
+    "git_diff_check": "PASS",
+    "T019_source_and_test_hashes": "PASS_UNCHANGED",
+    "report_links": "PASS"
+  },
+  "fixture": {
+    "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+    "runner_image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+    "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+    "task": "T021",
+    "test_paths": [
+      "/tmp/tests/integration/test_connection_models.py",
+      "/tmp/tests/integration/test_definition_models.py",
+      "/tmp/tests/integration/test_file_parser_models.py"
+    ],
+    "test_exit_code": 0,
+    "log": "docs/testing/t014-round2-logs/local-t021-orm-green.log",
+    "existing_services_modified": false
+  },
+  "source_sha256": {
+    "packages/aat_metadata/models/definitions.py": "7cbe559bd7775750f3d396edf9240f07f8f890c0d83d89574410ba056dc925ab",
+    "packages/aat_metadata/models/file_parsers.py": "f4d5221773633c270934425df61f1e2b1c669558354edfc1a6a8e5603aa266d3",
+    "tests/integration/test_file_parser_models.py": "973e995d8077dc56549c17c77f3b03d92cb91ad6a6036d78b2f743b0174cc178",
+    "tests/tools/run_metadata_foundation.py": "a7309374dbd1c0e25de8ced8dacd68fa0ce7a96f73397c477d45b925ceca65f0",
+    "tests/integration/test_connection_models.py": "4c72ef016bc73d1ad082f304650d38d704db88d7cf7e1d076d491b9a8b451ce4",
+    "tests/integration/test_definition_models.py": "f5bdd23cb6ec2370cfac628d87e48045ec018b122b97d9da5879d6701006a709",
+    "specs/001-airflow-automation-tool/data-model.md": "b399a3feb05071d39d5f44c537f14a018660c5bad5155e536fc7961afb908b2b"
+  },
+  "baseline_candidate_ids_verified": [
+    "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+    "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+    "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4"
+  ],
+  "new_images_or_dependency": false,
+  "findings_approval_changed": false,
+  "upstream_constraints_sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+  "approved_mapping_sha256": "b1e22a2984bac5cdd3b04ac0c54b4f7111757096eab47e5b24afd792208c0713",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "NOT_RUN": [
+    "binding/recovery FK safety and active-run parser edit blocking (T025/T042/T067)",
+    "HTTP ETag/If-Match and repository concurrency (T028/T067)",
+    "validation/dependency/confirmation invalidation (T067)",
+    "T029 Alembic",
+    "T034 product foundation",
+    "new build/scan/CI/clean checkout",
+    "parser/upload API and actual ETL acceptance"
+  ],
+  "service_preservation": {
+    "aat-phase1-t014-ab-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-r3-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-local-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    }
+  },
+  "deployed_services_updated": false,
+  "fixture_cleanup": "PASS",
+  "post_hooks": "NOT_REGISTERED",
+  "task_counts": {
+    "total": 152,
+    "checked": 20
+  },
+  "next_task": "T022_NOT_STARTED"
+}

@@ -1,13 +1,11 @@
 <!--
-Báo cáo tác động đồng bộ — sửa đổi đã được chủ dự án duyệt ngày 2026-11-08.
-- Phiên bản: 1.0.0 → 1.1.0 (MINOR): bổ sung Podman, giữ lựa chọn Docker và mọi gate an toàn.
-- IX: Docker một lệnh → Linux containers một lệnh trên runtime/provider công bố.
-- XII, ràng buộc kiến trúc và cổng nghiệm thu: thuật ngữ runtime trung lập.
-- Đồng bộ Spec/Plan/Tasks/Research/Quickstart/README và bằng chứng reviewer bị ảnh hưởng.
-- Không thay BR-08, API/Excel schema, readiness, persistence, secrets, quotas hoặc tests.
-- Bản duyệt và ma trận chuyển đổi: docs/proposals/podman-support.md.
-- Không có placeholder quản trị còn treo; compatibility runtime vẫn phải kiểm thực tế.
-- Báo cáo tác động này là ghi chú review, bỏ trước khi commit Constitution đã sửa đổi.
+Báo cáo tác động đồng bộ — D1 được chủ dự án duyệt trong hội thoại ngày2026-11-09.
+- Phiên bản đề xuất: 1.1.0 → 1.2.0 (MINOR): thêm quyền phát triển local có hạn,
+  tách khỏi nghiệm thu đầy đủ; không thay yêu cầu an toàn/chức năng hoặc task completion.
+- Đồng bộ Spec/Plan/Tasks/Research/README/Quickstart và báo cáo hiện hành.
+- Quyết định, reviewer, baseline, controls, hạn và thu hồi theo đề xuất T014 local.
+- Quyết định: docs/decisions/t014-local-gate-approval.md; local đã kích hoạt có hạn theo
+  docs/decisions/t014-local-activation.json sau xác nhận D3/LEX-003; full T014 vẫn BLOCKED.
 -->
 
 # Hiến chương dự án Airflow Automation Tool
@@ -288,4 +286,18 @@ không được dùng để bỏ yêu cầu bắt buộc của sản phẩm khi 
 - Bản 1.0.0 là lần ban hành đầu tiên theo yêu cầu của chủ dự án. Bước này chỉ thiết lập
   quy tắc quản trị; chưa phải bằng chứng triển khai hoặc nghiệm thu chức năng ứng dụng.
 
-**Phiên bản**: 1.1.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-08
+**Phiên bản**: 1.2.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-09
+
+## Quyền phát triển local có điều kiện, tách khỏi nghiệm thu đầy đủ
+
+Sau phê duyệt quản trị của chủ dự án, có thể cấp quyền phát triển local có hạn cho
+một operator/dữ liệu tổng hợp/loopback khi bootstrap có bằng chứng và mọi ngoại lệ được
+ghi theo exact advisory/package/image IDs. Đây không phải nghiệm thu task/sản phẩm.
+T014 đầy đủ vẫn BLOCKED và checkbox chưa hoàn thành khi security chưa đạt.
+Hồ sơ PHẢI có owner/reviewer/approval timestamp, baseline, controls, hạn và thu hồi;
+không tự duyệt/gia hạn. Finding bắt buộc trước local PHẢI được khép theo hồ sơ.
+Không miễn trừ secrets/auth/data integrity/BR-08, tests chức năng hoặc safety gates.
+Phase sau chỉ bắt đầu theo ngoại lệ dependency đã đồng bộ trong Tasks và quyết định
+đang hiệu lực. Hết hạn/vượt scope/mismatch/exploit thì dừng phần phụ thuộc và review lại.
+Quyền này không áp dụng cho public/dữ liệu quan trọng hoặc bàn giao đầy đủ.
+Cơ sở: docs/proposals/t014-conditional-local-gate.md và quyết định chủ dự án ghi riêng.

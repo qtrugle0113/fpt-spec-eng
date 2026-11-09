@@ -1,0 +1,216 @@
+--- a/.specify/memory/constitution.md
++++ b/.specify/memory/constitution.md
+@@ -1,13 +1,10 @@
+ <!--
+-Báo cáo tác động đồng bộ — sửa đổi đã được chủ dự án duyệt ngày 2026-11-08.
+-- Phiên bản: 1.0.0 → 1.1.0 (MINOR): bổ sung Podman, giữ lựa chọn Docker và mọi gate an toàn.
+-- IX: Docker một lệnh → Linux containers một lệnh trên runtime/provider công bố.
+-- XII, ràng buộc kiến trúc và cổng nghiệm thu: thuật ngữ runtime trung lập.
+-- Đồng bộ Spec/Plan/Tasks/Research/Quickstart/README và bằng chứng reviewer bị ảnh hưởng.
+-- Không thay BR-08, API/Excel schema, readiness, persistence, secrets, quotas hoặc tests.
+-- Bản duyệt và ma trận chuyển đổi: docs/proposals/podman-support.md.
+-- Không có placeholder quản trị còn treo; compatibility runtime vẫn phải kiểm thực tế.
+-- Báo cáo tác động này là ghi chú review, bỏ trước khi commit Constitution đã sửa đổi.
++Báo cáo tác động đồng bộ — DỰ THẢO local, chỉ áp dụng sau quyết định chủ dự án.
++- Phiên bản đề xuất: 1.1.0 → 1.2.0 (MINOR): thêm quyền phát triển local có hạn,
++  tách khỏi nghiệm thu đầy đủ; không thay yêu cầu an toàn/chức năng hoặc task completion.
++- Đồng bộ Spec/Plan/Tasks/Research/README/Quickstart và báo cáo hiện hành.
++- Quyết định, reviewer, baseline, controls, hạn và thu hồi theo đề xuất T014 local.
++- Ngày sửa đổi/approval phải xác nhận theo quyết định thực tế trước khi áp dụng.
+ -->
+ 
+ # Hiến chương dự án Airflow Automation Tool
+@@ -288,4 +285,18 @@
+ - Bản 1.0.0 là lần ban hành đầu tiên theo yêu cầu của chủ dự án. Bước này chỉ thiết lập
+   quy tắc quản trị; chưa phải bằng chứng triển khai hoặc nghiệm thu chức năng ứng dụng.
+ 
+-**Phiên bản**: 1.1.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-08
++**Phiên bản**: 1.2.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-09
++
++## Quyền phát triển local có điều kiện, tách khỏi nghiệm thu đầy đủ
++
++Sau phê duyệt quản trị của chủ dự án, có thể cấp quyền phát triển local có hạn cho
++một operator/dữ liệu tổng hợp/loopback khi bootstrap có bằng chứng và mọi ngoại lệ được
++ghi theo exact advisory/package/image IDs. Đây không phải nghiệm thu task/sản phẩm.
++T014 đầy đủ vẫn BLOCKED và checkbox chưa hoàn thành khi security chưa đạt.
++Hồ sơ PHẢI có owner/reviewer/approval timestamp, baseline, controls, hạn và thu hồi;
++không tự duyệt/gia hạn. Finding bắt buộc trước local PHẢI được khép theo hồ sơ.
++Không miễn trừ secrets/auth/data integrity/BR-08, tests chức năng hoặc safety gates.
++Phase sau chỉ bắt đầu theo ngoại lệ dependency đã đồng bộ trong Tasks và quyết định
++đang hiệu lực. Hết hạn/vượt scope/mismatch/exploit thì dừng phần phụ thuộc và review lại.
++Quyền này không áp dụng cho public/dữ liệu quan trọng hoặc bàn giao đầy đủ.
++Cơ sở: docs/proposals/t014-conditional-local-gate.md và quyết định chủ dự án ghi riêng.
+--- a/specs/001-airflow-automation-tool/spec.md
++++ b/specs/001-airflow-automation-tool/spec.md
+@@ -1075,3 +1075,12 @@
+ 
+ Các giả định được ghi rõ để chủ dự án rà soát. Không có câu hỏi chặn lập Plan;
+ việc hoàn thành tài liệu không có nghĩa MVP đã triển khai hoặc kiểm thử thành công.
++
++## Mốc phát triển/demo local có điều kiện
++
++Chỉ sau khi chủ dự án duyệt hồ sơ T014 local theo Constitution, cho phép mốc demo
++local/một operator/dữ liệu tổng hợp/loopback theo hạn và baseline đã duyệt.
++Không thu hẹp FR/US/NFR/SC, tám hướng ETL hoặc BR-08. Không dùng demo một bảng làm
++nghiệm thu MVP. Chức năng/secrets/data integrity/recovery phải kiểm theo phase.
++Không dữ liệu quan trọng/public/LAN/tunnel/endpoint không tin cậy. Trạng thái full gate
++và NOT_RUN vẫn công bố theo bằng chứng, không dùng quyền local như security PASS.
+--- a/specs/001-airflow-automation-tool/plan.md
++++ b/specs/001-airflow-automation-tool/plan.md
+@@ -615,3 +615,12 @@
+ DB child images cùng server versions, gosu1.19 rebuild Go1.27.3 và bỏ mysql-shell.
+ Go source commit/hash và toolchain digest tại docker/gosu/source.lock.json.
+ Constraints và client/browser baseline không đổi; trial chỉ là evidence chờ duyệt.
++
++## Ngoại lệ dependency phát triển local T014
++
++Chỉ theo quyết định chủ dự án còn hiệu lực, Phase2 được bắt đầu khi bootstrap PASS,
++LEX-003/D3 đã khép và controls/147 ngoại lệ được duyệt theo đề xuất local.
++T014_FULL vẫn BLOCKED; không dùng security PASS. Giữ gate T034/T046/T060/T095/T120;
++mốc demo theo dõi/lỗi tới T127, không chờ Dashboard polish; giữ8phases và MVP.
++Scan và mapping exception→IDs phải review lại khi baseline thay, không blanket waiver.
++Nguồn: docs/proposals/t014-conditional-local-gate.md và hồ sơ quyết định sau phê duyệt.
+--- a/specs/001-airflow-automation-tool/tasks.md
++++ b/specs/001-airflow-automation-tool/tasks.md
+@@ -49,7 +49,7 @@
+ ## Phase 2 — Nền tảng Backend
+ 
+ **Mục tiêu**: Repository/schema/contracts/error/worker dùng chung; hoàn thiện app-init.
+-**Điều kiện bắt đầu**: T014 đạt; contracts và Data Model là đầu vào canonical.
++**Điều kiện bắt đầu**: T014 đạt đầy đủ HOẶC hồ sơ quyền local được chủ dự án duyệt/còn hạn, LEX-003/D3 đã khép và controls/exception IDs đã kiểm. T014 giữ `[ ]` nếu full security còn FAIL. Contracts/Data Model vẫn canonical. Ngoại lệ dependency T014 chỉ cho T015/T016 trong scope local, không hạ gate chức năng các phase sau; xem `docs/proposals/t014-conditional-local-gate.md`.
+ **Kết quả dự kiến**: Application metadata riêng, API typed, errors an toàn, worker durable, schema/migration readiness.
+ **Cách kiểm tra/test**: T015/T016 viết trước triển khai; T034 chạy unit/API/integration thật.
+ **Điều kiện hoàn thành**: T015–T034 đạt, schema/repository/migrations/seed và Operation recovery đúng, worker phục hồi không replay side effect chưa rõ; chưa nghiệm thu Connections CRUD hoặc Settings API thuộc Phase3/7.
+@@ -93,7 +93,7 @@
+ - [ ] T043 [US2] Tạo Connections routes/Test Connection tại `backend\src\aat_api\routes\connections.py`; dùng service shared, status/tested_at thật, required dependencies resource refs và needs_revalidation đúng OpenAPI, GET không secret; Phụ thuộc: T042; Truy vết: FR-005–FR-009; Kiểm chứng: T035/T036 chạy qua HTTP và DB thật, UI xem dependency trước sửa/xóa không cần gây lỗi409.
+ - [ ] T044 [US2] Sinh typed OpenAPI client tại `frontend\src\lib\api.generated.ts`, `frontend\src\lib\api.ts`; codegen từ contract, ErrorResponse và polling helpers, không any/secret cache; Phụ thuộc: T043, T003; Truy vết: NFR-010, Constitution IV; Kiểm chứng: typecheck và client nhận status/error chuẩn.
+ - [ ] T045 [US2] Tạo trang/forms Connections tại `frontend\src\features\connections\ConnectionForm.tsx`, `frontend\src\pages\Connections.tsx`; search/filter/details/test timestamp/Add/Edit/Delete/dependency warning, pending/error/readonly password; Phụ thuộc: T044; Truy vết: US-02, FR-005–FR-009, NFR-002; Kiểm chứng: UI English, keyboard, API thật, không optimistic success.
+-- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045, T013; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: chạy `podman compose --profile test run --rm e2e-tests npx playwright test connections.spec.ts` trên runner T004/T011 đã có; T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
++- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045, T013; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: chạy `podman compose --profile test run --rm e2e-tests node node_modules/@playwright/test/cli.js test connections.spec.ts` trên runner T004/T011 đã có; T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
+ 
+ ## Phase 4 — Table Management, US4 (P1)
+ 
+@@ -245,7 +245,7 @@
+ **Cách kiểm tra/test**: T138–T149 trên stack thật; T150/T151 tài liệu; T152 cổng cuối.
+ **Điều kiện hoàn thành**: Không mandatory test NOT_RUN/BLOCKED/FAILED; no Critical/High chưa giải quyết; không tuyên bố MVP hoàn thành chỉ với US1 hoặc core slice.
+ 
+-- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.56.1, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
++- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.65.0, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
+ - [ ] T139 [P] Tạo/chạy regression UI/API mới tại `tests\e2e\history_parser_authorization.spec.ts`; browser mới history/table detail, parser candidate/PATCH/stale/active-recovery guards, ONCE reserve/retry/rerun cần quyền mới, scheduled allow_empty consent/list/revoke warning và typed fields/dashboard lifetime; Phụ thuộc: T138, T058, T067, T116, T119; Truy vết: FR-015–FR-017, FR-028, FR-053–FR-054, FR-075, BR-08; Kiểm chứng: stack thật/browser1440/390, no secret hoặc success giả, readonly/unknown/stale feedback English.
+ - [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
+ - [ ] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
+--- a/specs/001-airflow-automation-tool/research.md
++++ b/specs/001-airflow-automation-tool/research.md
+@@ -373,3 +373,11 @@
+ **Nguồn:** [Podman5.8.3 compose](https://docs.podman.io/en/v5.8.3/markdown/podman-compose.1.html)
+ quy định external provider/selection; [Podman Desktop Compose](https://podman-desktop.io/docs/compose/setting-up-compose)
+ hướng dẫn xác minh provider. Không dùng tài liệu hoặc lệnh help thay integration tests.
++
++## Quyết định ngoại lệ local có hạn
++
++Cơ chế chỉ có hiệu lực khi chủ dự án ký quyết định theo đề xuất conditional local.
++Risk acceptance khác reviewed not-affected; NO_FIX/build-only không tự miễn trừ.
++Giữ raw scan/severity/SBOM, T014_FULL BLOCKED khi chưa đủ full acceptance.
++Không nâng core hoặc rebase hàng loạt chỉ để kích hoạt local. Theo dõi owner/hạn/thu hồi
++và khép full security trước khi mở rộng triển khai.
+--- a/README.md
++++ b/README.md
+@@ -164,3 +164,13 @@
+ chuyển toolchain gosu Go1.27.3 sang Alpine3.24 theo digest đã scan; giữ DB/core versions.
+ CI Windows/Linux của implementation commit d57db09 đã PASS. T014 chưa đóng vì security;
+ xem [báo cáo vòng3](docs/testing/t014-r3-report.md) để biết đúng IDs/phạm vi kiểm thử.
++
++## Quyền phát triển local có điều kiện
++
++Chỉ dùng khi có quyết định chủ dự án còn hạn và các điều kiện kích hoạt đã khép,
++theo docs/proposals/t014-conditional-local-gate.md. Đề xuất DRAFT không phải approval.
++Nhãn: bootstrap PASS; security FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS; T014_FULL BLOCKED;
++PHASE2_LOCAL_ELIGIBILITY chỉ AUTHORIZED khi owner/reviewer/baseline/controls/hạn đầy đủ.
++Migrations nghiệp vụ dùng namespace/volumes mới, giữ stack A/B/R3. Không dữ liệu thật,
++public/tunnel. Chưa nghiệm thu toàn bộ MVP; hết hạn/vượt scope thì dừng phần phụ thuộc,
++review lại, không tự gia hạn hoặc bỏ scanner.
+--- a/specs/001-airflow-automation-tool/quickstart.md
++++ b/specs/001-airflow-automation-tool/quickstart.md
+@@ -228,3 +228,13 @@
+ NOT_RUN/BLOCKED/FAILED khác PASS; không chạy test thì không báo PASS.
+ Tài liệu này và các artifact Plan chưa chứng minh MVP đã hoạt động. Chỉ bắt đầu triển khai
+ sau khi đồng bộ bản152task với cập nhật Plan2026-11-08, Analyze lại và xử lý cổng reviewer.
++
++## Quyền phát triển local có điều kiện
++
++Chỉ dùng khi có quyết định chủ dự án còn hạn và các điều kiện kích hoạt đã khép,
++theo docs/proposals/t014-conditional-local-gate.md. Đề xuất DRAFT không phải approval.
++Nhãn: bootstrap PASS; security FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS; T014_FULL BLOCKED;
++PHASE2_LOCAL_ELIGIBILITY chỉ AUTHORIZED khi owner/reviewer/baseline/controls/hạn đầy đủ.
++Migrations nghiệp vụ dùng namespace/volumes mới, giữ stack A/B/R3. Không dữ liệu thật,
++public/tunnel. Chưa nghiệm thu toàn bộ MVP; hết hạn/vượt scope thì dừng phần phụ thuộc,
++review lại, không tự gia hạn hoặc bỏ scanner.
+--- a/docs/proposals/t014-remediation.md
++++ b/docs/proposals/t014-remediation.md
+@@ -268,3 +268,10 @@
+ npm/browser hoặc NO_FIX còn chặn sau thử nghiệm. Quyền commit/push/chạy CI remote phải
+ được cấp riêng sau khi diff cuối sẵn sàng review. Chưa có security compatibility PASS cho
+ bất kỳ candidate nào; T014 và gate Phase1 tiếp tục BLOCKED.
++
++## Phạm vi quyết định local sau này
++
++Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
++của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
++phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
++147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.
+--- a/docs/proposals/t014-round2-approval.md
++++ b/docs/proposals/t014-round2-approval.md
+@@ -99,3 +99,10 @@
+ [run42493618597](https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/42493618597).
+ CI này không phải full bootstrap hoặc security PASS; các thay đổi source sau đó phải có
+ run mới đúng SHA và chạy lại kiểm chứng bị ảnh hưởng.
++
++## Phạm vi quyết định local sau này
++
++Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
++của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
++phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
++147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.
+--- a/docs/proposals/t014-round3-remediation.md
++++ b/docs/proposals/t014-round3-remediation.md
+@@ -63,3 +63,10 @@
+ [candidate manifests](../testing/t014-r3-candidate-manifests.json).
+ Gosu là binary static; kiểm build/version/UID và DB hardening trên candidate mới,
+ scan cả base lẫn gosu-build/final DB IDs. Không thay DB server versions hoặc volumes.
++
++## Phạm vi quyết định local sau này
++
++Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
++của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
++phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
++147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.
+--- a/docs/testing/t014-current-report.md
++++ b/docs/testing/t014-current-report.md
+@@ -169,3 +169,12 @@
+    chạy lại Windows/Linux CI trên SHA chứa thay đổi mới. Không dùng CI HEAD cũ thay CI source mới.
+ 
+ T014 giữ chưa hoàn thành; các task Phase2 giữ nguyên.
++
++## Trạng thái quyền phát triển local, tách khỏi gate đầy đủ
++
++T014_FULL/security giữ kết quả đầy đủ theo snapshot đã kiểm, không đổi thành PASS.
++Quyền tiếp tục local chỉ xác định bằng quyết định chủ dự án còn hiệu lực và evidence
++khép LEX-003/D3/controls theo docs/proposals/t014-conditional-local-gate.md.
++Nếu thiếu quyết định hoặc điều kiện kích hoạt thì PHASE2_LOCAL_ELIGIBILITY vẫn BLOCKED.
++Khi được kích hoạt phải ghi owner/reviewer/approval/expiry/baseline và IDs rõ trong báo cáo;
++quyền này không phải nghiệm thu đầy đủ Phase1 hoặc toàn bộ MVP.
+--- a/docs/testing/phase1-report.md
++++ b/docs/testing/phase1-report.md
+@@ -488,3 +488,12 @@
+ Xem [báo cáo vòng3](t014-r3-report.md): CI/clean checkout và các gate đã chạy PASS;
+ security còn784HIGH/CRITICAL occurrences trên20targets, T014/Phase1 vẫn BLOCKED.
+ Các snapshot bên dưới giữ provenance lịch sử, không thay kết quả/IDs vòng3.
++
++## Trạng thái quyền phát triển local, tách khỏi gate đầy đủ
++
++T014_FULL/security giữ kết quả đầy đủ theo snapshot đã kiểm, không đổi thành PASS.
++Quyền tiếp tục local chỉ xác định bằng quyết định chủ dự án còn hiệu lực và evidence
++khép LEX-003/D3/controls theo docs/proposals/t014-conditional-local-gate.md.
++Nếu thiếu quyết định hoặc điều kiện kích hoạt thì PHASE2_LOCAL_ELIGIBILITY vẫn BLOCKED.
++Khi được kích hoạt phải ghi owner/reviewer/approval/expiry/baseline và IDs rõ trong báo cáo;
++quyền này không phải nghiệm thu đầy đủ Phase1 hoặc toàn bộ MVP.

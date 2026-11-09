@@ -20,6 +20,7 @@ SCANNER = 'ghcr.io/aquasecurity/trivy@sha256:2e6c00d711ab4ae41d8a30c2c1fd3bd3b62
 TARGETS = {
     'python-build-base':'docker.io/library/python:3.12.16-slim-bookworm',
     'airflow-build-base':'docker.io/apache/airflow:slim-3.3.2-python3.12',
+    'airflow-security-stage':'localhost/aat-airflow-security-base:0.1.0',
     'nginx-build-base':'docker.io/library/nginx:1.30.6-alpine3.24',
     'playwright-build-base':'mcr.microsoft.com/playwright:v1.65.0-resolute',
     'go-build-base':'docker.io/library/golang:1.27.3-alpine3.24',

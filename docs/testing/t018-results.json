@@ -1,0 +1,96 @@
+{
+  "captured_at": "2026-11-09T06:33:52.144933+00:00",
+  "task": "T018",
+  "status": "PASS_SOURCE_AND_AFFECTED_CHECKS_ONLY",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "scope": "docs/decisions/t018-local-scope.json",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "checks": {
+    "red_before_implementation": {
+      "passed": 9,
+      "failed": 9,
+      "total": 18
+    },
+    "common_health_T015": {
+      "status": "PASS",
+      "passed": 19
+    },
+    "backend_dependency_source_HTTP_probe": {
+      "status": "PASS",
+      "passed": 7
+    },
+    "T016_regression": {
+      "passed": 1,
+      "failed": 6,
+      "status": "UNCHANGED_EXPECTED_RED"
+    },
+    "T017": {
+      "status": "REUSED_UNCHANGED_SOURCE_PRIOR_RED",
+      "evidence": "docs/testing/t017-results.json"
+    }
+  },
+  "not_run": [
+    "current-source backend wheel/image build",
+    "rebuilt-image bootstrap acceptance",
+    "current-source CI",
+    "current-source clean checkout",
+    "new/full21target image scan",
+    "foundation T034 readiness"
+  ],
+  "deployed_services_updated": false,
+  "runtime_dependency_versions_tested": {
+    "fastapi": "0.136.3",
+    "pydantic": "2.13.5",
+    "httpx": "0.28.1"
+  },
+  "test_image_ids": [
+    "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+    "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4"
+  ],
+  "source_sha256": {
+    "backend/src/aat_api/schemas/__init__.py": "ca2a73893de922adf005b0d5c6203b247cdd790a0019d30a08501f48661c56a9",
+    "backend/src/aat_api/schemas/common.py": "d8fa904951b45103f84c9a334d7179d8f31dfc79aedf286cd75a3aca376c8f22",
+    "backend/src/aat_api/routes/__init__.py": "03a8f81789f647e6b8246c53a89eaa9545a8792cee6b170e5404a4ef8ba4d0d7",
+    "backend/src/aat_api/routes/health.py": "f767e80ad3bc0488e6f0bfbea4771d264c267c2a6ac44772187d187c7c918c1d",
+    "backend/src/aat_api/main.py": "7ca177546ed29cf5699c9212a0f0099456b8d7b074f64cfa8e65b7a6d80f0cc3",
+    "docker/bootstrap/health.py": "3a357702aac7a66a1d50e9dd12a3155f2610dc5181fc4eb77a8370d7fd863cdc",
+    "tests/unit/test_common_schemas.py": "5a5851b7795180650ae1f2f038c6bcef90710a7ae9b09fe1c693f39038e174f6",
+    "tests/api/test_health_contract.py": "dd2fdbd38d76c4481bcbd7c0c4f3e5bbf06ba6cb375a5b7517d0775d7bdbd3e5",
+    "tests/integration/test_health_source.py": "af4d8c2e8a317a69635b873839a92c33c298c27b8654010f8df39b44a52fb65f",
+    "tests/integration/test_backend_bootstrap.py": "96b71b941167bd631b919861429f1381f38eddb29c077f586be924b92babd843",
+    "tests/tools/run_t018_checks.py": "11fbb79a5ef9750bc61817e11ada8c3885f2d4b66144509be0789249ddab815f"
+  },
+  "service_preservation": {
+    "aat-phase1-t014-ab-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-r3-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    },
+    "aat-phase1-t014-local-20261109": {
+      "healthy": 8,
+      "init_success": 4
+    }
+  },
+  "fixture_cleanup": "PASS",
+  "task_counts": {
+    "total": 152,
+    "checked": 17,
+    "T014": "UNCHECKED",
+    "T018": "CHECKED",
+    "T019_onward": "UNCHECKED"
+  },
+  "post_hooks": "NOT_REGISTERED",
+  "next_task": "T019_NOT_STARTED",
+  "baseline_verified_image_ids": [
+    "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+    "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+    "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4"
+  ]
+}

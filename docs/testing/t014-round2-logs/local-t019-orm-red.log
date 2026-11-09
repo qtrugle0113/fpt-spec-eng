@@ -1,0 +1,94 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 14 items
+
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_code_can_change_before_business_dependency_and_updated_at_is_aware FAILED [  7%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection FAILED [ 14%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_current_revision_must_belong_to_same_connection FAILED [ 21%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_and_nonempty_required_values_are_db_constraints FAILED [ 28%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential FAILED [ 35%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_normalized_code_is_trimmed_case_insensitive_unique_in_db FAILED [ 42%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_orm_revision_update_is_also_blocked_but_test_status_is_mutable FAILED [ 50%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_plaintext_secret_rejected_by_model_and_database FAILED [ 57%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_port_boundaries_are_enforced_by_postgresql FAILED [ 64%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history FAILED [ 71%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_revision_unique_per_connection_and_positive FAILED [ 78%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_and_connection_fk_reject_orphans FAILED [ 85%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_not_readable_by_airflow_or_public_default_grants FAILED [ 92%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable FAILED [100%]
+
+=================================== FAILURES ===================================
+_ ConnectionModelTests.test_code_can_change_before_business_dependency_and_updated_at_is_aware _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+__ ConnectionModelTests.test_current_revision_must_belong_to_same_connection ___
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_database_type_and_nonempty_required_values_are_db_constraints _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_direct_sql_cannot_mutate_revision_endpoint_or_credential _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_normalized_code_is_trimmed_case_insensitive_unique_in_db _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_orm_revision_update_is_also_blocked_but_test_status_is_mutable _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+__ ConnectionModelTests.test_plaintext_secret_rejected_by_model_and_database ___
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_____ ConnectionModelTests.test_port_boundaries_are_enforced_by_postgresql _____
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_restrict_delete_preserves_revision_and_secret_history _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+____ ConnectionModelTests.test_revision_unique_per_connection_and_positive _____
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+______ ConnectionModelTests.test_secret_and_connection_fk_reject_orphans _______
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_ ConnectionModelTests.test_secret_not_readable_by_airflow_or_public_default_grants _
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+_____ ConnectionModelTests.test_stored_ciphertext_and_key_id_are_immutable _____
+/tmp/tests/integration/test_connection_models.py:37: in setUp
+    raise AssertionError('T019 Connection/Revision/Secret models are not implemented') from None
+E   AssertionError: T019 Connection/Revision/Secret models are not implemented
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_code_can_change_before_business_dependency_and_updated_at_is_aware
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_current_revision_must_belong_to_same_connection
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_and_nonempty_required_values_are_db_constraints
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_normalized_code_is_trimmed_case_insensitive_unique_in_db
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_orm_revision_update_is_also_blocked_but_test_status_is_mutable
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_plaintext_secret_rejected_by_model_and_database
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_port_boundaries_are_enforced_by_postgresql
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_revision_unique_per_connection_and_positive
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_and_connection_fk_reject_orphans
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_not_readable_by_airflow_or_public_default_grants
+FAILED ../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable
+============================== 14 failed in 1.36s ==============================

@@ -5,8 +5,13 @@ COPY packages/aat_metadata /build/packages/aat_metadata
 COPY etl_engine /build/etl_engine
 RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata && \
     python -m build --wheel --no-isolation --outdir /wheels etl_engine
-FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f
+FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f AS security-patched
 USER root
+COPY airflow/docker/security/brotli.lock.json /opt/aat/security/brotli.lock.json
+ADD https://security.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli1_1.0.9-2+deb12u1_amd64.deb /opt/aat/security/libbrotli1.deb
+COPY airflow/docker/install_security_patch.py /opt/aat/security/install_security_patch.py
+RUN --network=none python /opt/aat/security/install_security_patch.py
+FROM security-patched AS runtime
 COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
 RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
 COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/

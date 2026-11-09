@@ -63,3 +63,10 @@ vẫn giữ Go version/source gosu/CGO_ENABLED=0. Resolve manifest và hashes t�
 [candidate manifests](../testing/t014-r3-candidate-manifests.json).
 Gosu là binary static; kiểm build/version/UID và DB hardening trên candidate mới,
 scan cả base lẫn gosu-build/final DB IDs. Không thay DB server versions hoặc volumes.
+
+## Phạm vi quyết định local sau này
+
+Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
+của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
+phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
+147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.

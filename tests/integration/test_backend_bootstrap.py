@@ -30,10 +30,10 @@ class BackendBootstrapTests(unittest.TestCase):
                     time.sleep(0.5)
             else:
                 self.fail("Liveness bootstrap unavailable")
-            self.assertEqual(result, {"status": "live", "stage": "bootstrap"})
+            self.assertEqual(result, {"status": "ALIVE"})
             with self.assertRaises(urllib.error.HTTPError) as failure:
                 urllib.request.urlopen(base + "/api/v1/health/ready", timeout=2)
-            self.assertEqual(failure.exception.code, 404)
+            self.assertEqual(failure.exception.code, 503)
             run("exec", name, "python", "-m", "pip", "check")
             run("exec", name, "python", "-c", "import aat_api.main, aat_metadata, aat_etl")
         finally:

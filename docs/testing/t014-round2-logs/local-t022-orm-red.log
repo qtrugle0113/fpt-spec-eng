@@ -1,0 +1,148 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 23 items
+
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_checksum_size_and_extension_boundaries FAILED [  4%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_column_names_ordinals_and_primary_key_ordinals_are_unique FAILED [  8%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_composite_pk_order_matches_column_order_and_key_not_nullable FAILED [ 13%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_config_refuses_nested_credentials FAILED [ 17%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_dag_unique_and_current_revision_belongs_to_parent FAILED [ 21%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_defaults_reject_float_untagged_expression_and_type_mismatch FAILED [ 26%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_definition_kind_version_and_checksum_bind_to_file FAILED [ 30%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_delete_restrict_keeps_upload_table_column_history FAILED [ 34%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_enabled_target_unique_disabled_duplicate_allowed FAILED [ 39%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_issue_safe_context_rejects_raw_cell_secret FAILED [ 43%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_issue_workbook_null_location_and_cell_one_based FAILED [ 47%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_mapping_transformation_source_literal_and_ordinal_constraints FAILED [ 52%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_orphan_upload_issue_table_and_column_fk_rejected FAILED [ 56%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_restrict_retains_revision_mapping_and_upload FAILED [ 60%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_revision_hash_generated_and_wrong_hash_rejected FAILED [ 65%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_revision_snapshot_and_mapping_immutable FAILED [ 69%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_storage_key_is_server_generated_and_not_original_filename FAILED [ 73%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql FAILED [ 78%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_table_unique_by_physical_identity_across_credential_revisions FAILED [ 82%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_tagged_defaults_preserve_decimal_text_and_explicit_null FAILED [ 86%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_type_length_precision_scale_boundaries FAILED [ 91%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_unknown_physical_server_identity_is_rejected FAILED [ 95%]
+../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_upload_content_identity_and_initial_parser_snapshot_are_immutable FAILED [100%]
+
+=================================== FAILURES ===================================
+__________ ETLModelTests.test_checksum_size_and_extension_boundaries ___________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_column_names_ordinals_and_primary_key_ordinals_are_unique _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_composite_pk_order_matches_column_order_and_key_not_nullable _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____________ ETLModelTests.test_config_refuses_nested_credentials _____________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____ ETLModelTests.test_dag_unique_and_current_revision_belongs_to_parent _____
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_defaults_reject_float_untagged_expression_and_type_mismatch _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____ ETLModelTests.test_definition_kind_version_and_checksum_bind_to_file _____
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____ ETLModelTests.test_delete_restrict_keeps_upload_table_column_history _____
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____ ETLModelTests.test_enabled_target_unique_disabled_duplicate_allowed ______
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+________ ETLModelTests.test_issue_safe_context_rejects_raw_cell_secret _________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+______ ETLModelTests.test_issue_workbook_null_location_and_cell_one_based ______
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_mapping_transformation_source_literal_and_ordinal_constraints _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_____ ETLModelTests.test_orphan_upload_issue_table_and_column_fk_rejected ______
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_______ ETLModelTests.test_restrict_retains_revision_mapping_and_upload ________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+______ ETLModelTests.test_revision_hash_generated_and_wrong_hash_rejected ______
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+__________ ETLModelTests.test_revision_snapshot_and_mapping_immutable __________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_storage_key_is_server_generated_and_not_original_filename _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_table_unique_by_physical_identity_across_credential_revisions _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+__ ETLModelTests.test_tagged_defaults_preserve_decimal_text_and_explicit_null __
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+__________ ETLModelTests.test_type_length_precision_scale_boundaries ___________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_______ ETLModelTests.test_unknown_physical_server_identity_is_rejected ________
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+_ ETLModelTests.test_upload_content_identity_and_initial_parser_snapshot_are_immutable _
+/tmp/tests/integration/test_t022_models.py:17: in setUp
+    raise AssertionError('T022 ETL models missing') from None
+E   AssertionError: T022 ETL models missing
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_checksum_size_and_extension_boundaries
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_column_names_ordinals_and_primary_key_ordinals_are_unique
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_composite_pk_order_matches_column_order_and_key_not_nullable
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_config_refuses_nested_credentials
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_dag_unique_and_current_revision_belongs_to_parent
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_defaults_reject_float_untagged_expression_and_type_mismatch
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_definition_kind_version_and_checksum_bind_to_file
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_delete_restrict_keeps_upload_table_column_history
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_enabled_target_unique_disabled_duplicate_allowed
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_issue_safe_context_rejects_raw_cell_secret
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_issue_workbook_null_location_and_cell_one_based
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_mapping_transformation_source_literal_and_ordinal_constraints
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_orphan_upload_issue_table_and_column_fk_rejected
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_restrict_retains_revision_mapping_and_upload
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_revision_hash_generated_and_wrong_hash_rejected
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_revision_snapshot_and_mapping_immutable
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_storage_key_is_server_generated_and_not_original_filename
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_table_unique_by_physical_identity_across_credential_revisions
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_tagged_defaults_preserve_decimal_text_and_explicit_null
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_type_length_precision_scale_boundaries
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_unknown_physical_server_identity_is_rejected
+FAILED ../../tmp/tests/integration/test_t022_models.py::ETLModelTests::test_upload_content_identity_and_initial_parser_snapshot_are_immutable
+============================== 23 failed in 0.58s ==============================

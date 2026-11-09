@@ -9,7 +9,7 @@ from cryptography.fernet import Fernet
 
 
 def initialize(root: Path) -> None:
-    domains = ('bootstrap_secrets', 'backend_secrets', 'airflow_secrets', 'runtime_secrets', 'app_keyring', 'postgres_secrets', 'mysql_secrets')
+    domains = ('bootstrap_secrets', 'app_owner_secrets', 'backend_secrets', 'airflow_secrets', 'runtime_secrets', 'app_keyring', 'postgres_secrets', 'mysql_secrets')
     for domain in domains:
         (root / domain).mkdir(parents=True, exist_ok=True, mode=0o700)
     state = root / 'bootstrap_secrets' / 'initialized.json'
@@ -42,8 +42,12 @@ def initialize(root: Path) -> None:
         value = write('bootstrap_secrets', filename, os.urandom(32).hex())
         if filename != 'app_owner':
             write('backend_secrets', filename, value)
+        else:
+            write('app_owner_secrets',filename,value)
         if filename == 'app_runtime':
             write('runtime_secrets', filename, value)
+        if filename == 'pg_etl':
+            write('runtime_secrets',filename,value)
     airflow_db = write('bootstrap_secrets', 'airflow_db', os.urandom(32).hex())
     write('airflow_secrets', 'airflow_db', airflow_db)
     for filename in ('jwt_secret', 'fernet_key', 'service_password', 'operator_password'):

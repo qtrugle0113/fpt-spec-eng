@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 15 items
+
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_code_can_change_before_business_dependency_and_updated_at_is_aware PASSED [  6%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection PASSED [ 13%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_current_revision_must_belong_to_same_connection PASSED [ 20%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_and_nonempty_required_values_are_db_constraints PASSED [ 26%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_is_snapshotted_so_parent_edit_does_not_change_old_revision PASSED [ 33%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential PASSED [ 40%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_normalized_code_is_trimmed_case_insensitive_unique_in_db PASSED [ 46%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_orm_revision_update_is_also_blocked_but_test_status_is_mutable PASSED [ 53%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_plaintext_secret_rejected_by_model_and_database PASSED [ 60%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_port_boundaries_are_enforced_by_postgresql PASSED [ 66%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history PASSED [ 73%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_revision_unique_per_connection_and_positive PASSED [ 80%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_and_connection_fk_reject_orphans PASSED [ 86%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_not_readable_by_airflow_or_public_default_grants PASSED [ 93%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable PASSED [100%]
+
+============================== 15 passed in 3.30s ==============================

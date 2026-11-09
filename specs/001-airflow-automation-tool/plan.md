@@ -1,5 +1,46 @@
 # Kế hoạch triển khai: Airflow Automation Tool
 
+**Hiện hành T021:** parser history ORM, conditional composite FK và revision cho ETag đã
+kiểm47/47 trên PG cô lập; [báo cáo](../../docs/testing/t021-report.md),
+[scope](../../docs/decisions/t021-local-scope.json). Data Model ghi rõ snapshot/hash/ETag
+trước implementation. Chưa có binding/recovery safety hoặc parser API acceptance;
+T029 phải chuyển các guards/FK sang Alembic thật. Chưa triển khai T022 trở đi.
+T014_FULL BLOCKED/security FAIL; source-copy tests trên IDs đã duyệt, chưa build/scan/CI mới.
+Các khối bên dưới là lịch sử.
+
+**Hiện hành T020/T019:** definition ORM source và31PG checks PASS; TableDefinition thật đã
+khép nhánh dependency còn thiếu của T019. [Báo cáo](../../docs/testing/t020-report.md),
+[scope](../../docs/decisions/t020-local-scope.json). Chưa triển khai T021 trở đi.
+Data Model làm rõ storage/parser snapshot, physical identity metadata và tagged defaults.
+Create_all chỉ trong fixture; Alembic T029/foundation T034/build/scan/CI mới chưa nghiệm thu.
+T014_FULL BLOCKED/security FAIL, không mở rộng approval. Các khối cũ dưới đây là lịch sử.
+
+**Hiện hành T019:** ORM source và15PG checks PASS; chưa đóng task vì dependency-code positive
+branch cần model nghiệp vụ thật ở task sau. [Báo cáo](../../docs/testing/t019-report.md),
+[scope](../../docs/decisions/t019-local-scope.json). Không triển khai T020 trở đi.
+Data Model bổ sung database_type snapshot cho ConnectionRevision theo FR-008, tránh sửa
+parent type làm đổi run cũ. ORM guards phải được đưa vào Alembic T029; create_all chỉ ở fixture.
+T014_FULL BLOCKED/security FAIL; images/services hiện hữu không thay, không mở rộng approval.
+
+**Hiện hành T018:** source common schemas và health routing theo OpenAPI đã kiểm;
+live200 ALIVE, readiness503 cho tới khi đủ gate T034. [Báo cáo](../../docs/testing/t018-report.md),
+[scope](../../docs/decisions/t018-local-scope.json). Chỉ source-copy checks trên images đã duyệt,
+chưa build/deploy source mới, không mở rộng ngoại lệ. T014_FULL BLOCKED/security FAIL.
+T019 trở đi chưa triển khai. Scope các lượt cũ dưới đây giữ để truy vết.
+
+**Hiện hành T017:** yêu cầu chủ dự án lượt tiếp theo cho phép riêng viết tests T017 theo
+[scope](../../docs/decisions/t017-local-test-scope.json). Không mở rộng ngoại lệ security/image IDs.
+Đã viết state/repository/concurrency/lock/role tests; collect/RED do T031 chưa có,
+chưa triển khai T018 trở đi. [Báo cáo](../../docs/testing/t017-report.md).
+Các scope “lượt này T015/T016” dưới đây là snapshot lượt trước; hạn local không thay đổi.
+
+**Trạng thái hiện hành 2026-11-09:** chủ dự án đã khép LEX-003/D3 và duyệt mapping
+ba candidate IDs. M0 PASS; quyền local chỉ T015/T016 lượt này đến2026-11-23 00:00 UTC+09,
+review16/11. T014_FULL BLOCKED/security FAIL; CI source mới/full scan21targets NOT_RUN.
+T015/T016 hoàn thành viết tests (harness9PASS, integration1PASS/6RED dự kiến).
+Xem [activation](../../docs/decisions/t014-local-activation.json) và
+[báo cáo](../../docs/testing/t015-t016-report.md). Không nghiệm thu foundation T034.
+
 **Nhánh/ngữ cảnh Spec Kit**: `001-airflow-automation-tool` | **Ngày**: 2026-11-06
 **Cập nhật thiết kế có mục tiêu**: 2026-11-08, sau Analyze bản152task; Git branch hiện tại `001-airflow-automation-tool-t014`.
 
@@ -615,3 +656,23 @@ Npm12.2.2 trên Node22.23.4; Airflow OS patch lock, loại optional Docker CLI/u
 DB child images cùng server versions, gosu1.19 rebuild Go1.27.3 và bỏ mysql-shell.
 Go source commit/hash và toolchain digest tại docker/gosu/source.lock.json.
 Constraints và client/browser baseline không đổi; trial chỉ là evidence chờ duyệt.
+
+## Ngoại lệ dependency phát triển local T014
+
+D1/D2/D4 đã được duyệt ngày2026-11-09 theo
+[quyết định](../../docs/decisions/t014-local-gate-approval.md); quyền local hiện đã kích hoạt
+theo hồ sơ bổ sung, scope/hạn nêu đầu Plan. Trạng thái chưa kích hoạt trước đây là lịch sử.
+LEX-003: candidate cài libbrotli1=1.0.9-2+deb12u1 từ artifact Debian có chain chữ ký/hash,
+ở stage riêng RUN network=none trước apt/network; ADD chỉ tải bằng engine, không thực thi
+decoder trong base. Giữ base digest/core/SDK/constraints upstream; không thay tag stack cũ.
+Build/scan cả security-patched stage và candidate final; review mapping IDs mới riêng.
+Scanner mặc định thêm `airflow-security-stage` (21targets thay20 trước đây). Trước full scan,
+build alias bằng `podman build --target security-patched -f airflow/docker/Dockerfile -t localhost/aat-airflow-security-base:0.1.0 .`.
+Lượt candidate dùng scan hai IDs riêng; không mô tả thành full21targets đã chạy.
+
+Chỉ theo quyết định chủ dự án còn hiệu lực, Phase2 được bắt đầu khi bootstrap PASS,
+LEX-003/D3 đã khép và controls/147 ngoại lệ được duyệt theo đề xuất local.
+T014_FULL vẫn BLOCKED; không dùng security PASS. Giữ gate T034/T046/T060/T095/T120;
+mốc demo theo dõi/lỗi tới T127, không chờ Dashboard polish; giữ8phases và MVP.
+Scan và mapping exception→IDs phải review lại khi baseline thay, không blanket waiver.
+Nguồn: docs/proposals/t014-conditional-local-gate.md và hồ sơ quyết định sau phê duyệt.

@@ -1,0 +1,451 @@
+{
+  "id": "LEX-079",
+  "advisory": "CVE-2023-45853",
+  "status": "TECHNICAL_RECOMMENDATION_NOT_AFFECTED_REVIEW_REQUIRED",
+  "reviewer_approved": false,
+  "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2023-45853",
+  "scope": "Only the12 zlib1g contexts from approved-proposal baseline; excludes independent minizip/pyminizip/embedded copies and all other zlib CVEs",
+  "contexts": [
+    {
+      "target": "python-build-base",
+      "image_id": "313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "airflow-build-base",
+      "image_id": "2568f68b627296ed2d3c0f4e1a0e2f86dc48b870b5ab9cea688244e320daaedb",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "node-build-base",
+      "image_id": "8700da48cc6592503feabf399d242414f932197c3b44f43970d2cbc5671e06b0",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "frontend-build",
+      "image_id": "6232dc8e1ae8c4ac8ea31245364e661d7a15566c6ec21b2800cf50bc1458e539",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "67d6b64d0a3e62c199f4e51c30f5753913c003bdd5b31529237e22e6b0f0c1a7",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "e2e-dependencies",
+      "image_id": "eeaff03ea5c857a7177298bec449f238fc6474df209ddf02c1c4dee0d7d36815",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "backend",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "airflow",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "postgres",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "postgres-build-base",
+      "image_id": "018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "7a4496e2761bbe00a61b0581b10206e74b4d80c2e3dacbc3c59fce228951d6a4",
+      "scanner_package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "package_inventory": [
+        "zlib1g:amd64|1:1.2.13.dfsg-1|ii "
+      ],
+      "zlib_files": [
+        "/.",
+        "/lib",
+        "/lib/x86_64-linux-gnu",
+        "/lib/x86_64-linux-gnu/libz.so.1.2.13",
+        "/usr",
+        "/usr/share",
+        "/usr/share/doc",
+        "/usr/share/doc/zlib1g",
+        "/usr/share/doc/zlib1g/changelog.Debian.gz",
+        "/usr/share/doc/zlib1g/changelog.gz",
+        "/usr/share/doc/zlib1g/copyright",
+        "/lib/x86_64-linux-gnu/libz.so.1"
+      ],
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+    }
+  ],
+  "unique_libz_sha256": [
+    "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68"
+  ],
+  "elf_dynamic_symbol_count": 125,
+  "zip_minizip_entrypoints": [],
+  "symbols": [
+    "",
+    "__snprintf_chk",
+    "free",
+    "__errno_location",
+    "_ITM_deregisterTMCloneTable",
+    "write",
+    "strlen",
+    "__stack_chk_fail",
+    "snprintf",
+    "memset",
+    "close",
+    "memchr",
+    "read",
+    "__gmon_start__",
+    "memcpy",
+    "malloc",
+    "__vsnprintf_chk",
+    "memmove",
+    "open",
+    "lseek64",
+    "_ITM_registerTMCloneTable",
+    "strerror",
+    "__cxa_finalize",
+    "ZLIB_1.2.2",
+    "inflateEnd",
+    "inflateInit2_",
+    "crc32_combine_gen",
+    "crc32_z",
+    "deflate",
+    "deflateTune",
+    "deflatePrime",
+    "gzerror",
+    "inflateReset",
+    "ZLIB_1.2.0.2",
+    "gztell",
+    "gzflush",
+    "inflateMark",
+    "inflateSyncPoint",
+    "ZLIB_1.2.9",
+    "adler32_z",
+    "deflateSetHeader",
+    "crc32_combine_gen64",
+    "ZLIB_1.2.0.8",
+    "inflateInit_",
+    "inflateBackEnd",
+    "gzbuffer",
+    "deflateGetDictionary",
+    "adler32",
+    "gzseek",
+    "gzfread",
+    "ZLIB_1.2.5.1",
+    "deflateResetKeep",
+    "ZLIB_1.2.5.2",
+    "crc32",
+    "zError",
+    "gzfwrite",
+    "crc32_combine_op",
+    "gzread",
+    "deflateCopy",
+    "inflateGetHeader",
+    "gzputc",
+    "gzgetc",
+    "gzwrite",
+    "gzvprintf",
+    "deflateReset",
+    "gzeof",
+    "inflate",
+    "gzopen64",
+    "inflateReset2",
+    "crc32_combine64",
+    "deflateInit_",
+    "zlibCompileFlags",
+    "gzdirect",
+    "ZLIB_1.2.2.3",
+    "deflateInit2_",
+    "deflatePending",
+    "ZLIB_1.2.2.4",
+    "gzseek64",
+    "gzputs",
+    "gzgets",
+    "inflateResetKeep",
+    "gzoffset64",
+    "compressBound",
+    "deflateParams",
+    "inflateGetDictionary",
+    "get_crc_table",
+    "ZLIB_1.2.7.1",
+    "inflateBack",
+    "gzprintf",
+    "inflateValidate",
+    "inflateSetDictionary",
+    "inflatePrime",
+    "adler32_combine",
+    "gzrewind",
+    "gzclose",
+    "gzclose_r",
+    "gzdopen",
+    "zlibVersion",
+    "gzclearerr",
+    "inflateBackInit_",
+    "ZLIB_1.2.3.3",
+    "adler32_combine64",
+    "compress",
+    "gzclose_w",
+    "ZLIB_1.2.3.4",
+    "ZLIB_1.2.3.5",
+    "gzopen",
+    "deflateBound",
+    "compress2",
+    "gztell64",
+    "uncompress",
+    "gzoffset",
+    "deflateSetDictionary",
+    "inflateCopy",
+    "ZLIB_1.2.12",
+    "gzgetc_",
+    "deflateEnd",
+    "crc32_combine",
+    "inflateCodesUsed",
+    "gzsetparams",
+    "gzungetc",
+    "uncompress2",
+    "inflateUndermine",
+    "ZLIB_1.2.0",
+    "inflateSync"
+  ],
+  "candidate_contexts": [
+    {
+      "ref": "localhost/aat-airflow-local-security-base:0.1.0",
+      "image_id": "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+      "status": "SAME_BINARY_NEW_ID_REVIEW_REQUIRED"
+    },
+    {
+      "ref": "localhost/aat-airflow-local-candidate:0.1.0",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+      "status": "SAME_BINARY_NEW_ID_REVIEW_REQUIRED"
+    },
+    {
+      "ref": "localhost/aat-backend-tests-local-candidate:0.1.0",
+      "image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+      "libz_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+      "status": "SAME_BINARY_NEW_ID_REVIEW_REQUIRED"
+    }
+  ],
+  "candidate_scope_review_required": true
+}

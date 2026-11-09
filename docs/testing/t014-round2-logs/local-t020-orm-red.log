@@ -1,0 +1,121 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 31 items
+
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_code_can_change_before_business_dependency_and_updated_at_is_aware PASSED [  3%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_codec_ciphertext_roundtrip_has_no_plaintext_and_safe_projection PASSED [  6%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_current_revision_must_belong_to_same_connection PASSED [  9%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_and_nonempty_required_values_are_db_constraints PASSED [ 12%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_database_type_is_snapshotted_so_parent_edit_does_not_change_old_revision PASSED [ 16%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_direct_sql_cannot_mutate_revision_endpoint_or_credential PASSED [ 19%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_normalized_code_is_trimmed_case_insensitive_unique_in_db PASSED [ 22%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_orm_revision_update_is_also_blocked_but_test_status_is_mutable PASSED [ 25%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_plaintext_secret_rejected_by_model_and_database PASSED [ 29%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_port_boundaries_are_enforced_by_postgresql PASSED [ 32%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_restrict_delete_preserves_revision_and_secret_history PASSED [ 35%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_revision_unique_per_connection_and_positive PASSED [ 38%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_and_connection_fk_reject_orphans PASSED [ 41%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_secret_not_readable_by_airflow_or_public_default_grants PASSED [ 45%]
+../../tmp/tests/integration/test_connection_models.py::ConnectionModelTests::test_stored_ciphertext_and_key_id_are_immutable PASSED [ 48%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_checksum_size_and_extension_boundaries FAILED [ 51%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_column_names_ordinals_and_primary_key_ordinals_are_unique FAILED [ 54%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_composite_pk_order_matches_column_order_and_key_not_nullable FAILED [ 58%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_defaults_reject_float_untagged_expression_and_type_mismatch FAILED [ 61%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_definition_kind_version_and_checksum_bind_to_file FAILED [ 64%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_delete_restrict_keeps_upload_table_column_history FAILED [ 67%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_issue_safe_context_rejects_raw_cell_secret FAILED [ 70%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_issue_workbook_null_location_and_cell_one_based FAILED [ 74%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_orphan_upload_issue_table_and_column_fk_rejected FAILED [ 77%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_storage_key_is_server_generated_and_not_original_filename FAILED [ 80%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql FAILED [ 83%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_table_unique_by_physical_identity_across_credential_revisions FAILED [ 87%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_tagged_defaults_preserve_decimal_text_and_explicit_null FAILED [ 90%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_type_length_precision_scale_boundaries FAILED [ 93%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_unknown_physical_server_identity_is_rejected FAILED [ 96%]
+../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_upload_content_identity_and_initial_parser_snapshot_are_immutable FAILED [100%]
+
+=================================== FAILURES ===================================
+_______ DefinitionModelTests.test_checksum_size_and_extension_boundaries _______
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_column_names_ordinals_and_primary_key_ordinals_are_unique _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_composite_pk_order_matches_column_order_and_key_not_nullable _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_defaults_reject_float_untagged_expression_and_type_mismatch _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_definition_kind_version_and_checksum_bind_to_file __
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_delete_restrict_keeps_upload_table_column_history __
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_____ DefinitionModelTests.test_issue_safe_context_rejects_raw_cell_secret _____
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+__ DefinitionModelTests.test_issue_workbook_null_location_and_cell_one_based ___
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+__ DefinitionModelTests.test_orphan_upload_issue_table_and_column_fk_rejected __
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_storage_key_is_server_generated_and_not_original_filename _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_table_unique_by_physical_identity_across_credential_revisions _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_tagged_defaults_preserve_decimal_text_and_explicit_null _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_______ DefinitionModelTests.test_type_length_precision_scale_boundaries _______
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+____ DefinitionModelTests.test_unknown_physical_server_identity_is_rejected ____
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+_ DefinitionModelTests.test_upload_content_identity_and_initial_parser_snapshot_are_immutable _
+/tmp/tests/integration/test_definition_models.py:24: in setUp
+    raise AssertionError('T020 definition models are not implemented') from None
+E   AssertionError: T020 definition models are not implemented
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_checksum_size_and_extension_boundaries
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_column_names_ordinals_and_primary_key_ordinals_are_unique
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_composite_pk_order_matches_column_order_and_key_not_nullable
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_defaults_reject_float_untagged_expression_and_type_mismatch
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_definition_kind_version_and_checksum_bind_to_file
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_delete_restrict_keeps_upload_table_column_history
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_issue_safe_context_rejects_raw_cell_secret
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_issue_workbook_null_location_and_cell_one_based
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_orphan_upload_issue_table_and_column_fk_rejected
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_storage_key_is_server_generated_and_not_original_filename
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_t019_real_table_dependency_blocks_code_change_in_orm_and_sql
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_table_unique_by_physical_identity_across_credential_revisions
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_tagged_defaults_preserve_decimal_text_and_explicit_null
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_type_length_precision_scale_boundaries
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_unknown_physical_server_identity_is_rejected
+FAILED ../../tmp/tests/integration/test_definition_models.py::DefinitionModelTests::test_upload_content_identity_and_initial_parser_snapshot_are_immutable
+======================== 16 failed, 15 passed in 0.71s =========================

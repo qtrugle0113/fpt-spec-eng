@@ -1,0 +1,13 @@
+{
+  "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+  "runner_image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+  "fixture": "Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted",
+  "task": "T032",
+  "test_paths": [
+    "/tmp/tests/integration/test_phase2_api.py",
+    "/tmp/tests/unit/test_bootstrap_secrets.py"
+  ],
+  "test_exit_code": 0,
+  "log": "docs/testing/t014-round2-logs/local-t032-green.log",
+  "existing_services_modified": false
+}

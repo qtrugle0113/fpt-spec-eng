@@ -1,0 +1,6 @@
+test_recorded_real_http_responses_match_canonical_contract (tests.api.test_foundation_contract.FoundationHTTPContractTests.test_recorded_real_http_responses_match_canonical_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.256s
+
+OK

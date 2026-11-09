@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-11-09T07:52:11.902530+00:00",
+  "authority": "Explicit current user instruction: T021 and affected tests only; no T022 onward",
+  "task_scope": [
+    "T021",
+    "affected T019/T020 regression"
+  ],
+  "prior_activation": "docs/decisions/t014-local-activation.json",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "candidate_ids_verified": [
+    "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+    "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+    "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4"
+  ],
+  "findings_or_image_approval_expanded": false,
+  "validation_scope": "Production ORM DDL on disposable PostgreSQL; no migrations/API/binding/recovery acceptance",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00"
+}

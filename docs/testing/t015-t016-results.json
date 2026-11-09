@@ -1,0 +1,90 @@
+{
+  "captured_at": "2026-11-09T06:07:22.827062+00:00",
+  "baseline_HEAD": "b0c947d23f1e9c23e9ce0a57b634f9e7a4c7b4ab",
+  "source_state": "UNCOMMITTED_LOCAL_CHANGES",
+  "approval": "docs/decisions/t014-local-activation.json",
+  "M0": "PASS_CONDITIONAL_LOCAL_ONLY",
+  "PHASE2_LOCAL_ELIGIBILITY": "AUTHORIZED_UNTIL_2026-11-23T00:00:00+09:00",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "T015": {
+    "task_authoring": "COMPLETE",
+    "harness": "PASS",
+    "tests": 9,
+    "log": "docs/testing/t014-round2-logs/local-t015-contract-harness.log"
+  },
+  "T016": {
+    "task_authoring": "COMPLETE",
+    "collection": "PASS",
+    "tests": 7,
+    "passed": 1,
+    "failed": 6,
+    "functional_status": "FAIL_EXPECTED_TDD_RED",
+    "errors": 0,
+    "log": "docs/testing/t014-round2-logs/local-t016-foundation-red.log"
+  },
+  "NOT_RUN": [
+    "Current-source CI",
+    "Current-source clean checkout",
+    "Full21target scan",
+    "Foundation T034 acceptance",
+    "Actual worker restart branch blocked before missing T033 implementation"
+  ],
+  "candidate_images": [
+    {
+      "name": "local-airflow-security-stage",
+      "ref": "localhost/aat-airflow-local-security-base:0.1.0",
+      "image_id": "97e3d67d1f0a8468f2d2409683f2d6c54e5cd415a162a3df6cff022c9809ec16",
+      "counts": {
+        "HIGH": 146,
+        "LOW": 325,
+        "MEDIUM": 339,
+        "UNKNOWN": 7,
+        "CRITICAL": 21
+      }
+    },
+    {
+      "name": "local-airflow-final",
+      "ref": "localhost/aat-airflow-local-candidate:0.1.0",
+      "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 105,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      }
+    },
+    {
+      "name": "local-backend-tests",
+      "ref": "localhost/aat-backend-tests-local-candidate:0.1.0",
+      "image_id": "89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 40,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      }
+    }
+  ],
+  "baseline20_and_candidate3_ID_checks": "PASS",
+  "source_sha256": {
+    "tests/api/__init__.py": "7e386baa77bcbede067e6121566600ccdd1fe3d94d9b07a5cb858749da81c1ff",
+    "tests/api/test_openapi_contract.py": "866fcf213bc98fecae48aa69ca2419b1c4a981c75e0945f7963fbb2fe951b0fd",
+    "tests/integration/test_metadata_foundation.py": "939158c26ad24a5fde80762d817a636cc987f866869abca76199782fef11a87d",
+    "tests/tools/run_openapi_contract.py": "a7f55379e4a85bf976cb73035858400edcca9f21e8aaeeec68106e419962fcdd",
+    "tests/tools/run_metadata_foundation.py": "e4e05dc91c4f39f7a62e4a320f10b7a976c1ab32120295f8779a54e58fe5543d"
+  },
+  "task_counts": {
+    "total": 152,
+    "checked": 15,
+    "T014": "UNCHECKED",
+    "T015": "CHECKED_TEST_AUTHORING_ONLY",
+    "T016": "CHECKED_TEST_AUTHORING_ONLY"
+  },
+  "post_hooks": "NOT_REGISTERED",
+  "fixture_cleanup": "PASS_NO_T015_T016_CONTAINERS_REMAIN",
+  "next_task": "T017_TEST_AUTHORING_NOT_STARTED"
+}

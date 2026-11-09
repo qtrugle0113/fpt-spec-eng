@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 2 items
+
+../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_missing_original_key_and_stale_worker_fail_readiness FAILED [ 50%]
+../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_readiness_uses_real_airflow_and_fails_when_its_endpoint_unavailable FAILED [100%]
+
+=================================== FAILURES ===================================
+_ FoundationReadinessTests.test_missing_original_key_and_stale_worker_fail_readiness _
+/tmp/tests/integration/test_foundation_ready.py:18: in setUp
+    raise AssertionError('T034 foundation health missing') from None
+E   AssertionError: T034 foundation health missing
+_ FoundationReadinessTests.test_readiness_uses_real_airflow_and_fails_when_its_endpoint_unavailable _
+/tmp/tests/integration/test_foundation_ready.py:18: in setUp
+    raise AssertionError('T034 foundation health missing') from None
+E   AssertionError: T034 foundation health missing
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_missing_original_key_and_stale_worker_fail_readiness
+FAILED ../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_readiness_uses_real_airflow_and_fails_when_its_endpoint_unavailable
+============================== 2 failed in 0.87s ===============================

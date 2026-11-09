@@ -1,5 +1,44 @@
 # Danh sách task: Airflow Automation Tool
 
+**Hiện hành T021:** FileParserRevision và UploadedFile.revision/ETag đã kiểm trên PG thật:
+47/47 PASS (16 T021,31 regression T019/T020). T021 hoàn thành phạm vi ORM; binding/recovery
+NOT_RUN vì model/service chưa có, không suy thành recovery safety PASS. T0161PASS/6RED,
+T01728RED; T029/T034/build/scan/CI mới NOT_RUN. Chưa triển khai T022 trở đi.
+T014_FULL BLOCKED/security FAIL, quyền local giữ hạn23/11 00:00 UTC+09/review16/11.
+Xem [báo cáo T021](../../docs/testing/t021-report.md). Các khối bên dưới là lịch sử.
+
+**Hiện hành T020/T019:** 5definition ORM có16tests mới +15regression T019 PASS31/31 trênPG thật.
+Nhánh code dependency T019 đã PASS bằng TableDefinition thật (ORM/SQL), đủ đóng T019.
+T019/T020 hoàn thành ở phạm vi ORM; T021 trở đi chưa triển khai. T0161PASS/6RED, T01728RED.
+T029/T034/build/scan/CI mới NOT_RUN; T014_FULL BLOCKED/security FAIL.
+Xem [báo cáo T020](../../docs/testing/t020-report.md). Các khối cũ phía dưới là snapshot lịch sử.
+
+**Hiện hành T019:** ba ORM và constraint/immutability/codec/projection/type snapshot có15PG tests PASS.
+T019 vẫn `[ ]`/PARTIAL: positive branch chặn code có business dependency thật NOT_RUN,
+không tạo schema thay thế hoặc triển khai T020 ngoài scope. T0161PASS/6RED, T01728RED không đổi.
+T029/T034/build/scan/CI mới NOT_RUN; T014_FULL BLOCKED/security FAIL.
+Xem [báo cáo T019](../../docs/testing/t019-report.md). Các snapshot dưới đây là lịch sử.
+
+**Hiện hành T018:** common schemas/health routing đã triển khai và kiểm source-only:
+19/19checks gồm T015,7/7 trên backend dependencies PASS; live ALIVE, ready503 chưa đủ T034.
+T016 vẫn1PASS/6RED, T017 giữ RED/NOT_RUN branches. Chưa build/deploy source mới, CI/scan mới NOT_RUN.
+T014_FULL BLOCKED/security FAIL; chưa triển khai T019 trở đi.
+Xem [báo cáo T018](../../docs/testing/t018-report.md). Snapshot T017/T015/T016 bên dưới là lịch sử.
+
+**Hiện hành — T017 2026-11-09:** hoàn thành viết12state/16repository tests; collect28cases,
+28FAIL/RED do thiếu T031, không collection error. Nhánh concurrency/lock/role chưa chạy tới
+(NOT_RUN), không nghiệm thu foundation T034. T014_FULL BLOCKED/security FAIL, quyền local
+giữ hạn23/11 00:00 UTC+09/review16/11. Chưa triển khai T018 trở đi.
+Xem [báo cáo T017](../../docs/testing/t017-report.md). Các snapshot T015/T016/vòng3 dưới đây là lịch sử.
+
+**Hiện hành — M0/T015/T016 2026-11-09:** M0 khép theo xác nhận chủ dự án;
+PHASE2_LOCAL_ELIGIBILITY AUTHORIZED đến2026-11-23 00:00 UTC+09, review16/11.
+T014_FULL vẫn BLOCKED/security FAIL. T015 harness PASS9/9; T016 đã viết/collect7cases,
+1PASS/6FAIL RED đúng foundation chưa triển khai. Chỉ hoàn thành task viết tests,
+không nghiệm thu foundation T034. CI source mới/full scan21targets NOT_RUN.
+Xem [kết quả hiện hành](../../docs/testing/t015-t016-report.md).
+Phần vòng3 dưới đây là lịch sử.
+
 **Trạng thái mới nhất vòng3:** T014 `[ ]`/BLOCKED bởi security784occurrences;
 CI Windows/Linux d57db09 và clean checkout PASS. Chỉ tiếp tục T014, chưa mở Phase2.
 Xem [báo cáo vòng3](../../docs/testing/t014-r3-report.md); các đoạn tiến độ A/B cũ bên
@@ -49,18 +88,18 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 ## Phase 2 — Nền tảng Backend
 
 **Mục tiêu**: Repository/schema/contracts/error/worker dùng chung; hoàn thiện app-init.
-**Điều kiện bắt đầu**: T014 đạt; contracts và Data Model là đầu vào canonical.
+**Điều kiện bắt đầu**: T014 đạt đầy đủ HOẶC hồ sơ quyền local được chủ dự án duyệt/còn hạn, LEX-003/D3 đã khép và controls/exception IDs đã kiểm. T014 giữ `[ ]` nếu full security còn FAIL. Contracts/Data Model vẫn canonical. Ngoại lệ dependency T014 chỉ cho T015/T016 trong scope local, không hạ gate chức năng các phase sau; xem `docs/proposals/t014-conditional-local-gate.md`.
 **Kết quả dự kiến**: Application metadata riêng, API typed, errors an toàn, worker durable, schema/migration readiness.
 **Cách kiểm tra/test**: T015/T016 viết trước triển khai; T034 chạy unit/API/integration thật.
 **Điều kiện hoàn thành**: T015–T034 đạt, schema/repository/migrations/seed và Operation recovery đúng, worker phục hồi không replay side effect chưa rõ; chưa nghiệm thu Connections CRUD hoặc Settings API thuộc Phase3/7.
 
-- [ ] T015 [P] Viết contract harness tại `tests\api\test_openapi_contract.py`; lấy operation/schema từ `specs\001-airflow-automation-tool\contracts\openapi.yaml` hiện tại, không hardcode40 hoặc47/53; phát hiện missing operation/required fields/extra fields/write-only secret/status/ETag/idempotency drift; Phụ thuộc: T014; Truy vết: FR-085, NFR-010; Kiểm chứng: schema mismatch cố ý bị phát hiện; baseline hiện tại47operations/53schemas chỉ là thông tin, endpoints story được chạy khi story tương ứng hoàn thiện.
-- [ ] T016 [P] Viết integration nền tảng tại `tests\integration\test_metadata_foundation.py`; isolation app/Airflow DB, FK RESTRICT, migration concurrency, operation lease/restart, safe errors; Phụ thuộc: T014; Truy vết: FR-082, FR-099–FR-100, NFR-003; Kiểm chứng: thiếu foundation làm test fail đúng nguyên nhân, không mock DB.
-- [ ] T017 [P] Viết test state/repository quyền tại `tests\unit\test_authorization_states.py`, `tests\integration\test_authorization_repository.py`; reservation một ONCE, RunIntent idempotency, lock order authorization→intent→binding/admission, revoked/invalidated/consumed/closed, role cấm cấp/sửa scope runtime; Phụ thuộc: T016; Truy vết: BR-08, FR-053–FR-054, SC-014; Kiểm chứng: collect/red đúng chức năng thiếu; gate foundation chạy PostgreSQL thật, hai transaction tranh quyền chỉ một reservation.
-- [ ] T018 Tạo Pydantic envelope/base schemas và API routing tại `backend\src\aat_api\schemas\common.py`, `backend\src\aat_api\routes\health.py`; UUID, UTC RFC3339, pagination default50/max200/offset>=0, unknown total nullable; Phụ thuộc: T015; Truy vết: FR-077, NFR-006; Kiểm chứng: validate boundary/errors khớp OpenAPI.
-- [ ] T019 [P] Tạo Connection/Revision/Secret ORM tại `packages\aat_metadata\models\connections.py`; trích ràng buộc: “unique normalized_code; PG/MYSQL; code bất biến khi có dependency”, “unique connection_id/revision; immutable endpoint/credential; port1–65535; secret FK”, “Fernet token; không plaintext; chỉ backend/runtime role đọc, không public serializer”; Phụ thuộc: T016; Truy vết: FR-003–FR-009; Kiểm chứng: constraint DB, serializer không ciphertext/password.
-- [ ] T020 [P] Tạo UploadedFile/DefinitionUpload/Issue/TableDefinition/Column ORM tại `packages\aat_metadata\models\definitions.py`; “storage_key do server sinh; filename không thành path; immutable content; parser sửa tạo revision”, “TABLE/ETL; version1.0; validation gắn file/checksum, report không chứa cell secret”, “row/column bắt đầu1; lỗi workbook có location null và scope=workbook”, “unique upload/physical table identity; chỉ tạo mới table”, “unique name/ordinal/table; key không nullable; default tagged JSON; PK ghép thứ tự ordinal”; Phụ thuộc: T016; Truy vết: FR-010–FR-028, FR-098; Kiểm chứng: FK/duplicate/null/default round-trip đúng.
-- [ ] T021 [P] Tạo FileParserRevision ORM tại `packages\aat_metadata\models\file_parsers.py`, thêm UploadedFile.revision và DefinitionIssue.scope trong `packages\aat_metadata\models\definitions.py`; “unique file/revision, immutable config”, “Content sha256 không đổi”, parser revision còn binding/recovery phải giữ; Phụ thuộc: T020; Truy vết: FR-011–FR-017, FR-020, FR-092; Kiểm chứng: config/hash/encoding/delimiter/header/quote/escape/NULL đầy đủ, FK RESTRICT và ETag revision.
+- [x] T015 [P] Viết contract harness tại `tests\api\test_openapi_contract.py`; lấy operation/schema từ `specs\001-airflow-automation-tool\contracts\openapi.yaml` hiện tại, không hardcode40 hoặc47/53; phát hiện missing operation/required fields/extra fields/write-only secret/status/ETag/idempotency drift; Phụ thuộc: T014; Truy vết: FR-085, NFR-010; Kiểm chứng: schema mismatch cố ý bị phát hiện; baseline hiện tại47operations/53schemas chỉ là thông tin, endpoints story được chạy khi story tương ứng hoàn thiện.
+- [x] T016 [P] Viết integration nền tảng tại `tests\integration\test_metadata_foundation.py`; isolation app/Airflow DB, FK RESTRICT, migration concurrency, operation lease/restart, safe errors; Phụ thuộc: T014; Truy vết: FR-082, FR-099–FR-100, NFR-003; Kiểm chứng: thiếu foundation làm test fail đúng nguyên nhân, không mock DB.
+- [x] T017 [P] Viết test state/repository quyền tại `tests\unit\test_authorization_states.py`, `tests\integration\test_authorization_repository.py`; reservation một ONCE, RunIntent idempotency, lock order authorization→intent→binding/admission, revoked/invalidated/consumed/closed, role cấm cấp/sửa scope runtime; Phụ thuộc: T016; Truy vết: BR-08, FR-053–FR-054, SC-014; Kiểm chứng: collect/red đúng chức năng thiếu; gate foundation chạy PostgreSQL thật, hai transaction tranh quyền chỉ một reservation.
+- [x] T018 Tạo Pydantic envelope/base schemas và API routing tại `backend\src\aat_api\schemas\common.py`, `backend\src\aat_api\routes\health.py`; UUID, UTC RFC3339, pagination default50/max200/offset>=0, unknown total nullable; Phụ thuộc: T015; Truy vết: FR-077, NFR-006; Kiểm chứng: validate boundary/errors khớp OpenAPI.
+- [x] T019 [P] Tạo Connection/Revision/Secret ORM tại `packages\aat_metadata\models\connections.py`; trích ràng buộc: “unique normalized_code; PG/MYSQL; code bất biến khi có dependency”, “unique connection_id/revision; immutable endpoint/credential; port1–65535; secret FK”, “Fernet token; không plaintext; chỉ backend/runtime role đọc, không public serializer”; Phụ thuộc: T016; Truy vết: FR-003–FR-009; Kiểm chứng: constraint DB, serializer không ciphertext/password.
+- [x] T020 [P] Tạo UploadedFile/DefinitionUpload/Issue/TableDefinition/Column ORM tại `packages\aat_metadata\models\definitions.py`; “storage_key do server sinh; filename không thành path; immutable content; parser sửa tạo revision”, “TABLE/ETL; version1.0; validation gắn file/checksum, report không chứa cell secret”, “row/column bắt đầu1; lỗi workbook có location null và scope=workbook”, “unique upload/physical table identity; chỉ tạo mới table”, “unique name/ordinal/table; key không nullable; default tagged JSON; PK ghép thứ tự ordinal”; Phụ thuộc: T016; Truy vết: FR-010–FR-028, FR-098; Kiểm chứng: FK/duplicate/null/default round-trip đúng.
+- [x] T021 [P] Tạo FileParserRevision ORM tại `packages\aat_metadata\models\file_parsers.py`, thêm UploadedFile.revision và DefinitionIssue.scope trong `packages\aat_metadata\models\definitions.py`; “unique file/revision, immutable config”, “Content sha256 không đổi”, parser revision còn binding/recovery phải giữ; Phụ thuộc: T020; Truy vết: FR-011–FR-017, FR-020, FR-092; Kiểm chứng: config/hash/encoding/delimiter/header/quote/escape/NULL đầy đủ, FK RESTRICT và ETag revision.
 - [ ] T022 [P] Tạo ETLDefinition/Revision/Mapping ORM tại `packages\aat_metadata\models\etl.py`; “dag_id unique local; collision external kiểm thêm Airflow; không cascade xóa lịch sử”, “immutable canonical config; JSON chứa IDs/reference, không secret; unique definition/revision/hash”, “một target enabled mỗi revision; source tùy transform; enum whitelist”; Phụ thuộc: T016; Truy vết: FR-030–FR-048; Kiểm chứng: immutable/hash/FK và enabled target uniqueness.
 - [ ] T023 [P] Tạo Authorization ORM tại `packages\aat_metadata\models\authorizations.py` với toàn fields Data Model: dag/revision/target/scope hashes, acknowledged/allow_empty timestamps, state/reserved_intent_id/consumed/closed/revoked/invalidated/revision; “scope ONCE/SCHEDULED; allow_empty mặc định false, true cần xác nhận riêng; ONCE reservation một lần không giải phóng; đổi phạm vi làm mất hiệu lực; không xóa quyền còn recovery”; Phụ thuộc: T022, T017; Truy vết: BR-08, FR-053–FR-054; Kiểm chứng: GRANTED/RESERVED/CONSUMED/CLOSED/REVOKED/INVALIDATED constraints và scope/ETag snapshot.
 - [ ] T024 [P] Tạo Operation/TableCreationJob/Result/Deployment/Admission/Audit ORM tại `packages\aat_metadata\models\operations.py`; “unique kind/idempotency_key; cùng key khác payload409; SELECT FOR UPDATE SKIP LOCKED nhận việc”, “chỉ bắt đầu từ upload VALIDATED, recheck quyền/schema/existence”, “unique job/table; kết quả riêng, không hứa transaction toàn workbook”, “unique deployment identity; một active deploy mỗi dag; version UUID/number lấy API thật”, “state OPEN/BLOCKED; chặn run mới vào engine khi redeploy/connection change; không scheduler thay thế”, “ghi xác nhận/xung đột/recovery; không chứa credentials, payload file/dataset hoặc nguyên dòng lỗi”; Phụ thuộc: T016; Truy vết: FR-028, FR-035–FR-041, FR-096–FR-097; Kiểm chứng: state transition/unique/FK và audit redaction.
@@ -93,7 +132,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 - [ ] T043 [US2] Tạo Connections routes/Test Connection tại `backend\src\aat_api\routes\connections.py`; dùng service shared, status/tested_at thật, required dependencies resource refs và needs_revalidation đúng OpenAPI, GET không secret; Phụ thuộc: T042; Truy vết: FR-005–FR-009; Kiểm chứng: T035/T036 chạy qua HTTP và DB thật, UI xem dependency trước sửa/xóa không cần gây lỗi409.
 - [ ] T044 [US2] Sinh typed OpenAPI client tại `frontend\src\lib\api.generated.ts`, `frontend\src\lib\api.ts`; codegen từ contract, ErrorResponse và polling helpers, không any/secret cache; Phụ thuộc: T043, T003; Truy vết: NFR-010, Constitution IV; Kiểm chứng: typecheck và client nhận status/error chuẩn.
 - [ ] T045 [US2] Tạo trang/forms Connections tại `frontend\src\features\connections\ConnectionForm.tsx`, `frontend\src\pages\Connections.tsx`; search/filter/details/test timestamp/Add/Edit/Delete/dependency warning, pending/error/readonly password; Phụ thuộc: T044; Truy vết: US-02, FR-005–FR-009, NFR-002; Kiểm chứng: UI English, keyboard, API thật, không optimistic success.
-- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045, T013; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: chạy `podman compose --profile test run --rm e2e-tests npx playwright test connections.spec.ts` trên runner T004/T011 đã có; T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
+- [ ] T046 [US2] Viết/chạy vertical E2E tại `tests\e2e\connections.spec.ts`, hướng dẫn tại `docs\operations\connections.md`; PG/MySQL CRUD/test và error flows từ UI; Phụ thuộc: T045, T013; Truy vết: US-02, SC-011, ma trận Q/Y; Kiểm chứng: chạy `podman compose --profile test run --rm e2e-tests node node_modules/@playwright/test/cli.js test connections.spec.ts` trên runner T004/T011 đã có; T035/T036 và E2E PASS, giới hạn/error recovery tài liệu tiếng Việt.
 
 ## Phase 4 — Table Management, US4 (P1)
 
@@ -245,7 +284,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 **Cách kiểm tra/test**: T138–T149 trên stack thật; T150/T151 tài liệu; T152 cổng cuối.
 **Điều kiện hoàn thành**: Không mandatory test NOT_RUN/BLOCKED/FAILED; no Critical/High chưa giải quyết; không tuyên bố MVP hoàn thành chỉ với US1 hoặc core slice.
 
-- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.56.1, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
+- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.65.0, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
 - [ ] T139 [P] Tạo/chạy regression UI/API mới tại `tests\e2e\history_parser_authorization.spec.ts`; browser mới history/table detail, parser candidate/PATCH/stale/active-recovery guards, ONCE reserve/retry/rerun cần quyền mới, scheduled allow_empty consent/list/revoke warning và typed fields/dashboard lifetime; Phụ thuộc: T138, T058, T067, T116, T119; Truy vết: FR-015–FR-017, FR-028, FR-053–FR-054, FR-075, BR-08; Kiểm chứng: stack thật/browser1440/390, no secret hoặc success giả, readonly/unknown/stale feedback English.
 - [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
 - [ ] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.

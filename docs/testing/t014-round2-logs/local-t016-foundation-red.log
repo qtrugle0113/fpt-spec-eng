@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 7 items
+
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_00_two_migration_initializers_serialize_and_keep_same_head PASSED [ 14%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_all_dependency_foreign_keys_restrict_history_deletion PASSED [ 28%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_application_and_airflow_database_access_are_isolated PASSED [ 42%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_claim_skip_locked_and_reconnect_preserves_reconciliation PASSED [ 57%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_idempotency_is_enforced_by_database PASSED [ 71%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_unknown_error_uses_safe_contract_envelope PASSED [ 85%]
+../../tmp/tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_worker_restart_does_not_replay_unknown_side_effect PASSED [100%]
+
+============================== 7 passed in 16.14s ==============================

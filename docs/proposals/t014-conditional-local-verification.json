@@ -1,0 +1,383 @@
+{
+  "captured_at": "2026-11-09T04:46:29.963740+00:00",
+  "scope": "Read-only proposal verification; no build/restart/scan/test rerun",
+  "head_sha": "b0c947d23f1e9c23e9ce0a57b634f9e7a4c7b4ab",
+  "source_hash_mismatches": [],
+  "image_id_mismatches": [],
+  "images": [
+    {
+      "target": "python-build-base",
+      "ref": "docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4",
+      "image_id": "313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18"
+    },
+    {
+      "target": "airflow-build-base",
+      "ref": "docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f",
+      "image_id": "2568f68b627296ed2d3c0f4e1a0e2f86dc48b870b5ab9cea688244e320daaedb"
+    },
+    {
+      "target": "nginx-build-base",
+      "ref": "docker.io/library/nginx:1.30.6-alpine3.24@sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7",
+      "image_id": "1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4"
+    },
+    {
+      "target": "playwright-build-base",
+      "ref": "mcr.microsoft.com/playwright:v1.65.0-resolute@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218",
+      "image_id": "6c366017b41688a05fd66e4d942e35f17fdb1f3c5ad0ec9a39674f36e5ff446c"
+    },
+    {
+      "target": "go-build-base",
+      "ref": "docker.io/library/golang:1.27.3-alpine3.24@sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936",
+      "image_id": "8db2494859f5857dcf770d774a9d7c2c952a0f23a40b02de187bb41d76eac422"
+    },
+    {
+      "target": "node-build-base",
+      "ref": "docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292",
+      "image_id": "8700da48cc6592503feabf399d242414f932197c3b44f43970d2cbc5671e06b0"
+    },
+    {
+      "target": "frontend-build",
+      "ref": "localhost/aat-frontend-build:0.1.0",
+      "image_id": "6232dc8e1ae8c4ac8ea31245364e661d7a15566c6ec21b2800cf50bc1458e539"
+    },
+    {
+      "target": "backend-wheels",
+      "ref": "localhost/aat-backend-wheels:0.1.0",
+      "image_id": "a73ffe4ea5321b82d6d95ef2246312503a12761b0299de542f781e5f152c68a1"
+    },
+    {
+      "target": "airflow-wheels",
+      "ref": "localhost/aat-airflow-wheels:0.1.0",
+      "image_id": "67d6b64d0a3e62c199f4e51c30f5753913c003bdd5b31529237e22e6b0f0c1a7"
+    },
+    {
+      "target": "e2e-dependencies",
+      "ref": "localhost/aat-e2e-dependencies:0.1.0",
+      "image_id": "eeaff03ea5c857a7177298bec449f238fc6474df209ddf02c1c4dee0d7d36815"
+    },
+    {
+      "target": "backend",
+      "ref": "localhost/aat-backend:0.1.0",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "target": "airflow",
+      "ref": "localhost/aat-airflow:0.1.0",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a"
+    },
+    {
+      "target": "frontend",
+      "ref": "localhost/aat-frontend:0.1.0",
+      "image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+    },
+    {
+      "target": "postgres",
+      "ref": "localhost/aat-postgres:17.11",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03"
+    },
+    {
+      "target": "postgres-build-base",
+      "ref": "docker.io/library/postgres:17.11-bookworm@sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a",
+      "image_id": "018dbecf6a31cfed1f83c218b5e428a52ac389ad46e495f72831641db49d85a9"
+    },
+    {
+      "target": "mysql-build-base",
+      "ref": "docker.io/library/mysql:8.4.13@sha256:72c368d898861f3b3a07af0e6d690400f44f048799ed46822783d9224cc2c86d",
+      "image_id": "0f1a0ccadda3a1734d1db557e203ec58621d56fa248525016e85fe4f631311ec"
+    },
+    {
+      "target": "gosu-build",
+      "ref": "localhost/aat-gosu-build:0.1.0",
+      "image_id": "569511230d05b0db0baf7c836eb51cc6b56f12af4afaad45b7fc71073e9fc91a"
+    },
+    {
+      "target": "mysql",
+      "ref": "localhost/aat-mysql:8.4.13",
+      "image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f"
+    },
+    {
+      "target": "backend-tests",
+      "ref": "localhost/aat-backend-tests:0.1.0",
+      "image_id": "7a4496e2761bbe00a61b0581b10206e74b4d80c2e3dacbc3c59fce228951d6a4"
+    },
+    {
+      "target": "e2e-tests",
+      "ref": "localhost/aat-e2e:0.1.0",
+      "image_id": "0d47c54224c26040bb23d6c4672372926cc494e6d2572b0b7ba8ae9f7eab8e16"
+    }
+  ],
+  "containers": [
+    {
+      "names": [
+        "local_postgres_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "066167ff39c2a612402ce99b734ea1cff92a9d1f2ac52f697a5f0384f0d88d6b"
+    },
+    {
+      "names": [
+        "local_redis_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "e965140ddfcc015d5ad17b0d56f3d0195834a0bdcba3c490b253e45ce81138b0"
+    },
+    {
+      "names": [
+        "local_agent-service_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "5c360de5c218610d1ce9fae0978c3dfe6b2e0ab304783d4480743ad5c96be6d9"
+    },
+    {
+      "names": [
+        "local_backend_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "bab47070104b90fd9449b8d78187e6a9a76b35aabc8e0da6563b5dce02b1054e"
+    },
+    {
+      "names": [
+        "local_frontend_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "359d20c66598afa32ece66e0d64476767ad81d699ac9382e487fee782ede08aa"
+    },
+    {
+      "names": [
+        "local_playwright-runner_1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 292 years ago",
+      "image_id": "2ea3ae3004f8a33785b54911f1b531dc3a91192a46c44089d8a0b4720102168a"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-secrets-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 4 hours ago",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-postgres-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-mysql-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-db-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 4 hours ago",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-app-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 4 hours ago",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-backend-worker-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-airflow-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 4 hours ago",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-airflow-dag-processor-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-airflow-scheduler-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-airflow-apiserver-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "e246578aed00779f0ce4d5aa367f2ce5c212b60e6e0d1773b44a9865104703a2"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-backend-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "89a247b18497a367f6d16571ff07fb5401c7ce4e2a3200dc95b476b9e1211431"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-ab-20261109-frontend-1"
+      ],
+      "state": "running",
+      "status": "Up 4 hours (healthy)",
+      "image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-secrets-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 3 hours ago",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-mysql-1"
+      ],
+      "state": "running",
+      "status": "Up 2 hours (healthy)",
+      "image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-postgres-1"
+      ],
+      "state": "running",
+      "status": "Up 3 hours (healthy)",
+      "image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-db-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 3 hours ago",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-app-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 3 hours ago",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-airflow-init-1"
+      ],
+      "state": "exited",
+      "status": "Exited (0) 3 hours ago",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-backend-worker-1"
+      ],
+      "state": "running",
+      "status": "Up 3 hours (healthy)",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-airflow-dag-processor-1"
+      ],
+      "state": "running",
+      "status": "Up 3 hours (healthy)",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-airflow-apiserver-1"
+      ],
+      "state": "running",
+      "status": "Up 3 hours (healthy)",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-airflow-scheduler-1"
+      ],
+      "state": "running",
+      "status": "Up 2 hours (healthy)",
+      "image_id": "7ab7cd10757fd061f431a98560101098dc4eabc2781f1b48dae286239f7dd67a"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-backend-1"
+      ],
+      "state": "running",
+      "status": "Up 2 hours (healthy)",
+      "image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6"
+    },
+    {
+      "names": [
+        "aat-phase1-t014-r3-20261109-frontend-1"
+      ],
+      "state": "running",
+      "status": "Up 2 hours (healthy)",
+      "image_id": "d2b79243337dd251653727caafcab75e53f83458d2e2e4142163337fa74ad0b2"
+    }
+  ],
+  "candidate_runtime_libbrotli1": "1.0.9-2+deb12u1",
+  "full_runtime_tests": "REUSED_R3_NOT_RERUN",
+  "new_vulnerability_scan": "NOT_RUN_NO_IMAGE_CHANGE",
+  "checklists": {
+    "requirements": {
+      "checked": 16,
+      "unchecked": 0
+    },
+    "spec-quality": {
+      "checked": 48,
+      "unchecked": 0
+    }
+  },
+  "extension_hooks": "NONE",
+  "constraints_upstream_sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
+  "proposal_validation": {
+    "status": "PASS",
+    "groups": 149,
+    "contexts": 784,
+    "category_counts": {
+      "PROPOSED_TEMPORARY_RISK_ACCEPTANCE": 147,
+      "MUST_RESOLVE_BEFORE_LOCAL_GATE": 1,
+      "PROPOSED_NOT_AFFECTED_REQUIRES_REVIEW": 1
+    },
+    "local_links_checked": 9,
+    "canonical_tracked_files_modified": [],
+    "patch_worktree_check": "PASS",
+    "patch_index_check": "PASS",
+    "patch_applied": false,
+    "post_hooks": "NONE",
+    "functional_tests_rerun": false
+  }
+}

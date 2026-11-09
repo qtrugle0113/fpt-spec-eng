@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 3 items
+
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_claim_skip_locked_owner_and_expired_lease FAILED [ 33%]
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_confirmation_hash_scope_expiry_and_signature FAILED [ 66%]
+../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_idempotency_replay_and_conflict FAILED [100%]
+
+=================================== FAILURES ===================================
+_____ OperationServiceTests.test_claim_skip_locked_owner_and_expired_lease _____
+/tmp/tests/integration/test_phase2_operations.py:15: in setUp
+    raise AssertionError('T033 operation/confirmation implementation missing') from None
+E   AssertionError: T033 operation/confirmation implementation missing
+___ OperationServiceTests.test_confirmation_hash_scope_expiry_and_signature ____
+/tmp/tests/integration/test_phase2_operations.py:15: in setUp
+    raise AssertionError('T033 operation/confirmation implementation missing') from None
+E   AssertionError: T033 operation/confirmation implementation missing
+__________ OperationServiceTests.test_idempotency_replay_and_conflict __________
+/tmp/tests/integration/test_phase2_operations.py:15: in setUp
+    raise AssertionError('T033 operation/confirmation implementation missing') from None
+E   AssertionError: T033 operation/confirmation implementation missing
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_claim_skip_locked_owner_and_expired_lease
+FAILED ../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_confirmation_hash_scope_expiry_and_signature
+FAILED ../../tmp/tests/integration/test_phase2_operations.py::OperationServiceTests::test_idempotency_replay_and_conflict
+============================== 3 failed in 0.39s ===============================

@@ -1,0 +1,10 @@
+{
+  "project": "aat-phase2-foundation-0971fbfa",
+  "provider": "Docker Compose5.6.0",
+  "test_image_id": "b5ac9f5d1a769d38f31e4392bf14bf82dd0e4959b007e85a9f3671bb410109a3",
+  "exit_code": 1,
+  "log": "docs/testing/t014-round2-logs/phase2-compose-foundation.log",
+  "postgres_tmpfs": true,
+  "existing_services_modified": false,
+  "cleanup_exit_code": 0
+}

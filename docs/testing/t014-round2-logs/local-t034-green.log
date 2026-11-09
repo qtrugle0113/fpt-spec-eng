@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 2 items
+
+../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_missing_original_key_and_stale_worker_fail_readiness PASSED [ 50%]
+../../tmp/tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_readiness_uses_real_airflow_and_fails_when_its_endpoint_unavailable PASSED [100%]
+
+============================== 2 passed in 2.96s ===============================

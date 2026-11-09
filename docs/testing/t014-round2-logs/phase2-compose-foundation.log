@@ -1,0 +1,64 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 49 items
+
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_00_two_migration_initializers_serialize_and_keep_same_head PASSED [  2%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_all_dependency_foreign_keys_restrict_history_deletion PASSED [  4%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_application_and_airflow_database_access_are_isolated PASSED [  6%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_claim_skip_locked_and_reconnect_preserves_reconciliation PASSED [  8%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_idempotency_is_enforced_by_database PASSED [ 10%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_unknown_error_uses_safe_contract_envelope PASSED [ 12%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_worker_restart_does_not_replay_unknown_side_effect FAILED [ 14%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_admission_unknown_outcome_requires_verification PASSED [ 16%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_close_requires_terminal_no_retry_and_known_outcome PASSED [ 18%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_completed_admission_is_never_reused_for_dml PASSED [ 20%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_created_and_verified_rejection_are_distinct PASSED [ 22%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_submission_timeout_requires_reconciliation_not_new_reservation PASSED [ 24%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_once_reserves_and_safe_extraction_retry_keeps_reservation PASSED [ 26%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_only_verified_commit_consumes_once PASSED [ 28%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_reserved_once_never_returns_to_granted PASSED [ 30%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoke_and_invalidate_block_future_admission PASSED [ 32%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_invalidated_consumed_closed_never_grant_new_work PASSED [ 34%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_unknown_commit_cannot_close_but_verified_commit_can_reconcile PASSED [ 36%]
+tests/unit/test_authorization_states.py::AuthorizationStateTests::test_scheduled_success_does_not_consume_schedule_grant PASSED [ 38%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_acknowledged_empty_permission_only_applies_to_reserved_run PASSED [ 40%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_admission_before_revoke_can_reconcile_but_not_be_reused PASSED [ 42%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_concurrent_same_request_reuses_one_stable_intent PASSED [ 44%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_empty_replacement_needs_explicit_scoped_acknowledgment PASSED [ 46%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_authorization_before_intent_and_binding PASSED [ 48%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_intent_before_binding_after_authorization PASSED [ 51%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reservation_idempotency_and_payload_conflict PASSED [ 53%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reserved_once_cannot_move_to_new_run PASSED [ 55%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_revoke_before_admission_denies_new_write_and_preserves_evidence PASSED [ 57%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_runtime_role_cannot_grant_change_scope_or_delete_evidence PASSED [ 59%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_grant_rejects_manual_and_scope_schedule_drift PASSED [ 61%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_runs_get_distinct_intents_without_consuming_grant PASSED [ 63%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_terminal_authorizations_reject_new_reservation PASSED [ 65%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_two_transactions_compete_for_once_exactly_one_reservation PASSED [ 67%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_unknown_commit_blocks_new_epoch_and_protects_binding PASSED [ 69%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_verified_rollback_requires_new_epoch_and_live_grant PASSED [ 71%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_actual_migration_matches_registered_models_and_is_idempotent PASSED [ 73%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict PASSED [ 75%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist PASSED [ 77%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_claim_skip_locked_owner_and_expired_lease PASSED [ 79%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_confirmation_hash_scope_expiry_and_signature PASSED [ 81%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_idempotency_replay_and_conflict PASSED [ 83%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_cross_origin_mutation_blocked_and_liveness_stays_available PASSED [ 85%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_framework_errors_have_safe_envelope_and_request_id PASSED [ 87%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_unclassified_exception_suppresses_secret_dsn_path_and_traceback PASSED [ 89%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_validation_location_and_stale_revision_are_safe_contract_errors PASSED [ 91%]
+tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_missing_original_key_and_stale_worker_fail_readiness PASSED [ 93%]
+tests/integration/test_foundation_ready.py::FoundationReadinessTests::test_readiness_uses_real_airflow_and_fails_when_its_endpoint_unavailable PASSED [ 95%]
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed PASSED [ 97%]
+tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_owner_domain_is_separate_from_backend_and_runtime PASSED [100%]
+
+=================================== FAILURES ===================================
+_ MetadataFoundationTests.test_worker_restart_does_not_replay_unknown_side_effect _
+tests/integration/test_metadata_foundation.py:111: in test_worker_restart_does_not_replay_unknown_side_effect
+    self.assertTrue(entry.exists(), 'T033 durable Operation worker is not implemented; bootstrap heartbeat is insufficient')
+E   AssertionError: False is not true : T033 durable Operation worker is not implemented; bootstrap heartbeat is insufficient
+=========================== short test summary info ============================
+FAILED tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_worker_restart_does_not_replay_unknown_side_effect
+======================== 1 failed, 48 passed in 37.77s =========================

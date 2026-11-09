@@ -1,3 +1,15 @@
+# Phase 1 hiện hành — 2026-11-09
+
+**Hiện hành:** T014_FULL BLOCKED/security FAIL; quyền phát triển local có hạn đã kích hoạt
+sau khi chủ dự án xác nhận LEX-003/D3/mapping. Chỉ viết tests T015/T016 trong lượt này,
+không nghiệm thu foundation. Xem [báo cáo mới nhất](t015-t016-report.md).
+Các trạng thái BLOCKED local dưới đây là lịch sử; CI source mới vẫn NOT_RUN.
+
+**T014_FULL và quyền local vẫn BLOCKED.** D1/D2/D4 đã duyệt; LEX-003,
+D3/LEX-079 và mapping candidate IDs còn chờ reviewer. Xem
+[hồ sơ hiện hành](t014-local-gate-review.md), [results](t014-local-gate-results.json).
+CI source mới NOT_RUN; các PASS R3 bên dưới là lịch sử. Chưa triển khai Phase 2.
+
 # Báo cáo Phase1 sau remediation P1–P7 — 2026-11-08
 
 **Nguồn hiện hành: [remediation vòng3](t014-r3-report.md). CI/clean checkout và các
@@ -488,3 +500,12 @@ T014 giữ [ ]; tài liệu/compatibility validation không được coi là pro
 Xem [báo cáo vòng3](t014-r3-report.md): CI/clean checkout và các gate đã chạy PASS;
 security còn784HIGH/CRITICAL occurrences trên20targets, T014/Phase1 vẫn BLOCKED.
 Các snapshot bên dưới giữ provenance lịch sử, không thay kết quả/IDs vòng3.
+
+## Trạng thái quyền phát triển local, tách khỏi gate đầy đủ
+
+T014_FULL/security giữ kết quả đầy đủ theo snapshot đã kiểm, không đổi thành PASS.
+Quyền tiếp tục local chỉ xác định bằng quyết định chủ dự án còn hiệu lực và evidence
+khép LEX-003/D3/controls theo docs/proposals/t014-conditional-local-gate.md.
+Nếu thiếu quyết định hoặc điều kiện kích hoạt thì PHASE2_LOCAL_ELIGIBILITY vẫn BLOCKED.
+Khi được kích hoạt phải ghi owner/reviewer/approval/expiry/baseline và IDs rõ trong báo cáo;
+quyền này không phải nghiệm thu đầy đủ Phase1 hoặc toàn bộ MVP.

@@ -1,0 +1,62 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 84b87eaebc29e3f938197c933edb2367bc0ed6c2cf74bd449d3ceb960e65b0a6
+--> 84b87eaebc29
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache dcd6b9007db71754549be815d699fd9c9469547d3cac6264f23c8ba86a722216
+--> dcd6b9007db7
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache 526de94e63877e1a486f672315ea5643287d4aec98590cb84a26343ce8c79643
+--> 526de94e6387
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache 7846149721adec5ace3605faae352dcfaf6edec5457027c1a0f7f1bd7bc79e57
+--> 7846149721ad
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache ef7612274c3db63ca85b4a79047e8110494355352cbf5991a66709fe5a11aa63
+--> ef7612274c3d
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache 2d8379549a70e80b3720b3ee2295eb012cdbbbf95eb6936dc7004cfac183eabb
+--> 2d8379549a70
+[2/2] STEP 1/14: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS runtime
+[2/2] STEP 2/14: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache 0670cbfe3af9ac4b0fc90f723883aabf33b6adfd773ad6b30a136fdff193a93b
+--> 0670cbfe3af9
+[2/2] STEP 3/14: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache 9df763bf4702824672c892d93d3a71cde0d798d39c44967f0c1f272a4d96d5ba
+--> 9df763bf4702
+[2/2] STEP 4/14: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache 5dfdb314a921e653bcbccac33ff1f29756119930bf37476b6ce16443f91f9743
+--> 5dfdb314a921
+[2/2] STEP 5/14: COPY --from=wheels /wheels /wheels
+--> 058fe587c4c6
+[2/2] STEP 6/14: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pip check &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> c58a87e3dfc4
+[2/2] STEP 7/14: COPY docker /opt/aat/docker
+--> 0c72786b9de0
+[2/2] STEP 8/14: COPY backend/alembic /opt/aat/backend/alembic
+--> 813e9dfa503f
+[2/2] STEP 9/14: COPY samples /opt/aat/samples
+--> 92df72062c05
+[2/2] STEP 10/14: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> cf2ec49b45f8
+[2/2] STEP 11/14: WORKDIR /opt/aat
+--> 904109234a8f
+[2/2] STEP 12/14: USER 50000:50000
+--> 3e45ddfe6efb
+[2/2] STEP 13/14: EXPOSE 8000
+--> cae21af23d40
+[2/2] STEP 14/14: CMD ["python", "-m", "uvicorn", "aat_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+[2/2] COMMIT localhost/aat-backend-phase2-candidate:0.1.0
+--> 8e2bb8d21f53
+Successfully tagged localhost/aat-backend-phase2-candidate:0.1.0
+8e2bb8d21f53dab57f313b4096a91a7c2d9ae67f3c9edcec7d5a70d21fa02655

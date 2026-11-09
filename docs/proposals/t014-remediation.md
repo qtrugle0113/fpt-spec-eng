@@ -268,3 +268,10 @@ matrix bytes T014 hiện tại; Podman runtime nghiệm thu local vẫn phải c
 npm/browser hoặc NO_FIX còn chặn sau thử nghiệm. Quyền commit/push/chạy CI remote phải
 được cấp riêng sau khi diff cuối sẵn sàng review. Chưa có security compatibility PASS cho
 bất kỳ candidate nào; T014 và gate Phase1 tiếp tục BLOCKED.
+
+## Phạm vi quyết định local sau này
+
+Kết quả scan/approval và full gate lịch sử phía trên giữ nguyên. Chỉ quyết định riêng
+của chủ dự án theo t014-conditional-local-gate.md, đã khép blocker và còn hạn, mới cho phép
+phát triển local có điều kiện. Không thay security thành PASS hoặc nghiệm thu T014 đầy đủ.
+147 nhóm xin risk acceptance không tự là not-affected; LEX-003/D3 xử lý riêng.

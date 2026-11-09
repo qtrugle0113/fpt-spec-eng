@@ -2,8 +2,10 @@
 
 T001–T013 đã kiểm chứng trong phạm vi bootstrap. **Phase 1 chưa được nghiệm thu**: T014
 còn security findings và các gate tái kiểm. CI Windows/Linux tại HEAD `b29ae86` đã PASS;
-thay đổi T014 trong working tree lượt này chưa chạy CI remote. Chưa triển khai Phase 2,
-US-01 hoặc MVP. UI hiện là shell sáu màn hình; chưa có Connections CRUD, DAG Builder,
+thay đổi T014 trong working tree lượt này chưa chạy CI remote. Phase 2 mới viết tests
+T015/T016 theo quyền local có hạn; chưa triển khai nghiệp vụ US-01 hoặc MVP.
+Xem [kết quả T015/T016 và quyền local](docs/testing/t015-t016-report.md).
+UI hiện là shell sáu màn hình; chưa có Connections CRUD, DAG Builder,
 ETL hoặc Dashboard metrics hoạt động. Bằng chứng ở [báo cáo Phase 1](docs/testing/phase1-report.md).
 Các service cards trên shell còn là trạng thái tĩnh chưa nối API, không phải kết quả health probe.
 
@@ -164,3 +166,13 @@ Remediation tiếp theo ngày2026-11-09 bổ sung dnspython2.9.0 vào policy/has
 chuyển toolchain gosu Go1.27.3 sang Alpine3.24 theo digest đã scan; giữ DB/core versions.
 CI Windows/Linux của implementation commit d57db09 đã PASS. T014 chưa đóng vì security;
 xem [báo cáo vòng3](docs/testing/t014-r3-report.md) để biết đúng IDs/phạm vi kiểm thử.
+
+## Quyền phát triển local có điều kiện
+
+Chỉ dùng khi có quyết định chủ dự án còn hạn và các điều kiện kích hoạt đã khép,
+theo docs/proposals/t014-conditional-local-gate.md. Đề xuất DRAFT không phải approval.
+Nhãn: bootstrap PASS; security FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS; T014_FULL BLOCKED;
+PHASE2_LOCAL_ELIGIBILITY chỉ AUTHORIZED khi owner/reviewer/baseline/controls/hạn đầy đủ.
+Migrations nghiệp vụ dùng namespace/volumes mới, giữ stack A/B/R3. Không dữ liệu thật,
+public/tunnel. Chưa nghiệm thu toàn bộ MVP; hết hạn/vượt scope thì dừng phần phụ thuộc,
+review lại, không tự gia hạn hoặc bỏ scanner.

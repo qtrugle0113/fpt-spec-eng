@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests
+plugins: anyio-4.16.0
+collecting ... collected 6 items
+
+../../tmp/tests/integration/test_phase2_api.py::FoundationAPITests::test_cross_origin_mutation_blocked_and_liveness_stays_available PASSED [ 16%]
+../../tmp/tests/integration/test_phase2_api.py::FoundationAPITests::test_framework_errors_have_safe_envelope_and_request_id PASSED [ 33%]
+../../tmp/tests/integration/test_phase2_api.py::FoundationAPITests::test_unclassified_exception_suppresses_secret_dsn_path_and_traceback PASSED [ 50%]
+../../tmp/tests/integration/test_phase2_api.py::FoundationAPITests::test_validation_location_and_stale_revision_are_safe_contract_errors PASSED [ 66%]
+../../tmp/tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed PASSED [ 83%]
+../../tmp/tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_owner_domain_is_separate_from_backend_and_runtime PASSED [100%]
+
+============================== 6 passed in 1.32s ===============================

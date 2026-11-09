@@ -18,6 +18,6 @@ jobs:
       - name: Kiểm raw LF, SHA256 và workbook bytes sau checkout
         run: python -m unittest tests.unit.test_sample_artifacts -v
       - name: Kiểm lock image khớp FROM và hồi quy lệch pin
-        run: python -m unittest tests.unit.test_image_baseline tests.unit.test_airflow_constraints tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock -v
+        run: python -m unittest tests.unit.test_image_baseline tests.unit.test_airflow_constraints tests.unit.test_airflow_offline_patch tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock -v
       - name: Xác nhận kiểm thử không sửa artifact
         run: git diff --exit-code -- samples templates

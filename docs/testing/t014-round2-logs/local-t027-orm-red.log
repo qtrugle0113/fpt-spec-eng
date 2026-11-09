@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 2 items
+
+../../tmp/tests/integration/test_t027_models.py::SettingModelTests::test_db_whitelist_ranges_types_and_iana_timezone PASSED [ 50%]
+../../tmp/tests/integration/test_t027_models.py::SettingModelTests::test_patch_strict_ranges_and_readonly_fields PASSED [100%]
+
+============================== 2 passed in 13.23s ==============================

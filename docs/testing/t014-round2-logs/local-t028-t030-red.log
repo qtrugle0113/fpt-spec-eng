@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /tmp/tests/integration
+plugins: anyio-4.16.0
+collecting ... collected 2 items
+
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict FAILED [ 50%]
+../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist FAILED [100%]
+
+=================================== FAILURES ===================================
+_ RepositoryFoundationTests.test_concurrent_init_then_setting_optimistic_update_and_fk_restrict _
+/tmp/tests/integration/test_phase2_repositories.py:25: in test_concurrent_init_then_setting_optimistic_update_and_fk_restrict
+    self.assertTrue(entry.exists(),'T030 initializer missing')
+E   AssertionError: False is not true : T030 initializer missing
+_ RepositoryFoundationTests.test_real_alembic_entry_and_revision_repository_exist _
+/tmp/tests/integration/test_phase2_repositories.py:14: in test_real_alembic_entry_and_revision_repository_exist
+    self.assertTrue((root/'backend/alembic/versions/0001_metadata.py').is_file(),'T029 migration missing')
+E   AssertionError: False is not true : T029 migration missing
+=========================== short test summary info ============================
+FAILED ../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict
+FAILED ../../tmp/tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist
+============================== 2 failed in 0.23s ===============================

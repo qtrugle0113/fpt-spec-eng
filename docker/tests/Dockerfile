@@ -15,11 +15,14 @@ COPY --from=wheels /wheels /wheels
 RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && \
     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
 COPY docker /opt/aat/docker
+COPY backend/alembic /opt/aat/backend/alembic
 WORKDIR /opt/aat
 USER root
 RUN python -m pip install --no-cache-dir pytest==8.4.2 && python -m pip check
 COPY tests /opt/aat/tests
 COPY airflow/docker/build_constraints.py airflow/docker/constraints-policy.json airflow/docker/constraints-3.12.txt airflow/docker/overrides.lock /opt/aat/airflow/docker/
+COPY airflow/docker/install_security_patch.py airflow/docker/Dockerfile /opt/aat/airflow/docker/
+COPY airflow/docker/security/brotli.lock.json /opt/aat/airflow/docker/security/brotli.lock.json
 COPY samples /opt/aat/samples
 COPY templates /opt/aat/templates
 COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json

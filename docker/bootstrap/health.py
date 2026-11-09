@@ -37,12 +37,17 @@ def airflow() -> None:
 
 def live() -> None:
     with urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/live', timeout=3) as response:
-        assert json.load(response) == {'status': 'live', 'stage': 'bootstrap'}
+        assert json.load(response) == {'status': 'ALIVE'}
 
 
 def worker() -> None:
     payload = json.loads(Path('/tmp/aat-worker-heartbeat.json').read_text())
-    assert payload['stage'] == 'bootstrap' and time.time() - payload['timestamp'] < 20
+    assert payload['stage'] == 'foundation' and time.time() - payload['timestamp'] < 20
+
+
+def ready() -> None:
+    with urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/ready',timeout=5) as response:
+        assert json.load(response)['status']=='READY'
 
 
 def databases() -> None:
@@ -52,7 +57,7 @@ def databases() -> None:
 
 if __name__ == '__main__':
     probes = {'postgres': postgres, 'mysql': mysql, 'databases': databases,
-              'airflow': airflow, 'live': live, 'worker': worker}
+              'airflow': airflow, 'live': live, 'ready':ready, 'worker': worker}
     try:
         probes[sys.argv[1]]()
     except Exception:
