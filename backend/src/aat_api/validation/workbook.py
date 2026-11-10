@@ -13,6 +13,12 @@ TABLE_HEADERS={
     'Tables':['Target Connection Code','Target Schema','Table Name','Table Description'],
     'Columns':['Target Connection Code','Target Schema','Table Name','Column Name','Column Order','Data Type','Length','Precision','Scale','Nullable','Primary Key','Default Value','Column Description'],
 }
+ETL_HEADERS={
+    'ETL_Definitions':['DAG ID','DAG Description','Source Type','Source Connection Code','Source Schema','Source Table','Source File Reference',
+        'Target Connection Code','Target Schema','Target Table','Schedule','Start Date','Timezone','Catchup','Load Strategy','Conflict Key',
+        'Batch Size','Retry Count','Retry Delay','Enabled/Paused','Optional Source Filtering','Column Mapping Reference'],
+    'Column_Mappings':['DAG ID','Source Column','Target Column','Optional Transformation Type','Optional Default Value','Enabled'],
+}
 
 
 class WorkbookFailure(ValueError):
@@ -114,17 +120,19 @@ def preflight(path:Path,headers:dict[str,list[str]]) -> None:
 
 
 def read(path:Path,kind='TABLE') -> dict[str,list[tuple[int,tuple]]]:
-    if kind!='TABLE':raise WorkbookFailure('UNSUPPORTED_WORKBOOK','Workbook kind is not supported by this validator.')
+    if kind not in ('TABLE','ETL'):raise WorkbookFailure('UNSUPPORTED_WORKBOOK','Workbook kind is not supported by this validator.')
+    headers=TABLE_HEADERS if kind=='TABLE' else ETL_HEADERS
+    label='Table Definition' if kind=='TABLE' else 'ETL Definition'
     try:
-        preflight(path,TABLE_HEADERS)
+        preflight(path,headers)
         # Storage keys intentionally carry no user-controlled suffix. The bounded
         # compressed payload is supplied as a stream, avoiding extension guessing.
         book=load_workbook(BytesIO(path.read_bytes()),read_only=True,data_only=False,keep_links=False)
         try:
-            if book['Instructions']['A1'].value!='Template Version' or book['Instructions']['B1'].value!='1.0' or book['Instructions']['B2'].value!='Table Definition':
-                raise WorkbookFailure('TEMPLATE_VERSION','Template Version must be text 1.0 and match Table Definition.',sheet='Instructions',row=1,column=2)
+            if book['Instructions']['A1'].value!='Template Version' or book['Instructions']['B1'].value!='1.0' or book['Instructions']['B2'].value!=label:
+                raise WorkbookFailure('TEMPLATE_VERSION','Template Version must be text 1.0 and match '+label+'.',sheet='Instructions',row=1,column=2)
             result={};count=0
-            for name,expected in TABLE_HEADERS.items():
+            for name,expected in headers.items():
                 sheet=book[name];sheet.reset_dimensions()
                 records=[]
                 for number,cells in enumerate(sheet.iter_rows(max_col=len(expected)),start=1):

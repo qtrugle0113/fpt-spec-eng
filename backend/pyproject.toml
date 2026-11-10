@@ -33,4 +33,4 @@ include = ["aat_api", "aat_api.*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-aat_api = ["py.typed"]
+aat_api = ["py.typed", "airflow_client/*.json"]

@@ -1,0 +1,16 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_bind_failure_does_not_start_the_engine_or_send_credentials (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_bind_failure_does_not_start_the_engine_or_send_credentials) ... ok
+test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) ... ok
+test_dns_failure_has_safe_bounded_result (tests.integration.test_connections.ConnectionAdapterTests.test_dns_failure_has_safe_bounded_result) ... ok
+test_mysql_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_handshake_timeout_is_bounded_without_mocking_driver) ... ok
+test_mysql_success_auth_database_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_mysql_success_auth_database_and_closed_port) ... ok
+test_policy_rejects_url_path_metadata_and_unapproved_hosts (tests.integration.test_connections.ConnectionAdapterTests.test_policy_rejects_url_path_metadata_and_unapproved_hosts) ... ok
+test_postgres_handshake_timeout_is_bounded_without_mocking_driver (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_handshake_timeout_is_bounded_without_mocking_driver) ... ok
+test_postgres_success_auth_database_schema_and_closed_port (tests.integration.test_connections.ConnectionAdapterTests.test_postgres_success_auth_database_schema_and_closed_port) ... ok
+test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected (tests.integration.test_connections.ConnectionAdapterTests.test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 20.374s
+
+OK

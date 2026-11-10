@@ -6,8 +6,10 @@ App-init/worker integration in T030/T033 must consume the explicit test DSN;
 this driver never redirects existing services or injects credentials into logs.
 """
 
-import subprocess, secrets, time, json, sys, argparse
+import subprocess, secrets, time, json, sys, argparse, os
 import re
+import hashlib
+import zipfile
 from pathlib import Path
 
 parser = argparse.ArgumentParser(description=__doc__)
@@ -29,11 +31,23 @@ parser.add_argument('--phase', choices=['red', 'green'], default='green')
 parser.add_argument('--postgres-image', default='87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03')
 parser.add_argument('--mysql-image', help='Optional MySQL image for real Connections acceptance')
 parser.add_argument('--runner-image', default='89f5d1e6dcc4ec2c55188404b2a4433aae7f8e87e5b8b7c84e9c0023694aaea4')
+parser.add_argument('--runner-memory', choices=['512m', '1g'], default='512m',
+                    help='1g only for supervising a separate 512 MiB child plus the test process')
+parser.add_argument('--disk-databases', action='store_true', help='Use new anonymous disk volumes for scratch/ledger tests; remove only fixture-owned volumes')
+parser.add_argument('--engine-wheel-dir', help='Execute current engine/metadata wheels from this workspace-relative directory, without source imports')
 parser.add_argument('--workbook-deps-image',help='Copy pinned workbook libraries from a reviewed backend image for a source-only test runner')
 parser.add_argument('--evidence-dir', help='Workspace-relative directory for a fresh run; preserves historical evidence')
 parser.add_argument('--airflow-network', default='aat-phase1-t014-local-20261109_aat_internal')
 parser.add_argument('--airflow-health-url', default='http://aat-phase1-t014-local-20261109-airflow-apiserver-1:8080/api/v2/monitor/health')
+parser.add_argument('--runtime-contract-network',help='Attach only this new runner to a disposable Airflow contract network')
+parser.add_argument('--runtime-fixture-scheduler')
+parser.add_argument('--runtime-fixture-dags')
+parser.add_argument('--runtime-fixture-private')
+parser.add_argument('--runtime-fixture-staging')
 args = parser.parse_args()
+runtime_peers=[args.runtime_fixture_scheduler,args.runtime_fixture_dags,args.runtime_fixture_private,args.runtime_fixture_staging]
+if any(runtime_peers) and (not all(runtime_peers) or not args.runtime_contract_network):parser.error('Complete disposable runtime fixture peers are required')
+if any(runtime_peers) and any(not re.fullmatch(r'aat-foundation-airflow-[a-f0-9]{8}-(scheduler|dags|private|staging)',value) for value in runtime_peers):parser.error('Only owned disposable Airflow fixture peers are supported')
 if sum((args.authorization, args.connections_orm, args.definitions_orm, args.file_parsers_orm, bool(args.model_task), args.repositories,args.owner_init,bool(args.unittest_module),args.api_foundation,args.operations,args.readiness,args.foundation,args.foundation_core)) > 1:
     parser.error('Choose one task selector')
 if args.unittest_module and (not args.task_label or not re.fullmatch('[a-z0-9-]+',args.task_label)):
@@ -117,7 +131,7 @@ try:
     run('network', 'create', '--internal', network)
     network_created = True
     run('run', '-d', '--name', pg, '--network', network, '--network-alias', 'postgres', '--memory', '256m',
-        '--pids-limit', '256', '--tmpfs', '/var/lib/postgresql/data:rw,size=256m',
+        '--pids-limit', '256', *(['--volume','/var/lib/postgresql/data'] if args.disk_databases else ['--tmpfs','/var/lib/postgresql/data:rw,size=256m']),
         '-e', 'POSTGRES_PASSWORD=' + password, '-e', 'POSTGRES_DB=app_metadata',
         args.postgres_image)
     created.append(pg)
@@ -138,7 +152,7 @@ try:
     assert p.returncode == 0, 'Fixture role isolation setup failed'
     if args.mysql_image:
         run('run','-d','--name',mysql,'--network',network,'--network-alias','mysql','--memory','1g',
-            '--tmpfs','/var/lib/mysql:rw,size=768m','-e','MYSQL_ROOT_PASSWORD='+password,
+            *(['--volume','/var/lib/mysql'] if args.disk_databases else ['--tmpfs','/var/lib/mysql:rw,size=768m']),'-e','MYSQL_ROOT_PASSWORD='+password,
             '-e','MYSQL_ROOT_HOST=%','-e','MYSQL_DATABASE=etl_test','-e','MYSQL_USER=aat_test','-e','MYSQL_PASSWORD='+password,args.mysql_image)
         created.append(mysql)
         for _ in range(90):
@@ -147,16 +161,25 @@ try:
             if ready.returncode==0:break
             time.sleep(1)
         else:raise RuntimeError('Disposable MySQL unavailable')
-    run('create', '--name', runner, '--network', network, '--memory', '512m', '--workdir', '/tmp',
+    runtime_mounts=[]
+    if args.runtime_fixture_scheduler:
+        run('network','connect',network,args.runtime_fixture_scheduler)
+        runtime_mounts=['--volume',args.runtime_fixture_dags+':/tmp/aat-contract-dags:U',
+            '--volume',args.runtime_fixture_private+':/tmp/aat-runtime-private:U','--volume',args.runtime_fixture_staging+':/tmp/aat-runtime-staging:U']
+    run('create', '--name', runner, '--network', network, '--memory', args.runner_memory, '--workdir', '/tmp',*runtime_mounts,
         '-e', 'PYTHONPATH=/tmp/backend/src:/tmp/etl_engine/src:/tmp/packages:/tmp/test-deps:/tmp',
+        '-e', 'AAT_TEST_ENGINE_WHEEL=' + ('1' if args.engine_wheel_dir else '0'),
         '-e', 'AAT_FOUNDATION_DISPOSABLE=1',
-        '-e', 'AAT_APP_KEYRING=/tmp/aat-test-keyring',
-        '-e', 'AAT_UPLOADS_ROOT=/tmp/aat-test-uploads',
+        '-e', 'AAT_APP_KEYRING='+('/tmp/aat-runtime-private/keyring' if args.runtime_fixture_scheduler else '/tmp/aat-test-keyring'),
+        '-e', 'AAT_UPLOADS_ROOT='+('/tmp/aat-runtime-private/uploads' if args.runtime_fixture_scheduler else '/tmp/aat-test-uploads'),
+        *(['-e','AAT_TEST_RUNTIME_BACKEND=http://'+runner+':8000','-e','AAT_STAGING_ROOT=/tmp/aat-runtime-staging'] if args.runtime_fixture_scheduler else []),
         '-e', 'AAT_ASSETS_ROOT=/tmp',
         '-e', 'AAT_FOUNDATION_INITIALIZE=' + ('1' if args.authorization or args.operations or args.readiness or args.unittest_module else '0'),
         '-e', 'AAT_FOUNDATION_TEST_RUNNER=' + ('unittest' if args.unittest_module else 'pytest'),
         '-e', 'AAT_DB_ALLOWED_HOSTS=postgres,mysql,' + pg,
         '-e', 'AAT_AIRFLOW_HEALTH_URL=' + args.airflow_health_url,
+        *(['-e','AAT_TEST_AIRFLOW_ORIGIN='+os.environ['AAT_TEST_AIRFLOW_ORIGIN'],
+           '-e','AAT_TEST_AIRFLOW_PASSWORD='+os.environ['AAT_TEST_AIRFLOW_PASSWORD']] if args.runtime_contract_network else []),
         '-e', f'AAT_FOUNDATION_TEST_DSN=postgresql://postgres:{password}@{pg}/app_metadata',
         '--entrypoint', 'python', args.runner_image,
         '/tmp/prepare_keyring.py', *([*test_paths,'-v'] if args.unittest_module else ['-p','no:cacheprovider',*test_paths,'-v','--tb=short']))
@@ -165,8 +188,22 @@ try:
         # Connect only the disposable runner to the approved Airflow network for
         # read-only /monitor/health; existing containers/networks are unchanged.
         run('network','connect',args.airflow_network,runner)
+    if args.runtime_contract_network:run('network','connect',args.runtime_contract_network,runner)
     for source in ['tests', 'docker', 'backend', 'etl_engine', 'packages', 'samples', 'specs','templates']:
         run('cp', str(ROOT / source), runner + ':/tmp/' + source)
+    if args.engine_wheel_dir:
+        wheel_root=(ROOT/args.engine_wheel_dir).resolve()
+        if not wheel_root.is_relative_to(ROOT) or not wheel_root.is_dir():raise ValueError('Wheel artifacts must be inside this workspace')
+        for filename,package,source_root in (
+            ('aat_etl_engine-0.1.0-py3-none-any.whl','aat_etl',ROOT/'etl_engine/src/aat_etl'),
+            ('aat_metadata-0.1.0-py3-none-any.whl','aat_metadata',ROOT/'packages/aat_metadata')):
+            with zipfile.ZipFile(wheel_root/filename) as archive:
+                expected={package+'/'+path.relative_to(source_root).as_posix():path for path in source_root.rglob('*.py')
+                    if not any(part in ('build','__pycache__') for part in path.relative_to(source_root).parts)}
+                packaged={name for name in archive.namelist() if name.startswith(package+'/') and name.endswith('.py')}
+                if packaged!=set(expected) or any(hashlib.sha256(archive.read(name)).digest()!=hashlib.sha256(path.read_bytes()).digest() for name,path in expected.items()):
+                    raise ValueError('Wheel code differs from the current source: '+package)
+        run('cp',str(wheel_root),runner+':/tmp/aat-fixture-wheels')
     workbook_dependencies=None
     if args.workbook_deps_image:
         helper='aat-workbook-libs-'+secrets.token_hex(4)
@@ -187,24 +224,38 @@ try:
     run('cp', str(ROOT / 'tests/tools/prepare_foundation_keyring.py'), runner + ':/tmp/prepare_keyring.py')
     p = subprocess.run(['podman', 'start', '-a', runner], text=True, encoding='utf-8', capture_output=True)
     output = (p.stdout + p.stderr).replace(password, '[REDACTED]')
+    if args.runtime_contract_network:output=output.replace(os.environ['AAT_TEST_AIRFLOW_PASSWORD'],'[REDACTED]')
     if args.readiness or args.foundation:
         subprocess.run(['podman','cp',runner+':/tmp/aat-foundation-http.json',str(evidence_dir/'phase2-http-evidence.json')],capture_output=True)
     (ROOT / log_path).write_bytes(output.encode())
     exit_code = int(run('inspect', runner, '--format', '{{.State.ExitCode}}'))
+    source_snapshot=evidence_dir/(task+'-fixture-sources.json')
+    run('cp',runner+':/tmp/aat-fixture-source-sha256.json',str(source_snapshot))
+    wheel_snapshot=None
+    if args.engine_wheel_dir and exit_code==0:
+        wheel_snapshot=evidence_dir/(task+'-wheel-sha256.json')
+        run('cp',runner+':/tmp/aat-fixture-wheel-sha256.json',str(wheel_snapshot))
     print(output[-6500:])
     result = {'postgres_image_id': run('inspect', pg, '--format', '{{.Image}}'),
               'mysql_image_id': run('inspect',mysql,'--format','{{.Image}}') if args.mysql_image else None,
               'runner_image_id': run('inspect', runner, '--format', '{{.Image}}'),
+              'runner_memory_limit_bytes': int(run('inspect', runner, '--format', '{{.HostConfig.Memory}}')),
+              'runner_oom_killed': run('inspect', runner, '--format', '{{.State.OOMKilled}}') == 'true',
+              'engine_wheel_requested': bool(args.engine_wheel_dir),
+              'wheel_snapshot': str(wheel_snapshot) if wheel_snapshot else None,
               'workbook_test_dependencies':workbook_dependencies,
-              'fixture': 'Disposable PostgreSQL17.11,tmpfs256MiB,no published ports,no existing volumes/secrets mounted',
+              'fixture': 'Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted',
+              'database_storage': 'new anonymous disk volumes' if args.disk_databases else 'tmpfs',
               'task': task.upper(), 'test_paths': test_paths,
               'test_exit_code': exit_code, 'log': log_path,
+              'source_snapshot':str(source_snapshot.relative_to(ROOT)),
               'existing_services_modified': False}
     (evidence_dir / (task + '-fixture-results.json')).write_bytes((json.dumps(result, indent=2) + '\n').encode())
 finally:
     for name in reversed(created):
-        subprocess.run(['podman', 'rm', '-f', name], capture_output=True)
+        subprocess.run(['podman', 'rm', '-f', '-v', name], capture_output=True)
 
+    if args.runtime_fixture_scheduler:subprocess.run(['podman','network','disconnect',network,args.runtime_fixture_scheduler],capture_output=True)
     if network_created:
         subprocess.run(['podman', 'network', 'rm', network], capture_output=True)
 

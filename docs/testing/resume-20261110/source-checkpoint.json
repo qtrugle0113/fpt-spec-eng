@@ -1,0 +1,24 @@
+{
+    "recorded_at_utc":  "2026-11-10T00:46:47.4838168Z",
+    "base_commit":  "7a7ed71ee4204de077b213943990c07692a7a6ef",
+    "source_sha256":  {
+                          "etl_engine/src/aat_etl/resources.py":  "f2dcd1924083c3b972ff4822b9dcf3cafb9823132ee209af2b1631975865bc38",
+                          "etl_engine/src/aat_etl/staging/quota.py":  "66b973f99ff09106c3def1810471c57f9b572cc570ce5240b588a06a5bb5de94",
+                          "etl_engine/src/aat_etl/staging/manager.py":  "63481be4ba04475c7c6a7815611006cd57f66ce803b51e063ed3c64f56eb4954",
+                          "etl_engine/src/aat_etl/mapping/types.py":  "77c5da1304fe671b11b8e61bbd69957d193bf28b298f8964dea00966450cb3af",
+                          "etl_engine/src/aat_etl/mapping/mapper.py":  "c340602527e872064977a20d5a4e0fdc743989206425078963857194393be1cd",
+                          "tests/etl/test_resource_quota.py":  "424733ae502bf6146e951beb13902293b3ed3788c8556cced50b7f5e08679e95",
+                          "tests/etl/test_mapping_pipeline.py":  "f473dd30e795c106995850b424eb4acd3460faa9bbc788266b0c3afd25318df0",
+                          "tests/unit/test_mapping.py":  "4b94db46c47adf570467fa90eb2d8f4072778f741eb9456450a48a6871f1adb0",
+                          "tests/tools/run_metadata_foundation.py":  "a7b3a7dc4f9b8b8f39925a20aa67020c931f1c3b42d464887ea700becc3e273d"
+                      },
+    "remaining_task_fixture_containers":  [
+
+                                          ],
+    "remaining_task_fixture_networks":  [
+
+                                        ],
+    "full_gate":  "T014_FULL_BLOCKED",
+    "next_task":  "T078",
+    "new_image_built":  false
+}

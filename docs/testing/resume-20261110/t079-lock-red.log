@@ -1,0 +1,57 @@
+test_mysql_same_target_contention_and_release (tests.etl.test_target_session.TargetSessionTests.test_mysql_same_target_contention_and_release) ... FAIL
+test_mysql_session_kill_requires_new_lock_not_reconnect (tests.etl.test_target_session.TargetSessionTests.test_mysql_session_kill_requires_new_lock_not_reconnect) ... FAIL
+test_postgres_same_target_contention_and_release (tests.etl.test_target_session.TargetSessionTests.test_postgres_same_target_contention_and_release) ... FAIL
+test_postgres_session_kill_requires_new_lock_not_reconnect (tests.etl.test_target_session.TargetSessionTests.test_postgres_session_kill_requires_new_lock_not_reconnect) ... FAIL
+
+======================================================================
+FAIL: test_mysql_same_target_contention_and_release (tests.etl.test_target_session.TargetSessionTests.test_mysql_same_target_contention_and_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_session.py", line 33, in test_mysql_same_target_contention_and_release
+    def test_mysql_same_target_contention_and_release(self):self.run_case('mysql')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_session.py", line 15, in run_case
+    except ModuleNotFoundError:raise AssertionError('T079 native session implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T079 native session implementation missing
+
+======================================================================
+FAIL: test_mysql_session_kill_requires_new_lock_not_reconnect (tests.etl.test_target_session.TargetSessionTests.test_mysql_session_kill_requires_new_lock_not_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_session.py", line 35, in test_mysql_session_kill_requires_new_lock_not_reconnect
+    def test_mysql_session_kill_requires_new_lock_not_reconnect(self):self.run_case('mysql',True)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_session.py", line 15, in run_case
+    except ModuleNotFoundError:raise AssertionError('T079 native session implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T079 native session implementation missing
+
+======================================================================
+FAIL: test_postgres_same_target_contention_and_release (tests.etl.test_target_session.TargetSessionTests.test_postgres_same_target_contention_and_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_session.py", line 32, in test_postgres_same_target_contention_and_release
+    def test_postgres_same_target_contention_and_release(self):self.run_case('postgres')
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_session.py", line 15, in run_case
+    except ModuleNotFoundError:raise AssertionError('T079 native session implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T079 native session implementation missing
+
+======================================================================
+FAIL: test_postgres_session_kill_requires_new_lock_not_reconnect (tests.etl.test_target_session.TargetSessionTests.test_postgres_session_kill_requires_new_lock_not_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_session.py", line 34, in test_postgres_session_kill_requires_new_lock_not_reconnect
+    def test_postgres_session_kill_requires_new_lock_not_reconnect(self):self.run_case('postgres',True)
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_session.py", line 15, in run_case
+    except ModuleNotFoundError:raise AssertionError('T079 native session implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T079 native session implementation missing
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (failures=4)

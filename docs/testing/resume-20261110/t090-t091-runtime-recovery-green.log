@@ -1,0 +1,12 @@
+test_bounded_retry_preserves_the_same_dataset_on_both_databases (tests.etl.test_commit_recovery.CommitRecoveryTests.test_bounded_retry_preserves_the_same_dataset_on_both_databases) ... ok
+test_mysql_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_mysql_commit_loss_reconciles_marker_before_retry) ... ok
+test_postgres_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_postgres_commit_loss_reconciles_marker_before_retry) ... ok
+test_startup_records_blocked_reason_without_reclaiming_unknown_owner (tests.etl.test_staging_cleanup.StagingCleanupTests.test_startup_records_blocked_reason_without_reclaiming_unknown_owner) ... ok
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... ok
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... ok
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.456s
+
+OK

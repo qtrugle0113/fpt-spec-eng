@@ -1,0 +1,13 @@
+test_client_distinguishes_missing_resource_without_exposing_auth (tests.airflow.test_api_contract.AirflowAPIContractTests.test_client_distinguishes_missing_resource_without_exposing_auth) ... ok
+test_deployment_client_reads_real_health_inventory_and_import_errors (tests.airflow.test_api_contract.AirflowAPIContractTests.test_deployment_client_reads_real_health_inventory_and_import_errors) ... ok
+test_pinned_schema_uses_version_objects_and_required_nullable_logical_date (tests.airflow.test_api_contract.AirflowAPIContractTests.test_pinned_schema_uses_version_objects_and_required_nullable_logical_date) ... ok
+test_real_health_and_paginated_inventory_are_authenticated_json (tests.airflow.test_api_contract.AirflowAPIContractTests.test_real_health_and_paginated_inventory_are_authenticated_json) ... ok
+test_real_version_and_pause_readback_and_inventory_beyond_first_page (tests.airflow.test_api_contract.AirflowAPIContractTests.test_real_version_and_pause_readback_and_inventory_beyond_first_page) ... ok
+test_inventory_reads_every_page_and_never_fakes_completeness (tests.unit.test_airflow_deployment.DeploymentClientTests.test_inventory_reads_every_page_and_never_fakes_completeness) ... ok
+test_pause_requires_readback_and_health_checks_component_states (tests.unit.test_airflow_deployment.DeploymentClientTests.test_pause_requires_readback_and_health_checks_component_states) ... ok
+test_version_number_is_path_identity_and_uuid_remains_metadata (tests.unit.test_airflow_deployment.DeploymentClientTests.test_version_number_is_path_identity_and_uuid_remains_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.639s
+
+OK

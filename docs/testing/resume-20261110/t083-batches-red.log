@@ -1,0 +1,83 @@
+test_mysql_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_retry_skips_verified_batches) ... FAIL
+test_mysql_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_unique_failure_preserves_prior_batch) ... FAIL
+test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable) ... FAIL
+test_postgres_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_retry_skips_verified_batches) ... FAIL
+test_postgres_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_unique_failure_preserves_prior_batch) ... FAIL
+test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable) ... FAIL
+
+======================================================================
+FAIL: test_mysql_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_retry_skips_verified_batches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 56, in test_mysql_append_retry_skips_verified_batches
+    def test_mysql_append_retry_skips_verified_batches(self):self.run_case('mysql','APPEND')
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+======================================================================
+FAIL: test_mysql_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_unique_failure_preserves_prior_batch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 58, in test_mysql_append_unique_failure_preserves_prior_batch
+    def test_mysql_append_unique_failure_preserves_prior_batch(self):self.run_case('mysql','APPEND',True)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+======================================================================
+FAIL: test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 60, in test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable
+    def test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable(self):self.run_case('mysql','UPSERT')
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+======================================================================
+FAIL: test_postgres_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_retry_skips_verified_batches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 55, in test_postgres_append_retry_skips_verified_batches
+    def test_postgres_append_retry_skips_verified_batches(self):self.run_case('postgres','APPEND')
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+======================================================================
+FAIL: test_postgres_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_unique_failure_preserves_prior_batch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 57, in test_postgres_append_unique_failure_preserves_prior_batch
+    def test_postgres_append_unique_failure_preserves_prior_batch(self):self.run_case('postgres','APPEND',True)
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+======================================================================
+FAIL: test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_load_policies.py", line 59, in test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable
+    def test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable(self):self.run_case('postgres','UPSERT')
+                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_load_policies.py", line 20, in run_case
+    except ModuleNotFoundError:raise AssertionError('Batch policy writer implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Batch policy writer implementation missing
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.023s
+
+FAILED (failures=6)

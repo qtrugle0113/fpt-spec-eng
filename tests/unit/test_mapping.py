@@ -132,3 +132,39 @@ class LosslessTypeTests(unittest.TestCase):
             mappings=[{'source_column':'id','target_column':'id','transformation':'DIRECT','enabled':True},
                       {'source_column':'note','target_column':'note','transformation':'NULL_HANDLING','enabled':True,'default_literal':{'logical_type':'text','value':'fallback'}}])
         self.assertEqual(mapped,{'id':7,'note':'fallback'});self.assertNotIn('retained',mapped)
+
+    def test_conversion_rejects_float_bool_exponents_and_numeric_overflow(self):
+        for value,source,target,limits in [
+            (True,'integer','decimal',dict(precision=10,scale=0)),
+            (1.5,'decimal','decimal',dict(precision=10,scale=2)),
+            ('1e3','text','decimal',dict(precision=10,scale=0)),
+            (' 7','text','integer',{}),
+            (Decimal('1E+999999'),'decimal','bigint',{}),
+            (2147483648,'integer','bigint',{})]:
+            with self.subTest(source=source,target=target),self.assertRaises(ValueError):self.convert(value,source,target,**limits)
+
+    def test_constants_null_handling_and_zero_false_empty_remain_distinct(self):
+        mapper=module('mapping.mapper')
+        schema=[dict(name='value',logical_type='boolean',nullable=True)]
+        mapping=[dict(source_column='value',target_column='value',transformation='NULL_HANDLING',enabled=True,
+                      default_literal=dict(logical_type='boolean',value=True))]
+        self.assertEqual(mapper.map_row({'value':False},source_schema=schema,target_schema=schema,mappings=mapping),{'value':False})
+        self.assertEqual(mapper.map_row({'value':None},source_schema=schema,target_schema=schema,mappings=mapping),{'value':True})
+        mapping=[dict(target_column='value',transformation='CONSTANT',enabled=True,
+                      default_literal=dict(logical_type='boolean',value=False))]
+        self.assertEqual(mapper.map_row({},source_schema=[],target_schema=schema,mappings=mapping),{'value':False})
+
+    def test_error_identifies_position_without_disclosing_row(self):
+        mapper=module('mapping.mapper')
+        with self.assertRaises(mapper.MappingError) as caught:
+            mapper.map_row({'secret':'sensitive-invalid-number'},source_schema=[dict(name='secret',logical_type='text')],
+                target_schema=[dict(name='id',logical_type='integer')],row_number=42,
+                mappings=[dict(source_column='secret',target_column='id',transformation='TYPE_CONVERSION',enabled=True)])
+        self.assertEqual(caught.exception.row_number,42);self.assertEqual(caught.exception.column,'id')
+        self.assertNotIn('sensitive',str(caught.exception))
+
+    def test_unmapped_required_target_without_default_is_rejected(self):
+        mapper=module('mapping.mapper')
+        with self.assertRaises(ValueError):
+            mapper.map_row({'id':1},source_schema=[dict(name='id',logical_type='integer')],
+                target_schema=[dict(name='id',logical_type='integer'),dict(name='required',logical_type='text',nullable=False)],mappings=[])

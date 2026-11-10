@@ -1,0 +1,9 @@
+test_mysql_invalid_global_key_leaves_only_source_complete (tests.etl.test_preparation.PreparationTests.test_mysql_invalid_global_key_leaves_only_source_complete) ... ok
+test_mysql_prepares_verified_disk_dataset_without_load (tests.etl.test_preparation.PreparationTests.test_mysql_prepares_verified_disk_dataset_without_load) ... ok
+test_postgres_invalid_global_key_leaves_only_source_complete (tests.etl.test_preparation.PreparationTests.test_postgres_invalid_global_key_leaves_only_source_complete) ... ok
+test_postgres_prepares_verified_disk_dataset_without_load (tests.etl.test_preparation.PreparationTests.test_postgres_prepares_verified_disk_dataset_without_load) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.694s
+
+OK

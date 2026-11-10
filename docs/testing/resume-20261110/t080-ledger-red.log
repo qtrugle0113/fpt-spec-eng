@@ -1,0 +1,50 @@
+test_mysql_markers_commit_and_rollback_with_target_dml (tests.etl.test_target_ledger.TargetLedgerTests.test_mysql_markers_commit_and_rollback_with_target_dml) ... FAIL
+test_postgres_existing_support_name_collision_is_not_adopted (tests.etl.test_target_ledger.TargetLedgerTests.test_postgres_existing_support_name_collision_is_not_adopted) ... FAIL
+test_postgres_markers_commit_and_rollback_with_target_dml (tests.etl.test_target_ledger.TargetLedgerTests.test_postgres_markers_commit_and_rollback_with_target_dml) ... FAIL
+
+======================================================================
+FAIL: test_mysql_markers_commit_and_rollback_with_target_dml (tests.etl.test_target_ledger.TargetLedgerTests.test_mysql_markers_commit_and_rollback_with_target_dml)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_ledger.py", line 59, in test_mysql_markers_commit_and_rollback_with_target_dml
+    def test_mysql_markers_commit_and_rollback_with_target_dml(self):self.run_case('mysql')
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_ledger.py", line 33, in run_case
+    module=self.ledger();engine,schema=self.isolated(kind)
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_ledger.py", line 30, in ledger
+    except ModuleNotFoundError:raise AssertionError('T080 ledger implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T080 ledger implementation missing
+
+======================================================================
+FAIL: test_postgres_existing_support_name_collision_is_not_adopted (tests.etl.test_target_ledger.TargetLedgerTests.test_postgres_existing_support_name_collision_is_not_adopted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_ledger.py", line 62, in test_postgres_existing_support_name_collision_is_not_adopted
+    module=self.ledger();engine,schema=self.isolated('postgres')
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_ledger.py", line 30, in ledger
+    except ModuleNotFoundError:raise AssertionError('T080 ledger implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T080 ledger implementation missing
+
+======================================================================
+FAIL: test_postgres_markers_commit_and_rollback_with_target_dml (tests.etl.test_target_ledger.TargetLedgerTests.test_postgres_markers_commit_and_rollback_with_target_dml)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_target_ledger.py", line 58, in test_postgres_markers_commit_and_rollback_with_target_dml
+    def test_postgres_markers_commit_and_rollback_with_target_dml(self):self.run_case('postgres')
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_ledger.py", line 33, in run_case
+    module=self.ledger();engine,schema=self.isolated(kind)
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_target_ledger.py", line 30, in ledger
+    except ModuleNotFoundError:raise AssertionError('T080 ledger implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T080 ledger implementation missing
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=3)

@@ -1,0 +1,138 @@
+test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) ... 
+  test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='postgres', mode='empty_denied') ... FAIL
+  test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='postgres', mode='empty_allowed') ... FAIL
+  test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='mysql', mode='empty_denied') ... FAIL
+  test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='mysql', mode='empty_allowed') ... FAIL
+test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) ... 
+  test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) (kind='postgres') ... FAIL
+  test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) (kind='mysql') ... FAIL
+test_mysql_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_mysql_replacement_and_consumed_once_retry) ... FAIL
+test_postgres_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_postgres_replacement_and_consumed_once_retry) ... FAIL
+test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) ... 
+  test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) (kind='postgres') ... FAIL
+  test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) (kind='mysql') ... FAIL
+
+======================================================================
+FAIL: test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='postgres', mode='empty_denied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 81, in test_empty_dataset_requires_separate_allow_empty_acknowledgment
+    with self.subTest(kind=kind,mode=mode):self.run_case(kind,mode)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='postgres', mode='empty_allowed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 81, in test_empty_dataset_requires_separate_allow_empty_acknowledgment
+    with self.subTest(kind=kind,mode=mode):self.run_case(kind,mode)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='mysql', mode='empty_denied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 81, in test_empty_dataset_requires_separate_allow_empty_acknowledgment
+    with self.subTest(kind=kind,mode=mode):self.run_case(kind,mode)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) (kind='mysql', mode='empty_allowed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 81, in test_empty_dataset_requires_separate_allow_empty_acknowledgment
+    with self.subTest(kind=kind,mode=mode):self.run_case(kind,mode)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 74, in test_midinsert_failure_rolls_back_whole_replacement
+    with self.subTest(kind=kind):self.run_case(kind,'rollback')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 74, in test_midinsert_failure_rolls_back_whole_replacement
+    with self.subTest(kind=kind):self.run_case(kind,'rollback')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_mysql_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_mysql_replacement_and_consumed_once_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 71, in test_mysql_replacement_and_consumed_once_retry
+    def test_mysql_replacement_and_consumed_once_retry(self):self.run_case('mysql')
+                                                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_postgres_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_postgres_replacement_and_consumed_once_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 70, in test_postgres_replacement_and_consumed_once_retry
+    def test_postgres_replacement_and_consumed_once_retry(self):self.run_case('postgres')
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 77, in test_revoked_before_admission_preserves_old_data
+    with self.subTest(kind=kind):self.run_case(kind,'revoked')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+======================================================================
+FAIL: test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_full_refresh.py", line 77, in test_revoked_before_admission_preserves_old_data
+    with self.subTest(kind=kind):self.run_case(kind,'revoked')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_full_refresh.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T089 full refresh writer missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T089 full refresh writer missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+FAILED (failures=10)

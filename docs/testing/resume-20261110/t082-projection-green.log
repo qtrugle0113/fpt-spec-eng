@@ -1,0 +1,6 @@
+test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay (tests.etl.test_ledger_metrics.LedgerMetricTests.test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.955s
+
+OK

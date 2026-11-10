@@ -1,0 +1,22 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_late_recovery_cannot_clear_a_new_runtime_owner (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_late_recovery_cannot_clear_a_new_runtime_owner) ... ERROR
+
+======================================================================
+ERROR: test_late_recovery_cannot_clear_a_new_runtime_owner (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_late_recovery_cannot_clear_a_new_runtime_owner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 198, in test_late_recovery_cannot_clear_a_new_runtime_owner
+    rows=recover_pending(connect,root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/backend/src/aat_api/workers/recovery.py", line 113, in recover_pending
+    c.execute("""INSERT INTO execution_metrics(id,binding_id,extracted_rows,validated_rows,loaded_rows,failed_rows_nullable,staging_bytes_current,staging_bytes_peak,phase,metric_updated_at)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "extracted_rows" of relation "execution_metrics" violates not-null constraint
+DETAIL:  Failing row contains (e2728f9f-e5b4-42a5-9b5b-d874ad5199f2, null, null, 2, 0, 0, 0, 0, COMMIT_VERIFIED, 2026-11-10 07:50:35.671162+00, 589ed1f1-d626-49f8-8910-bfc9b1249e58, 2026-11-10 07:50:35.671162+00, 2026-11-10 07:50:35.671162+00).
+
+----------------------------------------------------------------------
+Ran 1 test in 3.146s
+
+FAILED (errors=1)

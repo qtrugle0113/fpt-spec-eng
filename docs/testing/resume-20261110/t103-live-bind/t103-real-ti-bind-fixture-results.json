@@ -1,0 +1,27 @@
+{
+  "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+  "mysql_image_id": null,
+  "runner_image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+  "runner_memory_limit_bytes": 536870912,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "b65918541654335c2880899c23f96fff69433854298e388f1923bf071522f8e6",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "tmpfs",
+  "task": "T103-REAL-TI-BIND",
+  "test_paths": [
+    "tests.airflow.test_runtime_binding"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261110\\t103-live-bind\\t103-real-ti-bind-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261110\\t103-live-bind\\t103-real-ti-bind-fixture-sources.json",
+  "existing_services_modified": false
+}

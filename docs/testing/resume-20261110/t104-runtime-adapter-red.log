@@ -1,0 +1,62 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_bind_failure_does_not_start_the_engine_or_send_credentials (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_bind_failure_does_not_start_the_engine_or_send_credentials) ... ERROR
+test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) ... 
+  test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) (kind='POSTGRESQL') ... ERROR
+  test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) (kind='MYSQL') ... ERROR
+
+======================================================================
+ERROR: test_bind_failure_does_not_start_the_engine_or_send_credentials (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_bind_failure_does_not_start_the_engine_or_send_credentials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 81, in test_bind_failure_does_not_start_the_engine_or_send_credentials
+    self.runtime=importlib.import_module('aat_etl.runtime')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_etl.runtime'
+
+======================================================================
+ERROR: test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) (kind='POSTGRESQL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 55, in test_database_targets_use_runtime_role_and_publish_before_first_insert
+    binding,target,revision,metadata=self.prepare(kind);observed=[]
+                                     ^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 21, in prepare
+    self.runtime=importlib.import_module('aat_etl.runtime')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_etl.runtime'
+
+======================================================================
+ERROR: test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) (kind='MYSQL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 55, in test_database_targets_use_runtime_role_and_publish_before_first_insert
+    binding,target,revision,metadata=self.prepare(kind);observed=[]
+                                     ^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 21, in prepare
+    self.runtime=importlib.import_module('aat_etl.runtime')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_etl.runtime'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.975s
+
+FAILED (errors=3)

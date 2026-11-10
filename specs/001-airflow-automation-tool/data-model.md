@@ -114,6 +114,12 @@ DAGGeneration chưa phải registration. Sau lỗi redeploy giữ admission bloc
 | ReplacementAdmission / replacement_admissions | id, binding_id, run_intent_id, authorization_id, admission_epoch, authorization_revision, scope_sha256, dataset_sha256, target_identity, owner_process_id, target_session_identity, state, admitted_at, reconciled_at | unique binding_id/admission_epoch; tối đa một admission chưa đối soát mỗi binding; immutable identity; không là bằng chứng target commit |
 
 ExecutionBinding bổ sung `run_intent_id` FK RESTRICT unique và `airflow_run_type`.
+`RunIntent.authorization_id` nullable cho APPEND/UPSERT; việc có intent không cấp
+quyền replacement. FULL_REFRESH vẫn bắt buộc authorization đúng scope tại bind và
+admission; `ReplacementAdmission.authorization_id` luôn NOT NULL.
+Role `aat_etl` được UPDATE riêng `RunIntent.last_reconciled_at` để PostgreSQL cho
+phép SELECT FOR UPDATE khi admission/close khóa intent. Role không được đổi state,
+authorization_id, run_uuid hay revision của intent; không được cấp quyền hoặc xóa evidence.
 RunIntent được tạo trước Airflow manual run, không dùng ExecutionBinding chưa có TI version
 để giả runtime đã bind. Binding lần đầu chốt config/source/target; dataset chốt khi COMPLETE
 trước target ghi, extraction retry có thể bỏ generation INCOMPLETE và tạo generation mới

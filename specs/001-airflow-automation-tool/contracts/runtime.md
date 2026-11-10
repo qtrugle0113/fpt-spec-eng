@@ -20,7 +20,10 @@ không gắn vòng đời HTTP request, vẫn dùng app metadata/target sessions
 
 ## Manifest và encoding v1
 
-Path logic: `/var/lib/aat/staging/<sha256-dag-id>/<sha256-run-id>/<dataset-uuid>/`;
+Path logic: `<staging-root>/<sha256-dag-id>/<sha256-run-id>/<dataset-uuid>/`;
+Compose hiện mount volume tại `/data/staging`; worker dùng `AAT_STAGING_ROOT` nếu
+có override đã kiểm. Root phải là volume đĩa persistent dùng chung backend/Airflow,
+không nhận root/path từ input công khai.
 writer attempt UUID có thư mục temp riêng. Chỉ server sinh path, không lấy raw ID làm path.
 
 Manifest JSON có format_version=`aat-jsonl/1`, dataset_id, binding_sha256, source_snapshot_time,

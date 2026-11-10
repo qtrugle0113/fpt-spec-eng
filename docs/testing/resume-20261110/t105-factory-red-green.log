@@ -1,0 +1,71 @@
+test_canonical_bytes_are_deterministic_and_invalid_identity_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_canonical_bytes_are_deterministic_and_invalid_identity_rejected) ... ERROR
+test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries (tests.unit.test_dag_factory.DAGFactoryTests.test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries) ... ERROR
+test_untrusted_literal_remains_data_and_extra_credentials_are_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_untrusted_literal_remains_data_and_extra_credentials_are_rejected) ... ERROR
+
+======================================================================
+ERROR: test_canonical_bytes_are_deterministic_and_invalid_identity_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_canonical_bytes_are_deterministic_and_invalid_identity_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dag_factory.py", line 39, in test_canonical_bytes_are_deterministic_and_invalid_identity_rejected
+    module=importlib.import_module('aat_api.deployments.factory');identity=uuid4();config=configuration()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_api.deployments'
+
+======================================================================
+ERROR: test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries (tests.unit.test_dag_factory.DAGFactoryTests.test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dag_factory.py", line 18, in test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries
+    source=self.generated(config)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_dag_factory.py", line 13, in generated
+    module=importlib.import_module('aat_api.deployments.factory')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_api.deployments'
+
+======================================================================
+ERROR: test_untrusted_literal_remains_data_and_extra_credentials_are_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_untrusted_literal_remains_data_and_extra_credentials_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dag_factory.py", line 32, in test_untrusted_literal_remains_data_and_extra_credentials_are_rejected
+    source=self.generated(config);compile(source,'wrapper.py','exec')
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_dag_factory.py", line 13, in generated
+    module=importlib.import_module('aat_api.deployments.factory')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_api.deployments'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (errors=3)

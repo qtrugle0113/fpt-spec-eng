@@ -1,0 +1,41 @@
+test_inventory_reads_every_page_and_never_fakes_completeness (tests.unit.test_airflow_deployment.DeploymentClientTests.test_inventory_reads_every_page_and_never_fakes_completeness) ... ERROR
+test_pause_requires_readback_and_health_checks_component_states (tests.unit.test_airflow_deployment.DeploymentClientTests.test_pause_requires_readback_and_health_checks_component_states) ... ERROR
+test_version_number_is_path_identity_and_uuid_remains_metadata (tests.unit.test_airflow_deployment.DeploymentClientTests.test_version_number_is_path_identity_and_uuid_remains_metadata) ... ERROR
+
+======================================================================
+ERROR: test_inventory_reads_every_page_and_never_fakes_completeness (tests.unit.test_airflow_deployment.DeploymentClientTests.test_inventory_reads_every_page_and_never_fakes_completeness)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 17, in test_inventory_reads_every_page_and_never_fakes_completeness
+    result=self.module()(Client()).dags()
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 8, in module
+    from aat_api.airflow_client.deployment import DeploymentClient
+ModuleNotFoundError: No module named 'aat_api.airflow_client.deployment'
+
+======================================================================
+ERROR: test_pause_requires_readback_and_health_checks_component_states (tests.unit.test_airflow_deployment.DeploymentClientTests.test_pause_requires_readback_and_health_checks_component_states)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 36, in test_pause_requires_readback_and_health_checks_component_states
+    client=self.module()(Client())
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 8, in module
+    from aat_api.airflow_client.deployment import DeploymentClient
+ModuleNotFoundError: No module named 'aat_api.airflow_client.deployment'
+
+======================================================================
+ERROR: test_version_number_is_path_identity_and_uuid_remains_metadata (tests.unit.test_airflow_deployment.DeploymentClientTests.test_version_number_is_path_identity_and_uuid_remains_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 24, in test_version_number_is_path_identity_and_uuid_remains_metadata
+    client=self.module()(Client())
+           ^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_airflow_deployment.py", line 8, in module
+    from aat_api.airflow_client.deployment import DeploymentClient
+ModuleNotFoundError: No module named 'aat_api.airflow_client.deployment'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.093s
+
+FAILED (errors=3)

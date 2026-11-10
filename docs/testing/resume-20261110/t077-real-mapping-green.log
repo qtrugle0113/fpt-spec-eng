@@ -1,0 +1,7 @@
+test_mysql_mapping_to_disk_uses_real_introspected_types (tests.etl.test_mapping_pipeline.MappingPipelineTests.test_mysql_mapping_to_disk_uses_real_introspected_types) ... ok
+test_postgres_mapping_to_disk_uses_real_introspected_types (tests.etl.test_mapping_pipeline.MappingPipelineTests.test_postgres_mapping_to_disk_uses_real_introspected_types) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.675s
+
+OK

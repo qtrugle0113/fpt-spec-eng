@@ -42,7 +42,7 @@ def require(session, identity, lock=False):
 
 
 async def store(file, kind):
-    if kind != 'TABLE': raise APIError('UNSUPPORTED_DEFINITION_KIND', 'This definition kind is not implemented yet.', 422)
+    if kind not in ('TABLE','ETL'): raise APIError('UNSUPPORTED_DEFINITION_KIND', 'Unsupported definition kind.', 422)
     name = (file.filename or '').replace('\\', '/').split('/')[-1]
     if not name.lower().endswith('.xlsx') or len(name) > 255 or '\0' in name:
         raise APIError('INVALID_WORKBOOK_NAME', 'An XLSX workbook filename is required.', 422)
@@ -117,6 +117,11 @@ def enqueue(session, kind, key, payload, *, request_fingerprint=None):
 
 
 def request_validation(identity, value, key):
+    with transaction() as session:
+        kind=require(session,identity).kind
+    if kind=='ETL':
+        from aat_api.services.etl_validation import request_validation as request_etl
+        return request_etl(identity,value,key)
     if value.target_connection_id is None: raise APIError('TARGET_REQUIRED', 'Select a target connection.', 422)
     with transaction() as session:
         upload = require(session, identity, True)
@@ -150,6 +155,15 @@ def issues(identity, limit, offset):
 
 
 MESSAGES = {'workbook.invalid': 'Workbook validation failed. Check the indicated location and template requirements.',
+            'etl.INVALID_ETL_DEFINITION':'Invalid ETL field or incompatible ETL configuration. Check the indicated location.',
+            'etl.TARGET_TABLE_MISSING':'Create the target in Table Management before validating this ETL workbook.',
+            'etl.EXCEL_REFERENCE_NOT_FOUND':'A referenced DAG or connection does not exist.',
+            'etl.CONNECTION_NOT_VERIFIED':'Test every referenced connection before validating this ETL workbook.',
+            'etl.TARGET_NOT_WRITABLE':'Target permissions do not allow the selected load strategy.',
+            'etl.ETL_DEPENDENCY_INVALID':'Source, target, mapping, key or replacement safety checks failed.',
+            'etl.DEPENDENCY_CHANGED':'A referenced connection, schema or source file changed. Validate a new workbook.',
+            'etl.ETL_REVISION_EXISTS':'This configuration already has an immutable revision. Reuse its original upload.',
+            'etl.FILE_NOT_VALID':'Validate the unexpired source file before validating this ETL workbook.',
             'target.changed': 'Target connection changed. Upload and validate the workbook again.',
             'workbook.checksum': 'Stored workbook checksum does not match the immutable upload.', **VALIDATION_MESSAGES}
 

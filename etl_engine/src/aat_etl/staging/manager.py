@@ -43,7 +43,7 @@ def open_read(path):
 
 
 class StagingWriter:
-    def __init__(self,root,*,dag_id,run_id,dataset_id,binding_sha256,source_schema_hash,target_schema_hash,mapping_hash,columns,source_snapshot_time):
+    def __init__(self,root,*,dag_id,run_id,dataset_id,binding_sha256,source_schema_hash,target_schema_hash,mapping_hash,columns,source_snapshot_time,quota=None,run_uuid=None,reservation_bytes=RUN_BYTES):
         for value in (binding_sha256,source_schema_hash,target_schema_hash,mapping_hash):
             if not HEX.fullmatch(value):raise ValueError('A canonical SHA-256 is required.')
         if not isinstance(source_snapshot_time,datetime) or source_snapshot_time.utcoffset() is None:raise ValueError('Snapshot time must be timezone aware.')
@@ -55,9 +55,22 @@ class StagingWriter:
             dag_sha256=self.dag_hash,run_sha256=self.run_hash,source_snapshot_time=source_snapshot_time.isoformat(),
             source_schema_hash=source_schema_hash,target_schema_hash=target_schema_hash,mapping_hash=mapping_hash,columns=self.columns)
         self.part=None;self.parts=[];self.rows=0;self.bytes=0;self.part_rows=0;self.part_bytes=0;self.finished=False
+        self.quota=quota;self.run_uuid=run_uuid;self.reservation_bytes=reservation_bytes;self.reservation_id=None;self.failed=False
+        if quota is not None:
+            if quota.root.resolve()!=self.root.resolve():raise ValueError('Quota and writer must use the same staging root.')
+            self.run_uuid=UUID(str(run_uuid))
+            if type(reservation_bytes) is not int or not 1<=reservation_bytes<=RUN_BYTES:raise ValueError('Invalid staging reservation size.')
 
     def __enter__(self):
         if self.root.is_symlink() or not self.root.is_dir():raise ValueError('An existing staging root directory is required.')
+        if self.quota is not None:
+            self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+        try:return self.start()
+        except BaseException:
+            if self.reservation_id is not None:self.quota.protect(self.reservation_id)
+            raise
+
+    def start(self):
         parent=self.root
         for name in (self.dag_hash,self.run_hash):parent=parent/name;directory(parent)
         # An existing dataset is only reusable through the verified reader. A new
@@ -68,11 +81,22 @@ class StagingWriter:
         return self
 
     def append(self,values):
+        try:self.append_row(values)
+        except BaseException:
+            self.failed=True
+            raise
+
+    def capacity(self,size):
+        if self.quota is not None and self.bytes+size>self.reservation_bytes:raise ValueError('Staging write exceeds its reserved capacity.')
+        if shutil.disk_usage(self.root).free-size<MIN_FREE:raise ValueError('Staging free disk reserve would be exceeded.')
+
+    def append_row(self,values):
         if self.finished:raise ValueError('Completed staging is immutable.')
+        if self.failed:raise ValueError('Failed staging cannot be resumed or published.')
         payload=encoded(row(values,self.columns))+b'\n'
         if len(payload)>MAX_ROW_BYTES:raise ValueError('Serialized staging row exceeds 1 MiB.')
         if self.bytes+len(payload)>RUN_BYTES:raise ValueError('Staging dataset exceeds its 10 GiB cap.')
-        if shutil.disk_usage(self.root).free-len(payload)<MIN_FREE:raise ValueError('Staging free disk reserve would be exceeded.')
+        self.capacity(len(payload))
         if self.part is not None and self.part_bytes+len(payload)>MAX_PART_BYTES:self.close_part()
         if self.part is None:
             number=len(self.parts)+1
@@ -90,16 +114,26 @@ class StagingWriter:
         os.rename(str(path)+'.part',path);os.chmod(path,0o400);fsync_directory(path.parent)
         self.parts.append(dict(name=self.part_name.as_posix(),sha256=self.part_hash.hexdigest(),rows=self.part_rows,bytes=self.part_bytes))
 
-    def complete(self):
+    def complete(self,*,validated_rows=0):
+        try:return self.publish(validated_rows=validated_rows)
+        except BaseException:
+            self.failed=True
+            raise
+
+    def publish(self,*,validated_rows=0):
         if self.finished:raise ValueError('Completed staging is immutable.')
+        if self.failed:raise ValueError('Failed staging cannot be published.')
         self.close_part()
-        manifest=dict(self.manifest,files=self.parts,extracted_rows=self.rows,validated_rows=0,state='COMPLETE')
+        if type(validated_rows) is not int or not 0<=validated_rows<=self.rows:raise ValueError('Invalid validated row count.')
+        manifest=dict(self.manifest,files=self.parts,extracted_rows=self.rows,validated_rows=validated_rows,state='COMPLETE')
         # COMPLETE means extraction durability. Full target-typed validation is
         # a separate gate and cannot be inferred from successful extraction.
         payload=encoded(manifest)
         if len(payload)>MAX_MANIFEST_BYTES:raise ValueError('Staging manifest exceeds its bounded size.')
+        self.capacity(len(payload))
         temporary=self.path/('manifest-'+str(uuid4())+'.part')
         with temporary.open('xb') as stream:stream.write(payload);stream.flush();os.fsync(stream.fileno())
+        if self.reservation_id is not None:self.quota.seal(self.reservation_id,self.bytes+len(payload))
         final=self.path/'manifest.json'
         os.link(temporary,final);temporary.unlink();os.chmod(final,0o400);fsync_directory(self.path)
         self.finished=True
@@ -107,7 +141,10 @@ class StagingWriter:
         return final
 
     def __exit__(self,*error):
-        if self.part is not None:self.part.close();self.part=None
+        try:
+            if self.part is not None:self.part.close();self.part=None
+        finally:
+            if self.reservation_id is not None:self.quota.protect(self.reservation_id)
         # Incomplete artifacts remain un-loadable, for quota/recovery accounting.
         # No opportunistic recursive deletion of a run's protected data.
 

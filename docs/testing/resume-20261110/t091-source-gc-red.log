@@ -1,0 +1,41 @@
+test_referenced_source_is_kept_even_after_expiry (tests.etl.test_source_cleanup.SourceCleanupTests.test_referenced_source_is_kept_even_after_expiry) ... FAIL
+test_shortened_expiry_cannot_bypass_30_day_source_retention (tests.etl.test_source_cleanup.SourceCleanupTests.test_shortened_expiry_cannot_bypass_30_day_source_retention) ... FAIL
+test_unreferenced_source_expires_after_30_days (tests.etl.test_source_cleanup.SourceCleanupTests.test_unreferenced_source_expires_after_30_days) ... FAIL
+
+======================================================================
+FAIL: test_referenced_source_is_kept_even_after_expiry (tests.etl.test_source_cleanup.SourceCleanupTests.test_referenced_source_is_kept_even_after_expiry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_source_cleanup.py", line 37, in test_referenced_source_is_kept_even_after_expiry
+    def test_referenced_source_is_kept_even_after_expiry(self):self.run_case(referenced=True)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_source_cleanup.py", line 14, in run_case
+    self.assertTrue(hasattr(recovery,'collect_expired_sources'),'T091 source cleanup missing')
+AssertionError: False is not true : T091 source cleanup missing
+
+======================================================================
+FAIL: test_shortened_expiry_cannot_bypass_30_day_source_retention (tests.etl.test_source_cleanup.SourceCleanupTests.test_shortened_expiry_cannot_bypass_30_day_source_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_source_cleanup.py", line 38, in test_shortened_expiry_cannot_bypass_30_day_source_retention
+    def test_shortened_expiry_cannot_bypass_30_day_source_retention(self):self.run_case(recent=True)
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_source_cleanup.py", line 14, in run_case
+    self.assertTrue(hasattr(recovery,'collect_expired_sources'),'T091 source cleanup missing')
+AssertionError: False is not true : T091 source cleanup missing
+
+======================================================================
+FAIL: test_unreferenced_source_expires_after_30_days (tests.etl.test_source_cleanup.SourceCleanupTests.test_unreferenced_source_expires_after_30_days)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_source_cleanup.py", line 36, in test_unreferenced_source_expires_after_30_days
+    def test_unreferenced_source_expires_after_30_days(self):self.run_case()
+                                                             ^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_source_cleanup.py", line 14, in run_case
+    self.assertTrue(hasattr(recovery,'collect_expired_sources'),'T091 source cleanup missing')
+AssertionError: False is not true : T091 source cleanup missing
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.162s
+
+FAILED (failures=3)

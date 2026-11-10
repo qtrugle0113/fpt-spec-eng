@@ -1,0 +1,16 @@
+test_empty_dataset_requires_separate_allow_empty_acknowledgment (tests.etl.test_full_refresh.FullRefreshTests.test_empty_dataset_requires_separate_allow_empty_acknowledgment) ... ok
+test_inbound_foreign_keys_and_triggers_block_before_admission (tests.etl.test_full_refresh.FullRefreshTests.test_inbound_foreign_keys_and_triggers_block_before_admission) ... ok
+test_midinsert_failure_rolls_back_whole_replacement (tests.etl.test_full_refresh.FullRefreshTests.test_midinsert_failure_rolls_back_whole_replacement) ... ok
+test_mysql_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_mysql_replacement_and_consumed_once_retry) ... ok
+test_postgres_replacement_and_consumed_once_retry (tests.etl.test_full_refresh.FullRefreshTests.test_postgres_replacement_and_consumed_once_retry) ... ok
+test_revoke_after_admission_does_not_promise_cancellation (tests.etl.test_full_refresh.FullRefreshTests.test_revoke_after_admission_does_not_promise_cancellation) ... ok
+test_revoked_before_admission_preserves_old_data (tests.etl.test_full_refresh.FullRefreshTests.test_revoked_before_admission_preserves_old_data) ... ok
+test_lost_metadata_commit_response_reads_back_same_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_lost_metadata_commit_response_reads_back_same_admission) ... ok
+test_mysql_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_mysql_native_lock_precedes_committed_idempotent_admission) ... ok
+test_postgres_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_postgres_native_lock_precedes_committed_idempotent_admission) ... ok
+test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 8.641s
+
+OK

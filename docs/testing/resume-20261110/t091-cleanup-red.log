@@ -1,0 +1,44 @@
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... FAIL
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... FAIL
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... FAIL
+
+======================================================================
+FAIL: test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 43, in test_terminal_dataset_keeps_full_retention
+    def test_terminal_dataset_keeps_full_retention(self):self.run_case(recent=True)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 16, in run_case
+    except ModuleNotFoundError:raise AssertionError('T091 cleanup implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T091 cleanup implementation missing
+
+======================================================================
+FAIL: test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 41, in test_terminal_reconciled_dataset_expires_after_retention
+    def test_terminal_reconciled_dataset_expires_after_retention(self):self.run_case()
+                                                                       ^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 16, in run_case
+    except ModuleNotFoundError:raise AssertionError('T091 cleanup implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T091 cleanup implementation missing
+
+======================================================================
+FAIL: test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 42, in test_uncertain_dataset_is_never_deleted_to_free_capacity
+    def test_uncertain_dataset_is_never_deleted_to_free_capacity(self):self.run_case(protected=True)
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 16, in run_case
+    except ModuleNotFoundError:raise AssertionError('T091 cleanup implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T091 cleanup implementation missing
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+FAILED (failures=3)

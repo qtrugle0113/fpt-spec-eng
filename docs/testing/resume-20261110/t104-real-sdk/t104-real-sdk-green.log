@@ -1,0 +1,142 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_connection_revision_change_during_preview_prevents_confirmation (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_connection_revision_change_during_preview_prevents_confirmation) ... ok
+test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) ... 
+  test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='csv') ... FAIL
+  test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='txt') ... FAIL
+test_duplicate_revision_fails_without_leaving_validation_stuck (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_duplicate_revision_fails_without_leaving_validation_stuck) ... ok
+test_full_refresh_with_inbound_fk_is_rejected_on_both_targets (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_full_refresh_with_inbound_fk_is_rejected_on_both_targets) ... 
+  test_full_refresh_with_inbound_fk_is_rejected_on_both_targets (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_full_refresh_with_inbound_fk_is_rejected_on_both_targets) (kind='MYSQL') ... FAIL
+test_invalid_workbook_does_not_create_partial_etl_definitions (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_invalid_workbook_does_not_create_partial_etl_definitions) ... ok
+test_one_invalid_dependency_prevents_publication_of_every_dag (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_one_invalid_dependency_prevents_publication_of_every_dag) ... ok
+test_preview_columns_keep_real_lengths_primary_key_and_literal_default (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_preview_columns_keep_real_lengths_primary_key_and_literal_default) ... 
+  test_preview_columns_keep_real_lengths_primary_key_and_literal_default (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_preview_columns_keep_real_lengths_primary_key_and_literal_default) (kind='MYSQL') ... FAIL
+test_readonly_target_and_unreadable_source_fail_before_publication (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_readonly_target_and_unreadable_source_fail_before_publication) ... ok
+test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment) ... 
+  test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment) (kind='MYSQL') ... FAIL
+test_same_physical_table_and_nonunique_upsert_keys_are_rejected (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_same_physical_table_and_nonunique_upsert_keys_are_rejected) ... ok
+test_schema_drift_invalidates_preview_before_confirmation (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_schema_drift_invalidates_preview_before_confirmation) ... ok
+test_validated_workbook_produces_typed_persisted_preview_without_target_writes (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_validated_workbook_produces_typed_persisted_preview_without_target_writes) ... ok
+test_real_sdk_executes_through_canonical_bind (tests.airflow.test_runtime_execution.RealRuntimeExecutionTests.test_real_sdk_executes_through_canonical_bind) ... FAIL
+test_real_sdk_retries_reaped_extraction_with_same_binding (tests.airflow.test_runtime_execution.RealRuntimeExecutionTests.test_real_sdk_retries_reaped_extraction_with_same_binding) ... FAIL
+
+======================================================================
+FAIL: test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 193, in test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings
+    uploaded,operation,_,_,_=self.scenario(edit=edit,database_type=kind)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_dag_builder.py", line 85, in scenario
+    connection=self.target(database_type);source='preview_source_'+uuid4().hex;target='preview_target_'+uuid4().hex
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_tables.py", line 51, in target
+    tested=self.client.post('/api/v1/connections/'+connection['id']+'/test');self.assertEqual(tested.json()['status'],'SUCCESS')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAILED' != 'SUCCESS'
+- FAILED
++ SUCCESS
+
+
+======================================================================
+FAIL: test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 193, in test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings
+    uploaded,operation,_,_,_=self.scenario(edit=edit,database_type=kind)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_dag_builder.py", line 85, in scenario
+    connection=self.target(database_type);source='preview_source_'+uuid4().hex;target='preview_target_'+uuid4().hex
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_tables.py", line 51, in target
+    tested=self.client.post('/api/v1/connections/'+connection['id']+'/test');self.assertEqual(tested.json()['status'],'SUCCESS')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAILED' != 'SUCCESS'
+- FAILED
++ SUCCESS
+
+
+======================================================================
+FAIL: test_full_refresh_with_inbound_fk_is_rejected_on_both_targets (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_full_refresh_with_inbound_fk_is_rejected_on_both_targets) (kind='MYSQL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 161, in test_full_refresh_with_inbound_fk_is_rejected_on_both_targets
+    _,operation,_,_,_=self.scenario(edit=edit,database_type=kind)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_dag_builder.py", line 85, in scenario
+    connection=self.target(database_type);source='preview_source_'+uuid4().hex;target='preview_target_'+uuid4().hex
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_tables.py", line 51, in target
+    tested=self.client.post('/api/v1/connections/'+connection['id']+'/test');self.assertEqual(tested.json()['status'],'SUCCESS')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAILED' != 'SUCCESS'
+- FAILED
++ SUCCESS
+
+
+======================================================================
+FAIL: test_preview_columns_keep_real_lengths_primary_key_and_literal_default (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_preview_columns_keep_real_lengths_primary_key_and_literal_default) (kind='MYSQL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 258, in test_preview_columns_keep_real_lengths_primary_key_and_literal_default
+    uploaded,operation,_,_,_=self.scenario(edit=edit,database_type=kind)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_dag_builder.py", line 85, in scenario
+    connection=self.target(database_type);source='preview_source_'+uuid4().hex;target='preview_target_'+uuid4().hex
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_tables.py", line 51, in target
+    tested=self.client.post('/api/v1/connections/'+connection['id']+'/test');self.assertEqual(tested.json()['status'],'SUCCESS')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAILED' != 'SUCCESS'
+- FAILED
++ SUCCESS
+
+
+======================================================================
+FAIL: test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment) (kind='MYSQL')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 294, in test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment
+    uploaded,operation,_,_,_=self.scenario(edit=edit,database_type=kind)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_dag_builder.py", line 85, in scenario
+    connection=self.target(database_type);source='preview_source_'+uuid4().hex;target='preview_target_'+uuid4().hex
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_tables.py", line 51, in target
+    tested=self.client.post('/api/v1/connections/'+connection['id']+'/test');self.assertEqual(tested.json()['status'],'SUCCESS')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'FAILED' != 'SUCCESS'
+- FAILED
++ SUCCESS
+
+
+======================================================================
+FAIL: test_real_sdk_executes_through_canonical_bind (tests.airflow.test_runtime_execution.RealRuntimeExecutionTests.test_real_sdk_executes_through_canonical_bind)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_runtime_execution.py", line 101, in test_real_sdk_executes_through_canonical_bind
+    def test_real_sdk_executes_through_canonical_bind(self):self.execute_case('normal')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_runtime_execution.py", line 71, in execute_case
+    if time.monotonic()>deadline:self.fail('SDK fixture DAG was not registered')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SDK fixture DAG was not registered
+
+======================================================================
+FAIL: test_real_sdk_retries_reaped_extraction_with_same_binding (tests.airflow.test_runtime_execution.RealRuntimeExecutionTests.test_real_sdk_retries_reaped_extraction_with_same_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_runtime_execution.py", line 102, in test_real_sdk_retries_reaped_extraction_with_same_binding
+    def test_real_sdk_retries_reaped_extraction_with_same_binding(self):self.execute_case('extraction-retry')
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_runtime_execution.py", line 88, in execute_case
+    self.assertEqual(run['state'],'success','Real SDK task failed; target/metadata evidence retained in fixture log')
+AssertionError: 'failed' != 'success'
+- failed
++ success
+ : Real SDK task failed; target/metadata evidence retained in fixture log
+
+----------------------------------------------------------------------
+Ran 14 tests in 250.001s
+
+FAILED (failures=7)

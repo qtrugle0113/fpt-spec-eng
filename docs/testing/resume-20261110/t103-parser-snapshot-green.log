@@ -1,0 +1,17 @@
+test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change (tests.integration.test_runtime_binding.RuntimeBindingTests.test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change) ... ERROR
+
+======================================================================
+ERROR: test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change (tests.integration.test_runtime_binding.RuntimeBindingTests.test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_runtime_binding.py", line 111, in test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change
+    c.execute("UPDATE uploaded_files SET parser_revision=2,delimiter=';',validation_status='PENDING' WHERE id=%s",(identity,))
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.CheckViolation: Stored revision or credential is immutable
+CONTEXT:  PL/pgSQL function aat_guard_uploaded_files() line 3 at RAISE
+
+----------------------------------------------------------------------
+Ran 1 test in 0.316s
+
+FAILED (errors=1)

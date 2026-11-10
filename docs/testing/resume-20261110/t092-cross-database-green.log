@@ -1,0 +1,9 @@
+test_mysql_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_mysql) ... ok
+test_mysql_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_postgres) ... ok
+test_postgres_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_mysql) ... ok
+test_postgres_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_postgres) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.668s
+
+OK

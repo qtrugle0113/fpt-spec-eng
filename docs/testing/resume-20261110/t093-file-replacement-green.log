@@ -1,0 +1,6 @@
+test_csv_txt_replacement_prepares_whole_mapped_dataset (tests.etl.test_full_refresh.FullRefreshTests.test_csv_txt_replacement_prepares_whole_mapped_dataset) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.121s
+
+OK

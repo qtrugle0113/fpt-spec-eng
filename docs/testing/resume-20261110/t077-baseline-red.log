@@ -1,0 +1,70 @@
+test_direct_mapping_does_not_guess_numeric_strings (tests.unit.test_mapping.LosslessTypeTests.test_direct_mapping_does_not_guess_numeric_strings) ... FAIL
+test_exact_decimal_integer_unicode_and_null (tests.unit.test_mapping.LosslessTypeTests.test_exact_decimal_integer_unicode_and_null) ... FAIL
+test_explicit_mapping_preserves_unmapped_target_columns (tests.unit.test_mapping.LosslessTypeTests.test_explicit_mapping_preserves_unmapped_target_columns) ... FAIL
+test_iso_temporal_values_keep_microseconds_and_offset (tests.unit.test_mapping.LosslessTypeTests.test_iso_temporal_values_keep_microseconds_and_offset) ... FAIL
+test_no_rounding_truncation_timezone_inference_or_invalid_calendar (tests.unit.test_mapping.LosslessTypeTests.test_no_rounding_truncation_timezone_inference_or_invalid_calendar) ... FAIL
+
+======================================================================
+FAIL: test_direct_mapping_does_not_guess_numeric_strings (tests.unit.test_mapping.LosslessTypeTests.test_direct_mapping_does_not_guess_numeric_strings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 96, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 12, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_exact_decimal_integer_unicode_and_null (tests.unit.test_mapping.LosslessTypeTests.test_exact_decimal_integer_unicode_and_null)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 96, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 12, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_explicit_mapping_preserves_unmapped_target_columns (tests.unit.test_mapping.LosslessTypeTests.test_explicit_mapping_preserves_unmapped_target_columns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 96, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 12, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_iso_temporal_values_keep_microseconds_and_offset (tests.unit.test_mapping.LosslessTypeTests.test_iso_temporal_values_keep_microseconds_and_offset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 96, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 12, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+======================================================================
+FAIL: test_no_rounding_truncation_timezone_inference_or_invalid_calendar (tests.unit.test_mapping.LosslessTypeTests.test_no_rounding_truncation_timezone_inference_or_invalid_calendar)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 96, in setUp
+    def setUp(self):self.types=module('mapping.types')
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_mapping.py", line 12, in module
+    if error.name.startswith('aat_etl'):raise AssertionError('Engine implementation missing: '+name) from None
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Engine implementation missing: mapping.types
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=5)

@@ -1,0 +1,35 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_bind_failure_does_not_start_the_engine_or_send_credentials (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_bind_failure_does_not_start_the_engine_or_send_credentials) ... ok
+test_database_targets_use_runtime_role_and_publish_before_first_insert (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert) ... ok
+test_file_final_commit_can_reconcile_after_staging_is_lost (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_file_final_commit_can_reconcile_after_staging_is_lost) ... ok
+test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail) ... ok
+test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role) ... ok
+test_late_recovery_cannot_clear_a_new_runtime_owner (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_late_recovery_cannot_clear_a_new_runtime_owner) ... runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=OWNER_FENCE_CHANGED
+ok
+test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) ... runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+ok
+test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) ... runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+ok
+test_bounded_retry_preserves_the_same_dataset_on_both_databases (tests.etl.test_commit_recovery.CommitRecoveryTests.test_bounded_retry_preserves_the_same_dataset_on_both_databases) ... ok
+test_missing_staging_after_partial_commit_blocks_until_original_files_return (tests.etl.test_commit_recovery.CommitRecoveryTests.test_missing_staging_after_partial_commit_blocks_until_original_files_return) ... ok
+test_mysql_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_mysql_commit_loss_reconciles_marker_before_retry) ... ok
+test_postgres_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_postgres_commit_loss_reconciles_marker_before_retry) ... ok
+test_backend_maintenance_applies_native_cleanup_and_persisted_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_backend_maintenance_applies_native_cleanup_and_persisted_retention) ... ok
+test_slow_target_cannot_extend_the_startup_recovery_deadline (tests.etl.test_staging_cleanup.StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline) ... runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=d6741a11-46a4-4045-aba8-d130860b21d1 state=NEEDS_RECONCILIATION reason=STARTUP_RECOVERY_BUDGET_EXHAUSTED
+ok
+test_startup_records_blocked_reason_without_reclaiming_unknown_owner (tests.etl.test_staging_cleanup.StagingCleanupTests.test_startup_records_blocked_reason_without_reclaiming_unknown_owner) ... runtime_recovery binding_id=f31bbed4-d392-4063-80a8-695a9f269d6a state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=d6741a11-46a4-4045-aba8-d130860b21d1 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=c25a60e3-fdf5-45a3-8c0a-f97aec9491f2 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+ok
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... ok
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... ok
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 49.278s
+
+OK

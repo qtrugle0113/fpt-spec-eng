@@ -1,0 +1,14 @@
+test_key_only_composite_upsert_is_stable_across_three_runs (tests.etl.test_load_policies.LoadPolicyTests.test_key_only_composite_upsert_is_stable_across_three_runs) ... ok
+test_mysql_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_retry_skips_verified_batches) ... ok
+test_mysql_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_unique_failure_preserves_prior_batch) ... ok
+test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable) ... ok
+test_new_append_run_can_duplicate_without_unique_constraint (tests.etl.test_load_policies.LoadPolicyTests.test_new_append_run_can_duplicate_without_unique_constraint) ... ok
+test_postgres_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_retry_skips_verified_batches) ... ok
+test_postgres_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_unique_failure_preserves_prior_batch) ... ok
+test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable) ... ok
+test_secondary_unique_collision_never_updates_wrong_row (tests.etl.test_load_policies.LoadPolicyTests.test_secondary_unique_collision_never_updates_wrong_row) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 7.478s
+
+OK

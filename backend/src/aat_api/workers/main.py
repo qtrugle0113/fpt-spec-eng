@@ -47,6 +47,9 @@ def dispatch(operation,owner):
         elif operation['kind']=='FILE_VALIDATE':
             from aat_api.workers.files import execute
             state,code=execute(operation,owner)
+        elif operation['kind']=='ETL_VALIDATE':
+            from aat_api.services.etl_validation import execute
+            state,code=execute(operation,owner)
         else: state,code='FAILED','OPERATION_HANDLER_UNAVAILABLE'
         with connect() as connection: Operations(connection).finish(operation['id'],owner,state=state,error_code=code)
     except Exception as error:
@@ -57,8 +60,26 @@ def dispatch(operation,owner):
     finally: stopped.set();thread.join(timeout=6)
 
 
+def maintenance(stopped):
+    while not stopped.is_set():
+        try:
+            from aat_api.workers.recovery import recover_pending,collect_expired_sources,collect_terminal_staging
+            # Establish dependency readiness before starting the recovery budget.
+            with connect() as connection:connection.execute('SELECT 1').fetchone()
+            recover_pending(connect)
+            collect_expired_sources(connect)
+            collect_terminal_staging(connect,limit=1)
+        except Exception as error:
+            logger.warning('worker_maintenance_blocked exception_type=%s',type(error).__name__)
+        stopped.wait(60)
+
+
 def main():
     owner=str(os.getpid())+'-'+uuid4().hex
+    stopped=threading.Event()
+    # Maintenance cannot delay a claimed Operation past its lease or stop the
+    # ordinary worker heartbeat while a target is unavailable.
+    threading.Thread(target=maintenance,args=(stopped,),daemon=True).start()
     while True:
         try:
             with connect() as connection:

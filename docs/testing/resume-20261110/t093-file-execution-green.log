@@ -1,0 +1,10 @@
+test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) ... ok
+test_csv_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_mysql) ... ok
+test_csv_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_postgres) ... ok
+test_txt_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_mysql) ... ok
+test_txt_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_postgres) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.853s
+
+OK

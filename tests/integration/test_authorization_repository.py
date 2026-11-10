@@ -335,6 +335,8 @@ class AuthorizationRepositoryTests(unittest.TestCase):
             self.assertFalse(c.execute('SELECT has_table_privilege(%s,%s,%s)', (role, 'replacement_authorizations', 'INSERT')).fetchone()[0])
             for column in ('scope', 'scope_sha256', 'allow_empty', 'allow_empty_acknowledged_at'):
                 self.assertFalse(c.execute('SELECT has_column_privilege(%s,%s,%s,%s)', (role, 'replacement_authorizations', column, 'UPDATE')).fetchone()[0])
+            for column in ('state','authorization_id','run_uuid','etl_revision_id'):
+                self.assertFalse(c.execute('SELECT has_column_privilege(%s,%s,%s,%s)',(role,'run_intents',column,'UPDATE')).fetchone()[0])
             c.execute(sql.SQL('SET LOCAL ROLE {}').format(sql.Identifier(role)))
             with self.assertRaises(self.psycopg.errors.InsufficientPrivilege), c.transaction():
                 c.execute('INSERT INTO replacement_authorizations SELECT * FROM replacement_authorizations')

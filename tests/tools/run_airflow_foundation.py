@@ -17,6 +17,12 @@ parser.add_argument('--runner-image', required=True)
 parser.add_argument('--evidence-dir', required=True)
 parser.add_argument('--compose-profile', action='store_true')
 parser.add_argument('--profile-only', action='store_true', help='Focused rerun of Compose profile after selectors have passed')
+parser.add_argument('--contract-tests',action='store_true',help='Run T097 contracts on the isolated real API instead of repeating foundation suites')
+parser.add_argument('--contract-module',action='append',help='Focused unittest module for contract mode')
+parser.add_argument('--fixture-dags',action='store_true',help='Parse 205 paused SDK-only DAGs in new disposable container filesystems')
+parser.add_argument('--runtime-bind-tests',action='store_true',help='Run metadata/API binding tests against a real running SDK task in isolated fixtures')
+parser.add_argument('--runtime-execution-tests',action='store_true',help='Execute current runtime source through SDK, private backend bind and isolated target DB')
+parser.add_argument('--workbook-deps-image',help='Reviewed source of pinned workbook libraries for the nested backend fixture')
 args = parser.parse_args()
 if args.profile_only and not args.compose_profile:
     parser.error('--profile-only requires --compose-profile')
@@ -32,6 +38,7 @@ password = secrets.token_urlsafe(32)
 auth_password = secrets.token_urlsafe(32)
 created = []
 network_created = False
+owned_volumes=[]
 result = {'published_ports': False, 'existing_services_modified': False,
           'fixture_network': network, 'status': 'NOT_RUN'}
 
@@ -78,6 +85,17 @@ try:
         'AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_PASSWORDS_FILE': '/tmp/aat-fixture-auth.json',
         'AAT_FIXTURE_AUTH_PASSWORD': auth_password,
     }
+    if args.fixture_dags or args.runtime_bind_tests or args.runtime_execution_tests:
+        environment['AIRFLOW__CORE__DAGS_FOLDER']='/tmp/aat-contract-dags'
+        environment['AIRFLOW__CORE__EXECUTION_API_SERVER_URL']='http://'+api+':8080/execution/'
+    if args.fixture_dags:
+        environment['AAT_FIXTURE_DAG_COUNT']='205'
+    if args.runtime_execution_tests:
+        environment['PYTHONPATH']='/tmp/etl_engine/src:/tmp/packages:/tmp'
+        environment['AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL']='5'
+        for suffix in ('dags','private','staging','logs'):
+            name=prefix+'-'+suffix
+            run('volume','create',name);owned_volumes.append(name)
     options = []
     for key, value in environment.items():
         options += ['-e', key+'='+value]
@@ -90,8 +108,30 @@ try:
                                      ('processor', 'dag-processor', '1g')]:
         name = prefix+'-'+suffix
         created.append(name)
+        mounts=[]
+        if args.runtime_execution_tests:
+            mounts=['--volume',owned_volumes[0]+':/tmp/aat-contract-dags:ro,U','--volume',owned_volumes[3]+':/opt/airflow/logs:U']
+            if suffix=='scheduler':
+                mounts+=['--volume',owned_volumes[1]+':/tmp/aat-runtime-private:ro,U','--volume',owned_volumes[2]+':/tmp/aat-runtime-staging:U']
         run('run', '-d', '--name', name, '--network', network, '--memory', memory,
-            *options, '--entrypoint', 'python', args.airflow_image, '-c', launch, command)
+            *mounts,*options, '--entrypoint', 'python', args.airflow_image, '-c', launch, command)
+        if args.runtime_execution_tests:
+            for source in ('tests','etl_engine','packages'):run('cp',str(ROOT/source),name+':/tmp/'+source)
+            snapshot="from pathlib import Path; import hashlib,json; roots=[Path('/tmp/etl_engine'),Path('/tmp/packages'),Path('/tmp/tests')]; d={p.relative_to('/tmp').as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for r in roots for p in r.rglob('*.py') if not any(x in p.parts for x in ('build','__pycache__'))}; Path('/tmp/aat-airflow-fixture-sources.json').write_text(json.dumps(d,sort_keys=True,indent=2))"
+            run('exec',name,'python','-c',snapshot)
+            run('cp',name+':/tmp/aat-airflow-fixture-sources.json',str(evidence/(suffix+'-source-sha256.json')))
+        if args.fixture_dags or args.runtime_bind_tests:
+            if args.fixture_dags:
+                source="from datetime import datetime,timezone\nfrom airflow.sdk import DAG,task\ndef check(): return 'contract-fixture'\nfor index in range(205):\n    with DAG('aat_contract_%03d'%index,schedule=None,start_date=datetime(2026,1,1,tzinfo=timezone.utc),catchup=False,is_paused_upon_creation=True,tags=['aat-contract-fixture']):\n        task(task_id='execute_etl')(check)()\n"
+            else:
+                sys.path.insert(0,str(ROOT))
+                from tests.airflow.binding_fixture import configuration,DAG_ID
+                config_json=json.dumps(configuration())
+                sql="SELECT encode(sha256(convert_to($aat$"+config_json+"$aat$::jsonb::text,'UTF8')),'hex')"
+                config_hash=run('exec',pg,'psql','-U','postgres','-d','airflow_metadata','-Atc',sql).stdout.strip()
+                if len(config_hash)!=64:raise RuntimeError('Fixture config hash could not be computed')
+                source="from datetime import datetime,timezone\nfrom airflow.sdk import DAG,task\ndef check():\n    import time\n    time.sleep(45)\n    return 'binding-fixture-only'\nwith DAG("+repr(DAG_ID)+",schedule=None,start_date=datetime(2026,1,1,tzinfo=timezone.utc),catchup=False,is_paused_upon_creation=True,tags=['aat','aat_revision:"+config_hash+"']):\n    task(task_id='execute_etl')(check)()\n"
+            run('exec',name,'python','-c',"from pathlib import Path; import sys; p=Path('/tmp/aat-contract-dags'); p.mkdir(exist_ok=True); (p/'contract_fixture.py').write_text(sys.argv[1])",source)
     health = "import json,urllib.request; d=json.load(urllib.request.urlopen('http://127.0.0.1:8080/api/v2/monitor/health',timeout=3)); print('READY' if all(d.get(k,{}).get('status')=='healthy' for k in ('metadatabase','scheduler','dag_processor')) else 'WAIT')"
     deadline = time.monotonic()+180
     while True:
@@ -103,10 +143,46 @@ try:
         time.sleep(2)
     result['airflow_dependencies'] = 'HEALTHY'
     print('AIRFLOW_FOUNDATION_READY '+network, flush=True)
+    if args.runtime_bind_tests or args.runtime_execution_tests:
+        if not args.workbook_deps_image:raise RuntimeError('A reviewed workbook dependency image is required')
+        env=dict(os.environ,AAT_TEST_AIRFLOW_ORIGIN='http://'+api+':8080',AAT_TEST_AIRFLOW_PASSWORD=auth_password)
+        command=[sys.executable,'-X','utf8',str(ROOT/'tests/tools/run_metadata_foundation.py'),
+            '--postgres-image',args.postgres_image,'--runner-image',args.runner_image,'--workbook-deps-image',args.workbook_deps_image,
+            '--runtime-contract-network',network,'--unittest-module',('tests.airflow.test_runtime_execution.RealRuntimeExecutionTests' if args.runtime_execution_tests else 'tests.airflow.test_runtime_binding'),
+            '--task-label',('t104-real-sdk' if args.runtime_execution_tests else 't103-real-ti-bind'),'--evidence-dir',str(evidence.relative_to(ROOT))]
+        if args.runtime_execution_tests:
+            command+=['--runtime-fixture-scheduler',prefix+'-scheduler','--runtime-fixture-dags',owned_volumes[0],
+                      '--runtime-fixture-private',owned_volumes[1],'--runtime-fixture-staging',owned_volumes[2],
+                      '--runner-memory','1g','--disk-databases']
+        checked=subprocess.run(command,cwd=ROOT,env=env)
+        result['runtime_binding_exit_code']=checked.returncode
+        if checked.returncode:raise RuntimeError('Real task binding contract failed; inspect nested fixture evidence')
+    if args.fixture_dags:
+        inventory="import os,httpx; c=httpx.Client(base_url='http://127.0.0.1:8080',timeout=10,trust_env=False); r=c.post('/auth/token',json={'username':'aat_service','password':os.environ['AAT_FIXTURE_AUTH_PASSWORD']}); c.headers['Authorization']='Bearer '+r.json()['access_token']; r=c.get('/api/v2/dags',params={'dag_id_prefix_pattern':'aat_contract_','limit':1}); print(r.json().get('total_entries',0))"
+        deadline=time.monotonic()+120
+        while True:
+            checked=run('exec',api,'python','-c',inventory,check=False,timeout=20)
+            if checked.returncode==0 and checked.stdout.strip()=='205':break
+            if time.monotonic()>=deadline:raise RuntimeError('Fixture DAG parse/registration deadline exceeded')
+            time.sleep(2)
+        result['fixture_dags_registered']=205
+    if args.contract_tests:
+        for source in ('tests','backend'):
+            run('cp',str(ROOT/source),api+':/tmp/'+source)
+        modules=args.contract_module or ['tests.airflow.test_api_contract','tests.airflow.test_registration']
+        checked=run('exec','-e','PYTHONPATH=/tmp/backend/src:/tmp',api,'python','-m','unittest',
+            *modules,'-v',check=False,timeout=120)
+        output=(checked.stdout+checked.stderr).replace(password,'[REDACTED]').replace(auth_password,'[REDACTED]')
+        (evidence/'t097-airflow-contract.log').write_text(output,encoding='utf-8')
+        for artifact in ('aat-airflow-openapi.json','aat-airflow-openapi-sha256.json'):
+            run('cp',api+':/tmp/'+artifact,str(evidence/artifact),check=False)
+        result['contract_exit_code']=checked.returncode
+        print(output[-5000:],flush=True)
+        if checked.returncode:raise RuntimeError('T097 contracts are not yet passing; inspect the retained log')
     common = ['--postgres-image', args.postgres_image, '--runner-image', args.runner_image,
               '--airflow-network', network, '--airflow-health-url',
               'http://'+api+':8080/api/v2/monitor/health', '--evidence-dir', args.evidence_dir]
-    for selector in ([] if args.profile_only else ['--readiness', '--foundation']):
+    for selector in ([] if args.profile_only or args.contract_tests or args.runtime_bind_tests or args.runtime_execution_tests else ['--readiness', '--foundation']):
         completed = subprocess.run([sys.executable, '-X', 'utf8', str(ROOT/'tests/tools/run_metadata_foundation.py'),
                                     selector, *common], cwd=ROOT)
         if completed.returncode:
@@ -125,5 +201,6 @@ finally:
     cleanup = [run('rm', '-f', name, check=False).returncode for name in reversed(created) if name != prefix+'-init']
     if network_created:
         cleanup.append(run('network', 'rm', network, check=False).returncode)
+    for volume in owned_volumes:cleanup.append(run('volume','rm',volume,check=False).returncode)
     result['cleanup_exit_codes'] = cleanup
     (evidence/'airflow-fixture-results.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')

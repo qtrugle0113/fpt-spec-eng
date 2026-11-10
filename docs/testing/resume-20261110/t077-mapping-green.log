@@ -1,0 +1,30 @@
+test_canonical_hash_ignores_object_order_but_preserves_semantic_values (tests.unit.test_mapping.ExecutionContractTests.test_canonical_hash_ignores_object_order_but_preserves_semantic_values) ... ok
+test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals (tests.unit.test_mapping.ExecutionContractTests.test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals) ... ok
+test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected (tests.unit.test_mapping.ExecutionContractTests.test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected) ... ok
+test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs (tests.unit.test_mapping.ExecutionContractTests.test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs) ... ok
+test_source_union_and_strategy_keys_are_strict (tests.unit.test_mapping.ExecutionContractTests.test_source_union_and_strategy_keys_are_strict) ... ok
+test_typed_literal_never_coerces_float_bool_or_numeric_string (tests.unit.test_mapping.ExecutionContractTests.test_typed_literal_never_coerces_float_bool_or_numeric_string) ... ok
+test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema (tests.unit.test_mapping.ExecutionContractTests.test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema) ... ok
+test_constants_null_handling_and_zero_false_empty_remain_distinct (tests.unit.test_mapping.LosslessTypeTests.test_constants_null_handling_and_zero_false_empty_remain_distinct) ... ok
+test_conversion_rejects_float_bool_exponents_and_numeric_overflow (tests.unit.test_mapping.LosslessTypeTests.test_conversion_rejects_float_bool_exponents_and_numeric_overflow) ... 
+  test_conversion_rejects_float_bool_exponents_and_numeric_overflow (tests.unit.test_mapping.LosslessTypeTests.test_conversion_rejects_float_bool_exponents_and_numeric_overflow) (source='integer', target='bigint') ... FAIL
+test_direct_mapping_does_not_guess_numeric_strings (tests.unit.test_mapping.LosslessTypeTests.test_direct_mapping_does_not_guess_numeric_strings) ... ok
+test_error_identifies_position_without_disclosing_row (tests.unit.test_mapping.LosslessTypeTests.test_error_identifies_position_without_disclosing_row) ... ok
+test_exact_decimal_integer_unicode_and_null (tests.unit.test_mapping.LosslessTypeTests.test_exact_decimal_integer_unicode_and_null) ... ok
+test_explicit_mapping_preserves_unmapped_target_columns (tests.unit.test_mapping.LosslessTypeTests.test_explicit_mapping_preserves_unmapped_target_columns) ... ok
+test_iso_temporal_values_keep_microseconds_and_offset (tests.unit.test_mapping.LosslessTypeTests.test_iso_temporal_values_keep_microseconds_and_offset) ... ok
+test_no_rounding_truncation_timezone_inference_or_invalid_calendar (tests.unit.test_mapping.LosslessTypeTests.test_no_rounding_truncation_timezone_inference_or_invalid_calendar) ... ok
+
+======================================================================
+FAIL: test_conversion_rejects_float_bool_exponents_and_numeric_overflow (tests.unit.test_mapping.LosslessTypeTests.test_conversion_rejects_float_bool_exponents_and_numeric_overflow) (source='integer', target='bigint')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_mapping.py", line 144, in test_conversion_rejects_float_bool_exponents_and_numeric_overflow
+    with self.subTest(source=source,target=target),self.assertRaises(ValueError):self.convert(value,source,target,**limits)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.452s
+
+FAILED (failures=1)

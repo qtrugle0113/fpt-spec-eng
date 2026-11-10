@@ -1,0 +1,12 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_only_canonical_route_accepts_a_runtime_bearer (tests.api.test_runtime_bind.RuntimeBearerTests.test_only_canonical_route_accepts_a_runtime_bearer) ... ok
+test_append_binding_is_idempotent_and_has_no_replacement_authority (tests.integration.test_runtime_binding.RuntimeBindingTests.test_append_binding_is_idempotent_and_has_no_replacement_authority) ... ok
+test_blocked_gate_and_old_version_cannot_create_a_binding (tests.integration.test_runtime_binding.RuntimeBindingTests.test_blocked_gate_and_old_version_cannot_create_a_binding) ... ok
+test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke (tests.integration.test_runtime_binding.RuntimeBindingTests.test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke) ... ok
+test_scheduled_authority_is_never_used_for_manual_or_backfill (tests.integration.test_runtime_binding.RuntimeBindingTests.test_scheduled_authority_is_never_used_for_manual_or_backfill) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.054s
+
+OK

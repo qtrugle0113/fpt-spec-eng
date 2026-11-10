@@ -17,7 +17,7 @@ def initialize() -> None:
     with connect() as connection, connection.cursor() as cursor:
         cursor.execute('CREATE DATABASE IF NOT EXISTS etl_test CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci')
         cursor.execute("CREATE USER IF NOT EXISTS 'aat_etl'@'%%' IDENTIFIED BY %s", ((SECRETS / 'mysql_etl').read_text(),))
-        cursor.execute("GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,INDEX,REFERENCES ON etl_test.* TO 'aat_etl'@'%'")
+        cursor.execute("GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,INDEX,REFERENCES,TRIGGER ON etl_test.* TO 'aat_etl'@'%'")
     with connect('aat_etl', 'mysql_etl', 'etl_test') as connection, connection.cursor() as cursor:
         for statement in Path(__file__).with_name('samples.sql').read_text().split(';'):
             if statement.strip():

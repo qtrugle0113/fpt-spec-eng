@@ -1,0 +1,6 @@
+test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change (tests.integration.test_runtime_binding.RuntimeBindingTests.test_file_binding_pins_parser_uuid_and_old_binding_can_reconcile_after_change) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.162s
+
+OK

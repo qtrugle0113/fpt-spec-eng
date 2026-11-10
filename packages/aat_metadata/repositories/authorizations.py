@@ -58,6 +58,22 @@ class AuthorizationRepository:
         a=self.authorization(identity)
         return row(self.connection,"UPDATE replacement_authorizations SET state=CASE WHEN state IN ('GRANTED','RESERVED') THEN 'INVALIDATED' ELSE state END,invalidated_at=coalesce(invalidated_at,now()) WHERE id=%s RETURNING *",(a['id'],))
 
+    def close_terminal(self,binding_id,*,terminal_verified,retry_possible,writer_finished):
+        if terminal_verified is not True or retry_possible is not False or writer_finished is not True:
+            raise ValueError('TERMINAL_WRITER_PROOF_REQUIRED')
+        c=self.connection
+        hint=row(c,'SELECT authorization_id,run_intent_id FROM execution_bindings WHERE id=%s',(binding_id,))
+        if not hint or hint['authorization_id'] is None:raise ValueError('BINDING_AUTHORIZATION_NOT_FOUND')
+        authorization=self.authorization(hint['authorization_id'])
+        row(c,'SELECT id FROM run_intents WHERE id=%s FOR UPDATE',(hint['run_intent_id'],))
+        binding=row(c,'SELECT * FROM execution_bindings WHERE id=%s FOR UPDATE',(binding_id,))
+        if binding['commit_uncertain']:raise ValueError('REPLACEMENT_RECONCILIATION_REQUIRED')
+        pending=row(c,"SELECT id FROM replacement_admissions WHERE binding_id=%s AND state IN ('ADMITTED','NEEDS_RECONCILIATION') LIMIT 1 FOR UPDATE",(binding_id,))
+        if pending:raise ValueError('REPLACEMENT_RECONCILIATION_REQUIRED')
+        if authorization['scope']=='SCHEDULED' or authorization['state'] in ('CONSUMED','CLOSED'):return authorization
+        state=transition_authorization(authorization['state'],'close',scope=authorization['scope'],terminal_verified=True,retry_possible=False,commit_unknown=False)
+        return row(c,'UPDATE replacement_authorizations SET state=%s,closed_at=now() WHERE id=%s RETURNING *',(state,authorization['id']))
+
     def admit(self,**request):
         c=self.connection;a=self.authorization(request['authorization_id'])
         transition_authorization(a['state'],'admit',scope=a['scope'])

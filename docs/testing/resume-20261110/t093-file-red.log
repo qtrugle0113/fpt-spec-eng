@@ -1,0 +1,84 @@
+test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) ... 
+  test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) (kind='postgres') ... FAIL
+  test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) (kind='mysql') ... FAIL
+test_csv_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_mysql) ... FAIL
+test_csv_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_postgres) ... FAIL
+test_txt_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_mysql) ... FAIL
+test_txt_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_postgres) ... FAIL
+
+======================================================================
+FAIL: test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 71, in test_append_late_type_error_preserves_committed_batch
+    with self.subTest(kind=kind):self.run_route(kind,'CSV',True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+======================================================================
+FAIL: test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 71, in test_append_late_type_error_preserves_committed_batch
+    with self.subTest(kind=kind):self.run_route(kind,'CSV',True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+======================================================================
+FAIL: test_csv_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 66, in test_csv_to_mysql
+    def test_csv_to_mysql(self):self.run_route('mysql','CSV')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+======================================================================
+FAIL: test_csv_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_postgres)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 65, in test_csv_to_postgres
+    def test_csv_to_postgres(self):self.run_route('postgres','CSV')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+======================================================================
+FAIL: test_txt_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 68, in test_txt_to_mysql
+    def test_txt_to_mysql(self):self.run_route('mysql','TXT')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+======================================================================
+FAIL: test_txt_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_postgres)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_file_transfer.py", line 67, in test_txt_to_postgres
+    def test_txt_to_postgres(self):self.run_route('postgres','TXT')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_file_transfer.py", line 21, in run_route
+    except ModuleNotFoundError:raise AssertionError('T093 file execution source missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T093 file execution source missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+FAILED (failures=6)

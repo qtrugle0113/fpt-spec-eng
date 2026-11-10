@@ -1,0 +1,31 @@
+test_mysql_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_mysql_commit_loss_reconciles_marker_before_retry) ... FAIL
+test_postgres_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_postgres_commit_loss_reconciles_marker_before_retry) ... FAIL
+
+======================================================================
+FAIL: test_mysql_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_mysql_commit_loss_reconciles_marker_before_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_commit_recovery.py", line 56, in test_mysql_commit_loss_reconciles_marker_before_retry
+    def test_mysql_commit_loss_reconciles_marker_before_retry(self):self.run_case('mysql')
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_commit_recovery.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T090 commit recovery implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T090 commit recovery implementation missing
+
+======================================================================
+FAIL: test_postgres_commit_loss_reconciles_marker_before_retry (tests.etl.test_commit_recovery.CommitRecoveryTests.test_postgres_commit_loss_reconciles_marker_before_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_commit_recovery.py", line 55, in test_postgres_commit_loss_reconciles_marker_before_retry
+    def test_postgres_commit_loss_reconciles_marker_before_retry(self):self.run_case('postgres')
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_commit_recovery.py", line 19, in run_case
+    except ModuleNotFoundError:raise AssertionError('T090 commit recovery implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T090 commit recovery implementation missing
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.007s
+
+FAILED (failures=2)

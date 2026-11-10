@@ -19,7 +19,7 @@ class RunIntent(Record):
     airflow_run_id:Mapped[str]=mapped_column(String(255))
     run_type:Mapped[str]=mapped_column(String(16))
     etl_revision_id:Mapped[UUID]=mapped_column(ForeignKey('etl_definition_revisions.id',ondelete='RESTRICT'))
-    authorization_id:Mapped[UUID]=mapped_column(ForeignKey('replacement_authorizations.id',ondelete='RESTRICT'))
+    authorization_id:Mapped[UUID|None]=mapped_column(ForeignKey('replacement_authorizations.id',ondelete='RESTRICT'))
     request_sha256:Mapped[str]=mapped_column(String(64))
     state:Mapped[str]=mapped_column(String(32),default='RESERVED',server_default='RESERVED')
     reserved_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),server_default=text('now()'))

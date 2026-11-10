@@ -1,0 +1,14 @@
+test_append_late_type_error_preserves_committed_batch (tests.etl.test_file_transfer.FileTransferTests.test_append_late_type_error_preserves_committed_batch) ... ok
+test_bad_full_format_or_changed_checksum_never_loads (tests.etl.test_file_transfer.FileTransferTests.test_bad_full_format_or_changed_checksum_never_loads) ... ok
+test_csv_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_mysql) ... ok
+test_csv_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_csv_to_postgres) ... ok
+test_global_upsert_key_errors_precede_every_target_write (tests.etl.test_file_transfer.FileTransferTests.test_global_upsert_key_errors_precede_every_target_write) ... ok
+test_headerless_txt_maps_generated_columns (tests.etl.test_file_transfer.FileTransferTests.test_headerless_txt_maps_generated_columns) ... ok
+test_txt_to_mysql (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_mysql) ... ok
+test_txt_to_postgres (tests.etl.test_file_transfer.FileTransferTests.test_txt_to_postgres) ... ok
+test_upsert_late_nonkey_type_error_preserves_prior_batch (tests.etl.test_file_transfer.FileTransferTests.test_upsert_late_nonkey_type_error_preserves_prior_batch) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.496s
+
+OK

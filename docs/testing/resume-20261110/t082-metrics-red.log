@@ -1,0 +1,15 @@
+test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay (tests.etl.test_ledger_metrics.LedgerMetricTests.test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay) ... FAIL
+
+======================================================================
+FAIL: test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay (tests.etl.test_ledger_metrics.LedgerMetricTests.test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_ledger_metrics.py", line 20, in test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay
+    except ModuleNotFoundError:raise AssertionError('T082 metric projection implementation missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T082 metric projection implementation missing
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

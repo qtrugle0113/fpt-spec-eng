@@ -1,0 +1,9 @@
+{
+  "airflow_version": "3.3.2",
+  "api_version": "2",
+  "source": "GET /openapi.json from an isolated healthy approved Airflow image",
+  "image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+  "sha256": "a7843b177bf80e07ea1b3aa81ddd836589fdc02b62fa5779cca3aba51145417b",
+  "canonicalization": "json.dumps(sort_keys=True,separators=(',',':'))",
+  "evidence": "docs/testing/resume-20261110/t097-schema-red/"
+}

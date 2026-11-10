@@ -1,0 +1,8 @@
+test_referenced_source_is_kept_even_after_expiry (tests.etl.test_source_cleanup.SourceCleanupTests.test_referenced_source_is_kept_even_after_expiry) ... ok
+test_shortened_expiry_cannot_bypass_30_day_source_retention (tests.etl.test_source_cleanup.SourceCleanupTests.test_shortened_expiry_cannot_bypass_30_day_source_retention) ... ok
+test_unreferenced_source_expires_after_30_days (tests.etl.test_source_cleanup.SourceCleanupTests.test_unreferenced_source_expires_after_30_days) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.275s
+
+OK

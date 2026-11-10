@@ -1,0 +1,53 @@
+test_mysql_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_mysql) ... FAIL
+test_mysql_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_postgres) ... FAIL
+test_postgres_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_mysql) ... FAIL
+test_postgres_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_postgres) ... FAIL
+
+======================================================================
+FAIL: test_mysql_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_transfer_routes.py", line 60, in test_mysql_to_mysql
+    def test_mysql_to_mysql(self):self.run_route('mysql','mysql')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_transfer_routes.py", line 21, in run_route
+    self.assertTrue(hasattr(module,'execute_database'),'T092 policy dispatch missing')
+AssertionError: False is not true : T092 policy dispatch missing
+
+======================================================================
+FAIL: test_mysql_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_mysql_to_postgres)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_transfer_routes.py", line 59, in test_mysql_to_postgres
+    def test_mysql_to_postgres(self):self.run_route('mysql','postgres')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_transfer_routes.py", line 21, in run_route
+    self.assertTrue(hasattr(module,'execute_database'),'T092 policy dispatch missing')
+AssertionError: False is not true : T092 policy dispatch missing
+
+======================================================================
+FAIL: test_postgres_to_mysql (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_transfer_routes.py", line 58, in test_postgres_to_mysql
+    def test_postgres_to_mysql(self):self.run_route('postgres','mysql')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_transfer_routes.py", line 21, in run_route
+    self.assertTrue(hasattr(module,'execute_database'),'T092 policy dispatch missing')
+AssertionError: False is not true : T092 policy dispatch missing
+
+======================================================================
+FAIL: test_postgres_to_postgres (tests.etl.test_transfer_routes.TransferRouteTests.test_postgres_to_postgres)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_transfer_routes.py", line 57, in test_postgres_to_postgres
+    def test_postgres_to_postgres(self):self.run_route('postgres','postgres')
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_transfer_routes.py", line 21, in run_route
+    self.assertTrue(hasattr(module,'execute_database'),'T092 policy dispatch missing')
+AssertionError: False is not true : T092 policy dispatch missing
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.157s
+
+FAILED (failures=4)

@@ -1,0 +1,11 @@
+test_mysql_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_retry_skips_verified_batches) ... ok
+test_mysql_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_append_unique_failure_preserves_prior_batch) ... ok
+test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable) ... ok
+test_postgres_append_retry_skips_verified_batches (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_retry_skips_verified_batches) ... ok
+test_postgres_append_unique_failure_preserves_prior_batch (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_append_unique_failure_preserves_prior_batch) ... ok
+test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable (tests.etl.test_load_policies.LoadPolicyTests.test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 4.411s
+
+OK

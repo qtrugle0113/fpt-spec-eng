@@ -1,0 +1,18 @@
+{
+  "postgres_image_id": "87507379f5ed1bca39a781c2f03da05f368e9f92b69c670e9a87cdf32cc9cf03",
+  "mysql_image_id": "c691f53ca7103d8176470a14494e4de786c127f8a064f508aa8f58d06f96c60f",
+  "runner_image_id": "399adacf113fd269d4dd5d587b956a9167bc02ef8f656d3ff9ef94e11039e2fc",
+  "runner_memory_limit_bytes": 536870912,
+  "runner_oom_killed": false,
+  "workbook_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "new anonymous disk volumes",
+  "task": "T092-TERMINAL-CANCELLATION",
+  "test_paths": [
+    "tests.etl.test_full_refresh.FullRefreshTests.test_confirmed_cancellation_rolls_back_and_closes_once",
+    "tests.etl.test_full_refresh.FullRefreshTests.test_csv_txt_replacement_prepares_whole_mapped_dataset"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261110\\t092-terminal-cancellation-green.log",
+  "existing_services_modified": false
+}

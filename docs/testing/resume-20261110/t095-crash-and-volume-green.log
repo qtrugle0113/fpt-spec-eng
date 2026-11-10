@@ -1,0 +1,7 @@
+test_sigkill_rolls_back_open_target_transaction_without_releasing_quota (tests.etl.test_storage_failures.StorageFailureTests.test_sigkill_rolls_back_open_target_transaction_without_releasing_quota) ... ok
+test_missing_staging_after_partial_commit_blocks_until_original_files_return (tests.etl.test_commit_recovery.CommitRecoveryTests.test_missing_staging_after_partial_commit_blocks_until_original_files_return) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.567s
+
+OK

@@ -15,6 +15,9 @@ def apply_grants(connection):
     connection.execute(text('REVOKE DELETE ON audit_events,replacement_authorizations,run_intents,replacement_admissions,execution_bindings,dataset_manifests,staging_artifacts,staging_reservations FROM aat_app_runtime'))
     connection.execute(text('GRANT SELECT ON ALL TABLES IN SCHEMA public TO aat_etl'))
     connection.execute(text('GRANT INSERT ON execution_bindings,dataset_manifests,staging_artifacts,execution_metrics,runtime_leases,replacement_admissions TO aat_etl'))
+    # PostgreSQL row-lock reads require UPDATE on at least one column. The
+    # reconciliation timestamp permits the intent lock without state/scope writes.
+    connection.execute(text('GRANT UPDATE(last_reconciled_at) ON run_intents TO aat_etl'))
     connection.execute(text('GRANT UPDATE(state,commit_uncertain,dataset_id,last_reconciled_at,updated_at) ON execution_bindings TO aat_etl'))
     connection.execute(text('GRANT UPDATE(state,reconciled_at,writer_finished,updated_at) ON replacement_admissions TO aat_etl'))
     connection.execute(text('GRANT UPDATE(state,revision,consumed_at,closed_at,updated_at) ON replacement_authorizations TO aat_etl'))

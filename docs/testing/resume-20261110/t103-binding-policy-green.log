@@ -1,0 +1,21 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_only_canonical_route_accepts_a_runtime_bearer (tests.api.test_runtime_bind.RuntimeBearerTests.test_only_canonical_route_accepts_a_runtime_bearer) ... request_failed request_id=805e1181-25b5-4a14-a225-477833c220b3 exception_type=AmbiguousForeignKeysError
+FAIL
+test_append_binding_is_idempotent_and_has_no_replacement_authority (tests.integration.test_runtime_binding.RuntimeBindingTests.test_append_binding_is_idempotent_and_has_no_replacement_authority) ... ok
+test_blocked_gate_and_old_version_cannot_create_a_binding (tests.integration.test_runtime_binding.RuntimeBindingTests.test_blocked_gate_and_old_version_cannot_create_a_binding) ... ok
+test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke (tests.integration.test_runtime_binding.RuntimeBindingTests.test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke) ... ok
+test_scheduled_authority_is_never_used_for_manual_or_backfill (tests.integration.test_runtime_binding.RuntimeBindingTests.test_scheduled_authority_is_never_used_for_manual_or_backfill) ... ok
+
+======================================================================
+FAIL: test_only_canonical_route_accepts_a_runtime_bearer (tests.api.test_runtime_bind.RuntimeBearerTests.test_only_canonical_route_accepts_a_runtime_bearer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_runtime_bind.py", line 25, in test_only_canonical_route_accepts_a_runtime_bearer
+    self.assertEqual(response.status_code,404)
+AssertionError: 500 != 404
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.096s
+
+FAILED (failures=1)

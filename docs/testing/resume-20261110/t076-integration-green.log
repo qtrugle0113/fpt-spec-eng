@@ -1,0 +1,23 @@
+test_failed_write_keeps_reservation_and_never_publishes_manifest (tests.etl.test_resource_quota.QuotaTests.test_failed_write_keeps_reservation_and_never_publishes_manifest) ... ok
+test_free_disk_reserve_rejects_without_allocating_metadata (tests.etl.test_resource_quota.QuotaTests.test_free_disk_reserve_rejects_without_allocating_metadata) ... ok
+test_global_20gib_counts_protected_and_active_allocations (tests.etl.test_resource_quota.QuotaTests.test_global_20gib_counts_protected_and_active_allocations) ... ok
+test_idempotent_reservation_and_release_preserve_evidence (tests.etl.test_resource_quota.QuotaTests.test_idempotent_reservation_and_release_preserve_evidence) ... ok
+test_per_run_10gib_boundary_is_atomic_under_concurrency (tests.etl.test_resource_quota.QuotaTests.test_per_run_10gib_boundary_is_atomic_under_concurrency) ... ok
+test_reservation_overflow_cannot_publish_even_if_caller_catches_error (tests.etl.test_resource_quota.QuotaTests.test_reservation_overflow_cannot_publish_even_if_caller_catches_error) ... ok
+test_writer_accounts_manifest_and_retains_protected_bytes (tests.etl.test_resource_quota.QuotaTests.test_writer_accounts_manifest_and_retains_protected_bytes) ... ok
+test_actual_512mib_process_is_stopped_before_container_oom (tests.etl.test_resource_quota.RSSSupervisionTests.test_actual_512mib_process_is_stopped_before_container_oom) ... ok
+test_normal_child_completes_without_false_memory_failure (tests.etl.test_resource_quota.RSSSupervisionTests.test_normal_child_completes_without_false_memory_failure) ... ok
+test_checksum_corruption_and_binding_mismatch_rejected_before_rows (tests.etl.test_snapshot_staging.TypedStagingTests.test_checksum_corruption_and_binding_mismatch_rejected_before_rows) ... ok
+test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled (tests.etl.test_snapshot_staging.TypedStagingTests.test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled) ... ok
+test_corrupt_last_part_is_rejected_before_first_row_is_yielded (tests.etl.test_snapshot_staging.TypedStagingTests.test_corrupt_last_part_is_rejected_before_first_row_is_yielded) ... ok
+test_decimal_float_and_type_coercion_fail_without_complete_publication (tests.etl.test_snapshot_staging.TypedStagingTests.test_decimal_float_and_type_coercion_fail_without_complete_publication) ... ok
+test_incomplete_extraction_does_not_publish_complete_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_incomplete_extraction_does_not_publish_complete_manifest) ... ok
+test_missing_file_and_manifest_schema_drift_are_rejected (tests.etl.test_snapshot_staging.TypedStagingTests.test_missing_file_and_manifest_schema_drift_are_rejected) ... ok
+test_process_exit_before_complete_never_publishes_manifest (tests.etl.test_snapshot_staging.TypedStagingTests.test_process_exit_before_complete_never_publishes_manifest) ... ok
+test_serialized_record_limit_is_enforced_without_publishing_complete (tests.etl.test_snapshot_staging.TypedStagingTests.test_serialized_record_limit_is_enforced_without_publishing_complete) ... ok
+test_typed_roundtrip_preserves_values_null_and_safe_paths (tests.etl.test_snapshot_staging.TypedStagingTests.test_typed_roundtrip_preserves_values_null_and_safe_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 2.394s
+
+OK

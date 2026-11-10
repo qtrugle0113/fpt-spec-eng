@@ -1,0 +1,12 @@
+test_mysql_case_insensitive_duplicate_across_many_batches_is_rejected (tests.etl.test_dataset_validation.DatasetValidationTests.test_mysql_case_insensitive_duplicate_across_many_batches_is_rejected) ... ok
+test_mysql_distinct_keys_and_exact_decimals_validate (tests.etl.test_dataset_validation.DatasetValidationTests.test_mysql_distinct_keys_and_exact_decimals_validate) ... ok
+test_nonunique_conflict_key_is_rejected (tests.etl.test_dataset_validation.DatasetValidationTests.test_nonunique_conflict_key_is_rejected) ... ok
+test_null_key_is_rejected_on_both_databases (tests.etl.test_dataset_validation.DatasetValidationTests.test_null_key_is_rejected_on_both_databases) ... ok
+test_postgres_distinct_values_validate_on_disk_without_target_writes (tests.etl.test_dataset_validation.DatasetValidationTests.test_postgres_distinct_values_validate_on_disk_without_target_writes) ... ok
+test_postgres_duplicate_across_many_batches_is_rejected (tests.etl.test_dataset_validation.DatasetValidationTests.test_postgres_duplicate_across_many_batches_is_rejected) ... ok
+test_row_and_byte_limits_fail_before_target_writes (tests.etl.test_dataset_validation.DatasetValidationTests.test_row_and_byte_limits_fail_before_target_writes) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.094s
+
+OK

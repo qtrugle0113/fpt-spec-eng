@@ -1,0 +1,15 @@
+test_backend_maintenance_applies_native_cleanup_and_persisted_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_backend_maintenance_applies_native_cleanup_and_persisted_retention) ... ok
+test_slow_target_cannot_extend_the_startup_recovery_deadline (tests.etl.test_staging_cleanup.StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline) ... runtime_recovery binding_id=8d9a1b4e-6b02-45b4-af1d-c2e9ec2fce25 state=NEEDS_RECONCILIATION reason=STARTUP_RECOVERY_BUDGET_EXHAUSTED
+ok
+test_startup_records_blocked_reason_without_reclaiming_unknown_owner (tests.etl.test_staging_cleanup.StagingCleanupTests.test_startup_records_blocked_reason_without_reclaiming_unknown_owner) ... runtime_recovery binding_id=8d9a1b4e-6b02-45b4-af1d-c2e9ec2fce25 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+runtime_recovery binding_id=90741016-d4a5-4bf1-8a12-7f239306e30e state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+ok
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... ok
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... ok
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... ok
+test_real_worker_runs_maintenance_without_delaying_heartbeat (tests.etl.test_worker_maintenance.WorkerMaintenanceTests.test_real_worker_runs_maintenance_without_delaying_heartbeat) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 3.858s
+
+OK

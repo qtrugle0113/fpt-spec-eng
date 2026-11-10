@@ -1,0 +1,9 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_download_preserves_canonical_etl_workbook_bytes_and_etag (tests.api.test_dag_builder.DAGBuilderContractTests.test_download_preserves_canonical_etl_workbook_bytes_and_etag) ... ok
+test_etl_upload_is_durable_and_roundtrips_the_workbook_hash (tests.api.test_dag_builder.DAGBuilderContractTests.test_etl_upload_is_durable_and_roundtrips_the_workbook_hash) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.937s
+
+OK

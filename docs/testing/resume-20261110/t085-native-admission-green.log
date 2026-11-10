@@ -1,0 +1,8 @@
+test_mysql_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_mysql_native_lock_precedes_committed_idempotent_admission) ... ok
+test_postgres_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_postgres_native_lock_precedes_committed_idempotent_admission) ... ok
+test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.333s
+
+OK

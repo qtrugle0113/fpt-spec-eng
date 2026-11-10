@@ -43,3 +43,9 @@ def get_issues(id:UUID, limit:Annotated[int,Query(ge=1,le=200)]=50, offset:Annot
 def get_table_preview(id:UUID):
     from aat_api.services.table_preview import preview
     return preview(id)
+
+
+@router.get('/definition-uploads/{id}/etl-preview')
+def get_etl_preview(id:UUID):
+    from aat_api.services.etl_preview import preview
+    return preview(id)

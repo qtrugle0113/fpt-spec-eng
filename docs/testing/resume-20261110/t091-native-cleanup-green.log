@@ -1,0 +1,8 @@
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... ok
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... ok
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.523s
+
+OK

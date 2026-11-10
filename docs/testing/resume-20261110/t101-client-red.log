@@ -1,0 +1,44 @@
+test_401_refreshes_once_and_never_returns_credentials (tests.unit.test_airflow_client.AirflowClientTests.test_401_refreshes_once_and_never_returns_credentials) ... ERROR
+test_get_retries_are_finite_and_post_is_never_replayed (tests.unit.test_airflow_client.AirflowClientTests.test_get_retries_are_finite_and_post_is_never_replayed) ... ERROR
+test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline (tests.unit.test_airflow_client.AirflowClientTests.test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline) ... ERROR
+test_permission_error_is_not_retried_or_relabelled_as_connectivity (tests.unit.test_airflow_client.AirflowClientTests.test_permission_error_is_not_retried_or_relabelled_as_connectivity) ... ERROR
+
+======================================================================
+ERROR: test_401_refreshes_once_and_never_returns_credentials (tests.unit.test_airflow_client.AirflowClientTests.test_401_refreshes_once_and_never_returns_credentials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_client.py", line 18, in test_401_refreshes_once_and_never_returns_credentials
+    self.assertEqual(self.client(handler).request('GET','/dags'),{'ok':True})
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/unit/test_airflow_client.py", line 8, in client
+    from aat_api.airflow_client.client import AirflowClient
+ModuleNotFoundError: No module named 'aat_api.airflow_client'
+
+======================================================================
+ERROR: test_get_retries_are_finite_and_post_is_never_replayed (tests.unit.test_airflow_client.AirflowClientTests.test_get_retries_are_finite_and_post_is_never_replayed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_client.py", line 22, in test_get_retries_are_finite_and_post_is_never_replayed
+    from aat_api.airflow_client.client import AirflowError
+ModuleNotFoundError: No module named 'aat_api.airflow_client'
+
+======================================================================
+ERROR: test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline (tests.unit.test_airflow_client.AirflowClientTests.test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_client.py", line 43, in test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline
+    from aat_api.airflow_client.client import AirflowError,segment
+ModuleNotFoundError: No module named 'aat_api.airflow_client'
+
+======================================================================
+ERROR: test_permission_error_is_not_retried_or_relabelled_as_connectivity (tests.unit.test_airflow_client.AirflowClientTests.test_permission_error_is_not_retried_or_relabelled_as_connectivity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_airflow_client.py", line 34, in test_permission_error_is_not_retried_or_relabelled_as_connectivity
+    from aat_api.airflow_client.client import AirflowError
+ModuleNotFoundError: No module named 'aat_api.airflow_client'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (errors=4)

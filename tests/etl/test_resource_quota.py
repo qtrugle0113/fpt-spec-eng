@@ -6,6 +6,10 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+from datetime import datetime,timezone
+import errno
+import shutil
 from uuid import uuid4
 from sqlalchemy import create_engine,text
 from sqlalchemy.engine import make_url
@@ -31,6 +35,9 @@ class QuotaTests(unittest.TestCase):
         self.owned=[];self.addCleanup(self.release_owned)
 
     def release_owned(self):
+        # Remove only this method's TemporaryDirectory, after every writer has
+        # exited; no persistent staging or external paths are involved.
+        self.temp.cleanup()
         for identity in self.owned:self.manager.release_after_cleanup(identity,writer_stopped=True,artifacts_removed=True,reconciled=True)
 
     def reserve(self,run,size):
@@ -62,6 +69,49 @@ class QuotaTests(unittest.TestCase):
         self.assertEqual(self.manager.usage(run)['run_reserved_bytes'],0)
         with self.assertRaises(ValueError):self.manager.reserve(run,attempt,1234)
 
+    def writer(self,run,size=4096):
+        staging=implementation('staging.manager')
+        return staging.StagingWriter(self.temp.name,dag_id='quota-test',run_id=str(run),dataset_id=uuid4(),
+            binding_sha256='a'*64,source_schema_hash='b'*64,target_schema_hash='c'*64,mapping_hash='d'*64,
+            columns=[dict(name='note',logical_type='text',nullable=False)],source_snapshot_time=datetime.now(timezone.utc),
+            quota=self.manager,run_uuid=run,reservation_bytes=size)
+
+    def test_writer_accounts_manifest_and_retains_protected_bytes(self):
+        run=uuid4()
+        with self.writer(run) as writer:
+            writer.append(['Unicode \U0001f680']);manifest=writer.complete()
+        self.owned.append(writer.reservation_id)
+        actual=sum(p.stat().st_size for p in Path(manifest).parent.rglob('*') if p.is_file())
+        self.assertEqual(self.manager.usage(run)['run_reserved_bytes'],actual)
+        with self.engine.connect() as c:
+            self.assertEqual(c.scalar(text('SELECT state FROM staging_reservations WHERE id=:id'),{'id':writer.reservation_id}),'PROTECTED')
+
+    def test_failed_write_keeps_reservation_and_never_publishes_manifest(self):
+        run=uuid4()
+        with self.assertRaises(OSError):
+            with self.writer(run) as writer:
+                writer.append(['first'])
+                with patch('aat_etl.staging.manager.os.fsync',side_effect=OSError(errno.ENOSPC,'Synthetic disk full')):
+                    writer.complete()
+        self.owned.append(writer.reservation_id)
+        self.assertFalse((writer.path/'manifest.json').exists())
+        self.assertEqual(self.manager.usage(run)['run_reserved_bytes'],4096)
+
+    def test_reservation_overflow_cannot_publish_even_if_caller_catches_error(self):
+        run=uuid4()
+        with self.writer(run,size=64) as writer:
+            with self.assertRaises(ValueError):writer.append(['x'*100])
+            with self.assertRaises(ValueError):writer.complete()
+        self.owned.append(writer.reservation_id)
+        self.assertFalse((writer.path/'manifest.json').exists())
+
+    def test_free_disk_reserve_rejects_without_allocating_metadata(self):
+        run=uuid4();before=self.manager.usage(run)
+        disk=shutil.disk_usage(self.temp.name)
+        with patch('aat_etl.staging.quota.shutil.disk_usage',return_value=type(disk)(disk.total,disk.used,1024**3)):
+            with self.assertRaises(self.quota.QuotaExceeded):self.reserve(run,1)
+        self.assertEqual(self.manager.usage(run),before)
+
 
 class RSSSupervisionTests(unittest.TestCase):
     def test_actual_512mib_process_is_stopped_before_container_oom(self):
@@ -74,6 +124,7 @@ class RSSSupervisionTests(unittest.TestCase):
         self.assertEqual(result.memory_budget_bytes,512*1024**2)
         self.assertNotEqual(result.exit_code,0)
         self.assertFalse(Path('/proc') .joinpath(str(result.pid)).exists())
+        print(f'RSS evidence: peak={result.peak_rss_bytes}, budget={result.memory_budget_bytes}, reason={result.reason}, exit={result.exit_code}')
 
     def test_normal_child_completes_without_false_memory_failure(self):
         resources=implementation('resources');result=resources.run_supervised([sys.executable,'-c','pass'])

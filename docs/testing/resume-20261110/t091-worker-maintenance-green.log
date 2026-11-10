@@ -1,0 +1,14 @@
+test_backend_maintenance_applies_native_cleanup_and_persisted_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_backend_maintenance_applies_native_cleanup_and_persisted_retention) ... ok
+test_startup_records_blocked_reason_without_reclaiming_unknown_owner (tests.etl.test_staging_cleanup.StagingCleanupTests.test_startup_records_blocked_reason_without_reclaiming_unknown_owner) ... ok
+test_terminal_dataset_keeps_full_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_dataset_keeps_full_retention) ... ok
+test_terminal_reconciled_dataset_expires_after_retention (tests.etl.test_staging_cleanup.StagingCleanupTests.test_terminal_reconciled_dataset_expires_after_retention) ... ok
+test_uncertain_dataset_is_never_deleted_to_free_capacity (tests.etl.test_staging_cleanup.StagingCleanupTests.test_uncertain_dataset_is_never_deleted_to_free_capacity) ... ok
+test_referenced_source_is_kept_even_after_expiry (tests.etl.test_source_cleanup.SourceCleanupTests.test_referenced_source_is_kept_even_after_expiry) ... ok
+test_shortened_expiry_cannot_bypass_30_day_source_retention (tests.etl.test_source_cleanup.SourceCleanupTests.test_shortened_expiry_cannot_bypass_30_day_source_retention) ... ok
+test_unreferenced_source_expires_after_30_days (tests.etl.test_source_cleanup.SourceCleanupTests.test_unreferenced_source_expires_after_30_days) ... ok
+test_real_worker_runs_maintenance_without_delaying_heartbeat (tests.etl.test_worker_maintenance.WorkerMaintenanceTests.test_real_worker_runs_maintenance_without_delaying_heartbeat) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.190s
+
+OK

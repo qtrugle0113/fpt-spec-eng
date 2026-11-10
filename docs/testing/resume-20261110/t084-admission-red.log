@@ -1,0 +1,58 @@
+test_mysql_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_mysql_native_lock_precedes_committed_idempotent_admission) ... FAIL
+test_postgres_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_postgres_native_lock_precedes_committed_idempotent_admission) ... FAIL
+test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) ... 
+  test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) (kind='postgres') ... FAIL
+  test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) (kind='mysql') ... FAIL
+
+======================================================================
+FAIL: test_mysql_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_mysql_native_lock_precedes_committed_idempotent_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_replacement_admission.py", line 47, in test_mysql_native_lock_precedes_committed_idempotent_admission
+    def test_mysql_native_lock_precedes_committed_idempotent_admission(self):self.run_case('mysql')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_replacement_admission.py", line 17, in run_case
+    except ModuleNotFoundError:raise AssertionError('T085 admission adapter missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T085 admission adapter missing
+
+======================================================================
+FAIL: test_postgres_native_lock_precedes_committed_idempotent_admission (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_postgres_native_lock_precedes_committed_idempotent_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_replacement_admission.py", line 46, in test_postgres_native_lock_precedes_committed_idempotent_admission
+    def test_postgres_native_lock_precedes_committed_idempotent_admission(self):self.run_case('postgres')
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_replacement_admission.py", line 17, in run_case
+    except ModuleNotFoundError:raise AssertionError('T085 admission adapter missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T085 admission adapter missing
+
+======================================================================
+FAIL: test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_replacement_admission.py", line 50, in test_revoked_authorization_cannot_admit_either_target
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_replacement_admission.py", line 17, in run_case
+    except ModuleNotFoundError:raise AssertionError('T085 admission adapter missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T085 admission adapter missing
+
+======================================================================
+FAIL: test_revoked_authorization_cannot_admit_either_target (tests.etl.test_replacement_admission.ReplacementAdmissionTests.test_revoked_authorization_cannot_admit_either_target) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_replacement_admission.py", line 50, in test_revoked_authorization_cannot_admit_either_target
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_replacement_admission.py", line 17, in run_case
+    except ModuleNotFoundError:raise AssertionError('T085 admission adapter missing') from None
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: T085 admission adapter missing
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=4)

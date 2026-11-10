@@ -1,0 +1,20 @@
+test_slow_target_cannot_extend_the_startup_recovery_deadline (tests.etl.test_staging_cleanup.StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline) ... FAIL
+
+======================================================================
+FAIL: test_slow_target_cannot_extend_the_startup_recovery_deadline (tests.etl.test_staging_cleanup.StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 42, in test_slow_target_cannot_extend_the_startup_recovery_deadline
+    def test_slow_target_cannot_extend_the_startup_recovery_deadline(self):self.blocked_startup(slow=True)
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_staging_cleanup.py", line 37, in blocked_startup
+    self.assertEqual(current['reason'],'STARTUP_RECOVERY_BUDGET_EXHAUSTED' if slow else 'TARGET_OWNER_OR_EVIDENCE_UNVERIFIED')
+AssertionError: 'TARGET_OWNER_OR_EVIDENCE_UNVERIFIED' != 'STARTUP_RECOVERY_BUDGET_EXHAUSTED'
+- TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
++ STARTUP_RECOVERY_BUDGET_EXHAUSTED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.540s
+
+FAILED (failures=1)

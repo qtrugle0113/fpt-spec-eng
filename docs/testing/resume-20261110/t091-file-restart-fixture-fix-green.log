@@ -1,0 +1,75 @@
+test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) ... 
+  test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='postgres') ... ERROR
+  test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='mysql') ... ERROR
+test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) ... 
+  test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='postgres') ... ERROR
+  test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='mysql') ... ERROR
+
+======================================================================
+ERROR: test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 115, in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 61, in run_case
+    original(c,'run_intents',id=intent_id,operation_id=operation_id,run_uuid=run,dag_id=case['dag'],airflow_run_id='manual__restart_'+run.hex,run_type='manual',etl_revision_id=case['etl_revision'],authorization_id=None,request_sha256='a'*64,state='RESERVED')
+  File "/tmp/tests/integration/test_authorization_repository.py", line 61, in insert
+    c.execute(statement, [Jsonb(v) if isinstance(v, (dict, list)) else v for v in values.values()])
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (fafe9835-d8da-4765-8f86-b26f5bd1b274, 158b62ef-f211-477c-977c-e418d3613313, t017_6f554bc7fca84bef8e9949af24cb0d1d, manual__restart_158b62eff211477c977ce418d3613313, manual, 579d633b-1089-4346-a1d7-12eedbc016bc, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-10 02:51:54.689484+00, null, b0e2364c-5b0e-486e-8f65-dab4f7c34a7b, 2026-11-10 02:51:54.724848+00, 2026-11-10 02:51:54.72485+00).
+
+======================================================================
+ERROR: test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 115, in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 61, in run_case
+    original(c,'run_intents',id=intent_id,operation_id=operation_id,run_uuid=run,dag_id=case['dag'],airflow_run_id='manual__restart_'+run.hex,run_type='manual',etl_revision_id=case['etl_revision'],authorization_id=None,request_sha256='a'*64,state='RESERVED')
+  File "/tmp/tests/integration/test_authorization_repository.py", line 61, in insert
+    c.execute(statement, [Jsonb(v) if isinstance(v, (dict, list)) else v for v in values.values()])
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (1f4adbed-b843-4a7c-8c3c-db8b800b5113, e0a9ceb0-babd-42d2-8601-a6920c802a74, t017_20892facb85641c29d7f0b289481e432, manual__restart_e0a9ceb0babd42d28601a6920c802a74, manual, 93e0d2e2-633b-46c2-868d-062c777e4198, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-10 02:51:54.856566+00, null, 492e80ce-ac1b-47e9-bc99-03decf9dab0f, 2026-11-10 02:51:54.888538+00, 2026-11-10 02:51:54.88854+00).
+
+======================================================================
+ERROR: test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 111, in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 61, in run_case
+    original(c,'run_intents',id=intent_id,operation_id=operation_id,run_uuid=run,dag_id=case['dag'],airflow_run_id='manual__restart_'+run.hex,run_type='manual',etl_revision_id=case['etl_revision'],authorization_id=None,request_sha256='a'*64,state='RESERVED')
+  File "/tmp/tests/integration/test_authorization_repository.py", line 61, in insert
+    c.execute(statement, [Jsonb(v) if isinstance(v, (dict, list)) else v for v in values.values()])
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (c139cb1a-3448-438c-b1bf-6beab3e5cd51, 87314533-1923-47d3-baf9-e7f8902420cd, t017_cd4c38be4b6b41c5bd0ccfbc4d579468, manual__restart_87314533192347d3baf9e7f8902420cd, manual, eedce5fa-34f1-41be-87d6-cd35e94bd06b, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-10 02:51:54.942769+00, null, d4cd31cf-0bdd-4fb6-b0b9-3c73986ab51a, 2026-11-10 02:51:54.969573+00, 2026-11-10 02:51:54.969575+00).
+
+======================================================================
+ERROR: test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 111, in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 61, in run_case
+    original(c,'run_intents',id=intent_id,operation_id=operation_id,run_uuid=run,dag_id=case['dag'],airflow_run_id='manual__restart_'+run.hex,run_type='manual',etl_revision_id=case['etl_revision'],authorization_id=None,request_sha256='a'*64,state='RESERVED')
+  File "/tmp/tests/integration/test_authorization_repository.py", line 61, in insert
+    c.execute(statement, [Jsonb(v) if isinstance(v, (dict, list)) else v for v in values.values()])
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "authorization_id" of relation "run_intents" violates not-null constraint
+DETAIL:  Failing row contains (cc68104e-889f-4ea8-b05e-422e48b3d0b1, fe4188de-5f0a-4052-a1ab-2c75573f7902, t017_3efbb2c3b37c44a0a88c98c98d49eefb, manual__restart_fe4188de5f0a4052a1ab2c75573f7902, manual, 60f309ff-8e77-43e5-a7df-4c442605e056, null, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, RESERVED, 2026-11-10 02:51:55.020497+00, null, 592ffc28-8aee-47ed-a288-df2e163183e3, 2026-11-10 02:51:55.044601+00, 2026-11-10 02:51:55.044602+00).
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.604s
+
+FAILED (errors=4)

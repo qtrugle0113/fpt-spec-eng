@@ -1,0 +1,92 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_deployment_requires_valid_confirmation_and_idempotency_before_work (tests.api.test_dag_builder.DAGBuilderContractTests.test_deployment_requires_valid_confirmation_and_idempotency_before_work) ... FAIL
+test_download_preserves_canonical_etl_workbook_bytes_and_etag (tests.api.test_dag_builder.DAGBuilderContractTests.test_download_preserves_canonical_etl_workbook_bytes_and_etag) ... FAIL
+test_etl_upload_is_durable_and_roundtrips_the_workbook_hash (tests.api.test_dag_builder.DAGBuilderContractTests.test_etl_upload_is_durable_and_roundtrips_the_workbook_hash) ... FAIL
+test_missing_preview_and_deployment_return_safe_contract_errors (tests.api.test_dag_builder.DAGBuilderContractTests.test_missing_preview_and_deployment_return_safe_contract_errors) ... ok
+test_grant_cannot_acknowledge_empty_replacement_implicitly (tests.api.test_authorizations.AuthorizationContractTests.test_grant_cannot_acknowledge_empty_replacement_implicitly) ... FAIL
+test_missing_authority_detail_list_and_revoke_are_safe_errors (tests.api.test_authorizations.AuthorizationContractTests.test_missing_authority_detail_list_and_revoke_are_safe_errors) ... ok
+test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) ... 
+  test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) (path='/dags/{dag_id}/trigger') ... FAIL
+  test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) (path='/dags/{dag_id}/state') ... FAIL
+test_deployment_requires_valid_confirmation_and_idempotency_before_work (tests.api.test_dag_builder.DAGBuilderContractTests.test_deployment_requires_valid_confirmation_and_idempotency_before_work) ... FAIL
+test_download_preserves_canonical_etl_workbook_bytes_and_etag (tests.api.test_dag_builder.DAGBuilderContractTests.test_download_preserves_canonical_etl_workbook_bytes_and_etag) ... FAIL
+test_etl_upload_is_durable_and_roundtrips_the_workbook_hash (tests.api.test_dag_builder.DAGBuilderContractTests.test_etl_upload_is_durable_and_roundtrips_the_workbook_hash) ... FAIL
+test_missing_preview_and_deployment_return_safe_contract_errors (tests.api.test_dag_builder.DAGBuilderContractTests.test_missing_preview_and_deployment_return_safe_contract_errors) ... ok
+
+======================================================================
+FAIL: test_deployment_requires_valid_confirmation_and_idempotency_before_work (tests.api.test_dag_builder.DAGBuilderContractTests.test_deployment_requires_valid_confirmation_and_idempotency_before_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 52, in test_deployment_requires_valid_confirmation_and_idempotency_before_work
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_download_preserves_canonical_etl_workbook_bytes_and_etag (tests.api.test_dag_builder.DAGBuilderContractTests.test_download_preserves_canonical_etl_workbook_bytes_and_etag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 24, in test_download_preserves_canonical_etl_workbook_bytes_and_etag
+    self.assertEqual(response.status_code,200)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_etl_upload_is_durable_and_roundtrips_the_workbook_hash (tests.api.test_dag_builder.DAGBuilderContractTests.test_etl_upload_is_durable_and_roundtrips_the_workbook_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 33, in test_etl_upload_is_durable_and_roundtrips_the_workbook_hash
+    self.assertEqual(response.status_code,201)
+AssertionError: 422 != 201
+
+======================================================================
+FAIL: test_grant_cannot_acknowledge_empty_replacement_implicitly (tests.api.test_authorizations.AuthorizationContractTests.test_grant_cannot_acknowledge_empty_replacement_implicitly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_authorizations.py", line 27, in test_grant_cannot_acknowledge_empty_replacement_implicitly
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) (path='/dags/{dag_id}/trigger')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_authorizations.py", line 35, in test_trigger_needs_an_idempotency_key_and_state_needs_if_match
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) (path='/dags/{dag_id}/state')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_authorizations.py", line 35, in test_trigger_needs_an_idempotency_key_and_state_needs_if_match
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_deployment_requires_valid_confirmation_and_idempotency_before_work (tests.api.test_dag_builder.DAGBuilderContractTests.test_deployment_requires_valid_confirmation_and_idempotency_before_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 52, in test_deployment_requires_valid_confirmation_and_idempotency_before_work
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_download_preserves_canonical_etl_workbook_bytes_and_etag (tests.api.test_dag_builder.DAGBuilderContractTests.test_download_preserves_canonical_etl_workbook_bytes_and_etag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 24, in test_download_preserves_canonical_etl_workbook_bytes_and_etag
+    self.assertEqual(response.status_code,200)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_etl_upload_is_durable_and_roundtrips_the_workbook_hash (tests.api.test_dag_builder.DAGBuilderContractTests.test_etl_upload_is_durable_and_roundtrips_the_workbook_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 33, in test_etl_upload_is_durable_and_roundtrips_the_workbook_hash
+    self.assertEqual(response.status_code,201)
+AssertionError: 422 != 201
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.461s
+
+FAILED (failures=9)

@@ -1,0 +1,81 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_only_canonical_route_accepts_a_runtime_bearer (tests.api.test_runtime_bind.RuntimeBearerTests.test_only_canonical_route_accepts_a_runtime_bearer) ... FAIL
+test_append_binding_is_idempotent_and_has_no_replacement_authority (tests.integration.test_runtime_binding.RuntimeBindingTests.test_append_binding_is_idempotent_and_has_no_replacement_authority) ... ERROR
+test_blocked_gate_and_old_version_cannot_create_a_binding (tests.integration.test_runtime_binding.RuntimeBindingTests.test_blocked_gate_and_old_version_cannot_create_a_binding) ... ERROR
+test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke (tests.integration.test_runtime_binding.RuntimeBindingTests.test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke) ... ERROR
+test_scheduled_authority_is_never_used_for_manual_or_backfill (tests.integration.test_runtime_binding.RuntimeBindingTests.test_scheduled_authority_is_never_used_for_manual_or_backfill) ... ERROR
+test_sample_references_exist_in_the_actual_seeded_registry (tests.api.test_dag_builder.DAGBuilderContractTests.test_sample_references_exist_in_the_actual_seeded_registry) ... ok
+
+======================================================================
+ERROR: test_append_binding_is_idempotent_and_has_no_replacement_authority (tests.integration.test_runtime_binding.RuntimeBindingTests.test_append_binding_is_idempotent_and_has_no_replacement_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_runtime_binding.py", line 12, in setUp
+    self.module=importlib.import_module('aat_metadata.repositories.bindings')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_metadata.repositories.bindings'
+
+======================================================================
+ERROR: test_blocked_gate_and_old_version_cannot_create_a_binding (tests.integration.test_runtime_binding.RuntimeBindingTests.test_blocked_gate_and_old_version_cannot_create_a_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_runtime_binding.py", line 12, in setUp
+    self.module=importlib.import_module('aat_metadata.repositories.bindings')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_metadata.repositories.bindings'
+
+======================================================================
+ERROR: test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke (tests.integration.test_runtime_binding.RuntimeBindingTests.test_manual_full_refresh_requires_once_intent_and_existing_binding_survives_revoke)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_runtime_binding.py", line 12, in setUp
+    self.module=importlib.import_module('aat_metadata.repositories.bindings')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_metadata.repositories.bindings'
+
+======================================================================
+ERROR: test_scheduled_authority_is_never_used_for_manual_or_backfill (tests.integration.test_runtime_binding.RuntimeBindingTests.test_scheduled_authority_is_never_used_for_manual_or_backfill)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/integration/test_runtime_binding.py", line 12, in setUp
+    self.module=importlib.import_module('aat_metadata.repositories.bindings')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'aat_metadata.repositories.bindings'
+
+======================================================================
+FAIL: test_only_canonical_route_accepts_a_runtime_bearer (tests.api.test_runtime_bind.RuntimeBearerTests.test_only_canonical_route_accepts_a_runtime_bearer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_runtime_bind.py", line 19, in test_only_canonical_route_accepts_a_runtime_bearer
+    self.assertEqual(response.status_code,401)
+AssertionError: 404 != 401
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.834s
+
+FAILED (failures=1, errors=4)

@@ -1,0 +1,32 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) ... 
+  test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='csv') ... FAIL
+  test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='txt') ... FAIL
+
+======================================================================
+FAIL: test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 179, in test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings
+    self.assertEqual(operation['state'],'SUCCEEDED')
+AssertionError: 'FAILED' != 'SUCCEEDED'
+- FAILED
++ SUCCEEDED
+
+
+======================================================================
+FAIL: test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings (tests.api.test_dag_builder.ETLPreviewIntegrationTests.test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings) (database='MYSQL', extension='txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dag_builder.py", line 179, in test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings
+    self.assertEqual(operation['state'],'SUCCEEDED')
+AssertionError: 'FAILED' != 'SUCCEEDED'
+- FAILED
++ SUCCEEDED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 11.931s
+
+FAILED (failures=2)

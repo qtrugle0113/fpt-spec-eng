@@ -1,0 +1,69 @@
+test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) ... 
+  test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='postgres') ... ERROR
+  test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='mysql') ... ERROR
+test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) ... 
+  test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='postgres') ... ERROR
+  test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='mysql') ... ERROR
+test_slow_target_cannot_extend_the_startup_recovery_deadline (tests.etl.test_staging_cleanup.StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline) ... runtime_recovery binding_id=769bca0f-4518-42bd-8a9b-c31ddfe80ba4 state=NEEDS_RECONCILIATION reason=STARTUP_RECOVERY_BUDGET_EXHAUSTED
+ok
+
+======================================================================
+ERROR: test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 115, in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 59, in run_case
+    case=helper.case(c)
+         ^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_authorization_repository.py", line 72, in case
+    self.insert(c, 'connections', id=ids['connection'], code=dag,
+TypeError: RuntimeRecoveryProjectionTests.run_case.<locals>.insert() got multiple values for argument 'name'
+
+======================================================================
+ERROR: test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 115, in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 59, in run_case
+    case=helper.case(c)
+         ^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_authorization_repository.py", line 72, in case
+    self.insert(c, 'connections', id=ids['connection'], code=dag,
+TypeError: RuntimeRecoveryProjectionTests.run_case.<locals>.insert() got multiple values for argument 'name'
+
+======================================================================
+ERROR: test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='postgres')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 111, in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 59, in run_case
+    case=helper.case(c)
+         ^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_authorization_repository.py", line 72, in case
+    self.insert(c, 'connections', id=ids['connection'], code=dag,
+TypeError: RuntimeRecoveryProjectionTests.run_case.<locals>.insert() got multiple values for argument 'name'
+
+======================================================================
+ERROR: test_restart_reconstructs_file_mapping_and_resumes_verified_prefix (tests.etl.test_runtime_recovery_projection.RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix) (kind='mysql')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 111, in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/etl/test_runtime_recovery_projection.py", line 59, in run_case
+    case=helper.case(c)
+         ^^^^^^^^^^^^^^
+  File "/tmp/tests/integration/test_authorization_repository.py", line 72, in case
+    self.insert(c, 'connections', id=ids['connection'], code=dag,
+TypeError: RuntimeRecoveryProjectionTests.run_case.<locals>.insert() got multiple values for argument 'name'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.647s
+
+FAILED (errors=4)

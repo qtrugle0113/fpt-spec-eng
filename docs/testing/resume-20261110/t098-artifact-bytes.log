@@ -1,0 +1,8 @@
+test_binary_workbooks_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_binary_workbooks_match_manifest) ... ok
+test_checkout_policy_is_explicit (tests.unit.test_sample_artifacts.SampleArtifactTests.test_checkout_policy_is_explicit) ... ok
+test_raw_sample_bytes_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_raw_sample_bytes_match_manifest) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.017s
+
+OK
