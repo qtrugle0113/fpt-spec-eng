@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "candidate_runtime_executed": false,
+  "existing_services_modified": false,
+  "artifact_dir": ".tools\\phase6-packaged-88e9926e",
+  "images": [
+    {
+      "target": "backend",
+      "image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "payload_files_verified": {
+        "aat_api": 91,
+        "aat_etl": 45,
+        "aat_metadata": 26
+      },
+      "artifact_sha256": {
+        "aat_api-0.1.0-py3-none-any.whl": "8d718e69ac91909fc2d65c25524e9045b74ac985112e0ea8ed79e23ec18c141b",
+        "aat_etl_engine-0.1.0-py3-none-any.whl": "0b1e33700fa4a965fd10cfb7adb21c5ceef323dc14e9be3221a865f0c4911688",
+        "aat_metadata-0.1.0-py3-none-any.whl": "abefcb6aa1b51d1c9cf2b640f81b98ff43337bc210227278e052e201869edb9c"
+      }
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "payload_files_verified": {
+        "aat_etl": 45,
+        "aat_metadata": 26
+      },
+      "artifact_sha256": {
+        "aat_etl_engine-0.1.0-py3-none-any.whl": "89530419df6636b68545038795324b0273c8af0db6a0e03e4277ed85c103371d",
+        "aat_metadata-0.1.0-py3-none-any.whl": "ffe5e5fcee356c5d986d38a904cfbad3c5f77051d752d5bf817568a0344de2e8"
+      }
+    },
+    {
+      "target": "frontend",
+      "image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "payload_files_verified": {},
+      "artifact_sha256": {
+        "50x.html": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed",
+        "index.html": "d3d63258cb93c486f8818e8aedbd925888f184f3e4bc8950573f0f2495cefce0",
+        "assets/index-DfRxwWth.css": "9687fc27fe59f9bb5c69cd786d8599899fd4f368dac9b65ed0a6f2470dc977d3",
+        "assets/index-Vt0Amazl.js": "3f9c660483bbd792a10d1b088a69ab99ceb58776956e19dc1c21e746e35fd165"
+      }
+    }
+  ]
+}

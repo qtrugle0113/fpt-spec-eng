@@ -163,6 +163,7 @@ MESSAGES = {'workbook.invalid': 'Workbook validation failed. Check the indicated
             'etl.ETL_DEPENDENCY_INVALID':'Source, target, mapping, key or replacement safety checks failed.',
             'etl.DEPENDENCY_CHANGED':'A referenced connection, schema or source file changed. Validate a new workbook.',
             'etl.ETL_REVISION_EXISTS':'This configuration already has an immutable revision. Reuse its original upload.',
+            'etl.TARGET_BUSY':'The target is in use by another operation. Wait for it to finish, then validate this workbook again.',
             'etl.FILE_NOT_VALID':'Validate the unexpired source file before validating this ETL workbook.',
             'target.changed': 'Target connection changed. Upload and validate the workbook again.',
             'workbook.checksum': 'Stored workbook checksum does not match the immutable upload.', **VALIDATION_MESSAGES}

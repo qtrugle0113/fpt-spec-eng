@@ -42,7 +42,7 @@ class AuthorizationRepository:
         else:
             if a['scope']!='ONCE' or a['state']!='GRANTED' or a['reserved_intent_id'] is not None:raise ValueError('AUTHORIZATION_ALREADY_RESERVED')
         if a['revoked_at'] is not None or a['invalidated_at'] is not None:raise ValueError('AUTHORIZATION_REVOKED')
-        operation_id=uuid4();intent_id=uuid4()
+        operation_id=request.get('operation_id') or uuid4();intent_id=uuid4()
         c.execute("INSERT INTO operations(id,kind,idempotency_key,request_sha256,state) VALUES (%s,'DAG_TRIGGER',%s,%s,'QUEUED')",(operation_id,str(request['idempotency_key']),request['request_sha256']))
         intent=row(c,"""INSERT INTO run_intents(id,operation_id,run_uuid,dag_id,airflow_run_id,run_type,
             etl_revision_id,authorization_id,request_sha256,state) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,'RESERVED') RETURNING *""",

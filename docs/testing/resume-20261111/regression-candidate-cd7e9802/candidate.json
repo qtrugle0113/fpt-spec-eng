@@ -1,0 +1,10 @@
+{
+  "captured_at": "2026-11-10T16:59:28.447910+00:00",
+  "source_context": ".tools\\regression-source-cd7e9802",
+  "ref": "localhost/aat-regression-candidate-cd7e9802:0.1.0",
+  "build_exit_code": 0,
+  "status": "BUILT_PENDING_REVIEW",
+  "candidate_runtime_executed": false,
+  "existing_services_modified": false,
+  "image_id": "19f59bab8681eb797777564f7c0ab40e7f67f1b37ff3d96e53a80c1c208dd3e0"
+}

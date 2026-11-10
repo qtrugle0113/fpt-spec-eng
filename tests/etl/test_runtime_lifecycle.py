@@ -4,13 +4,20 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import unittest
 from unittest.mock import patch
 from sqlalchemy import text
-from tests.etl.test_runtime_adapter import RuntimeAdapterTests
+from tests.etl import test_runtime_adapter as adapters
 
 
-class RuntimeLifecycleTests(RuntimeAdapterTests):
+class RuntimeLifecycleTests(unittest.TestCase):
     # Do not inherit/rerun the adapter suite; reuse only its fixture methods.
+    setUp=adapters.RuntimeAdapterTests.setUp
+    target=adapters.RuntimeAdapterTests.target
+    wait=adapters.RuntimeAdapterTests.wait
+    response=adapters.RuntimeAdapterTests.response
+    scenario=adapters.RuntimeAdapterTests.scenario
+    prepare=adapters.RuntimeAdapterTests.prepare
     def crash(self,binding,metadata,root,journal,mode=None):
         from aat_etl.resources import run_supervised
         with patch.dict(os.environ,{'AAT_FOUNDATION_TEST_DSN':metadata.url.set(drivername='postgresql').render_as_string(hide_password=False),'AAT_STAGING_ROOT':str(root)}):
@@ -85,8 +92,3 @@ class RuntimeLifecycleTests(RuntimeAdapterTests):
                 self.assertEqual(c.execute(text('SELECT state,commit_uncertain FROM execution_bindings WHERE id=:id'),{'id':binding['binding_id']}).one(),('FAILED',False))
                 self.assertEqual(c.execute(text('SELECT loaded_rows,failed_rows_nullable FROM execution_metrics WHERE binding_id=:id'),{'id':binding['binding_id']}).one(),(2,None))
                 self.assertEqual(c.scalar(text('SELECT state FROM dataset_manifests WHERE execution_binding_id=:id'),{'id':binding['binding_id']}),'COMPLETE')
-
-
-# Inherit fixture helpers, not previously accepted test methods.
-for _name in tuple(vars(RuntimeAdapterTests)):
-    if _name.startswith('test_'):setattr(RuntimeLifecycleTests,_name,None)

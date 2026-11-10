@@ -1,0 +1,9 @@
+test_failure_after_rename_leaves_complete_file_for_reconciliation (tests.unit.test_dag_storage.DAGStorageTests.test_failure_after_rename_leaves_complete_file_for_reconciliation) ... ok
+test_interrupted_before_rename_keeps_previous_bytes_and_cleans_temp (tests.unit.test_dag_storage.DAGStorageTests.test_interrupted_before_rename_keeps_previous_bytes_and_cleans_temp) ... ok
+test_symlink_root_or_destination_is_rejected_without_touching_outside (tests.unit.test_dag_storage.DAGStorageTests.test_symlink_root_or_destination_is_rejected_without_touching_outside) ... ok
+test_write_returns_exact_file_hash_and_only_internal_uuid_key (tests.unit.test_dag_storage.DAGStorageTests.test_write_returns_exact_file_hash_and_only_internal_uuid_key) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.026s
+
+OK

@@ -1,0 +1,11 @@
+{
+  "published_ports": false,
+  "network": "none",
+  "existing_services_modified": false,
+  "status": "PASS",
+  "image_id": "ed2fafbd64b28e6011da23235309624ebdfc945217aadd07470e33e802b3bbb4",
+  "exit_code": 0,
+  "oom_killed": false,
+  "artifact_dir": ".tools\\aat-frontend-source-cea342e5",
+  "cleanup_exit_code": 0
+}

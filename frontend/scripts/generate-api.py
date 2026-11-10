@@ -7,6 +7,7 @@ import yaml
 
 
 def typescript(schema):
+    if 'const' in schema:return json.dumps(schema['const'],ensure_ascii=True)
     if '$ref' in schema:
         name=schema['$ref'].split('/')[-1].replace('~1','/').replace('~0','~')
         return 'components["schemas"]['+json.dumps(name)+']'

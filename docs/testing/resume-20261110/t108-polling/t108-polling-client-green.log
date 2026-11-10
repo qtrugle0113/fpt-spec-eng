@@ -1,0 +1,13 @@
+test_expected_revision_requires_owner_file_and_parse_version_evidence (tests.airflow.test_registration.RegistrationEvidenceTests.test_expected_revision_requires_owner_file_and_parse_version_evidence) ... ok
+test_bounded_backoff_and_one_deadline_across_all_http_pages (tests.airflow.test_registration.RegistrationPollingTests.test_bounded_backoff_and_one_deadline_across_all_http_pages) ... ok
+test_current_exact_file_parse_error_is_terminal (tests.airflow.test_registration.RegistrationPollingTests.test_current_exact_file_parse_error_is_terminal) ... ok
+test_retry_observes_expected_revision_without_requiring_version_increment (tests.airflow.test_registration.RegistrationPollingTests.test_retry_observes_expected_revision_without_requiring_version_increment) ... ok
+test_401_refreshes_once_and_never_returns_credentials (tests.unit.test_airflow_client.AirflowClientTests.test_401_refreshes_once_and_never_returns_credentials) ... ok
+test_get_retries_are_finite_and_post_is_never_replayed (tests.unit.test_airflow_client.AirflowClientTests.test_get_retries_are_finite_and_post_is_never_replayed) ... ok
+test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline (tests.unit.test_airflow_client.AirflowClientTests.test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline) ... ok
+test_permission_error_is_not_retried_or_relabelled_as_connectivity (tests.unit.test_airflow_client.AirflowClientTests.test_permission_error_is_not_retried_or_relabelled_as_connectivity) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.019s
+
+OK

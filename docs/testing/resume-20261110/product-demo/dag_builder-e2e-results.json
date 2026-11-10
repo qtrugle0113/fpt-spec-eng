@@ -1,0 +1,387 @@
+{
+  "project": "aat-dag_builder-e2e-6f3a6830",
+  "status": "STARTUP_FAILED",
+  "published_ports": true,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352",
+    "frontend": "a7be4d553fbdc2a7725bd5a2ba4d269b5b19a40486b46b9361e08db2c609c4e5",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "execution_mode": "CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES",
+  "packaged_image_acceptance": false,
+  "local_url": "http://localhost:13000",
+  "compose_config": ".tools\\compose-aat-dag_builder-e2e-6f3a6830.json",
+  "services": [
+    {
+      "Command": "\"api-server\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "bcd4c6a1cfd0",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "com.docker.compose.config-hash=71bb4a7cd360b88da3ff8f483a8ab2a022627e8b914ac126729602ecfb9db258,com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.opencontainers.image.url=https://airflow.apache.org,org.apache.airflow.distro=debian,org.apache.airflow.python.version=3.12.14,org.apache.airflow.version=3.3.2,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,com.docker.compose.version=5.6.0,org.apache.airflow.component=airflow,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.title=Production Airflow Image,com.docker.compose.service=airflow-apiserver,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,org.opencontainers.image.created=,io.buildah.version=1.45.2,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.module=airflow,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,org.opencontainers.image.vendor=Apache Software Foundation,org.opencontainers.image.version=3.3.2,com.docker.compose.container-number=1,org.apache.airflow.image=airflow,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,org.apache.airflow.main-image.build-id=,org.apache.airflow.uid=50000",
+      "LocalVolumes": "4",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-airflow-apiserver-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-airflow-apiserver-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "127.0.0.1:18080->8080/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 8080,
+          "PublishedPort": 18080,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "airflow-apiserver",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"dag-processor\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "82ffc7632cfc",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,org.apache.airflow.main-image.build-id=,org.apache.airflow.uid=50000,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,com.docker.compose.version=5.6.0,org.apache.airflow.python.version=3.12.14,org.apache.airflow.version=3.3.2,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.opencontainers.image.title=Production Airflow Image,com.docker.compose.oneoff=False,org.apache.airflow.component=airflow,org.apache.airflow.image=airflow,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.service=airflow-dag-processor,io.buildah.version=1.45.2,org.opencontainers.image.version=3.3.2,com.docker.compose.config-hash=824adaf6731fe743df4ea76bf2962ec91f0d1c2e23ded84e4d573e9feb35da07,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.opencontainers.image.url=https://airflow.apache.org,org.opencontainers.image.vendor=Apache Software Foundation,org.apache.airflow.distro=debian,org.opencontainers.image.created=,com.docker.compose.container-number=1,org.apache.airflow.module=airflow",
+      "LocalVolumes": "4",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "airflow-dag-processor",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"aat-initialize\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "6878b9fd74d5",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "com.docker.compose.service=airflow-init,org.apache.airflow.main-image.build-id=,org.opencontainers.image.vendor=Apache Software Foundation,com.docker.compose.config-hash=4587c24924d4bef7589d7571517186971e4ba6635ef4e24babd343eee7c07563,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,org.apache.airflow.component=airflow,org.apache.airflow.distro=debian,org.apache.airflow.image=airflow,org.apache.airflow.module=airflow,org.apache.airflow.uid=50000,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,io.buildah.version=1.45.2,org.apache.airflow.python.version=3.12.14,org.apache.airflow.version=3.3.2,org.opencontainers.image.url=https://airflow.apache.org,org.opencontainers.image.version=3.3.2,com.docker.compose.version=5.6.0,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.licenses=Apache-2.0,com.docker.compose.oneoff=False,org.opencontainers.image.created=,org.opencontainers.image.title=Production Airflow Image,com.docker.compose.container-number=1,com.docker.compose.depends_on=app-init:service_completed_successfully:false,db-init:service_completed_successfully:false,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json",
+      "LocalVolumes": "4",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-airflow-init-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-airflow-init-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "airflow-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) About a minute ago"
+    },
+    {
+      "Command": "\"scheduler\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "b6a2b9acee65",
+      "Image": "localhost/aat-airflow-resume-candidate:0.1.0",
+      "Labels": "com.docker.compose.config-hash=892ba80ccd88bcb40300e5dae1b81f9253dd546c17281f9a0d513057cc0d3a82,com.docker.compose.image=sha256:b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e,org.apache.airflow.main-image.build-id=,org.opencontainers.image.documentation=https://airflow.apache.org/docs/docker-stack/index.html,org.opencontainers.image.revision=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,org.apache.airflow.uid=50000,org.opencontainers.image.ref.name=airflow,org.opencontainers.image.url=https://airflow.apache.org,org.opencontainers.image.version=3.3.2,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,io.buildah.version=1.45.2,org.apache.airflow.distro=debian,org.apache.airflow.python.version=3.12.14,org.opencontainers.image.authors=dev@airflow.apache.org,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.vendor=Apache Software Foundation,com.docker.compose.version=5.6.0,org.opencontainers.image.source=https://github.com/apache/airflow,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.service=airflow-scheduler,org.apache.airflow.image=airflow,org.opencontainers.image.created=,org.opencontainers.image.description=Reference, production-ready Apache Airflow image,org.opencontainers.image.title=Production Airflow Image,com.docker.compose.container-number=1,com.docker.compose.depends_on=airflow-init:service_completed_successfully:false,com.docker.compose.oneoff=False,org.apache.airflow.main-image.commit-sha=aa19d2dbb9ed187ec01957a92848d9b005e9ba9d,org.apache.airflow.version=3.3.2,org.apache.airflow.component=airflow,org.apache.airflow.module=airflow",
+      "LocalVolumes": "8",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8080/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8080,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "airflow-scheduler",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"python -m docker.bo\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "b63cd383ba5c",
+      "Image": "localhost/aat-backend-us3-candidate:0.1.0",
+      "Labels": "com.docker.compose.depends_on=db-init:service_completed_successfully:false,com.docker.compose.image=sha256:b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.service=app-init,com.docker.compose.config-hash=8fb3f2d765a796950099a17424dfb0c671b289b63a8ef20fc1ce3bfd5ba1fd17,com.docker.compose.container-number=1,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2",
+      "LocalVolumes": "8",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-app-init-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-app-init-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "app-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) About a minute ago"
+    },
+    {
+      "Command": "\"python -m uvicorn a\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "unhealthy",
+      "ID": "8713e056de5f",
+      "Image": "localhost/aat-backend-us3-candidate:0.1.0",
+      "Labels": "com.docker.compose.image=sha256:b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=backend,com.docker.compose.version=5.6.0,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,io.buildah.version=1.45.2,com.docker.compose.config-hash=865cba93f34fedabcbc3a1702cd207448dfd2171b05c05cc2633724cb32cf639,com.docker.compose.depends_on=airflow-apiserver:service_healthy:false,app-init:service_completed_successfully:false,backend-worker:service_healthy:false",
+      "LocalVolumes": "4",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-backend-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-backend-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "127.0.0.1:18000->8000/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 8000,
+          "PublishedPort": 18000,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "backend",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 45 seconds"
+    },
+    {
+      "Command": "\"python -m aat_api.w\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "7f86d7c08d0a",
+      "Image": "localhost/aat-backend-us3-candidate:0.1.0",
+      "Labels": "com.docker.compose.config-hash=cab73fc758f5988b8f2ac4d2968ee25051a7a23834cd13d5f72a1c11b575ff34,com.docker.compose.depends_on=app-init:service_completed_successfully:false,com.docker.compose.image=sha256:b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=backend-worker,com.docker.compose.container-number=1,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2",
+      "LocalVolumes": "6",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-backend-worker-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-backend-worker-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "backend-worker",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"python /opt/aat/doc\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "da34f1060ae8",
+      "Image": "localhost/aat-backend-us3-candidate:0.1.0",
+      "Labels": "com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=db-init,com.docker.compose.container-number=1,com.docker.compose.image=sha256:b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=4966ac4dc1e615bfc4a46ad146d346f67ec05ce49b5c743c6288679d3d598fc5,com.docker.compose.depends_on=postgres:service_healthy:false,mysql:service_healthy:false",
+      "LocalVolumes": "2",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-db-init-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-db-init-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "db-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) About a minute ago"
+    },
+    {
+      "Command": "\"nginx -g daemon off;\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "747bf4e08a86",
+      "Image": "localhost/aat-frontend-us4-mobile:0.1.0",
+      "Labels": "com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=dcd32e57354f3e1260b44d2d9c463909bac760413a21122a78e9b97766dd66be,com.docker.compose.image=sha256:a7be4d553fbdc2a7725bd5a2ba4d269b5b19a40486b46b9361e08db2c609c4e5,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=frontend,maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>,com.docker.compose.container-number=1,com.docker.compose.depends_on=backend:service_healthy:false",
+      "LocalVolumes": "1",
+      "Mounts": "aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-frontend-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-frontend-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "127.0.0.1:13000->80/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 80,
+          "PublishedPort": 13000,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "frontend",
+      "Size": "0B",
+      "State": "created",
+      "Status": "Created"
+    },
+    {
+      "Command": "\"--character-set-ser\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "789e6763ba90",
+      "Image": "localhost/aat-mysql-resume-candidate:8.4.13",
+      "Labels": "com.docker.compose.depends_on=secrets-init:service_completed_successfully:false,com.docker.compose.image=sha256:76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.version=5.6.0,io.buildah.version=1.45.2,com.docker.compose.config-hash=4ae936861f1d32f7df04f8aac7c48671b6d4371306e6e77a90ce191edf24d6f3,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.service=mysql",
+      "LocalVolumes": "2",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-mysql-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-mysql-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "3306/tcp, 33060/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 3306,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 33060,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "mysql",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"postgres\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "993c66686e5c",
+      "Image": "localhost/aat-postgres-resume-candidate:17.11",
+      "Labels": "io.buildah.version=1.45.2,com.docker.compose.config-hash=e167e0c70077f5d411c961142393091dbbfc349233928d0303b33ba42b2354fe,com.docker.compose.container-number=1,com.docker.compose.image=sha256:c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.depends_on=secrets-init:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,com.docker.compose.service=postgres,com.docker.compose.version=5.6.0",
+      "LocalVolumes": "2",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-postgres-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-postgres-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "5432/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 5432,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "postgres",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up About a minute"
+    },
+    {
+      "Command": "\"python -m docker.bo\u2026\"",
+      "CreatedAt": "2026-11-10 22:06:25 +0900 KST",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "9a30fb3bd16a",
+      "Image": "localhost/aat-backend-us3-candidate:0.1.0",
+      "Labels": "com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352,com.docker.compose.project.config_files=E:\\Workspace\\fpt-spec-eng\\.tools\\compose-aat-dag_builder-e2e-6f3a6830.json,com.docker.compose.service=secrets-init,com.docker.compose.version=5.6.0,com.docker.compose.config-hash=f7d36b9c8880230319a9df33a853f47b07be60e48edeec2bc97f63332ed67b26,com.docker.compose.oneoff=False,com.docker.compose.project=aat-dag_builder-e2e-6f3a6830,com.docker.compose.project.working_dir=E:\\Workspace\\fpt-spec-eng\\.tools,io.buildah.version=1.45.2",
+      "LocalVolumes": "9",
+      "Mounts": "aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026,aat-dag_builde\u2026",
+      "Name": "aat-dag_builder-e2e-6f3a6830-secrets-init-1",
+      "Names": "aat-dag_builder-e2e-6f3a6830-secrets-init-1",
+      "Networks": "aat-dag_builder-e2e-6f3a6830_aat_internal",
+      "Ports": "8000/tcp",
+      "Project": "aat-dag_builder-e2e-6f3a6830",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "About a minute ago",
+      "Service": "secrets-init",
+      "Size": "0B",
+      "State": "exited",
+      "Status": "Exited (0) About a minute ago"
+    }
+  ],
+  "services_retained": true
+}

@@ -1,0 +1,10 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_once_is_reserved_and_identity_is_stable_before_dispatch (tests.api.test_trigger.TriggerTests.test_once_is_reserved_and_identity_is_stable_before_dispatch) ... ok
+test_scheduled_is_not_manual_authority (tests.api.test_trigger.TriggerTests.test_scheduled_is_not_manual_authority) ... ok
+test_two_requests_cannot_transfer_one_once (tests.api.test_trigger.TriggerTests.test_two_requests_cannot_transfer_one_once) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.421s
+
+OK

@@ -1,0 +1,43 @@
+
+Running 12 tests using 1 worker
+
+[1/12] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/12] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/12] [desktop] › dag_builder.spec.ts:32:1 › ETL wizard validates, deploys and submits a real Airflow run
+[4/12] [desktop] › dag_builder.spec.ts:72:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[5/12] [desktop] › dag_builder.spec.ts:134:1 › Invalid workbook shows actionable errors without deployment
+[6/12] [desktop] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+[7/12] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[8/12] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[9/12] [mobile] › dag_builder.spec.ts:32:1 › ETL wizard validates, deploys and submits a real Airflow run
+[10/12] [mobile] › dag_builder.spec.ts:72:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[11/12] [mobile] › dag_builder.spec.ts:134:1 › Invalid workbook shows actionable errors without deployment
+[12/12] [mobile] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+  1) [mobile] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/State command succeeded/)
+    Expected: visible
+    Timeout: 30000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/State command succeeded/) with timeout 30000ms
+      - waiting for getByText(/State command succeeded/)
+
+
+      183 |   await scheduleResult.getByRole('checkbox', { name: /I confirm the schedule state change/ }).check();
+      184 |   await scheduleResult.getByRole('button', { name: 'Pause future scheduling', exact: true }).click();
+    > 185 |   await expect(page.getByText(/State command succeeded/)).toBeVisible({ timeout: 30000 });
+          |                                                           ^
+      186 | });
+      187 |
+        at /tests/dag_builder.spec.ts:185:59
+
+    Error Context: test-results/dag_builder-ONCE-permits-a-050f9--is-required-for-activation-mobile/error-context.md
+
+
+  1 failed
+    [mobile] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation 
+  11 passed (2.8m)

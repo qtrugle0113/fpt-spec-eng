@@ -932,6 +932,11 @@ paths:
         schema:
           type: string
           format: uuid
+      - name: If-Match
+        in: header
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -1008,10 +1013,14 @@ paths:
         in: query
         schema:
           type: string
+          format: date
+        description: Ngày bắt đầu theo timezone đã chọn; khoảng tối đa 366 ngày.
       - name: to
         in: query
         schema:
           type: string
+          format: date
+        description: Ngày kết thúc được tính trọn ngày theo timezone đã chọn.
       - name: timezone
         in: query
         schema:
@@ -1020,6 +1029,13 @@ paths:
         in: query
         schema:
           type: string
+          enum: [ALL, MANAGED, EXTERNAL]
+          default: ALL
+      - name: force_refresh
+        in: query
+        schema:
+          type: boolean
+          default: false
   /settings:
     get:
       operationId: get_settings
@@ -1945,6 +1961,9 @@ components:
             properties:
               id:
                 type: string
+              definition_id:
+                type: string
+                format: uuid
               target:
                 type: string
               ddl:
@@ -2078,6 +2097,10 @@ components:
           type:
           - string
           - 'null'
+        airflow_url:
+          type: string
+          format: uri
+          description: Liên kết UI Airflow công khai cho DAG, không dùng hostname nội bộ.
         error_summary:
           type:
           - string
@@ -2124,6 +2147,15 @@ components:
           type:
           - string
           - 'null'
+        revision_id:
+          type: [string, 'null']
+          format: uuid
+        upload_id:
+          type: [string, 'null']
+          format: uuid
+        deployment_id:
+          type: [string, 'null']
+          format: uuid
         latest_run_status:
           type:
           - string
@@ -2155,6 +2187,9 @@ components:
       properties:
         task_id:
           type: string
+        map_index:
+          type: integer
+          minimum: -1
         state:
           type:
           - string
@@ -2222,6 +2257,9 @@ components:
           type: string
         run_id:
           type: string
+        revision_id:
+          type: [string, 'null']
+          format: uuid
         state:
           type: string
         run_type:
@@ -2315,6 +2353,20 @@ components:
       type: object
       additionalProperties: false
       properties:
+        scope:
+          type: string
+          enum: [ALL, MANAGED, EXTERNAL]
+        next_scheduled_runs:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              dag_id: {type: string}
+              scheduled_time: {type: string, format: date-time}
+              is_paused: {type: boolean}
+              airflow_url: {type: string, format: uri}
+            required: [dag_id, scheduled_time, is_paused, airflow_url]
         inventory:
           type: object
           additionalProperties: false

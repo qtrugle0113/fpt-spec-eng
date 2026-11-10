@@ -1,0 +1,10 @@
+{
+  "published_ports": false,
+  "network": "none",
+  "existing_services_modified": false,
+  "status": "FAIL",
+  "image_id": "2f0951a998f9cda12d6444b2e7947337bdb4c4a38d670752a8c7d80366d263a1",
+  "exit_code": 1,
+  "oom_killed": false,
+  "cleanup_exit_code": 0
+}

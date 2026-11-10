@@ -1,5 +1,5 @@
 """Settings PATCH boundary; connectivity and version remain read-only."""
-from typing import Annotated
+from typing import Annotated,Literal
 from zoneinfo import ZoneInfo,ZoneInfoNotFoundError
 from pydantic import Field,StrictInt,StrictStr,field_validator
 from .common import APIModel
@@ -17,9 +17,20 @@ class SettingsPatch(APIModel):
         if value is None:raise ValueError('Null setting is not supported')
         return value
 
+
     @field_validator('default_timezone')
     @classmethod
     def timezone_name(cls,value):
         try:ZoneInfo(value)
         except (ZoneInfoNotFoundError,ValueError):raise ValueError('Expected IANA timezone') from None
         return value
+
+
+class SettingsPublic(APIModel):
+    default_batch_size:int
+    dashboard_refresh_interval:int
+    default_timezone:str
+    staging_retention_days:int
+    revision:int
+    airflow_connectivity_status:Literal['AVAILABLE','UNAVAILABLE','UNKNOWN']
+    application_version:str

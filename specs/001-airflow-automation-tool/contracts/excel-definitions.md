@@ -89,7 +89,7 @@ Một workbook nhiều DAG có thể dùng nhiều connections; validation toàn
 | Catchup | Bắt buộc TRUE/FALSE, mặc định FALSE trong ví dụ |
 | Load Strategy | Bắt buộc APPEND/UPSERT/FULL_REFRESH |
 | Conflict Key | UPSERT bắt buộc comma-separated target columns khớp real PK/unique; strategy khác trống |
-| Batch Size | Optional1..10000, mặc định1000, tiếp tục chịu byte cap |
+| Batch Size | Optional1..10000; ô trống dùng Default Batch Size hiện hành lúc validation (ban đầu1000), pin vào revision; giá trị tường minh được ưu tiên và tiếp tục chịu byte cap |
 | Retry Count | Optional0..10, mặc định0 |
 | Retry Delay | Optional0..3600giây, mặc định60 |
 | Enabled/Paused | Bắt buộc Paused/Enabled; DAG mới luôn paused dù Excel yêu cầu Enabled |

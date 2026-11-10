@@ -81,7 +81,11 @@ class TableAPITests(unittest.TestCase):
             if operation['state'] not in ('QUEUED','RUNNING'):return operation
             time.sleep(.1)
         self.log.seek(0);log=self.log.read().decode(errors='replace')
-        self.fail('Durable table operation did not finish within fixture deadline; exception classes='+str(re.findall(r'exception_type=([A-Za-z_][A-Za-z0-9_]*)',log)))
+        from aat_api.services.connections.service import transaction
+        from sqlalchemy import text
+        with transaction() as session:
+            queue=session.execute(text("SELECT kind,state,count(*) FROM operations WHERE state IN ('QUEUED','RUNNING') GROUP BY kind,state ORDER BY kind,state")).all()
+        self.fail('Durable table operation did not finish within fixture deadline; exception classes='+str(re.findall(r'exception_type=([A-Za-z_][A-Za-z0-9_]*)',log))+'; pending operation counts='+str(queue))
 
     def validate(self,upload,target):
         payload={'target_connection_id':target['id'],'expected_sha256':upload['sha256']}

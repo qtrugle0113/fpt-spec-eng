@@ -1,0 +1,7 @@
+{
+  "published_ports": false,
+  "existing_services_modified": false,
+  "fixture_network": "aat-foundation-airflow-ecfb88c7-net",
+  "status": "NOT_RUN",
+  "cleanup_exit_codes": []
+}

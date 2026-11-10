@@ -37,7 +37,7 @@ class OwnerInitializationTests(unittest.TestCase):
                         'Non-superuser owner initialization failed; inspect private diagnostics')
         with psycopg.connect(owner_dsn) as c:
             self.assertFalse(c.execute('SELECT rolsuper FROM pg_roles WHERE rolname=current_user').fetchone()[0])
-            self.assertEqual(c.execute('SELECT version_num FROM alembic_version').fetchall(), [('0002_staging_quota',)])
+            self.assertEqual(c.execute('SELECT version_num FROM alembic_version').fetchall(), [('0005_deployment_operation_dags',)])
             self.assertEqual(c.execute('SELECT code FROM connections ORDER BY code').fetchall(), [('mysql_etl',), ('pg_etl',)])
             self.assertEqual(c.execute('SELECT count(*) FROM uploaded_files').fetchone()[0], 2)
             owners = c.execute("SELECT DISTINCT tableowner FROM pg_tables WHERE schemaname='public'").fetchall()

@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [desktop] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+[2/2] [mobile] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+  2 passed (1.7m)

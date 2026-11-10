@@ -1,0 +1,135 @@
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=admission-ack-loss target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=admission-ack-loss target=POSTGRESQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=extraction-kill target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=extraction-kill target=POSTGRESQL state=CONSUMED
+AUTHORIZATION_FAULT_VERIFIED mode=terminal-extraction target=MYSQL state=CLOSED
+AUTHORIZATION_FAULT_VERIFIED mode=terminal-extraction target=POSTGRESQL state=CLOSED
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_admission_response_loss_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_admission_response_loss_mysql) ... ok
+test_admission_response_loss_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_admission_response_loss_pg) ... ok
+test_full_refresh_extraction_retry_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_full_refresh_extraction_retry_mysql) ... ok
+test_full_refresh_extraction_retry_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_full_refresh_extraction_retry_pg) ... ok
+test_revocation_after_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_mysql) ... FAIL
+test_revocation_after_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_pg) ... FAIL
+test_revocation_before_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_mysql) ... FAIL
+test_revocation_before_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_pg) ... FAIL
+test_target_commit_loss_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_mysql) ... FAIL
+test_target_commit_loss_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_pg) ... FAIL
+test_terminal_extraction_closes_once_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_terminal_extraction_closes_once_mysql) ... ok
+test_terminal_extraction_closes_once_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_terminal_extraction_closes_once_pg) ... ok
+
+======================================================================
+FAIL: test_revocation_after_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 87, in test_revocation_after_admission_mysql
+    def test_revocation_after_admission_mysql(self):self.check('revoke-after-admission','MYSQL')
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 69, in check
+    context=self.workflow(target_kind=kind,strategy='FULL_REFRESH',fault_mode=mode)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 158, in workflow
+    self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
+AssertionError: 'failed' != 'success'
+- failed
++ success
+ : Real route ETL outcome differs; inspect sanitized fixture diagnostics
+
+======================================================================
+FAIL: test_revocation_after_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_pg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 86, in test_revocation_after_admission_pg
+    def test_revocation_after_admission_pg(self):self.check('revoke-after-admission','POSTGRESQL')
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 69, in check
+    context=self.workflow(target_kind=kind,strategy='FULL_REFRESH',fault_mode=mode)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 158, in workflow
+    self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
+AssertionError: 'failed' != 'success'
+- failed
++ success
+ : Real route ETL outcome differs; inspect sanitized fixture diagnostics
+
+======================================================================
+FAIL: test_revocation_before_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 89, in test_revocation_before_admission_mysql
+    def test_revocation_before_admission_mysql(self):self.check('revoke-before-admission','MYSQL')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 76, in check
+    self.assertTrue((Path('/tmp/aat-runtime-staging')/('authorization-fault-'+str(binding)+'-'+mode)).exists(),'Fault must execute for this exact binding')
+AssertionError: False is not true : Fault must execute for this exact binding
+
+======================================================================
+FAIL: test_revocation_before_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_pg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 88, in test_revocation_before_admission_pg
+    def test_revocation_before_admission_pg(self):self.check('revoke-before-admission','POSTGRESQL')
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 76, in check
+    self.assertTrue((Path('/tmp/aat-runtime-staging')/('authorization-fault-'+str(binding)+'-'+mode)).exists(),'Fault must execute for this exact binding')
+AssertionError: False is not true : Fault must execute for this exact binding
+
+======================================================================
+FAIL: test_target_commit_loss_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 85, in test_target_commit_loss_mysql
+    def test_target_commit_loss_mysql(self):self.check('target-commit-loss','MYSQL')
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 69, in check
+    context=self.workflow(target_kind=kind,strategy='FULL_REFRESH',fault_mode=mode)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 173, in workflow
+    self.assertEqual((binding.metric_extracted,binding.metric_validated,binding.loaded_rows,binding.failed_rows_nullable,binding.phase),(2,2,2,0,'COMPLETE'))
+AssertionError: Tuples differ: (2, 2, 2, 0, 'COMMIT_VERIFIED') != (2, 2, 2, 0, 'COMPLETE')
+
+First differing element 4:
+'COMMIT_VERIFIED'
+'COMPLETE'
+
+- (2, 2, 2, 0, 'COMMIT_VERIFIED')
+?                  ^^ -- ------
+
++ (2, 2, 2, 0, 'COMPLETE')
+?                  ^^^
+
+
+======================================================================
+FAIL: test_target_commit_loss_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_pg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 84, in test_target_commit_loss_pg
+    def test_target_commit_loss_pg(self):self.check('target-commit-loss','POSTGRESQL')
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_authorization_lifecycle.py", line 69, in check
+    context=self.workflow(target_kind=kind,strategy='FULL_REFRESH',fault_mode=mode)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 173, in workflow
+    self.assertEqual((binding.metric_extracted,binding.metric_validated,binding.loaded_rows,binding.failed_rows_nullable,binding.phase),(2,2,2,0,'COMPLETE'))
+AssertionError: Tuples differ: (2, 2, 2, 0, 'COMMIT_VERIFIED') != (2, 2, 2, 0, 'COMPLETE')
+
+First differing element 4:
+'COMMIT_VERIFIED'
+'COMPLETE'
+
+- (2, 2, 2, 0, 'COMMIT_VERIFIED')
+?                  ^^ -- ------
+
++ (2, 2, 2, 0, 'COMPLETE')
+?                  ^^^
+
+
+----------------------------------------------------------------------
+Ran 12 tests in 205.827s
+
+FAILED (failures=6)

@@ -84,8 +84,12 @@ class StagingCleanupTests(unittest.TestCase):
                 @contextmanager
                 def resolver(_):yield engine
                 results=collect_terminal_staging(helper.connect,root=root,resolve_target=resolver)
-                current=next(r for r in results if r['binding_id']==str(binding['binding_id']))
-                self.assertTrue(current['collected'])
+                current=next((r for r in results if r['binding_id']==str(binding['binding_id'])),None)
+                if protected:
+                    self.assertTrue(current is None or not current['collected'])
+                else:
+                    self.assertIsNotNone(current)
+                    self.assertEqual(current['collected'],not recent)
             else:
                 with TargetSession(engine,schema='public',table=name) as session:
                     result=module.collect_dataset(engine,root=root,dataset_id=dataset,target_session=session,old_session_id=old_id)

@@ -44,8 +44,11 @@ def get_operation(id:UUID,request:Request=None):
             details=[Issue(**{key:value for key,value in detail.items() if key in ('scope','code','message','row','column')})] if isinstance(detail,dict) else []
             error=ErrorResponse(error=ErrorBody(code=row['error_code'],message='File format validation failed.' if details else 'The operation did not complete successfully.',
                 request_id=request.state.request_id,retryable=False,operation_id=str(id),details=details))
+        links=row['progress_json'].get('result_links',[])
+        links=[link for link in links if isinstance(link,str) and link.startswith('/api/v1/')] if isinstance(links,list) else []
+        if row['result_ref'] and row['result_ref'].startswith('/api/v1/') and row['result_ref'] not in links:links.insert(0,row['result_ref'])
         return OperationResponse(id=row['id'],kind=row['kind'],state=row['state'],
             progress=OperationProgress(**{k:v for k,v in row['progress_json'].items() if k in ('phase','completed','total')}),
-            result_links=[row['result_ref']] if row['result_ref'] and row['result_ref'].startswith('/api/v1/') else [],
+            result_links=links,
             created_at=row['created_at'],deadline_at=row['deadline_at'].isoformat() if row['deadline_at'] else None,error=error)
     finally:engine.dispose()

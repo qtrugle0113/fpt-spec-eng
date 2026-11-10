@@ -50,13 +50,25 @@ def dispatch(operation,owner):
         elif operation['kind']=='ETL_VALIDATE':
             from aat_api.services.etl_validation import execute
             state,code=execute(operation,owner)
+        elif operation['kind']=='DAG_DEPLOY':
+            from aat_api.workers.deployments import execute
+            state,code=execute(operation,owner)
+        elif operation['kind']=='DAG_RECONCILE':
+            from aat_api.workers.deployments import reconcile
+            state,code=reconcile(operation,owner)
+        elif operation['kind']=='DAG_TRIGGER':
+            from aat_api.workers.dag_control import execute
+            state,code=execute(operation,owner)
+        elif operation['kind']=='DAG_STATE':
+            from aat_api.workers.dag_activation import execute
+            state,code=execute(operation,owner)
         else: state,code='FAILED','OPERATION_HANDLER_UNAVAILABLE'
         with connect() as connection: Operations(connection).finish(operation['id'],owner,state=state,error_code=code)
     except Exception as error:
         # Preserve any dispatched DDL as uncertain on unexpected faults.
         logger.error('worker_operation_failed exception_type=%s',type(error).__name__)
         with connect() as connection:
-            Operations(connection).finish(operation['id'],owner,state='NEEDS_RECONCILIATION' if operation['kind']=='TABLE_CREATE' else 'FAILED',error_code='OPERATION_FAILED')
+            Operations(connection).finish(operation['id'],owner,state='NEEDS_RECONCILIATION' if operation['kind'] in ('TABLE_CREATE','DAG_DEPLOY','DAG_RECONCILE','DAG_TRIGGER','DAG_STATE') else 'FAILED',error_code='OPERATION_FAILED')
     finally: stopped.set();thread.join(timeout=6)
 
 
@@ -66,6 +78,10 @@ def maintenance(stopped):
             from aat_api.workers.recovery import recover_pending,collect_expired_sources,collect_terminal_staging
             # Establish dependency readiness before starting the recovery budget.
             with connect() as connection:connection.execute('SELECT 1').fetchone()
+            from aat_api.workers.dag_control import reconcile_pending
+            reconcile_pending()
+            from aat_api.workers.dag_activation import reconcile_pending as reconcile_state
+            reconcile_state()
             recover_pending(connect)
             collect_expired_sources(connect)
             collect_terminal_staging(connect,limit=1)

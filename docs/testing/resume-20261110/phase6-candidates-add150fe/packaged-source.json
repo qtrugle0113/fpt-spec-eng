@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "candidate_runtime_executed": false,
+  "existing_services_modified": false,
+  "artifact_dir": ".tools\\phase6-packaged-add150fe",
+  "images": [
+    {
+      "target": "backend",
+      "image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "payload_files_verified": {
+        "aat_api": 81,
+        "aat_etl": 45,
+        "aat_metadata": 26
+      },
+      "artifact_sha256": {
+        "aat_api-0.1.0-py3-none-any.whl": "586ae64dced016358d189bac8b443786d789693953b67d55dcdc1db0ce781e73",
+        "aat_etl_engine-0.1.0-py3-none-any.whl": "e1e2e3fe33a9ccc4cbfe234156c4c06fe2b0bbe25f9b65e9f51afd8c63f414bf",
+        "aat_metadata-0.1.0-py3-none-any.whl": "75223ff009505a036f70524f208c1b88bc70626f4364314e472df605acbc3dba"
+      }
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "payload_files_verified": {
+        "aat_etl": 45,
+        "aat_metadata": 26
+      },
+      "artifact_sha256": {
+        "aat_etl_engine-0.1.0-py3-none-any.whl": "89530419df6636b68545038795324b0273c8af0db6a0e03e4277ed85c103371d",
+        "aat_metadata-0.1.0-py3-none-any.whl": "ffe5e5fcee356c5d986d38a904cfbad3c5f77051d752d5bf817568a0344de2e8"
+      }
+    },
+    {
+      "target": "frontend",
+      "image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "payload_files_verified": {},
+      "artifact_sha256": {
+        "50x.html": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed",
+        "index.html": "5273ac32f92473945b67e920a9f3ee2949cae5ccbcce41182a86c48049406979",
+        "assets/index-CHofiCzv.js": "ea05c9533e7583b36c6bcdbadb93a5c9dd99adf4b0dfcd69f48c9804868c6398",
+        "assets/index-DonRv4p-.css": "7aa4689410be1cc9e8acbc241d07b65f8b395c7e3656cbbc549602afbc1c5087"
+      }
+    }
+  ]
+}

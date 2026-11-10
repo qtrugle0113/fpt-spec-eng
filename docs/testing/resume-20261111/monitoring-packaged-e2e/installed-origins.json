@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "project": "aat-monitoring-e2e-d80151bd",
+  "image_id": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+  "origins": {
+    "aat_api": "/usr/local/lib/python3.12/site-packages/aat_api/__init__.py",
+    "aat_etl": "/usr/local/lib/python3.12/site-packages/aat_etl/__init__.py",
+    "aat_metadata": "/usr/local/lib/python3.12/site-packages/aat_metadata/__init__.py"
+  },
+  "source_overlay": false
+}

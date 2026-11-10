@@ -1,5 +1,23 @@
 # Airflow Automation Tool
 
+**Checkpoint mới nhất 2026-11-11:** Monitoring, Dashboard và Settings đã triển
+khai; image Phase7 được chủ dự án duyệt exact delta. Packaged E2E Monitoring8PASS,
+Dashboard/Settings/UX10PASS +2persistence +2outagePASS; không source overlay.
+Các mục “chưa có Dashboard/Monitoring/Settings” phía dưới là lịch sử.
+T014_FULL vẫn BLOCKED; chưa nghiệm thu toàn bộ MVP. Demo cổng13000 giữ nguyên
+phiên bản cũ, không tự cập nhật stack/dữ liệu có trước.
+Xem [checkpoint hiện hành](docs/testing/product-resume-20261111.md) và tài liệu vận hành tương ứng.
+
+**Mốc hiện hành, 2026-11-10:** Bản chạy thử local tại <http://localhost:13000/dag-builder>
+đã kiểm luồng UI→validate→deploy→trigger→Airflow ETL thật và dữ liệu đích.
+Playwright10/10 desktop/mobile, tám route Airflow và cron APPEND/FULL_REFRESH đã PASS.
+Bản local dùng source hiện tại trên dependency images có sẵn; image mới và toàn bộ
+MVP chưa nghiệm thu, T014_FULL vẫn BLOCKED. Dashboard/Monitoring/Settings còn ở Phase7.
+Xem [hướng dẫn chạy thử](docs/operations/dag-deployment.md) và
+[checkpoint hiện hành](docs/testing/product-resume-20261110.md).
+Các mốc bên dưới giữ lịch sử, không mô tả toàn bộ chức năng hiện tại.
+
+
 **Cập nhật Phase5, 2026-11-10:** File Sources đã khép T061–T069: source regression
 116PASS, E2E12PASS và persistence2PASS sau recreate backend/worker, desktop/mobile,
 cleanup0. Tiếp tests/typed contracts engine T070/T071.

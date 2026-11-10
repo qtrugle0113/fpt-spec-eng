@@ -1,0 +1,66 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 42dcf461eb1cf6ec28dc6ce0a50aa7eebe493d170f794ca9c7668b8788c52ca3
+--> 42dcf461eb1c
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache 05c0d7f64e5d46752afb6557659331b9074b746a5ad899d6480d328974a9f8ae
+--> 05c0d7f64e5d
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache 0973a5ba3b6097189d84dba3ce308e9c212190d518c5e97c1407a3684b51e213
+--> 0973a5ba3b60
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache bc4e08231288200525f6d3b5238f3f181805fe5b0efa2e84279c95b9944350e4
+--> bc4e08231288
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache bf77140e595a1f84f5fea30a18f628430a9a71c7ecf62af9d4f4e169ed7c8057
+--> bf77140e595a
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache 30f54758c22b402039e016d048ade2c26ca563df94c13655142cb7d83db22999
+--> 30f54758c22b
+[2/2] STEP 1/16: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS runtime
+[2/2] STEP 2/16: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache e72e451dd0d90bfb00c1a80a062d6972d8a1c1a6e1631e052b85271a518f3e2e
+--> e72e451dd0d9
+[2/2] STEP 3/16: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache 042e76b6adbf472359971dcef3c26b8ed570085e76106999ed9459d0fad3e687
+--> 042e76b6adbf
+[2/2] STEP 4/16: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache e3b986bf566379a6177942cd94f4697cb2e8aecce39336cf5e1a88029e40a656
+--> e3b986bf5663
+[2/2] STEP 5/16: COPY --from=wheels /wheels /wheels
+--> 6fb495e4d498
+[2/2] STEP 6/16: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pip check &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> 71ae3cad8709
+[2/2] STEP 7/16: COPY docker /opt/aat/docker
+--> 706573bbb55b
+[2/2] STEP 8/16: COPY backend/alembic /opt/aat/backend/alembic
+--> ac78ccfc8e51
+[2/2] STEP 9/16: COPY samples /opt/aat/samples
+--> 080d1fb0f302
+[2/2] STEP 10/16: COPY templates /opt/aat/templates
+--> 32fabb99a0b4
+[2/2] STEP 11/16: COPY airflow/dags/aat_wrapper_template.py /opt/aat/airflow/dags/aat_wrapper_template.py
+--> 90a4611a4c46
+[2/2] STEP 12/16: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> 8a754a19c73d
+[2/2] STEP 13/16: WORKDIR /opt/aat
+--> 3c3a48760591
+[2/2] STEP 14/16: USER 50000:50000
+--> 6df0ba42ce0b
+[2/2] STEP 15/16: EXPOSE 8000
+--> d41a6a4f41fc
+[2/2] STEP 16/16: CMD ["python", "-m", "uvicorn", "aat_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+[2/2] COMMIT localhost/aat-phase6-backend-add150fe:0.1.0
+--> 6cc5f892b2b6
+Successfully tagged localhost/aat-phase6-backend-add150fe:0.1.0
+6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3

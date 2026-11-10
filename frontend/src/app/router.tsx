@@ -3,6 +3,9 @@ import { App, WorkspacePage } from "./App";
 import { Connections } from "../pages/Connections";
 import { Tables } from "../pages/Tables";
 import { DagBuilder } from "../pages/DagBuilder";
+import { Monitoring } from "../pages/Monitoring";
+import { Dashboard } from "../pages/Dashboard";
+import { Settings } from "../pages/Settings";
 
 export const sections = [
   { path: "/", label: "Dashboard", detail: "An overview of your workflows and executions." },
@@ -19,7 +22,7 @@ export const router = createBrowserRouter([
     children: [
       ...sections.map(({ path, label, detail }) => ({
         path,
-        element: path === '/connections' ? <Connections /> : path === '/tables' ? <Tables /> : path === '/dag-builder' ? <DagBuilder /> : <WorkspacePage title={label} description={detail} />,
+        element: path === '/' ? <Dashboard /> : path === '/settings' ? <Settings /> : path === '/connections' ? <Connections /> : path === '/tables' ? <Tables /> : path === '/dag-builder' ? <DagBuilder /> : path === '/monitoring' ? <Monitoring /> : <WorkspacePage title={label} description={detail} />,
       })),
       { path: "*", element: <WorkspacePage title="Page not found" description="Choose a page from the navigation to continue." /> },
     ],

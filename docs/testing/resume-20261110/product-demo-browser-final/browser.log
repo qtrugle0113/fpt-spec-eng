@@ -1,0 +1,53 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/10] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/10] [desktop] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+[4/10] [desktop] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[5/10] [desktop] › dag_builder.spec.ts:93:1 › Invalid workbook shows actionable errors without deployment
+[6/10] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[7/10] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[8/10] [mobile] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+[9/10] [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly
+  1) [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: browserContext.close: Test ended.
+    Browser logs:
+
+    <launching> /ms-playwright/chromium_headless_shell-1254/chrome-headless-shell-linux64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,AvoidCorsURLLoaderRestartOnRedirect,TcpPortRandomizationWin,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,PreconnectToSearch,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --enable-unsafe-swiftshader --edge-skip-compat-layer-relaunch --disable-stack-profiler --disable-infobars --disable-sync --do-not-de-elevate --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-wBXYnh --remote-debugging-pipe --no-startup-window
+    <launched> pid=181
+    [pid=181][err] [1110/132601.974417:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=181][err] [1110/132601.974530:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=181][err] [1110/132601.976053:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=181][err] [1110/132601.976183:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+    [pid=181][err] [1110/132601.976250:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=181][err] [1110/132601.976265:WARNING:dbus/object_proxy.cc:439] Failed to connect to NameOwnerChanged signal for object: /org/freedesktop/portal/desktop
+    [pid=181][err] [1110/132601.976335:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=181][err] [1110/132601.976423:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=181][err] [1110/132601.998913:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+    [pid=181][err] [1110/132601.999071:ERROR:dbus/bus.cc:405] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+    [pid=181][err] [1110/132601.999104:WARNING:device/bluetooth/dbus/bluez_dbus_manager.cc:209] Floss manager service not available, cannot set Floss enable/disable.
+    [pid=181][err] [1110/132602.002162:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+    [pid=181][err] [1110/132602.002264:WARNING:media/gpu/vaapi/vaapi_wrapper.cc:1652] drmGetDevices2() has not found any devices
+    [pid=181][err] [1110/132602.005608:WARNING:sandbox/policy/linux/sandbox_linux.cc:405] InitializeSandbox() called with multiple threads in process gpu-process.
+    [pid=181] <gracefully close start>
+
+      88 |     await saved.getByRole('button', { name: 'Revoke authority', exact: true }).click();
+      89 |     await expect(saved.getByRole('cell', { name: 'REVOKED', exact: true })).toBeVisible();
+    > 90 |   } finally { await context.close(); }
+         |               ^
+      91 | });
+      92 |
+      93 | test('Invalid workbook shows actionable errors without deployment', async ({ page }) => {
+        at /tests/dag_builder.spec.ts:90:15
+
+    Error Context: test-results/dag_builder-Replacement-au-72e62-wser-and-revokes-explicitly-mobile/error-context.md
+
+
+[10/10] [mobile] › dag_builder.spec.ts:93:1 › Invalid workbook shows actionable errors without deployment
+  1 failed
+    [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly 
+  9 passed (3.1m)

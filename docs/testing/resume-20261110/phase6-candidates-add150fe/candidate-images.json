@@ -1,0 +1,63 @@
+{
+  "captured_at": "2026-11-10T13:24:23.548594+00:00",
+  "run_id": "add150fe",
+  "source_context": ".tools\\phase6-source-add150fe",
+  "acceptance": "PENDING_EXACT_IMAGE_REVIEW",
+  "existing_services_modified": false,
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-phase6-backend-wheels-add150fe:0.1.0",
+      "image_id": "30f54758c22b402039e016d048ade2c26ca563df94c13655142cb7d83db22999",
+      "target": "wheels",
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-wheels-build.log"
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-phase6-backend-add150fe:0.1.0",
+      "image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "target": null,
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-build.log"
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-phase6-airflow-wheels-add150fe:0.1.0",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "target": "wheels",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-wheels-build.log"
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-phase6-airflow-add150fe:0.1.0",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "target": null,
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-build.log"
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-phase6-frontend-build-add150fe:0.1.0",
+      "image_id": "30f80ac78415ba8609ab6506c53d4a5abae435d01f18df2625aa619d92b066cc",
+      "target": "build",
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build-build.log"
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-phase6-frontend-add150fe:0.1.0",
+      "image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "target": null,
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build.log"
+    }
+  ]
+}

@@ -19,6 +19,7 @@ COPY docker /opt/aat/docker
 COPY backend/alembic /opt/aat/backend/alembic
 COPY samples /opt/aat/samples
 COPY templates /opt/aat/templates
+COPY airflow/dags/aat_wrapper_template.py /opt/aat/airflow/dags/aat_wrapper_template.py
 COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
 WORKDIR /opt/aat
 USER 50000:50000

@@ -6,6 +6,13 @@ import urllib.request
 from aat_api.workers.main import connect
 from aat_api.logging import logger
 from aat_metadata.secrets.codec import SecretCodec
+from alembic.script import ScriptDirectory
+
+
+def migration_heads_match(heads):
+    root=Path(os.environ.get('AAT_ASSETS_ROOT','/opt/aat'))
+    expected=set(ScriptDirectory(str(root/'backend/alembic')).get_heads())
+    return bool(expected) and {row[0] for row in heads}==expected
 
 
 def probe():
@@ -14,7 +21,7 @@ def probe():
         with connect() as c:
             dependencies['application_database']='HEALTHY' if c.execute('SELECT current_database()').fetchone()[0]=='app_metadata' else 'UNHEALTHY'
             heads=c.execute('SELECT version_num FROM alembic_version').fetchall()
-            dependencies['migration_head']='HEALTHY' if heads==[('0002_staging_quota',)] else 'UNHEALTHY'
+            dependencies['migration_head']='HEALTHY' if migration_heads_match(heads) else 'UNHEALTHY'
             dependencies['worker']='HEALTHY' if c.execute("SELECT EXISTS(SELECT 1 FROM worker_heartbeats WHERE heartbeat_at>now()-interval '20 seconds')").fetchone()[0] else 'UNHEALTHY'
             codec=SecretCodec(Path(os.environ.get('AAT_APP_KEYRING','/secrets/app_keyring')))
             for key_id,ciphertext in c.execute('SELECT DISTINCT ON(key_id) key_id,ciphertext FROM connection_secrets ORDER BY key_id'):

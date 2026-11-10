@@ -15,7 +15,7 @@ from aat_etl.engine import inspect_inputs
 from aat_etl.readers.schema import column_profile,digest,preflight
 from aat_etl.mapping.mapper import map_row
 from aat_etl.loaders.ledger import TargetLedger,ensure_support
-from aat_etl.loaders.session import TargetSession
+from aat_etl.loaders.session import TargetSession,TargetBusy
 from aat_etl.loaders.full_refresh import check_dependencies
 from aat_api.errors import APIError
 from aat_api.services.connections.service import transaction,active
@@ -217,7 +217,9 @@ def compile_definition(spec):
             if ignored:warnings.append('Unmapped source columns will be ignored: '+', '.join(ignored)+'.')
         if config.load_strategy=='APPEND':warnings.append('APPEND runs may add duplicate data; prior committed batches remain after a later error.')
         if config.load_strategy=='FULL_REFRESH':
-            with TargetSession(target_engine_,schema=config.target.schema_,table=config.target.table,timeout=0) as session:check_dependencies(session)
+            try:
+                with TargetSession(target_engine_,schema=config.target.schema_,table=config.target.table,timeout=0) as session:check_dependencies(session)
+            except TargetBusy:raise APIError('TARGET_BUSY','Target is busy. Retry the preview after the current operation finishes.',409,True) from None
             warnings.extend(['FULL_REFRESH requires a separate scoped replacement authorization.','Empty replacement requires a separate explicit acknowledgment.'])
         ledger=TargetLedger(target_engine_.dialect.name,config.target.schema_)
         ddl=([str(CreateSchema('_aat_control',if_not_exists=True).compile(dialect=target_engine_.dialect))] if target_engine_.dialect.name=='postgresql' else [])
@@ -252,7 +254,11 @@ def preview(upload_id):
     if parsed.issues:raise APIError('WORKBOOK_INVALID','Workbook cannot be previewed.',409)
     specs={spec.values['dag_id']:spec for spec in parsed.definitions};items=[];identities=[];dependencies=[]
     for revision in revisions:
-        compiled=compile_definition(specs[revision.config_json['dag_id']])
+        spec=specs[revision.config_json['dag_id']]
+        # A blank workbook cell resolves once at validation, never against a
+        # later workspace default when reviewing an immutable revision.
+        if spec.batch_defaulted:spec.values['batch_size']=revision.config_json['batch_size']
+        compiled=compile_definition(spec)
         if compiled.config.model_dump(mode='json',by_alias=True,exclude_none=True)!=revision.config_json or digest(compiled.dependency)!=revision.dependency_fingerprint:
             raise APIError('DEPENDENCY_CHANGED','ETL dependencies changed. Validate a new workbook.',409)
         dependencies.append(compiled.dependency)
@@ -261,7 +267,7 @@ def preview(upload_id):
             changed=sorted(key for key in set(prior[current])|set(revision.config_json) if prior[current].get(key)!=revision.config_json.get(key))
             compiled.warnings.append('Existing managed DAG requires a paused revision deployment.')
             if changed:compiled.warnings.append('Changed configuration fields: '+', '.join(changed)+'.')
-        items.append(dict(id=str(revision.id),target=compiled.config.target.schema_+'.'+compiled.config.target.table,
+        items.append(dict(id=str(revision.id),definition_id=str(revision.definition_id),target=compiled.config.target.schema_+'.'+compiled.config.target.table,
             config=revision.config_json,support_ddl=compiled.support_ddl,warnings=compiled.warnings,columns=compiled.columns,primary_key=compiled.primary_key))
         identities.append(dict(id=str(revision.id),config_sha256=revision.config_sha256,dependency_fingerprint=revision.dependency_fingerprint,
             previous_revision_id=str(current) if current else None))

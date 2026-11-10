@@ -1,0 +1,102 @@
+{
+  "status": "PENDING_OWNER_APPROVAL",
+  "approved": false,
+  "phase": "phase7",
+  "images_requiring_new_approval": [
+    {
+      "target": "backend-wheels",
+      "image_id": "fcd9b9180e139d8b51bdaeef15b431e4b4eed4ac80bd5a66b34801969845653c",
+      "baseline_image_id": "30f54758c22b402039e016d048ade2c26ca563df94c13655142cb7d83db22999",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 59,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 60,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "backend",
+      "image_id": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+      "baseline_image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 56,
+        "MEDIUM": 122,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 58,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend-build",
+      "image_id": "9845c7c03c0c88772380ba19b3eb0a85b38b252126233384cc6864565f58855d",
+      "baseline_image_id": "30f80ac78415ba8609ab6506c53d4a5abae435d01f18df2625aa619d92b066cc",
+      "counts": {
+        "LOW": 85,
+        "HIGH": 34,
+        "MEDIUM": 97,
+        "CRITICAL": 1
+      },
+      "shared_high_critical_contexts": 35,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend",
+      "image_id": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+      "baseline_image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "shared_high_critical_contexts": 0,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    }
+  ],
+  "unchanged_approved_images": [
+    {
+      "target": "airflow-wheels",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "baseline_image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 59,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 60,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "baseline_image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 141,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      },
+      "shared_high_critical_contexts": 146,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    }
+  ],
+  "T014_FULL": "BLOCKED",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "controls": "Existing conditional local controls unchanged; no public deployment or full acceptance",
+  "reviewed_artifact_sha256": {
+    "candidate-images.json": "5dfa023cdb3a13ed88b460cff368ee5d85e3bb67bc22c5bef11b8d1b12f98c52",
+    "candidate-security.json": "0a20282a2f7c4015d61f403386f200211e94418c4f2f7149a3551c2139449a28",
+    "owner-review-delta.json": "ec5779dee1f7f8004c28f5a3a84c89f026877f7b3b823b6a5151bf34d0d650ec",
+    "packaged-source.json": "5ae6f999fd508f10ca5d9947b95f89fbe5a56bf1032f63656d0f7b52830e872b",
+    "frontend-artifact-parity.json": "c13c4187b93453f11fdae87331464ff6eccac477316fdb565dadb357114047c0"
+  }
+}

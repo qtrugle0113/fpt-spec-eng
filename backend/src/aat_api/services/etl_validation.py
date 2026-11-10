@@ -6,6 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError,IntegrityError
 from aat_metadata.models.connections import Connection,ConnectionRevision
 from aat_metadata.models.definitions import UploadedFile,DefinitionIssue
 from aat_metadata.models.etl import ETLDefinition,ETLDefinitionRevision,ColumnMapping
+from aat_metadata.models.settings import ApplicationSetting
 from aat_api.errors import APIError
 from aat_api.services.connections.service import transaction
 from aat_api.services import definition_uploads as uploads
@@ -76,11 +77,13 @@ def execute(operation,owner):
         upload=uploads.require(session,identity)
         file=session.get(UploadedFile,upload.uploaded_file_id)
         path=uploads.storage()/file.safe_storage_key;expected=file.sha256
+        setting=session.get(ApplicationSetting,'default_batch_size')
+        default_batch_size=setting.value_json if setting is not None else 1000
     issues=[];compiled=[]
     try:
         with path.open('rb') as source:actual=hashlib.file_digest(source,'sha256').hexdigest()
         if actual!=expected:raise APIError('CHECKSUM_MISMATCH','Stored workbook checksum changed.',409)
-        parsed=validate(path);issues=list(parsed.issues)
+        parsed=validate(path,default_batch_size=default_batch_size);issues=list(parsed.issues)
         if not issues:
             for spec in parsed.definitions:
                 try:compiled.append((spec,compile_definition(spec)))

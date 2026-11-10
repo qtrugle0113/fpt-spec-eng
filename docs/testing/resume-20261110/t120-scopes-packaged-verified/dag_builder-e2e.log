@@ -1,0 +1,16 @@
+
+Running 12 tests using 1 worker
+
+[1/12] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/12] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/12] [desktop] › dag_builder.spec.ts:32:1 › ETL wizard validates, deploys and submits a real Airflow run
+[4/12] [desktop] › dag_builder.spec.ts:72:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[5/12] [desktop] › dag_builder.spec.ts:134:1 › Invalid workbook shows actionable errors without deployment
+[6/12] [desktop] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+[7/12] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[8/12] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[9/12] [mobile] › dag_builder.spec.ts:32:1 › ETL wizard validates, deploys and submits a real Airflow run
+[10/12] [mobile] › dag_builder.spec.ts:72:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[11/12] [mobile] › dag_builder.spec.ts:134:1 › Invalid workbook shows actionable errors without deployment
+[12/12] [mobile] › dag_builder.spec.ts:150:1 › ONCE permits a manual replacement and SCHEDULED is required for activation
+  12 passed (2.4m)

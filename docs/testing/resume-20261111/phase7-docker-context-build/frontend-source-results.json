@@ -1,0 +1,8 @@
+{
+  "published_ports": false,
+  "network": "none",
+  "existing_services_modified": false,
+  "status": "NOT_RUN",
+  "image_id": "ed2fafbd64b28e6011da23235309624ebdfc945217aadd07470e33e802b3bbb4",
+  "cleanup_exit_code": 0
+}

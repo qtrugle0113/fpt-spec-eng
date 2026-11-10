@@ -1,0 +1,4 @@
+{
+  "reason": "These runs retained the previous test image because delegated-record writing failed before manifest update. Preserve their actual results; do not use them to accept the updated test image.",
+  "expected_test_image": "4220629ad090a5d2d084653b35c0a9647bed47cf01c035282b344300b6381394"
+}

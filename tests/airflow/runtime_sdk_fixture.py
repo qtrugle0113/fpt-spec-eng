@@ -16,6 +16,8 @@ def execute(revision,mode):
         sys.path.insert(0,path)
     os.environ['PYTHONPATH']='/tmp/etl_engine/src:/tmp/packages:/tmp'
     import aat_etl,aat_metadata
+    Path('/tmp/aat-runtime-staging/import-origins.json').write_text(json.dumps({
+        'aat_etl':aat_etl.__file__,'aat_metadata':aat_metadata.__file__}))
     if not Path(aat_etl.__file__).is_relative_to('/tmp/etl_engine/src') or not Path(aat_metadata.__file__).is_relative_to('/tmp/packages'):
         raise RuntimeError('Current runtime source was not selected by the SDK fixture')
     from aat_etl.runtime_task import execute_task

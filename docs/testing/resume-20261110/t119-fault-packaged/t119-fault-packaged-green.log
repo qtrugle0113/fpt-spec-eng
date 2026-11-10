@@ -1,0 +1,39 @@
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=admission-ack-loss target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=admission-ack-loss target=POSTGRESQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=extraction-kill target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=extraction-kill target=POSTGRESQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=revoke-after-admission target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=revoke-after-admission target=POSTGRESQL state=CONSUMED
+AUTHORIZATION_FAULT_VERIFIED mode=revoke-before-admission target=MYSQL state=CLOSED
+AUTHORIZATION_FAULT_VERIFIED mode=revoke-before-admission target=POSTGRESQL state=CLOSED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=target-commit-loss target=MYSQL state=CONSUMED
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+AUTHORIZATION_FAULT_VERIFIED mode=target-commit-loss target=POSTGRESQL state=CONSUMED
+AUTHORIZATION_FAULT_VERIFIED mode=terminal-extraction target=MYSQL state=CLOSED
+AUTHORIZATION_FAULT_VERIFIED mode=terminal-extraction target=POSTGRESQL state=CLOSED
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_admission_response_loss_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_admission_response_loss_mysql) ... ok
+test_admission_response_loss_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_admission_response_loss_pg) ... ok
+test_full_refresh_extraction_retry_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_full_refresh_extraction_retry_mysql) ... ok
+test_full_refresh_extraction_retry_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_full_refresh_extraction_retry_pg) ... ok
+test_revocation_after_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_mysql) ... ok
+test_revocation_after_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_after_admission_pg) ... ok
+test_revocation_before_admission_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_mysql) ... ok
+test_revocation_before_admission_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_revocation_before_admission_pg) ... ok
+test_target_commit_loss_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_mysql) ... ok
+test_target_commit_loss_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_target_commit_loss_pg) ... ok
+test_terminal_extraction_closes_once_mysql (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_terminal_extraction_closes_once_mysql) ... ok
+test_terminal_extraction_closes_once_pg (tests.airflow.test_authorization_lifecycle.AuthorizationFaultLifecycleTests.test_terminal_extraction_closes_once_pg) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 208.213s
+
+OK

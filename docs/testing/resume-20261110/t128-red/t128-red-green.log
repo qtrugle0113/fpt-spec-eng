@@ -1,0 +1,80 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_inclusive_dates_respect_dst_not_fixed_24_hour_days (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_inclusive_dates_respect_dst_not_fixed_24_hour_days) ... ERROR
+test_run_time_uses_start_then_queue_never_logical_date (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_run_time_uses_start_then_queue_never_logical_date) ... ERROR
+test_schedule_categories_do_not_guess_historical_config (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_schedule_categories_do_not_guess_historical_config) ... ERROR
+test_success_rate_excludes_unfinished_and_unknown_states (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_success_rate_excludes_unfinished_and_unknown_states) ... ERROR
+test_airflow_outage_returns_unavailable_values_not_zero (tests.api.test_dashboard.DashboardContractTests.test_airflow_outage_returns_unavailable_values_not_zero) ... ERROR
+test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) ... 
+  test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='timezone=Invalid/Timezone') ... FAIL
+  test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='from=2026-11-10&to=2026-11-01') ... FAIL
+  test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='scope=unknown') ... FAIL
+
+======================================================================
+ERROR: test_inclusive_dates_respect_dst_not_fixed_24_hour_days (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_inclusive_dates_respect_dst_not_fixed_24_hour_days)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dashboard_metrics.py", line 14, in test_inclusive_dates_respect_dst_not_fixed_24_hour_days
+    from aat_api.services.dashboard import date_window
+ModuleNotFoundError: No module named 'aat_api.services.dashboard'
+
+======================================================================
+ERROR: test_run_time_uses_start_then_queue_never_logical_date (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_run_time_uses_start_then_queue_never_logical_date)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dashboard_metrics.py", line 20, in test_run_time_uses_start_then_queue_never_logical_date
+    from aat_api.services.dashboard import run_time
+ModuleNotFoundError: No module named 'aat_api.services.dashboard'
+
+======================================================================
+ERROR: test_schedule_categories_do_not_guess_historical_config (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_schedule_categories_do_not_guess_historical_config)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dashboard_metrics.py", line 27, in test_schedule_categories_do_not_guess_historical_config
+    from aat_api.services.schedule_statistics import group
+ModuleNotFoundError: No module named 'aat_api.services.schedule_statistics'
+
+======================================================================
+ERROR: test_success_rate_excludes_unfinished_and_unknown_states (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_success_rate_excludes_unfinished_and_unknown_states)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/unit/test_dashboard_metrics.py", line 8, in test_success_rate_excludes_unfinished_and_unknown_states
+    from aat_api.services.dashboard import counts
+ModuleNotFoundError: No module named 'aat_api.services.dashboard'
+
+======================================================================
+ERROR: test_airflow_outage_returns_unavailable_values_not_zero (tests.api.test_dashboard.DashboardContractTests.test_airflow_outage_returns_unavailable_values_not_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dashboard.py", line 19, in test_airflow_outage_returns_unavailable_values_not_zero
+    from aat_api.services import dashboard
+ImportError: cannot import name 'dashboard' from 'aat_api.services' (/tmp/backend/src/aat_api/services/__init__.py)
+
+======================================================================
+FAIL: test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='timezone=Invalid/Timezone')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dashboard.py", line 14, in test_invalid_timezone_date_range_and_scope_are_rejected
+    self.assertEqual(result.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='from=2026-11-10&to=2026-11-01')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dashboard.py", line 14, in test_invalid_timezone_date_range_and_scope_are_rejected
+    self.assertEqual(result.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) (query='scope=unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_dashboard.py", line 14, in test_invalid_timezone_date_range_and_scope_are_rejected
+    self.assertEqual(result.status_code,422)
+AssertionError: 404 != 422
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.219s
+
+FAILED (failures=3, errors=5)

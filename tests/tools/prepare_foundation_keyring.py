@@ -9,7 +9,7 @@ from cryptography.fernet import Fernet
 
 if os.environ.get('AAT_FOUNDATION_DISPOSABLE')!='1':raise RuntimeError('Disposable fixture required')
 snapshot={}
-for source_root in ('backend','etl_engine','packages','tests','docker'):
+for source_root in ('backend','etl_engine','packages','tests','docker','airflow'):
     for source in sorted((Path('/tmp')/source_root).rglob('*.py')):
         if not any(part in ('node_modules','__pycache__','.pytest_cache','build') for part in source.parts):
             snapshot[source.relative_to('/tmp').as_posix()]=hashlib.sha256(source.read_bytes()).hexdigest()

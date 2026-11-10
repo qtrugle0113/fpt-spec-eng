@@ -1,5 +1,152 @@
 # Checkpoint DAG Builder — 2026-11-10
 
+## Hiện hành sau tiếp tục
+
+T104–T112 đã khép phạm vi riêng. T109 có worker/fixed wrapper đăng ký thật và
+reconcile mất phản hồi ghi file PASS; owner migration/grants đã kiểm. T110/T111
+grant/list/detail/revoke7PASS qua HTTP/PG thật. T112 public trigger→fixed wrapper
+→private bind→ETL→target2rows đã PASS thật. T113 activation/state đã PASS;
+tiếp T114 deploy API và wizard.
+Chưa có UI→deploy→ETL trọn luồng và chưa nghiệm thu MVP. T014_FULL vẫn BLOCKED.
+
+T104 đã kiểm scheduler/Task SDK thật: `t104-resume-prestart/` có2/2 PASS,
+normal1attempt và SIGKILL extraction2attempts cùng binding; target đúng2rows,
+metrics loaded2, COMMIT_VERIFIED/commit_uncertain=false, generations COMPLETE hoặc
+EXPIRED→COMPLETE. Airflow healthy, cleanup9/9 exit0, không published ports hoặc
+service hiện hữu bị sửa. Phạm vi UI→deploy→ETL vẫn chưa nghiệm thu.
+
+Nguyên nhân hai lượt `t104-resume-current/` và `t104-resume-origins/` FAIL là
+fixture khởi động scheduler trước copy source. Scheduler đã import cả hai package
+từ site-packages trong image; task kế thừa module cũ, đổi sys.path không thay được.
+Driver nay create→copy→start; assertion nguồn module giữ nguyên và hai ca SDK PASS.
+Chẩn đoán chỉ ghi module paths/classes/frame locations, không raw logs/SQL/secrets.
+
+Máy hiện tại không có IDs399adacf/87507379/b659185 của logs trước. Dùng đúng mapping
+đã duyệt tại phase2-resume-airflow-review, phase2-resume-security-review và
+phase5-us3-image-review: Airflow/runner b5e9745e…, PG c93823be…, workbook libs
+b1943b23…. Exact IDs/source hashes/commands selectors trong fixture-results và
+source-sha256 tương ứng. Không rebuild hoặc đổi dependency/security exception.
+Hai checklist16/16,48/48 PASS; quyền local còn hạn23/11, review16/11; T014_FULL BLOCKED.
+
+Các phần bên dưới giữ lịch sử; không dùng trạng thái T104 mở ở checkpoint cũ
+thay trạng thái hiện hành phía trên.
+
+### T105/T106 sau T104
+
+- T105 `t105-resume-final/`:4/4PASS import generated Python bằng SDK3.3.2 thật.
+  Một task execute_etl, no XCom, retries/delay hữu hạn, stable canonical bytes,
+  UUID/hash validation, extra credentials bị từ chối, literal nguy hiểm không chạy.
+  Cron/timezone/Catchup theo config đã validate; Catchup mặc địnhfalse, DAG mới
+  luôn paused kể cả config is_paused=false (FR-037). Task wording được làm rõ
+  default để không bỏ cấu hình Catchup hợp lệ tại FR-034/BR-04.
+- T106 `t105-t106-resume-red/` có4errors storage chưa tồn tại; lượt này còn một
+  lỗi test dùng timetable.summary không có trong SDK. Đã kiểm DAG.schedule thật
+  và sửa truy vấn assertion, không bỏ kiểm cron.
+- T106 `t106-resume/`:4/4PASS trên Linux: UUID filename/hash, fsync→replace→parent
+  fsync, lỗi trước rename giữ file cũ và dọn temp, lỗi sau rename giữ file mới
+  nguyên vẹn để reconcile, chặn root/destination symlinks. Root mặc định khớp
+  Compose backend-worker `/data/generated_dags`; không dùng DAG ID làm path.
+- Backend Dockerfile đã copy fixed template; chưa build/scan image source mới.
+  Các kết quả này chưa chứng minh generated DAG được đăng ký hoặc chạy; phần đó
+  tiếp tục T107–T120. T014_FULL giữ BLOCKED.
+
+### T107 admission/redeploy
+
+`t107-resume-red/`:3errors trước implementation. `t107-resume-expanded/`:14PASS
+gồm6admission trên registry PG thật và8factory/storage regression. Airflow facts
+trong6ca này là test double cô lập: gate đóng trước lookup, forged aat tag không
+chiếm DAG ngoài, outage giữ blocked, pause/drain, queued run xuất hiện sau check
+chặn publication, revision đổi trong I/O bị chặn. Không cancel run.
+
+`t107-real-airflow/`:2SDK ca PASS, có controller prepare/assert_ready chạy qua
+Public API thật trên DAG vừa chạy ETL: exact file/tag/last verified version khớp,
+pause readback=true, existing run vẫn success, gate BLOCKED. Cleanup9/9 exit0.
+T107 khép primitive; chưa có public deploy worker/UI. `t108-resume/`7PASS kiểm
+lại6admission sau bổ sung owner/version number/UUID artifact identity và1registration
+evidence. Các kiểm bổ sung T107/T108 ngay dưới là trạng thái mới hơn.
+
+### T107/T108 kiểm bổ sung
+
+`t107-new-revision-red/` tái hiện controller từ chối revision mới vì so con trỏ
+current với candidate thay vì last verified deployment. Đã sửa expected-current
+theo previous deployment; không đổi current trước registration. `t107-t108-final/`
+11PASS gồm7admission (có revision mới) và4registration/polling.
+`t108-polling/`8PASS gồm polling/deadline và client regression;
+`t108-real-airflow/`2PASS chạy verifier owner/hash/file/published timestamp/version
+trong fixture SDK thật, rồi ETL normal/retry và controller redeploy thật. Cleanup0.
+T107/T108 khép primitive. Không dùng các kết quả này thay deploy worker/UI acceptance.
+
+### T109 worker và migration
+
+- `t109-resume-red/`:2errors trước worker/migration; unique operation_id cũ chặn
+  nhiều DAG cùng yêu cầu. Data Model đã làm rõ unique(operation_id,dag_id).
+  Migration0005 chỉ đổi constraint này, giữ unique active DAG và mọi grants.
+- `t109-recovery/`:3PASS registry/disk thật, gồm durable rename rồi response loss,
+  reconcile đọc cùng file/hash và không gọi writer lần hai. Registration evidence
+  trong suite này là test double cô lập, không dùng thay Airflow.
+- `t109-real-recovery/`:4PASS trên SDK/Airflow thật: ETL normal và SIGKILL retry,
+  worker render fixed wrapper→atomic publish→owner/hash/file/parse/version verified,
+  cùng ca durable publication mất response rồi reconcile thật không republish.
+  Registry DEPLOYED, gate OPEN, DAG paused và0runs; cleanup9/9 exit0.
+- `t109-worker-lease/`:4PASS, worker hết lease không dispatch file, các ca recovery
+  và nhiều DAG vẫn qua. `t109-final-fences/`:10PASS worker/admission regression.
+- `t109-owner-migration/` NOT_RUN vì chọn runner Airflow không có pytest.
+  `t109-owner-migration-rerun/`:1PASS trên backend-tests6b65b34d…: concurrent init
+  bằng owner không superuser, Alembic head0005, seed và runtime grants. Không chạy
+  migration trên volume người dùng. Chưa build/scan image source mới.
+
+### T110/T111 đang làm
+
+`t110-red/` thiếu service; `t110-grant/`3PASS: grant/replay, empty acknowledgment,
+SCHEDULED trên Manual bị từ chối, target và idempotency mismatch. T110 còn kiểm
+cron/credential invalidation. `t111-red/`HTTP grant404 đúng vì route chưa có.
+Preview bổ sung definition_id theo contract để UI dùng parent UUID canonical cho
+authorization endpoints; id vẫn là revision UUID, không tạo alias parent/revision.
+
+Kết quả mới hơn: `t110-final/`4PASS gồm cron SCHEDULED hợp lệ và credential
+rotation làm authority cũ INVALIDATED. `t110-t111/`7PASS gồm grant/list/detail/revoke
+HTTP theo contract, ETag1→2, replay cùng key/If-Match cũ trả identity cũ, key mới
+với ETag cũ412, missing404 và thiếu empty acknowledgment422. T110/T111 khép phạm
+vi riêng; thời điểm đó trigger/state chưa có. Các kết quả tiếp theo ghi dưới đây.
+
+### T112 public trigger và generated ETL
+
+- `t112-red/` thiếu service trước implementation. `t112-trigger/`2PASS/1ERROR do
+  concurrent FULL_REFRESH previews tranh native lock và TargetBusy chưa được ánh
+  xạ. Đã map TARGET_BUSY409/retryable, không bỏ native lock.
+- `t112-reservation/`3PASS; `t112-worker/`5PASS; `t112-maintenance/`14PASS gồm6trigger
+  với metadata thật và8client/registration regression. RunIntent/ONCE persist
+  trước POST, run_id=`manual__aat_<operation UUID>`, hai requests không chuyển
+  ONCE, SCHEDULED không cấp quyền manual, revoke trước dispatch đóng ONCE không POST.
+  POST mất response→GET cùng ID; outage cả hai giữ uncertainty/reservation và
+  maintenance chỉ GET, không POST lại. Airflow facts trong6ca là test double.
+- `t112-real-trigger/`5PASS trên Airflow thật. Ca mới gọi public trigger HTTP202,
+  worker submit→SDK fixed factory→canonical private bind→restricted aat_etl role
+  →DB source/target thật. Target `(1,first),(2,NULL)`, binding COMMIT_VERIFIED,
+  intent trỏ đúng trigger operation. Không gọi fixture helper để inject DSN vào
+  generated callable: scheduler dùng runtime secret files/keyring/volumes và
+  hostname backend/postgres cô lập như wiring sản phẩm. Không thay product code
+  hoặc dependency để né fixture.
+- Activation trong ca này dùng Public API trực tiếp do fixture gọi sau khi assert
+  initial paused=true/runs0; product activation còn T113. Marker paused/runs ở
+  log worker là trạng thái ban đầu, không phải trạng thái sau trigger. Không suy
+  ca APPEND PG này thành tám routes hoặc UI acceptance. Cleanup9/9 exit0.
+
+### T113 activation/state
+
+`t113-red/` thiếu service; `t113-controls/`15PASS controls/authorizations gồm
+ONCE không cho bật lịch FULL_REFRESH, SCHEDULED đúng schedule/revision, If-Match
+và replay, negative headers/consent. `t113-response-loss/`1PASS với2command
+activate/pause: PATCH mất response nhưng GET khớp; Scheduled authority vẫn GRANTED,
+không gửi command cancel run hoặc revoke.
+
+`t113-real-activation/`5PASS: thay fixture unpause trực tiếp bằng PATCH public202
+và activation worker có ownership/file/hash/version/readback thật, rồi public
+trigger→fixed wrapper→restricted role ETL→target2rows. Các ca SDK retry, worker
+publication/reconcile và admission thật vẫn PASS; cleanup0. T113 khép primitive;
+cron execution/tám routes/lifecycle/UX còn T118–T120 và phần cuối. Monitoring sẽ
+dùng lại primitives, không tạo control implementation khác.
+
 Tiếp tục sau gate engine T095, theo speckit-implement. Phạm vi local/ngoại lệ security
 giữ nguyên; T014_FULL BLOCKED. Không commit/push, publish port hoặc dùng volume cũ.
 

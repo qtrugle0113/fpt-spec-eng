@@ -1,0 +1,192 @@
+{
+  "status": "OWNER_REVIEW_REQUIRED",
+  "automatic_risk_acceptance": false,
+  "T014_FULL": "BLOCKED",
+  "scope": "Chỉ chuẩn bị delta package/advisory/version/severity; không xác nhận not-affected hoặc phê duyệt image mới.",
+  "manifest": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\candidate-images.json",
+  "scanner": "ghcr.io/aquasecurity/trivy@sha256:2e6c00d711ab4ae41d8a30c2c1fd3bd3b62704c177bb120f95012e939edfb3df",
+  "captured_at": "2026-11-10T17:31:39.394075+00:00",
+  "final_images": [
+    {
+      "target": "backend",
+      "image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "baseline_image_id": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 56,
+        "MEDIUM": 122,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 58,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "baseline_image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 141,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      },
+      "shared_high_critical_contexts": 146,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend",
+      "image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "baseline_image_id": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "shared_high_critical_contexts": 0,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    }
+  ],
+  "all_stage_comparisons": [
+    {
+      "target": "backend-wheels",
+      "image_id": "a18041d29f9ad61194b397382ccb23726e6215151c4d2e3937450ca56fd62b7e",
+      "baseline_image_id": "fcd9b9180e139d8b51bdaeef15b431e4b4eed4ac80bd5a66b34801969845653c",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 59,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 60,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "backend",
+      "image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "baseline_image_id": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 56,
+        "MEDIUM": 122,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 58,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "baseline_image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 59,
+        "MEDIUM": 123,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 60,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "baseline_image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 141,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      },
+      "shared_high_critical_contexts": 146,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend-build",
+      "image_id": "40b5c4665c138783aac64080b0dc96f35d3ea3ddafa61caf924a4f8a3f010f05",
+      "baseline_image_id": "9845c7c03c0c88772380ba19b3eb0a85b38b252126233384cc6864565f58855d",
+      "counts": {
+        "LOW": 85,
+        "HIGH": 34,
+        "MEDIUM": 97,
+        "CRITICAL": 1
+      },
+      "shared_high_critical_contexts": 35,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend",
+      "image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "baseline_image_id": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "shared_high_critical_contexts": 0,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    }
+  ],
+  "all_candidate_images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-phase8-backend-wheels-88e9926e:0.1.0",
+      "image_id": "a18041d29f9ad61194b397382ccb23726e6215151c4d2e3937450ca56fd62b7e",
+      "target": "wheels",
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\backend-wheels-build.log"
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-phase8-backend-88e9926e:0.1.0",
+      "image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "target": null,
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\backend-build.log"
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-phase8-airflow-wheels-88e9926e:0.1.0",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "target": "wheels",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\airflow-wheels-build.log"
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-phase8-airflow-88e9926e:0.1.0",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "target": null,
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\airflow-build.log"
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-phase8-frontend-build-88e9926e:0.1.0",
+      "image_id": "40b5c4665c138783aac64080b0dc96f35d3ea3ddafa61caf924a4f8a3f010f05",
+      "target": "build",
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\frontend-build-build.log"
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-phase8-frontend-88e9926e:0.1.0",
+      "image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "target": null,
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\frontend-build.log"
+    }
+  ],
+  "build_stage_review": "Các stage build/wheels cần review findings riêng trong candidate-security.json; không dùng runtime baseline để miễn trừ."
+}

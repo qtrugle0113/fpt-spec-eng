@@ -1,0 +1,23 @@
+{
+  "status": "USER_DELEGATED_EXACT_LOCAL_DELTA_APPROVAL",
+  "authority": "Explicit user instruction 2026-11-11: nếu có câu hỏi nào cần duyệt thì cứ tự động duyệt theo đáp án đề xuất nhé",
+  "recorded_at": "2026-11-10T16:57:44.744030+00:00",
+  "image_id": "e9d071210801da01b374a5138c603d8f768cd77d8f40bff1167933df3a02bc55",
+  "baseline_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+  "new_high_critical_contexts": [],
+  "counts": {
+    "LOW": 109,
+    "HIGH": 56,
+    "MEDIUM": 123,
+    "CRITICAL": 2
+  },
+  "recommended_decision_applied": "Approve the exact test-only image delta with unchanged existing local controls, no new HIGH/CRITICAL contexts",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "T014_FULL": "BLOCKED",
+  "artifact_sha256": {
+    "candidate.json": "964c79a498a30346683c41dce37b67778362ebb5c98658944458e0a853cb359f",
+    "candidate-security.json": "7bf80a00077074ee7ed39251b16046ef60802cdd280ab61ac5a9f83eb04246f7",
+    "source-sha256.json": "0f8e0d632700cb5e1dfc3fccbbf0795ee998ef797ad64e22da465d2f2ab9a1dc"
+  }
+}

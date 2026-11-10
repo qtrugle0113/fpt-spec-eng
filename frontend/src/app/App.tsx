@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { requestJSON } from "../lib/api";
 import type { components } from "../lib/api.generated";
@@ -16,6 +16,8 @@ const navigation = [
 ] as const;
 
 export function App() {
+  const location = useLocation();
+  useEffect(() => { document.getElementById('main-content')?.focus(); }, [location.pathname]);
   const backend = useQuery({ queryKey: ['backend-liveness'], retry: false, refetchInterval: 30_000,
     queryFn: async ({ signal }) => (await requestJSON<components['schemas']['Health']>('/health/live', { signal })).data });
   const [menuOpen, setMenuOpen] = useState(false);

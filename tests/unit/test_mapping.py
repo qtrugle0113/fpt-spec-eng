@@ -66,7 +66,8 @@ class ExecutionContractTests(unittest.TestCase):
     def test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema(self):
         import jsonschema,yaml
         from pathlib import Path
-        schemas=yaml.safe_load(Path('/tmp/specs/001-airflow-automation-tool/contracts/openapi.yaml').read_text())['components']['schemas']
+        contract=Path(__file__).resolve().parents[2]/'specs/001-airflow-automation-tool/contracts/openapi.yaml'
+        schemas=yaml.safe_load(contract.read_text())['components']['schemas']
         document={'$ref':'#/components/schemas/ETLConfig','components':{'schemas':schemas}}
         raw=configuration();raw['source']={'type':'TXT','file_id':str(uuid4()),'parser_revision':2,'file_sha256':'a'*64}
         raw.update(schedule='0 1 * * MON-FRI',start_date='2026-11-10T01:00:00+09:00')

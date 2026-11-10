@@ -1,5 +1,17 @@
 # Hướng dẫn khởi động và kiểm chứng
 
+Các lệnh regression hiện hành và phạm vi fixture riêng tại
+[hướng dẫn kiểm thử](../../docs/operations/testing.md). Không chạy test cần
+disposable DB trên stack demo hoặc credentials người dùng.
+
+**Checkpoint mới nhất 2026-11-11:** Monitoring, Dashboard và Settings đã triển
+khai; image Phase7 được chủ dự án duyệt exact delta. Packaged E2E Monitoring8PASS,
+Dashboard/Settings/UX10PASS +2persistence +2outagePASS; không source overlay.
+Các mục “chưa có Dashboard/Monitoring/Settings” phía dưới là lịch sử.
+T014_FULL vẫn BLOCKED; chưa nghiệm thu toàn bộ MVP. Demo cổng13000 giữ nguyên
+phiên bản cũ, không tự cập nhật stack/dữ liệu có trước.
+Xem [checkpoint hiện hành](../../docs/testing/product-resume-20261111.md) và tài liệu vận hành tương ứng.
+
 **Trạng thái hiện hành**: Đã có source/Compose/test bootstrap Phase1; P1–P7 đã được duyệt
 và kiểm chứng lại. T014 vẫn BLOCKED bởi security findings và các gate tái kiểm; CI tại
 implementation commit d57db09 đã PASS Windows/Linux. Chưa vào

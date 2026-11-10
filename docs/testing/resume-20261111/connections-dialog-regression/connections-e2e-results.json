@@ -1,0 +1,23 @@
+{
+  "project": "aat-connections-e2e-46d5e77e",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+    "frontend": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "execution_mode": "CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES",
+  "packaged_image_acceptance": false,
+  "test_source_sha256": {
+    "connections.spec.ts": "55b838f50fe379e90255701de8dac6d9e5510b4fe03e3283a7946d38f9d56e80",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6"
+  },
+  "exit_code": 0,
+  "cleanup_exit_code": 0
+}

@@ -1,0 +1,27 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": null,
+  "runner_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+  "runner_memory_limit_bytes": 1073741824,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "new anonymous disk volumes",
+  "task": "T104-REAL-SDK",
+  "test_paths": [
+    "tests.airflow.test_runtime_execution.RealRuntimeExecutionTests"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261110\\t108-real-airflow\\t104-real-sdk-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261110\\t108-real-airflow\\t104-real-sdk-fixture-sources.json",
+  "existing_services_modified": false
+}

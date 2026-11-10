@@ -1,0 +1,37 @@
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0mtime="2026-11-10T22:12:51+09:00" level=warning msg="volume \"aat-dag_builder-e2e-6f3a6830_current_source\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Recreate 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Recreate 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Recreate 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Recreated 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Recreated 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Recreated 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Recreate 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Recreated 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Recreate 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Recreated 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Starting 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Starting 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Starting 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Started 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Started 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Started 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Starting 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Started 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Starting 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Started 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Waiting 
+ Container aat-dag_builder-e2e-6f3a6830-frontend-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-backend-worker-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-dag-processor-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-airflow-scheduler-1 Healthy 
+ Container aat-dag_builder-e2e-6f3a6830-backend-1 Healthy 

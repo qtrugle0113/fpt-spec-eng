@@ -1,0 +1,74 @@
+{
+  "recorded_at": "2026-11-10T13:32:36.969782+00:00",
+  "authority": "Explicit user response: Duyệt đúng delta và phạm vi local nêu trên",
+  "status": "OWNER_APPROVED_EXACT_LOCAL_DELTA",
+  "scope": "Six Phase6 candidate image IDs and findings in the reviewed artifacts; no blanket exception or full acceptance",
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-phase6-backend-wheels-add150fe:0.1.0",
+      "image_id": "30f54758c22b402039e016d048ade2c26ca563df94c13655142cb7d83db22999",
+      "target": "wheels",
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-wheels-build.log"
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-phase6-backend-add150fe:0.1.0",
+      "image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "target": null,
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-build.log"
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-phase6-airflow-wheels-add150fe:0.1.0",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "target": "wheels",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-wheels-build.log"
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-phase6-airflow-add150fe:0.1.0",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "target": null,
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-build.log"
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-phase6-frontend-build-add150fe:0.1.0",
+      "image_id": "30f80ac78415ba8609ab6506c53d4a5abae435d01f18df2625aa619d92b066cc",
+      "target": "build",
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build-build.log"
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-phase6-frontend-add150fe:0.1.0",
+      "image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "target": null,
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build.log"
+    }
+  ],
+  "reviewed_artifact_sha256": {
+    "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\candidate-images.json": "6d04c205e68a5d5149668637805af46df0d745d0a08760ccba25666387fee850",
+    "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\candidate-security.json": "c75c2223e6c7f7ff836e13ee2a1813b41af7a25eec4ded4753345db3c00faad2",
+    "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\owner-review-delta.json": "a256c1a3a2dbcf8e85e2f53b02b1ab9cbc7407def5ce64b64266100d981696a9",
+    "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\owner-review.md": "a25a21b13c5b1f92427d14bea5fe1da0c6c2fe147ef23a3f355c72d7aa3aea81",
+    "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\packaged-source.json": "35b4bde02e582225917eaf4f57c680ef684e1215d22c96a53465210a6e053d27"
+  },
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "controls": "Existing local controls, owners, expiry and revocation unchanged",
+  "T014_FULL": "BLOCKED",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS"
+}

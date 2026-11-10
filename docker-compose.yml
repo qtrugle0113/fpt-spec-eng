@@ -6,6 +6,8 @@ x-backend: &backend
     context: .
     dockerfile: backend/Dockerfile
   networks: [aat_internal]
+  environment:
+    AAT_AIRFLOW_PUBLIC_URL: http://localhost:${AAT_AIRFLOW_PORT:-8080}
 
 x-airflow: &airflow
   environment:
@@ -205,6 +207,7 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     environment:
+      AAT_AIRFLOW_PUBLIC_URL: http://localhost:${AAT_AIRFLOW_PORT:-8080}
       AAT_DB_ALLOWED_HOSTS: ${AAT_DB_ALLOWED_HOSTS:-postgres,mysql}
     command: [python, -m, aat_api.workers.main]
     volumes:
@@ -239,6 +242,7 @@ services:
     mem_limit: 512m
     environment:
       AAT_ALLOWED_ORIGINS: http://localhost:${AAT_FRONTEND_PORT:-3000},http://127.0.0.1:${AAT_FRONTEND_PORT:-3000}
+      AAT_AIRFLOW_PUBLIC_URL: http://localhost:${AAT_AIRFLOW_PORT:-8080}
       AAT_DB_ALLOWED_HOSTS: ${AAT_DB_ALLOWED_HOSTS:-postgres,mysql}
     ports: ['127.0.0.1:${AAT_BACKEND_PORT:-8000}:8000']
     volumes:
@@ -278,12 +282,71 @@ services:
     image: localhost/aat-backend-tests:0.1.0
     build: {context: ., dockerfile: docker/tests/Dockerfile}
     profiles: [test]
-    networks: [aat_internal]
+    networks: [regression_internal]
+    mem_limit: 512m
+    environment:
+      AAT_FOUNDATION_DISPOSABLE: '1'
+      AAT_APP_KEYRING: /tmp/aat-regression-keyring
+      AAT_UPLOADS_ROOT: /tmp/aat-regression-uploads
+      AAT_ASSETS_ROOT: /opt/aat
+      AAT_DB_ALLOWED_HOSTS: postgres,mysql,regression-postgres
+      PYTHONPATH: /opt/aat
     volumes:
-      - bootstrap_secrets:/secrets/bootstrap_secrets:ro
-      - backend_secrets:/secrets/backend_secrets:ro
+      - regression_credentials:/run/regression:ro
     depends_on:
-      frontend: {condition: service_healthy}
+      regression-postgres: {condition: service_healthy}
+      regression-mysql: {condition: service_healthy}
+
+  regression-secrets:
+    image: localhost/aat-regression-secrets:0.1.0
+    build: {context: ., dockerfile: backend/Dockerfile}
+    profiles: [test]
+    user: '0:0'
+    network_mode: none
+    mem_limit: 128m
+    command: [python, -c, "import os,secrets,pathlib; p=pathlib.Path('/run/regression/password'); p.write_text(secrets.token_urlsafe(32)) if not p.exists() else None; os.chown(p,0,50000); p.chmod(0o440); os.chown('/run/regression',0,50000); os.chmod('/run/regression',0o750)"]
+    volumes: [regression_credentials:/run/regression]
+
+  regression-postgres:
+    image: localhost/aat-postgres:17.11
+    build: {context: ., dockerfile: docker/postgres/Dockerfile}
+    profiles: [test]
+    mem_limit: 384m
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/regression/password
+      POSTGRES_DB: app_metadata
+    volumes: [regression_credentials:/run/regression:ro, regression_pg_data:/var/lib/postgresql/data]
+    networks:
+      regression_internal: {aliases: [postgres]}
+    depends_on:
+      regression-secrets: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres, -d, app_metadata]
+      interval: 2s
+      timeout: 3s
+      retries: 60
+
+  regression-mysql:
+    image: localhost/aat-mysql:8.4.13
+    build: {context: ., dockerfile: docker/mysql/Dockerfile}
+    profiles: [test]
+    mem_limit: 1g
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/regression/password
+      MYSQL_PASSWORD_FILE: /run/regression/password
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: etl_test
+      MYSQL_USER: aat_test
+    volumes: [regression_credentials:/run/regression:ro, regression_mysql_data:/var/lib/mysql]
+    networks:
+      regression_internal: {aliases: [mysql]}
+    depends_on:
+      regression-secrets: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, mysqladmin, ping, -h, 127.0.0.1, --silent]
+      interval: 2s
+      timeout: 3s
+      retries: 60
 
   e2e-tests:
     image: localhost/aat-e2e:0.1.0
@@ -295,8 +358,12 @@ services:
 
 networks:
   aat_internal: {driver: bridge}
+  regression_internal: {driver: bridge, internal: true}
 
 volumes:
+  regression_credentials:
+  regression_pg_data:
+  regression_mysql_data:
   pg_data:
   mysql_data:
   generated_dags:

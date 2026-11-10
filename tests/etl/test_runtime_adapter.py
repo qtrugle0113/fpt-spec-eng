@@ -17,6 +17,53 @@ class RuntimeAdapterTests(unittest.TestCase):
     response=api.ETLPreviewIntegrationTests.response
     scenario=api.ETLPreviewIntegrationTests.scenario
 
+    def test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts(self):
+        from unittest.mock import patch
+        import psycopg
+        from aat_api.workers.recovery import recover_pending
+        binding,_,_,metadata=self.prepare()
+        self.worker.kill();self.worker.wait(timeout=10)
+        with metadata.begin() as c:
+            c.execute(text('UPDATE execution_bindings SET commit_uncertain=true WHERE id=:id'),{'id':binding['binding_id']})
+            c.execute(text("INSERT INTO runtime_leases(id,binding_id,owner_process_id,target_identity,target_lock_identity,recovery_state) VALUES(:lease,:id,'fixture','fixture','123','NEEDS_RECONCILIATION')"),{'lease':uuid4(),'id':binding['binding_id']})
+            before=c.execute(text('SELECT extracted_rows,validated_rows,loaded_rows FROM execution_metrics WHERE binding_id=:id'),{'id':binding['binding_id']}).first()
+        with tempfile.TemporaryDirectory() as root,patch('aat_api.workers.recovery.inspect_candidate',return_value=('COMMIT_VERIFIED',2,'INJECTED_INCOMPLETE_EVIDENCE')):
+            rows=recover_pending(lambda:psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']),root=root)
+        current=next(row for row in rows if row['binding_id']==str(binding['binding_id']))
+        self.assertEqual(current['state'],'NEEDS_RECONCILIATION')
+        self.assertEqual(current['reason'],'DATASET_EVIDENCE_UNVERIFIED')
+        with metadata.connect() as c:
+            self.assertTrue(c.scalar(text('SELECT commit_uncertain FROM execution_bindings WHERE id=:id'),{'id':binding['binding_id']}))
+            self.assertEqual(c.execute(text('SELECT extracted_rows,validated_rows,loaded_rows FROM execution_metrics WHERE binding_id=:id'),{'id':binding['binding_id']}).first(),before)
+
+    def test_replacement_recovery_without_admission_keeps_old_target_and_uncertainty(self):
+        from unittest.mock import patch
+        import psycopg
+        from aat_api.services.table_preview import target_engine
+        from aat_api.workers.recovery import recover_pending
+        binding,target,revision,metadata=self.prepare(strategy='FULL_REFRESH')
+        self.worker.kill();self.worker.wait(timeout=10)
+        with target_engine(revision) as engine,engine.begin() as c:
+            c.execute(text(f"INSERT INTO {target} VALUES (99,'preserved')"))
+        with tempfile.TemporaryDirectory() as root:
+            with patch('aat_etl.loaders.replacement_admission.AdmissionAdapter.admit',side_effect=ValueError('Synthetic admission unavailable')):
+                with self.assertRaises(ValueError):self.runtime.run_binding(binding['binding_id'],root=Path(root),metadata_engine=metadata)
+            with metadata.begin() as c:
+                self.assertEqual(c.scalar(text('SELECT count(*) FROM replacement_admissions WHERE binding_id=:id'),{'id':binding['binding_id']}),0)
+                c.execute(text('UPDATE execution_bindings SET commit_uncertain=true WHERE id=:id'),{'id':binding['binding_id']})
+                c.execute(text("UPDATE runtime_leases SET recovery_state='NEEDS_RECONCILIATION' WHERE binding_id=:id"),{'id':binding['binding_id']})
+                before=c.execute(text('SELECT extracted_rows,validated_rows,loaded_rows FROM execution_metrics WHERE binding_id=:id'),{'id':binding['binding_id']}).first()
+            with patch('aat_api.workers.recovery.inspect_candidate',return_value=('COMMIT_VERIFIED',2,'INJECTED_MISSING_ADMISSION')):
+                rows=recover_pending(lambda:psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']),root=root)
+            current=next(row for row in rows if row['binding_id']==str(binding['binding_id']))
+            self.assertEqual(current['state'],'NEEDS_RECONCILIATION')
+            self.assertEqual(current['reason'],'ADMISSION_EVIDENCE_UNVERIFIED')
+            with metadata.connect() as c:
+                self.assertTrue(c.scalar(text('SELECT commit_uncertain FROM execution_bindings WHERE id=:id'),{'id':binding['binding_id']}))
+                self.assertEqual(c.execute(text('SELECT extracted_rows,validated_rows,loaded_rows FROM execution_metrics WHERE binding_id=:id'),{'id':binding['binding_id']}).first(),before)
+            with target_engine(revision) as engine,engine.connect() as c:
+                self.assertEqual(c.execute(text(f'SELECT id,note FROM {target}')).all(),[(99,'preserved')])
+
     def prepare(self,kind='POSTGRESQL',strategy='APPEND',file_source=False,bad_tail=False):
         self.runtime=importlib.import_module('aat_etl.runtime')
         def edit(book,*_):

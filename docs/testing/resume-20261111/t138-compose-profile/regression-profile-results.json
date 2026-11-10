@@ -1,0 +1,20 @@
+{
+  "project": "aat-regression-7d517494",
+  "status": "FAIL",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "tests": "e9d071210801da01b374a5138c603d8f768cd77d8f40bff1167933df3a02bc55",
+    "backend": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "compose_config": ".tools\\compose-aat-regression-7d517494.json",
+  "startup_exit_code": 0,
+  "exit_code": 1,
+  "test_paths": [
+    "tests/unit",
+    "tests/api"
+  ],
+  "cleanup_exit_code": 0
+}

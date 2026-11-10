@@ -116,12 +116,18 @@ def recover_pending(connect,*,resolve_target=None,root=None,budget_seconds=120):
                     state=lease[2];reason='ALREADY_RECONCILED'
                 else:
                     proven=state in ('COMMIT_VERIFIED','ROLLBACK_VERIFIED','RESUME_VERIFIED_DATASET')
-                    if proven:
-                        if row['config_json'].get('load_strategy')=='FULL_REFRESH':
-                            from aat_metadata.repositories.authorizations import AuthorizationRepository
-                            admission=c.execute('SELECT id FROM replacement_admissions WHERE binding_id=%s AND dataset_sha256=%s ORDER BY admission_epoch DESC LIMIT 1',(row['id'],row['manifest_sha256'])).fetchone()
-                            if admission is None:raise ValueError('Replacement marker reconciliation has no admission evidence.')
+                    if proven and (not isinstance(row['manifest_sha256'],str) or not re.fullmatch('[0-9a-f]{64}',row['manifest_sha256'])
+                                   or any(type(row[key]) is not int or row[key]<0 for key in ('extracted_rows','validated_rows'))
+                                   or type(verified) is not int or not 0<=verified<=row['extracted_rows']):
+                        proven=False;state='NEEDS_RECONCILIATION';reason='DATASET_EVIDENCE_UNVERIFIED';verified=0
+                    if proven and row['config_json'].get('load_strategy')=='FULL_REFRESH':
+                        from aat_metadata.repositories.authorizations import AuthorizationRepository
+                        admission=c.execute('SELECT id FROM replacement_admissions WHERE binding_id=%s AND dataset_sha256=%s ORDER BY admission_epoch DESC LIMIT 1',(row['id'],row['manifest_sha256'])).fetchone()
+                        if admission is None:
+                            proven=False;state='NEEDS_RECONCILIATION';reason='ADMISSION_EVIDENCE_UNVERIFIED';verified=0
+                        else:
                             AuthorizationRepository(c).reconcile(admission[0],outcome=state,writer_finished=True)
+                    if proven:
                         terminal='COMMIT_VERIFIED' if state=='COMMIT_VERIFIED' else 'BOUND'
                         c.execute("UPDATE execution_bindings SET state=%s,commit_uncertain=false,last_reconciled_at=now(),updated_at=now() WHERE id=%s",(terminal,row['id']))
                         from uuid import uuid4

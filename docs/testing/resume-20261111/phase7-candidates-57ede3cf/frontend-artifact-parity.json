@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "offline_artifact": ".tools\\aat-frontend-source-cea342e5",
+  "packaged_artifact": ".tools\\phase6-packaged-57ede3cf\\frontend",
+  "base_image_extra_files": [
+    "50x.html"
+  ],
+  "offline": {
+    "index.html": "5820a3e116e9d2b6ccb4c1c1220c890e4a7e28f98cf605644fd3364e0cd0439e",
+    "assets/index-B0hMh_b7.js": "e5b6692a4043988f5505d15701f67cba4cbb1905a919823fee6ca8db6501223d",
+    "assets/index-DfRxwWth.css": "9687fc27fe59f9bb5c69cd786d8599899fd4f368dac9b65ed0a6f2470dc977d3"
+  },
+  "candidate": {
+    "50x.html": "876766b4e80133fd490603e073d3567425b88794828a9292104244c9e40875ed",
+    "index.html": "5820a3e116e9d2b6ccb4c1c1220c890e4a7e28f98cf605644fd3364e0cd0439e",
+    "assets/index-B0hMh_b7.js": "e5b6692a4043988f5505d15701f67cba4cbb1905a919823fee6ca8db6501223d",
+    "assets/index-DfRxwWth.css": "9687fc27fe59f9bb5c69cd786d8599899fd4f368dac9b65ed0a6f2470dc977d3"
+  }
+}

@@ -1,0 +1,40 @@
+
+Running 8 tests using 1 worker
+
+[1/8] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/8] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/8] [desktop] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+[4/8] [desktop] › dag_builder.spec.ts:41:1 › Invalid workbook shows actionable errors without deployment
+[5/8] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[6/8] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[7/8] [mobile] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+  1) [mobile] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Review schedules and load policies' })
+    Expected: visible
+    Timeout: 45000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Review schedules and load policies' }) with timeout 45000ms
+      - waiting for getByRole('button', { name: 'Review schedules and load policies' })
+
+
+      17 |   await expect(page.getByRole('button', { name: 'Validate ETL workbook', exact: true })).toBeEnabled();
+      18 |   await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+    > 19 |   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
+         |                                                                                          ^
+      20 |   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
+      21 |   const support = page.getByRole('checkbox', { name: 'I reviewed and authorize creating the displayed support objects in the target database.' });
+      22 |   if (await support.count()) await support.check();
+        at /tests/dag_builder.spec.ts:19:90
+
+    Error Context: test-results/dag_builder-ETL-wizard-val-efb97--submits-a-real-Airflow-run-mobile/error-context.md
+
+
+[8/8] [mobile] › dag_builder.spec.ts:41:1 › Invalid workbook shows actionable errors without deployment
+  1 failed
+    [mobile] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run 
+  7 passed (1.2m)

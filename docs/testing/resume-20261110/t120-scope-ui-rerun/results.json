@@ -1,0 +1,8 @@
+{
+  "project": "aat-dag_builder-e2e-6f3a6830",
+  "config": ".tools/compose-aat-dag_builder-e2e-6f3a6830.json",
+  "status": "PASS",
+  "services_retained": true,
+  "browser_exit_code": 0,
+  "actual_exit_code": 0
+}

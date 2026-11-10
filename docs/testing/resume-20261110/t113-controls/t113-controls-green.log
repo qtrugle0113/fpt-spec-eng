@@ -1,0 +1,22 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_activation_requires_scheduled_scope_and_is_revision_guarded (tests.api.test_trigger.TriggerTests.test_activation_requires_scheduled_scope_and_is_revision_guarded) ... ok
+test_lost_post_response_is_read_back_without_another_post (tests.api.test_trigger.TriggerTests.test_lost_post_response_is_read_back_without_another_post) ... ok
+test_once_is_reserved_and_identity_is_stable_before_dispatch (tests.api.test_trigger.TriggerTests.test_once_is_reserved_and_identity_is_stable_before_dispatch) ... ok
+test_revoke_before_dispatch_closes_once_without_airflow_submission (tests.api.test_trigger.TriggerTests.test_revoke_before_dispatch_closes_once_without_airflow_submission) ... ok
+test_scheduled_is_not_manual_authority (tests.api.test_trigger.TriggerTests.test_scheduled_is_not_manual_authority) ... ok
+test_two_requests_cannot_transfer_one_once (tests.api.test_trigger.TriggerTests.test_two_requests_cannot_transfer_one_once) ... ok
+test_uncertain_trigger_is_observed_by_maintenance_without_reposting (tests.api.test_trigger.TriggerTests.test_uncertain_trigger_is_observed_by_maintenance_without_reposting) ... ok
+test_grant_cannot_acknowledge_empty_replacement_implicitly (tests.api.test_authorizations.AuthorizationContractTests.test_grant_cannot_acknowledge_empty_replacement_implicitly) ... ok
+test_missing_authority_detail_list_and_revoke_are_safe_errors (tests.api.test_authorizations.AuthorizationContractTests.test_missing_authority_detail_list_and_revoke_are_safe_errors) ... ok
+test_trigger_needs_an_idempotency_key_and_state_needs_if_match (tests.api.test_authorizations.AuthorizationContractTests.test_trigger_needs_an_idempotency_key_and_state_needs_if_match) ... ok
+test_empty_permission_is_separate_and_scheduled_manual_is_rejected (tests.api.test_authorizations.AuthorizationCreateTests.test_empty_permission_is_separate_and_scheduled_manual_is_rejected) ... ok
+test_grant_is_persisted_and_same_request_replays_without_new_confirmation (tests.api.test_authorizations.AuthorizationCreateTests.test_grant_is_persisted_and_same_request_replays_without_new_confirmation) ... ok
+test_http_grant_history_revoke_etag_and_replay (tests.api.test_authorizations.AuthorizationCreateTests.test_http_grant_history_revoke_etag_and_replay) ... ok
+test_scheduled_scope_pins_schedule_and_connection_change_invalidates_grant (tests.api.test_authorizations.AuthorizationCreateTests.test_scheduled_scope_pins_schedule_and_connection_change_invalidates_grant) ... ok
+test_target_scope_and_idempotency_payload_changes_are_rejected (tests.api.test_authorizations.AuthorizationCreateTests.test_target_scope_and_idempotency_payload_changes_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 46.806s
+
+OK

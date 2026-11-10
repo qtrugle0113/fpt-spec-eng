@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-11-10T14:30:11.689345+00:00",
+  "authority": "Explicit user response: Duyệt queued rồi unpause rõ ràng",
+  "status": "APPROVED",
+  "requirement": "FR-067",
+  "decision": "Paused manual runs stay queued until a separately confirmed unpause; never auto-activate a schedule",
+  "baseline": "Airflow 3.3.2 unchanged",
+  "BR08": "Unchanged; ONCE is not SCHEDULED authority",
+  "proposal": "docs/proposals/fr067-paused-manual-run.md",
+  "T014_FULL": "BLOCKED"
+}

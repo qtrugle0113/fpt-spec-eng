@@ -1,0 +1,108 @@
+{
+  "status": "OWNER_REVIEW_REQUIRED",
+  "automatic_risk_acceptance": false,
+  "T014_FULL": "BLOCKED",
+  "scope": "Chỉ chuẩn bị delta package/advisory/version/severity; không xác nhận not-affected hoặc phê duyệt image mới.",
+  "manifest": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\candidate-images.json",
+  "scanner": "ghcr.io/aquasecurity/trivy@sha256:2e6c00d711ab4ae41d8a30c2c1fd3bd3b62704c177bb120f95012e939edfb3df",
+  "captured_at": "2026-11-10T13:29:29.391250+00:00",
+  "final_images": [
+    {
+      "target": "backend",
+      "image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "baseline_image_id": "b1943b235931110c0fa61e5c8e66111e565efd08fdfe6ffe0e1210b29843b352",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 56,
+        "MEDIUM": 122,
+        "CRITICAL": 2
+      },
+      "shared_high_critical_contexts": 58,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "baseline_image_id": "b5e9745e9bd836d28b7c085b653a315eaa34832f1cb92491cdf9c8f73cf1d52e",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 141,
+        "MEDIUM": 273,
+        "UNKNOWN": 7,
+        "CRITICAL": 5
+      },
+      "shared_high_critical_contexts": 146,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    },
+    {
+      "target": "frontend",
+      "image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "baseline_image_id": "03bd4469931a7e3f0f6681f0158c808864b1acd6e44bcfed9464d87c74754cc8",
+      "counts": {
+        "MEDIUM": 1
+      },
+      "shared_high_critical_contexts": 0,
+      "new_high_critical_contexts": [],
+      "removed_high_critical_contexts": []
+    }
+  ],
+  "all_candidate_images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-phase6-backend-wheels-add150fe:0.1.0",
+      "image_id": "30f54758c22b402039e016d048ade2c26ca563df94c13655142cb7d83db22999",
+      "target": "wheels",
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-wheels-build.log"
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-phase6-backend-add150fe:0.1.0",
+      "image_id": "6cc5f892b2b67c2eda06e776ad5b760524dc9c3b271786d323aa058084d837e3",
+      "target": null,
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\backend-build.log"
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-phase6-airflow-wheels-add150fe:0.1.0",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "target": "wheels",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-wheels-build.log"
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-phase6-airflow-add150fe:0.1.0",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "target": null,
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\airflow-build.log"
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-phase6-frontend-build-add150fe:0.1.0",
+      "image_id": "30f80ac78415ba8609ab6506c53d4a5abae435d01f18df2625aa619d92b066cc",
+      "target": "build",
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build-build.log"
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-phase6-frontend-add150fe:0.1.0",
+      "image_id": "ce4629efec1d124414117906d5396d133357fa4daf15a27c6a2e72570399c906",
+      "target": null,
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261110\\phase6-candidates-add150fe\\frontend-build.log"
+    }
+  ],
+  "build_stage_review": "Các stage build/wheels cần review findings riêng trong candidate-security.json; không dùng runtime baseline để miễn trừ."
+}

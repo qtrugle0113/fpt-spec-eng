@@ -1,0 +1,106 @@
+[1/3] STEP 1/6: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/3] STEP 2/6: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 42dcf461eb1cf6ec28dc6ce0a50aa7eebe493d170f794ca9c7668b8788c52ca3
+--> 42dcf461eb1c
+[1/3] STEP 3/6: WORKDIR /build
+--> Using cache 05c0d7f64e5d46752afb6557659331b9074b746a5ad899d6480d328974a9f8ae
+--> 05c0d7f64e5d
+[1/3] STEP 4/6: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache 0973a5ba3b6097189d84dba3ce308e9c212190d518c5e97c1407a3684b51e213
+--> 0973a5ba3b60
+[1/3] STEP 5/6: COPY etl_engine /build/etl_engine
+--> Using cache bc4e08231288200525f6d3b5238f3f181805fe5b0efa2e84279c95b9944350e4
+--> bc4e08231288
+[1/3] STEP 6/6: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine
+--> Using cache 069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff
+--> 069bcdae973e
+[2/3] STEP 1/6: FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f AS security-patched
+[2/3] STEP 2/6: USER root
+--> Using cache 011a3b5441a9a43a743f15ceed36fc3dd137fe1bacb34829bdb65f4286510214
+--> 011a3b5441a9
+[2/3] STEP 3/6: COPY airflow/docker/security/brotli.lock.json /opt/aat/security/brotli.lock.json
+--> Using cache 2cb4b786224e16b925479d5eadfd8aab1ec5b6c553e75faaeba93b3684db8d98
+--> 2cb4b786224e
+[2/3] STEP 4/6: ADD https://security.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli1_1.0.9-2+deb12u1_amd64.deb /opt/aat/security/libbrotli1.deb
+--> Using cache 3c5a8b36d2cedb1ce7d5507d4aaf13b0a7c6bf2984e22426e83a00353c91e007
+--> 3c5a8b36d2ce
+[2/3] STEP 5/6: COPY airflow/docker/install_security_patch.py /opt/aat/security/install_security_patch.py
+--> Using cache 69deed8f9d403e24d8841a8b0c65b62ba14b5dccba4e70cdf515673879fe589f
+--> 69deed8f9d40
+[2/3] STEP 6/6: RUN --network=none python /opt/aat/security/install_security_patch.py
+--> Using cache c34d458f5c1e9fd2253f54e5da88c84f4bf0e515d7ac01f2c36fecbb13f74b80
+--> c34d458f5c1e
+[3/3] STEP 1/24: FROM c34d458f5c1e9fd2253f54e5da88c84f4bf0e515d7ac01f2c36fecbb13f74b80 AS runtime
+[3/3] STEP 2/24: COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
+--> Using cache 95a4f8c065736d5371a77e8a831103d60080b535fd761d43e38d57ab3bab8f27
+--> 95a4f8c06573
+[3/3] STEP 3/24: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+--> Using cache 11b93f1ca4d84c59b8f0e8eb07f266b4fdcd0b2cd8528b361f6829a1ee570209
+--> 11b93f1ca4d8
+[3/3] STEP 4/24: COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/
+--> Using cache 0500a0ce2e77f62aaa29e2b1db8abe429b75b033093e840ced59ecc4092cfa40
+--> 0500a0ce2e77
+[3/3] STEP 5/24: RUN python /opt/aat/build_constraints.py /opt/aat
+--> Using cache 4327f2b532bd8c2facf9424c8637911de80367702eeba09d69b56b75f67705dc
+--> 4327f2b532bd
+[3/3] STEP 6/24: USER airflow
+--> Using cache 022644476bdcf0d19be2b78d3303506b6ee63e63dcdadbb9ff07e7180a93bd35
+--> 022644476bdc
+[3/3] STEP 7/24: COPY --chown=airflow:root airflow/docker/providers.lock /opt/aat/providers.lock
+--> Using cache d1d37952ca72a8e2a5849aa00ae172b791ba9b2cad5033e9acff639b3771b717
+--> d1d37952ca72
+[3/3] STEP 8/24: COPY --chown=airflow:root airflow/docker/overrides.lock /opt/aat/overrides.lock
+--> Using cache 6cb6ff69bb1804a2b5f9d546f2b82f48f36b6af7c1ec14e8ccbc4db38600e53d
+--> 6cb6ff69bb18
+[3/3] STEP 9/24: COPY --chown=airflow:root etl_engine/requirements.lock /opt/aat/requirements.lock
+--> Using cache 44d0b8b4aea84c7ef8210c16ea1b650d94dd89da586313949e74e9521ff0857c
+--> 44d0b8b4aea8
+[3/3] STEP 10/24: COPY --from=wheels --chown=airflow:root /wheels/aat_metadata-0.1.0-py3-none-any.whl /wheels/aat_metadata-0.1.0-py3-none-any.whl
+--> Using cache 4f2821bb50d433ac39587e4561792a3ca43207ff97b57491145e31b2ad650dff
+--> 4f2821bb50d4
+[3/3] STEP 11/24: COPY --from=wheels --chown=airflow:root /wheels/aat_etl_engine-0.1.0-py3-none-any.whl /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+--> Using cache c94b2bc7862a80f96af513606ee96462bad42abc870e189e4ca89cd539f8d63f
+--> c94b2bc7862a
+[3/3] STEP 12/24: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/overrides.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/providers.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-deps /wheels/*.whl && python -m pip check &&     python -c "import airflow, airflow.sdk, aat_metadata, aat_etl; assert airflow.__version__ == '3.3.2'"
+--> Using cache 95c6f970305f170f6a578f0b4f64b04909bf80504318103f29fe6dd47512afaf
+--> 95c6f970305f
+[3/3] STEP 13/24: COPY --chown=airflow:root airflow/docker/entrypoint.sh /opt/aat/entrypoint.sh
+--> Using cache 0285ac2c15601bfa00d5c4e414980ee03c3c49340432c9450fe7e81bb9f70ea4
+--> 0285ac2c1560
+[3/3] STEP 14/24: COPY --chown=airflow:root airflow/docker/initialize.sh /opt/aat/initialize.sh
+--> Using cache 049c562da3838fc68096d67ccef6e780b43e37d1bebf2b338d5f82807213b3ac
+--> 049c562da383
+[3/3] STEP 15/24: COPY --chown=airflow:root airflow/docker/airflow.cfg /opt/airflow/airflow.cfg
+--> Using cache 6522ffd274edb63d478de09e0759f85ae97282c3ba299926b70d3c28a9ee05a1
+--> 6522ffd274ed
+[3/3] STEP 16/24: COPY --chown=airflow:root airflow/docker/health.sh /opt/aat/health.sh
+--> Using cache 711ed87524c396dde18c06c5eb0948c09cb8af5ba4c63f15e75d4c8dc263aa5e
+--> 711ed87524c3
+[3/3] STEP 17/24: COPY --chown=airflow:root docker/bootstrap/health.py /opt/aat/health.py
+--> Using cache 08b8f0bc072622122a87906c37b63e5d5a7b129f5c0c1fa69b5842664f18c88b
+--> 08b8f0bc0726
+[3/3] STEP 18/24: ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bin/bash", "/opt/aat/entrypoint.sh"]
+--> Using cache ff1b81d3fa2553c2e128ff253fbd28a387dc44430a6807436a42a465111704fe
+--> ff1b81d3fa25
+[3/3] STEP 19/24: USER root
+--> Using cache 7c97d405d4db8c4e261992398b46f827b85f6bac712b16a3bf8497dc1a6d51a7
+--> 7c97d405d4db
+[3/3] STEP 20/24: RUN apt-get purge -y docker-ce-cli && test ! -e /usr/bin/docker
+--> Using cache 7f890d731e32f004755561bc5b509b74f570b94da8baef6c557eaa7619d0be44
+--> 7f890d731e32
+[3/3] STEP 21/24: USER airflow
+--> Using cache 6c3834c74e866fcc439677bc0d1ac4fe97babb63520deec9947b89af674d3eec
+--> 6c3834c74e86
+[3/3] STEP 22/24: RUN python -m pip uninstall -y uv && rm -rf /home/airflow/.local/share/uv/tools/prek && rm -f /home/airflow/.local/bin/prek && python -m pip check
+--> Using cache 35ee1a9802ced3a84222a4e1ee65f6ec917b78af1252934c2e92ef59be9addad
+--> 35ee1a9802ce
+[3/3] STEP 23/24: COPY --chown=airflow:root airflow/docker/tooling.lock /opt/aat/tooling.lock
+--> Using cache 7003074707d5c922181d2acefa1572341d9b0b111b5dae80d413faa684abc897
+--> 7003074707d5
+[3/3] STEP 24/24: RUN python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/tooling.lock && python -m pip check
+--> Using cache b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6
+[3/3] COMMIT localhost/aat-phase6-airflow-4024eaa4:0.1.0
+--> b9920b0e7a7c
+Successfully tagged localhost/aat-phase6-airflow-4024eaa4:0.1.0
+Successfully tagged localhost/aat-phase6-airflow-230ab426:0.1.0
+b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6

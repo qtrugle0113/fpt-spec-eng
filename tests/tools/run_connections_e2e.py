@@ -12,7 +12,10 @@ parser=argparse.ArgumentParser(description=__doc__)
 for name in ('backend','frontend','e2e','airflow','postgres','mysql'):
     parser.add_argument('--'+name+'-image',required=True)
 parser.add_argument('--evidence-dir',required=True)
-parser.add_argument('--suite',choices=['connections','tables','files'],default='connections')
+parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7'],default='connections')
+parser.add_argument('--source-overlay',action='store_true',help='Run current source read-only on existing dependency images; not packaged-image acceptance')
+parser.add_argument('--frontend-artifact',help='Workspace-relative dist from the pinned offline frontend build')
+parser.add_argument('--keep-running',action='store_true',help='Keep this new local demo and its volumes after tests; publish loopback 13000/18000/18080')
 parser.add_argument('--prepare-only',action='store_true',help='Validate the isolated Compose configuration without starting services')
 args=parser.parse_args()
 evidence=(ROOT/args.evidence_dir).resolve()
@@ -24,8 +27,11 @@ env=dict(os.environ,PODMAN_COMPOSE_PROVIDER=str(ROOT/'.tools/docker-compose-5.6.
 config_path=ROOT/'.tools'/('compose-'+project+'.json')
 base=['podman','compose','-f',str(config_path),'-p',project,'--profile','test']
 private_values=[]
-result={'project':project,'status':'NOT_RUN','published_ports':False,'existing_services_modified':False}
+result={'project':project,'status':'NOT_RUN','published_ports':False,'existing_services_modified':False,
+        'execution_mode':'INSTALLED_IMAGE_PACKAGES','packaged_image_acceptance':True}
 resources_started=False
+source_volume=None
+source_loader=None
 
 
 def redact(value:str) -> str:
@@ -37,7 +43,10 @@ def redact(value:str) -> str:
 def execute(command,*,check=True,input=None,timeout=300):
     try:
         process=subprocess.run(command,cwd=ROOT,env=env,text=True,encoding='utf-8',capture_output=True,input=input,timeout=timeout)
-    except subprocess.TimeoutExpired:
+    except subprocess.TimeoutExpired as error:
+        def decoded(value):return value.decode('utf-8',errors='replace') if isinstance(value,bytes) else value or ''
+        result['status']='TIMEOUT'
+        (evidence/'last-command-timeout.log').write_text(redact(decoded(error.stdout)+decoded(error.stderr)),encoding='utf-8')
         raise RuntimeError('Isolated E2E command exceeded its deadline') from None
     if check and process.returncode:
         raise RuntimeError('Isolated E2E command failed; inspect fixture evidence')
@@ -49,6 +58,8 @@ try:
     config=json.loads(resolved.stdout)
     config['name']=project
     config['services'].pop('backend-tests',None)
+    for name in list(config['services']):
+        if name.startswith('regression-'):config['services'].pop(name)
     images={}
     for name in ('backend','frontend','e2e','airflow','postgres','mysql'):
         identity=execute(['podman','image','inspect',getattr(args,name+'_image'),'--format','{{.Id}}']).stdout.strip()
@@ -72,6 +83,39 @@ try:
     for name,network in config.get('networks',{}).items():
         if network.get('external'):raise RuntimeError('External fixture network is forbidden')
         network['name']=project+'_'+name
+    if args.source_overlay:
+        # Copy before starting any service, so scheduler imports cannot retain
+        # old installed modules. No change to dependency images or user volumes.
+        source_volume=project+'_current_source';source_loader=project+'-source-loader'
+        execute(['podman','volume','create',source_volume])
+        execute(['podman','create','--name',source_loader,'--network','none','--user','0:0',
+                 '-v',source_volume+':/current','--entrypoint','python',images['backend'],'-c',
+                 "from pathlib import Path; [p.chmod(0o755 if p.is_dir() else 0o644) for p in Path('/current').rglob('*')]"])
+        for folder in ('backend','packages','etl_engine','docker','airflow','samples','templates','specs'):
+            execute(['podman','cp',str(ROOT/folder),source_loader+':/current/'+folder])
+        if args.frontend_artifact:
+            artifact=(ROOT/args.frontend_artifact).resolve()
+            if not artifact.is_relative_to(ROOT) or not (artifact/'index.html').is_file():raise RuntimeError('A built workspace frontend artifact is required')
+            execute(['podman','cp',str(artifact),source_loader+':/current/frontend-dist'])
+        execute(['podman','start','-a',source_loader])
+        print('SOURCE_OVERLAY_SNAPSHOT_READY '+project,flush=True)
+        config['volumes']['current_source']={'name':source_volume}
+        for name,service in config['services'].items():
+            if name.startswith('airflow-') or name in ('backend','backend-worker','secrets-init','db-init','app-init'):
+                service.setdefault('volumes',[]).append({'type':'volume','source':'current_source','target':'/current','read_only':True,'volume':{'nocopy':True}})
+                service.setdefault('environment',{}).update(PYTHONPATH='/current/backend/src:/current/packages:/current/etl_engine/src:/current',AAT_ASSETS_ROOT='/current')
+                if name in ('secrets-init','db-init','app-init'):service['working_dir']='/current'
+            if name=='frontend' and args.frontend_artifact:
+                service.setdefault('volumes',[]).append({'type':'volume','source':'current_source','target':'/usr/share/nginx/html','read_only':True,'volume':{'nocopy':True,'subpath':'frontend-dist'}})
+        result['execution_mode']='CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES'
+        result['packaged_image_acceptance']=False
+    if args.keep_running:
+        for service,host,container in [('frontend',13000,80),('backend',18000,8000),('airflow-apiserver',18080,8080)]:
+            config['services'][service]['ports']=[{'host_ip':'127.0.0.1','published':str(host),'target':container,'protocol':'tcp'}]
+        config['services']['backend']['environment']['AAT_ALLOWED_ORIGINS']='http://frontend,http://localhost:13000,http://127.0.0.1:13000'
+        config['services']['backend']['environment']['AAT_AIRFLOW_PUBLIC_URL']='http://localhost:18080'
+        config['services']['airflow-apiserver']['environment']['AIRFLOW__API__BASE_URL']='http://localhost:18080'
+        result.update(published_ports=True,local_url='http://localhost:13000',compose_config=str(config_path.relative_to(ROOT)))
     config_path.write_text(json.dumps(config,indent=2)+'\n',encoding='utf-8')
     execute([*base,'config','--quiet'])
     if args.prepare_only:
@@ -119,7 +163,10 @@ try:
         execute(['podman','exec','-i',runner,'node','-e',install],input=json.dumps(credentials))
     # Test-only edits do not rebuild or mutate the approved application images.
     result['test_source_sha256']={}
-    sources=[args.suite+'.spec.ts','bootstrap.spec.ts','playwright.config.ts']
+    suite_sources=['dashboard.spec.ts','settings.spec.ts','accessibility.spec.ts'] if args.suite=='phase7' else [args.suite+'.spec.ts']
+    sources=[*suite_sources,'bootstrap.spec.ts','playwright.config.ts']
+    if args.suite=='phase7':sources.append('settings-persistence.spec.ts')
+    if args.suite=='phase7':sources.append('dashboard-unavailable.spec.ts')
     if args.suite=='files':sources.append('files-persistence.spec.ts')
     for filename in sources:
         source=ROOT/'tests/e2e'/filename
@@ -130,10 +177,60 @@ try:
         if not all((fixtures/name).is_file() for name in ('postgres.xlsx','mysql.xlsx','invalid.xlsx','boundary.xlsx')):
             raise RuntimeError('Prepare public table workbook fixtures before running E2E')
         execute(['podman','cp',str(fixtures),runner+':/tests/table-fixtures'])
-    tested=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test',args.suite+'.spec.ts','bootstrap.spec.ts','--timeout=120000','--reporter=line'],check=False,timeout=300)
+    if args.suite in ('dag_builder','monitoring'):
+        helper=project+'-workbooks'
+        try:
+            execute(['podman','create','--name',helper,'--network','none','--entrypoint','python',images['backend'],'/tmp/make_dag_fixtures.py'])
+            execute(['podman','cp',str(ROOT/'templates'),helper+':/tmp/aat-dag-template'])
+            execute(['podman','cp',str(ROOT/'tests/tools/make_dag_fixtures.py'),helper+':/tmp/make_dag_fixtures.py'])
+            execute(['podman','start','-a',helper])
+            fixtures=ROOT/'.tools'/(project+'-dag-fixtures');fixtures.mkdir(exist_ok=True)
+            execute(['podman','cp',helper+':/tmp/aat-dag-fixtures/.',str(fixtures)])
+            execute(['podman','cp',str(fixtures),runner+':/tests/dag-fixtures'])
+        finally:execute(['podman','rm','-f',helper],check=False)
+    if args.suite=='monitoring':
+        worker=execute([*base,'ps','-q','backend-worker']).stdout.strip()
+        execute(['podman','cp',str(ROOT/'tests/tools/seed_monitoring_fixture.py'),worker+':/tmp/seed_monitoring_fixture.py'])
+        execute(['podman','exec','-e','AAT_E2E_PROJECT='+project,worker,'python','/tmp/seed_monitoring_fixture.py'])
+    tested=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test',*suite_sources,'bootstrap.spec.ts','--timeout=120000','--reporter=line'],check=False,timeout=300)
     (evidence/(args.suite+'-e2e.log')).write_text(redact(tested.stdout+tested.stderr),encoding='utf-8')
+    if tested.returncode:execute(['podman','cp',runner+':/tests/test-results',str(evidence)],check=False)
     result['exit_code']=tested.returncode
     result['status']='PASS' if tested.returncode==0 else 'FAIL'
+    if args.suite=='phase7' and tested.returncode==0:
+        recreated=execute([*base,'up','-d','--no-build','--no-deps','--force-recreate','--wait','--wait-timeout','180','backend-worker','backend'],check=False,timeout=240)
+        (evidence/'settings-recreation.log').write_text(redact(recreated.stdout+recreated.stderr),encoding='utf-8')
+        result['recreation_exit_code']=recreated.returncode
+        if recreated.returncode==0:
+            refreshed=execute([*base,'up','-d','--no-build','--no-deps','--force-recreate','--wait','--wait-timeout','120','frontend'],check=False,timeout=180)
+            (evidence/'settings-proxy-recreation.log').write_text(redact(refreshed.stdout+refreshed.stderr),encoding='utf-8')
+            result['proxy_refresh_exit_code']=refreshed.returncode
+            if refreshed.returncode==0:
+                persistent=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test','settings-persistence.spec.ts','--reporter=line'],check=False,timeout=180)
+                (evidence/'settings-persistence.log').write_text(redact(persistent.stdout+persistent.stderr),encoding='utf-8')
+                result['persistence_exit_code']=persistent.returncode;result['exit_code']=persistent.returncode
+            else:result['exit_code']=refreshed.returncode
+        else:result['exit_code']=recreated.returncode
+        result['status']='PASS' if result['exit_code']==0 else 'FAIL'
+        if result['exit_code']==0:
+            # Only the newly owned fixture API is stopped; the user's demo and
+            # all pre-existing services remain untouched.
+            stopped=execute([*base,'stop','airflow-apiserver'],check=False,timeout=90)
+            result['airflow_stop_exit_code']=stopped.returncode
+            if stopped.returncode==0:
+                down=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test','dashboard-unavailable.spec.ts','--reporter=line'],check=False,timeout=180)
+                (evidence/'dashboard-unavailable.log').write_text(redact(down.stdout+down.stderr),encoding='utf-8')
+                result['outage_exit_code']=down.returncode;result['exit_code']=down.returncode
+            else:result['exit_code']=stopped.returncode
+            result['status']='PASS' if result['exit_code']==0 else 'FAIL'
+    if args.suite=='dag_builder' and tested.returncode==0:
+        backend=execute([*base,'ps','-q','backend']).stdout.strip()
+        execute(['podman','cp',str(ROOT/'tests/tools/verify_dag_browser_runs.py'),backend+':/tmp/verify_dag_browser_runs.py'])
+        actual=execute(['podman','exec',backend,'python','/tmp/verify_dag_browser_runs.py'],check=False,timeout=210)
+        (evidence/'dag-browser-actual-results.log').write_text(redact(actual.stdout+actual.stderr),encoding='utf-8')
+        result['actual_execution_exit_code']=actual.returncode
+        result['exit_code']=actual.returncode
+        result['status']='PASS' if actual.returncode==0 else 'FAIL'
     if args.suite=='files':
         result['main_exit_code']=tested.returncode;result['persistence_status']='NOT_RUN'
         if tested.returncode==0:
@@ -160,9 +257,13 @@ try:
     execute(['podman','cp',runner+':/tmp/aat-e2e-artifacts/.',str(artifacts)],check=False)
     print(redact((tested.stdout+tested.stderr)[-5000:]))
 finally:
+    if source_loader:execute(['podman','rm','-f',source_loader],check=False)
     if resources_started:execute(['podman','rm','-f',runner],check=False)
-    if resources_started and config_path.exists():
+    if resources_started and config_path.exists() and not args.keep_running:
         cleaned=execute([*base,'down','--volumes'],check=False)
         result['cleanup_exit_code']=cleaned.returncode
+        if cleaned.returncode:
+            result.update(status='CLEANUP_FAILED',test_exit_code=result.get('exit_code'),exit_code=cleaned.returncode)
+    if args.keep_running:result['services_retained']=resources_started
     (evidence/(args.suite+'-e2e-results.json')).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 if result.get('exit_code',1):raise SystemExit(result.get('exit_code',1))

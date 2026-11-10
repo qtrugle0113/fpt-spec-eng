@@ -1,0 +1,31 @@
+{"node":"v22.23.4","npm":"12.2.2"}
+src/features/dags/DeploymentPanel.tsx(51,25): error TS2345: Argument of type 'string[] | undefined' is not assignable to parameter of type 'string[]'.
+  Type 'undefined' is not assignable to type 'string[]'.
+src/features/dags/DeploymentPanel.tsx(52,41): error TS2345: Argument of type 'string[] | undefined' is not assignable to parameter of type 'string[]'.
+  Type 'undefined' is not assignable to type 'string[]'.
+npm notice run aat-frontend@0.1.0 build
+npm notice run tsc --noEmit && vite build
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: npm run build
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at [eval]:1:264
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:446:12
+    at [eval]-wrapper:6:24
+    at runScriptInContext (node:internal/process/execution:444:60)
+    at evalFunction (node:internal/process/execution:279:30) {
+  status: 2,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 8,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.23.4

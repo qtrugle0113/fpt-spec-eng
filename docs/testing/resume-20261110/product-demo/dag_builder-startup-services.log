@@ -1,0 +1,241 @@
+secrets-init-1  | Bootstrap secrets initialized; values suppressed
+mysql-1         | 2026-11-10 13:06:26+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+mysql-1         | 2026-11-10 13:06:26+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+mysql-1         | 2026-11-10 13:06:26+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.
+mysql-1         | 2026-11-10 13:06:27+00:00 [Note] [Entrypoint]: Initializing database files
+mysql-1         | 2026-11-10T13:06:27.214526Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+mysql-1         | 2026-11-10T13:06:27.215846Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.13) initializing of server in progress as process 80
+mysql-1         | 2026-11-10T13:06:27.215848Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1         | 2026-11-10T13:06:27.243243Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1         | 2026-11-10T13:06:28.016393Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1         | 2026-11-10T13:06:29.706971Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+mysql-1         | 2026-11-10T13:06:32.049658Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+mysql-1         | 2026-11-10 13:06:32+00:00 [Note] [Entrypoint]: Database files initialized
+mysql-1         | 2026-11-10 13:06:32+00:00 [Note] [Entrypoint]: Starting temporary server
+mysql-1         | 2026-11-10T13:06:32.156787Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+mysql-1         | 2026-11-10T13:06:32.407288Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 123
+mysql-1         | 2026-11-10T13:06:32.407293Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1         | 2026-11-10T13:06:32.431076Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1         | 2026-11-10T13:06:32.780153Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1         | 2026-11-10T13:06:33.275251Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql-1         | 2026-11-10T13:06:33.275310Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql-1         | 2026-11-10T13:06:33.278794Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql-1         | 2026-11-10T13:06:33.304928Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+mysql-1         | 2026-11-10T13:06:33.305090Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+mysql-1         | 2026-11-10 13:06:33+00:00 [Note] [Entrypoint]: Temporary server started.
+mysql-1         | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+mysql-1         | 
+mysql-1         | 2026-11-10 13:06:35+00:00 [Note] [Entrypoint]: Stopping temporary server
+mysql-1         | 2026-11-10T13:06:35.650834Z 10 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).
+mysql-1         | 2026-11-10T13:06:36.558704Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.
+mysql-1         | 2026-11-10T13:06:36.558738Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+mysql-1         | 2026-11-10 13:06:36+00:00 [Note] [Entrypoint]: Temporary server stopped
+mysql-1         | 
+mysql-1         | 2026-11-10 13:06:36+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+mysql-1         | 
+mysql-1         | 2026-11-10T13:06:36.672086Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+mysql-1         | 2026-11-10T13:06:36.921142Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1
+mysql-1         | 2026-11-10T13:06:36.921145Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'
+mysql-1         | 2026-11-10T13:06:36.926857Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+mysql-1         | 2026-11-10T13:06:37.293313Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+mysql-1         | 2026-11-10T13:06:37.687056Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+mysql-1         | 2026-11-10T13:06:37.687309Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+mysql-1         | 2026-11-10T13:06:37.692960Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+mysql-1         | 2026-11-10T13:06:37.728822Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+mysql-1         | 2026-11-10T13:06:37.729056Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+postgres-1      | The files belonging to this database system will be owned by user "postgres".
+postgres-1      | This user must also own the server process.
+postgres-1      | 
+postgres-1      | The database cluster will be initialized with locale "en_US.utf8".
+postgres-1      | The default database encoding has accordingly been set to "UTF8".
+postgres-1      | The default text search configuration will be set to "english".
+postgres-1      | 
+postgres-1      | Data page checksums are disabled.
+postgres-1      | 
+postgres-1      | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+postgres-1      | creating subdirectories ... ok
+postgres-1      | selecting dynamic shared memory implementation ... posix
+postgres-1      | selecting default "max_connections" ... 100
+postgres-1      | selecting default "shared_buffers" ... 128MB
+postgres-1      | selecting default time zone ... Etc/UTC
+postgres-1      | creating configuration files ... ok
+postgres-1      | running bootstrap script ... ok
+postgres-1      | performing post-bootstrap initialization ... ok
+postgres-1      | syncing data to disk ... ok
+postgres-1      | 
+postgres-1      | 
+postgres-1      | Success. You can now start the database server using:
+postgres-1      | 
+postgres-1      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+postgres-1      | 
+postgres-1      | initdb: warning: enabling "trust" authentication for local connections
+postgres-1      | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+postgres-1      | waiting for server to start....2026-11-10 13:06:28.364 UTC [47] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+postgres-1      | 2026-11-10 13:06:28.368 UTC [47] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1      | 2026-11-10 13:06:28.383 UTC [50] LOG:  database system was shut down at 2026-11-10 13:06:27 UTC
+postgres-1      | 2026-11-10 13:06:28.390 UTC [47] LOG:  database system is ready to accept connections
+postgres-1      |  done
+postgres-1      | server started
+postgres-1      | 
+postgres-1      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+postgres-1      | 
+postgres-1      | 2026-11-10 13:06:28.525 UTC [47] LOG:  received fast shutdown request
+postgres-1      | waiting for server to shut down....2026-11-10 13:06:28.537 UTC [47] LOG:  aborting any active transactions
+postgres-1      | 2026-11-10 13:06:28.541 UTC [47] LOG:  background worker "logical replication launcher" (PID 53) exited with exit code 1
+postgres-1      | 2026-11-10 13:06:28.541 UTC [48] LOG:  shutting down
+postgres-1      | 2026-11-10 13:06:28.550 UTC [48] LOG:  checkpoint starting: shutdown immediate
+postgres-1      | 2026-11-10 13:06:28.611 UTC [48] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.021 s, sync=0.006 s, total=0.070 s; sync files=2, longest=0.004 s, average=0.003 s; distance=0 kB, estimate=0 kB; lsn=0/14E6FE8, redo lsn=0/14E6FE8
+postgres-1      | 2026-11-10 13:06:28.619 UTC [47] LOG:  database system is shut down
+postgres-1      |  done
+postgres-1      | server stopped
+postgres-1      | 
+postgres-1      | PostgreSQL init process complete; ready for start up.
+postgres-1      | 
+postgres-1      | 2026-11-10 13:06:28.673 UTC [1] LOG:  starting PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+postgres-1      | 2026-11-10 13:06:28.674 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1      | 2026-11-10 13:06:28.674 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres-1      | 2026-11-10 13:06:28.686 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres-1      | 2026-11-10 13:06:28.701 UTC [61] LOG:  database system was shut down at 2026-11-10 13:06:28 UTC
+postgres-1      | 2026-11-10 13:06:28.719 UTC [1] LOG:  database system is ready to accept connections
+postgres-1      | 2026-11-10 13:06:45.523 UTC [94] ERROR:  relation "log" does not exist at character 13
+postgres-1      | 2026-11-10 13:06:45.523 UTC [94] STATEMENT:  INSERT INTO log (dttm, event, owner, extra) VALUES ($1::TIMESTAMP WITH TIME ZONE, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR) RETURNING log.id
+db-init-1       | PostgreSQL bootstrap complete; existing sample data preserved
+db-init-1       | MySQL bootstrap complete; existing sample data preserved
+airflow-init-1  | 2026-11-10T13:06:45.523820Z [info     ] Performing upgrade to the metadata database [airflow.cli.commands.db_command] loc=db_command.py:134 url=postgresql+psycopg://aat_airflow:***@postgres:5432/airflow_metadata
+airflow-init-1  | 2026-11-10T13:06:45.905142Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-10T13:06:45.905443Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-10T13:06:46.509612Z [warning  ] Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead. [py.warnings] category=StarletteDeprecationWarning filename=/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py lineno=1
+airflow-init-1  | 2026-11-10T13:06:46.720844Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-10T13:06:46.721003Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-10T13:06:46.721839Z [info     ] Creating Airflow database tables from the ORM [airflow.utils.db] loc=db.py:749
+airflow-init-1  | 2026-11-10T13:06:46.721970Z [info     ] Creating global lock context   [airflow.utils.db] loc=db.py:730
+airflow-init-1  | 2026-11-10T13:06:46.731185Z [info     ] Pool status: Pool size: 5  Connections in pool: 0 Current Overflow: -3 Current Checked out connections: 2 [airflow.utils.db] loc=db.py:733
+airflow-init-1  | 2026-11-10T13:06:46.731576Z [info     ] Creating metadata              [airflow.utils.db] loc=db.py:735
+airflow-init-1  | 2026-11-10T13:06:46.912522Z [info     ] Getting alembic config         [airflow.utils.db] loc=db.py:738
+airflow-init-1  | 2026-11-10T13:06:46.913243Z [info     ] Stamping migration head        [airflow.utils.db] loc=db.py:741
+airflow-init-1  | 2026-11-10T13:06:46.917541Z [info     ] Context impl PostgresqlImpl.   [alembic.runtime.migration] loc=migration.py:205
+airflow-init-1  | 2026-11-10T13:06:46.917703Z [info     ] Will assume transactional DDL. [alembic.runtime.migration] loc=migration.py:208
+airflow-init-1  | 2026-11-10T13:06:47.054891Z [info     ] Running stamp_revision  -> d2f4e1b3c5a7 [alembic.runtime.migration] loc=migration.py:611
+airflow-init-1  | 2026-11-10T13:06:47.058669Z [info     ] Airflow database tables created [airflow.utils.db] loc=db.py:744
+airflow-init-1  | 2026-11-10T13:06:47.131796Z [info     ] Database migration done!       [airflow.cli.commands.db_command] loc=db_command.py:152
+airflow-init-1  | 2026-11-10T13:06:49.895152Z [info     ] Connection successful.         [airflow.utils.db] loc=db.py:1531
+airflow-init-1  | Airflow migration complete; credentials suppressed
+app-init-1      | Bootstrap storage initialized; product schema not initialized (T030 required)
+airflow-scheduler-1  | 
+airflow-scheduler-1  |   ____________       _____________
+airflow-scheduler-1  |  ____    |__( )_________  __/__  /________      __
+airflow-scheduler-1  | ____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+airflow-scheduler-1  | ___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+airflow-scheduler-1  |  _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+airflow-scheduler-1  | 2026-11-10T13:07:03.051736Z [info     ] Loaded executor: :LocalExecutor: [airflow.executors.executor_loader] loc=executor_loader.py:376
+airflow-scheduler-1  | 2026-11-10T13:07:03.558954Z [info     ] Starting log server on http://[::]:8793 [airflow.utils.serve_logs.core] loc=core.py:50
+airflow-scheduler-1  | 2026-11-10T13:07:03.663191Z [warning  ] ASGI app factory detected. Using it, but please consider setting the --factory flag explicitly. [uvicorn.error] loc=config.py:504
+airflow-scheduler-1  | 2026-11-10T13:07:03.665071Z [info     ] Started server process [26]    [uvicorn.error] loc=server.py:94
+airflow-scheduler-1  | 2026-11-10T13:07:03.665249Z [info     ] Waiting for application startup. [uvicorn.error] loc=on.py:48
+airflow-scheduler-1  | 2026-11-10T13:07:03.665678Z [info     ] Application startup complete.  [uvicorn.error] loc=on.py:62
+airflow-scheduler-1  | 2026-11-10T13:07:03.666823Z [info     ] Uvicorn running on http://:8793 (Press CTRL+C to quit) [uvicorn.error] loc=server.py:225
+airflow-scheduler-1  | 2026-11-10T13:07:03.715905Z [info     ] Starting the scheduler         [airflow.jobs.scheduler_job_runner.SchedulerJobRunner] loc=scheduler_job_runner.py:1625
+airflow-scheduler-1  | 2026-11-10T13:07:03.731177Z [info     ] Worker starting up pid=32      [airflow.executors.local_executor.LocalExecutor] loc=local_executor.py:76
+airflow-scheduler-1  | 2026-11-10T13:07:03.735440Z [info     ] Adopting or resetting orphaned tasks for active dag runs [airflow.jobs.scheduler_job_runner.SchedulerJobRunner] loc=scheduler_job_runner.py:3287
+airflow-scheduler-1  | 2026-11-10T13:07:03.736460Z [info     ] Worker starting up pid=33      [airflow.executors.local_executor.LocalExecutor] loc=local_executor.py:76
+airflow-apiserver-1  | 
+airflow-apiserver-1  |   ____________       _____________
+airflow-apiserver-1  |  ____    |__( )_________  __/__  /________      __
+airflow-apiserver-1  | ____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+airflow-apiserver-1  | ___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+airflow-apiserver-1  |  _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+airflow-apiserver-1  | Running the API server with uvicorn:
+airflow-apiserver-1  | Apps: all
+airflow-apiserver-1  | Workers: 1
+airflow-apiserver-1  | Host: 0.0.0.0:8080
+airflow-apiserver-1  | Timeout: 120
+airflow-apiserver-1  | Logfiles: -
+airflow-apiserver-1  | =================================================================
+airflow-apiserver-1  | 2026-11-10T13:06:59.534066Z [warning  ] Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead. [py.warnings] category=StarletteDeprecationWarning filename=/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py lineno=1
+airflow-apiserver-1  | 2026-11-10T13:07:00.870750Z [warning  ] SimpleAuthManager is active but the deployment shape looks like production (non-sqlite backend, non-local API host, or a distributed executor). SimpleAuthManager stores passwords in plaintext at /tmp/aat-simple-auth-passwords.json and prints generated passwords to stdout/logs on first init. Use a real auth manager (e.g. FAB or Keycloak) for production deployments. [airflow.api_fastapi.auth.managers.simple.simple_auth_manager] loc=simple_auth_manager.py:176
+airflow-apiserver-1  | 2026-11-10T13:07:05.047941Z [info     ] Started server process [2]     [uvicorn.error] loc=server.py:94
+airflow-apiserver-1  | 2026-11-10T13:07:05.048116Z [info     ] Waiting for application startup. [uvicorn.error] loc=on.py:48
+airflow-apiserver-1  | 2026-11-10T13:07:05.049842Z [info     ] Application startup complete.  [uvicorn.error] loc=on.py:62
+airflow-apiserver-1  | 2026-11-10T13:07:05.050939Z [info     ] Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit) [uvicorn.error] loc=server.py:225
+backend-1            | INFO:     Started server process [1]
+backend-1            | INFO:     Waiting for application startup.
+backend-1            | INFO:     Application startup complete.
+backend-1            | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+backend-1            | INFO:     127.0.0.1:37278 - "GET /api/v1/health/ready HTTP/1.1" 503 Service Unavailable
+backend-1            | INFO:     127.0.0.1:45422 - "GET /api/v1/health/ready HTTP/1.1" 503 Service Unavailable
+backend-1            | INFO:     127.0.0.1:59060 - "GET /api/v1/health/ready HTTP/1.1" 503 Service Unavailable
+backend-1            | INFO:     127.0.0.1:41664 - "GET /api/v1/health/ready HTTP/1.1" 503 Service Unavailable
+airflow-dag-processor-1  | 
+airflow-dag-processor-1  | 2026-11-10T13:06:59.455539Z [warning  ] Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead. [py.warnings] category=StarletteDeprecationWarning filename=/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py lineno=1
+airflow-dag-processor-1  | 2026-11-10T13:07:00.043821Z [info     ] Starting the Dag Processor Job [airflow.jobs.dag_processor_job_runner.DagProcessorJobRunner] loc=dag_processor_job_runner.py:59
+airflow-dag-processor-1  | 2026-11-10T13:07:00.044240Z [info     ] Processing files using up to 2 processes at a time  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:373
+airflow-dag-processor-1  | 2026-11-10T13:07:00.044339Z [info     ] Process each file at most once every 30 seconds [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:374
+airflow-dag-processor-1  | 2026-11-10T13:07:00.046507Z [info     ] DAG bundles loaded: dags-folder [airflow.dag_processing.bundles.manager.DagBundlesManager] loc=manager.py:304
+airflow-dag-processor-1  | 2026-11-10T13:07:00.050246Z [info     ] Added new DAG bundle dags-folder to the database [airflow.dag_processing.bundles.manager.DagBundlesManager] loc=manager.py:378
+airflow-dag-processor-1  | 2026-11-10T13:07:00.120071Z [info     ] DAG bundles loaded: dags-folder [airflow.dag_processing.bundles.manager.DagBundlesManager] loc=manager.py:304
+airflow-dag-processor-1  | 2026-11-10T13:07:00.120528Z [info     ] Checking for new files in bundle dags-folder every 5 seconds [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:424
+airflow-dag-processor-1  | 2026-11-10T13:07:00.131157Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:00.182380Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:00.183232Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:00.202739Z [info     ] checking for stale bundle versions locally [airflow.dag_processing.bundles.base] loc=base.py:223
+airflow-dag-processor-1  | 2026-11-10T13:07:00.203090Z [info     ] DAG bundles loaded: dags-folder [airflow.dag_processing.bundles.manager.DagBundlesManager] loc=manager.py:304
+airflow-dag-processor-1  | 2026-11-10T13:07:00.206705Z [info     ] 
+airflow-dag-processor-1  | ================================================================================
+airflow-dag-processor-1  | DAG File Processing Stats
+airflow-dag-processor-1  | 
+airflow-dag-processor-1  | Bundle    File Path    PID    Current Duration    # DAGs    # Errors    Last Duration    Last Run At
+airflow-dag-processor-1  | --------  -----------  -----  ------------------  --------  ----------  ---------------  -------------
+airflow-dag-processor-1  | ================================================================================ [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:1176
+airflow-dag-processor-1  | 2026-11-10T13:07:05.159840Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:05.210118Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:05.210607Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:10.193511Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:10.196836Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:10.197349Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:15.228581Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:15.230975Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:15.231351Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:20.261506Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:20.265429Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:20.265916Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:25.309575Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:25.312410Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:25.312785Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:30.345954Z [info     ] 
+airflow-dag-processor-1  | ================================================================================
+airflow-dag-processor-1  | DAG File Processing Stats
+airflow-dag-processor-1  | 
+airflow-dag-processor-1  | Bundle    File Path    PID    Current Duration    # DAGs    # Errors    Last Duration    Last Run At
+airflow-dag-processor-1  | --------  -----------  -----  ------------------  --------  ----------  ---------------  -------------
+airflow-dag-processor-1  | ================================================================================ [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:1176
+airflow-dag-processor-1  | 2026-11-10T13:07:30.350076Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:30.352997Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:30.353434Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:35.387673Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:35.390095Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:35.390490Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:40.420788Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:40.423363Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:40.423876Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:45.463669Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:45.467824Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:45.468387Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:50.496410Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:50.499461Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:50.499964Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:07:55.532163Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:07:55.560966Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:07:55.561639Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+airflow-dag-processor-1  | 2026-11-10T13:08:00.562514Z [info     ] 
+airflow-dag-processor-1  | ================================================================================
+airflow-dag-processor-1  | DAG File Processing Stats
+airflow-dag-processor-1  | 
+airflow-dag-processor-1  | Bundle    File Path    PID    Current Duration    # DAGs    # Errors    Last Duration    Last Run At
+airflow-dag-processor-1  | --------  -----------  -----  ------------------  --------  ----------  ---------------  -------------
+airflow-dag-processor-1  | ================================================================================ [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:1176
+airflow-dag-processor-1  | 2026-11-10T13:08:00.565118Z [info     ] Refreshing bundle dags-folder  [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:890
+airflow-dag-processor-1  | 2026-11-10T13:08:00.571981Z [info     ] Searching for files in dags-folder at /opt/airflow/dags [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:958
+airflow-dag-processor-1  | 2026-11-10T13:08:00.572632Z [info     ] Found 0 files for bundle dags-folder (dag_discovery_safe_mode=True) [airflow.dag_processing.manager.DagFileProcessorManager] loc=manager.py:963
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m

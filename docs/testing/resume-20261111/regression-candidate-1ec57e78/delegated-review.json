@@ -1,0 +1,24 @@
+{
+  "status": "USER_DELEGATED_EXACT_LOCAL_DELTA_APPROVAL",
+  "recorded_at": "2026-11-10T17:38:44.638898+00:00",
+  "authority": "nếu có câu hỏi nào cần duyệt thì cứ tự động duyệt theo đáp án đề xuất nhé. tôi đi ngủ đây",
+  "delegation_record": "docs/decisions/continuation-autonomy-20261111.json",
+  "image_id": "4220629ad090a5d2d084653b35c0a9647bed47cf01c035282b344300b6381394",
+  "baseline_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+  "counts": {
+    "LOW": 109,
+    "HIGH": 56,
+    "MEDIUM": 123,
+    "CRITICAL": 2
+  },
+  "new_high_critical_contexts": [],
+  "recommended_decision_applied": "Approve this exact test-only delta under unchanged conditional local controls",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "T014_FULL": "BLOCKED",
+  "artifact_sha256": {
+    "candidate.json": "7c25bbe58d8755e378332a839bfee9741511df65a954743c601c0dcb5b97621e",
+    "candidate-security.json": "83957cd157d3cf44c416493933f80ca70be2017a51b0cc1d0e40f9974e7e35fb",
+    "source-sha256.json": "b68c8f72d7d6f502cec0dbc0e241d3d794b76144407beef36dc33004647d5891"
+  }
+}

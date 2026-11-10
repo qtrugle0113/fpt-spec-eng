@@ -1,0 +1,44 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) ... 
+  test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='limit=201') ... FAIL
+  test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='offset=-1') ... FAIL
+  test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='ownership=unknown') ... FAIL
+  test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='paused=unknown') ... FAIL
+
+======================================================================
+FAIL: test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='limit=201')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_monitoring.py", line 20, in test_invalid_monitoring_filters_and_paging_are_rejected
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='offset=-1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_monitoring.py", line 20, in test_invalid_monitoring_filters_and_paging_are_rejected
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='ownership=unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_monitoring.py", line 20, in test_invalid_monitoring_filters_and_paging_are_rejected
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_invalid_monitoring_filters_and_paging_are_rejected (tests.api.test_monitoring.MonitoringContractTests.test_invalid_monitoring_filters_and_paging_are_rejected) (query='paused=unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_monitoring.py", line 20, in test_invalid_monitoring_filters_and_paging_are_rejected
+    self.assertEqual(response.status_code,422)
+AssertionError: 404 != 422
+
+----------------------------------------------------------------------
+Ran 1 test in 1.000s
+
+FAILED (failures=4)

@@ -56,9 +56,10 @@ class TableCreationResult(Record):
 
 class DAGDeployment(Record):
     __tablename__='dag_deployments'
-    __table_args__=(Index('uq_deployment_active_dag','dag_id',unique=True,postgresql_where=text("state IN ('READY_TO_DEPLOY','DEPLOYMENT_PENDING')")),
+    __table_args__=(UniqueConstraint('operation_id','dag_id',name='uq_deployment_operation_dag'),
+        Index('uq_deployment_active_dag','dag_id',unique=True,postgresql_where=text("state IN ('READY_TO_DEPLOY','DEPLOYMENT_PENDING')")),
         CheckConstraint("state IN ('VALIDATION_FAILED','READY_TO_DEPLOY','DEPLOYMENT_PENDING','DEPLOYED','DEPLOYMENT_FAILED','PARSE_ERROR')",name='ck_deployment_state'))
-    operation_id:Mapped[UUID]=mapped_column(ForeignKey('operations.id',ondelete='RESTRICT'),unique=True)
+    operation_id:Mapped[UUID]=mapped_column(ForeignKey('operations.id',ondelete='RESTRICT'))
     etl_revision_id:Mapped[UUID]=mapped_column(ForeignKey('etl_definition_revisions.id',ondelete='RESTRICT'))
     dag_id:Mapped[str]=mapped_column(ForeignKey('etl_definitions.dag_id',ondelete='RESTRICT'),server_default=FetchedValue())
     previous_deployment_id:Mapped[UUID|None]=mapped_column(ForeignKey('dag_deployments.id',ondelete='RESTRICT'))

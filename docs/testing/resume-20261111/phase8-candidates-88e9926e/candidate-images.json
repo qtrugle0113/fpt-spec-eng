@@ -1,0 +1,64 @@
+{
+  "captured_at": "2026-11-10T17:22:07.419716+00:00",
+  "run_id": "88e9926e",
+  "phase": "phase8",
+  "source_context": ".tools\\phase8-source-88e9926e",
+  "acceptance": "PENDING_EXACT_IMAGE_REVIEW",
+  "existing_services_modified": false,
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-phase8-backend-wheels-88e9926e:0.1.0",
+      "image_id": "a18041d29f9ad61194b397382ccb23726e6215151c4d2e3937450ca56fd62b7e",
+      "target": "wheels",
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\backend-wheels-build.log"
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-phase8-backend-88e9926e:0.1.0",
+      "image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "target": null,
+      "dockerfile": "backend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\backend-build.log"
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-phase8-airflow-wheels-88e9926e:0.1.0",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "target": "wheels",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\airflow-wheels-build.log"
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-phase8-airflow-88e9926e:0.1.0",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "target": null,
+      "dockerfile": "airflow/docker/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\airflow-build.log"
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-phase8-frontend-build-88e9926e:0.1.0",
+      "image_id": "40b5c4665c138783aac64080b0dc96f35d3ea3ddafa61caf924a4f8a3f010f05",
+      "target": "build",
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\frontend-build-build.log"
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-phase8-frontend-88e9926e:0.1.0",
+      "image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "target": null,
+      "dockerfile": "frontend/Dockerfile",
+      "build": "PASS",
+      "log": "docs\\testing\\resume-20261111\\phase8-candidates-88e9926e\\frontend-build.log"
+    }
+  ]
+}

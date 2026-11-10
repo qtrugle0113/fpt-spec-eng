@@ -1,0 +1,28 @@
+{
+  "postgres_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+  "mysql_image_id": null,
+  "runner_image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+  "runner_memory_limit_bytes": 536870912,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "tmpfs",
+  "task": "T128-RED",
+  "test_paths": [
+    "tests.unit.test_dashboard_metrics",
+    "tests.api.test_dashboard"
+  ],
+  "test_exit_code": 1,
+  "log": "docs\\testing\\resume-20261110\\t128-red\\t128-red-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261110\\t128-red\\t128-red-fixture-sources.json",
+  "existing_services_modified": false
+}

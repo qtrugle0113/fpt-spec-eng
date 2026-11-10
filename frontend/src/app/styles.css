@@ -105,4 +105,32 @@ dialog::backdrop { background: #101c3299; }
 .file-sources-panel legend { padding-inline: 5px; font-weight: 600; }
 .connections-page label:has(input[type="checkbox"]) { flex-direction: row; align-items: center; margin-block: 1rem; }
 .connections-page input[type="checkbox"] { width: auto; flex: 0 0 auto; }
+.dag-workspace { border: 0; min-width: 0; margin: 0; padding: 0; }
+.dag-workspace > legend { font-weight: 600; color: #52647b; margin-bottom: 1rem; }
+.dag-steps { margin-block: 1.25rem; }
+.dag-steps [aria-current="step"] { border-color: var(--accent); background: #edf4ff; color: #174c96; }
+.dag-facts { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr); gap: .65rem 1rem; }
+.dag-facts dt { color: #65758d; }
+.dag-facts dd { margin: 0; overflow-wrap: anywhere; }
+.dag-warning { color: #704c15; padding: .8rem 1rem; background: #fff7e7; border-left: 3px solid #d6a44f; }
+.dag-authorization { margin-block: 1.5rem; padding-block: 1rem; border-top: 1px solid var(--border); }
+.dag-authorization fieldset, .dag-result fieldset { border: 1px solid var(--border); border-radius: 8px; padding: 1rem; min-width: 0; }
+.dag-operation { padding: 1rem; margin-block: 1rem; background: #edf4ff; border-radius: 8px; }
+.dag-operation button { margin-inline-start: 1rem; }
+@media (max-width: 520px) { .dag-facts { grid-template-columns: 1fr; } .dag-facts dd { margin-bottom: .5rem; } .dag-steps button { width: 100%; } }
 .connections-page form { display: grid; gap: 1rem; margin-block: 1.5rem; }
+.monitoring-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.dashboard-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.dashboard-metrics article { margin: 0; }
+.dashboard-metrics strong { font-size: 1.75rem; }
+.connection-panel svg { width: 100%; max-height: 240px; }
+.connections-page fieldset { min-width: 0; }
+.page-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.page-heading > div { flex: 1; min-width: min(100%, 18rem); }
+.page-heading p { color: #66758b; line-height: 1.6; }
+.page-heading button, .connections-page > button { border: 1px solid var(--border); padding: 10px 15px; border-radius: 8px; background: #fff; color: #17243a; }
+.settings-form { max-width: 48rem; }
+.settings-form fieldset { border: 0; padding: 0; display: grid; gap: 1rem; }
+.settings-form legend { font-size: 19px; font-weight: 600; margin-bottom: 1rem; }
+.settings-form p { color: #66758b; font-size: 13px; line-height: 1.6; }
+.connections-page pre.monitoring-logs { max-height: 32rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; padding: 1rem; background: #101c30; color: #e5edf8; border-radius: .5rem; }

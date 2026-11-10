@@ -1,0 +1,21 @@
+{
+  "project": "aat-monitoring-e2e-d80151bd",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+    "frontend": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "test_source_sha256": {
+    "monitoring.spec.ts": "0986598775b161fb5ea31c95be3b052f2dcf78fdef7e0e1557d53d944ceb3a87",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6"
+  },
+  "exit_code": 0,
+  "cleanup_exit_code": 0
+}

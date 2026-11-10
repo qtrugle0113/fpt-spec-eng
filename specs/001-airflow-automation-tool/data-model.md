@@ -88,6 +88,16 @@ Không resolve chắc chắn thì chặn an toàn, không dùng Connection Code 
 | AuditEvent / audit_events | id, operation_id, subject_type/id, action, revision_before/after, acknowledgment_scope, timestamp, safe_summary | ghi xác nhận/xung đột/recovery; không chứa credentials, payload file/dataset hoặc nguyên dòng lỗi |
 | RunIntent / run_intents | id, operation_id, run_uuid, dag_id, airflow_run_id, run_type, etl_revision_id, authorization_id, request_sha256, state, reserved_at, last_reconciled_at | unique operation_id và dag_id/airflow_run_id và run_uuid; manual ID ổn định trước POST Airflow; ONCE không chuyển intent; scheduled intent tạo sau API xác minh run |
 
+Chi tiết triển khai T109: một Operation DAG_DEPLOY có nhiều DAGDeployment theo danh
+sách DAG trong workbook (FR-030 và DeployRequest.dag_ids). Unique là
+`(operation_id, dag_id)`, không phải operation_id đơn lẻ; vẫn giữ unique active
+deployment mỗi DAG. Migration0005 sửa constraint ORM ban đầu để khớp hợp đồng nhiều
+DAG, không đổi public API/nghiệp vụ. Mỗi kết quả giữ identity/file/version riêng;
+Operation chỉ tổng hợp SUCCEEDED/PARTIALLY_SUCCEEDED/FAILED/NEEDS_RECONCILIATION.
+Trước file publication, lưu key/hash/thời điểm publish dự kiến và trạng thái pending
+bền. Mất kết quả ghi hoặc lease chỉ reconcile đúng file/hash/version cùng identity,
+không tự ghi lại. Gate/current revision chỉ đổi sau registration đã xác minh.
+
 Operation: QUEUED → RUNNING → SUCCEEDED / PARTIALLY_SUCCEEDED / FAILED /
 NEEDS_RECONCILIATION. Worker mất lease không cho worker mới replay side effect chưa đối soát.
 Validation job có thể replay read-only; DDL phải kiểm tra ledger/result/schema; deploy phải

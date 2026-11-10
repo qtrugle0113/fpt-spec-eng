@@ -6,6 +6,11 @@ contract ở implementation. Mô tả tiếng Việt; message hiển thị trên
 
 ## Quy ước chung
 
+ETL preview item có `id` là revision UUID và `definition_id` là parent UUID để
+gọi `/etl-definitions/{id}/replacement-authorizations`. Hai identity tách biệt;
+không suy parent từ DAG ID hoặc dùng revision làm alias của parent. Table preview
+không cần definition_id. Trường bổ sung không thay workbook1.0.
+
 Local single-operator, không login. Chỉ bind loopback; CORS allow origin http://localhost:3000,
 không wildcard credentials; reject Origin lạ cho mutating requests, CSRF/origin protection
 cho local browser. Network DB host allowlist mặc định postgres/mysql; operator có thể cấu
@@ -89,6 +94,13 @@ Không FastAPI BackgroundTasks làm nguồn lưu việc, không chạy ETL trong
 | GET /templates/etl-definition | Không | XLSX attachment |
 | GET /health/live | Không | Process alive, không secrets |
 | GET /health/ready | Không | app DB/schema/worker/Airflow dependencies ready hoặc503 |
+
+Settings ETag bao phủ toàn bộ bốn defaults: revision public là tổng revision của
+bốn ApplicationSetting rows đã seed. GET lấy snapshot nhất quán; PATCH khóa các
+row theo key, kiểm revision rồi cập nhật atomic. DB trigger tăng revision từng
+row được ghi; response đọc lại sau flush. Stale trả412, readonly/null/boolean ở
+integer fields và timezone không hợp lệ trả422. Defaults mới chỉ áp dụng cấu
+hình mới; preview revision cũ giữ batch size đã resolve ở lần validation.
 
 Private endpoint `/internal/runtime/bind` dùng runtime service bearer từ secretfile, không
 được expose qua frontend proxy; verify identity/version qua Airflow, response chỉ binding/
@@ -192,3 +204,49 @@ Các lỗi nghiệp vụ public phân biệt `AUTHORIZATION_REVOKED`, `AUTHORIZA
 `AUTHORIZATION_ALREADY_RESERVED`, `EMPTY_REPLACEMENT_NOT_AUTHORIZED`,
 `REPLACEMENT_RECONCILIATION_REQUIRED`; message tiếng Anh, request_id/operation_id khi áp dụng,
 không raw SQL/credential.
+
+## Liên kết Airflow từ kết quả deployment
+
+`Deployment.airflow_url` là URL UI công khai cho DAG, lấy origin từ
+`AAT_AIRFLOW_PUBLIC_URL` (mặc định `http://localhost:8080`). Compose dùng cùng
+`AAT_AIRFLOW_PORT` với cổng UI được công bố. Origin phải là HTTP/HTTPS, không có
+userinfo, query hoặc fragment. Frontend hiển thị **Open Airflow** sau khi trạng
+thái là DEPLOYED; liên kết không thay bằng chứng run đã thực thi thành công.
+
+## Bằng chứng serialized revision khi redeploy
+
+Wrapper cố định ghi revision UUID và canonical hash vào task params. Registration
+đọc task definition từ public Airflow API, đối chiếu hai giá trị và đọc lại latest
+version sau đó. Tag và last_parsed_time mới không đủ khi serialized DAG còn ở bản
+cũ do giới hạn tần suất ghi của Airflow. Params chỉ là bằng chứng đăng ký; runtime
+vẫn dùng expected revision cố định của wrapper và xác minh run/TI/binding, không
+lấy quyền từ params/conf có thể do người gọi trigger cung cấp.
+
+## Metadata điều khiển trong Monitoring
+
+DAG managed có thể trả `definition_id`, `revision_id`, `upload_id`, `deployment_id`
+để UI lấy review/confirmation từ preview hiện có. Detail trả ETag generation để
+PATCH state qua primitive đã có. External trả các liên kết metadata này là null;
+tag `aat` đơn lẻ không cấp ownership hoặc quyền điều khiển. Run có `revision_id`
+từ binding bất biến khi có; task có `map_index` để đọc đúng log attempt của mapped
+task. Không sao chép lịch sử run Airflow vào application DB.
+
+FR-067 đã làm rõ theo quyết định chủ dự án: trigger nhận run queued khi native
+DAG paused. Không tự unpause. Operator xác nhận state command riêng; cron
+FULL_REFRESH vẫn kiểm SCHEDULED authority. Operation SUCCEEDED không có nghĩa
+run đã được thực thi hoặc đã commit dữ liệu.
+
+## Khoảng ngày và khả dụng Dashboard
+
+GET Dashboard dùng ngày lịch `from`/`to` YYYY-MM-DD, gồm trọn ngày cuối theo IANA
+timezone; tối đa366ngày cho time series hữu hạn. Lifetime độc lập với bộ lọc ngày.
+`scope` là ALL/MANAGED/EXTERNAL; `force_refresh=true` bỏ qua cache của lần đọc đó.
+Cache tối đa30giây, giảm theo refresh interval khi cấu hình dưới30giây.
+`next_scheduled_runs` giữ timestamp và native pause state do Airflow cung cấp.
+
+History được stream theo trang, không lưu mirror hoặc gom mọi payload vào RAM.
+Giới hạn100.000run/lần đọc và deadline30giây; chạm giới hạn/thay total/mất page
+phải trả INCOMPLETE với số liệu không khả dụng, không báo tổng thiếu là chính xác.
+Schedule lúc run chỉ lấy từ immutable binding/intent revision; thiếu là Unknown,
+không suy từ lịch hiện tại. Source outage có cache cũ phải gắn stale/completeness
+không khả dụng, không giả snapshot mới thành công.

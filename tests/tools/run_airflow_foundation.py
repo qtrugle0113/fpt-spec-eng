@@ -23,6 +23,10 @@ parser.add_argument('--fixture-dags',action='store_true',help='Parse 205 paused 
 parser.add_argument('--runtime-bind-tests',action='store_true',help='Run metadata/API binding tests against a real running SDK task in isolated fixtures')
 parser.add_argument('--runtime-execution-tests',action='store_true',help='Execute current runtime source through SDK, private backend bind and isolated target DB')
 parser.add_argument('--workbook-deps-image',help='Reviewed source of pinned workbook libraries for the nested backend fixture')
+parser.add_argument('--mysql-image',help='Optional reviewed MySQL fixture for cross-database SDK execution')
+parser.add_argument('--runtime-execution-module',action='append',help='Focused unittest module/class for real runtime execution')
+parser.add_argument('--runtime-label',default='t104-real-sdk',help='Evidence label for the real execution selector')
+parser.add_argument('--packaged-runtime',action='store_true',help='Execute the installed metadata/engine wheels in Airflow, without source overlays')
 args = parser.parse_args()
 if args.profile_only and not args.compose_profile:
     parser.error('--profile-only requires --compose-profile')
@@ -41,6 +45,7 @@ network_created = False
 owned_volumes=[]
 result = {'published_ports': False, 'existing_services_modified': False,
           'fixture_network': network, 'status': 'NOT_RUN'}
+result['airflow_runtime_mode']='INSTALLED_IMAGE_WHEELS' if args.packaged_runtime else 'SOURCE_OVERLAY'
 
 
 def run(*command, check=True, timeout=180):
@@ -91,7 +96,7 @@ try:
     if args.fixture_dags:
         environment['AAT_FIXTURE_DAG_COUNT']='205'
     if args.runtime_execution_tests:
-        environment['PYTHONPATH']='/tmp/etl_engine/src:/tmp/packages:/tmp'
+        environment['PYTHONPATH']='/tmp' if args.packaged_runtime else '/tmp/etl_engine/src:/tmp/packages:/tmp'
         environment['AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL']='5'
         for suffix in ('dags','private','staging','logs'):
             name=prefix+'-'+suffix
@@ -109,14 +114,32 @@ try:
         name = prefix+'-'+suffix
         created.append(name)
         mounts=[]
+        runtime_options=[]
         if args.runtime_execution_tests:
             mounts=['--volume',owned_volumes[0]+':/tmp/aat-contract-dags:ro,U','--volume',owned_volumes[3]+':/opt/airflow/logs:U']
             if suffix=='scheduler':
                 mounts+=['--volume',owned_volumes[1]+':/tmp/aat-runtime-private:ro,U','--volume',owned_volumes[2]+':/tmp/aat-runtime-staging:U']
-        run('run', '-d', '--name', name, '--network', network, '--memory', memory,
-            *mounts,*options, '--entrypoint', 'python', args.airflow_image, '-c', launch, command)
+                runtime_environment={
+                    'AAT_RUNTIME_SECRETS':'/tmp/aat-runtime-private/runtime-secrets',
+                    'AAT_APP_KEYRING':'/tmp/aat-runtime-private/keyring',
+                    'AAT_RUNTIME_TOKEN_FILE':'/tmp/aat-runtime-private/runtime_token',
+                    'AAT_RUNTIME_BIND_URL':'http://backend:8000/internal/runtime/bind',
+                    'AAT_UPLOADS_ROOT':'/tmp/aat-runtime-private/uploads',
+                    'AAT_STAGING_ROOT':'/tmp/aat-runtime-staging','AAT_DB_ALLOWED_HOSTS':'postgres,mysql'}
+                for key,value in runtime_environment.items():runtime_options+=['-e',key+'='+value]
+        run('create', '--name', name, '--network', network, '--memory', memory,
+            *mounts,*options,*runtime_options, '--entrypoint', 'python', args.airflow_image, '-c', launch, command)
         if args.runtime_execution_tests:
-            for source in ('tests','etl_engine','packages'):run('cp',str(ROOT/source),name+':/tmp/'+source)
+            for source in (('tests',) if args.packaged_runtime else ('tests','etl_engine','packages')):run('cp',str(ROOT/source),name+':/tmp/'+source)
+        # The scheduler imports shared packages during startup and its task
+        # children inherit sys.modules. Populate PYTHONPATH before starting it;
+        # changing sys.path later cannot replace already imported image code.
+        run('start',name)
+        if args.runtime_execution_tests and args.packaged_runtime:
+            origins="import aat_etl,aat_metadata,json; from pathlib import Path; d={p.__name__:p.__file__ for p in (aat_etl,aat_metadata)}; assert all(not Path(v).is_relative_to('/tmp') for v in d.values()); Path('/tmp/aat-installed-origins.json').write_text(json.dumps(d))"
+            run('exec',name,'python','-c',origins)
+            run('cp',name+':/tmp/aat-installed-origins.json',str(evidence/(suffix+'-installed-origins.json')))
+        if args.runtime_execution_tests:
             snapshot="from pathlib import Path; import hashlib,json; roots=[Path('/tmp/etl_engine'),Path('/tmp/packages'),Path('/tmp/tests')]; d={p.relative_to('/tmp').as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for r in roots for p in r.rglob('*.py') if not any(x in p.parts for x in ('build','__pycache__'))}; Path('/tmp/aat-airflow-fixture-sources.json').write_text(json.dumps(d,sort_keys=True,indent=2))"
             run('exec',name,'python','-c',snapshot)
             run('cp',name+':/tmp/aat-airflow-fixture-sources.json',str(evidence/(suffix+'-source-sha256.json')))
@@ -148,8 +171,11 @@ try:
         env=dict(os.environ,AAT_TEST_AIRFLOW_ORIGIN='http://'+api+':8080',AAT_TEST_AIRFLOW_PASSWORD=auth_password)
         command=[sys.executable,'-X','utf8',str(ROOT/'tests/tools/run_metadata_foundation.py'),
             '--postgres-image',args.postgres_image,'--runner-image',args.runner_image,'--workbook-deps-image',args.workbook_deps_image,
-            '--runtime-contract-network',network,'--unittest-module',('tests.airflow.test_runtime_execution.RealRuntimeExecutionTests' if args.runtime_execution_tests else 'tests.airflow.test_runtime_binding'),
-            '--task-label',('t104-real-sdk' if args.runtime_execution_tests else 't103-real-ti-bind'),'--evidence-dir',str(evidence.relative_to(ROOT))]
+            '--runtime-contract-network',network,
+            '--task-label',(args.runtime_label if args.runtime_execution_tests else 't103-real-ti-bind'),'--evidence-dir',str(evidence.relative_to(ROOT))]
+        modules=(args.runtime_execution_module or ['tests.airflow.test_runtime_execution.RealRuntimeExecutionTests']) if args.runtime_execution_tests else ['tests.airflow.test_runtime_binding']
+        for module in modules:command+=['--unittest-module',module]
+        if args.mysql_image:command+=['--mysql-image',args.mysql_image]
         if args.runtime_execution_tests:
             command+=['--runtime-fixture-scheduler',prefix+'-scheduler','--runtime-fixture-dags',owned_volumes[0],
                       '--runtime-fixture-private',owned_volumes[1],'--runtime-fixture-staging',owned_volumes[2],

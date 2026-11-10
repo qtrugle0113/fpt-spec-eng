@@ -1,5 +1,11 @@
 # Kế hoạch triển khai: Airflow Automation Tool
 
+**Làm rõ FR-067 đã được chủ dự án duyệt ngày2026-11-10:** giữ Airflow3.3.2.
+Manual run của DAG paused chờ queued; operator phải xác nhận unpause riêng,
+không tạm unpause ngầm hoặc tự bật cron. ONCE/SCHEDULED/BR-08 giữ nguyên.
+Quyết định tại `docs/decisions/fr067-paused-manual-approval.json`; bằng chứng và
+đề xuất tại `docs/proposals/fr067-paused-manual-run.md`.
+
 **Hiện hành T021:** parser history ORM, conditional composite FK và revision cho ETag đã
 kiểm47/47 trên PG cô lập; [báo cáo](../../docs/testing/t021-report.md),
 [scope](../../docs/decisions/t021-local-scope.json). Data Model ghi rõ snapshot/hash/ETag

@@ -1,0 +1,42 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/10] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/10] [desktop] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+[4/10] [desktop] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly
+[5/10] [desktop] › dag_builder.spec.ts:86:1 › Invalid workbook shows actionable errors without deployment
+[6/10] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[7/10] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[8/10] [mobile] › dag_builder.spec.ts:4:1 › ETL wizard validates, deploys and submits a real Airflow run
+[9/10] [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly
+  1) [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Review schedules and load policies' })
+    Expected: visible
+    Timeout: 45000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Review schedules and load policies' }) with timeout 45000ms
+      - waiting for getByRole('button', { name: 'Review schedules and load policies' })
+
+
+      52 |   const upload = await (await uploaded).json();
+      53 |   await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+    > 54 |   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
+         |                                                                                          ^
+      55 |   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
+      56 |   const authority = page.getByRole('region', { name: 'Replacement authorization for ' + fixtures[fixture] });
+      57 |   await expect(authority.getByRole('option', { name: /SCHEDULED/ })).toBeDisabled();
+        at /tests/dag_builder.spec.ts:54:90
+
+    Error Context: test-results/dag_builder-Replacement-au-72e62-wser-and-revokes-explicitly-mobile/error-context.md
+
+
+[10/10] [mobile] › dag_builder.spec.ts:86:1 › Invalid workbook shows actionable errors without deployment
+  1 failed
+    [mobile] › dag_builder.spec.ts:44:1 › Replacement authority persists across a fresh browser and revokes explicitly 
+  9 passed (1.6m)

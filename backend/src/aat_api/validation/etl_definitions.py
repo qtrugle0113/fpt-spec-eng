@@ -16,6 +16,7 @@ class ETLSpec:
     values:dict
     mappings:list[dict]=field(default_factory=list)
     requested_enabled:bool=False
+    batch_defaulted:bool=False
 
 
 @dataclass
@@ -67,7 +68,7 @@ def filtering(value):
     return parsed
 
 
-def validate(path):
+def validate(path,*,default_batch_size=1000):
     try:data=read(path,'ETL')
     except WorkbookFailure as error:return ValidationResult(issues=[error.issue])
     issues=[];definitions={}
@@ -120,7 +121,7 @@ def validate(path):
             column=16;keys=text(cells[15],required=False,maximum=64000)
             values['conflict_keys']=[identifier(v.strip()) for v in keys.split(',')] if keys else []
             if (cells[14]=='UPSERT')!=bool(values['conflict_keys']) or len(set(values['conflict_keys']))!=len(values['conflict_keys']):raise ValueError('Unique conflict keys are required only for UPSERT.')
-            for column,name,default,low,high in ((17,'batch_size',1000,1,10000),(18,'retry_count',0,0,10),(19,'retry_delay',60,0,3600)):
+            for column,name,default,low,high in ((17,'batch_size',default_batch_size,1,10000),(18,'retry_count',0,0,10),(19,'retry_delay',60,0,3600)):
                 values[name]=default if cells[column-1] in (None,'') else _integer(cells[column-1],low,high)
             column=20
             if cells[19] not in ('Enabled','Paused'):raise ValueError('Enabled/Paused must be Enabled or Paused.')
@@ -131,7 +132,7 @@ def validate(path):
                 values['filter']=filtering(cells[20])
             column=22
             if cells[21] not in (None,'',dag):raise ValueError('Column Mapping Reference must equal this DAG ID.')
-            definitions[dag]=ETLSpec(row,values,requested_enabled=cells[19]=='Enabled')
+            definitions[dag]=ETLSpec(row,values,requested_enabled=cells[19]=='Enabled',batch_defaulted=cells[16] in (None,''))
         except (ValueError,TypeError,OverflowError,ZoneInfoNotFoundError):
             issue('ETL_Definitions',row,column,'Invalid '+ETL_HEADERS['ETL_Definitions'][column-1]+' value or incompatible ETL fields.')
     targets={}

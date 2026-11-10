@@ -1,0 +1,8 @@
+{
+  "status": "EXPLICIT_USER_DELEGATION",
+  "authority": "nếu có câu hỏi nào cần duyệt thì cứ tự động duyệt theo đáp án đề xuất nhé. tôi đi ngủ đây",
+  "client_date": "2026-11-11",
+  "scope": "Continue the authorized Airflow Automation Tool implementation and apply proposed local decisions in this continuation",
+  "preserved_constraints": ["No commit or push", "No public deployment", "Preserve existing demo and user data", "No extension of local controls or expiry", "T014_FULL remains BLOCKED"],
+  "local_approval_reference": "docs/decisions/phase7-local-image-approval.json"
+}

@@ -1,0 +1,17 @@
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_new_revision_registers_and_old_clear_cannot_write_again (tests.airflow.test_revision_lifecycle.RevisionLifecycleTests.test_new_revision_registers_and_old_clear_cannot_write_again) ... FAIL
+
+======================================================================
+FAIL: test_new_revision_registers_and_old_clear_cannot_write_again (tests.airflow.test_revision_lifecycle.RevisionLifecycleTests.test_new_revision_registers_and_old_clear_cannot_write_again)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_revision_lifecycle.py", line 40, in test_new_revision_registers_and_old_clear_cannot_write_again
+    self.assertNotEqual(latest['id'],prior['id'])
+AssertionError: '01a1c59d-0116-7612-8f59-596c6d979b68' == '01a1c59d-0116-7612-8f59-596c6d979b68'
+
+----------------------------------------------------------------------
+Ran 1 test in 31.879s
+
+FAILED (failures=1)

@@ -568,8 +568,11 @@ không quyết định cấu trúc lưu trữ hoặc endpoint triển khai.
   external ETL metrics không có phải không khả dụng, không gán 0.
 - **FR-066**: Có Trigger DAG, Pause/Unpause, View Logs, Open in Airflow; managed cho điều khiển,
   external chỉ xem và mở Airflow trong MVP theo giả định AS-07.
-- **FR-067**: Trigger một logical run, chống gửi lặp; tiếp nhận khác success;
-  paused managed DAG được manual trigger sau xác nhận mà không cần unpause lịch.
+- **FR-067**: Trigger một logical run có identity bền, chống gửi lặp; tiếp nhận khác
+  execution success. Khi managed DAG paused, manual run queued và chỉ thực thi sau
+  thao tác unpause được xác nhận riêng. Ứng dụng không tự unpause/kích hoạt lịch từ
+  manual trigger; UI phải nói rõ điều kiện chờ. Với cron FULL_REFRESH, activation
+  vẫn cần SCHEDULED authority đúng scope; ONCE không cấp quyền bật lịch.
 - **FR-068**: Pause/unpause chỉ success sau Airflow xác nhận; pause không cancel run đang chạy;
   không gộp canceled/upstream-failed thành success.
 - **FR-069**: Log theo DAG/run/task/attempt, che secrets, giới hạn tải; thiếu log có lý do,

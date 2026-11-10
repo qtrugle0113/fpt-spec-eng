@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "images": {
+    "tests": "0afe72f298cebb3459025e39b88c90570a5a1bc6d4baeb43d5773e79db964c76",
+    "backend": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+    "frontend": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+    "airflow": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "workbook_deps": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e"
+  },
+  "selectors": [
+    {
+      "label": "integration",
+      "command": [
+        "C:\\Users\\rikat\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\Workspace\\fpt-spec-eng\\tests\\tools\\run_regression_profile.py",
+        "--tests-image",
+        "0afe72f298cebb3459025e39b88c90570a5a1bc6d4baeb43d5773e79db964c76",
+        "--backend-image",
+        "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+        "--postgres-image",
+        "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+        "--mysql-image",
+        "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+        "--path",
+        "tests/integration/test_metadata_foundation.py",
+        "--path",
+        "tests/integration/test_authorization_repository.py",
+        "--path",
+        "tests/integration/test_phase2_repositories.py",
+        "--path",
+        "tests/integration/test_phase2_operations.py",
+        "--path",
+        "tests/integration/test_phase2_api.py",
+        "--path",
+        "tests/integration/test_connections.py",
+        "--path",
+        "tests/integration/test_table_ddl.py",
+        "--path",
+        "tests/integration/test_file_sources.py",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261111\\t138-integration\\integration"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261111\\t138-integration\\integration"
+    }
+  ],
+  "existing_services_modified": false
+}

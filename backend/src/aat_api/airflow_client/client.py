@@ -33,6 +33,14 @@ class AirflowError(Exception):
         super().__init__(messages.get(status,'Airflow is unavailable or returned an invalid response.'))
 
 
+class DeadlineTransport:
+    def __init__(self,client,deadline):self.client,self.deadline=client,deadline
+
+    def request(self,*args,**kwargs):
+        outer=kwargs.pop('deadline',self.deadline)
+        return self.client.request(*args,**kwargs,deadline=min(self.deadline,outer))
+
+
 class AirflowClient:
     def __init__(self,base_url,*,username,password,transport=None,sleep=None,clock=None):
         pinned_schema()
@@ -69,11 +77,12 @@ class AirflowClient:
             self._token=token;self._expires=self._clock()+ttl
             return token
 
-    def request(self,method,path,*,json=None,params=None):
+    def request(self,method,path,*,json=None,params=None,deadline=None):
         method=method.upper()
         if method not in ('GET','POST','PATCH') or not path.startswith('/') or path.startswith('//') or '?' in path or '#' in path:
             raise ValueError('A controlled Airflow API path and method are required.')
-        deadline=self._clock()+30;refreshed=False
+        deadline=min(self._clock()+30,deadline) if deadline is not None else self._clock()+30
+        refreshed=False
         attempts=3 if method=='GET' else 1
         for attempt in range(attempts):
             while True:

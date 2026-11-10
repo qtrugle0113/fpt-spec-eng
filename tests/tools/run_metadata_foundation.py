@@ -21,6 +21,8 @@ parser.add_argument('--model-task', choices=['t022', 't023', 't024', 't025', 't0
 parser.add_argument('--repositories',action='store_true')
 parser.add_argument('--owner-init',action='store_true',help='Verify migrations under the non-superuser owner on a fresh fixture')
 parser.add_argument('--unittest-module',action='append',help='Run a source test module with unittest using the same isolated DB fixture')
+parser.add_argument('--pytest-path',action='append',help='Run a tests/ path with pytest in the same disposable fixture')
+parser.add_argument('--pytest-deps-image',help='Copy the already pinned pytest8.4.2 libraries from an approved test image')
 parser.add_argument('--task-label',help='Evidence label required with --unittest-module')
 parser.add_argument('--api-foundation',action='store_true')
 parser.add_argument('--operations',action='store_true')
@@ -48,9 +50,9 @@ args = parser.parse_args()
 runtime_peers=[args.runtime_fixture_scheduler,args.runtime_fixture_dags,args.runtime_fixture_private,args.runtime_fixture_staging]
 if any(runtime_peers) and (not all(runtime_peers) or not args.runtime_contract_network):parser.error('Complete disposable runtime fixture peers are required')
 if any(runtime_peers) and any(not re.fullmatch(r'aat-foundation-airflow-[a-f0-9]{8}-(scheduler|dags|private|staging)',value) for value in runtime_peers):parser.error('Only owned disposable Airflow fixture peers are supported')
-if sum((args.authorization, args.connections_orm, args.definitions_orm, args.file_parsers_orm, bool(args.model_task), args.repositories,args.owner_init,bool(args.unittest_module),args.api_foundation,args.operations,args.readiness,args.foundation,args.foundation_core)) > 1:
+if sum((args.authorization, args.connections_orm, args.definitions_orm, args.file_parsers_orm, bool(args.model_task), args.repositories,args.owner_init,bool(args.unittest_module),bool(args.pytest_path),args.api_foundation,args.operations,args.readiness,args.foundation,args.foundation_core)) > 1:
     parser.error('Choose one task selector')
-if args.unittest_module and (not args.task_label or not re.fullmatch('[a-z0-9-]+',args.task_label)):
+if (args.unittest_module or args.pytest_path) and (not args.task_label or not re.fullmatch('[a-z0-9-]+',args.task_label)):
     parser.error('A simple lowercase task label is required with unittest modules')
 task = 't021' if args.file_parsers_orm else 't020' if args.definitions_orm else 't019' if args.connections_orm else 't017' if args.authorization else 't016'
 if args.model_task:
@@ -58,6 +60,7 @@ if args.model_task:
 if args.repositories:task='t028-t030'
 if args.owner_init:task='t030-owner'
 if args.unittest_module:task=args.task_label
+if args.pytest_path:task=args.task_label
 if args.api_foundation:task='t032'
 if args.operations:task='t033'
 if args.readiness:task='t034'
@@ -108,6 +111,11 @@ if args.foundation or args.foundation_core:
     log_path='docs/testing/t014-round2-logs/local-'+task+'-'+args.phase+'.log'
 if args.unittest_module:
     test_paths=args.unittest_module
+    log_path='docs/testing/t014-round2-logs/local-'+task+'-'+args.phase+'.log'
+if args.pytest_path:
+    if any(not re.fullmatch(r'tests(?:/[A-Za-z0-9_.-]+)*',path) for path in args.pytest_path):
+        parser.error('Pytest paths must stay under tests/')
+    test_paths=['/tmp/'+path for path in args.pytest_path]
     log_path='docs/testing/t014-round2-logs/local-'+task+'-'+args.phase+'.log'
 ROOT = Path(__file__).resolve().parents[2]
 evidence_dir = ROOT / 'docs/testing'
@@ -174,7 +182,7 @@ try:
         '-e', 'AAT_UPLOADS_ROOT='+('/tmp/aat-runtime-private/uploads' if args.runtime_fixture_scheduler else '/tmp/aat-test-uploads'),
         *(['-e','AAT_TEST_RUNTIME_BACKEND=http://'+runner+':8000','-e','AAT_STAGING_ROOT=/tmp/aat-runtime-staging'] if args.runtime_fixture_scheduler else []),
         '-e', 'AAT_ASSETS_ROOT=/tmp',
-        '-e', 'AAT_FOUNDATION_INITIALIZE=' + ('1' if args.authorization or args.operations or args.readiness or args.unittest_module else '0'),
+        '-e', 'AAT_FOUNDATION_INITIALIZE=' + ('1' if args.authorization or args.operations or args.readiness or args.unittest_module or args.pytest_path else '0'),
         '-e', 'AAT_FOUNDATION_TEST_RUNNER=' + ('unittest' if args.unittest_module else 'pytest'),
         '-e', 'AAT_DB_ALLOWED_HOSTS=postgres,mysql,' + pg,
         '-e', 'AAT_AIRFLOW_HEALTH_URL=' + args.airflow_health_url,
@@ -188,9 +196,12 @@ try:
         # Connect only the disposable runner to the approved Airflow network for
         # read-only /monitor/health; existing containers/networks are unchanged.
         run('network','connect',args.airflow_network,runner)
-    if args.runtime_contract_network:run('network','connect',args.runtime_contract_network,runner)
-    for source in ['tests', 'docker', 'backend', 'etl_engine', 'packages', 'samples', 'specs','templates']:
+    if args.runtime_contract_network:
+        run('network','connect',*(['--alias','backend'] if args.runtime_fixture_scheduler else []),args.runtime_contract_network,runner)
+    for source in ['tests', 'docker', 'backend', 'etl_engine', 'packages', 'samples', 'specs','templates','airflow','frontend']:
         run('cp', str(ROOT / source), runner + ':/tmp/' + source)
+    for source in ('.gitattributes','.dockerignore','docker-compose.yml'):
+        run('cp',str(ROOT/source),runner+':/tmp/'+source)
     if args.engine_wheel_dir:
         wheel_root=(ROOT/args.engine_wheel_dir).resolve()
         if not wheel_root.is_relative_to(ROOT) or not wheel_root.is_dir():raise ValueError('Wheel artifacts must be inside this workspace')
@@ -219,6 +230,21 @@ try:
             run('cp',helper+':'+info['root']+'/'+entry,str(dependencies))
         run('cp',str(dependencies),runner+':/tmp/test-deps')
         workbook_dependencies={'source_image_id':run('inspect',helper,'--format','{{.Image}}'),'versions':info['versions']}
+    pytest_dependencies=None
+    if args.pytest_deps_image:
+        helper='aat-pytest-libs-'+secrets.token_hex(4)
+        names=['pytest','_pytest','pluggy','iniconfig','packaging','pygments']
+        query="import sysconfig,pathlib,json,importlib.metadata as m; p=pathlib.Path(sysconfig.get_paths()['purelib']); names="+repr(names)+"; print(json.dumps({'root':str(p),'entries':names+['py.py']+[v.name for v in p.iterdir() if any(v.name.startswith(n+'-') and v.name.endswith('.dist-info') for n in names if n!='_pytest')],'pytest_version':m.version('pytest')}))"
+        run('create','--name',helper,'--network=none','--entrypoint','python',args.pytest_deps_image,'-c',query)
+        created.append(helper);info=json.loads(run('start','-a',helper))
+        if info['pytest_version']!='8.4.2':raise RuntimeError('Pytest version differs from the existing test runner baseline')
+        dependencies=ROOT/'.tools'/('pytest-deps-'+secrets.token_hex(4));dependencies.mkdir(parents=True)
+        for entry in info['entries']:
+            if Path(entry).name!=entry:raise RuntimeError('Unexpected pytest library entry')
+            run('cp',helper+':'+info['root']+'/'+entry,str(dependencies))
+        # Copy the directory contents so workbook and pytest dependencies coexist.
+        run('cp',str(dependencies)+'/.',runner+':/tmp/test-deps')
+        pytest_dependencies={'source_image_id':run('inspect',helper,'--format','{{.Image}}'),'version':info['pytest_version']}
     # Private synthetic keyring belongs only to this disposable runner. Product
     # initialization never regenerates missing persistent keys.
     run('cp', str(ROOT / 'tests/tools/prepare_foundation_keyring.py'), runner + ':/tmp/prepare_keyring.py')
@@ -244,6 +270,7 @@ try:
               'engine_wheel_requested': bool(args.engine_wheel_dir),
               'wheel_snapshot': str(wheel_snapshot) if wheel_snapshot else None,
               'workbook_test_dependencies':workbook_dependencies,
+              'pytest_test_dependencies':pytest_dependencies,
               'fixture': 'Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted',
               'database_storage': 'new anonymous disk volumes' if args.disk_databases else 'tmpfs',
               'task': task.upper(), 'test_paths': test_paths,

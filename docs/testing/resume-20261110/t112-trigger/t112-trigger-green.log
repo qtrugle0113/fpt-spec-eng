@@ -1,0 +1,47 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_once_is_reserved_and_identity_is_stable_before_dispatch (tests.api.test_trigger.TriggerTests.test_once_is_reserved_and_identity_is_stable_before_dispatch) ... ok
+test_scheduled_is_not_manual_authority (tests.api.test_trigger.TriggerTests.test_scheduled_is_not_manual_authority) ... ok
+test_two_requests_cannot_transfer_one_once (tests.api.test_trigger.TriggerTests.test_two_requests_cannot_transfer_one_once) ... ERROR
+
+======================================================================
+ERROR: test_two_requests_cannot_transfer_one_once (tests.api.test_trigger.TriggerTests.test_two_requests_cannot_transfer_one_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/api/test_trigger.py", line 64, in test_two_requests_cannot_transfer_one_once
+    with ThreadPoolExecutor(max_workers=2) as pool:self.assertEqual(sorted(pool.map(request,range(2))),['accepted','rejected'])
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/python/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/python/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/api/test_trigger.py", line 62, in request
+    try:service.trigger(dag,body,uuid4());return 'accepted'
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/backend/src/aat_api/services/dag_control.py", line 45, in trigger
+    preview(upload_id)
+  File "/tmp/backend/src/aat_api/services/etl_preview.py", line 255, in preview
+    compiled=compile_definition(specs[revision.config_json['dag_id']])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/backend/src/aat_api/services/etl_preview.py", line 220, in compile_definition
+    with TargetSession(target_engine_,schema=config.target.schema_,table=config.target.table,timeout=0) as session:check_dependencies(session)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/etl_engine/src/aat_etl/loaders/session.py", line 53, in __enter__
+    if time.monotonic()>=deadline:raise TargetBusy('Target is busy with another managed run.')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+aat_etl.loaders.session.TargetBusy: Target is busy with another managed run.
+
+----------------------------------------------------------------------
+Ran 3 tests in 10.888s
+
+FAILED (errors=1)

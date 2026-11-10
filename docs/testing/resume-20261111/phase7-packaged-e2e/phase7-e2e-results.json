@@ -1,0 +1,30 @@
+{
+  "project": "aat-phase7-e2e-96fb3988",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "backend": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+    "frontend": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "airflow": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "test_source_sha256": {
+    "dashboard.spec.ts": "8c2bc929b39fc31295c7ee71d6cea558f5a09dc39485607afdf06a661cf8003d",
+    "settings.spec.ts": "aee8bf4d1467b22a6816f4f44706096e3480e2ffd7843d48fe99b120ee1eb2b4",
+    "accessibility.spec.ts": "cf4a7ae1161839787a4a25884e3bfdaeb489623c154b0ef63004c4ac0c6f622a",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6",
+    "settings-persistence.spec.ts": "872c68de27d0590517d0ac0adef7aea736d45314fbda7f0372ab83b06f80611b",
+    "dashboard-unavailable.spec.ts": "bbda50fbefba324b35c81c1e877e9150232c5e53b9bc318ce4a9517bb0dbc511"
+  },
+  "exit_code": 0,
+  "recreation_exit_code": 0,
+  "proxy_refresh_exit_code": 0,
+  "persistence_exit_code": 0,
+  "airflow_stop_exit_code": 0,
+  "outage_exit_code": 0,
+  "cleanup_exit_code": 0
+}

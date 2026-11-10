@@ -1,0 +1,67 @@
+
+Running 8 tests using 1 worker
+
+[1/8] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/8] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/8] [desktop] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence
+  1) [desktop] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_f7d73356-da4f-4ed9-b18d-90ced87ae381' }).getByRole('cell', { name: 'success', exact: true })
+    Expected: visible
+    Timeout: 130000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_f7d73356-da4f-4ed9-b18d-90ced87ae381' }).getByRole('cell', { name: 'success', exact: true }) with timeout 130000ms
+      - waiting for getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_f7d73356-da4f-4ed9-b18d-90ced87ae381' }).getByRole('cell', { name: 'success', exact: true })
+
+
+      35 |   await completed(request, operation.id);
+      36 |   const row = details.getByRole('row').filter({ hasText: run });
+    > 37 |   await expect(row.getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: 130000 });
+         |                                                                         ^
+      38 |   expect((await (await request.get('/api/v1/dags/' + dag)).json()).is_paused).toBe(true);
+      39 |   await row.getByRole('button', { name: 'View run details', exact: true }).click();
+      40 |   const runDetails = page.getByRole('region', { name: 'Run details', exact: true });
+        at /tests/monitoring.spec.ts:37:73
+
+    Error Context: test-results/monitoring-Monitoring-runs-15537--task-logs-and-row-evidence-desktop/error-context.md
+
+
+[4/8] [desktop] › monitoring.spec.ts:50:1 › An external DAG stays read-only even with an aat tag
+[5/8] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[6/8] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[7/8] [mobile] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence
+  2) [mobile] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_d05c6ada-2834-43b8-bca4-347be8dba8e5' }).getByRole('cell', { name: 'success', exact: true })
+    Expected: visible
+    Timeout: 130000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_d05c6ada-2834-43b8-bca4-347be8dba8e5' }).getByRole('cell', { name: 'success', exact: true }) with timeout 130000ms
+      - waiting for getByRole('region', { name: 'Workflow details', exact: true }).getByRole('row').filter({ hasText: 'manual__aat_d05c6ada-2834-43b8-bca4-347be8dba8e5' }).getByRole('cell', { name: 'success', exact: true })
+
+
+      35 |   await completed(request, operation.id);
+      36 |   const row = details.getByRole('row').filter({ hasText: run });
+    > 37 |   await expect(row.getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: 130000 });
+         |                                                                         ^
+      38 |   expect((await (await request.get('/api/v1/dags/' + dag)).json()).is_paused).toBe(true);
+      39 |   await row.getByRole('button', { name: 'View run details', exact: true }).click();
+      40 |   const runDetails = page.getByRole('region', { name: 'Run details', exact: true });
+        at /tests/monitoring.spec.ts:37:73
+
+    Error Context: test-results/monitoring-Monitoring-runs-15537--task-logs-and-row-evidence-mobile/error-context.md
+
+
+[8/8] [mobile] › monitoring.spec.ts:50:1 › An external DAG stays read-only even with an aat tag
+  2 failed
+    [desktop] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence 
+    [mobile] › monitoring.spec.ts:12:1 › Monitoring runs a paused managed DAG and reads actual task logs and row evidence 
+  6 passed (5.0m)

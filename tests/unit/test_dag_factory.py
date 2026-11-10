@@ -41,3 +41,16 @@ class DAGFactoryTests(unittest.TestCase):
         self.assertEqual(first,module.render(dict(reversed(list(config.items()))),revision_id=identity,revision_sha256='a'*64))
         for revision,sha in [('not-a-uuid','a'*64),(identity,'not-a-hash')]:
             with self.subTest(revision=str(revision)),self.assertRaises(ValueError):module.render(config,revision_id=revision,revision_sha256=sha)
+
+    def test_cron_timezone_catchup_and_initial_pause_follow_contract(self):
+        config=configuration()
+        config.update(schedule='0 9 * * *',start_date='2026-11-01T09:00:00+09:00',
+                      catchup=True,is_paused=False)
+        source=self.generated(config)
+        with tempfile.TemporaryDirectory() as root:
+            path=Path(root)/'owned.py';path.write_bytes(source)
+            dag=runpy.run_path(str(path))['dag']
+        self.assertEqual(str(dag.timezone),'Asia/Seoul')
+        self.assertTrue(dag.catchup)
+        self.assertTrue(dag.is_paused_upon_creation)
+        self.assertEqual(dag.schedule,'0 9 * * *')

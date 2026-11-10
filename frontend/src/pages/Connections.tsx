@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { ConnectionForm } from '../features/connections/ConnectionForm';
 import { APIError, createConnection, deleteConnection, getConnection, listConnections, patchConnection, testConnection,
@@ -10,13 +11,9 @@ const failureMessage = (error: unknown) => error instanceof APIError
   : 'The service could not complete the request. Try again.';
 
 function DeleteConfirmation({ connection, busy, onCancel, onDelete }: { connection: Connection; busy: boolean; onCancel: () => void; onDelete: () => void }) {
-  const dialog = useRef<HTMLDialogElement>(null);
-  useEffect(() => { dialog.current?.showModal(); }, []);
-  return <dialog ref={dialog} aria-labelledby="delete-connection-title" onCancel={(event) => { event.preventDefault(); if (!busy) onCancel(); }}>
-    <h2 id="delete-connection-title">Delete connection</h2>
+  return <ConfirmationDialog title="Delete connection" busy={busy} onCancel={onCancel} onConfirm={onDelete} confirmLabel="Confirm delete">
     <p>Remove <strong>{connection.code}</strong> from this workspace? Its saved configuration will no longer be available for new work.</p>
-    <div className="connection-actions"><button type="button" autoFocus disabled={busy} onClick={onCancel}>Cancel</button><button type="button" className="danger-button" disabled={busy} onClick={onDelete}>{busy ? 'Deleting…' : 'Confirm delete'}</button></div>
-  </dialog>;
+  </ConfirmationDialog>;
 }
 
 export function Connections() {
