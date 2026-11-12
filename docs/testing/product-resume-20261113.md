@@ -25,6 +25,22 @@ Workflow UI thực tế trên demo desktop/mobile6checks PASS,35.267/31.387s,
   bằng chứng đã stop/start toàn bộ DB service.
 - T145:12cases admission/commit loss, revoke trước/sau admission và extraction
   kill/terminal PASS203.339s; cleanup0.
+- T139 E2E history/parser/authorization PASS trên packaged full-workflow fixture.
+  T148 security14PASS, language6/6 và contract drift2/2; T149 response limits và
+  Dashboard truth PASS. Evidence tại `resume-20261113/history-parser-e2e/`,
+  `security-surfaces/`, `language-e2e/`, `response-limits-measured/` và
+  `dashboard-truth-airflow/`.
+- T147 packaged Airflow large-data PASS:22.000 hàng, payload1.441.792.000 bytes,
+  174 commits/parts, staging allocated1.442.504.704 bytes, peak child RSS103.460.864
+  bytes với budget536.870.912. Cùng image IDs đã preflight, 15/15 quota/RSS/protected-GC
+  tests PASS, gồm process kill trước OOM và bảo vệ artifact cần reconciliation.
+  Evidence tại `resume-20261113/airflow-memory-large-r5/` và
+  `resume-20261113/airflow-memory-guards/`.
+- T146 chưa khép: MySQL concurrency PASS; Postgres có lượt PASS riêng nhưng module
+  lặp lại báo scheduled task `AirflowFailException` và chưa thu được guard message.
+  Chưa kết luận lỗi sản phẩm hoặc đóng task trước khi có run ổn định/diagnostic.
+- T150 docs được đồng bộ; internal links cho README/architecture/API/Excel/
+  troubleshooting/Quickstart và diff checks PASS. T139, T144, T145, T147–T150 đã khép.
 - Contract drift mới: runtime route inventory và required JSON request fields
   khớp canonical contract, derive từ schema thay vì hardcode operation count.
   Hai checks PASS1.927s trên installed backend image với test source mới,
@@ -54,11 +70,11 @@ T140 còn phải đối chiếu đủ restart giữa extraction/commit/refresh t
 
 ## Đang làm và còn lại
 
-- Đang chạy8ReplacementBoundaryTests (empty consent/rollback/reader visibility),
-  sau đó2AppendRerunTests tại `resume-20261113/replacement-boundaries-airflow/`.
-  Chờ kết quả cuối/cleanup; chưa tính PASS.
-- T139/T140/T144–T152 còn mở. T150 đã có architecture/API/Excel/troubleshooting
-  và hướng dẫn portable cập nhật; chưa nghiệm thu toàn scope.
+- T140 fresh selector đã PASS trong564.113s, nhưng còn thiếu restart giữa extraction,
+  commit và FULL_REFRESH trên fresh Compose stack.
+- T146 PostgreSQL concurrency cần giải thích scheduled run thất bại; MySQL tương ứng PASS.
+- T151 chờ T140 và kiểm tra sample pack/download/checksum trên fresh stack.
+- T152 final acceptance chưa thể chạy khi các task/gates trên còn mở.
 - T014_FULL vẫn BLOCKED. Chỉ local/dữ liệu tổng hợp/loopback; hạn ngoại lệ
   23/11/2026 00:00 UTC+09, review16/11. Không thêm ngoại lệ mới.
 - Source/locks/core/SDK giữ nguyên; chỉ runtime Airflow bỏ git/git-man không dùng
@@ -66,7 +82,7 @@ T140 còn phải đối chiếu đủ restart giữa extraction/commit/refresh t
 
 ## Bước tiếp theo
 
-Đọc kết quả selectors đang chạy trước khi rerun. Khắc phục lỗi nếu có, khép
-đúng phạm vi từng task; tiếp tục UI history/parser/authorization, concurrency,
-large data, security/language/performance và sample/docs/final acceptance.
+Tiếp tục T140 phase-specific restart và chẩn đoán T146 PostgreSQL bằng selector
+cô lập; sau đó xác minh T151 sample pack/fresh stack rồi mới chạy T152 Analyze và
+acceptance. T014 chỉ đóng theo scan/CI/reviewer evidence; không tạo waiver mới.
 Không commit/push hoặc xóa stack/dữ liệu có trước.

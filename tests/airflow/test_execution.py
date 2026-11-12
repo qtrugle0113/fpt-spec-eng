@@ -62,7 +62,7 @@ class WorkflowFixture(unittest.TestCase):
             if time.monotonic()>deadline:self.fail('Private fixture backend readiness exceeded deadline')
             time.sleep(.2)
 
-    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None,workbook_edit=None,file_data=None,parser_options=None,expected_records=None,expect_failure=False,before_trigger=None,expect_trigger_error=None,allow_empty=False,failure_records=None,pause_after_run=True):
+    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None,workbook_edit=None,file_data=None,parser_options=None,expected_records=None,expect_failure=False,before_trigger=None,expect_trigger_error=None,allow_empty=False,failure_records=None,pause_after_run=True,target_verifier=None):
         from aat_api.services.connections.service import transaction,active
         from aat_api.services.table_preview import target_engine
         from aat_api.services.etl_preview import preview
@@ -118,7 +118,22 @@ class WorkflowFixture(unittest.TestCase):
             source=source.replace('execute_task(expected_revision=expected_revision)','execute_task(expected_revision=expected_revision,mode='+repr(fault_mode)+')')
             return source.encode()
         with patch.object(deployments.factory,'render',side_effect=instrument) if fault_mode else nullcontext():
-            self.assertEqual(deployments.execute(self.claim(command,'route-deploy'),'route-deploy'),('SUCCEEDED',None))
+            deployment_outcome=deployments.execute(self.claim(command,'route-deploy'),'route-deploy')
+        if deployment_outcome!=('SUCCEEDED',None):
+            import re
+            from aat_metadata.models.operations import DAGDeployment
+            deployment_id=command['result_links'][0].rsplit('/',1)[1]
+            with transaction() as session:
+                deployment=session.get(DAGDeployment,UUID(deployment_id))
+                file_key=deployment.generated_file_key if deployment else None
+            try:
+                errors=airflow().client.request('GET','/importErrors',params={'limit':100,'offset':0}).get('import_errors',[])
+                matching=[error for error in errors if file_key and str(error.get('filename','')).endswith(file_key)]
+                types=sorted(set(re.findall(r'\b[A-Za-z][A-Za-z0-9]*(?:Error|Exception)\b',' '.join(str(error.get('stack_trace','')) for error in matching))))
+                print('DEPLOYMENT_DIAGNOSTIC outcome='+str(deployment_outcome[1])+' matching_import_errors='+str(len(matching))+' error_types='+','.join(types),flush=True)
+            except Exception as error:
+                print('DEPLOYMENT_DIAGNOSTIC outcome='+str(deployment_outcome[1])+' diagnostic_unavailable='+type(error).__name__,flush=True)
+        self.assertEqual(deployment_outcome,('SUCCEEDED',None))
         self.finish(command)
         deployment_id=command['result_links'][0].rsplit('/',1)[1]
         current=preview(UUID(uploaded['id']));item=current['items'][0]
@@ -188,9 +203,14 @@ class WorkflowFixture(unittest.TestCase):
             with target_engine(target_revision) as engine,engine.connect() as cursor:
                 self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),failure_records if failure_records is not None else [(99,'old protected row')])
             return dict(dag=dag,authority=authority,run_id=run_id,item=item,target=target,target_revision=target_revision)
-        with target_engine(target_revision) as engine,engine.connect() as cursor:
-            self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),expected_records if expected_records is not None else [(1,'first'),(2,None)])
-        row_count=len(expected_records) if expected_records is not None else 2
+        if target_verifier:
+            with target_engine(target_revision) as engine:
+                row_count=target_verifier(engine,dict(dag=dag,run_id=run_id,target=target,target_revision=target_revision))
+            self.assertIs(type(row_count),int)
+        else:
+            with target_engine(target_revision) as engine,engine.connect() as cursor:
+                self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),expected_records if expected_records is not None else [(1,'first'),(2,None)])
+            row_count=len(expected_records) if expected_records is not None else 2
         with transaction() as session:
             binding=session.execute(text('SELECT b.state,b.commit_uncertain,b.airflow_run_type,d.state AS dataset_state,d.extracted_rows,d.validated_rows,d.total_bytes,m.extracted_rows AS metric_extracted,m.validated_rows AS metric_validated,m.loaded_rows,m.failed_rows_nullable,m.phase FROM execution_bindings b JOIN dataset_manifests d ON d.id=b.dataset_id JOIN execution_metrics m ON m.binding_id=b.id WHERE b.dag_id=:dag AND b.airflow_run_id=:run'),{'dag':dag,'run':run_id}).one()
             # File APPEND/UPSERT manifests pin raw extraction before typed streaming.

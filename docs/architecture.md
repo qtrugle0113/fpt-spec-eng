@@ -50,6 +50,6 @@ network, credentials và databases riêng, không dùng demo làm fixture.
 
 MVP dành cho một operator local/loopback. Quyền local có điều kiện không đồng
 nghĩa nghiệm thu security hoặc sản phẩm đầy đủ. Trạng thái kiểm chứng ở
-[checkpoint](testing/product-resume-20261112.md); phiên bản, resource limits và
+[checkpoint](testing/product-resume-20261113.md); phiên bản, resource limits và
 dependency locks được định nghĩa tại [plan](../specs/001-airflow-automation-tool/plan.md).
 

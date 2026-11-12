@@ -1,0 +1,26 @@
+{
+  "project": "aat-regression-6874aa23",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "tests": "23e9105279b8ec634785953b77b5293c6fbcfca47458ca8f7088e58f5d88066c",
+    "backend": "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+  },
+  "compose_config": ".tools\\compose-aat-regression-6874aa23.json",
+  "startup_exit_code": 0,
+  "exit_code": 0,
+  "test_paths": [
+    "tests/etl/test_resource_quota.py",
+    "tests/etl/test_staging_cleanup.py"
+  ],
+  "selectors_assigned_elsewhere": [
+    "tests/etl/test_runtime_adapter.py",
+    "tests/etl/test_runtime_lifecycle.py",
+    "tests/etl/test_runtime_recovery_projection.py",
+    "tests/etl/test_worker_maintenance.py"
+  ],
+  "cleanup_exit_code": 0
+}

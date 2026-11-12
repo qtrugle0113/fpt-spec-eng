@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "images": {
+    "backend": "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8",
+    "frontend": "9d97ef266e4f9e7c6c351562ec24d694d2d7abf111711993034e7567c91243b0",
+    "airflow": "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+    "tests": "23e9105279b8ec634785953b77b5293c6fbcfca47458ca8f7088e58f5d88066c",
+    "e2e": "5e4690b47f72a29652174afdba1cea50cccfc5c7ad8f7258a35e837e6578c5aa",
+    "workbook_deps": "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8"
+  },
+  "planned_groups": [
+    "airflow"
+  ],
+  "selectors": [
+    {
+      "label": "airflow-0",
+      "command": [
+        "C:\\Users\\rikat\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\Workspace\\fpt-spec-eng\\tests\\tools\\run_airflow_foundation.py",
+        "--runtime-execution-tests",
+        "--packaged-runtime",
+        "--runtime-execution-module",
+        "tests.airflow.test_airflow_memory.AirflowMemoryTests",
+        "--runtime-label",
+        "regression-airflow-0",
+        "--airflow-image",
+        "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011",
+        "--postgres-image",
+        "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+        "--runner-image",
+        "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011",
+        "--mysql-image",
+        "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+        "--workbook-deps-image",
+        "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261113\\airflow-memory-large-r5\\airflow-0"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261113\\airflow-memory-large-r5\\airflow-0"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-81a0866e\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011",
+      "status": "PASS",
+      "actual_image_id": "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+      "status": "PASS",
+      "actual_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+      "status": "PASS",
+      "actual_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce"
+    },
+    {
+      "name": "workbook_deps",
+      "expected_image_id": "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8",
+      "status": "PASS",
+      "actual_image_id": "64ed903c9a59c298ee6184c0d9fcb2742301375f028c7573839f532eaf25b4d8"
+    }
+  ],
+  "active_selector": null
+}
