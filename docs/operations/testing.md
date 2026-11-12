@@ -1,5 +1,35 @@
 # Chạy regression trong fixture riêng
 
+## Tiếp tục nghiệm thu Phase8
+
+Sau khi manifest local đạt policy, selectors tập trung cho T143 và recovery:
+
+```powershell
+python -X utf8 tests/tools/run_regression.py --group airflow --airflow-module tests.airflow.test_file_database
+python -X utf8 tests/tools/run_regression.py --group airflow --airflow-module tests.airflow.test_retry_recovery --airflow-module tests.airflow.test_full_refresh_recovery
+```
+
+Kiểm T140 từ host trên namespace mới, không có `.env` và không dùng volumes demo:
+
+```powershell
+$env:AAT_RUN_FRESH_STARTUP='1'
+python -X utf8 -m unittest tests.integration.test_one_command_startup -v
+Remove-Item Env:AAT_RUN_FRESH_STARTUP
+```
+
+Selector này build/kiểm exact IDs khớp policy trước runtime admission, sau đó
+nghiệm thu đúng `podman compose up --build -d` trên project mới; không chạy
+migration/seed thủ công. Ports23001/28001/28081 phải trống. Test giữ sample
+workflow trong fixture đến khi kiểm restart/secret/key loss xong rồi cleanup
+chỉ project vừa tạo. Không dùng lệnh này như bằng chứng PASS trước khi có result.
+
+`verify_running_workflow.py` kiểm UI desktop/mobile và dữ liệu đích trên project
+local được chọn rõ; nó tạo sample namespace `full_*` và giữ dữ liệu sample,
+không cleanup app/volumes. Chỉ dùng cho local tổng hợp có policy còn hiệu lực;
+browser tạm dùng host network để mở đúng các URL loopback như người dùng.
+Lệnh nhận `--project`, `--base-url`, `--airflow-url`, `--evidence-dir` và xác minh
+running images khớp manifest trước khi thực hiện.
+
 Stack sản phẩm khởi động bằng một lệnh theo README, không cần Python/Node trên
 host. Các driver phát triển bên dưới dùng Python3.12 chuẩn trên host để điều
 khiển Podman; dependencies ứng dụng, pytest, browser và dữ liệu kiểm thử đều chạy

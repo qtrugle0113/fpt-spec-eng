@@ -34,9 +34,11 @@ COPY --chown=airflow:root airflow/docker/health.sh /opt/aat/health.sh
 COPY --chown=airflow:root docker/bootstrap/health.py /opt/aat/health.py
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bin/bash", "/opt/aat/entrypoint.sh"]
 
-# LocalExecutor bootstrap/MVP has no Docker CLI consumer or engine socket.
+# LocalExecutor uses the local DAG volume, not Docker CLI or Git DAG bundles.
 USER root
-RUN apt-get purge -y docker-ce-cli && test ! -e /usr/bin/docker
+RUN apt-get purge -y docker-ce-cli git git-man && \
+    test ! -e /usr/bin/docker && test ! -e /usr/bin/git && \
+    ! dpkg-query -W -f='${Status}' git git-man 2>/dev/null | grep -q 'install ok installed'
 USER airflow
 
 # uv extras and prek lint environment are not consumers of this LocalExecutor MVP.

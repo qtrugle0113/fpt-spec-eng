@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [desktop] › accessibility.spec.ts:3:1 › Six pages preserve landmarks, visible main actions and narrow layouts
+[2/10] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[3/10] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[4/10] [desktop] › dashboard.spec.ts:3:1 › Dashboard renders actual aggregates, lifetime scope and explicit refresh
+[5/10] [desktop] › settings.spec.ts:3:1 › Settings persist real changes and require a new review after a stale revision
+[6/10] [mobile] › accessibility.spec.ts:3:1 › Six pages preserve landmarks, visible main actions and narrow layouts
+[7/10] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[8/10] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[9/10] [mobile] › dashboard.spec.ts:3:1 › Dashboard renders actual aggregates, lifetime scope and explicit refresh
+[10/10] [mobile] › settings.spec.ts:3:1 › Settings persist real changes and require a new review after a stale revision
+  10 passed (7.2s)
+

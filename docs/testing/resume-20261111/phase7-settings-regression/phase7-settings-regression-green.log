@@ -1,0 +1,36 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_defaults_persist_and_global_revision_changes_for_each_setting (tests.api.test_settings.SettingsContractTests.test_defaults_persist_and_global_revision_changes_for_each_setting) ... foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+ok
+test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected (tests.api.test_settings.SettingsContractTests.test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected) ... foundation_airflow_probe_failed exception_type=URLError
+ok
+test_new_batch_defaults_do_not_mutate_a_validated_revision (tests.api.test_settings.SettingsNewConfigTests.test_new_batch_defaults_do_not_mutate_a_validated_revision) ... foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+ok
+test_101_dags_and_formula_never_return_partial_definitions (tests.unit.test_etl_workbook.ETLWorkbookTests.test_101_dags_and_formula_never_return_partial_definitions) ... ok
+test_confirmation_covers_100_revisions_within_the_bounded_token_limit (tests.unit.test_etl_workbook.ETLWorkbookTests.test_confirmation_covers_100_revisions_within_the_bounded_token_limit) ... ok
+test_defaults_are_typed_and_new_dag_is_always_paused (tests.unit.test_etl_workbook.ETLWorkbookTests.test_defaults_are_typed_and_new_dag_is_always_paused) ... ok
+test_disabled_mapping_and_constant_scalar_remain_metadata (tests.unit.test_etl_workbook.ETLWorkbookTests.test_disabled_mapping_and_constant_scalar_remain_metadata) ... ok
+test_duplicate_dag_rejects_whole_workbook_at_actual_row (tests.unit.test_etl_workbook.ETLWorkbookTests.test_duplicate_dag_rejects_whole_workbook_at_actual_row) ... ok
+test_file_union_disallows_db_fields_and_filter (tests.unit.test_etl_workbook.ETLWorkbookTests.test_file_union_disallows_db_fields_and_filter) ... ok
+test_mapping_reference_and_duplicate_enabled_targets (tests.unit.test_etl_workbook.ETLWorkbookTests.test_mapping_reference_and_duplicate_enabled_targets) ... ok
+test_repository_sample_uses_the_existing_seed_references (tests.unit.test_etl_workbook.ETLWorkbookTests.test_repository_sample_uses_the_existing_seed_references) ... ok
+test_unsafe_filter_bad_cron_and_ambiguous_start_are_located (tests.unit.test_etl_workbook.ETLWorkbookTests.test_unsafe_filter_bad_cron_and_ambiguous_start_are_located) ... ok
+test_airflow_outage_returns_unavailable_values_not_zero (tests.api.test_dashboard.DashboardContractTests.test_airflow_outage_returns_unavailable_values_not_zero) ... ok
+test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) ... ok
+test_inclusive_dates_respect_dst_not_fixed_24_hour_days (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_inclusive_dates_respect_dst_not_fixed_24_hour_days) ... ok
+test_run_time_uses_start_then_queue_never_logical_date (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_run_time_uses_start_then_queue_never_logical_date) ... ok
+test_schedule_categories_do_not_guess_historical_config (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_schedule_categories_do_not_guess_historical_config) ... ok
+test_success_rate_excludes_unfinished_and_unknown_states (tests.unit.test_dashboard_metrics.DashboardMetricsTests.test_success_rate_excludes_unfinished_and_unknown_states) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 7.787s
+
+OK

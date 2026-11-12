@@ -1,21 +1,23 @@
 # Tạo, triển khai và chạy DAG từ workbook
 
-## Bản chạy thử hiện có
+## Mở bản local
 
-Ứng dụng tại <http://localhost:13000/dag-builder>, API tại
-<http://localhost:18000/api/v1/health/ready>, Airflow tại <http://localhost:18080>.
-Đây là bản local chạy source hiện tại trên dependency images có sẵn, không thay
-nghiệm thu image mới hoặc gate T014_FULL. Monitoring/Dashboard/Settings còn thuộc
-Phase7, chưa được công bố hoàn thành.
+Sau khi artifact đã scan/policy đạt, khởi động theo
+[hướng dẫn local portable](local-portable.md). Địa chỉ mặc định: ứng dụng
+<http://localhost:23000/dag-builder>, readiness
+<http://localhost:28000/api/v1/health/ready>, Airflow <http://localhost:28080>.
+Kiểm readiness thực tế; địa chỉ trong tài liệu không chứng minh service đang chạy.
 
-Project `aat-dag_builder-e2e-6f3a6830` có volumes riêng. Khởi động lại:
+Project và Compose config được ghi tại `.tools/local-demo.json` riêng cho mỗi
+máy. Khởi động lại bản đã tạo, giữ dữ liệu:
 
 ```powershell
 $env:PODMAN_COMPOSE_PROVIDER=(Resolve-Path .tools/docker-compose-5.6.0.exe).Path
-podman compose -f .tools/compose-aat-dag_builder-e2e-6f3a6830.json -p aat-dag_builder-e2e-6f3a6830 up -d --no-build frontend airflow-scheduler airflow-dag-processor
+$demo=Get-Content -Raw -Encoding utf8 .tools/local-demo.json | ConvertFrom-Json
+podman compose -f $demo.compose_config -p $demo.project up -d --no-build
 ```
 
-Dừng bằng `podman compose -f .tools/compose-aat-dag_builder-e2e-6f3a6830.json -p aat-dag_builder-e2e-6f3a6830 down`.
+Dừng bằng `podman compose -f $demo.compose_config -p $demo.project down`.
 Không thêm `--volumes`; dữ liệu, uploads, keys và recovery evidence phải được giữ.
 
 ## Luồng thao tác
@@ -35,7 +37,8 @@ Không thêm `--volumes`; dữ liệu, uploads, keys và recovery evidence phả
 6. DAG mới paused. Xác nhận **Enable manual execution** hoặc **Activate schedule**.
    **Pause future scheduling** không hủy run đã bắt đầu.
 7. Xác nhận **Run workflow now**. Operation SUCCEEDED chỉ xác nhận lệnh trigger;
-   dùng **Open Airflow** để xem trạng thái run/task thực tế và kết quả ETL.
+   dùng Monitoring/Dashboard và **Open Airflow** để xem trạng thái run/task thực tế;
+   đối soát dữ liệu đích để xác minh kết quả ETL.
 
 FR-067 đã được làm rõ: manual trigger không tự unpause. Nếu DAG còn paused,
 run giữ queued cho tới khi operator xác nhận unpause riêng. Không cần submit run
@@ -69,7 +72,8 @@ làm hết lỗi.
 
 ## Bằng chứng
 
-[Checkpoint tiếp tục](../testing/product-resume-20261110.md) ghi selector và kết
+[Checkpoint sản phẩm](../testing/product-resume-20261111.md) và
+[lượt tiếp nhận hiện tại](../testing/product-resume-20261112.md) ghi selector và kết
 quả thực tế. Playwright kiểm desktop1440/mobile390, invalid workbook, validation
 retry, cấp/list/detail/revoke quyền qua trình duyệt mới, deploy/activation/trigger.
 Host verifier đối chiếu public Airflow success, binding/metrics và giá trị target;

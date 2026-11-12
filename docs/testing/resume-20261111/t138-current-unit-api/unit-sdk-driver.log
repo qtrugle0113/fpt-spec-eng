@@ -1,0 +1,10 @@
+test_canonical_bytes_are_deterministic_and_invalid_identity_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_canonical_bytes_are_deterministic_and_invalid_identity_rejected) ... ok
+test_cron_timezone_catchup_and_initial_pause_follow_contract (tests.unit.test_dag_factory.DAGFactoryTests.test_cron_timezone_catchup_and_initial_pause_follow_contract) ... ok
+test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries (tests.unit.test_dag_factory.DAGFactoryTests.test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries) ... ok
+test_untrusted_literal_remains_data_and_extra_credentials_are_rejected (tests.unit.test_dag_factory.DAGFactoryTests.test_untrusted_literal_remains_data_and_extra_credentials_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.947s
+
+OK
+

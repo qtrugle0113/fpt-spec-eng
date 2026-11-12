@@ -1,0 +1,22 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts) ... ERROR
+
+======================================================================
+ERROR: test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts (tests.etl.test_runtime_adapter.RuntimeAdapterTests.test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/etl/test_runtime_adapter.py", line 31, in test_incomplete_recovery_candidate_is_quarantined_without_projecting_null_counts
+    rows=recover_pending(lambda:psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']),root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/backend/src/aat_api/workers/recovery.py", line 131, in recover_pending
+    c.execute("""INSERT INTO execution_metrics(id,binding_id,extracted_rows,validated_rows,loaded_rows,failed_rows_nullable,staging_bytes_current,staging_bytes_peak,phase,metric_updated_at)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/connection.py", line 300, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "extracted_rows" of relation "execution_metrics" violates not-null constraint
+DETAIL:  Failing row contains (1cc4bed6-e788-4df7-9c9d-33fb6f6509b2, null, null, 2, 0, 0, 0, 0, COMMIT_VERIFIED, 2026-11-10 17:15:37.352333+00, bb091ce3-f68b-4195-a1f5-ff519ff7549d, 2026-11-10 17:15:37.352333+00, 2026-11-10 17:15:37.352333+00).
+
+----------------------------------------------------------------------
+Ran 1 test in 3.101s
+
+FAILED (errors=1)

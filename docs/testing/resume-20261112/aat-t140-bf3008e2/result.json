@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "project": "aat-t140-bf3008e2",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ],
+  "canonical_policy_manifest": "docs\\testing\\resume-20261112\\aat-t140-bf3008e2\\canonical-candidate\\candidate-images.json",
+  "startup_seconds": 179.531,
+  "missing_secret_init_exit_code": 1,
+  "missing_key_init_exit_code": 1,
+  "missing_keyring_volume_exit_code": 1,
+  "snapshot": {
+    "connections": [
+      [
+        "019df53e-12f4-46ed-9018-ff9f36170836",
+        "full_pg_mobile_1794496228994"
+      ],
+      [
+        "1f4c1c0d-091c-47aa-bac3-18b555977050",
+        "mysql_etl"
+      ],
+      [
+        "524e8c44-1ee9-4f50-b811-9fa5b8fb804d",
+        "full_pg_desktop_1794496192025"
+      ],
+      [
+        "7e6f0e26-7c1a-4560-a5dd-198eb5930ee6",
+        "pg_etl"
+      ]
+    ],
+    "template_sha256": "8bab3c153eae8b7ece9cdf5f454b6136463d02a45a11d1db8e2fcc7ea0f9ee83"
+  },
+  "airflow_unauthenticated_status": 401,
+  "cleanup_exit_code": 0
+}

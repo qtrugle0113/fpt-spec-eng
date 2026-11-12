@@ -52,6 +52,7 @@ class WorkflowFixture(unittest.TestCase):
         close_airflow();self.addCleanup(close_airflow)
         server=subprocess.Popen([sys.executable,'-m','uvicorn','aat_api.main:app','--host','0.0.0.0','--port','8000','--no-access-log'],
             env=dict(os.environ),stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        self.runtime_api_process=server
         self.addCleanup(lambda:(server.terminate(),server.wait(timeout=10)) if server.poll() is None else None)
         deadline=time.monotonic()+20
         while True:
@@ -61,7 +62,7 @@ class WorkflowFixture(unittest.TestCase):
             if time.monotonic()>deadline:self.fail('Private fixture backend readiness exceeded deadline')
             time.sleep(.2)
 
-    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None,workbook_edit=None,file_data=None,parser_options=None,expected_records=None,expect_failure=False,before_trigger=None,expect_trigger_error=None):
+    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None,workbook_edit=None,file_data=None,parser_options=None,expected_records=None,expect_failure=False,before_trigger=None,expect_trigger_error=None,allow_empty=False,failure_records=None,pause_after_run=True):
         from aat_api.services.connections.service import transaction,active
         from aat_api.services.table_preview import target_engine
         from aat_api.services.etl_preview import preview
@@ -70,7 +71,7 @@ class WorkflowFixture(unittest.TestCase):
         from aat_api.services.runtime_binding import airflow
         def edit(book,connection,source,target,revision):
             sheet=book['ETL_Definitions'];sheet['O2']=strategy
-            if fault_mode=='extraction-kill':sheet['R2']=1;sheet['S2']=0
+            if fault_mode in ('extraction-kill','source-disconnect','target-disconnect'):sheet['R2']=1;sheet['S2']=0
             if scheduled:
                 sheet['K2']='* * * * *';sheet['L2']=(datetime.now(timezone.utc)-timedelta(minutes=2)).isoformat()
             if extension:
@@ -125,7 +126,7 @@ class WorkflowFixture(unittest.TestCase):
         if strategy=='FULL_REFRESH':
             authority=self.response(self.client.post('/api/v1/etl-definitions/'+item['definition_id']+'/replacement-authorizations',
                 headers={'Idempotency-Key':str(uuid4())},json={'revision_id':item['id'],'physical_target_id':item['config']['target']['physical_target_id'],
-                    'scope':'SCHEDULED' if scheduled else 'ONCE','allow_empty':False,'acknowledged':True,'confirmation_token':current['confirmation_token']}),
+                    'scope':'SCHEDULED' if scheduled else 'ONCE','allow_empty':allow_empty,'allow_empty_acknowledged':allow_empty,'acknowledged':True,'confirmation_token':current['confirmation_token']}),
                 'post','/etl-definitions/{id}/replacement-authorizations',201)
         def state(paused):
             result=self.client.get('/api/v1/dag-deployments/'+deployment_id)
@@ -181,11 +182,12 @@ class WorkflowFixture(unittest.TestCase):
                 marker=Path('/tmp/aat-runtime-staging')/('authorization-fault-'+str(identity)+'-file-diagnostic')
                 print('PRIVATE_FIXTURE_STACK '+(marker.read_text() if marker.exists() else 'NO_ENGINE_EXCEPTION_RECORDED'),flush=True)
         self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
-        state(True)
+        if pause_after_run:state(True)
+        else:airflow().pause(dag,True) # Only a fixture whose metadata scope was deliberately invalidated.
         if expected_failure:
             with target_engine(target_revision) as engine,engine.connect() as cursor:
-                self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),[(99,'old protected row')])
-            return dict(dag=dag,authority=authority,run_id=run_id,item=item)
+                self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),failure_records if failure_records is not None else [(99,'old protected row')])
+            return dict(dag=dag,authority=authority,run_id=run_id,item=item,target=target,target_revision=target_revision)
         with target_engine(target_revision) as engine,engine.connect() as cursor:
             self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),expected_records if expected_records is not None else [(1,'first'),(2,None)])
         row_count=len(expected_records) if expected_records is not None else 2
@@ -196,7 +198,7 @@ class WorkflowFixture(unittest.TestCase):
             # verified target commits are projected into execution_metrics.
             manifest_validated=0 if extension and strategy!='FULL_REFRESH' else row_count
             self.assertEqual((binding.state,binding.commit_uncertain,binding.dataset_state,binding.extracted_rows,binding.validated_rows),('COMMIT_VERIFIED',False,'COMPLETE',row_count,manifest_validated))
-            expected_phase='COMMIT_VERIFIED' if fault_mode=='target-commit-loss' else 'COMPLETE'
+            expected_phase='COMMIT_VERIFIED' if fault_mode in ('target-commit-loss','app-metrics-fail') else 'COMPLETE'
             self.assertEqual((binding.metric_extracted,binding.metric_validated,binding.loaded_rows,binding.failed_rows_nullable,binding.phase),(row_count,row_count,row_count,0,expected_phase))
             self.assertGreater(binding.total_bytes,0)
             self.assertEqual(binding.airflow_run_type,'scheduled' if scheduled else 'manual')

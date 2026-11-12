@@ -1,0 +1,33 @@
+{
+  "prior_source": "docs\\testing\\resume-20261111\\t132-all-states\\t132-all-states-fixture-sources.json",
+  "files": [
+    {
+      "path": "backend/src/aat_api/airflow_client/__init__.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/airflow_client/client.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/airflow_client/deployment.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/airflow_client/monitoring.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/routes/dashboard.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/schemas/dashboard.py",
+      "unchanged": true
+    },
+    {
+      "path": "backend/src/aat_api/services/dashboard.py",
+      "unchanged": true
+    }
+  ]
+}

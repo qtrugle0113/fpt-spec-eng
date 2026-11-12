@@ -1,0 +1,12 @@
+
+Running 8 tests using 1 worker
+
+[1/8] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/8] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/8] [desktop] › phase7.spec.ts:3:1 › Dashboard renders actual aggregates, lifetime scope and explicit refresh
+[4/8] [desktop] › phase7.spec.ts:24:1 › Settings persist real changes and require a new review after a stale revision
+[5/8] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[6/8] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[7/8] [mobile] › phase7.spec.ts:3:1 › Dashboard renders actual aggregates, lifetime scope and explicit refresh
+[8/8] [mobile] › phase7.spec.ts:24:1 › Settings persist real changes and require a new review after a stale revision
+  8 passed (11.6s)

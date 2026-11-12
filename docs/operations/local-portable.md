@@ -6,6 +6,13 @@ provenance. Quy trình này không phải nghiệm thu bảo mật đầy đủ.
 
 ## Bản đang chạy trên máy công ty
 
+**Cập nhật2026-11-12:** bản đang READY trên máy hiện tại là
+`aat-portable-demo-a7f852ae`, cùng các cổng23000/28000/28080. Manifest local trỏ
+`portable-81a0866e`, policy LOCAL_POLICY_MATCH. T1439/9 và workflow UI6checks
+PASS trên installed images; xem [checkpoint](../testing/product-resume-20261112.md).
+Các thông tin project cũ ngày11/11 dưới đây là lịch sử; lấy config/project thực
+từ `.tools/local-demo.json`, không hardcode namespace của máy khác.
+
 Ứng dụng: <http://localhost:23000>, Airflow: <http://localhost:28080>, readiness:
 <http://localhost:28000/api/v1/health/ready>. Project mới
 `aat-portable-demo-dcae6f3c`, installed wheels, không source overlay, không dùng

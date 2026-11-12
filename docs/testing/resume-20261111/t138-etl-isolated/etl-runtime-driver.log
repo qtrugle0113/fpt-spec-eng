@@ -1,0 +1,59 @@
+source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix _
+tests/etl/test_runtime_recovery_projection.py:111: in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_recovery_projection.py:90: in run_case
+    with self.assertRaises(NeedsReconciliation):execute_file(config,reference,target,root=stage,quota=quota,run_uuid=run,dataset_id=dataset_id,binding_sha256='a'*64,pins=pins,support_consent=True,on_prepared=published)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:104: in execute_file
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:103: in <lambda>
+    factory=lambda:prepare_file(config,reference,target_engine,root=root,quota=quota,run_uuid=run_uuid,dataset_id=dataset_id,binding_sha256=binding_sha256,pins=pins)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py:154: in prepare_file
+    with StagingWriter(**common,dataset_id=raw_id,columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ WorkerMaintenanceTests.test_real_worker_runs_maintenance_without_delaying_heartbeat _
+tests/etl/test_worker_maintenance.py:32: in test_real_worker_runs_maintenance_without_delaying_heartbeat
+    self.assertNotIn('worker_maintenance_blocked',Path('/tmp/aat-maintenance-worker.log').read_text())
+E   AssertionError: 'worker_maintenance_blocked' unexpectedly found in 'runtime_recovery binding_id=f218c5eb-ffc8-45fb-89fd-5b16fed69ed3 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED\nworker_maintenance_blocked exception_type=ValueError\n'
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_reaped_extraction_can_retry_same_once_intent
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+FAILED tests/etl/test_worker_maintenance.py::WorkerMaintenanceTests::test_real_worker_runs_maintenance_without_delaying_heartbeat
+============= 6 failed, 20 passed, 1 warning in 128.61s (0:02:08) ==============
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-72de4367-backend-tests-run-436cf3caa931 Creating 
+ Container aat-regression-72de4367-backend-tests-run-436cf3caa931 Created 
+
+Error: executing E:\Workspace\fpt-spec-eng\.tools\docker-compose-5.6.0.exe -f E:\Workspace\fpt-spec-eng\.tools\compose-aat-regression-72de4367.json -p aat-regression-72de4367 --profile test run --rm --no-deps backend-tests pytest -p no:cacheprovider tests/etl/test_runtime_adapter.py tests/etl/test_runtime_lifecycle.py tests/etl/test_runtime_recovery_projection.py tests/etl/test_worker_maintenance.py -v --tb=short: exit status 1
+

@@ -1,0 +1,370 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 144 items
+
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_bounded_retry_preserves_the_same_dataset_on_both_databases PASSED [  0%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_missing_staging_after_partial_commit_blocks_until_original_files_return PASSED [  1%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_mysql_commit_loss_reconciles_marker_before_retry PASSED [  2%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_postgres_commit_loss_reconciles_marker_before_retry PASSED [  2%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_mysql_case_insensitive_duplicate_across_many_batches_is_rejected PASSED [  3%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_mysql_distinct_keys_and_exact_decimals_validate PASSED [  4%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_mysql_scratch_physical_size_is_below_charged_bound PASSED [  4%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_nonunique_conflict_key_is_rejected PASSED [  5%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_null_key_is_rejected_on_both_databases PASSED [  6%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_postgres_distinct_values_validate_on_disk_without_target_writes PASSED [  6%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_postgres_duplicate_across_many_batches_is_rejected PASSED [  7%]
+tests/etl/test_dataset_validation.py::DatasetValidationTests::test_row_and_byte_limits_fail_before_target_writes PASSED [  8%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_append_late_type_error_preserves_committed_batch PASSED [  9%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_bad_full_format_or_changed_checksum_never_loads PASSED [  9%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_mysql PASSED [ 10%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_postgres PASSED [ 11%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_global_upsert_key_errors_precede_every_target_write PASSED [ 11%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_headerless_txt_maps_generated_columns PASSED [ 12%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_mysql PASSED [ 13%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_postgres PASSED [ 13%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_upsert_late_nonkey_type_error_preserves_prior_batch PASSED [ 14%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_confirmed_cancellation_rolls_back_and_closes_once PASSED [ 15%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits PASSED [ 15%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_csv_txt_replacement_prepares_whole_mapped_dataset PASSED [ 16%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_empty_dataset_requires_separate_allow_empty_acknowledgment PASSED [ 17%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_inbound_foreign_keys_and_triggers_block_before_admission PASSED [ 18%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_lost_replacement_commit_response_reconciles_without_second_delete PASSED [ 18%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement PASSED [ 19%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_mysql_replacement_and_consumed_once_retry PASSED [ 20%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_postgres_replacement_and_consumed_once_retry PASSED [ 20%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_revoke_after_admission_does_not_promise_cancellation PASSED [ 21%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_revoked_before_admission_preserves_old_data PASSED [ 22%]
+tests/etl/test_ledger_metrics.py::LedgerMetricTests::test_real_committed_marker_projection_is_idempotent_and_failure_does_not_replay PASSED [ 22%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_key_only_composite_upsert_is_stable_across_three_runs PASSED [ 23%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_retry_skips_verified_batches PASSED [ 24%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_unique_failure_preserves_prior_batch PASSED [ 25%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable PASSED [ 25%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_new_append_run_can_duplicate_without_unique_constraint PASSED [ 26%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_retry_skips_verified_batches PASSED [ 27%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_unique_failure_preserves_prior_batch PASSED [ 27%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable PASSED [ 28%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_secondary_unique_collision_never_updates_wrong_row PASSED [ 29%]
+tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_mysql_mapping_to_disk_uses_real_introspected_types PASSED [ 29%]
+tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_postgres_mapping_to_disk_uses_real_introspected_types PASSED [ 30%]
+tests/etl/test_mysql_runtime_permissions.py::MySQLRuntimePermissionsTests::test_actual_source_bootstrap_is_idempotent_and_runtime_can_validate PASSED [ 31%]
+tests/etl/test_preparation.py::PreparationTests::test_mysql_invalid_global_key_leaves_only_source_complete PASSED [ 31%]
+tests/etl/test_preparation.py::PreparationTests::test_mysql_prepares_verified_disk_dataset_without_load PASSED [ 32%]
+tests/etl/test_preparation.py::PreparationTests::test_postgres_invalid_global_key_leaves_only_source_complete PASSED [ 33%]
+tests/etl/test_preparation.py::PreparationTests::test_postgres_prepares_verified_disk_dataset_without_load PASSED [ 34%]
+tests/etl/test_replacement_admission.py::ReplacementAdmissionTests::test_lost_metadata_commit_response_reads_back_same_admission PASSED [ 34%]
+tests/etl/test_replacement_admission.py::ReplacementAdmissionTests::test_mysql_native_lock_precedes_committed_idempotent_admission PASSED [ 35%]
+tests/etl/test_replacement_admission.py::ReplacementAdmissionTests::test_postgres_native_lock_precedes_committed_idempotent_admission PASSED [ 36%]
+tests/etl/test_replacement_admission.py::ReplacementAdmissionTests::test_revoked_authorization_cannot_admit_either_target PASSED [ 36%]
+tests/etl/test_replacement_admission.py::ReplacementAdmissionTests::test_terminal_rollback_closes_once_only_after_recovery_and_no_retry PASSED [ 37%]
+tests/etl/test_resource_quota.py::QuotaTests::test_failed_write_keeps_reservation_and_never_publishes_manifest PASSED [ 38%]
+tests/etl/test_resource_quota.py::QuotaTests::test_free_disk_reserve_rejects_without_allocating_metadata PASSED [ 38%]
+tests/etl/test_resource_quota.py::QuotaTests::test_global_20gib_counts_protected_and_active_allocations PASSED [ 39%]
+tests/etl/test_resource_quota.py::QuotaTests::test_idempotent_reservation_and_release_preserve_evidence PASSED [ 40%]
+tests/etl/test_resource_quota.py::QuotaTests::test_per_run_10gib_boundary_is_atomic_under_concurrency PASSED [ 40%]
+tests/etl/test_resource_quota.py::QuotaTests::test_reservation_overflow_cannot_publish_even_if_caller_catches_error PASSED [ 41%]
+tests/etl/test_resource_quota.py::QuotaTests::test_writer_accounts_manifest_and_retains_protected_bytes PASSED [ 42%]
+tests/etl/test_resource_quota.py::RSSSupervisionTests::test_actual_512mib_process_is_stopped_before_container_oom PASSED [ 43%]
+tests/etl/test_resource_quota.py::RSSSupervisionTests::test_normal_child_completes_without_false_memory_failure PASSED [ 43%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_bind_failure_does_not_start_the_engine_or_send_credentials PASSED [ 44%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_database_targets_use_runtime_role_and_publish_before_first_insert FAILED [ 45%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_file_final_commit_can_reconcile_after_staging_is_lost PASSED [ 45%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail PASSED [ 46%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role PASSED [ 47%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner PASSED [ 47%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_metadata_admission_outage_cannot_use_cached_authority PASSED [ 48%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_supervised_child_executes_without_returning_dataset_or_credentials PASSED [ 49%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_unresolved_other_binding_blocks_writes_to_the_same_physical_target PASSED [ 50%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_bind_failure_does_not_start_the_engine_or_send_credentials PASSED [ 50%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_database_targets_use_runtime_role_and_publish_before_first_insert PASSED [ 51%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_final_commit_can_reconcile_after_staging_is_lost PASSED [ 52%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail FAILED [ 52%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role PASSED [ 53%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner FAILED [ 54%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_metadata_admission_outage_cannot_use_cached_authority PASSED [ 54%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_supervised_child_executes_without_returning_dataset_or_credentials PASSED [ 55%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_unresolved_other_binding_blocks_writes_to_the_same_physical_target PASSED [ 56%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_business_failure_keeps_complete_dataset_and_projects_committed_prefix PASSED [ 56%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_disk_complete_before_metadata_publication_is_never_reextracted PASSED [ 57%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_owner_change_blocks_incomplete_cleanup PASSED [ 58%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_reaped_extraction_can_retry_same_once_intent FAILED [ 59%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_terminal_extraction_failure_closes_once_without_freeing_it PASSED [ 59%]
+tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero FAILED [ 60%]
+tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_restart_reconstructs_file_mapping_and_resumes_verified_prefix FAILED [ 61%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_connection_aliases_cannot_read_and_write_same_table PASSED [ 61%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_identity_pin_and_nullability_drift PASSED [ 62%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_key_drift_and_missing_used_column_fail PASSED [ 63%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_collation_drift_changes_fingerprint PASSED [ 63%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_type_drift_changes_hash_unmapped_column_does_not PASSED [ 64%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_connection_aliases_cannot_read_and_write_same_table PASSED [ 65%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_identity_pin_and_nullability_drift PASSED [ 65%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_key_drift_and_missing_used_column_fail PASSED [ 66%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_collation_drift_changes_fingerprint PASSED [ 67%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_type_drift_changes_hash_unmapped_column_does_not PASSED [ 68%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_filter_is_bound_and_can_use_unprojected_columns PASSED [ 68%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_midstream_session_loss_discards_incomplete_snapshot PASSED [ 69%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_nontransactional_source_is_rejected PASSED [ 70%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_oversized_cell_is_null_on_wire_before_materialization PASSED [ 70%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_session_rejects_writes PASSED [ 71%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_survives_concurrent_updates_without_primary_key PASSED [ 72%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_source_session_loss_fails_without_reconnect PASSED [ 72%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_utc_timestamp_and_unicode_are_lossless PASSED [ 73%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_filter_is_bound_and_can_use_unprojected_columns PASSED [ 74%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_midstream_session_loss_discards_incomplete_snapshot PASSED [ 75%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_oversized_cell_is_null_on_wire_before_materialization PASSED [ 75%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_session_rejects_writes PASSED [ 76%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_survives_concurrent_updates_without_primary_key PASSED [ 77%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_source_session_loss_fails_without_reconnect PASSED [ 77%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_timestamp_and_unicode_are_lossless PASSED [ 78%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_checksum_corruption_and_binding_mismatch_rejected_before_rows PASSED [ 79%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled PASSED [ 79%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_corrupt_last_part_is_rejected_before_first_row_is_yielded PASSED [ 80%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_decimal_float_and_type_coercion_fail_without_complete_publication PASSED [ 81%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_incomplete_extraction_does_not_publish_complete_manifest PASSED [ 81%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_missing_file_and_manifest_schema_drift_are_rejected PASSED [ 82%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_process_exit_before_complete_never_publishes_manifest PASSED [ 83%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_serialized_record_limit_is_enforced_without_publishing_complete PASSED [ 84%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_typed_roundtrip_preserves_values_null_and_safe_paths PASSED [ 84%]
+tests/etl/test_source_cleanup.py::SourceCleanupTests::test_referenced_source_is_kept_even_after_expiry PASSED [ 85%]
+tests/etl/test_source_cleanup.py::SourceCleanupTests::test_shortened_expiry_cannot_bypass_30_day_source_retention PASSED [ 86%]
+tests/etl/test_source_cleanup.py::SourceCleanupTests::test_unreferenced_source_expires_after_30_days PASSED [ 86%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_backend_maintenance_applies_native_cleanup_and_persisted_retention PASSED [ 87%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_slow_target_cannot_extend_the_startup_recovery_deadline PASSED [ 88%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_startup_records_blocked_reason_without_reclaiming_unknown_owner PASSED [ 88%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_dataset_keeps_full_retention PASSED [ 89%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_reconciled_dataset_expires_after_retention PASSED [ 90%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_uncertain_dataset_is_never_deleted_to_free_capacity PASSED [ 90%]
+tests/etl/test_storage_failures.py::StorageFailureTests::test_sigkill_rolls_back_open_target_transaction_without_releasing_quota PASSED [ 91%]
+tests/etl/test_target_ledger.py::TargetLedgerTests::test_mysql_markers_commit_and_rollback_with_target_dml PASSED [ 92%]
+tests/etl/test_target_ledger.py::TargetLedgerTests::test_postgres_existing_support_name_collision_is_not_adopted PASSED [ 93%]
+tests/etl/test_target_ledger.py::TargetLedgerTests::test_postgres_markers_commit_and_rollback_with_target_dml PASSED [ 93%]
+tests/etl/test_target_session.py::TargetSessionTests::test_mysql_same_target_contention_and_release PASSED [ 94%]
+tests/etl/test_target_session.py::TargetSessionTests::test_mysql_session_kill_requires_new_lock_not_reconnect PASSED [ 95%]
+tests/etl/test_target_session.py::TargetSessionTests::test_postgres_same_target_contention_and_release PASSED [ 95%]
+tests/etl/test_target_session.py::TargetSessionTests::test_postgres_session_kill_requires_new_lock_not_reconnect PASSED [ 96%]
+tests/etl/test_transfer_routes.py::TransferRouteTests::test_mysql_to_mysql FAILED [ 97%]
+tests/etl/test_transfer_routes.py::TransferRouteTests::test_mysql_to_postgres FAILED [ 97%]
+tests/etl/test_transfer_routes.py::TransferRouteTests::test_postgres_to_mysql FAILED [ 98%]
+tests/etl/test_transfer_routes.py::TransferRouteTests::test_postgres_to_postgres FAILED [ 99%]
+tests/etl/test_worker_maintenance.py::WorkerMaintenanceTests::test_real_worker_runs_maintenance_without_delaying_heartbeat FAILED [100%]
+
+=================================== FAILURES ===================================
+_ RuntimeAdapterTests.test_database_targets_use_runtime_role_and_publish_before_first_insert _
+tests/etl/test_runtime_adapter.py:82: in test_database_targets_use_runtime_role_and_publish_before_first_insert
+    binding,target,revision,metadata=self.prepare(kind);observed=[];checking=[True]
+                                     ^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_adapter.py:36: in prepare
+    uploaded,operation,dag,target,revision=self.scenario(database_type=kind,edit=edit)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/api/test_dag_builder.py:104: in scenario
+    finished=self.wait(operation['id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/api/test_tables.py:84: in wait
+    self.fail('Durable table operation did not finish within fixture deadline; exception classes='+str(re.findall(r'exception_type=([A-Za-z_][A-Za-z0-9_]*)',log)))
+E   AssertionError: Durable table operation did not finish within fixture deadline; exception classes=[]
+_ RuntimeAdapterTests.test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail _
+tests/etl/test_runtime_adapter.py:176: in test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail
+    rows=recover_pending(connect,root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:123: in recover_pending
+    if admission is None:raise ValueError('Replacement marker reconciliation has no admission evidence.')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: Replacement marker reconciliation has no admission evidence.
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:142 runtime_recovery binding_id=974a9744-fe2e-4d2e-89e2-5e16994cacaa state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+___ RuntimeAdapterTests.test_late_recovery_cannot_clear_a_new_runtime_owner ____
+tests/etl/test_runtime_adapter.py:198: in test_late_recovery_cannot_clear_a_new_runtime_owner
+    rows=recover_pending(connect,root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:131: in recover_pending
+    c.execute("""INSERT INTO execution_metrics(id,binding_id,extracted_rows,validated_rows,loaded_rows,failed_rows_nullable,staging_bytes_current,staging_bytes_peak,phase,metric_updated_at)
+/usr/local/lib/python3.12/site-packages/psycopg/connection.py:300: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.NotNullViolation: null value in column "extracted_rows" of relation "execution_metrics" violates not-null constraint
+E   DETAIL:  Failing row contains (974a9744-fe2e-4d2e-89e2-5e16994cacaa, null, null, 2, 0, 0, 0, 0, COMMIT_VERIFIED, 2026-11-10 17:08:36.214065+00, d43ec4ed-6150-4f02-a2f3-b8d8e2cf387a, 2026-11-10 17:08:36.214065+00, 2026-11-10 17:08:36.214065+00).
+___ RuntimeLifecycleTests.test_reaped_extraction_can_retry_same_once_intent ____
+tests/etl/test_runtime_lifecycle.py:29: in test_reaped_extraction_can_retry_same_once_intent
+    rows=recover_pending(lambda:psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']),root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:123: in recover_pending
+    if admission is None:raise ValueError('Replacement marker reconciliation has no admission evidence.')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: Replacement marker reconciliation has no admission evidence.
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:142 runtime_recovery binding_id=974a9744-fe2e-4d2e-89e2-5e16994cacaa state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+_ RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero _
+tests/etl/test_runtime_recovery_projection.py:115: in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_recovery_projection.py:90: in run_case
+    with self.assertRaises(NeedsReconciliation):execute_file(config,reference,target,root=stage,quota=quota,run_uuid=run,dataset_id=dataset_id,binding_sha256='a'*64,pins=pins,support_consent=True,on_prepared=published)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:104: in execute_file
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:103: in <lambda>
+    factory=lambda:prepare_file(config,reference,target_engine,root=root,quota=quota,run_uuid=run_uuid,dataset_id=dataset_id,binding_sha256=binding_sha256,pins=pins)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py:154: in prepare_file
+    with StagingWriter(**common,dataset_id=raw_id,columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix _
+tests/etl/test_runtime_recovery_projection.py:111: in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_recovery_projection.py:90: in run_case
+    with self.assertRaises(NeedsReconciliation):execute_file(config,reference,target,root=stage,quota=quota,run_uuid=run,dataset_id=dataset_id,binding_sha256='a'*64,pins=pins,support_consent=True,on_prepared=published)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:104: in execute_file
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:103: in <lambda>
+    factory=lambda:prepare_file(config,reference,target_engine,root=root,quota=quota,run_uuid=run_uuid,dataset_id=dataset_id,binding_sha256=binding_sha256,pins=pins)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py:154: in prepare_file
+    with StagingWriter(**common,dataset_id=raw_id,columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+____________________ TransferRouteTests.test_mysql_to_mysql ____________________
+tests/etl/test_transfer_routes.py:60: in test_mysql_to_mysql
+    def test_mysql_to_mysql(self):self.run_route('mysql','mysql')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_transfer_routes.py:39: in run_route
+    result=module.execute_database(config,source,target,root=root,quota=quota,run_uuid=run,dataset_id=dataset,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:93: in execute_database
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:91: in <lambda>
+    factory=lambda:prepare_database(config,source_engine,target_engine,root=root,quota=quota,run_uuid=run_uuid,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:63: in prepare_database
+    with StagingWriter(**common,dataset_id=uuid5(dataset_id,'source'),columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+__________________ TransferRouteTests.test_mysql_to_postgres ___________________
+tests/etl/test_transfer_routes.py:59: in test_mysql_to_postgres
+    def test_mysql_to_postgres(self):self.run_route('mysql','postgres')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_transfer_routes.py:39: in run_route
+    result=module.execute_database(config,source,target,root=root,quota=quota,run_uuid=run,dataset_id=dataset,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:93: in execute_database
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:91: in <lambda>
+    factory=lambda:prepare_database(config,source_engine,target_engine,root=root,quota=quota,run_uuid=run_uuid,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:63: in prepare_database
+    with StagingWriter(**common,dataset_id=uuid5(dataset_id,'source'),columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+__________________ TransferRouteTests.test_postgres_to_mysql ___________________
+tests/etl/test_transfer_routes.py:58: in test_postgres_to_mysql
+    def test_postgres_to_mysql(self):self.run_route('postgres','mysql')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_transfer_routes.py:39: in run_route
+    result=module.execute_database(config,source,target,root=root,quota=quota,run_uuid=run,dataset_id=dataset,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:93: in execute_database
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:91: in <lambda>
+    factory=lambda:prepare_database(config,source_engine,target_engine,root=root,quota=quota,run_uuid=run_uuid,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:63: in prepare_database
+    with StagingWriter(**common,dataset_id=uuid5(dataset_id,'source'),columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_________________ TransferRouteTests.test_postgres_to_postgres _________________
+tests/etl/test_transfer_routes.py:57: in test_postgres_to_postgres
+    def test_postgres_to_postgres(self):self.run_route('postgres','postgres')
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_transfer_routes.py:39: in run_route
+    result=module.execute_database(config,source,target,root=root,quota=quota,run_uuid=run,dataset_id=dataset,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:93: in execute_database
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:91: in <lambda>
+    factory=lambda:prepare_database(config,source_engine,target_engine,root=root,quota=quota,run_uuid=run_uuid,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:63: in prepare_database
+    with StagingWriter(**common,dataset_id=uuid5(dataset_id,'source'),columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ WorkerMaintenanceTests.test_real_worker_runs_maintenance_without_delaying_heartbeat _
+tests/etl/test_worker_maintenance.py:32: in test_real_worker_runs_maintenance_without_delaying_heartbeat
+    self.assertNotIn('worker_maintenance_blocked',Path('/tmp/aat-maintenance-worker.log').read_text())
+E   AssertionError: 'worker_maintenance_blocked' unexpectedly found in 'runtime_recovery binding_id=454594fd-95a7-49fd-86d8-0696cdbdb335 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED\nruntime_recovery binding_id=974a9744-fe2e-4d2e-89e2-5e16994cacaa state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED\nworker_maintenance_blocked exception_type=ValueError\n'
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_process_exit_before_complete_never_publishes_manifest
+  /opt/aat/tests/etl/test_snapshot_staging.py:226: DeprecationWarning: This process (pid=1) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    child=os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_database_targets_use_runtime_role_and_publish_before_first_insert
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_reaped_extraction_can_retry_same_once_intent
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+FAILED tests/etl/test_transfer_routes.py::TransferRouteTests::test_mysql_to_mysql
+FAILED tests/etl/test_transfer_routes.py::TransferRouteTests::test_mysql_to_postgres
+FAILED tests/etl/test_transfer_routes.py::TransferRouteTests::test_postgres_to_mysql
+FAILED tests/etl/test_transfer_routes.py::TransferRouteTests::test_postgres_to_postgres
+FAILED tests/etl/test_worker_maintenance.py::WorkerMaintenanceTests::test_real_worker_runs_maintenance_without_delaying_heartbeat
+============ 11 failed, 133 passed, 2 warnings in 185.42s (0:03:05) ============
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-176e2b39-backend-tests-run-ae21c520ea44 Creating 
+ Container aat-regression-176e2b39-backend-tests-run-ae21c520ea44 Created 
+
+Error: executing E:\Workspace\fpt-spec-eng\.tools\docker-compose-5.6.0.exe -f E:\Workspace\fpt-spec-eng\.tools\compose-aat-regression-176e2b39.json -p aat-regression-176e2b39 --profile test run --rm --no-deps backend-tests pytest -p no:cacheprovider tests/etl -v --tb=short: exit status 1

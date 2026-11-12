@@ -1,0 +1,12 @@
+{
+  "status": "NOT_RUN",
+  "project": "aat-t140-eb137d9e",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ]
+}

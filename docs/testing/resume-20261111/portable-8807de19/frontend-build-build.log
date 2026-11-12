@@ -1,0 +1,23 @@
+STEP 1/7: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS build
+STEP 2/7: WORKDIR /app
+--> Using cache e56aeb846a21cc34a8cce9d843b13f9533621f3605334a345870c79ee17f47d3
+--> e56aeb846a21
+STEP 3/7: COPY frontend/package.json frontend/package-lock.json ./
+--> Using cache 631436480c923f00de5bb02189bbef74bb8c9df3fb7bc3a6cce8a228478052df
+--> 631436480c92
+STEP 4/7: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+--> Using cache ea4f82a692cd30ef8b27d2e76aa430fbb7e0d7a86cab7cfe749ccbb64d088e48
+--> ea4f82a692cd
+STEP 5/7: COPY frontend/index.html frontend/tsconfig.json frontend/vite.config.ts ./
+--> Using cache 46d6d7cd729b4e827bc5ceb0d28dceb28d87d658992b94642cb7b645ac2f6923
+--> 46d6d7cd729b
+STEP 6/7: COPY frontend/src ./src
+--> Using cache 799c2f709913e4ae20a66380c79fcb23748f95da711acc6bb55b9cc47910a001
+--> 799c2f709913
+STEP 7/7: RUN npm run build
+--> Using cache 40b5c4665c138783aac64080b0dc96f35d3ea3ddafa61caf924a4f8a3f010f05
+COMMIT localhost/aat-portable-frontend-build-8807de19:0.1.0
+--> 40b5c4665c13
+Successfully tagged localhost/aat-portable-frontend-build-8807de19:0.1.0
+Successfully tagged localhost/aat-phase8-frontend-build-88e9926e:0.1.0
+40b5c4665c138783aac64080b0dc96f35d3ea3ddafa61caf924a4f8a3f010f05

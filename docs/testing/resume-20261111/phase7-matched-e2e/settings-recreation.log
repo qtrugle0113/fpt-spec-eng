@@ -1,0 +1,17 @@
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0mtime="2026-11-11T01:42:13+09:00" level=warning msg="volume \"aat-phase7-e2e-d92ddb27_current_source\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Recreate 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Recreated 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Recreate 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Recreated 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Starting 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Started 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Waiting 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Healthy 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Starting 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Started 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Waiting 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Waiting 
+ Container aat-phase7-e2e-d92ddb27-backend-worker-1 Healthy 
+ Container aat-phase7-e2e-d92ddb27-backend-1 Healthy 

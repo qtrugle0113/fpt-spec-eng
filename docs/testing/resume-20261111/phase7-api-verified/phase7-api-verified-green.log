@@ -1,0 +1,28 @@
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_defaults_persist_and_global_revision_changes_for_each_setting (tests.api.test_settings.SettingsContractTests.test_defaults_persist_and_global_revision_changes_for_each_setting) ... foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+ok
+test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected (tests.api.test_settings.SettingsContractTests.test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected) ... foundation_airflow_probe_failed exception_type=URLError
+ok
+test_shorter_retention_never_collects_protected_recovery_data (tests.api.test_settings.SettingsContractTests.test_shorter_retention_never_collects_protected_recovery_data) ... foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+ok
+test_new_batch_defaults_do_not_mutate_a_validated_revision (tests.api.test_settings.SettingsNewConfigTests.test_new_batch_defaults_do_not_mutate_a_validated_revision) ... foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+foundation_airflow_probe_failed exception_type=URLError
+ok
+test_airflow_outage_returns_unavailable_values_not_zero (tests.api.test_dashboard.DashboardContractTests.test_airflow_outage_returns_unavailable_values_not_zero) ... ok
+test_force_refresh_outage_marks_prior_snapshot_stale (tests.api.test_dashboard.DashboardContractTests.test_force_refresh_outage_marks_prior_snapshot_stale) ... ok
+test_invalid_timezone_date_range_and_scope_are_rejected (tests.api.test_dashboard.DashboardContractTests.test_invalid_timezone_date_range_and_scope_are_rejected) ... ok
+test_missing_history_page_is_incomplete_and_never_a_partial_total (tests.api.test_dashboard.DashboardContractTests.test_missing_history_page_is_incomplete_and_never_a_partial_total) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 9.726s
+
+OK

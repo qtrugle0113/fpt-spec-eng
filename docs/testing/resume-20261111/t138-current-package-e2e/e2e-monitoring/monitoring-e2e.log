@@ -1,0 +1,12 @@
+
+Running 8 tests using 1 worker
+
+[1/8] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/8] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/8] [desktop] › monitoring.spec.ts:12:1 › Monitoring queues a paused DAG then executes after explicit unpause with actual logs and metrics
+[4/8] [desktop] › monitoring.spec.ts:66:1 › An external DAG stays read-only even with an aat tag
+[5/8] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[6/8] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[7/8] [mobile] › monitoring.spec.ts:12:1 › Monitoring queues a paused DAG then executes after explicit unpause with actual logs and metrics
+[8/8] [mobile] › monitoring.spec.ts:66:1 › An external DAG stays read-only even with an aat tag
+  8 passed (51.6s)

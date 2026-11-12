@@ -12,6 +12,8 @@ for kind in ('tests','backend','postgres','mysql'):parser.add_argument('--'+kind
 parser.add_argument('--evidence-dir',required=True)
 parser.add_argument('--path',action='append',help='Repository-relative tests/ directory or module path')
 parser.add_argument('--ignore',action='append',help='Explicit selectors assigned to a different runner environment')
+parser.add_argument('--current-test-sources',action='store_true',help='Refresh only tests in a private read-only volume; application packages stay installed')
+parser.add_argument('--show-passed-output',action='store_true',help='Include reviewed test measurements printed by passing selectors')
 args=parser.parse_args()
 import re
 if args.path and any(not re.fullmatch(r'tests(?:/[A-Za-z0-9_.-]+)+',value) for value in args.path):
@@ -27,6 +29,7 @@ environment=dict(os.environ,PODMAN_COMPOSE_PROVIDER=str(ROOT/'.tools/docker-comp
 base=['podman','compose','-f',str(config_path),'-p',project,'--profile','test']
 result={'project':project,'status':'NOT_RUN','published_ports':False,'existing_services_modified':False}
 private=[];started=False
+test_source_volume=None
 
 def redact(value):
     for secret in private:value=value.replace(secret,'[REDACTED]')
@@ -50,6 +53,22 @@ try:
     config['volumes']={name:{'name':project+'_'+name} for name in volumes}
     config['networks']={'regression_internal':{'name':project+'_internal','internal':True}}
     config['name']=project
+    if args.current_test_sources:
+        import hashlib
+        test_source_volume=project+'_test_sources'
+        loader=project+'-test-source-loader'
+        run(['podman','volume','create','--label','com.docker.compose.project='+project,
+             '--label','com.docker.compose.volume=test_sources','--label','com.docker.compose.version=5.6.0',test_source_volume])
+        try:
+            run(['podman','create','--name',loader,'--network','none','-v',test_source_volume+':/test-source',
+                 '--entrypoint','/bin/true',images['tests']])
+            run(['podman','cp',str(ROOT/'tests')+'/.',loader+':/test-source'])
+        finally:run(['podman','rm','-f',loader],check=False)
+        config['volumes']['test_sources']={'name':test_source_volume}
+        config['services']['backend-tests']['volumes'].append({'type':'volume','source':'test_sources','target':'/opt/aat/tests','read_only':True})
+        result.update(application_source_overlay=False,current_test_sources=True,
+            test_source_sha256={p.relative_to(ROOT/'tests').as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+                               for p in (ROOT/'tests').rglob('*') if p.is_file() and '__pycache__' not in p.parts})
     config_path.write_text(json.dumps(config,indent=2)+'\n')
     result['images']=images;result['compose_config']=str(config_path.relative_to(ROOT))
     started=True
@@ -66,7 +85,8 @@ try:
     private.append(password)
     paths=args.path or ['tests/unit','tests/api']
     ignored=[value for path in args.ignore or [] for value in ('--ignore',path)]
-    checked=run([*base,'run','--rm','--no-deps','backend-tests','pytest','-p','no:cacheprovider',*paths,*ignored,'-v','--tb=short'],check=False,timeout=1800)
+    checked=run([*base,'run','--rm','--no-deps','backend-tests','pytest','-p','no:cacheprovider',*paths,*ignored,'-v','--tb=short',
+                 *(['-rP'] if args.show_passed_output else [])],check=False,timeout=1800)
     (evidence/'pytest.log').write_text(redact(checked.stdout+checked.stderr),encoding='utf-8')
     result.update(exit_code=checked.returncode,status='PASS' if checked.returncode==0 else 'FAIL',test_paths=paths,selectors_assigned_elsewhere=args.ignore or [])
     print(redact((checked.stdout+checked.stderr)[-6500:]))
@@ -76,5 +96,7 @@ finally:
         result['cleanup_exit_code']=cleanup.returncode
         if cleanup.returncode:
             result.update(status='CLEANUP_FAILED',test_exit_code=result.get('exit_code'),exit_code=cleanup.returncode)
+    if test_source_volume and not started:
+        result['test_source_cleanup_exit_code']=run(['podman','volume','rm',test_source_volume],check=False).returncode
     (evidence/'regression-profile-results.json').write_text(json.dumps(result,indent=2)+'\n')
 if result.get('exit_code',1):raise SystemExit(result.get('exit_code',1))

@@ -1,0 +1,24 @@
+[1/2] STEP 1/6: FROM docker.io/library/golang:1.27.3-alpine3.24@sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936 AS gosu-build
+[1/2] STEP 2/6: ENV GOTOOLCHAIN=local CGO_ENABLED=0 GOOS=linux GOARCH=amd64
+--> Using cache 7a25b84d9034ad2c01a001c2dbc9a592b03ae70e8beb50cc1d9c5848c92aadc6
+--> 7a25b84d9034
+[1/2] STEP 3/6: ADD https://codeload.github.com/tianon/gosu/tar.gz/6456aaa0f3c854d199d0f037f068eb97515b7513 /tmp/gosu.tar.gz
+--> Using cache 7ff9c5c22546f3a955058ddaa34ee85398613c5bfaa2139315313683bb3362eb
+--> 7ff9c5c22546
+[1/2] STEP 4/6: RUN echo "33d7537d588ea49458b9509bcf4554bdf5ceacc66da71e5caa1058ea3b689c3b  /tmp/gosu.tar.gz" | sha256sum -c - && mkdir /src && tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src
+--> Using cache 5761e11fa109c03abb3c4f0334010f34844b4e66c0efa08f5163469594c06fc4
+--> 5761e11fa109
+[1/2] STEP 5/6: WORKDIR /src
+--> Using cache 03ef6f34eef621eef5d64a9b1944f9cf92b0f40690d1310515e80065a4748a00
+--> 03ef6f34eef6
+[1/2] STEP 6/6: RUN go mod download && go build -trimpath -buildvcs=false -ldflags="-s -w -X main.Version=1.19" -o /gosu . && /gosu --version
+--> Using cache 0a2ad02edf2519faa5b161e62b4c2869e9683888859cfa4e9c93d259c1d18858
+--> 0a2ad02edf25
+[2/2] STEP 1/2: FROM docker.io/library/postgres:17.11-bookworm@sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a AS postgres
+[2/2] STEP 2/2: COPY --from=gosu-build --chmod=0755 /gosu /usr/local/bin/gosu
+--> Using cache c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce
+[2/2] COMMIT localhost/aat-portable-postgres-8807de19:0.1.0
+--> c93823be91b7
+Successfully tagged localhost/aat-portable-postgres-8807de19:0.1.0
+Successfully tagged localhost/aat-postgres-resume-candidate:17.11
+c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce

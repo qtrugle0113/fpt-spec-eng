@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "project": "aat-portable-demo-a7f852ae",
+  "base_url": "http://localhost:23000",
+  "airflow_url": "http://localhost:28080",
+  "application_source_overlay": false,
+  "sample_namespace": "full_<desktop|mobile>_<timestamp>",
+  "sample_data_retained": true,
+  "test_source_sha256": {
+    "tests/tools/make_full_workflow.py": "356eaccfcd220af0e289961b6983f606b69f56c7de501ee8e68d38ecc9600151",
+    "samples/data/customers.csv": "e5a9d8f77e05faaaf973c9fdc08df3f5f2652963ad9fc309881241291cd954fc",
+    "tests/e2e/playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6",
+    "tests/e2e/full_workflow.spec.ts": "de42f959e89905a0f7190d37e8a2a0678fe4f050fbe694f86df5bfa749496945",
+    "tests/e2e/bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2"
+  },
+  "browser_exit_code": 0,
+  "target_exit_code": 0,
+  "browser_cleanup_exit_code": 0
+}

@@ -13,6 +13,8 @@ def execute_task(*,expected_revision,mode):
     from contextlib import ExitStack
     with ExitStack() as stack:
         stack.enter_context(patch('aat_etl.runtime_task.run_supervised',side_effect=injected))
+        if mode=='commit-unresolved':
+            stack.enter_context(patch('aat_etl.runtime_lifecycle.revision_engine',side_effect=OSError('Synthetic target unavailable during post-reap reconciliation')))
         if mode=='file-diagnostic':
             import json
             import re

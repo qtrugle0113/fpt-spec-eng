@@ -39,12 +39,16 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await (await tableDownload).saveAs(`${folder}/table-template.xlsx`);
   workbook('table', `${folder}/table-template.xlsx`, `${folder}/table.xlsx`, { code, table });
   await page.getByLabel('Table Definition workbook', { exact: true }).setInputFiles(`${folder}/table.xlsx`);
+  const tableUploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/definition-uploads') && r.request().method() === 'POST');
   await page.getByRole('button', { name: 'Upload workbook', exact: true }).click();
+  const tableUpload = await (await tableUploaded).json();
   await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(connection.id);
   await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Review tables', exact: true })).toBeVisible({ timeout: 35000 });
   await page.getByRole('checkbox', { name: 'I reviewed the target tables and generated SQL.' }).check();
+  const tableCreated = page.waitForResponse(r => r.url().endsWith('/api/v1/table-creation-jobs') && r.request().method() === 'POST');
   await page.getByRole('button', { name: 'Confirm and create tables', exact: true }).click();
+  const tableOperation = await (await tableCreated).json();
   await expect(page.getByText('Operation: SUCCEEDED', { exact: true })).toBeVisible({ timeout: 35000 });
 
   await page.goto('/dag-builder');
@@ -67,7 +71,9 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await (await etlDownload).saveAs(`${folder}/etl-template.xlsx`);
   workbook('etl', `${folder}/etl-template.xlsx`, `${folder}/etl.xlsx`, { code, table, dag, file: file.id });
   await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`${folder}/etl.xlsx`);
+  const etlUploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/definition-uploads') && r.request().method() === 'POST');
   await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
+  const etlUpload = await (await etlUploaded).json();
   await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
@@ -81,7 +87,7 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await deployment.getByRole('link', { name: 'Open Airflow', exact: true }).click();
   const popup = await popupEvent;
   await popup.waitForLoadState('domcontentloaded');
-  expect(popup.url()).toMatch(/^http:\/\/airflow-apiserver:8080\//);
+  expect(new URL(popup.url()).origin).toBe(process.env.AIRFLOW_EXPECTED_ORIGIN ?? 'http://airflow-apiserver:8080');
   await expect(popup).toHaveTitle(/Airflow/i);
   await popup.close();
   await deployment.getByRole('checkbox', { name: /I confirm the schedule state change/ }).check();
@@ -109,5 +115,7 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await mkdir('/tmp/aat-e2e-artifacts', { recursive: true });
   let previous: object[] = [];
   try { previous = JSON.parse(await readFile(artifact, 'utf8')); } catch { /* First owned browser fixture. */ }
-  await writeFile(artifact, JSON.stringify([...previous, { dag, run, code, table, file: file.id, checksum: file.sha256, elapsed_ms: Date.now() - started }]));
+  await writeFile(artifact, JSON.stringify([...previous, { dag, run, code, table, file: file.id, file_name: file.file_name,
+    checksum: file.sha256, etl_upload: etlUpload.id, table_upload: tableUpload.id,
+    table_job: tableOperation.result_links[0].split('/').pop(), elapsed_ms: Date.now() - started }]));
 });

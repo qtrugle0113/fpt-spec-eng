@@ -1,0 +1,6 @@
+test_test_profile_cannot_reach_production_secret_domains (test_regression_profile.RegressionIsolationTests.test_test_profile_cannot_reach_production_secret_domains) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+OK

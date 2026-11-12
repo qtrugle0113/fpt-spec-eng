@@ -1,0 +1,25 @@
+{
+  "published_ports": false,
+  "existing_services_modified": false,
+  "fixture_network": "aat-foundation-airflow-fad51527-net",
+  "status": "PASS",
+  "airflow_runtime_mode": "INSTALLED_IMAGE_WHEELS",
+  "images": {
+    "airflow": "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "runner": "b90dfc96ff930e9a2dadc251f49c48e838de240ff9712aae62a6e644353b5011"
+  },
+  "airflow_dependencies": "HEALTHY",
+  "runtime_binding_exit_code": 0,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

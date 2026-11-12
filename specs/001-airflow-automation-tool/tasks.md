@@ -1,5 +1,22 @@
 # Danh sách task: Airflow Automation Tool
 
+**Tiếp tục2026-11-13:** demo23000/28080 READY, workflow UI/target verifier PASS.
+Fresh startup T140 selector PASS gồm restart/secret/key loss nhưng chưa đủ
+restart giữa các phase ETL; T140 giữ mở. Recovery bổ sung6SDK cases PASS,
+contract inventory/required requests PASS. Đang kiểm empty/rollback/visibility
+và APPEND rerun. Xem [checkpoint mới nhất](../../docs/testing/product-resume-20261113.md).
+
+**Tiếp tục2026-11-12:** checklist16/16 và48/48, Podman đã khởi động. Build
+portable trên máy hiện tại đã phát hiện thêm git/git-man HIGH chỉ ở Airflow;
+đã gỡ hai gói không dùng, không thêm ngoại lệ. Candidate `portable-81a0866e`
+đã đạt LOCAL_POLICY_MATCH. T143 đã PASS9/9 qua installed Airflow SDK164.053s,
+cleanup tất cả0; engine file/full-refresh/quota29PASS55.10s. T143 đã khép;
+Demo `aat-portable-demo-a7f852ae` READY23000/28080, UI6checks và target verifier
+PASS trực tiếp trên demo; scheduled2PASS, retry4PASS, refresh recovery12PASS.
+T140 đang kiểm fresh startup; T144/T145/T150 còn mở cho phạm vi còn thiếu.
+Xem [checkpoint](../../docs/testing/product-resume-20261112.md).
+Các đoạn ngày11/11 bên dưới giữ kết quả lịch sử.
+
 **Trạng thái hiện hành (ưu tiên hơn các snapshot bên dưới):** T138 đã khép
 trong phạm vi local được duyệt; tổng hợp 13 selectors tại
 `docs/testing/resume-20261111/t138-aggregate.json`. T141 PASS luồng UI đầy đủ
@@ -376,7 +393,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 - [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
 - [x] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
 - [x] T142 [P] Tạo/chạy cross-DB Airflow regression tại `tests\airflow\test_cross_database.py`; PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG, source!=target, mappings/PK ghép/NULL/decimal/temporal; Phụ thuộc: T138; Truy vết: FR-001, SC-003, SC-015, ma trận C–F/I/AE; Kiểm chứng: 4routes target count/value/key và staging evidence thật.
-- [ ] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
+- [x] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
 - [ ] T144 [P] Tạo/chạy Airflow retry/commit-loss regression tại `tests\airflow\test_retry_recovery.py`; source/target down, kill không finally, app metric fail, stable retry binding/checkpoint, rerun mới/cảnh báo APPEND; Phụ thuộc: T138; Truy vết: FR-051, FR-060, SC-014, ma trận K/R/AH/AJ; Kiểm chứng: no blind duplicate replay, commit uncertain giữ PROTECTED và đối soát120giây hoặc lý do blocked.
 - [ ] T145 [P] Tạo/chạy FULL_REFRESH regression tại `tests\airflow\test_full_refresh_recovery.py`; pre-extract/mapped validation/mid-insert/COMMIT lost/zero-row/authorization revoked/invalidated trước admission và recovery sau revoke/dependency reject, reader old/new ở isolation hỗ trợ; Phụ thuộc: T138; Truy vết: NFR-005, FR-053–FR-054, SC-006, SC-013, ma trận L/M/AC; Kiểm chứng: old data giữ/phục hồi, một replacement commit, unknown không success hoặc replay; không tạo TTL/EXPIRED cho authorization; confirmation token10phút hết hạn chặn request mới nhưng replay cùng Idempotency-Key/hash trả intent cũ, không giải phóng ONCE.
 - [ ] T146 [P] Tạo/chạy concurrency/revision regression tại `tests\airflow\test_concurrent_runs.py`; hai managed DAG/connection aliases cùng target, manual+scheduled, redeploy drain/old-clear/credential change,300giây lock wait; Phụ thuộc: T138; Truy vết: BR-09, BR-20–BR-21, SC-014, ma trận AI/AJ/AK; Kiểm chứng: một writer, run không mất/gộp, no target/revision đổi giữa run.

@@ -1,0 +1,8 @@
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-phase7-e2e-96fb3988-frontend-1 Recreate 
+ Container aat-phase7-e2e-96fb3988-frontend-1 Recreated 
+ Container aat-phase7-e2e-96fb3988-frontend-1 Starting 
+ Container aat-phase7-e2e-96fb3988-frontend-1 Started 
+ Container aat-phase7-e2e-96fb3988-frontend-1 Waiting 
+ Container aat-phase7-e2e-96fb3988-frontend-1 Healthy 

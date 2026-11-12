@@ -17,9 +17,23 @@ parser.add_argument('--preflight-only',action='store_true',help='Verify required
 parser.add_argument('--etl-part',choices=['all','engine','runtime'],default='all',help='Rerun only the affected ETL selector after a failure')
 parser.add_argument('--etl-path',action='append',help='Focused tests/etl/test_*.py selector for the engine group')
 parser.add_argument('--airflow-module',action='append')
-parser.add_argument('--e2e-suite',action='append',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow'])
+parser.add_argument('--e2e-suite',action='append',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow','language'])
 parser.add_argument('--missing-source-check',action='store_true',help='Verify unavailable-source guards on the installed full-workflow E2E fixture')
+parser.add_argument('--e2e-extra-spec',action='append',default=[],help='Focused additional Playwright test source on a full_workflow fixture')
+parser.add_argument('--integration-path',action='append',help='Focused tests/integration/test_*.py selector')
+parser.add_argument('--current-test-sources',action='store_true',help='Refresh only test source on unit/API, integration or ETL fixtures')
+parser.add_argument('--show-passed-output',action='store_true',help='Include reviewed test measurements in passing profile evidence')
 args=parser.parse_args()
+if args.integration_path:
+    import re
+    if args.group!='integration' or any(not re.fullmatch(r'tests/integration/test_[A-Za-z0-9_]+\.py',p) for p in args.integration_path):
+        parser.error('Integration paths require the integration group and tests/integration/test_*.py files')
+if args.current_test_sources and args.group not in ('unit-api','integration','etl'):
+    parser.error('Current test sources require a unit/API, integration or ETL group')
+if args.show_passed_output and args.group not in ('unit-api','integration','etl'):
+    parser.error('Passed profile output requires a unit/API, integration or ETL group')
+if args.e2e_extra_spec and (args.group!='e2e' or args.e2e_suite!=['full_workflow']):
+    parser.error('Additional E2E specs require exactly the full_workflow E2E suite')
 if args.etl_path:
     import re
     if any(not re.fullmatch(r'tests/etl/test_[A-Za-z0-9_]+\.py',value) for value in args.etl_path):parser.error('ETL selectors must be tests/etl/test_*.py')
@@ -133,6 +147,8 @@ def execute(label,script,arguments):
 for group in groups:
     if group in ('unit-api','integration','etl'):
         arguments=[value for name in ('tests','backend','postgres','mysql') for value in ('--'+name+'-image',images[name])]
+        if args.current_test_sources:arguments+=['--current-test-sources']
+        if args.show_passed_output:arguments+=['--show-passed-output']
         if group=='etl':
             runtime_files=('test_runtime_adapter.py','test_runtime_lifecycle.py','test_runtime_recovery_projection.py','test_worker_maintenance.py')
             engine_args=list(arguments)
@@ -145,9 +161,10 @@ for group in groups:
             continue
         if group=='unit-api':arguments+=['--ignore','tests/unit/test_dag_factory.py']
         if group=='integration':
-            for filename in ('test_metadata_foundation.py','test_authorization_repository.py','test_phase2_repositories.py',
-                             'test_phase2_operations.py','test_phase2_api.py','test_connections.py','test_table_ddl.py','test_file_sources.py'):
-                arguments+=['--path','tests/integration/'+filename]
+            defaults=('test_metadata_foundation.py','test_authorization_repository.py','test_phase2_repositories.py',
+                      'test_phase2_operations.py','test_phase2_api.py','test_connections.py','test_table_ddl.py','test_file_sources.py')
+            for path in args.integration_path or ['tests/integration/'+filename for filename in defaults]:
+                arguments+=['--path',path]
         execute(group,'run_regression_profile.py',arguments)
         if group=='unit-api':
             execute('unit-sdk','run_sdk_unit.py',['--image',images['airflow'],'--module','tests.unit.test_dag_factory'])
@@ -162,6 +179,7 @@ for group in groups:
         for suite in args.e2e_suite or ['connections','tables','files','dag_builder','monitoring','phase7']:
             arguments=['--suite',suite]+[value for name in ('backend','frontend','e2e','airflow','postgres','mysql') for value in ('--'+name+'-image',images[name])]
             if args.missing_source_check and suite=='full_workflow':arguments+=['--missing-source-check']
+            for filename in args.e2e_extra_spec:arguments+=['--extra-spec',filename]
             execute('e2e-'+suite,'run_connections_e2e.py',arguments)
     else:
         arguments=['--unittest-module','tests.stress.test_disk_staging','--task-label','regression-stress','--disk-databases','--runner-memory','1g',

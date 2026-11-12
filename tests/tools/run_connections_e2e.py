@@ -12,13 +12,17 @@ parser=argparse.ArgumentParser(description=__doc__)
 for name in ('backend','frontend','e2e','airflow','postgres','mysql'):
     parser.add_argument('--'+name+'-image',required=True)
 parser.add_argument('--evidence-dir',required=True)
-parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow'],default='connections')
+parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow','language'],default='connections')
 parser.add_argument('--source-overlay',action='store_true',help='Run current source read-only on existing dependency images; not packaged-image acceptance')
 parser.add_argument('--frontend-artifact',help='Workspace-relative dist from the pinned offline frontend build')
 parser.add_argument('--keep-running',action='store_true',help='Keep this new local demo and its volumes after tests; publish loopback 13000/18000/18080')
 parser.add_argument('--prepare-only',action='store_true',help='Validate the isolated Compose configuration without starting services')
 parser.add_argument('--missing-source-check',action='store_true',help='Check unavailable-source API guards after the full workflow in this owned installed-image fixture')
+parser.add_argument('--extra-spec',action='append',default=[],help='Additional current test source in this owned suite fixture')
 args=parser.parse_args()
+import re
+if any(not re.fullmatch(r'[A-Za-z0-9_]+\.spec\.ts',name) or not (ROOT/'tests/e2e'/name).is_file() for name in args.extra_spec):
+    parser.error('Extra specs must be existing tests/e2e/*.spec.ts files')
 evidence=(ROOT/args.evidence_dir).resolve()
 if not evidence.is_relative_to(ROOT):parser.error('Evidence must stay in workspace')
 evidence.mkdir(parents=True,exist_ok=True)
@@ -196,6 +200,7 @@ try:
     # Test-only edits do not rebuild or mutate the approved application images.
     result['test_source_sha256']={}
     suite_sources=['dashboard.spec.ts','settings.spec.ts','accessibility.spec.ts'] if args.suite=='phase7' else [args.suite+'.spec.ts']
+    suite_sources=list(dict.fromkeys([*suite_sources,*args.extra_spec]))
     sources=[*suite_sources,'bootstrap.spec.ts','playwright.config.ts']
     if args.suite=='phase7':sources.append('settings-persistence.spec.ts')
     if args.suite=='phase7':sources.append('dashboard-unavailable.spec.ts')

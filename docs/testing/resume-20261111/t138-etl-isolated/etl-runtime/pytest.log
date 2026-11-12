@@ -1,0 +1,138 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 26 items
+
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_bind_failure_does_not_start_the_engine_or_send_credentials PASSED [  3%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_database_targets_use_runtime_role_and_publish_before_first_insert PASSED [  7%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_file_final_commit_can_reconcile_after_staging_is_lost PASSED [ 11%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail PASSED [ 15%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role PASSED [ 19%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner PASSED [ 23%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_metadata_admission_outage_cannot_use_cached_authority PASSED [ 26%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_supervised_child_executes_without_returning_dataset_or_credentials PASSED [ 30%]
+tests/etl/test_runtime_adapter.py::RuntimeAdapterTests::test_unresolved_other_binding_blocks_writes_to_the_same_physical_target PASSED [ 34%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_bind_failure_does_not_start_the_engine_or_send_credentials PASSED [ 38%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_database_targets_use_runtime_role_and_publish_before_first_insert PASSED [ 42%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_final_commit_can_reconcile_after_staging_is_lost PASSED [ 46%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail FAILED [ 50%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_full_refresh_consumes_once_using_the_restricted_runtime_metadata_role PASSED [ 53%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner FAILED [ 57%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_metadata_admission_outage_cannot_use_cached_authority PASSED [ 61%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_supervised_child_executes_without_returning_dataset_or_credentials PASSED [ 65%]
+tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_unresolved_other_binding_blocks_writes_to_the_same_physical_target PASSED [ 69%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_business_failure_keeps_complete_dataset_and_projects_committed_prefix PASSED [ 73%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_disk_complete_before_metadata_publication_is_never_reextracted PASSED [ 76%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_owner_change_blocks_incomplete_cleanup PASSED [ 80%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_reaped_extraction_can_retry_same_once_intent FAILED [ 84%]
+tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_terminal_extraction_failure_closes_once_without_freeing_it PASSED [ 88%]
+tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero FAILED [ 92%]
+tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_restart_reconstructs_file_mapping_and_resumes_verified_prefix FAILED [ 96%]
+tests/etl/test_worker_maintenance.py::WorkerMaintenanceTests::test_real_worker_runs_maintenance_without_delaying_heartbeat FAILED [100%]
+
+=================================== FAILURES ===================================
+_ RuntimeAdapterTests.test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail _
+tests/etl/test_runtime_adapter.py:176: in test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail
+    rows=recover_pending(connect,root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:123: in recover_pending
+    if admission is None:raise ValueError('Replacement marker reconciliation has no admission evidence.')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: Replacement marker reconciliation has no admission evidence.
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:142 runtime_recovery binding_id=f218c5eb-ffc8-45fb-89fd-5b16fed69ed3 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+___ RuntimeAdapterTests.test_late_recovery_cannot_clear_a_new_runtime_owner ____
+tests/etl/test_runtime_adapter.py:198: in test_late_recovery_cannot_clear_a_new_runtime_owner
+    rows=recover_pending(connect,root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:131: in recover_pending
+    c.execute("""INSERT INTO execution_metrics(id,binding_id,extracted_rows,validated_rows,loaded_rows,failed_rows_nullable,staging_bytes_current,staging_bytes_peak,phase,metric_updated_at)
+/usr/local/lib/python3.12/site-packages/psycopg/connection.py:300: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.NotNullViolation: null value in column "extracted_rows" of relation "execution_metrics" violates not-null constraint
+E   DETAIL:  Failing row contains (f218c5eb-ffc8-45fb-89fd-5b16fed69ed3, null, null, 2, 0, 0, 0, 0, COMMIT_VERIFIED, 2026-11-10 17:39:55.012379+00, 84494782-7dc2-4a38-ab27-7f165e1e51f7, 2026-11-10 17:39:55.012379+00, 2026-11-10 17:39:55.012379+00).
+___ RuntimeLifecycleTests.test_reaped_extraction_can_retry_same_once_intent ____
+tests/etl/test_runtime_lifecycle.py:29: in test_reaped_extraction_can_retry_same_once_intent
+    rows=recover_pending(lambda:psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']),root=root)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_api/workers/recovery.py:123: in recover_pending
+    if admission is None:raise ValueError('Replacement marker reconciliation has no admission evidence.')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   ValueError: Replacement marker reconciliation has no admission evidence.
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:142 runtime_recovery binding_id=f218c5eb-ffc8-45fb-89fd-5b16fed69ed3 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+_ RuntimeRecoveryProjectionTests.test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero _
+tests/etl/test_runtime_recovery_projection.py:115: in test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+    with self.subTest(kind=kind):self.run_case(kind,True)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_recovery_projection.py:90: in run_case
+    with self.assertRaises(NeedsReconciliation):execute_file(config,reference,target,root=stage,quota=quota,run_uuid=run,dataset_id=dataset_id,binding_sha256='a'*64,pins=pins,support_consent=True,on_prepared=published)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:104: in execute_file
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:103: in <lambda>
+    factory=lambda:prepare_file(config,reference,target_engine,root=root,quota=quota,run_uuid=run_uuid,dataset_id=dataset_id,binding_sha256=binding_sha256,pins=pins)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py:154: in prepare_file
+    with StagingWriter(**common,dataset_id=raw_id,columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ RuntimeRecoveryProjectionTests.test_restart_reconstructs_file_mapping_and_resumes_verified_prefix _
+tests/etl/test_runtime_recovery_projection.py:111: in test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+    with self.subTest(kind=kind):self.run_case(kind)
+                                 ^^^^^^^^^^^^^^^^^^^
+tests/etl/test_runtime_recovery_projection.py:90: in run_case
+    with self.assertRaises(NeedsReconciliation):execute_file(config,reference,target,root=stage,quota=quota,run_uuid=run,dataset_id=dataset_id,binding_sha256='a'*64,pins=pins,support_consent=True,on_prepared=published)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:104: in execute_file
+    return _execute(config,target_engine,factory,quota=quota,run_uuid=run_uuid,binding_sha256=binding_sha256,
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:155: in _execute
+    if prepared is None:prepared=prepare()
+                                 ^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/engine.py:103: in <lambda>
+    factory=lambda:prepare_file(config,reference,target_engine,root=root,quota=quota,run_uuid=run_uuid,dataset_id=dataset_id,binding_sha256=binding_sha256,pins=pins)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py:154: in prepare_file
+    with StagingWriter(**common,dataset_id=raw_id,columns=list(source.columns),reservation_bytes=capacity()) as raw:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/manager.py:67: in __enter__
+    self.reservation_id=self.quota.reserve(self.run_uuid,UUID(self.attempt.name),self.reservation_bytes)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/site-packages/aat_etl/staging/quota.py:49: in reserve
+    if current['global_reserved_bytes']+size>GLOBAL_LIMIT:raise QuotaExceeded('Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   aat_etl.staging.quota.QuotaExceeded: Global staging quota exceeds 20 GiB, including protected and incomplete artifacts.
+_ WorkerMaintenanceTests.test_real_worker_runs_maintenance_without_delaying_heartbeat _
+tests/etl/test_worker_maintenance.py:32: in test_real_worker_runs_maintenance_without_delaying_heartbeat
+    self.assertNotIn('worker_maintenance_blocked',Path('/tmp/aat-maintenance-worker.log').read_text())
+E   AssertionError: 'worker_maintenance_blocked' unexpectedly found in 'runtime_recovery binding_id=f218c5eb-ffc8-45fb-89fd-5b16fed69ed3 state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED\nworker_maintenance_blocked exception_type=ValueError\n'
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_file_partial_commit_recovery_does_not_map_the_uncommitted_invalid_tail
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeAdapterTests::test_late_recovery_cannot_clear_a_new_runtime_owner
+FAILED tests/etl/test_runtime_lifecycle.py::RuntimeLifecycleTests::test_reaped_extraction_can_retry_same_once_intent
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_final_file_marker_projects_counts_even_when_raw_validated_count_is_zero
+FAILED tests/etl/test_runtime_recovery_projection.py::RuntimeRecoveryProjectionTests::test_restart_reconstructs_file_mapping_and_resumes_verified_prefix
+FAILED tests/etl/test_worker_maintenance.py::WorkerMaintenanceTests::test_real_worker_runs_maintenance_without_delaying_heartbeat
+============= 6 failed, 20 passed, 1 warning in 128.61s (0:02:08) ==============
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-72de4367-backend-tests-run-436cf3caa931 Creating 
+ Container aat-regression-72de4367-backend-tests-run-436cf3caa931 Created 
+
+Error: executing E:\Workspace\fpt-spec-eng\.tools\docker-compose-5.6.0.exe -f E:\Workspace\fpt-spec-eng\.tools\compose-aat-regression-72de4367.json -p aat-regression-72de4367 --profile test run --rm --no-deps backend-tests pytest -p no:cacheprovider tests/etl/test_runtime_adapter.py tests/etl/test_runtime_lifecycle.py tests/etl/test_runtime_recovery_projection.py tests/etl/test_worker_maintenance.py -v --tb=short: exit status 1

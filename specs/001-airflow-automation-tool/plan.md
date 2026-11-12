@@ -1,5 +1,12 @@
 # Kế hoạch triển khai: Airflow Automation Tool
 
+**Remediation local2026-11-12:** scan mới phát hiện ba advisory HIGH của
+git/git-man trong Airflow. Sản phẩm dùng local DAG volume/fixed wrapper, không
+GitDagBundle hoặc git-sync; gỡ hai gói không sử dụng khỏi runtime cùng Docker
+CLI. Giữ Airflow/core/SDK/locks và policy hiện hành. Build phải chứng minh không
+còn git/git-man installed và pip check đạt; scan mới và packaged workflow thật
+vẫn bắt buộc, không miễn advisory hoặc suy PASS từ image cũ.
+
 **Sửa T143 về reservation (không đổi quota/retention):** sau khi raw file đã
 được trích xuất đầy đủ, số dòng đã biết. Với FULL_REFRESH, reservation cho
 mapped generation được chặn trên bởi `rows × MAX_ROW_BYTES + MAX_MANIFEST_BYTES`

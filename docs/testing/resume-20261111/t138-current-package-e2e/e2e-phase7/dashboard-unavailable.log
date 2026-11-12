@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [desktop] › dashboard-unavailable.spec.ts:3:1 › Airflow outage is visible instead of an empty successful dashboard
+[2/2] [mobile] › dashboard-unavailable.spec.ts:3:1 › Airflow outage is visible instead of an empty successful dashboard
+  2 passed (2.1s)

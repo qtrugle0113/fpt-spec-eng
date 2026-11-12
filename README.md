@@ -1,5 +1,20 @@
 # Airflow Automation Tool
 
+**Bản local2026-11-12:** <http://localhost:23000>, Airflow <http://localhost:28080>.
+Project `aat-portable-demo-a7f852ae` READY, init0 và services healthy; ứng dụng
+không cần login. T143 đã PASS9/9 trên image mới; engine29PASS và workflow UI
+desktop/mobile6PASS, đối soát4dòng đích mỗi luồng. Scan LOCAL_POLICY_MATCH sau
+khi gỡ Git không sử dụng khỏi Airflow; không mở rộng ngoại lệ local.
+T139/T140/T144–T152 chưa khép; T014_FULL vẫn BLOCKED. Xem
+[checkpoint hiện tại](docs/testing/product-resume-20261112.md).
+Các kết quả/địa chỉ ngày11/11 bên dưới là evidence lịch sử, không phải health hiện tại.
+
+## Hướng dẫn sử dụng
+
+- [Khởi động local](docs/operations/local-portable.md) và [xử lý sự cố](docs/operations/troubleshooting.md).
+- [Tạo bảng và DAG bằng Excel](docs/excel-definitions.md), [chạy và theo dõi DAG](docs/operations/dag-deployment.md).
+- [Kiến trúc](docs/architecture.md), [API](docs/api.md) và [kiểm thử](docs/operations/testing.md).
+
 **Local portable mới2026-11-11:** bản installed-image trên máy công ty tại
 <http://localhost:23000>, Airflow <http://localhost:28080>, namespace/volumes mới.
 Startup READY và12browser smoke checks PASS. Build/scan không còn yêu cầu IDs

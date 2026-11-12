@@ -1,0 +1,72 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 54 items
+
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_00_two_migration_initializers_serialize_and_keep_same_head PASSED [  1%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_all_dependency_foreign_keys_restrict_history_deletion PASSED [  3%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_application_and_airflow_database_access_are_isolated PASSED [  5%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_claim_skip_locked_and_reconnect_preserves_reconciliation PASSED [  7%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_operation_idempotency_is_enforced_by_database PASSED [  9%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_unknown_error_uses_safe_contract_envelope PASSED [ 11%]
+tests/integration/test_metadata_foundation.py::MetadataFoundationTests::test_worker_restart_does_not_replay_unknown_side_effect PASSED [ 12%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_acknowledged_empty_permission_only_applies_to_reserved_run PASSED [ 14%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_admission_before_revoke_can_reconcile_but_not_be_reused PASSED [ 16%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_concurrent_same_request_reuses_one_stable_intent PASSED [ 18%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_empty_replacement_needs_explicit_scoped_acknowledgment PASSED [ 20%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_authorization_before_intent_and_binding PASSED [ 22%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_lock_order_intent_before_binding_after_authorization PASSED [ 24%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reservation_idempotency_and_payload_conflict PASSED [ 25%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_reserved_once_cannot_move_to_new_run PASSED [ 27%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_revoke_before_admission_denies_new_write_and_preserves_evidence PASSED [ 29%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_runtime_role_cannot_grant_change_scope_or_delete_evidence PASSED [ 31%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_grant_rejects_manual_and_scope_schedule_drift PASSED [ 33%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_scheduled_runs_get_distinct_intents_without_consuming_grant PASSED [ 35%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_terminal_authorizations_reject_new_reservation PASSED [ 37%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_two_transactions_compete_for_once_exactly_one_reservation PASSED [ 38%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_unknown_commit_blocks_new_epoch_and_protects_binding PASSED [ 40%]
+tests/integration/test_authorization_repository.py::AuthorizationRepositoryTests::test_verified_rollback_requires_new_epoch_and_live_grant PASSED [ 42%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_actual_migration_matches_registered_models_and_is_idempotent PASSED [ 44%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_concurrent_init_then_setting_optimistic_update_and_fk_restrict PASSED [ 46%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_missing_original_key_fails_without_regeneration_or_metadata_changes PASSED [ 48%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_real_alembic_entry_and_revision_repository_exist PASSED [ 50%]
+tests/integration/test_phase2_repositories.py::RepositoryFoundationTests::test_seed_preserves_operator_settings_and_existing_sample_identities PASSED [ 51%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_claim_skip_locked_owner_and_expired_lease PASSED [ 53%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_confirmation_hash_scope_expiry_and_signature PASSED [ 55%]
+tests/integration/test_phase2_operations.py::OperationServiceTests::test_idempotency_replay_and_conflict PASSED [ 57%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_cross_origin_mutation_blocked_and_liveness_stays_available PASSED [ 59%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_framework_errors_have_safe_envelope_and_request_id PASSED [ 61%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_unclassified_exception_suppresses_secret_dsn_path_and_traceback PASSED [ 62%]
+tests/integration/test_phase2_api.py::FoundationAPITests::test_validation_location_and_stale_revision_are_safe_contract_errors PASSED [ 64%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_dns_failure_has_safe_bounded_result PASSED [ 66%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_mysql_handshake_timeout_is_bounded_without_mocking_driver PASSED [ 68%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_mysql_success_auth_database_and_closed_port PASSED [ 70%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_policy_rejects_url_path_metadata_and_unapproved_hosts PASSED [ 72%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_postgres_handshake_timeout_is_bounded_without_mocking_driver PASSED [ 74%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_postgres_success_auth_database_schema_and_closed_port PASSED [ 75%]
+tests/integration/test_connections.py::ConnectionAdapterTests::test_resolved_addresses_are_pinned_and_loopback_rebinding_rejected PASSED [ 77%]
+tests/integration/test_table_ddl.py::TableDDLTests::test_mysql_all_types_and_lossless_defaults PASSED [ 79%]
+tests/integration/test_table_ddl.py::TableDDLTests::test_mysql_lost_response_after_real_implicit_commit_is_unknown PASSED [ 81%]
+tests/integration/test_table_ddl.py::TableDDLTests::test_mysql_real_ddl_and_existing_data_preserved PASSED [ 83%]
+tests/integration/test_table_ddl.py::TableDDLTests::test_postgres_all_types_and_lossless_defaults PASSED [ 85%]
+tests/integration/test_table_ddl.py::TableDDLTests::test_postgres_real_ddl_and_existing_data_preserved PASSED [ 87%]
+tests/integration/test_file_sources.py::FileStorageTests::test_actual_http_disconnect_does_not_publish_source_and_server_remains_live PASSED [ 88%]
+tests/integration/test_file_sources.py::FileStorageTests::test_durable_full_validation_checks_tail_checksum_and_missing_source PASSED [ 90%]
+tests/integration/test_file_sources.py::FileStorageTests::test_exact_256_mib_upload_bound_without_buffering_whole_source PASSED [ 92%]
+tests/integration/test_file_sources.py::FileStorageTests::test_expired_file_referenced_by_definition_or_binding_is_not_collectable PASSED [ 94%]
+tests/integration/test_file_sources.py::FileStorageTests::test_interrupted_upload_does_not_publish_or_leave_partial_content PASSED [ 96%]
+tests/integration/test_file_sources.py::FileStorageTests::test_real_metadata_commit_with_lost_ack_preserves_complete_blob PASSED [ 98%]
+tests/integration/test_file_sources.py::FileStorageTests::test_storage_key_collision_does_not_delete_another_partial_upload PASSED [100%]
+
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 54 passed, 1 warning in 36.62s ========================
+[4m>>>> Executing external compose provider "E:\\Workspace\\fpt-spec-eng\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-cead157d-backend-tests-run-a413e44b63de Creating 
+ Container aat-regression-cead157d-backend-tests-run-a413e44b63de Created 

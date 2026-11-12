@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "width": 1440,
+      "route": "/",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 1440,
+      "route": "/connections",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 1440,
+      "route": "/tables",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 1440,
+      "route": "/dag-builder",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 1440,
+      "route": "/monitoring",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 1440,
+      "route": "/settings",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/connections",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/tables",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/dag-builder",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/monitoring",
+      "status": 200,
+      "fits": true
+    },
+    {
+      "width": 390,
+      "route": "/settings",
+      "status": 200,
+      "fits": true
+    }
+  ]
+}
