@@ -1,5 +1,44 @@
 # Danh sách task: Airflow Automation Tool
 
+**Trạng thái hiện hành (ưu tiên hơn các snapshot bên dưới):** T138 đã khép
+trong phạm vi local được duyệt; tổng hợp 13 selectors tại
+`docs/testing/resume-20261111/t138-aggregate.json`. T141 PASS luồng UI đầy đủ
+desktop/mobile, xác minh 4 dòng đích mỗi luồng; T142 PASS cả 4 hướng DB qua
+Airflow thật với PK ghép/NULL/decimal/temporal. T143 vẫn mở: guard mất file đã
+PASS installed image; TXT thất bại do mapped reservation giữ gần10GiB sau lỗi
+typed FULL_REFRESH, không phải parser. Đã build sửa cách tính reservation với
+quota/PROTECTED giữ nguyên; chờ selectors liên quan trên `portable-346d83ce/`.
+T139/T140/T144–T152 chưa hoàn tất. T014_FULL vẫn BLOCKED. Ngoại lệ Kerberos
+đã được chủ dự án duyệt đúng 14 advisory/306 contexts, không còn chờ phê duyệt.
+Sản phẩm local tại <http://localhost:23000>, Airflow <http://localhost:28080>.
+
+**Sau phê duyệt Kerberos2026-11-11:** chủ dự án duyệt đúng14advisory/306contexts,
+policy LOCAL_POLICY_MATCH. Bản installed-image mới READY tại23000/Airflow28080;
+không thay demo13000. T138 đang khép regression:214unit/API+4SDK+54integration+
+118engine+19runtime+8Airflow routes+stress>1GiB PASS. Connections6/Tables10E2E
+PASS; các E2E còn lại đang chạy. Giữ `[ ]` T138 đến khi đủ selectors/cleanup.
+Xem [báo cáo hiện hành](../../docs/testing/phase8-regression-report.md).
+
+**Checkpoint portable mới nhất2026-11-11:** build/resolve10artifacts tại máy hiện
+tại, scan không cần baseline images cũ; wheel inspection PASS91/45/26modules,
+8unit tests preflight/policy PASS. Đã vá libxslt1.1.43-r4, frontend scan0findings.
+T138 vẫn mở:14advisory Kerberos/306contexts ngoài policy cần quyết định riêng tại
+[đề xuất](../../docs/proposals/portable-local-krb5-20261111.md). Runtime regression
+mới chưa chạy; gate thực chặn trước fixture. Không mở T139–T152/T014_FULL.
+
+**Quy trình portable được duyệt2026-11-11:** T138 bổ sung resolve/build image từ
+source/locks/config tại mỗi máy và scan đối chiếu policy có provenance; không
+yêu cầu baseline images máy trước. IDs vẫn ghi evidence, unknown findings không
+tự miễn. Xem [quyết định](../../docs/decisions/portable-local-build-20261111.md).
+Các mô tả blocker thiếu exact IDs bên dưới giữ lịch sử trước thay đổi này.
+
+**Tiếp nhận trên máy TrungLQ13, 2026-11-11:** T138 vẫn mở. Evidence mới hơn có
+ETL/stress và packaged Monitoring/Phase7 PASS trên máy trước. Máy hiện tại thiếu8
+regression image IDs và6 baseline Phase7 IDs; preflight thực ghi BLOCKED. Runner
+đã bổ sung `--preflight-only`, chỉ kiểm images cần cho nhóm được chọn và lưu đầy
+đủ blocker;3unit tests PASS. Candidate mới chưa được duyệt để chạy runtime.
+Chi tiết tại [báo cáo Phase8](../../docs/testing/phase8-regression-report.md).
+
 **Checkpoint tiếp tục 2026-11-11:** Phase7 T121–T137 đã khép trong phạm vi local
 được duyệt. Source regression18PASS, API bổ sung9PASS; packaged Monitoring8PASS,
 Dashboard/Settings/UX10PASS +2persistence +2outagePASS. T132 all-state lifecycle
@@ -332,11 +371,11 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 **Cách kiểm tra/test**: T138–T149 trên stack thật; T150/T151 tài liệu; T152 cổng cuối.
 **Điều kiện hoàn thành**: Không mandatory test NOT_RUN/BLOCKED/FAILED; no Critical/High chưa giải quyết; không tuyên bố MVP hoàn thành chỉ với US1 hoặc core slice.
 
-- [ ] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.65.0, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
+- [x] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.65.0, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
 - [ ] T139 [P] Tạo/chạy regression UI/API mới tại `tests\e2e\history_parser_authorization.spec.ts`; browser mới history/table detail, parser candidate/PATCH/stale/active-recovery guards, ONCE reserve/retry/rerun cần quyền mới, scheduled allow_empty consent/list/revoke warning và typed fields/dashboard lifetime; Phụ thuộc: T138, T058, T067, T116, T119; Truy vết: FR-015–FR-017, FR-028, FR-053–FR-054, FR-075, BR-08; Kiểm chứng: stack thật/browser1440/390, no secret hoặc success giả, readonly/unknown/stale feedback English.
 - [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
-- [ ] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
-- [ ] T142 [P] Tạo/chạy cross-DB Airflow regression tại `tests\airflow\test_cross_database.py`; PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG, source!=target, mappings/PK ghép/NULL/decimal/temporal; Phụ thuộc: T138; Truy vết: FR-001, SC-003, SC-015, ma trận C–F/I/AE; Kiểm chứng: 4routes target count/value/key và staging evidence thật.
+- [x] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
+- [x] T142 [P] Tạo/chạy cross-DB Airflow regression tại `tests\airflow\test_cross_database.py`; PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG, source!=target, mappings/PK ghép/NULL/decimal/temporal; Phụ thuộc: T138; Truy vết: FR-001, SC-003, SC-015, ma trận C–F/I/AE; Kiểm chứng: 4routes target count/value/key và staging evidence thật.
 - [ ] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
 - [ ] T144 [P] Tạo/chạy Airflow retry/commit-loss regression tại `tests\airflow\test_retry_recovery.py`; source/target down, kill không finally, app metric fail, stable retry binding/checkpoint, rerun mới/cảnh báo APPEND; Phụ thuộc: T138; Truy vết: FR-051, FR-060, SC-014, ma trận K/R/AH/AJ; Kiểm chứng: no blind duplicate replay, commit uncertain giữ PROTECTED và đối soát120giây hoặc lý do blocked.
 - [ ] T145 [P] Tạo/chạy FULL_REFRESH regression tại `tests\airflow\test_full_refresh_recovery.py`; pre-extract/mapped validation/mid-insert/COMMIT lost/zero-row/authorization revoked/invalidated trước admission và recovery sau revoke/dependency reject, reader old/new ở isolation hỗ trợ; Phụ thuộc: T138; Truy vết: NFR-005, FR-053–FR-054, SC-006, SC-013, ma trận L/M/AC; Kiểm chứng: old data giữ/phục hồi, một replacement commit, unknown không success hoặc replay; không tạo TTL/EXPIRED cho authorization; confirmation token10phút hết hạn chặn request mới nhưng replay cùng Idempotency-Key/hash trả intent cũ, không giải phóng ONCE.

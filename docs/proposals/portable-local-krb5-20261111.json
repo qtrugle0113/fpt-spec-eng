@@ -1,0 +1,3074 @@
+{
+  "status": "OWNER_DECISION_REQUIRED",
+  "scope": "Conditional local synthetic-data development only; not full security acceptance",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "review_due": "2026-11-16",
+  "T014_FULL": "BLOCKED",
+  "controls": "Unchanged; no public, real data, secrets/auth/data integrity exceptions",
+  "requested_contexts": [
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-wheels",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "airflow",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "069287e1e221c2f19ab6de1cd14b0894fcd537307e25478887677e25c040f8a1",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199"
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200"
+    }
+  ],
+  "scan_source": "docs/testing/resume-20261111/portable-5527612b/candidate-security.json",
+  "scan_sha256": "6448db9bc7fb46700cea46f0b30488c777bf917d0feb37f89cd4f0a547c645d5",
+  "new_findings_are_not_automatically_approved": true,
+  "separate_remediation": "libxslt1.1.43-r3 ->1.1.43-r4 is being patched; not requested for exception"
+}

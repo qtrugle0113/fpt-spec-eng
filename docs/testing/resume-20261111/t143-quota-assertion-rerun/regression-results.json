@@ -1,0 +1,76 @@
+{
+  "status": "PASS",
+  "images": {
+    "backend": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "airflow": "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+    "tests": "ecfc46d1e52160da2f9aad5b8a1ed8e4587b2ed30d1a89373d75cb0263b725eb",
+    "e2e": "41e09e7f5cc346d60532e8deb5bc567cd9829e5461c3a0286c0ebb844e37cdf2",
+    "workbook_deps": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49"
+  },
+  "planned_groups": [
+    "airflow"
+  ],
+  "selectors": [
+    {
+      "label": "airflow-0",
+      "command": [
+        "C:\\Users\\TrungLQ13\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\tests\\tools\\run_airflow_foundation.py",
+        "--runtime-execution-tests",
+        "--packaged-runtime",
+        "--runtime-execution-module",
+        "tests.airflow.test_file_database.FileDatabaseTests.test_invalid_typed_row_cannot_empty_full_refresh_target",
+        "--runtime-label",
+        "regression-airflow-0",
+        "--airflow-image",
+        "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+        "--postgres-image",
+        "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+        "--runner-image",
+        "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+        "--mysql-image",
+        "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+        "--workbook-deps-image",
+        "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261111\\t143-quota-assertion-rerun\\airflow-0"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261111\\t143-quota-assertion-rerun\\airflow-0"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-346d83ce\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+      "status": "PASS",
+      "actual_image_id": "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "status": "PASS",
+      "actual_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "status": "PASS",
+      "actual_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c"
+    },
+    {
+      "name": "workbook_deps",
+      "expected_image_id": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+      "status": "PASS",
+      "actual_image_id": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49"
+    }
+  ],
+  "active_selector": null
+}

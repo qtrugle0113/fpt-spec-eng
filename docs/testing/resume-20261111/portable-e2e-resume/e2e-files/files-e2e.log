@@ -1,0 +1,16 @@
+
+Running 12 tests using 1 worker
+
+[1/12] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/12] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/12] [desktop] › files.spec.ts:14:1 › Source upload above 1 MiB reaches the API through nginx
+[4/12] [desktop] › files.spec.ts:22:1 › CSV and headerless TXT retain typed NULL semantics and stable source references
+[5/12] [desktop] › files.spec.ts:72:1 › Candidate preview requires confirmation and stale parser edits fail safely
+[6/12] [desktop] › files.spec.ts:109:1 › Full validation finds an invalid tail after a successful bounded preview
+[7/12] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[8/12] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[9/12] [mobile] › files.spec.ts:14:1 › Source upload above 1 MiB reaches the API through nginx
+[10/12] [mobile] › files.spec.ts:22:1 › CSV and headerless TXT retain typed NULL semantics and stable source references
+[11/12] [mobile] › files.spec.ts:72:1 › Candidate preview requires confirmation and stale parser edits fail safely
+[12/12] [mobile] › files.spec.ts:109:1 › Full validation finds an invalid tail after a successful bounded preview
+  12 passed (31.0s)

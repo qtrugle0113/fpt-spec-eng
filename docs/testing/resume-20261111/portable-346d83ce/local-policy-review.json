@@ -1,0 +1,185 @@
+{
+  "status": "LOCAL_POLICY_MATCH",
+  "security": "FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS",
+  "comparison": "Fresh artifact scan against approved policy; not a same-snapshot delta",
+  "policy_provenance": {
+    "approval": "docs/decisions/phase7-local-image-approval.json",
+    "approval_sha256": "38cf82801555b11bb86c04845864691d39dac5307aa9c385018a02a207270dd7",
+    "approved_scan": "docs\\testing\\resume-20261111\\phase7-candidates-57ede3cf\\candidate-security.json",
+    "approved_scan_sha256": "0a20282a2f7c4015d61f403386f200211e94418c4f2f7149a3551c2139449a28",
+    "approved_runner_scans": [
+      {
+        "path": "docs\\testing\\resume-20261111\\regression-candidate-fd3a275a\\candidate-security.json",
+        "approved_sha256": "99f1cc5dbd61bd8e24441e7ec48b13441412a8495745af8e387bea1b18609d3b"
+      },
+      {
+        "path": "docs\\testing\\resume-20261111\\regression-candidate-1ec57e78\\candidate-security.json",
+        "approved_sha256": "83957cd157d3cf44c416493933f80ca70be2017a51b0cc1d0e40f9974e7e35fb"
+      }
+    ],
+    "additional_owner_decisions": [
+      {
+        "decision": "docs/decisions/portable-local-finding-approvals.json",
+        "decision_sha256": "eb0e71c22fadbfb0e83e76ad8e08b5b2911b85c80b75e4515573c3cf5f8b7d6d",
+        "proposal": "docs/proposals/portable-local-krb5-20261111.json",
+        "proposal_sha256": "ac4b8d8ad19b26bc81167dce06f8db99b811dbca78c93bfb97ac0439d71123f7"
+      }
+    ],
+    "ledger": "docs/decisions/t014-local-approved-findings.json",
+    "ledger_sha256": "dac2e798b86b1795825e3f9e8bf54743b539f9d0eadeaf28589b9f339a35f9c3",
+    "hash_representation": "Exact raw, LF or CRLF bytes; JSON values never reserialized",
+    "expires_at": "2026-11-23T00:00:00+09:00",
+    "review_due": "2026-11-16"
+  },
+  "images": [
+    {
+      "target": "backend-wheels",
+      "image_id": "f4be6713f68b357772165a4dcd0f442f2b983c2c1f3bf5171b6b76ad4b4143b3",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 99,
+        "MEDIUM": 135,
+        "CRITICAL": 2,
+        "UNKNOWN": 10
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "backend",
+      "image_id": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 96,
+        "MEDIUM": 134,
+        "CRITICAL": 2,
+        "UNKNOWN": 10
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "df039be55f5291b62f15bff2443bbd62061cfc61a6ffee54997cdd35f4986c16",
+      "counts": {
+        "LOW": 110,
+        "HIGH": 99,
+        "MEDIUM": 135,
+        "CRITICAL": 2,
+        "UNKNOWN": 10
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "airflow",
+      "image_id": "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+      "counts": {
+        "LOW": 305,
+        "HIGH": 231,
+        "MEDIUM": 300,
+        "UNKNOWN": 17,
+        "CRITICAL": 5
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "backend-tests",
+      "image_id": "ecfc46d1e52160da2f9aad5b8a1ed8e4587b2ed30d1a89373d75cb0263b725eb",
+      "counts": {
+        "LOW": 109,
+        "HIGH": 96,
+        "MEDIUM": 135,
+        "CRITICAL": 2,
+        "UNKNOWN": 10
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "e2e-tests",
+      "image_id": "41e09e7f5cc346d60532e8deb5bc567cd9829e5461c3a0286c0ebb844e37cdf2",
+      "counts": {
+        "MEDIUM": 389,
+        "LOW": 28
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": null
+    },
+    {
+      "target": "frontend",
+      "image_id": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+      "counts": {},
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": null
+    },
+    {
+      "target": "frontend-build",
+      "image_id": "d55f86c4ded11924fecdb540f8b229c7437a99c9e6aafb5fa40f82d9315d8cdf",
+      "counts": {
+        "LOW": 85,
+        "HIGH": 34,
+        "MEDIUM": 97,
+        "CRITICAL": 1
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "postgres",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "counts": {
+        "LOW": 171,
+        "HIGH": 106,
+        "MEDIUM": 186,
+        "CRITICAL": 3,
+        "UNKNOWN": 11
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": {
+        "expected_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "actual_sha256": "7e2a72b4c4b38c61e6962de6e3f4a5e9ae692e732c68deead10a7ce2135a7f68",
+        "status": "PASS"
+      }
+    },
+    {
+      "target": "mysql",
+      "image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "counts": {
+        "MEDIUM": 31,
+        "UNKNOWN": 1
+      },
+      "unknown_high_critical": [],
+      "not_affected_binary_proof": null
+    }
+  ],
+  "T014_FULL": "BLOCKED",
+  "existing_services_modified": false,
+  "scan_sha256": "2227189f113151e60e2af142683b0e4c39897a87f248da6048d595ec57aa6f86",
+  "manifest_sha256": "171a854c8f3f9a68b794bcf67b7f22da38a1ebbefc6f7292b2034c735e19362a"
+}

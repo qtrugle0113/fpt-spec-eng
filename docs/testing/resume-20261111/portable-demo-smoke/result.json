@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "mode": "Readonly real browser on newly started local demo",
+  "checks": [
+    {
+      "route": "/",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/connections",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/tables",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/dag-builder",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/monitoring",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/settings",
+      "width": 1440,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/connections",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/tables",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/dag-builder",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/monitoring",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    },
+    {
+      "route": "/settings",
+      "width": 390,
+      "status": 200,
+      "overflow": false
+    }
+  ]
+}

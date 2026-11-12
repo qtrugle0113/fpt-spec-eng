@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "scope": "T141 desktop/mobile full UI CSV workflow and actual target verification",
+  "source_sha256": {
+    "tests/e2e/full_workflow.spec.ts": "8a20810a858ee5cc0eec034c7600a02c4e52d07d63c965e0206d92c4d33b6277",
+    "tests/tools/make_full_workflow.py": "356eaccfcd220af0e289961b6983f606b69f56c7de501ee8e68d38ecc9600151",
+    "tests/tools/verify_full_workflow.py": "c152eee796f0a5cc4241e3b1b7f8426f94bb8544a34ef59077ad66447b4116e1",
+    "samples/data/customers.csv": "e5a9d8f77e05faaaf973c9fdc08df3f5f2652963ad9fc309881241291cd954fc"
+  },
+  "browser_tests": 6,
+  "target_rows_per_workflow": 4,
+  "elapsed_ms": [
+    40233,
+    36144
+  ],
+  "actual_execution_exit_code": 0,
+  "cleanup_exit_code": 0,
+  "Open_Airflow": "Real Airflow UI authentication page opened; no auth bypass",
+  "first_attempt": "t141-full-workflow failed because explicit CSV type conversions were missing; preserved, no safety rule relaxed",
+  "T014_FULL": "BLOCKED"
+}

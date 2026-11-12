@@ -13,7 +13,7 @@ from .delimited import ParserConfig,read
 from .schema import inspect_table,digest
 from ..mapping.mapper import map_row
 from ..mapping.validation import validate_rows
-from ..staging.manager import StagingWriter,StagingReader,encoded
+from ..staging.manager import StagingWriter,StagingReader,encoded,MAX_ROW_BYTES,MAX_MANIFEST_BYTES
 from ..staging.codec import row as encode_row
 from ..staging.quota import RUN_LIMIT
 from ..contracts.writer import PreparedDataset,PreparedBatch
@@ -166,7 +166,11 @@ def prepare_file(config,reference,target_engine,*,root,quota,run_uuid,dataset_id
                 yield map_row(dict(zip((p['name'] for p in source.columns),values)),source_schema=source.columns,target_schema=key_columns,mappings=mappings,row_number=number)
         with target_engine.connect() as c:validate_rows(c,schema=target.schema,table=target.table,columns=[p['name'] for p in key_columns],rows=key_rows(),conflict_keys=keys)
     if config.load_strategy!='FULL_REFRESH':return dataset
-    with StagingWriter(**common,dataset_id=dataset_id,columns=list(target.columns),reservation_bytes=capacity()) as mapped:
+    # Each mapped row and the manifest already have enforced serialized bounds.
+    # A failed tiny mapping must not pin an otherwise unused 10 GiB reservation.
+    # Keep the artifacts protected and reserve their conservative maximum size.
+    mapped_capacity=min(capacity(),raw.rows*MAX_ROW_BYTES+MAX_MANIFEST_BYTES)
+    with StagingWriter(**common,dataset_id=dataset_id,columns=list(target.columns),reservation_bytes=mapped_capacity) as mapped:
         def mapped_rows():
             for batch in dataset.batches():
                 for value in batch.rows:

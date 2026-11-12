@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 9 items
+
+tests/etl/test_file_transfer.py::FileTransferTests::test_append_late_type_error_preserves_committed_batch PASSED [ 11%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_bad_full_format_or_changed_checksum_never_loads PASSED [ 22%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_mysql PASSED [ 33%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_postgres PASSED [ 44%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_global_upsert_key_errors_precede_every_target_write PASSED [ 55%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_headerless_txt_maps_generated_columns PASSED [ 66%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_mysql PASSED [ 77%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_postgres PASSED [ 88%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_upsert_late_nonkey_type_error_preserves_prior_batch PASSED [100%]
+
+============================== 9 passed in 3.91s ===============================
+[4m>>>> Executing external compose provider "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-c8e4c5bd-backend-tests-run-14c5f14d8727 Creating 
+ Container aat-regression-c8e4c5bd-backend-tests-run-14c5f14d8727 Created 
+

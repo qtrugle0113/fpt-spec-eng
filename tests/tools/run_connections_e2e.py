@@ -12,11 +12,12 @@ parser=argparse.ArgumentParser(description=__doc__)
 for name in ('backend','frontend','e2e','airflow','postgres','mysql'):
     parser.add_argument('--'+name+'-image',required=True)
 parser.add_argument('--evidence-dir',required=True)
-parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7'],default='connections')
+parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow'],default='connections')
 parser.add_argument('--source-overlay',action='store_true',help='Run current source read-only on existing dependency images; not packaged-image acceptance')
 parser.add_argument('--frontend-artifact',help='Workspace-relative dist from the pinned offline frontend build')
 parser.add_argument('--keep-running',action='store_true',help='Keep this new local demo and its volumes after tests; publish loopback 13000/18000/18080')
 parser.add_argument('--prepare-only',action='store_true',help='Validate the isolated Compose configuration without starting services')
+parser.add_argument('--missing-source-check',action='store_true',help='Check unavailable-source API guards after the full workflow in this owned installed-image fixture')
 args=parser.parse_args()
 evidence=(ROOT/args.evidence_dir).resolve()
 if not evidence.is_relative_to(ROOT):parser.error('Evidence must stay in workspace')
@@ -109,6 +110,9 @@ try:
                 service.setdefault('volumes',[]).append({'type':'volume','source':'current_source','target':'/usr/share/nginx/html','read_only':True,'volume':{'nocopy':True,'subpath':'frontend-dist'}})
         result['execution_mode']='CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES'
         result['packaged_image_acceptance']=False
+    if args.suite=='full_workflow':
+        config['services']['backend']['environment']['AAT_AIRFLOW_PUBLIC_URL']='http://airflow-apiserver:8080'
+        config['services']['airflow-apiserver']['environment']['AIRFLOW__API__BASE_URL']='http://airflow-apiserver:8080'
     if args.keep_running:
         for service,host,container in [('frontend',13000,80),('backend',18000,8000),('airflow-apiserver',18080,8080)]:
             config['services'][service]['ports']=[{'host_ip':'127.0.0.1','published':str(host),'target':container,'protocol':'tcp'}]
@@ -122,6 +126,18 @@ try:
         result['status']='PREPARED_NOT_RUN'
         print(args.suite.upper()+'_E2E_CONFIG_PASS '+project)
         raise SystemExit(0)
+    table_fixtures=None
+    if args.suite=='tables':
+        helper=project+'-table-workbooks'
+        try:
+            execute(['podman','create','--name',helper,'--network','none','--entrypoint','python',images['backend'],'/tmp/make_table_fixtures.py'])
+            execute(['podman','cp',str(ROOT/'samples/definitions'),helper+':/tmp/aat-table-fixture-source'])
+            execute(['podman','cp',str(ROOT/'tests/tools/make_table_fixtures.py'),helper+':/tmp/make_table_fixtures.py'])
+            execute(['podman','start','-a',helper])
+            table_fixtures=ROOT/'.tools'/(project+'-table-fixtures');table_fixtures.mkdir(exist_ok=True)
+            execute(['podman','cp',helper+':/tmp/aat-table-fixtures/.',str(table_fixtures)])
+            result['table_fixture_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in table_fixtures.glob('*.xlsx')}
+        finally:execute(['podman','rm','-f',helper],check=False)
     resources_started=True
     started=execute([*base,'up','-d','--no-build','--wait','--wait-timeout','300','frontend','airflow-scheduler','airflow-dag-processor'],check=False,timeout=360)
     if started.returncode:
@@ -154,13 +170,29 @@ try:
             (evidence/(args.suite+'-startup-services.log')).write_text(redact(service_logs.stdout+service_logs.stderr),encoding='utf-8')
         raise RuntimeError('Isolated Connections stack did not become ready; no data reset performed')
     execute([*base,'run','-d','--no-deps','--name',runner,'e2e-tests','sleep','infinity'])
-    if args.suite=='connections':
+    if args.suite in ('connections','full_workflow'):
         backend=execute([*base,'ps','-q','backend']).stdout.strip()
         extracted=execute(['podman','exec',backend,'python','-c',
             "import json,pathlib; print(json.dumps({name:(pathlib.Path('/secrets/backend')/name).read_text() for name in ('pg_etl','mysql_etl')}))"])
         credentials=json.loads(extracted.stdout);private_values.extend(credentials.values())
         install="const fs=require('node:fs'); fs.mkdirSync('/run/aat-e2e',{mode:0o700}); for(const [k,v] of Object.entries(JSON.parse(fs.readFileSync(0,'utf8')))) fs.writeFileSync('/run/aat-e2e/'+k,v,{mode:0o400});"
         execute(['podman','exec','-i',runner,'node','-e',install],input=json.dumps(credentials))
+    if args.suite=='full_workflow':
+        helper=project+'-workbook-libraries'
+        libraries=ROOT/'.tools'/(project+'-workbook-libraries');libraries.mkdir(exist_ok=True)
+        try:
+            query="import sysconfig,json,importlib.metadata as m;print(json.dumps({'root':sysconfig.get_paths()['purelib'],'versions':{n:m.version(n) for n in ('openpyxl','et_xmlfile','defusedxml')}}))"
+            execute(['podman','create','--name',helper,'--network','none','--entrypoint','python',images['backend'],'-c',query])
+            dependencies=json.loads(execute(['podman','start','-a',helper]).stdout)
+            if dependencies['versions']!={'openpyxl':'3.1.5','et_xmlfile':'2.0.0','defusedxml':'0.7.1'}:raise RuntimeError('Workbook fixture dependency drift')
+            for package in dependencies['versions']:
+                execute(['podman','cp',helper+':'+dependencies['root']+'/'+package,str(libraries/package)])
+            execute(['podman','cp',str(libraries),runner+':/tests/workbook-libs'])
+            result['workbook_fixture_libraries']={'source_image_id':images['backend'],**dependencies,
+                'sha256':{str(p.relative_to(libraries)):hashlib.sha256(p.read_bytes()).hexdigest() for p in libraries.rglob('*') if p.is_file()}}
+        finally:execute(['podman','rm','-f',helper],check=False)
+        execute(['podman','cp',str(ROOT/'tests/tools/make_full_workflow.py'),runner+':/tests/make_full_workflow.py'])
+        execute(['podman','cp',str(ROOT/'samples/data/customers.csv'),runner+':/tests/full-customers.csv'])
     # Test-only edits do not rebuild or mutate the approved application images.
     result['test_source_sha256']={}
     suite_sources=['dashboard.spec.ts','settings.spec.ts','accessibility.spec.ts'] if args.suite=='phase7' else [args.suite+'.spec.ts']
@@ -173,10 +205,7 @@ try:
         execute(['podman','cp',str(source),runner+':/tests/'+filename])
         result['test_source_sha256'][filename]=hashlib.sha256(source.read_bytes()).hexdigest()
     if args.suite=='tables':
-        fixtures=ROOT/'.tools/table-e2e-fixtures'
-        if not all((fixtures/name).is_file() for name in ('postgres.xlsx','mysql.xlsx','invalid.xlsx','boundary.xlsx')):
-            raise RuntimeError('Prepare public table workbook fixtures before running E2E')
-        execute(['podman','cp',str(fixtures),runner+':/tests/table-fixtures'])
+        execute(['podman','cp',str(table_fixtures),runner+':/tests/table-fixtures'])
     if args.suite in ('dag_builder','monitoring'):
         helper=project+'-workbooks'
         try:
@@ -192,11 +221,27 @@ try:
         worker=execute([*base,'ps','-q','backend-worker']).stdout.strip()
         execute(['podman','cp',str(ROOT/'tests/tools/seed_monitoring_fixture.py'),worker+':/tmp/seed_monitoring_fixture.py'])
         execute(['podman','exec','-e','AAT_E2E_PROJECT='+project,worker,'python','/tmp/seed_monitoring_fixture.py'])
-    tested=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test',*suite_sources,'bootstrap.spec.ts','--timeout=120000','--reporter=line'],check=False,timeout=300)
+    tested=execute(['podman','exec',runner,'node','node_modules/@playwright/test/cli.js','test',*suite_sources,'bootstrap.spec.ts','--timeout=120000','--reporter=line'],check=False,timeout=1800 if args.suite=='full_workflow' else 300)
     (evidence/(args.suite+'-e2e.log')).write_text(redact(tested.stdout+tested.stderr),encoding='utf-8')
     if tested.returncode:execute(['podman','cp',runner+':/tests/test-results',str(evidence)],check=False)
     result['exit_code']=tested.returncode
     result['status']='PASS' if tested.returncode==0 else 'FAIL'
+    if args.suite=='full_workflow' and tested.returncode==0:
+        references=evidence/'full-workflows.json'
+        execute(['podman','cp',runner+':/tmp/aat-e2e-artifacts/full-workflows.json',str(references)])
+        execute(['podman','cp',str(references),backend+':/tmp/full-workflows.json'])
+        execute(['podman','cp',str(ROOT/'tests/tools/verify_full_workflow.py'),backend+':/tmp/verify_full_workflow.py'])
+        verified=execute(['podman','exec',backend,'python','/tmp/verify_full_workflow.py'],check=False,timeout=60)
+        if verified.returncode==0 and args.missing_source_check:
+            result['missing_source_verifier_sha256']=hashlib.sha256((ROOT/'tests/tools/verify_missing_source.py').read_bytes()).hexdigest()
+            execute(['podman','cp',str(ROOT/'tests/tools/verify_missing_source.py'),backend+':/tmp/verify_missing_source.py'])
+            guarded=execute(['podman','exec',backend,'python','/tmp/verify_missing_source.py'],check=False,timeout=120)
+            (evidence/'missing-source-verification.log').write_text(redact(guarded.stdout+guarded.stderr),encoding='utf-8')
+            result['missing_source_exit_code']=guarded.returncode
+            verified=guarded if guarded.returncode else execute(['podman','exec',backend,'python','/tmp/verify_full_workflow.py'],check=False,timeout=60)
+        (evidence/'full-workflow-verification.log').write_text(redact(verified.stdout+verified.stderr),encoding='utf-8')
+        result.update(actual_execution_exit_code=verified.returncode,exit_code=verified.returncode,
+            status='PASS' if verified.returncode==0 else 'FAIL')
     if args.suite=='phase7' and tested.returncode==0:
         recreated=execute([*base,'up','-d','--no-build','--no-deps','--force-recreate','--wait','--wait-timeout','180','backend-worker','backend'],check=False,timeout=240)
         (evidence/'settings-recreation.log').write_text(redact(recreated.stdout+recreated.stderr),encoding='utf-8')

@@ -186,7 +186,10 @@ def compile_definition(spec):
         if source_ref['type']=='DB':source_schema,target_schema=inspect_inputs(config,source_engine,target_engine_)
         else:
             from aat_etl.readers.file_source import inspect_file_inputs
-            source_schema,target_schema=inspect_file_inputs(config,reference,target_engine_)
+            try:
+                source_schema,target_schema=inspect_file_inputs(config,reference,target_engine_)
+            except OSError:
+                raise APIError('FILE_SOURCE_UNAVAILABLE','Source file is unavailable. Upload and validate a new source file.',409) from None
         if source_ref['type']=='DB':
             preflight(source_schema,target_schema,expected_source_hash=source_schema.fingerprint,expected_target_hash=target_schema.fingerprint,
                 expected_source_identity=source_schema.physical_identity,expected_target_identity=target_schema.physical_identity)

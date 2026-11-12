@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\TrungLQ13\Desktop\workplaces\spec-engineer\tests\tools\run_connections_e2e.py", line 178, in <module>
+    raise RuntimeError('Prepare public table workbook fixtures before running E2E')
+RuntimeError: Prepare public table workbook fixtures before running E2E

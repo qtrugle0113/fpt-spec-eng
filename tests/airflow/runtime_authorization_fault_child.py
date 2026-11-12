@@ -13,7 +13,22 @@ from aat_metadata.repositories.authorizations import AuthorizationRepository
 mode=sys.argv.pop()
 marker=Path('/tmp/aat-runtime-staging')/('authorization-fault-'+sys.argv[1]+'-'+mode)
 with ExitStack() as stack:
-    if mode=='admission-ack-loss':
+    if mode=='file-diagnostic':
+        # Fixture-only diagnostics preserve the installed engine's behavior.
+        # Record stack coordinates, never exception text, credentials or data.
+        import json
+        import traceback
+        from aat_etl import runtime
+        actual=runtime.run_binding
+        def trace_binding(*args,**kwargs):
+            try:return actual(*args,**kwargs)
+            except Exception as error:
+                marker.write_text(json.dumps({'type':type(error).__name__,'frames':[
+                    {'file':Path(frame.filename).name,'function':frame.name,'line':frame.lineno}
+                    for frame in traceback.extract_tb(error.__traceback__)]}))
+                raise
+        stack.enter_context(patch.object(runtime,'run_binding',trace_binding))
+    elif mode=='admission-ack-loss':
         actual=AuthorizationRepository.admit
         def admit(repository,**request):
             result=actual(repository,**request)

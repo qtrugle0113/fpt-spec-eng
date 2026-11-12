@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "image_id": "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1",
+  "source": "backend\\src\\aat_api\\services\\etl_preview.py",
+  "expected_sha256": "7b971820b31e646cac1ac5d14f3e5b77010c6a9621d8a703182fb310fabeb90b",
+  "installed": {
+    "module": "/usr/local/lib/python3.12/site-packages/aat_api/services/etl_preview.py",
+    "sha256": "7b971820b31e646cac1ac5d14f3e5b77010c6a9621d8a703182fb310fabeb90b"
+  },
+  "network": "none",
+  "scope": "Installed missing-source guard package contents only; API behavior pending"
+}

@@ -61,7 +61,7 @@ class WorkflowFixture(unittest.TestCase):
             if time.monotonic()>deadline:self.fail('Private fixture backend readiness exceeded deadline')
             time.sleep(.2)
 
-    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None):
+    def workflow(self,source_kind='POSTGRESQL',target_kind='POSTGRESQL',extension=None,scheduled=False,strategy='APPEND',fault_mode=None,workbook_edit=None,file_data=None,parser_options=None,expected_records=None,expect_failure=False,before_trigger=None,expect_trigger_error=None):
         from aat_api.services.connections.service import transaction,active
         from aat_api.services.table_preview import target_engine
         from aat_api.services.etl_preview import preview
@@ -76,8 +76,9 @@ class WorkflowFixture(unittest.TestCase):
             if extension:
                 from tests.api.test_files import PARSER
                 delimiter=',' if extension=='csv' else '|'
-                data=('id'+delimiter+'note'+chr(10)+'1'+delimiter+'first'+chr(10)+'2'+delimiter+chr(92)+'N'+chr(10)).encode()
-                uploaded=self.response(self.client.post('/api/v1/files',data={'parser_json':json.dumps({**PARSER,'delimiter':delimiter})},
+                data=file_data if file_data is not None else ('id'+delimiter+'note'+chr(10)+'1'+delimiter+'first'+chr(10)+'2'+delimiter+chr(92)+'N'+chr(10)).encode()
+                parser={**PARSER,'delimiter':delimiter,**(parser_options or {})}
+                uploaded=self.response(self.client.post('/api/v1/files',data={'parser_json':json.dumps(parser)},
                     files={'file':('sdk-source.'+extension,data,'text/plain')}),'post','/files',201)
                 command=self.response(self.client.post('/api/v1/files/'+uploaded['id']+'/validate',
                     headers={'Idempotency-Key':str(uuid4())},json={'expected_sha256':uploaded['sha256'],'parser_revision':1}),
@@ -86,8 +87,8 @@ class WorkflowFixture(unittest.TestCase):
                 sheet['C2']=None
                 for cell in ('D2','E2','F2'):sheet[cell]=None
                 sheet['G2']=uploaded['id']
-                book['Column_Mappings'].append([sheet['A2'].value,'id','id','Type Conversion',None,'TRUE'])
-                book['Column_Mappings'].append([sheet['A2'].value,'note','note','Direct Mapping',None,'TRUE'])
+                book['Column_Mappings'].append([sheet['A2'].value,'id' if parser['header_present'] else 'column_1','id','Type Conversion',None,'TRUE'])
+                book['Column_Mappings'].append([sheet['A2'].value,'note' if parser['header_present'] else 'column_2','note','Direct Mapping',None,'TRUE'])
             elif source_kind!=target_kind:
                 connection=self.target(source_kind)
                 with transaction() as session:_,current=active(session,UUID(connection['id']));source_revision=current.id
@@ -96,9 +97,10 @@ class WorkflowFixture(unittest.TestCase):
                     cursor.execute(text(f'CREATE TABLE {table} (id INTEGER PRIMARY KEY,note VARCHAR(40))'))
                     cursor.execute(text(f"INSERT INTO {table} VALUES (1,'first'),(2,NULL)"))
                 sheet['D2']=connection['code'];sheet['E2']='public' if source_kind=='POSTGRESQL' else 'etl_test';sheet['F2']=table
+            if workbook_edit:workbook_edit(book,connection,source,target,revision)
         uploaded,validation,dag,target,target_revision=self.scenario(edit=edit,database_type=target_kind)
         self.assertEqual(validation['state'],'SUCCEEDED','Route workbook did not validate')
-        expected_failure=fault_mode in ('terminal-extraction','revoke-before-admission')
+        expected_failure=expect_failure or fault_mode in ('terminal-extraction','revoke-before-admission')
         if expected_failure:
             with target_engine(target_revision) as engine,engine.begin() as cursor:
                 cursor.execute(text(f"INSERT INTO {target} VALUES (99,'old protected row')"))
@@ -134,12 +136,25 @@ class WorkflowFixture(unittest.TestCase):
                 'patch','/dags/{dag_id}/state',202)
             self.assertEqual(dag_activation.execute(self.claim(command,'route-state'),'route-state'),('SUCCEEDED',None));self.finish(command)
         state(False)
+        if before_trigger:before_trigger(item)
         trigger_key=None;trigger_body=None
         if not scheduled:
             trigger_key=str(uuid4());trigger_body={
                 'expected_revision':item['id'],'confirmation_token':current['confirmation_token'],
                 **({'authorization_id':authority['id']} if authority else {})}
-            command=self.response(self.client.post('/api/v1/dags/'+dag+'/trigger',headers={'Idempotency-Key':trigger_key},json=trigger_body),'post','/dags/{dag_id}/trigger',202)
+            response=self.client.post('/api/v1/dags/'+dag+'/trigger',headers={'Idempotency-Key':trigger_key},json=trigger_body)
+            if expect_trigger_error:
+                failure=self.response(response,'post','/dags/{dag_id}/trigger',409)
+                self.assertEqual(failure['error']['code'],expect_trigger_error)
+                self.assertNotIn('/data/uploads',response.text)
+                with transaction() as session:
+                    self.assertEqual(session.scalar(text('SELECT count(*) FROM run_intents WHERE dag_id=:dag'),{'dag':dag}),0)
+                    self.assertEqual(session.scalar(text('SELECT state FROM replacement_authorizations WHERE id=:id'),{'id':authority['id']}),'GRANTED')
+                with target_engine(target_revision) as engine,engine.connect() as cursor:
+                    self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),[(99,'old protected row')])
+                state(True)
+                return dict(dag=dag,item=item,authority=authority)
+            command=self.response(response,'post','/dags/{dag_id}/trigger',202)
             self.assertEqual(dag_control.execute(self.claim(command,'route-trigger'),'route-trigger'),('SUCCEEDED',None));self.finish(command)
             run_id='manual__aat_'+command['id']
         else:
@@ -155,6 +170,16 @@ class WorkflowFixture(unittest.TestCase):
             if run['state'] in ('success','failed'):break
             if time.monotonic()>deadline:self.fail('Real route execution deadline exceeded')
             time.sleep(1)
+        if run['state']=='failed' and not expected_failure:
+            from aat_api.airflow_client.monitoring import MonitoringClient
+            import re
+            diagnostic=MonitoringClient(airflow().client).logs(dag,run_id,'execute_etl',attempt=1)
+            print('SDK_FAILURE_CODES '+','.join(sorted(set(re.findall(r'\b[A-Z][A-Z0-9_]{3,}\b',json.dumps(diagnostic))))),flush=True)
+            if fault_mode=='file-diagnostic':
+                with transaction() as session:
+                    identity=session.scalar(text('SELECT id FROM execution_bindings WHERE dag_id=:dag AND airflow_run_id=:run'),{'dag':dag,'run':run_id})
+                marker=Path('/tmp/aat-runtime-staging')/('authorization-fault-'+str(identity)+'-file-diagnostic')
+                print('PRIVATE_FIXTURE_STACK '+(marker.read_text() if marker.exists() else 'NO_ENGINE_EXCEPTION_RECORDED'),flush=True)
         self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
         state(True)
         if expected_failure:
@@ -162,19 +187,20 @@ class WorkflowFixture(unittest.TestCase):
                 self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),[(99,'old protected row')])
             return dict(dag=dag,authority=authority,run_id=run_id,item=item)
         with target_engine(target_revision) as engine,engine.connect() as cursor:
-            self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),[(1,'first'),(2,None)])
+            self.assertEqual(list(cursor.execute(text(f'SELECT id,note FROM {target} ORDER BY id'))),expected_records if expected_records is not None else [(1,'first'),(2,None)])
+        row_count=len(expected_records) if expected_records is not None else 2
         with transaction() as session:
             binding=session.execute(text('SELECT b.state,b.commit_uncertain,b.airflow_run_type,d.state AS dataset_state,d.extracted_rows,d.validated_rows,d.total_bytes,m.extracted_rows AS metric_extracted,m.validated_rows AS metric_validated,m.loaded_rows,m.failed_rows_nullable,m.phase FROM execution_bindings b JOIN dataset_manifests d ON d.id=b.dataset_id JOIN execution_metrics m ON m.binding_id=b.id WHERE b.dag_id=:dag AND b.airflow_run_id=:run'),{'dag':dag,'run':run_id}).one()
             # File APPEND/UPSERT manifests pin raw extraction before typed streaming.
             # Their COMPLETE bytes/counts remain immutable; final validation and
             # verified target commits are projected into execution_metrics.
-            manifest_validated=0 if extension and strategy!='FULL_REFRESH' else 2
-            self.assertEqual((binding.state,binding.commit_uncertain,binding.dataset_state,binding.extracted_rows,binding.validated_rows),('COMMIT_VERIFIED',False,'COMPLETE',2,manifest_validated))
+            manifest_validated=0 if extension and strategy!='FULL_REFRESH' else row_count
+            self.assertEqual((binding.state,binding.commit_uncertain,binding.dataset_state,binding.extracted_rows,binding.validated_rows),('COMMIT_VERIFIED',False,'COMPLETE',row_count,manifest_validated))
             expected_phase='COMMIT_VERIFIED' if fault_mode=='target-commit-loss' else 'COMPLETE'
-            self.assertEqual((binding.metric_extracted,binding.metric_validated,binding.loaded_rows,binding.failed_rows_nullable,binding.phase),(2,2,2,0,expected_phase))
+            self.assertEqual((binding.metric_extracted,binding.metric_validated,binding.loaded_rows,binding.failed_rows_nullable,binding.phase),(row_count,row_count,row_count,0,expected_phase))
             self.assertGreater(binding.total_bytes,0)
             self.assertEqual(binding.airflow_run_type,'scheduled' if scheduled else 'manual')
-        print('SDK_ROUTE_VERIFIED source='+(extension.upper() if extension else source_kind)+' target='+target_kind+' strategy='+strategy+' scheduled='+str(scheduled)+' rows=2 null_preserved=true disk_manifest=COMPLETE',flush=True)
+        print('SDK_ROUTE_VERIFIED source='+(extension.upper() if extension else source_kind)+' target='+target_kind+' strategy='+strategy+' scheduled='+str(scheduled)+' rows='+str(row_count)+' null_preserved=true disk_manifest=COMPLETE',flush=True)
         return dict(upload=uploaded,dag=dag,item=item,authority=authority,run_id=run_id,target=target,target_revision=target_revision,
             deployment_id=deployment_id,trigger_key=trigger_key,trigger_body=trigger_body,command=command,confirmation_token=current['confirmation_token'])
 

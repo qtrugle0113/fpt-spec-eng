@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED",
+  "images": {
+    "backend": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+    "tests": "63872b1c8fac53bf4eb8334c5562fc36d0ad6ecac33647b0cf9b1c311042e58b",
+    "e2e": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+    "workbook_deps": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d"
+  },
+  "planned_groups": [
+    "unit-api"
+  ],
+  "selectors": [],
+  "existing_services_modified": false,
+  "reason": "LOCAL_SCAN_POLICY_NOT_READY",
+  "detail": "Local scan policy has unresolved findings"
+}

@@ -1,0 +1,6 @@
+SCAN_PREFLIGHT_PASS 2 targets
+SCAN_START frontend 9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df
+SCAN_COMPLETE frontend
+SCAN_START backend-tests 63872b1c8fac53bf4eb8334c5562fc36d0ad6ecac33647b0cf9b1c311042e58b
+SCAN_COMPLETE backend-tests
+SCAN_REPORT_WRITTEN docs\testing\resume-20261111\portable-af8d7ed2\candidate-security.json

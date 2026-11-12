@@ -1,0 +1,10 @@
+SCAN_PREFLIGHT_PASS 4 targets
+SCAN_START backend-wheels 67c359014460addb85e948ea432db716b4e099830611b8cdc7035bcb8ac905d3
+SCAN_COMPLETE backend-wheels
+SCAN_START backend 8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1
+SCAN_COMPLETE backend
+SCAN_START backend-tests dff366e6ceefd29c4b188700f5f952ce9048afee9968b6d2c7a97863f80b3d1f
+SCAN_COMPLETE backend-tests
+SCAN_START e2e-tests 41e09e7f5cc346d60532e8deb5bc567cd9829e5461c3a0286c0ebb844e37cdf2
+SCAN_COMPLETE e2e-tests
+SCAN_REPORT_WRITTEN docs\testing\resume-20261111\portable-0d406416\candidate-security.json

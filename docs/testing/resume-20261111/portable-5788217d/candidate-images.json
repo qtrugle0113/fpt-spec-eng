@@ -1,0 +1,135 @@
+{
+  "phase": "portable",
+  "run_id": "5788217d",
+  "source_context": ".tools\\portable-source-5788217d",
+  "captured_at": "2026-11-11T01:04:26.678948+00:00",
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "image_id": "5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe",
+      "dockerfile": "backend/Dockerfile",
+      "target": "wheels",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "backend",
+      "ref": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "dockerfile": "backend/Dockerfile",
+      "target": null,
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "image_id": "da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "target": "wheels",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "airflow",
+      "ref": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "target": null,
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "frontend-build",
+      "ref": "d55f86c4ded11924fecdb540f8b229c7437a99c9e6aafb5fa40f82d9315d8cdf",
+      "image_id": "d55f86c4ded11924fecdb540f8b229c7437a99c9e6aafb5fa40f82d9315d8cdf",
+      "dockerfile": "frontend/Dockerfile",
+      "target": "build",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "frontend",
+      "ref": "22ee130457b28abe501c2959755880cf85b06e0fc092289244a1acc2a1e78007",
+      "image_id": "22ee130457b28abe501c2959755880cf85b06e0fc092289244a1acc2a1e78007",
+      "dockerfile": "frontend/Dockerfile",
+      "target": null,
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "backend-tests",
+      "ref": "localhost/aat-portable-backend-tests-5788217d:0.1.0",
+      "image_id": "24ac31d84d8d5dd363d0934559c3f048cb50b8809a5565e443aa16cf072b11e9",
+      "dockerfile": "docker/tests/Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "docker/tests/Dockerfile",
+        "-t",
+        "localhost/aat-portable-backend-tests-5788217d:0.1.0",
+        "."
+      ]
+    },
+    {
+      "name": "e2e-tests",
+      "ref": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+      "image_id": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+      "dockerfile": "docker/tests/playwright.Dockerfile",
+      "target": null,
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "postgres",
+      "ref": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "dockerfile": "docker/gosu/Dockerfile",
+      "target": "postgres",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "mysql",
+      "ref": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "dockerfile": "docker/gosu/Dockerfile",
+      "target": "mysql",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    }
+  ],
+  "source_revision": "729fcb4239d72d761b50bb863ecd5c2311d3c0dd",
+  "source_dirty": true,
+  "environment": {
+    "Client": {
+      "APIVersion": "6.1.1",
+      "Version": "6.1.1",
+      "GoVersion": "go1.27.1",
+      "GitCommit": "8303f2e25b675ea7f82099d615c60969aec15870",
+      "BuiltTime": "Thu Sep  3 01:29:44 2026",
+      "Built": 1788366584,
+      "OsArch": "windows/amd64",
+      "Os": "windows"
+    },
+    "Server": {
+      "APIVersion": "6.1.1",
+      "Version": "6.1.1",
+      "GoVersion": "go1.26.7-X:nodwarf5",
+      "GitCommit": "8303f2e25b675ea7f82099d615c60969aec15870",
+      "BuiltTime": "Wed Sep  2 09:00:00 2026",
+      "Built": 1788307200,
+      "OsArch": "linux/amd64",
+      "Os": "linux"
+    }
+  },
+  "compose_version": "Docker Compose version v5.6.0",
+  "existing_services_modified": false,
+  "acceptance": "PENDING_SCAN_POLICY_CHECK"
+}

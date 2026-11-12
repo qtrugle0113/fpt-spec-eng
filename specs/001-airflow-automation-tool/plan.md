@@ -1,5 +1,21 @@
 # Kế hoạch triển khai: Airflow Automation Tool
 
+**Sửa T143 về reservation (không đổi quota/retention):** sau khi raw file đã
+được trích xuất đầy đủ, số dòng đã biết. Với FULL_REFRESH, reservation cho
+mapped generation được chặn trên bởi `rows × MAX_ROW_BYTES + MAX_MANIFEST_BYTES`
+và phần quota còn lại của run. Không xin toàn bộ 10GiB cho một file vài dòng.
+Giữ nguyên giới hạn 10GiB/run, 20GiB/global, 1GiB free disk; không reclaim/xóa
+artifact PROTECTED hay tự đóng authorization khi raw COMPLETE cần reconciliation.
+Kiểm chứng bằng chuỗi real SDK: lỗi typed FULL_REFRESH giữ đích cũ và staging,
+sau đó các run TXT nhỏ vẫn thực thi được trong cùng fixture/quota.
+
+**Điều chỉnh đã duyệt2026-11-11:** build local portable theo
+[quyết định](../../docs/decisions/portable-local-build-20261111.md), Constitution1.3.0.
+Source/locks/config là đầu vào; IDs ghi provenance từng máy. Scan từng artifact
+và đối chiếu findings với policy có hash approval, không cần baseline images máy
+cũ. Không gọi đối chiếu này là cùng-snapshot delta; unknown findings vẫn BLOCKED.
+Giữ hạn/controls, T014_FULL BLOCKED. Runner chuẩn bị manifest local dưới `.tools`.
+
 **Làm rõ FR-067 đã được chủ dự án duyệt ngày2026-11-10:** giữ Airflow3.3.2.
 Manual run của DAG paused chờ queued; operator phải xác nhận unpause riêng,
 không tạm unpause ngầm hoặc tự bật cron. ONCE/SCHEDULED/BR-08 giữ nguyên.

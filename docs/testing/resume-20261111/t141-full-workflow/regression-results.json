@@ -1,0 +1,86 @@
+{
+  "status": "FAIL",
+  "images": {
+    "backend": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+    "tests": "65a464f1618ea84e930eb348c40535312fd897d0d1196d7c1d298bee9f7b8263",
+    "e2e": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+    "workbook_deps": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d"
+  },
+  "planned_groups": [
+    "e2e"
+  ],
+  "selectors": [
+    {
+      "label": "e2e-full_workflow",
+      "command": [
+        "C:\\Users\\TrungLQ13\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\tests\\tools\\run_connections_e2e.py",
+        "--suite",
+        "full_workflow",
+        "--backend-image",
+        "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+        "--frontend-image",
+        "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+        "--e2e-image",
+        "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+        "--airflow-image",
+        "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+        "--postgres-image",
+        "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+        "--mysql-image",
+        "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261111\\t141-full-workflow\\e2e-full_workflow"
+      ],
+      "exit_code": 1,
+      "evidence": "docs\\testing\\resume-20261111\\t141-full-workflow\\e2e-full_workflow"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-ce69c81e\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "status": "PASS",
+      "actual_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218"
+    },
+    {
+      "name": "backend",
+      "expected_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "status": "PASS",
+      "actual_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d"
+    },
+    {
+      "name": "e2e",
+      "expected_image_id": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+      "status": "PASS",
+      "actual_image_id": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f"
+    },
+    {
+      "name": "frontend",
+      "expected_image_id": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+      "status": "PASS",
+      "actual_image_id": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "status": "PASS",
+      "actual_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "status": "PASS",
+      "actual_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c"
+    }
+  ],
+  "active_selector": null
+}

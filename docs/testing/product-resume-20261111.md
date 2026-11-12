@@ -1,5 +1,97 @@
 # Checkpoint tiếp tục ngày 2026-11-11
 
+## Trạng thái ưu tiên để tiếp tục
+
+**Sửa quota mới nhất, chưa nghiệm thu runtime:** đã xác định nguyên nhân T143
+bằng stack private: QuotaExceeded, không phải TXT parser. Source
+`etl_engine/src/aat_etl/readers/file_source.py` giới hạn mapped reservation
+FULL_REFRESH theo số dòng × MAX_ROW_BYTES + MAX_MANIFEST_BYTES, cap theo quota
+run còn lại. Không thay các quota/controls, không xóa PROTECTED/raw COMPLETE,
+không giải phóng ONCE. Build tại `portable-346d83ce/`: backend `cfd6b296...`,
+Airflow `8cb33c0d...`, tests `ecfc46d1...`; scan 5 artifact thay đổi đang hoàn tất.
+`installed-reservation-package.json`: 3 module hashes PASS trong site-packages.
+T143 nay có 9 ca (thêm FULL_REFRESH CSV→PG/TXT→MySQL thành công), còn phải chạy
+selector bình thường không instrumentation trên image mới sau khi policy đạt.
+Runner hỗ trợ `--etl-path tests/etl/test_file_transfer.py` để chỉ chạy phần liên
+quan. Không tính các kết quả cũ thành PASS cho bản sửa quota này.
+
+**Installed API guard đã PASS:** `installed-missing-source-guard/` có 6 browser
+checks PASS/1.9 phút trên backend `8204b16f...`, desktop/mobile workflow thật
+54.588/52.118 giây, 4 dòng đích đúng mỗi workflow. Preview/trigger missing file
+đều409, 0 intent, khôi phục file→preview200; target exact values sau khôi phục
+PASS; cleanup0. Không source overlay. Demo23000 vẫn giữ image trước bản sửa.
+Chẩn đoán hai ca terminal failure→TXT đạt2PASS/81.691s nhưng không coi là
+nghiệm thu. Đang chạy toàn chuỗi instrumented tại `t143-full-sequence-diagnostic/`.
+
+**Bản sửa mất file mới:** backend `8204b16f...`, manifest/scan/receipt tại
+`resume-20261111/portable-0d406416/`, policy LOCAL_POLICY_MATCH; 4 artifact mới
+đã scan, 6 artifact không đổi tái dùng receipt exact ID trong 24 giờ. Installed
+module hash PASS tại `backend-guard-package.json`. Thêm HTTP409 an toàn trong
+compile preview, không thay dependency baseline. Demo đang chạy vẫn giữ image
+trước bản sửa. Lượt T143 sau sửa ở `t143-guard-rerun/`; đọc kết quả trước khi
+rerun. TXT→PG chạy riêng đã PASS tại `t143-txt-diagnostic/`, cleanup 0.
+Lượt `t143-guard-rerun/` đã kết thúc: 5 PASS/2 FAIL trong 119.518 giây,
+cleanup 10 mã 0. Missing-file guard đã PASS; TXT cả hai DB vẫn FAIL theo chuỗi.
+Selector chẩn đoán không thay engine behavior (chỉ ghi tọa độ stack, không ghi
+exception text/dữ liệu/secrets) tại `t143-terminal-sequence-diagnostic/` đang
+kiểm tra terminal failure→TXT. Không tính instrumentation này là nghiệm thu.
+
+- T138 đã khép: 13 selectors PASS trong `resume-20261111/t138-aggregate.json`.
+  E2E gồm Connections 6, Tables 10, Files 12+2 persistence, DAG Builder 12,
+  Monitoring 8, Phase7 10+2 persistence+2 outage; cleanup đã đối chiếu.
+- T141 đã khép: `t141-explicit-conversions/acceptance.json`, 6 browser checks
+  PASS; hai luồng UI thật desktop/mobile 40.233/36.144 giây, mỗi luồng 4 dòng
+  đích đúng Unicode/NULL/decimal/timestamp. Lượt lỗi thiếu Type Conversion giữ lại.
+- T142 đã khép: `t142-cross-database/`, 4 ca PASS 82.579 giây, installed SDK,
+  cả PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG; khóa ghép và kiểu dữ liệu đúng.
+- T143 đang xử lý: `t143-file-database/`, 7 ca, 4 PASS/3 FAIL; CSV hai hướng,
+  invalid format và invalid typed FULL_REFRESH đã PASS. TXT headerless hai
+  hướng thất bại trong SDK; mất file trước trigger trả 500 thay lỗi nghiệp vụ.
+  Chưa sửa application runtime, không được báo T143 PASS. Selector chẩn đoán
+  riêng lưu tại `t143-txt-diagnostic/`; kiểm tra kết quả trước khi chạy lại.
+- T139/T140/T144–T152 còn mở; T014_FULL BLOCKED. Ngoại lệ Kerberos đã duyệt,
+  hết hạn 23/11/2026 00:00 UTC+09, review 16/11, chỉ local/dữ liệu tổng hợp.
+- Demo mới `aat-portable-demo-dcae6f3c` tại 23000/28080/28000; không xóa volumes.
+  Khởi động/resume xem [hướng dẫn](../operations/local-portable.md).
+  Manifest `.tools/local-images.json`, policy `portable-ce69c81e/local-policy-review.json`.
+  Các mục nói T138 chưa khép/chờ Kerberos bên dưới là lịch sử.
+
+## Sau phê duyệt và startup thực tế
+
+Chủ dự án đã duyệt14Kerberos advisories/306contexts đúng đề xuất/hash, giữ
+hạn/controls; policy hiện LOCAL_POLICY_MATCH. Bản mới23000/Airflow28080 READY,
+installed images, init0/healthy và12browser smoke PASS. Xem
+[hướng dẫn local](../operations/local-portable.md). Không thay demo/volumes cũ.
+
+T138 đã có214unit/API,4SDK,54integration,118engine,19runtime,8Airflow routes,
+stress1.107GB/270batch/RSS106745856bytes PASS; Connections6/Tables10E2E PASS.
+Các E2E còn lại đang chạy; T138 chưa tick, T014_FULL vẫn BLOCKED. Failure đầu
+về heartbeat2.2s và fixture Tables phụ thuộc máy trước đã giữ log, sửa và rerun.
+Các trạng thái “chờ phê duyệt/chưa có URL” bên dưới là lịch sử.
+
+## Checkpoint portable mới nhất
+
+Chủ dự án duyệt thay ràng buộc cùng image IDs giữa các máy bằng source/locks/
+config và scan từng artifact theo Constitution1.3.0. Build10artifacts, package
+inspection91API/45engine/26metadata modules PASS;8unit tests PASS. Frontend vá
+libxslt1.1.43-r4, scan mới0findings. Manifest local tại `.tools/local-images.json`,
+evidence mới `resume-20261111/portable-af8d7ed2/`. Không cần image từ máy nhà.
+
+Blocker hiện tại là findings mới:14advisory Kerberos/306contexts ngoài ngoại lệ
+đã duyệt; chưa có quyết định chủ dự án. [Đề xuất cụ thể](../proposals/portable-local-krb5-20261111.md).
+T138/T014_FULL vẫn mở/BLOCKED; runtime regression và startup mới NOT_RUN.
+Không có container sản phẩm mới đang chạy. Các đoạn thiếu8/6IDs bên dưới là
+lịch sử trước sửa quy trình. Tiếp tục từ [báo cáo Phase8](phase8-regression-report.md).
+
+## Tiếp nhận mới trên máy TrungLQ13
+
+T138 đang mở; đã đối chiếu JSON mới hơn và ghi lại các kết quả PASS lịch sử tại
+[báo cáo Phase8](phase8-regression-report.md). Podman6.1.1 đã khởi động; máy này
+thiếu8 image IDs của regression manifest và6 baseline IDs Phase7. Preflight thật
+ghi BLOCKED, không thay bằng tag cũ. Runner bổ sung `--preflight-only` và kiểm
+required images theo nhóm;3unit tests PASS. Candidate rebuild phải scan/review
+riêng trước chạy runtime; T014_FULL vẫn BLOCKED. Không mở T139–T152 trước T138.
+
 ## Phạm vi
 
 Tiếp tục working tree cũ, không commit/push hoặc triển khai công khai. Demo

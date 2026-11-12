@@ -1,0 +1,23 @@
+{
+  "project": "aat-monitoring-e2e-e90b6714",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "execution_mode": "INSTALLED_IMAGE_PACKAGES",
+  "packaged_image_acceptance": true,
+  "images": {
+    "backend": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "e2e": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467"
+  },
+  "test_source_sha256": {
+    "monitoring.spec.ts": "0986598775b161fb5ea31c95be3b052f2dcf78fdef7e0e1557d53d944ceb3a87",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6"
+  },
+  "exit_code": 0,
+  "cleanup_exit_code": 0
+}

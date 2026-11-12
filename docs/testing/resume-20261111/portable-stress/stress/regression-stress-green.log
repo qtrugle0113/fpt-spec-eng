@@ -1,0 +1,11 @@
+stress_source_seed_start rows=270000
+stress_source_seed_complete
+stress_preparation_complete {"staging_payload_bytes": 2220257790, "staging_allocated_bytes": 2220482560, "part_count": 266, "manifest_sha256": "358af7e57486000898cbcc5b778d005a31ed7b9f6d2d93d7b6f1ee1b1bc47070"}
+stress_transfer_complete {"rows": 270000, "loaded_rows": 270000, "target_rows": 270000, "target_bytes": 1107000000, "id_sum": 36450135000, "bad_payload_rows": 0, "batch_commits": 270, "source_table": "stress_source_df2747a87c9a48cb857d589dba7befd4", "target_table": "stress_target_df2747a87c9a48cb857d589dba7befd4", "run_uuid": "df2747a8-7c9a-48cb-857d-589dba7befd4", "staging": {"staging_payload_bytes": 2220257790, "staging_allocated_bytes": 2220482560, "part_count": 266, "manifest_sha256": "358af7e57486000898cbcc5b778d005a31ed7b9f6d2d93d7b6f1ee1b1bc47070"}}
+stress_rss_evidence {"peak_rss_bytes": 106745856, "memory_budget_bytes": 536870912, "dataset_bytes": 1107000000, "batch_commits": 270, "allocated_bytes": 2220482560}
+test_dataset_larger_than_one_gib_and_worker_budget_uses_verified_disk (tests.stress.test_disk_staging.DiskStagingStressTests.test_dataset_larger_than_one_gib_and_worker_budget_uses_verified_disk) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 360.597s
+
+OK

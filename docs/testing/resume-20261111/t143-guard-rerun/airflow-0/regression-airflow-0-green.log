@@ -1,0 +1,54 @@
+SDK_ROUTE_VERIFIED source=CSV target=MYSQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED csv->MYSQL checksum=true quoted_null=true multiline=true headerless=False
+SDK_ROUTE_VERIFIED source=CSV target=POSTGRESQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED csv->POSTGRESQL checksum=true quoted_null=true multiline=true headerless=False
+SDK_FAILURE_CODES 
+SDK_FAILURE_CODES 
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_csv_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_csv_to_mysql) ... ok
+test_csv_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_csv_to_pg) ... ok
+test_invalid_format_is_rejected_before_full_refresh_publication (tests.airflow.test_file_database.FileDatabaseTests.test_invalid_format_is_rejected_before_full_refresh_publication) ... ok
+test_invalid_typed_row_cannot_empty_full_refresh_target (tests.airflow.test_file_database.FileDatabaseTests.test_invalid_typed_row_cannot_empty_full_refresh_target) ... ok
+test_missing_file_cannot_empty_full_refresh_target (tests.airflow.test_file_database.FileDatabaseTests.test_missing_file_cannot_empty_full_refresh_target) ... ok
+test_txt_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_mysql) ... FAIL
+test_txt_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_pg) ... FAIL
+
+======================================================================
+FAIL: test_txt_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_mysql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_file_database.py", line 22, in test_txt_to_mysql
+    def test_txt_to_mysql(self):self.file_route('txt','MYSQL')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_file_database.py", line 14, in file_route
+    result=self.workflow(target_kind=target_kind,extension=extension,file_data=raw,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 178, in workflow
+    self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
+AssertionError: 'failed' != 'success'
+- failed
++ success
+ : Real route ETL outcome differs; inspect sanitized fixture diagnostics
+
+======================================================================
+FAIL: test_txt_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_pg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_file_database.py", line 21, in test_txt_to_pg
+    def test_txt_to_pg(self):self.file_route('txt','POSTGRESQL')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_file_database.py", line 14, in file_route
+    result=self.workflow(target_kind=target_kind,extension=extension,file_data=raw,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tests/airflow/test_execution.py", line 178, in workflow
+    self.assertEqual(run['state'],'failed' if expected_failure else 'success','Real route ETL outcome differs; inspect sanitized fixture diagnostics')
+AssertionError: 'failed' != 'success'
+- failed
++ success
+ : Real route ETL outcome differs; inspect sanitized fixture diagnostics
+
+----------------------------------------------------------------------
+Ran 7 tests in 119.518s
+
+FAILED (failures=2)

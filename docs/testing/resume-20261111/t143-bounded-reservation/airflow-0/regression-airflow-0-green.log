@@ -1,0 +1,85 @@
+SDK_ROUTE_VERIFIED source=CSV target=MYSQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED csv->MYSQL checksum=true quoted_null=true multiline=true headerless=False
+SDK_ROUTE_VERIFIED source=CSV target=POSTGRESQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED csv->POSTGRESQL checksum=true quoted_null=true multiline=true headerless=False
+SDK_ROUTE_VERIFIED source=CSV target=POSTGRESQL strategy=FULL_REFRESH scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED csv->POSTGRESQL checksum=true quoted_null=true multiline=true headerless=False
+SDK_ROUTE_VERIFIED source=TXT target=MYSQL strategy=FULL_REFRESH scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED txt->MYSQL checksum=true quoted_null=true multiline=true headerless=True
+SDK_ROUTE_VERIFIED source=TXT target=MYSQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED txt->MYSQL checksum=true quoted_null=true multiline=true headerless=True
+SDK_ROUTE_VERIFIED source=TXT target=POSTGRESQL strategy=APPEND scheduled=False rows=3 null_preserved=true disk_manifest=COMPLETE
+FILE_DATABASE_VERIFIED txt->POSTGRESQL checksum=true quoted_null=true multiline=true headerless=True
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_csv_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_csv_to_mysql) ... ok
+test_csv_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_csv_to_pg) ... ok
+test_full_refresh_csv_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_full_refresh_csv_to_pg) ... ok
+test_full_refresh_txt_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_full_refresh_txt_to_mysql) ... ok
+test_invalid_format_is_rejected_before_full_refresh_publication (tests.airflow.test_file_database.FileDatabaseTests.test_invalid_format_is_rejected_before_full_refresh_publication) ... ok
+test_invalid_typed_row_cannot_empty_full_refresh_target (tests.airflow.test_file_database.FileDatabaseTests.test_invalid_typed_row_cannot_empty_full_refresh_target) ... ERROR
+test_missing_file_cannot_empty_full_refresh_target (tests.airflow.test_file_database.FileDatabaseTests.test_missing_file_cannot_empty_full_refresh_target) ... ok
+test_txt_to_mysql (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_mysql) ... ok
+test_txt_to_pg (tests.airflow.test_file_database.FileDatabaseTests.test_txt_to_pg) ... ok
+
+======================================================================
+ERROR: test_invalid_typed_row_cannot_empty_full_refresh_target (tests.airflow.test_file_database.FileDatabaseTests.test_invalid_typed_row_cannot_empty_full_refresh_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column b.run_uuid does not exist
+LINE 1: ...aging_reservations r JOIN execution_bindings b ON b.run_uuid...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "r.run_uuid".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/tmp/tests/airflow/test_file_database.py", line 31, in test_invalid_typed_row_cannot_empty_full_refresh_target
+    reserved,protected=session.execute(text("SELECT COALESCE(sum(r.reserved_bytes),0),count(*) FILTER (WHERE r.state='PROTECTED') FROM staging_reservations r JOIN execution_bindings b ON b.run_uuid=r.run_uuid WHERE b.dag_id=:dag AND b.airflow_run_id=:run AND r.state<>'RELEASED'"),{'dag':result['dag'],'run':result['run_id']}).one()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2280, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+           ^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.ProgrammingError: (psycopg.errors.UndefinedColumn) column b.run_uuid does not exist
+LINE 1: ...aging_reservations r JOIN execution_bindings b ON b.run_uuid...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "r.run_uuid".
+[SQL: SELECT COALESCE(sum(r.reserved_bytes),0),count(*) FILTER (WHERE r.state='PROTECTED') FROM staging_reservations r JOIN execution_bindings b ON b.run_uuid=r.run_uuid WHERE b.dag_id=%(dag)s AND b.airflow_run_id=%(run)s AND r.state<>'RELEASED']
+[SQL parameters hidden due to hide_parameters=True]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+
+----------------------------------------------------------------------
+Ran 9 tests in 193.681s
+
+FAILED (errors=1)

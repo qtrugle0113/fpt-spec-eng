@@ -1,0 +1,76 @@
+
+Running 6 tests using 1 worker
+
+[1/6] [desktop] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[2/6] [desktop] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[3/6] [desktop] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run
+
+
+
+
+  1) [desktop] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Review schedules and load policies' })
+    Expected: visible
+    Timeout: 45000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Review schedules and load policies' }) with timeout 45000ms
+      - waiting for getByRole('button', { name: 'Review schedules and load policies' })
+
+
+      70 |   await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
+      71 |   await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+    > 72 |   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
+         |                                                                                          ^
+      73 |   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
+      74 |   const support = page.getByRole('checkbox', { name: 'I reviewed and authorize creating the displayed support objects in the target database.' });
+      75 |   if (await support.count()) await support.check();
+        at /tests/full_workflow.spec.ts:72:90
+
+    Error Context: test-results/full_workflow-An-operator--a7e99-SV-and-follows-the-real-run-desktop/error-context.md
+
+
+[4/6] [mobile] › bootstrap.spec.ts:3:1 › bootstrap shell routes remain usable
+[5/6] [mobile] › bootstrap.spec.ts:11:1 › private runtime prefixes are blocked by nginx
+[6/6] [mobile] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run
+
+
+
+
+  2) [mobile] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Review schedules and load policies' })
+    Expected: visible
+    Timeout: 45000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Review schedules and load policies' }) with timeout 45000ms
+      - waiting for getByRole('button', { name: 'Review schedules and load policies' })
+
+
+      70 |   await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
+      71 |   await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+    > 72 |   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
+         |                                                                                          ^
+      73 |   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
+      74 |   const support = page.getByRole('checkbox', { name: 'I reviewed and authorize creating the displayed support objects in the target database.' });
+      75 |   if (await support.count()) await support.check();
+        at /tests/full_workflow.spec.ts:72:90
+
+    Error Context: test-results/full_workflow-An-operator--a7e99-SV-and-follows-the-real-run-mobile/error-context.md
+
+
+  2 failed
+    [desktop] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run 
+    [mobile] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run 
+  4 passed (1.9m)
+[desktop] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run
+[mobile] › full_workflow.spec.ts:7:1 › An operator creates a connection and table, loads the uploaded CSV, and follows the real run
+

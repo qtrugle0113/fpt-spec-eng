@@ -229,4 +229,6 @@ finally:
         cleanup.append(run('network', 'rm', network, check=False).returncode)
     for volume in owned_volumes:cleanup.append(run('volume','rm',volume,check=False).returncode)
     result['cleanup_exit_codes'] = cleanup
+    if any(cleanup):result['status']='CLEANUP_FAILED'
     (evidence/'airflow-fixture-results.json').write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
+    if any(cleanup):raise RuntimeError('Owned Airflow fixture cleanup failed; inspect evidence')

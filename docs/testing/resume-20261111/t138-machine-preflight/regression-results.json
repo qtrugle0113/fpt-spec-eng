@@ -1,0 +1,74 @@
+{
+  "status": "BLOCKED",
+  "images": {
+    "tests": "4220629ad090a5d2d084653b35c0a9647bed47cf01c035282b344300b6381394",
+    "backend": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+    "frontend": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+    "airflow": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+    "postgres": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+    "mysql": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+    "e2e": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+    "workbook_deps": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e"
+  },
+  "planned_groups": [
+    "unit-api",
+    "integration",
+    "etl",
+    "airflow",
+    "e2e",
+    "stress"
+  ],
+  "selectors": [],
+  "existing_services_modified": false,
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "backend",
+      "expected_image_id": "3151393626735176b171c13da7a0b269e6c27d5fcb8a76046a609507e06d09be",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "e2e",
+      "expected_image_id": "960bb3edb6e256a94ec5bf29373e54354d922cc8a4b391d0bd1bed9e074d7415",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "frontend",
+      "expected_image_id": "eec1733adc9de3ca198a7677bbb5d39e05e15c04aca056a0134147819abcf0d7",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "76ef5ef385ae6bea4acbf835f439350abb6903eab6a3ccba5082d3d56a4be2bf",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "c93823be91b7c9219c9e97423fdd9ffbe36ce2423fbfa099ecf7355bd69a2dce",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "tests",
+      "expected_image_id": "4220629ad090a5d2d084653b35c0a9647bed47cf01c035282b344300b6381394",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    },
+    {
+      "name": "workbook_deps",
+      "expected_image_id": "6b65b34da83e6f271d2f8f892d08f7fefad31ad06e040f134b7f39d0bc97123e",
+      "status": "BLOCKED",
+      "reason": "EXACT_IMAGE_UNAVAILABLE_OR_MISMATCH"
+    }
+  ],
+  "reason": "REQUIRED_EXACT_IMAGES_UNAVAILABLE"
+}

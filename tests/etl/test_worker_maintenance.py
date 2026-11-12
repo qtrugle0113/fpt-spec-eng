@@ -6,6 +6,7 @@ import subprocess
 import sys
 import time
 import unittest
+import psycopg
 
 
 class WorkerMaintenanceTests(unittest.TestCase):
@@ -22,8 +23,25 @@ class WorkerMaintenanceTests(unittest.TestCase):
                     time.sleep(.1)
                 self.assertTrue(heartbeat.exists())
                 first=json.loads(heartbeat.read_text());self.assertEqual(first['pid'],child.pid)
-                time.sleep(2.2)
-                second=json.loads(heartbeat.read_text());self.assertGreater(second['timestamp'],first['timestamp'])
+                # Dispatch renews its heartbeat every5seconds; this shared
+                # regression fixture can still contain queued operations from
+                # the preceding lifecycle tests. Stay well within the20second
+                # readiness limit, and verify both durable and file evidence.
+                with psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']) as connection:
+                    initial=connection.execute('SELECT heartbeat_at FROM worker_heartbeats WHERE owner_process_id=%s',(first['owner'],)).fetchone()[0]
+                deadline=time.monotonic()+10
+                second=first
+                while time.monotonic()<deadline:
+                    self.assertIsNone(child.poll(),'Worker exited during heartbeat verification')
+                    second=json.loads(heartbeat.read_text())
+                    if second['timestamp']>first['timestamp']:break
+                    time.sleep(.1)
+                self.assertGreater(second['timestamp'],first['timestamp'])
+                self.assertEqual(second['pid'],child.pid)
+                self.assertEqual(second['owner'],first['owner'])
+                with psycopg.connect(os.environ['AAT_FOUNDATION_TEST_DSN']) as connection:
+                    current=connection.execute('SELECT heartbeat_at FROM worker_heartbeats WHERE owner_process_id=%s',(first['owner'],)).fetchone()[0]
+                self.assertGreater(current,initial)
                 self.assertEqual(child.poll(),None)
             finally:
                 child.terminate()

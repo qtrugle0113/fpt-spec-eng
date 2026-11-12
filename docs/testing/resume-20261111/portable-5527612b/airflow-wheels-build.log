@@ -1,0 +1,20 @@
+STEP 1/6: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+STEP 2/6: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 84b87eaebc29e3f938197c933edb2367bc0ed6c2cf74bd449d3ceb960e65b0a6
+--> 84b87eaebc29
+STEP 3/6: WORKDIR /build
+--> Using cache dcd6b9007db71754549be815d699fd9c9469547d3cac6264f23c8ba86a722216
+--> dcd6b9007db7
+STEP 4/6: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache d4d361a8e70d3d456ab917f85544e1f6a430b59a3698f290cf4eb1e39fb9dd60
+--> d4d361a8e70d
+STEP 5/6: COPY etl_engine /build/etl_engine
+--> Using cache cb65d7372838183ee4e1590b1bab985beea5f14331588d4596bc1cd872bf2ed9
+--> cb65d7372838
+STEP 6/6: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine
+--> Using cache da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f
+COMMIT localhost/aat-portable-airflow-wheels-5527612b:0.1.0
+--> da0c4f4e95ed
+Successfully tagged localhost/aat-portable-airflow-wheels-5527612b:0.1.0
+Successfully tagged localhost/aat-phase8-airflow-wheels-7bf5343e:0.1.0
+da0c4f4e95ed4c3c1f06c9af4e656353ccb33702bd7d73a6e434f97bf966cf4f

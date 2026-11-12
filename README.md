@@ -1,5 +1,12 @@
 # Airflow Automation Tool
 
+**Local portable mới2026-11-11:** bản installed-image trên máy công ty tại
+<http://localhost:23000>, Airflow <http://localhost:28080>, namespace/volumes mới.
+Startup READY và12browser smoke checks PASS. Build/scan không còn yêu cầu IDs
+của máy trước; xem [hướng dẫn](docs/operations/local-portable.md).
+T138, T141 và T142 đã PASS trong phạm vi local; T143 đang xử lý lỗi TXT/mất file.
+Chưa nghiệm thu toàn MVP, T014_FULL vẫn BLOCKED.
+
 **Checkpoint mới nhất 2026-11-11:** Monitoring, Dashboard và Settings đã triển
 khai; image Phase7 được chủ dự án duyệt exact delta. Packaged E2E Monitoring8PASS,
 Dashboard/Settings/UX10PASS +2persistence +2outagePASS; không source overlay.

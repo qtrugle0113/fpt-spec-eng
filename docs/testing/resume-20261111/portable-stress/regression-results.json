@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "images": {
+    "backend": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+    "tests": "65a464f1618ea84e930eb348c40535312fd897d0d1196d7c1d298bee9f7b8263",
+    "e2e": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+    "workbook_deps": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d"
+  },
+  "planned_groups": [
+    "stress"
+  ],
+  "selectors": [
+    {
+      "label": "stress",
+      "command": [
+        "C:\\Users\\TrungLQ13\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\tests\\tools\\run_metadata_foundation.py",
+        "--unittest-module",
+        "tests.stress.test_disk_staging",
+        "--task-label",
+        "regression-stress",
+        "--disk-databases",
+        "--runner-memory",
+        "1g",
+        "--postgres-image",
+        "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+        "--runner-image",
+        "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+        "--workbook-deps-image",
+        "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261111\\portable-stress\\stress"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261111\\portable-stress\\stress"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-ce69c81e\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "status": "PASS",
+      "actual_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "status": "PASS",
+      "actual_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c"
+    },
+    {
+      "name": "workbook_deps",
+      "expected_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+      "status": "PASS",
+      "actual_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d"
+    }
+  ],
+  "active_selector": null
+}

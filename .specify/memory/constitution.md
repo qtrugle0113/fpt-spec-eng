@@ -286,13 +286,18 @@ không được dùng để bỏ yêu cầu bắt buộc của sản phẩm khi 
 - Bản 1.0.0 là lần ban hành đầu tiên theo yêu cầu của chủ dự án. Bước này chỉ thiết lập
   quy tắc quản trị; chưa phải bằng chứng triển khai hoặc nghiệm thu chức năng ứng dụng.
 
-**Phiên bản**: 1.2.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-09
+**Phiên bản**: 1.3.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-11
 
 ## Quyền phát triển local có điều kiện, tách khỏi nghiệm thu đầy đủ
 
 Sau phê duyệt quản trị của chủ dự án, có thể cấp quyền phát triển local có hạn cho
 một operator/dữ liệu tổng hợp/loopback khi bootstrap có bằng chứng và mọi ngoại lệ được
-ghi theo exact advisory/package/image IDs. Đây không phải nghiệm thu task/sản phẩm.
+ghi theo exact advisory/package/version/severity và target có nguồn gốc approval.
+Image IDs định danh evidence tại từng môi trường, không bắt các máy cùng ID.
+Mỗi artifact mới PHẢI scan riêng; đối chiếu policy đã duyệt không yêu cầu image
+baseline cũ tồn tại và không được gọi là delta cùng snapshot. Unknown finding,
+provenance thiếu hoặc context not-affected thay đổi phải review riêng.
+Đây không phải nghiệm thu task/sản phẩm.
 T014 đầy đủ vẫn BLOCKED và checkbox chưa hoàn thành khi security chưa đạt.
 Hồ sơ PHẢI có owner/reviewer/approval timestamp, baseline, controls, hạn và thu hồi;
 không tự duyệt/gia hạn. Finding bắt buộc trước local PHẢI được khép theo hồ sơ.
@@ -301,3 +306,8 @@ Phase sau chỉ bắt đầu theo ngoại lệ dependency đã đồng bộ tron
 đang hiệu lực. Hết hạn/vượt scope/mismatch/exploit thì dừng phần phụ thuộc và review lại.
 Quyền này không áp dụng cho public/dữ liệu quan trọng hoặc bàn giao đầy đủ.
 Cơ sở: docs/proposals/t014-conditional-local-gate.md và quyết định chủ dự án ghi riêng.
+
+Sửa đổi1.3.0 được chủ dự án duyệt ngày2026-11-11 tại
+`docs/decisions/portable-local-build-20261111.md`; thay ràng buộc cùng baseline IDs
+bằng source/locks/config và scan từng artifact. Giữ nguyên hạn/controls và nghĩa
+vụ kiểm thử; các approval cũ giữ lịch sử. Đồng bộ Spec/Plan/Tasks/Quickstart.

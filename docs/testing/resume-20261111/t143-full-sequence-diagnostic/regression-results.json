@@ -1,0 +1,76 @@
+{
+  "status": "FAIL",
+  "images": {
+    "backend": "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+    "tests": "dff366e6ceefd29c4b188700f5f952ce9048afee9968b6d2c7a97863f80b3d1f",
+    "e2e": "41e09e7f5cc346d60532e8deb5bc567cd9829e5461c3a0286c0ebb844e37cdf2",
+    "workbook_deps": "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1"
+  },
+  "planned_groups": [
+    "airflow"
+  ],
+  "selectors": [
+    {
+      "label": "airflow-0",
+      "command": [
+        "C:\\Users\\TrungLQ13\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\TrungLQ13\\Desktop\\workplaces\\spec-engineer\\tests\\tools\\run_airflow_foundation.py",
+        "--runtime-execution-tests",
+        "--packaged-runtime",
+        "--runtime-execution-module",
+        "tests.airflow.test_file_diagnostic.FullSequenceDiagnosticTests",
+        "--runtime-label",
+        "regression-airflow-0",
+        "--airflow-image",
+        "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+        "--postgres-image",
+        "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+        "--runner-image",
+        "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+        "--mysql-image",
+        "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+        "--workbook-deps-image",
+        "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261111\\t143-full-sequence-diagnostic\\airflow-0"
+      ],
+      "exit_code": 1,
+      "evidence": "docs\\testing\\resume-20261111\\t143-full-sequence-diagnostic\\airflow-0"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-0d406416\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+      "status": "PASS",
+      "actual_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+      "status": "PASS",
+      "actual_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+      "status": "PASS",
+      "actual_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c"
+    },
+    {
+      "name": "workbook_deps",
+      "expected_image_id": "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1",
+      "status": "PASS",
+      "actual_image_id": "8204b16f2a19ed9ab25e2865ec4af0e5893d6f5abeb28d638dddcca2aae798d1"
+    }
+  ],
+  "active_selector": null
+}

@@ -1,0 +1,11 @@
+PREFLIGHT_PASS: images verified; no tests executed
+BLOCKED: required exact local images are unavailable; see regression-results.json
+BLOCKED: required exact local images are unavailable; see regression-results.json
+test_integration_does_not_require_unrelated_browser_or_airflow_images (tests.unit.test_regression_preflight.RegressionPreflightTests.test_integration_does_not_require_unrelated_browser_or_airflow_images) ... ok
+test_missing_images_records_every_blocker_without_starting_fixture (tests.unit.test_regression_preflight.RegressionPreflightTests.test_missing_images_records_every_blocker_without_starting_fixture) ... ok
+test_unit_api_requires_sdk_environment_as_well_as_backend (tests.unit.test_regression_preflight.RegressionPreflightTests.test_unit_api_requires_sdk_environment_as_well_as_backend) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.060s
+
+OK

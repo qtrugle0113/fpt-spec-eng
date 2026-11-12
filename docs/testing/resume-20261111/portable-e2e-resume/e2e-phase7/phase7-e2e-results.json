@@ -1,0 +1,32 @@
+{
+  "project": "aat-phase7-e2e-511dc2e7",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "execution_mode": "INSTALLED_IMAGE_PACKAGES",
+  "packaged_image_acceptance": true,
+  "images": {
+    "backend": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "frontend": "9ee5a52365e11951538f37a3226326c1c98644e41c6ea195ec21ee2c485ec2df",
+    "e2e": "c051f5df3691c0cd067cca6279c50cce6da8bbd731ebd05be3c871c5d720843f",
+    "airflow": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+    "postgres": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+    "mysql": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467"
+  },
+  "test_source_sha256": {
+    "dashboard.spec.ts": "99965c45810138283d0e8d98af630c59d272f6f9a05750397894350156f1970b",
+    "settings.spec.ts": "39507f216b15e31dd95d64fac143f12b2bc909f20ac7da687ae2b53656c5e464",
+    "accessibility.spec.ts": "cf4a7ae1161839787a4a25884e3bfdaeb489623c154b0ef63004c4ac0c6f622a",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6",
+    "settings-persistence.spec.ts": "872c68de27d0590517d0ac0adef7aea736d45314fbda7f0372ab83b06f80611b",
+    "dashboard-unavailable.spec.ts": "bbda50fbefba324b35c81c1e877e9150232c5e53b9bc318ce4a9517bb0dbc511"
+  },
+  "exit_code": 0,
+  "recreation_exit_code": 0,
+  "proxy_refresh_exit_code": 0,
+  "persistence_exit_code": 0,
+  "airflow_stop_exit_code": 0,
+  "outage_exit_code": 0,
+  "cleanup_exit_code": 0
+}

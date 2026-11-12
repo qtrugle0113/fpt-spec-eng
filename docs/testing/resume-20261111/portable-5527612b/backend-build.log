@@ -1,0 +1,69 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache 84b87eaebc29e3f938197c933edb2367bc0ed6c2cf74bd449d3ceb960e65b0a6
+--> 84b87eaebc29
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache dcd6b9007db71754549be815d699fd9c9469547d3cac6264f23c8ba86a722216
+--> dcd6b9007db7
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache d4d361a8e70d3d456ab917f85544e1f6a430b59a3698f290cf4eb1e39fb9dd60
+--> d4d361a8e70d
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache cb65d7372838183ee4e1590b1bab985beea5f14331588d4596bc1cd872bf2ed9
+--> cb65d7372838
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache cc43064081db1443035857f028e21e547a854ef881d6f4e25ef1ab4f975bb65d
+--> cc43064081db
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache 5d115f0745782758743bf85d2f5aa946376e5b8d6b83004d37019495e20a5ebe
+--> 5d115f074578
+[2/2] STEP 1/16: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS runtime
+[2/2] STEP 2/16: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache 0670cbfe3af9ac4b0fc90f723883aabf33b6adfd773ad6b30a136fdff193a93b
+--> 0670cbfe3af9
+[2/2] STEP 3/16: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache 9df763bf4702824672c892d93d3a71cde0d798d39c44967f0c1f272a4d96d5ba
+--> 9df763bf4702
+[2/2] STEP 4/16: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache 5dfdb314a921e653bcbccac33ff1f29756119930bf37476b6ce16443f91f9743
+--> 5dfdb314a921
+[2/2] STEP 5/16: COPY --from=wheels /wheels /wheels
+--> Using cache 6c6cab2ced689aed4a390ed96d8e53771834bfb7caf629df73935a587956a1d3
+--> 6c6cab2ced68
+[2/2] STEP 6/16: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pip check &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+--> Using cache 764d38abd39a28dbadec20f8d4acf15384371fdb42ed4e0e8d9dd07aee7f8c92
+--> 764d38abd39a
+[2/2] STEP 7/16: COPY docker /opt/aat/docker
+--> Using cache a89e9ffbabc4a6c78bf9edd43bbcfba2be763bdfbf0a0ea9bdcf2e866bc8a159
+--> a89e9ffbabc4
+[2/2] STEP 8/16: COPY backend/alembic /opt/aat/backend/alembic
+--> Using cache 76f93a653cec52533980c341843a75761b6e2b2cc1b6060c358db0fa0b90572c
+--> 76f93a653cec
+[2/2] STEP 9/16: COPY samples /opt/aat/samples
+--> Using cache da00321cbc7b41f4d74cccad47454de5256e643968b464c3cf0231e8a56dc8d2
+--> da00321cbc7b
+[2/2] STEP 10/16: COPY templates /opt/aat/templates
+--> Using cache 14f89ffbe75e986d5729c585463db2df1409b3bb7adb4b4319e95073ec63c7de
+--> 14f89ffbe75e
+[2/2] STEP 11/16: COPY airflow/dags/aat_wrapper_template.py /opt/aat/airflow/dags/aat_wrapper_template.py
+--> Using cache cb25ee59857a787871d6a35504ba1db107c8db910e49268b5ff2e856d9c7262f
+--> cb25ee59857a
+[2/2] STEP 12/16: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> Using cache 4c6b4695d52feb387c39b5d26bafc8bc9c9a96f1be998ff4ca0fc9047fb6629a
+--> 4c6b4695d52f
+[2/2] STEP 13/16: WORKDIR /opt/aat
+--> Using cache cbc7c50636a99e149d2deb41508ff390bb4f50d70c26bf12ca11fcfb55cfba23
+--> cbc7c50636a9
+[2/2] STEP 14/16: USER 50000:50000
+--> Using cache ffa245b5e671d829fc69a1416611912b80dad5dcc758d00d3a3f0db33d86294b
+--> ffa245b5e671
+[2/2] STEP 15/16: EXPOSE 8000
+--> Using cache 61a3c7ace5bfcf9461063b642a4d45a194e832deac01351dd6c230381123b07c
+--> 61a3c7ace5bf
+[2/2] STEP 16/16: CMD ["python", "-m", "uvicorn", "aat_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+--> Using cache a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d
+[2/2] COMMIT localhost/aat-portable-backend-5527612b:0.1.0
+--> a9b5752d0471
+Successfully tagged localhost/aat-portable-backend-5527612b:0.1.0
+Successfully tagged localhost/aat-phase8-backend-7bf5343e:0.1.0
+a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d

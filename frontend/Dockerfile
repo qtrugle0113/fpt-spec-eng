@@ -7,6 +7,7 @@ COPY frontend/src ./src
 RUN npm run build
 
 FROM docker.io/library/nginx:1.30.6-alpine3.24@sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7
+RUN apk add --no-cache --upgrade libxslt=1.1.43-r4
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80

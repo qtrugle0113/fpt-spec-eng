@@ -1,0 +1,6 @@
+
+Running 2 tests using 1 worker
+
+[1/2] [desktop] › settings-persistence.spec.ts:3:1 › Settings survive backend container recreation
+[2/2] [mobile] › settings-persistence.spec.ts:3:1 › Settings survive backend container recreation
+  2 passed (2.6s)

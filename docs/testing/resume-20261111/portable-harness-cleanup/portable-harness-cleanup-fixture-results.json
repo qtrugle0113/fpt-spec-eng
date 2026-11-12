@@ -1,0 +1,27 @@
+{
+  "postgres_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+  "mysql_image_id": null,
+  "runner_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+  "runner_memory_limit_bytes": 536870912,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": null,
+  "pytest_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "tmpfs",
+  "task": "PORTABLE-HARNESS-CLEANUP",
+  "test_paths": [
+    "tests.unit.test_regression_preflight"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261111\\portable-harness-cleanup\\portable-harness-cleanup-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261111\\portable-harness-cleanup\\portable-harness-cleanup-fixture-sources.json",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "status": "PASS"
+}

@@ -1,5 +1,13 @@
 # Hướng dẫn khởi động và kiểm chứng
 
+**Quy trình nhiều môi trường2026-11-11:** source/locks/config là đầu vào build;
+không cần image IDs của máy trước. Quyết định tại
+[hồ sơ portable](../../docs/decisions/portable-local-build-20261111.md).
+Stack sản phẩm vẫn dùng `podman compose up --build -d` với provider đã công bố,
+không cần Python/Node host; quyền build/start local theo controls hiện hành.
+Regression phát triển chuẩn bị manifest riêng trên mỗi máy theo
+[hướng dẫn](../../docs/operations/testing.md); không dùng DSN/volumes sản phẩm.
+
 Các lệnh regression hiện hành và phạm vi fixture riêng tại
 [hướng dẫn kiểm thử](../../docs/operations/testing.md). Không chạy test cần
 disposable DB trên stack demo hoặc credentials người dùng.

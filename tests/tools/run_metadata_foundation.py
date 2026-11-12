@@ -128,6 +128,8 @@ if args.evidence_dir:
 password = secrets.token_urlsafe(32)
 created = []
 network_created = False
+exit_code = 1
+result = {'status':'NOT_RUN','existing_services_modified':False}
 
 def run(*args):
     p = subprocess.run(['podman', *args], text=True, encoding='utf-8', capture_output=True)
@@ -279,11 +281,18 @@ try:
               'existing_services_modified': False}
     (evidence_dir / (task + '-fixture-results.json')).write_bytes((json.dumps(result, indent=2) + '\n').encode())
 finally:
+    cleanup_codes=[]
     for name in reversed(created):
-        subprocess.run(['podman', 'rm', '-f', '-v', name], capture_output=True)
+        cleanup_codes.append(subprocess.run(['podman', 'rm', '-f', '-v', name], capture_output=True).returncode)
 
-    if args.runtime_fixture_scheduler:subprocess.run(['podman','network','disconnect',network,args.runtime_fixture_scheduler],capture_output=True)
+    if args.runtime_fixture_scheduler:cleanup_codes.append(subprocess.run(['podman','network','disconnect',network,args.runtime_fixture_scheduler],capture_output=True).returncode)
     if network_created:
-        subprocess.run(['podman', 'network', 'rm', network], capture_output=True)
+        cleanup_codes.append(subprocess.run(['podman', 'network', 'rm', network], capture_output=True).returncode)
+    result['cleanup_exit_codes']=cleanup_codes
+    if any(cleanup_codes):
+        result['status']='CLEANUP_FAILED'
+        exit_code=next(code for code in cleanup_codes if code)
+    else:result['status']='PASS' if result.get('test_exit_code')==0 else 'FAIL'
+    (evidence_dir/(task+'-fixture-results.json')).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 
 sys.exit(exit_code)

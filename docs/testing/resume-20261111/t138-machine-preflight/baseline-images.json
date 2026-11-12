@@ -1,0 +1,44 @@
+{
+  "status": "BLOCKED",
+  "reason": "Exact approved baseline images required for same-snapshot candidate scan",
+  "images": [
+    {
+      "target": "backend-wheels",
+      "image_id": "fcd9b9180e139d8b51bdaeef15b431e4b4eed4ac80bd5a66b34801969845653c",
+      "status": "BLOCKED",
+      "exit_code": 125
+    },
+    {
+      "target": "backend",
+      "image_id": "97af4b9a2185ee4bd338390cbc199a3772fd1e41354af69487d8cc682aa06049",
+      "status": "BLOCKED",
+      "exit_code": 125
+    },
+    {
+      "target": "frontend-build",
+      "image_id": "9845c7c03c0c88772380ba19b3eb0a85b38b252126233384cc6864565f58855d",
+      "status": "BLOCKED",
+      "exit_code": 125
+    },
+    {
+      "target": "frontend",
+      "image_id": "367002047b585ea85c1bbeab18ec7cdfa68b932fa0ff6dd4967e6733cf914e03",
+      "status": "BLOCKED",
+      "exit_code": 125
+    },
+    {
+      "target": "airflow-wheels",
+      "image_id": "069bcdae973eacc4ec714efc3fa902eae09492196d4069d2e790d91a647ab7ff",
+      "status": "BLOCKED",
+      "exit_code": 125
+    },
+    {
+      "target": "airflow",
+      "image_id": "b9920b0e7a7c58fabf87feb0db69379186943a726a33ec15303274a116335ad6",
+      "status": "BLOCKED",
+      "exit_code": 125
+    }
+  ],
+  "candidate_runtime_executed": false,
+  "existing_services_modified": false
+}

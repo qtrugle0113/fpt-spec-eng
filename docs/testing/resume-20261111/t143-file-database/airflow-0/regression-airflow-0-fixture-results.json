@@ -1,0 +1,37 @@
+{
+  "postgres_image_id": "61e5671e6997b066e009b783a2cfc0ca9ceb5f2d0a23b3305dfc1f00e26f9f5c",
+  "mysql_image_id": "959a9190c926c84f10885a94db8c983851e97b0b78728ebacf420f1767e38467",
+  "runner_image_id": "ff32e09aea803a9c1675d5ca7053b3e1aa72dd318909b771c880a4caa7951218",
+  "runner_memory_limit_bytes": 1073741824,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "a9b5752d04710f26d677c7122241a54305064600f38a2fe823d31b93b38dd24d",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "pytest_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "new anonymous disk volumes",
+  "task": "REGRESSION-AIRFLOW-0",
+  "test_paths": [
+    "tests.airflow.test_file_database.FileDatabaseTests"
+  ],
+  "test_exit_code": 1,
+  "log": "docs\\testing\\resume-20261111\\t143-file-database\\airflow-0\\regression-airflow-0-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261111\\t143-file-database\\airflow-0\\regression-airflow-0-fixture-sources.json",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "status": "FAIL"
+}

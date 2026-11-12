@@ -8,12 +8,27 @@ trong Linux containers. Không mount engine socket vào container.
 Đặt Podman6.1.1 vào PATH và dùng Compose provider5.6.0 đã công bố. Trên workspace
 hiện tại có thể dùng `.tools/podman-6.1.1/podman-6.1.1/usr/bin` và
 `.tools/docker-compose-5.6.0.exe`. Không tự cài hoặc đổi dependency baseline khi
-thiếu công cụ; kiểm điều kiện đầu vào và exact image IDs trước.
+thiếu công cụ; kiểm điều kiện đầu vào và artifact thực tế trước.
 
 ## Các nhóm kiểm tra
 
-Manifest `tests/fixtures/regression-images.json` ghi đúng image IDs đã review.
-Driver xác minh ID tồn tại, tạo project mới và lưu commands/results theo selector:
+Manifest `tests/fixtures/regression-images.json` là evidence lịch sử trên máy cũ.
+Mặc định driver dùng `.tools/local-images.json` sinh trên máy hiện tại, không yêu
+cầu mang image IDs giữa các máy. Chuẩn bị một lần sau checkout/source change:
+
+```powershell
+python -X utf8 tests/tools/run_regression.py --prepare-images --group unit-api
+```
+
+Lệnh build từ source/locks/Compose bằng tags riêng, ghi snapshot và scan từng
+artifact rồi đối chiếu policy. Unknown findings giữ BLOCKED. Khi có candidate
+cũ cùng source có thể dùng `prepare_local_images.py --reuse-candidate <manifest>`
+để tránh rebuild phần không đổi, sau đó `scan_portable_images.py --manifest
+<manifest-mới>`. Không cần baseline image của máy trước. `.tools` là cấu hình
+local được ignore, không chứa approval dùng chung hoặc secret được commit.
+
+Driver kiểm receipt scan/policy, expiry và IDs của artifact local, tạo project
+mới và lưu commands/results theo selector:
 
 ```powershell
 $env:PYTHONIOENCODING='utf-8'

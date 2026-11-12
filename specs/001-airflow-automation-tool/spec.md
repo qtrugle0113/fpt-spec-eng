@@ -1,5 +1,11 @@
 # Đặc tả tính năng: Airflow Automation Tool — MVP tự động hóa ETL
 
+**Làm rõ môi trường2026-11-11:** chủ dự án duyệt build từ source/locks/config
+trên từng máy; IDs dùng truy vết artifact, không bắt cùng IDs giữa các môi trường.
+Mỗi artifact phải scan/test riêng theo policy có provenance; không cần registry
+hoặc image archive máy cũ. Giữ safety gates, hạn/controls local và T014_FULL.
+Nguồn: [quyết định](../../docs/decisions/portable-local-build-20261111.md).
+
 **Thư mục tính năng**: `specs/001-airflow-automation-tool`
 
 **Nhánh tính năng**: Chưa tạo; dự án không có hook Git tạo nhánh.

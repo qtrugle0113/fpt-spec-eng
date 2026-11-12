@@ -1,0 +1,8 @@
+{
+  "command": "python -X utf8 -m unittest tests.unit.test_regression_preflight -v",
+  "exit_code": 0,
+  "tests": 3,
+  "elapsed_seconds": 0.101,
+  "status": "PASS",
+  "scope": "Isolated orchestration logic; subprocess inspect mocked; not DB/Airflow acceptance"
+}

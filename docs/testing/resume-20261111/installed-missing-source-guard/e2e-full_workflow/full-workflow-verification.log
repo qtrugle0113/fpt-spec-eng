@@ -1,0 +1,2 @@
+FULL_WORKFLOW_VERIFIED {"dag": "aat_full_desktop_1794376848894", "rows": 4, "real_airflow_success": true, "exact_target_values": true, "elapsed_ms": 54588}
+FULL_WORKFLOW_VERIFIED {"dag": "aat_full_mobile_1794376906060", "rows": 4, "real_airflow_success": true, "exact_target_values": true, "elapsed_ms": 52118}

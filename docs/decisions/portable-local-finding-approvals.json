@@ -1,0 +1,13 @@
+[
+  {
+    "status": "OWNER_APPROVED_PORTABLE_LOCAL_FINDINGS",
+    "authority": "Explicit user answer: Duy?t ??ng ph?m vi local n?u tr?n",
+    "recorded_at": "2026-11-11T04:05:04.372119+00:00",
+    "proposal": "docs/proposals/portable-local-krb5-20261111.json",
+    "proposal_sha256": "ac4b8d8ad19b26bc81167dce06f8db99b811dbca78c93bfb97ac0439d71123f7",
+    "expires_at": "2026-11-23T00:00:00+09:00",
+    "review_due": "2026-11-16",
+    "scope": "Exactly14Kerberos advisories/306contexts; local synthetic-data only; existing controls unchanged",
+    "T014_FULL": "BLOCKED"
+  }
+]

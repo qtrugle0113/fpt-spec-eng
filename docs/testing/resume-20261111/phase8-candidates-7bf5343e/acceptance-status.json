@@ -1,0 +1,15 @@
+{
+  "status": "BLOCKED",
+  "build": "PASS",
+  "package_inspection": "PASS",
+  "candidate_runtime_executed": false,
+  "scan_execution": "NOT_RUN",
+  "scan_driver_exit_code": 1,
+  "reason": "Approved Phase7 exact baseline images unavailable on this machine; scanner stopped during preflight inspect",
+  "baseline_preflight": "docs/testing/resume-20261111/t138-machine-preflight/baseline-images.json",
+  "security_assessment": "BLOCKED",
+  "delegated_approval_applied": false,
+  "existing_services_modified": false,
+  "T138": "OPEN",
+  "T014_FULL": "BLOCKED"
+}

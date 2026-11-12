@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "network": "none",
+  "modules": [
+    {
+      "target": "backend",
+      "image_id": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+      "source": "backend/src/aat_api/services/etl_preview.py",
+      "expected_sha256": "7b971820b31e646cac1ac5d14f3e5b77010c6a9621d8a703182fb310fabeb90b",
+      "installed": {
+        "module": "/usr/local/lib/python3.12/site-packages/aat_api/services/etl_preview.py",
+        "sha256": "7b971820b31e646cac1ac5d14f3e5b77010c6a9621d8a703182fb310fabeb90b"
+      },
+      "status": "PASS"
+    },
+    {
+      "target": "backend",
+      "image_id": "cfd6b2963bba68dca1a626104e4027d7218a0eb408f46b9fd52c0853b5e8ac49",
+      "source": "etl_engine/src/aat_etl/readers/file_source.py",
+      "expected_sha256": "e6a02e3dc7ca11831e91a3c1dce066ab9bcba06fc98c83f8726413321c825122",
+      "installed": {
+        "module": "/usr/local/lib/python3.12/site-packages/aat_etl/readers/file_source.py",
+        "sha256": "e6a02e3dc7ca11831e91a3c1dce066ab9bcba06fc98c83f8726413321c825122"
+      },
+      "status": "PASS"
+    },
+    {
+      "target": "airflow",
+      "image_id": "8cb33c0dfbca321fbccbe7c508aac5398dcb7709d562c4d29f991cdb4d28f15e",
+      "source": "etl_engine/src/aat_etl/readers/file_source.py",
+      "expected_sha256": "e6a02e3dc7ca11831e91a3c1dce066ab9bcba06fc98c83f8726413321c825122",
+      "installed": {
+        "module": "/home/airflow/.local/lib/python3.12/site-packages/aat_etl/readers/file_source.py",
+        "sha256": "e6a02e3dc7ca11831e91a3c1dce066ab9bcba06fc98c83f8726413321c825122"
+      },
+      "status": "PASS"
+    }
+  ],
+  "scope": "Package contents only; behavior requires related selectors"
+}
