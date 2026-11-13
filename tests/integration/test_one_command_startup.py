@@ -24,6 +24,9 @@ class OneCommandStartupTests(unittest.TestCase):
         if os.environ.get('AAT_RUN_FRESH_STARTUP')!='1':
             raise RuntimeError('Explicit owned fresh-start fixture required: AAT_RUN_FRESH_STARTUP=1')
         if (ROOT/'.env').exists():raise RuntimeError('The default startup selector requires no .env file')
+        phase_only=os.environ.get('AAT_T140_PHASE_ONLY')
+        if phase_only is not None and phase_only not in ('EXTRACTION','COMMIT','FULL_REFRESH'):
+            raise RuntimeError('AAT_T140_PHASE_ONLY must name one supported restart phase')
         project='aat-t140-'+secrets.token_hex(4)
         evidence=ROOT/'docs/testing/resume-20261112'/project
         evidence.mkdir(parents=True)
@@ -33,7 +36,8 @@ class OneCommandStartupTests(unittest.TestCase):
         for port in (23001,28001,28081):
             with socket.socket() as listener:listener.bind(('127.0.0.1',port))
         result={'status':'NOT_RUN','project':project,'existing_services_modified':False,
-                'canonical_startup':['podman','compose','up','--build','-d']}
+                'canonical_startup':['podman','compose','up','--build','-d'],
+                'phase_only_diagnostic':phase_only}
         base=['podman','compose']
         started=False
         def run(command,timeout=300):
@@ -60,8 +64,9 @@ class OneCommandStartupTests(unittest.TestCase):
                 template=hashlib.sha256(response.read()).hexdigest()
             return {'connections':sorted((r['id'],r['code']) for r in connections['items']),'template_sha256':template}
         try:
-            checked(['python','-X','utf8','tests/tools/run_regression.py','--group','e2e','--preflight-only',
+            preflight=checked(['python','-X','utf8','tests/tools/run_regression.py','--group','e2e','--preflight-only',
                      '--evidence-dir',str((evidence/'policy-preflight').relative_to(ROOT))],'policy-preflight')
+            self.assertIn('PREFLIGHT_PASS',preflight,'Exact-image policy gate must pass before any service starts')
             # Prepare cache/tags and verify resulting exact IDs before runtime admission.
             checked([*base,'build'],'build-preparation',1800)
             images=json.loads((ROOT/'.tools/local-images.json').read_text())
@@ -118,8 +123,21 @@ class OneCommandStartupTests(unittest.TestCase):
             baseline=public_snapshot()
             self.assertTrue({'pg_etl','mysql_etl'}<={code for _,code in baseline['connections']})
             from tests.tools.verify_running_workflow import verify
-            workflow=verify(project,'http://localhost:23001','http://localhost:28081',evidence/'full-workflow',images_path)
-            self.assertEqual(workflow['status'],'PASS')
+            if phase_only is None:
+                workflow=verify(project,'http://localhost:23001','http://localhost:28081',evidence/'full-workflow',images_path)
+                self.assertEqual(workflow['status'],'PASS')
+            restart_runs={}
+            phases=(phase_only,) if phase_only else ('EXTRACTION','COMMIT','FULL_REFRESH')
+            for phase in phases:
+                phase_result=verify(project,'http://localhost:23001','http://localhost:28081',
+                    evidence/('restart-'+phase.lower()),images_path,restart_phase=phase)
+                self.assertEqual(phase_result['status'],'PASS',phase+' phase restart failed')
+                self.assertEqual(len(phase_result['phase_restart_checks']),1)
+                restart_runs[phase]=phase_result['phase_restart_checks'][0]
+            result['phase_restart_runs']=restart_runs
+            if phase_only:
+                result.update(status='DIAGNOSTIC_PASS',t140_acceptance=False)
+                return
             baseline=public_snapshot()
             backend=checked([*base,'ps','-q','backend'],'backend-id').strip()
             api=checked([*base,'ps','-q','airflow-apiserver'],'airflow-id').strip()

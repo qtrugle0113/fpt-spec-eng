@@ -5,7 +5,9 @@ import { createHash } from 'node:crypto';
 test.use({ actionTimeout: 15000 });
 
 test('An operator creates a connection and table, loads the uploaded CSV, and follows the real run', async ({ page, request }, info) => {
-  test.setTimeout(600000);
+  const phase = process.env.AAT_T140_PHASE;
+  if (phase && !['EXTRACTION', 'COMMIT', 'FULL_REFRESH'].includes(phase)) throw new Error('Invalid T140 phase');
+  test.setTimeout(phase ? 900000 : 600000);
   const started = Date.now();
   const suffix = `${info.project.name}_${started}`;
   const code = `full_pg_${suffix}`;
@@ -51,8 +53,24 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   const tableOperation = await (await tableCreated).json();
   await expect(page.getByText('Operation: SUCCEEDED', { exact: true })).toBeVisible({ timeout: 35000 });
 
+  if (phase) {
+    await mkdir('/tmp/aat-t140', { recursive: true });
+    await writeFile('/tmp/aat-t140/ready.json', JSON.stringify({ code, table, dag }));
+    const deadline = Date.now() + 180000;
+    while (Date.now() < deadline) {
+      try {
+        await readFile('/tmp/aat-t140/start');
+        break;
+      } catch {
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }
+    }
+    if (Date.now() >= deadline) throw new Error('T140 coordinator did not release the owned fixture');
+  }
+
   await page.goto('/dag-builder');
   const source = await readFile('/tests/full-customers.csv');
+  const loadedRows = Number(process.env.AAT_T140_EXPECTED_ROWS ?? '4');
   const uploadForm = page.getByRole('form', { name: 'Upload source file', exact: true });
   await uploadForm.getByLabel('Source file', { exact: true }).setInputFiles({ name: `${suffix}.csv`, mimeType: 'text/csv', buffer: source });
   const uploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/files') && r.request().method() === 'POST');
@@ -69,7 +87,13 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   const etlDownload = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Download ETL Definition template' }).click();
   await (await etlDownload).saveAs(`${folder}/etl-template.xlsx`);
-  workbook('etl', `${folder}/etl-template.xlsx`, `${folder}/etl.xlsx`, { code, table, dag, file: file.id });
+  workbook('etl', `${folder}/etl-template.xlsx`, `${folder}/etl.xlsx`, {
+    code, table, dag, file: file.id,
+    strategy: phase === 'FULL_REFRESH' ? 'FULL_REFRESH' : 'UPSERT',
+    batch_size: phase === 'COMMIT' ? 1 : 1000,
+    retry_count: phase ? 2 : 0,
+    retry_delay: 1,
+  });
   await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`${folder}/etl.xlsx`);
   const etlUploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/definition-uploads') && r.request().method() === 'POST');
   await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
@@ -83,6 +107,12 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await page.getByRole('button', { name: 'Confirm and deploy workflows', exact: true }).click();
   const deployment = page.getByRole('article', { name: 'Deployment result for ' + dag });
   await expect(deployment.getByText('DEPLOYED', { exact: true })).toBeVisible({ timeout: 150000 });
+  if (phase === 'FULL_REFRESH') {
+    const authority = page.getByRole('region', { name: 'Replacement authorization for ' + dag });
+    await authority.getByRole('checkbox', { name: /I authorize replacing all rows/ }).check();
+    await authority.getByRole('button', { name: 'Grant ONCE authority' }).click();
+    await expect(authority.getByText(/Authority saved: GRANTED/)).toBeVisible({ timeout: 30000 });
+  }
   const popupEvent = page.waitForEvent('popup');
   await deployment.getByRole('link', { name: 'Open Airflow', exact: true }).click();
   const popup = await popupEvent;
@@ -98,14 +128,15 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await deployment.getByRole('button', { name: 'Run workflow now', exact: true }).click();
   const command = await (await trigger).json();
   const run = 'manual__aat_' + command.id;
+  if (phase) await writeFile('/tmp/aat-t140/run.json', JSON.stringify({ code, table, dag, run }));
   await expect(page.getByText(/Manual trigger succeeded/)).toBeVisible({ timeout: 30000 });
   await page.goto('/monitoring?dag=' + dag);
   const workflow = page.getByRole('region', { name: 'Workflow details', exact: true });
   const row = workflow.getByRole('row').filter({ hasText: run });
-  await expect(row.getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: 130000 });
+  await expect(row.getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: phase ? 540000 : 130000 });
   await row.getByRole('button', { name: 'View run details', exact: true }).click();
   const evidence = page.getByRole('region', { name: 'Run details', exact: true });
-  await expect(evidence.locator('dt').filter({ hasText: /^Loaded rows$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText('4');
+  await expect(evidence.locator('dt').filter({ hasText: /^Loaded rows$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText(String(loadedRows));
   await page.goto('/');
   await page.getByRole('button', { name: 'Refresh dashboard' }).click();
   await expect(page.getByRole('row').filter({ hasText: run }).getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: 30000 });
@@ -116,6 +147,7 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   let previous: object[] = [];
   try { previous = JSON.parse(await readFile(artifact, 'utf8')); } catch { /* First owned browser fixture. */ }
   await writeFile(artifact, JSON.stringify([...previous, { dag, run, code, table, file: file.id, file_name: file.file_name,
-    checksum: file.sha256, etl_upload: etlUpload.id, table_upload: tableUpload.id,
+    checksum: file.sha256, loaded_rows: loadedRows, t140_phase: phase ?? null,
+    etl_upload: etlUpload.id, table_upload: tableUpload.id,
     table_job: tableOperation.result_links[0].split('/').pop(), elapsed_ms: Date.now() - started }]));
 });

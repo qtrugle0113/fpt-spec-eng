@@ -1,0 +1,28 @@
+[1/2] STEP 1/4: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS dependencies
+[1/2] STEP 2/4: WORKDIR /tests
+--> 05789c38d3bc
+[1/2] STEP 3/4: COPY tests/e2e/package.json tests/e2e/package-lock.json ./
+--> 4c55c4fe4c2e
+[1/2] STEP 4/4: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+
+removed 65 packages, and changed 92 packages in 5s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+added 3 packages in 1s
+--> 18603d081d06
+[2/2] STEP 1/8: FROM mcr.microsoft.com/playwright:v1.65.0-resolute@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218
+Trying to pull mcr.microsoft.com/playwright@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218...
+Getting image source signatures
+Copying blob sha256:9778251cd77f0b9f6566248a5f010be26742a62035656fb9656171e72ff77acd
+Copying blob sha256:edafa32f5d9e4d9629f0dbc6c01e63c79ff08133c01cfb7d3363aa8bd8a614cf
+Copying blob sha256:fe37265e8bccc1d324c97452284ace0a6eb7273e1d9fd69a5fcbfb5a5fd810e0
+Copying blob sha256:7264421df5966a226544ebad709d37ea1fdc6eb5c357e77e4345f725b0271c0f
+Copying blob sha256:f3f25b84a7d74315d94ee4108231f8f5e0cd2a44725a7204d5dd6ce91c151697
+Copying blob sha256:14fba64cf3a563241b5fefb32bcb1df6ff2fbb2a74624b33d1de7f5cf8e934f9
+Copying blob sha256:0a0b81c7b9a3a06c8367ec9f97ce229a291f901d9256d4a2bb6b3ed634b3f39a
+Copying blob sha256:0d83aad1365123ab9acaed0b0c42aa1e42b4dff1ae7c8013393d08f29abebc57
+Copying config sha256:6c366017b41688a05fd66e4d942e35f17fdb1f3c5ad0ec9a39674f36e5ff446c
+Writing manifest to image destination
+[2/2] STEP 2/8: COPY docker/tests/os-packages.lock /opt/aat/os-packages.lock

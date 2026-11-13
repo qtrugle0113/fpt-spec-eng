@@ -1,0 +1,58 @@
+{
+  "status": "PREFLIGHT_PASS",
+  "images": {
+    "backend": "5464a0cd213d5b749717fa34b933f7a2b50e6797f1bce8cc838495bb17a943f1",
+    "frontend": "11daad91545aa0997d5f3fe7731f954ef9a194eb08d7e7cc0bcb0ae74ff3e3c5",
+    "airflow": "3e49cc64b81a38bc886cc608dd6f67503c52be4e23748aeae756f1f07ce21823",
+    "postgres": "723fe440c4b4fc2d3451b00edee66f1c2fc97be572a4a672b7c45c4e08f63186",
+    "mysql": "fa71ccbc9f0cedb66247e2f711d0bd447daab44ad7ce38a8e218ae0e3f0d1cb6",
+    "tests": "4b7b596fbad6c1c6eb83ab1e8b4267c119265fd5b30e57bdf79164a5d0b614fc",
+    "e2e": "a08c9566f1327715309e67dcc9e9c740596885ecce42c7c27e993f3344ced1a9",
+    "workbook_deps": "5464a0cd213d5b749717fa34b933f7a2b50e6797f1bce8cc838495bb17a943f1"
+  },
+  "planned_groups": [
+    "e2e"
+  ],
+  "selectors": [],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261112\\aat-t140-04bd265a\\canonical-candidate\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "3e49cc64b81a38bc886cc608dd6f67503c52be4e23748aeae756f1f07ce21823",
+      "status": "PASS",
+      "actual_image_id": "3e49cc64b81a38bc886cc608dd6f67503c52be4e23748aeae756f1f07ce21823"
+    },
+    {
+      "name": "backend",
+      "expected_image_id": "5464a0cd213d5b749717fa34b933f7a2b50e6797f1bce8cc838495bb17a943f1",
+      "status": "PASS",
+      "actual_image_id": "5464a0cd213d5b749717fa34b933f7a2b50e6797f1bce8cc838495bb17a943f1"
+    },
+    {
+      "name": "e2e",
+      "expected_image_id": "a08c9566f1327715309e67dcc9e9c740596885ecce42c7c27e993f3344ced1a9",
+      "status": "PASS",
+      "actual_image_id": "a08c9566f1327715309e67dcc9e9c740596885ecce42c7c27e993f3344ced1a9"
+    },
+    {
+      "name": "frontend",
+      "expected_image_id": "11daad91545aa0997d5f3fe7731f954ef9a194eb08d7e7cc0bcb0ae74ff3e3c5",
+      "status": "PASS",
+      "actual_image_id": "11daad91545aa0997d5f3fe7731f954ef9a194eb08d7e7cc0bcb0ae74ff3e3c5"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "fa71ccbc9f0cedb66247e2f711d0bd447daab44ad7ce38a8e218ae0e3f0d1cb6",
+      "status": "PASS",
+      "actual_image_id": "fa71ccbc9f0cedb66247e2f711d0bd447daab44ad7ce38a8e218ae0e3f0d1cb6"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "723fe440c4b4fc2d3451b00edee66f1c2fc97be572a4a672b7c45c4e08f63186",
+      "status": "PASS",
+      "actual_image_id": "723fe440c4b4fc2d3451b00edee66f1c2fc97be572a4a672b7c45c4e08f63186"
+    }
+  ],
+  "tests_executed": false
+}

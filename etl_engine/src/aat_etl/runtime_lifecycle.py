@@ -3,13 +3,14 @@ import json
 import os
 from pathlib import Path
 import shutil
+import sys
 from uuid import UUID,uuid5
 from sqlalchemy import text
 from aat_metadata.repositories.base import create_app_engine
 from aat_metadata.repositories.metrics import project
 from .contracts.config import ETLConfig
 from .metrics import MetricSnapshot
-from .resources import SupervisionResult
+from .resources import ProcessExitProof,SupervisionResult,safe_failure_location
 from .runtime_state import RuntimeState
 from .runtime_connections import revision_engine
 from .staging.manager import hashed
@@ -93,11 +94,12 @@ def _authority(state,decision,target_session=None):
 
 
 def finish_attempt(binding_id,*,proof,journal_path,root=None,metadata_engine=None,terminal=False):
-    """Called only after run_supervised has waited/reaped its specific child."""
+    """Reconcile only after the specific child exited and its journal is durable."""
     metadata=metadata_engine
     try:
         if metadata is None:metadata=create_app_engine(runtime=True)
-        if not isinstance(proof,SupervisionResult) or type(proof.exit_code) is not int:return 'NEEDS_RECONCILIATION'
+        if not isinstance(proof,(SupervisionResult,ProcessExitProof)) or type(proof.exit_code) is not int:
+            return 'NEEDS_RECONCILIATION'
         path=Path(journal_path)
         if path.is_symlink() or path.stat().st_size>8192:return 'NEEDS_RECONCILIATION'
         journal=json.loads(path.read_text())
@@ -131,9 +133,13 @@ def finish_attempt(binding_id,*,proof,journal_path,root=None,metadata_engine=Non
             finally:
                 try:ownership.execute(text('SELECT pg_advisory_unlock(718423104,hashtext(:binding))'),{'binding':str(binding_id)})
                 except Exception:ownership.invalidate()
-    except Exception:
+    except Exception as error:
         # Missing journal, unavailable metadata/native ownership or corrupt staging
-        # preserves evidence. No raw exception reaches task logs.
+        # preserves evidence. Only a source location reaches task logs.
+        location=safe_failure_location(error)
+        if location:
+            sys.stderr.write(f'AAT_ETL_RECONCILIATION_FAILURE {location}\n')
+            sys.stderr.flush()
         return 'NEEDS_RECONCILIATION'
     finally:
         if metadata_engine is None and metadata is not None:metadata.dispose()

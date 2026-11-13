@@ -36,11 +36,23 @@ Workflow UI thực tế trên demo desktop/mobile6checks PASS,35.267/31.387s,
   tests PASS, gồm process kill trước OOM và bảo vệ artifact cần reconciliation.
   Evidence tại `resume-20261113/airflow-memory-large-r5/` và
   `resume-20261113/airflow-memory-guards/`.
-- T146 chưa khép: MySQL concurrency PASS; Postgres có lượt PASS riêng nhưng module
-  lặp lại báo scheduled task `AirflowFailException` và chưa thu được guard message.
-  Chưa kết luận lỗi sản phẩm hoặc đóng task trước khi có run ổn định/diagnostic.
+- T146 concurrency module PASS hai lượt liên tiếp trên packaged runtime/disposable
+  fixture: PostgreSQL và MySQL manual+scheduled aliases, 2/2 tests, maximum
+  writers=1, bốn hàng exact mỗi target; fixture cleanup 6/6. Evidence:
+  `resume-20261113/current-t146-diagnostic-r3/` và
+  `resume-20261113/current-t146-confirmation/`. Lượt lỗi cũ không tái hiện;
+  diagnostic test-only dùng đúng attempt/pagination, không sửa runtime. Revision,
+  old-clear và authorization/credential invalidation được covered bởi T118/T119/T145.
+- T151 verification PASS: sample artifact hash/byte/LF checks 3/3; regression unit/API và SDK
+  selectors PASS trên exact LOCAL_POLICY_MATCH images. Fresh T140 workflow đã
+  tải cả Table/ETL templates, điền và upload workbook, xác minh checksum CSV và
+  exact target values; fresh seed kiểm checksum cả CSV/TXT. Evidence:
+  `resume-20261113/current-t151-sample-checks/` và
+  `resume-20261112/aat-t140-bf3008e2/`. Checkbox T151 vẫn mở đến khi dependency
+  T140 hoàn tất.
 - T150 docs được đồng bộ; internal links cho README/architecture/API/Excel/
-  troubleshooting/Quickstart và diff checks PASS. T139, T144, T145, T147–T150 đã khép.
+  troubleshooting/Quickstart và diff checks PASS. Quickstart đã sửa trạng thái T146 cũ.
+  T139, T144, T145, T147–T150 đã khép.
 - Contract drift mới: runtime route inventory và required JSON request fields
   khớp canonical contract, derive từ schema thay vì hardcode operation count.
   Hai checks PASS1.927s trên installed backend image với test source mới,
@@ -48,6 +60,15 @@ Workflow UI thực tế trên demo desktop/mobile6checks PASS,35.267/31.387s,
   `resume-20261113/contract-drift/unittest.log`. Chưa là toàn bộ T148 audit.
 
 ## Fresh startup T140
+
+Portable scan follow-up: current local image IDs match all 10 artifacts in
+`resume-20261111/portable-a058b7de/candidate-images.json`. Re-evaluating that
+exact scan with `scan_portable_images.py --review-only` returned
+`LOCAL_POLICY_MATCH`; `security=FAIL_WITH_APPROVED_LOCAL_EXCEPTIONS` and
+`T014_FULL=BLOCKED` remain unchanged. The incomplete `a4ec9c82` source snapshot
+differs from the workspace only in Plan/Tasks and the T146 diagnostic test;
+runtime/build/sample source inputs match. No runtime tests were run in this
+continuation.
 
 Selector `tests/integration/test_one_command_startup.py`: PASS564.113s tại
 `resume-20261112/aat-t140-bf3008e2/result.json`.
@@ -70,10 +91,9 @@ T140 còn phải đối chiếu đủ restart giữa extraction/commit/refresh t
 
 ## Đang làm và còn lại
 
-- T140 fresh selector đã PASS trong564.113s, nhưng còn thiếu restart giữa extraction,
-  commit và FULL_REFRESH trên fresh Compose stack.
-- T146 PostgreSQL concurrency cần giải thích scheduled run thất bại; MySQL tương ứng PASS.
-- T151 chờ T140 và kiểm tra sample pack/download/checksum trên fresh stack.
+- T140 fresh selector đã PASS trong564.113s, nhưng còn thiếu restart giữa
+  extraction/commit/FULL_REFRESH trên fresh Compose stack.
+- T151 đã có verification PASS nhưng checkbox chờ T140 theo dependency.
 - T152 final acceptance chưa thể chạy khi các task/gates trên còn mở.
 - T014_FULL vẫn BLOCKED. Chỉ local/dữ liệu tổng hợp/loopback; hạn ngoại lệ
   23/11/2026 00:00 UTC+09, review16/11. Không thêm ngoại lệ mới.
@@ -82,7 +102,7 @@ T140 còn phải đối chiếu đủ restart giữa extraction/commit/refresh t
 
 ## Bước tiếp theo
 
-Tiếp tục T140 phase-specific restart và chẩn đoán T146 PostgreSQL bằng selector
-cô lập; sau đó xác minh T151 sample pack/fresh stack rồi mới chạy T152 Analyze và
-acceptance. T014 chỉ đóng theo scan/CI/reviewer evidence; không tạo waiver mới.
+Tiếp tục T140 phase-specific restart trên fresh Compose stack, sau đó chạy
+`/speckit-analyze`. Chỉ hoàn tất T152 nếu Analyze và mọi mandatory acceptance
+gates đều PASS; T014_FULL chỉ đóng theo scan/CI/reviewer evidence, không tạo waiver mới.
 Không commit/push hoặc xóa stack/dữ liệu có trước.

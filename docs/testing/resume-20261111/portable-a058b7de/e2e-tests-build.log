@@ -1,0 +1,79 @@
+[1/2] STEP 1/4: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS dependencies
+[1/2] STEP 2/4: WORKDIR /tests
+--> Using cache 05789c38d3bc291ffe986e3b8522388818b8009b89afd0b69569d33baf3c45c2
+--> 05789c38d3bc
+[1/2] STEP 3/4: COPY tests/e2e/package.json tests/e2e/package-lock.json ./
+--> Using cache 4c55c4fe4c2eddb46ae6e12b9eba0184290efb6bbc302e3c7a584665a72234dd
+--> 4c55c4fe4c2e
+[1/2] STEP 4/4: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+--> Using cache 18603d081d060761f049922b76510ac9d4207b4d7cf051e54b2f76dcc6f55088
+--> 18603d081d06
+[2/2] STEP 1/8: FROM mcr.microsoft.com/playwright:v1.65.0-resolute@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218
+[2/2] STEP 2/8: COPY docker/tests/os-packages.lock /opt/aat/os-packages.lock
+--> 2eb48fd2b579
+[2/2] STEP 3/8: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/* /usr/lib/node_modules/npm /usr/local/lib/node_modules/npm && rm -f /usr/bin/npm /usr/bin/npx /usr/local/bin/npm /usr/local/bin/npx
+Get:1 https://deb.nodesource.com/node_26.x nodistro InRelease [12.1 kB]
+Get:2 https://deb.nodesource.com/node_26.x nodistro/main amd64 Packages [5040 B]
+Get:3 http://azure.archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+Get:4 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:6 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+Get:7 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+Get:11 http://azure.archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [26.1 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [743 kB]
+Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [1071 kB]
+Get:14 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [24.6 kB]
+Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [491 kB]
+Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3308 B]
+Get:17 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [882 kB]
+Get:18 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [276 kB]
+Get:19 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [723 kB]
+Fetched 27.3 MB in 6s (4300 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Solving dependencies...
+The following packages will be upgraded:
+  apt libapt-pkg7.0
+2 upgraded, 0 newly installed, 0 to remove and 20 not upgraded.
+Need to get 2646 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 libapt-pkg7.0 amd64 3.2.1ubuntu0.1 [1139 kB]
+Get:2 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 apt amd64 3.2.1ubuntu0.1 [1507 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 2646 kB in 1s (4533 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28813 files and directories currently installed.)
+Preparing to unpack .../libapt-pkg7.0_3.2.1ubuntu0.1_amd64.deb ...
+Unpacking libapt-pkg7.0:amd64 (3.2.1ubuntu0.1) over (3.2.0) ...
+Setting up libapt-pkg7.0:amd64 (3.2.1ubuntu0.1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28813 files and directories currently installed.)
+Preparing to unpack .../apt_3.2.1ubuntu0.1_amd64.deb ...
+Unpacking apt (3.2.1ubuntu0.1) over (3.2.0) ...
+Setting up apt (3.2.1ubuntu0.1) ...
+Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+--> de467e23a490
+[2/2] STEP 4/8: WORKDIR /tests
+--> 0534a6bc8301
+[2/2] STEP 5/8: COPY --from=dependencies /tests/node_modules ./node_modules
+--> a7c41e541044
+[2/2] STEP 6/8: COPY tests/e2e ./
+--> 8e272e6b6c83
+[2/2] STEP 7/8: ENV PLAYWRIGHT_BASE_URL=http://frontend:80
+--> bf21b6eba20d
+[2/2] STEP 8/8: CMD ["node", "node_modules/@playwright/test/cli.js", "test"]
+[2/2] COMMIT localhost/aat-portable-e2e-tests-a058b7de:0.1.0
+--> a08c9566f132
+Successfully tagged localhost/aat-portable-e2e-tests-a058b7de:0.1.0
+a08c9566f1327715309e67dcc9e9c740596885ecce42c7c27e993f3344ced1a9

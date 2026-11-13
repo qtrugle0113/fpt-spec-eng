@@ -2,12 +2,25 @@
 from dataclasses import dataclass
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import time
+import traceback
 from collections.abc import Sequence
 
 MEMORY_BUDGET_BYTES = 512 * 1024**2
+
+
+def safe_failure_location(error):
+    frames=traceback.extract_tb(error.__traceback__)
+    if not frames:return None
+    frame=frames[-1]
+    filename=frame.filename.rsplit('/',1)[-1]
+    if not re.fullmatch(r'[A-Za-z0-9_.-]{1,128}',filename) \
+            or not re.fullmatch(r'[A-Za-z0-9_]{1,128}',frame.name):
+        return None
+    return f'{filename}:{frame.lineno}:{frame.name}'
 
 
 @dataclass(frozen=True)
@@ -17,6 +30,13 @@ class SupervisionResult:
     reason: str
     peak_rss_bytes: int
     memory_budget_bytes: int = MEMORY_BUDGET_BYTES
+
+
+@dataclass(frozen=True)
+class ProcessExitProof:
+    pid: int
+    exit_code: int
+    reason: str
 
 
 def run_supervised(command: Sequence[str]) -> SupervisionResult:

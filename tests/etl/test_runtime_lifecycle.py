@@ -24,10 +24,11 @@ class RuntimeLifecycleTests(unittest.TestCase):
             return run_supervised([sys.executable,'-m','tests.etl.runtime_fault_child',str(binding['binding_id']),str(journal),str(os.getpid()),*([mode] if mode else [])])
 
     def test_reaped_extraction_can_retry_same_once_intent(self):
-        from aat_etl.runtime_lifecycle import finish_attempt
+        from aat_etl.runtime_task import _recover_interrupted_attempt
         binding,_,_,metadata=self.prepare(strategy='FULL_REFRESH')
         with tempfile.TemporaryDirectory() as root:
-            root=Path(root);journal=root/'private-journal.json'
+            root=Path(root);directory=root/'.aat-runtime-journals';directory.mkdir(mode=0o700)
+            journal=directory/(str(binding['binding_id'])+'.json')
             proof=self.crash(binding,metadata,root,journal)
             self.assertEqual(proof.exit_code,-9)
             from aat_api.workers.recovery import recover_pending
@@ -37,7 +38,7 @@ class RuntimeLifecycleTests(unittest.TestCase):
             current=next(row for row in rows if row['binding_id']==str(binding['binding_id']))
             self.assertEqual(current['reason'],'SOURCE_WRITER_TERMINATION_UNVERIFIED')
             with metadata.connect() as c:self.assertEqual(c.scalar(text('SELECT dataset_id FROM execution_bindings WHERE id=:id'),{'id':binding['binding_id']}),before)
-            self.assertEqual(finish_attempt(binding['binding_id'],proof=proof,journal_path=journal,root=root,metadata_engine=metadata,terminal=False),'RETRY_READY')
+            self.assertEqual(_recover_interrupted_attempt(str(binding['binding_id']),root,journal,metadata),'RETRY_READY')
             with metadata.connect() as c:
                 self.assertIsNone(c.scalar(text('SELECT dataset_id FROM execution_bindings WHERE id=:id'),{'id':binding['binding_id']}))
                 self.assertEqual(c.scalar(text('SELECT state FROM dataset_manifests WHERE execution_binding_id=:id'),{'id':binding['binding_id']}),'EXPIRED')

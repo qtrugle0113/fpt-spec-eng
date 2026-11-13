@@ -1,10 +1,12 @@
 # Danh sách task: Airflow Automation Tool
 
-**Tiếp tục2026-11-13:** demo23000/28080 READY, workflow UI/target verifier PASS.
-Fresh startup T140 selector PASS gồm restart/secret/key loss nhưng chưa đủ
-restart giữa các phase ETL; T140 giữ mở. Recovery bổ sung6SDK cases PASS,
-contract inventory/required requests PASS. Đang kiểm empty/rollback/visibility
-và APPEND rerun. Xem [checkpoint mới nhất](../../docs/testing/product-resume-20261113.md).
+**Tiếp tục2026-11-13 (mới nhất):** T146 full concurrency module PASS hai lần
+trên disposable packaged fixture. Sample hash/workbook và fresh-stack
+download/upload/checksum/target verification của T151 PASS, nhưng task còn mở
+đến khi prerequisite T140 hoàn tất. T140 thiếu restart giữa
+extraction/commit/FULL_REFRESH; T152 chưa chạy. T014_FULL vẫn BLOCKED. Checklist
+hiện 16/16 và 48/48. Xem
+[checkpoint mới nhất](../../docs/testing/product-resume-20261113.md).
 
 **Tiếp tục2026-11-12:** checklist16/16 và48/48, Podman đã khởi động. Build
 portable trên máy hiện tại đã phát hiện thêm git/git-man HIGH chỉ ở Airflow;
@@ -17,17 +19,14 @@ T140 đang kiểm fresh startup; T144/T145/T150 còn mở cho phạm vi còn thi
 Xem [checkpoint](../../docs/testing/product-resume-20261112.md).
 Các đoạn ngày11/11 bên dưới giữ kết quả lịch sử.
 
-**Trạng thái hiện hành (ưu tiên hơn các snapshot bên dưới):** T138 đã khép
-trong phạm vi local được duyệt; tổng hợp 13 selectors tại
-`docs/testing/resume-20261111/t138-aggregate.json`. T141 PASS luồng UI đầy đủ
-desktop/mobile, xác minh 4 dòng đích mỗi luồng; T142 PASS cả 4 hướng DB qua
-Airflow thật với PK ghép/NULL/decimal/temporal. T143 vẫn mở: guard mất file đã
-PASS installed image; TXT thất bại do mapped reservation giữ gần10GiB sau lỗi
-typed FULL_REFRESH, không phải parser. Đã build sửa cách tính reservation với
-quota/PROTECTED giữ nguyên; chờ selectors liên quan trên `portable-346d83ce/`.
-T139/T140/T144–T152 chưa hoàn tất. T014_FULL vẫn BLOCKED. Ngoại lệ Kerberos
-đã được chủ dự án duyệt đúng 14 advisory/306 contexts, không còn chờ phê duyệt.
-Sản phẩm local tại <http://localhost:23000>, Airflow <http://localhost:28080>.
+**Trạng thái hiện hành (ưu tiên hơn các snapshot bên dưới):** T138–T139,
+T141–T150 đã khép theo evidence; T141 PASS luồng UI đầy đủ desktop/mobile,
+T142 PASS bốn hướng DB qua Airflow thật, T146 PASS concurrency/revision
+acceptance được tổng hợp ở checkpoint mới nhất. T151 verification đã PASS nhưng
+checkbox chờ prerequisite T140. T140 còn thiếu restart phase-specific trên fresh
+Compose stack; T152 còn chờ T140 và Analyze. T014_FULL vẫn BLOCKED, nên chưa claim
+MVP/full acceptance. Các kết quả và image policy
+chi tiết ở [checkpoint hiện hành](../../docs/testing/product-resume-20261113.md).
 
 **Sau phê duyệt Kerberos2026-11-11:** chủ dự án duyệt đúng14advisory/306contexts,
 policy LOCAL_POLICY_MATCH. Bản installed-image mới READY tại23000/Airflow28080;
@@ -396,13 +395,13 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 - [x] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
 - [x] T144 [P] Tạo/chạy Airflow retry/commit-loss regression tại `tests\airflow\test_retry_recovery.py`; source/target down, kill không finally, app metric fail, stable retry binding/checkpoint, rerun mới/cảnh báo APPEND; Phụ thuộc: T138; Truy vết: FR-051, FR-060, SC-014, ma trận K/R/AH/AJ; Kiểm chứng: no blind duplicate replay, commit uncertain giữ PROTECTED và đối soát120giây hoặc lý do blocked.
 - [x] T145 [P] Tạo/chạy FULL_REFRESH regression tại `tests\airflow\test_full_refresh_recovery.py`; pre-extract/mapped validation/mid-insert/COMMIT lost/zero-row/authorization revoked/invalidated trước admission và recovery sau revoke/dependency reject, reader old/new ở isolation hỗ trợ; Phụ thuộc: T138; Truy vết: NFR-005, FR-053–FR-054, SC-006, SC-013, ma trận L/M/AC; Kiểm chứng: old data giữ/phục hồi, một replacement commit, unknown không success hoặc replay; không tạo TTL/EXPIRED cho authorization; confirmation token10phút hết hạn chặn request mới nhưng replay cùng Idempotency-Key/hash trả intent cũ, không giải phóng ONCE.
-- [ ] T146 [P] Tạo/chạy concurrency/revision regression tại `tests\airflow\test_concurrent_runs.py`; hai managed DAG/connection aliases cùng target, manual+scheduled, redeploy drain/old-clear/credential change,300giây lock wait; Phụ thuộc: T138; Truy vết: BR-09, BR-20–BR-21, SC-014, ma trận AI/AJ/AK; Kiểm chứng: một writer, run không mất/gộp, no target/revision đổi giữa run.
+- [x] T146 [P] Tạo/chạy concurrency/revision regression tại `tests\airflow\test_concurrent_runs.py`; hai managed DAG/connection aliases cùng target, manual+scheduled, redeploy drain/old-clear/credential change,300giây lock wait; Phụ thuộc: T138; Truy vết: BR-09, BR-20–BR-21, SC-014, ma trận AI/AJ/AK; Kiểm chứng: một writer, run không mất/gộp, no target/revision đổi giữa run. Evidence hai lượt module packaged PASS tại `docs/testing/resume-20261113/current-t146-diagnostic-r3/` và `current-t146-confirmation/`; revision/authorization lifecycle tại T118/T119/T145.
 - [x] T147 [P] Tạo/chạy Airflow large-data regression tại `tests\airflow\test_airflow_memory.py`, kèm guard regressions `tests\etl\test_resource_quota.py`/`tests\etl\test_staging_cleanup.py`; dataset>1GiB/>20batches, RSS512MiB/process, quota/reserve, disk staging/checksum, retention GC; Phụ thuộc: T138; Truy vết: SC-007, NFR-004, ma trận O/V/AD/AH; Kiểm chứng: Airflow thật, RSS/bytes/manifest/row metrics, kill trước OOM an toàn và protected không GC.
 - [x] T148 [P] Tạo/chạy security/language/contract audit tại `tests\integration\test_security_surfaces.py`, `tests\e2e\language.spec.ts`, `tests\api\test_contract_drift.py`; password DB/DAG/API/log/XCom scans, injection/macro/path/origin/service token/runtime scope grants, Markdown tiếng Việt/UI+Excel tiếng Anh; Phụ thuộc: T138; Truy vết: SC-004, SC-011, NFR-001, NFR-003, ma trận P/Y/Z/AL; Kiểm chứng: không secret leak/input nguy hiểm không side effect, runtime operations/required schemas so contract hiện tại không hardcode số lượng.
 - [x] T149 [P] Tạo/chạy performance/status regression tại `tests\integration\test_response_limits.py`; p95 list/detail/preview100<=3giây, connection<=30giây/deploy<=120giây, Dashboard all-page truth/incomplete/stale/lifetime, resources/fixture công bố; Phụ thuộc: T138; Truy vết: SC-008, SC-010, NFR-009, ma trận S/Q/W; Kiểm chứng: không dùng cached/mock số liệu thay proof hoặc timeout để giả fail đã rollback.
 - [x] T150 [P] Hoàn thiện README/architecture/API/Excel/operations docs tại `README.md`, `docs\architecture.md`, `docs\api.md`, `docs\excel-definitions.md`, `docs\operations\troubleshooting.md`; Vietnamese, startup/no hidden setup/load/keys backup-restore/recovery/cleanup/limits/revision tradeoff, không mô tả chưa test như hoàn thành; Phụ thuộc: T138; Truy vết: FR-086–FR-087, Constitution XI; Kiểm chứng: link checker và người khác theo workflow/error instructions tái hiện được.
-- [ ] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm.
-- [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, checklist reviewer không tự đánh dấu.
+- [ ] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm. Verification PASS evidence: `docs/testing/resume-20261113/current-t151-sample-checks/` và fresh T140 workflow evidence tại `docs/testing/resume-20261112/aat-t140-bf3008e2/`; checkbox pending prerequisite T140.
+- [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, `T014_FULL=PASS`, checklist reviewer không tự đánh dấu; nếu gate này chưa PASS thì report BLOCKED và không claim MVP/full acceptance.
 
 ## Dependency và thứ tự thực hiện
 

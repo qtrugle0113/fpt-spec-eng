@@ -501,7 +501,7 @@ chỉ kết thúc research/design; việc phân task chi tiết thực hiện sa
 |5 ETL/staging |3,4 | Engine wheel, readers/map/staging/locks/support ledger/load/recovery |8routes chạy trực tiếp trên DB thật; stress/quota/commit loss/UPSERT/FULL_REFRESH failure tests |
 |6 DAG integration |5 | Factory/atomic deploy/API client/admission/revision/bind/manual+cron | Airflow parse/register đúng revision+execute ETL thật; pending/parse/API errors; old-clear reject |
 |7 Dashboard/Monitoring |6 | Public API aggregates/pagination/tasks/logs/control links | S/T/W/AJ/AK, state/timezone/lifetime/incomplete chuẩn, không query metadata nội bộ |
-|8 Frontend integration/stabilize |4–7 | Sáu trang hoàn chỉnh, docs/README/troubleshooting, mở rộng runner và regression E2E đã có | Playwright real stack A–AM coverage; ngôn ngữ/responsive; security/performance/recovery evidence |
+|8 Frontend integration/stabilize |4–7 | Sáu trang hoàn chỉnh, docs/README/troubleshooting, mở rộng runner và regression E2E đã có | Playwright real stack A–AM coverage; ngôn ngữ/responsive; security/performance/recovery evidence; T014_FULL phải PASS trước khi claim MVP/full acceptance, nếu BLOCKED thì chỉ báo cáo BLOCKED |
 
 Phase1 có bootstrap tối thiểu DBs/Airflow; phase2 bổ sung application migrations/seeds đầy đủ,
 không yêu cầu phase1 đã có sản phẩm hoàn chỉnh. UI shell tối thiểu được dựng từphase1 và forms

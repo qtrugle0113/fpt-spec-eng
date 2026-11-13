@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "project": "aat-t140-f0b6a589",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ],
+  "phase_only_diagnostic": "EXTRACTION",
+  "canonical_policy_manifest": "docs\\testing\\resume-20261112\\aat-t140-f0b6a589\\canonical-candidate\\candidate-images.json",
+  "startup_seconds": 339.865,
+  "cleanup_exit_code": 0
+}

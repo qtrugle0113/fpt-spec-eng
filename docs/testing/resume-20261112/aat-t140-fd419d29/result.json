@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "project": "aat-t140-fd419d29",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ],
+  "canonical_policy_manifest": "docs\\testing\\resume-20261112\\aat-t140-fd419d29\\canonical-candidate\\candidate-images.json",
+  "startup_seconds": 218.411,
+  "cleanup_exit_code": 0
+}

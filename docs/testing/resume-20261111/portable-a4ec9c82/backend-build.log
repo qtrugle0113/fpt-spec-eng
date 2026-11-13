@@ -1,0 +1,138 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache c12b401dd7eb507e902edd9adb0d2082953af3fc50b24a4fe99da9eac9807b69
+--> c12b401dd7eb
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache 060258856216e7a043f54d0bb9cee57d0397b19a7a0de8b968d2d8f4ee7c73d7
+--> 060258856216
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache c711801c79effc3935dc70ad838bbe14dbd3e9e3d0f3a93a7ef935965d66664a
+--> c711801c79ef
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache fd2313d64f54bb1651a98c4e0b17ec63e3b0ca3605afaed63d309ae9bbab4e7c
+--> fd2313d64f54
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache 0f56c2cfe0470ea3804aa38190ae7808298e76dfa0e8f69cad15a011bfc183df
+--> 0f56c2cfe047
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache aa0db9ab3c516ceebb826b4de75ca2eea1e1b6704f3793334c8d60004093c45a
+--> aa0db9ab3c51
+[2/2] STEP 1/16: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS runtime
+[2/2] STEP 2/16: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> eaa37901c840
+[2/2] STEP 3/16: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> 10ffab8ed0cd
+[2/2] STEP 4/16: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+Collecting alembic==1.20.0 (from -r /opt/aat/requirements.lock (line 4))
+  Downloading alembic-1.20.0-py3-none-any.whl (268 kB)
+Collecting annotated-doc==0.0.5 (from -r /opt/aat/requirements.lock (line 5))
+  Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Collecting annotated-types==0.8.0 (from -r /opt/aat/requirements.lock (line 6))
+  Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Collecting anyio==4.16.0 (from -r /opt/aat/requirements.lock (line 7))
+  Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Collecting certifi==2026.10.23 (from -r /opt/aat/requirements.lock (line 8))
+  Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Collecting cffi==2.1.1 (from -r /opt/aat/requirements.lock (line 9))
+  Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Collecting click==8.5.1 (from -r /opt/aat/requirements.lock (line 10))
+  Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Collecting cryptography==50.0.1 (from -r /opt/aat/requirements.lock (line 11))
+  Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 22.6 MB/s eta 0:00:00
+Collecting defusedxml==0.7.1 (from -r /opt/aat/requirements.lock (line 12))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting et_xmlfile==2.0.0 (from -r /opt/aat/requirements.lock (line 13))
+  Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+Collecting fastapi==0.136.3 (from -r /opt/aat/requirements.lock (line 14))
+  Downloading fastapi-0.136.3-py3-none-any.whl (117 kB)
+Collecting greenlet==3.5.6 (from -r /opt/aat/requirements.lock (line 15))
+  Downloading greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.4/621.4 kB 24.9 MB/s eta 0:00:00
+Collecting h11==0.16.0 (from -r /opt/aat/requirements.lock (line 16))
+  Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Collecting httpcore==1.0.9 (from -r /opt/aat/requirements.lock (line 17))
+  Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Collecting httpx==0.28.1 (from -r /opt/aat/requirements.lock (line 18))
+  Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Collecting idna==3.20 (from -r /opt/aat/requirements.lock (line 19))
+  Downloading idna-3.20-py3-none-any.whl (69 kB)
+Collecting Mako==1.4.3 (from -r /opt/aat/requirements.lock (line 20))
+  Downloading mako-1.4.3-py3-none-any.whl (80 kB)
+Collecting MarkupSafe==3.0.4 (from -r /opt/aat/requirements.lock (line 21))
+  Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Collecting openpyxl==3.1.5 (from -r /opt/aat/requirements.lock (line 22))
+  Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Collecting psycopg==3.3.5 (from -r /opt/aat/requirements.lock (line 23))
+  Downloading psycopg-3.3.5-py3-none-any.whl (213 kB)
+Collecting psycopg-binary==3.3.5 (from -r /opt/aat/requirements.lock (line 24))
+  Downloading psycopg_binary-3.3.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 26.8 MB/s eta 0:00:00
+Collecting pycparser==3.12 (from -r /opt/aat/requirements.lock (line 25))
+  Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Collecting pydantic==2.13.5 (from -r /opt/aat/requirements.lock (line 26))
+  Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+Collecting pydantic_core==2.46.5 (from -r /opt/aat/requirements.lock (line 27))
+  Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 18.8 MB/s eta 0:00:00
+Collecting PyMySQL==1.1.3 (from -r /opt/aat/requirements.lock (line 28))
+  Downloading pymysql-1.1.3-py3-none-any.whl (45 kB)
+Collecting python-multipart==0.0.32 (from -r /opt/aat/requirements.lock (line 29))
+  Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Collecting SQLAlchemy==2.0.52 (from -r /opt/aat/requirements.lock (line 30))
+  Downloading sqlalchemy-2.0.52-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 25.0 MB/s eta 0:00:00
+Collecting starlette==1.10.0 (from -r /opt/aat/requirements.lock (line 31))
+  Downloading starlette-1.10.0-py3-none-any.whl (80 kB)
+Collecting typing_extensions==4.16.0 (from -r /opt/aat/requirements.lock (line 32))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting typing-inspection==0.4.5 (from -r /opt/aat/requirements.lock (line 33))
+  Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Collecting tzdata==2026.6 (from -r /opt/aat/requirements.lock (line 34))
+  Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Collecting uvicorn==0.38.0 (from -r /opt/aat/requirements.lock (line 35))
+  Downloading uvicorn-0.38.0-py3-none-any.whl (68 kB)
+Installing collected packages: tzdata, typing_extensions, python-multipart, PyMySQL, pycparser, psycopg-binary, MarkupSafe, idna, h11, greenlet, et_xmlfile, defusedxml, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, SQLAlchemy, pydantic_core, psycopg, openpyxl, Mako, httpcore, cffi, anyio, starlette, pydantic, httpx, cryptography, alembic, fastapi
+Successfully installed Mako-1.4.3 MarkupSafe-3.0.4 PyMySQL-1.1.3 SQLAlchemy-2.0.52 alembic-1.20.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 cffi-2.1.1 click-8.5.1 cryptography-50.0.1 defusedxml-0.7.1 et_xmlfile-2.0.0 fastapi-0.136.3 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 openpyxl-3.1.5 psycopg-3.3.5 psycopg-binary-3.3.5 pycparser-3.12 pydantic-2.13.5 pydantic_core-2.46.5 python-multipart-0.0.32 starlette-1.10.0 typing-inspection-0.4.5 typing_extensions-4.16.0 tzdata-2026.6 uvicorn-0.38.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 1b679b85a901
+[2/2] STEP 5/16: COPY --from=wheels /wheels /wheels
+--> 1fe5efe94bda
+[2/2] STEP 6/16: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pip check &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> 54e0a08ba4e5
+[2/2] STEP 7/16: COPY docker /opt/aat/docker
+--> bf9f58be984b
+[2/2] STEP 8/16: COPY backend/alembic /opt/aat/backend/alembic
+--> 7248136b3e40
+[2/2] STEP 9/16: COPY samples /opt/aat/samples
+--> 16bc473d047c
+[2/2] STEP 10/16: COPY templates /opt/aat/templates
+--> 5bf3679a805c
+[2/2] STEP 11/16: COPY airflow/dags/aat_wrapper_template.py /opt/aat/airflow/dags/aat_wrapper_template.py
+--> d0f488de8c5a
+[2/2] STEP 12/16: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> 4c9bee5c935f
+[2/2] STEP 13/16: WORKDIR /opt/aat
+--> 6a0e463d8356
+[2/2] STEP 14/16: USER 50000:50000
+--> 0191241428f0
+[2/2] STEP 15/16: EXPOSE 8000
+--> 1a9a3674b53c
+[2/2] STEP 16/16: CMD ["python", "-m", "uvicorn", "aat_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+[2/2] COMMIT localhost/aat-portable-backend-a4ec9c82:0.1.0
+--> e8668aec7d72
+Successfully tagged localhost/aat-portable-backend-a4ec9c82:0.1.0
+e8668aec7d72a015115ff3180aee093be5a7c720da33d31a238916e4bc4305eb

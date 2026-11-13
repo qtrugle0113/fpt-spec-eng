@@ -1,0 +1,9 @@
+{
+  "network": "none",
+  "existing_services_modified": false,
+  "execution_mode": "SOURCE_FACTORY_ON_INSTALLED_AIRFLOW_SDK",
+  "image_id": "60af14e66e5774dc3af8f79897cb1c45d448d57214b122e21e90be9d2362b7d5",
+  "exit_code": 0,
+  "status": "PASS",
+  "cleanup_exit_code": 0
+}

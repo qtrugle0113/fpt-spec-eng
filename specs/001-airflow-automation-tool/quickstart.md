@@ -72,8 +72,9 @@ Full UI-to-Airflow workflow, database routes, parser, retry và FULL_REFRESH rec
 evidence trên stack local; chi tiết mới nhất tại
 [checkpoint 2026-11-13](../../docs/testing/product-resume-20261113.md). Fresh-start selector
 đã PASS, nhưng task T140 vẫn mở vì restart giữa các phase extraction/commit/refresh chưa
-được kiểm chứng đầy đủ. T146 PostgreSQL concurrency còn chưa ổn định. T147 Airflow
-large-data đã PASS: 22.000 hàng, 174 batch và peak RSS khoảng103MiB với budget512MiB.
+được kiểm chứng đầy đủ. T146 PostgreSQL/MySQL concurrency đã PASS hai lượt module packaged.
+T147 Airflow large-data đã PASS: 22.000 hàng, 174 batch và peak RSS khoảng103MiB với
+budget512MiB.
 
 T014_FULL security gate vẫn `BLOCKED`; local exception không phải security PASS hoặc MVP
 acceptance. Dùng các runner/fixtures cô lập trong

@@ -262,6 +262,8 @@ class RuntimeAdapterTests(unittest.TestCase):
                     'AAT_STAGING_ROOT':root}):
                     self.assertIsNone(run_bound(binding['binding_id']))
                     self.assertIsNone(run_bound(binding['binding_id']))
+                    self.assertFalse((Path(root)/'.aat-runtime-journals'/
+                                      (str(binding['binding_id'])+'.json')).exists())
                 with target_engine(revision) as engine,engine.connect() as c:
                     self.assertEqual(c.scalar(text(f'SELECT count(*) FROM {target}')),2)
 

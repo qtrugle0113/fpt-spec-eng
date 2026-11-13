@@ -4,6 +4,14 @@ import os
 import signal
 import sys
 from uuid import UUID
+from .resources import safe_failure_location
+
+
+def _failure_location(error):
+    location=safe_failure_location(error)
+    if location is None:return
+    sys.stderr.write(f'AAT_ETL_CHILD_FAILURE {location}\n')
+    sys.stderr.flush()
 
 
 def parent_guard(expected_parent):
@@ -17,6 +25,9 @@ def parent_guard(expected_parent):
 def main():
     try:
         identity=str(UUID(sys.argv[1]));parent_guard(int(sys.argv[2]))
+        journal_path=sys.argv[3] if len(sys.argv)>3 else None
+        terminal=len(sys.argv)>4 and sys.argv[4]=='1'
+        if len(sys.argv)>4 and sys.argv[4] not in ('0','1'):raise ValueError()
         from .runtime import run_binding,RuntimeUnavailable
         from .recovery.coordinator import NeedsReconciliation
         from .loaders.session import SessionLost,TargetBusy
@@ -26,12 +37,21 @@ def main():
         from sqlalchemy.exc import SQLAlchemyError
         import psycopg
         try:
-            run_binding(identity,journal_path=sys.argv[3] if len(sys.argv)>3 else None)
-            return 0
+            run_binding(identity,journal_path=journal_path,terminal=terminal)
+            exit_code=0
         except (RuntimeUnavailable,NeedsReconciliation,SessionLost,TargetBusy,CommitUncertain,ProjectionPending,SourceReadError,SQLAlchemyError,psycopg.Error,OSError):
-            return 20
-        except ValueError:
-            return 21
+            exit_code=20
+        except ValueError as error:
+            _failure_location(error)
+            exit_code=21
+        except Exception:
+            # SQL/driver errors can contain credentials or source values. Never
+            # forward traceback/str(error) to inherited Airflow logs.
+            exit_code=20
+        if journal_path is not None:
+            from .runtime_journal import record_exit
+            record_exit(journal_path,identity,exit_code)
+        return exit_code
     except Exception:
         # SQL/driver errors can contain credentials or source values. Never
         # forward traceback/str(error) to inherited Airflow logs.

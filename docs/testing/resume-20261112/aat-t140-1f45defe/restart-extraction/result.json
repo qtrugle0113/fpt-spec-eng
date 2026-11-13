@@ -1,0 +1,12 @@
+{
+  "status": "FAIL",
+  "project": "aat-t140-1f45defe",
+  "base_url": "http://localhost:23001",
+  "airflow_url": "http://localhost:28081",
+  "application_source_overlay": false,
+  "sample_namespace": "full_<desktop|mobile>_<timestamp>",
+  "sample_data_retained": true,
+  "test_source_sha256": {},
+  "phase_restart": "EXTRACTION",
+  "phase_restart_checks": []
+}

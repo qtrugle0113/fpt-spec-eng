@@ -1,0 +1,135 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+--> Using cache c12b401dd7eb507e902edd9adb0d2082953af3fc50b24a4fe99da9eac9807b69
+--> c12b401dd7eb
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache 060258856216e7a043f54d0bb9cee57d0397b19a7a0de8b968d2d8f4ee7c73d7
+--> 060258856216
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache c711801c79effc3935dc70ad838bbe14dbd3e9e3d0f3a93a7ef935965d66664a
+--> c711801c79ef
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache fd2313d64f54bb1651a98c4e0b17ec63e3b0ca3605afaed63d309ae9bbab4e7c
+--> fd2313d64f54
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache 0f56c2cfe0470ea3804aa38190ae7808298e76dfa0e8f69cad15a011bfc183df
+--> 0f56c2cfe047
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache aa0db9ab3c516ceebb826b4de75ca2eea1e1b6704f3793334c8d60004093c45a
+--> aa0db9ab3c51
+[2/2] STEP 1/29: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4
+[2/2] STEP 2/29: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache eaa37901c84057dd5913a98822b9718c029c317bba5ec0e8a171a648f845da01
+--> eaa37901c840
+[2/2] STEP 3/29: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache 10ffab8ed0cd227dfb6c1b653c38f5540e05821cd31406308d6ff4979f8bdb06
+--> 10ffab8ed0cd
+[2/2] STEP 4/29: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache 1b679b85a901c3f6e09790fec4dfd3d3008e289ec17ce5745a5abadd3ad8bcf7
+--> 1b679b85a901
+[2/2] STEP 5/29: COPY --from=wheels /wheels /wheels
+--> Using cache 1fe5efe94bdaf635dfe51971038c57007f8d87c63e03571d6f23e5c093ff12ef
+--> 1fe5efe94bda
+[2/2] STEP 6/29: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> 993745b30d33
+[2/2] STEP 7/29: COPY docker /opt/aat/docker
+--> c8937b80f9ba
+[2/2] STEP 8/29: COPY backend/alembic /opt/aat/backend/alembic
+--> 99ed290a3ec9
+[2/2] STEP 9/29: WORKDIR /opt/aat
+--> 1bfff74e1de5
+[2/2] STEP 10/29: USER root
+--> 8fe542309df3
+[2/2] STEP 11/29: COPY docker/tests/requirements.test.txt /opt/aat/requirements.test.txt
+--> 3d9692584d97
+[2/2] STEP 12/29: RUN python -m pip install --no-cache-dir -r /opt/aat/requirements.test.txt && python -m pip check
+Collecting pytest==8.4.2 (from -r /opt/aat/requirements.test.txt (line 2))
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting pluggy==1.7.0 (from -r /opt/aat/requirements.test.txt (line 3))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting iniconfig==2.3.1 (from -r /opt/aat/requirements.test.txt (line 4))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r /opt/aat/requirements.test.txt (line 5))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pygments==2.21.0 (from -r /opt/aat/requirements.test.txt (line 6))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting PyYAML==6.0.3 (from -r /opt/aat/requirements.test.txt (line 7))
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting jsonschema==4.26.0 (from -r /opt/aat/requirements.test.txt (line 8))
+  Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting attrs==26.1.0 (from -r /opt/aat/requirements.test.txt (line 9))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting referencing==0.37.0 (from -r /opt/aat/requirements.test.txt (line 10))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py==2026.6.3 (from -r /opt/aat/requirements.test.txt (line 11))
+  Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r /opt/aat/requirements.test.txt (line 12))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Requirement already satisfied: typing-extensions>=4.4.0 in /usr/local/lib/python3.12/site-packages (from referencing==0.37.0->-r /opt/aat/requirements.test.txt (line 10)) (4.16.0)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 23.6 MB/s eta 0:00:00
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 39.1 MB/s eta 0:00:00
+Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Installing collected packages: rpds-py, PyYAML, pygments, pluggy, packaging, iniconfig, attrs, referencing, pytest, jsonschema-specifications, jsonschema
+Successfully installed PyYAML-6.0.3 attrs-26.1.0 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-8.4.2 referencing-0.37.0 rpds-py-2026.6.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> 31ffcd59bbde
+[2/2] STEP 13/29: COPY tests /opt/aat/tests
+--> 15a9026a3870
+[2/2] STEP 14/29: COPY airflow/docker/build_constraints.py airflow/docker/constraints-policy.json airflow/docker/constraints-3.12.txt airflow/docker/overrides.lock /opt/aat/airflow/docker/
+--> 778300e5f5a7
+[2/2] STEP 15/29: COPY airflow/docker/install_security_patch.py airflow/docker/Dockerfile /opt/aat/airflow/docker/
+--> 57ed05fa1c35
+[2/2] STEP 16/29: COPY airflow/docker/security/brotli.lock.json /opt/aat/airflow/docker/security/brotli.lock.json
+--> 937cb4a61046
+[2/2] STEP 17/29: COPY airflow/dags /opt/aat/airflow/dags
+--> dafac0c20224
+[2/2] STEP 18/29: COPY samples /opt/aat/samples
+--> 138701efd06d
+[2/2] STEP 19/29: COPY templates /opt/aat/templates
+--> 99047060e38a
+[2/2] STEP 20/29: COPY specs/001-airflow-automation-tool/contracts /opt/aat/specs/001-airflow-automation-tool/contracts
+--> c8babc646172
+[2/2] STEP 21/29: COPY frontend/package.json /opt/aat/frontend/package.json
+--> 780a4aa8ec12
+[2/2] STEP 22/29: COPY backend/pyproject.toml /opt/aat/backend/pyproject.toml
+--> 4cb7204c63c0
+[2/2] STEP 23/29: COPY etl_engine/pyproject.toml /opt/aat/etl_engine/pyproject.toml
+--> 47c5a092d899
+[2/2] STEP 24/29: COPY packages/aat_metadata/pyproject.toml /opt/aat/packages/aat_metadata/pyproject.toml
+--> b20787c65e82
+[2/2] STEP 25/29: COPY .gitattributes /opt/aat/.gitattributes
+--> 127018646bf1
+[2/2] STEP 26/29: COPY docker-compose.yml /opt/aat/docker-compose.yml
+--> 674225ca4685
+[2/2] STEP 27/29: USER 50000:50000
+--> 296ee5bf7981
+[2/2] STEP 28/29: ENTRYPOINT ["python", "/opt/aat/tests/tools/regression_profile_entry.py"]
+--> de37662c664a
+[2/2] STEP 29/29: CMD ["pytest", "-p", "no:cacheprovider", "tests/unit", "tests/api", "-v"]
+[2/2] COMMIT localhost/aat-portable-backend-tests-a4ec9c82:0.1.0
+--> 4b7b596fbad6
+Successfully tagged localhost/aat-portable-backend-tests-a4ec9c82:0.1.0
+4b7b596fbad6c1c6eb83ab1e8b4267c119265fd5b30e57bdf79164a5d0b614fc

@@ -25,6 +25,15 @@ Compose hiện mount volume tại `/data/staging`; worker dùng `AAT_STAGING_ROO
 có override đã kiểm. Root phải là volume đĩa persistent dùng chung backend/Airflow,
 không nhận root/path từ input công khai.
 writer attempt UUID có thư mục temp riêng. Chỉ server sinh path, không lấy raw ID làm path.
+Attempt journal chỉ chứa binding/owner/attempt IDs, nằm trong thư mục private trên staging
+volume để tồn tại qua scheduler restart. Retry chỉ được reconcile journal khi child PID không
+còn chạy đúng runtime child trong `/proc` và binding advisory lock được acquire; PID/procfs
+không xác minh được thì giữ journal/reservation PROTECTED, không dùng heartbeat thay proof.
+Journal ghi thêm exit classification cố định (success/retryable/business) và cờ terminal đã
+được Airflow xác minh; không ghi exception/message hoặc source values. Với lỗi validation
+hoặc reconciliation, task log chỉ ghi basename, function và line của frame cuối để chẩn đoán,
+không ghi locals hay exception text. Journal chỉ xóa sau khi extraction cleanup hoặc target
+outcome đã reconcile.
 
 Manifest JSON có format_version=`aat-jsonl/1`, dataset_id, binding_sha256, source_snapshot_time,
 source_schema_hash, target_schema_hash, mapping_hash, ordered columns với logical_type,

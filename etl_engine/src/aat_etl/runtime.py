@@ -74,7 +74,7 @@ def _connect(metadata):
         connect_timeout=3,options='-c timezone=UTC -c statement_timeout=10000 -c lock_timeout=3000')
 
 
-def run_binding(binding_id,*,root=None,metadata_engine=None,journal_path=None):
+def run_binding(binding_id,*,root=None,metadata_engine=None,journal_path=None,terminal=False):
     metadata=metadata_engine or create_app_engine(runtime=True)
     state=RuntimeState(metadata,binding_id,root or os.environ.get('AAT_STAGING_ROOT','/data/staging'))
     try:
@@ -87,7 +87,8 @@ def run_binding(binding_id,*,root=None,metadata_engine=None,journal_path=None):
                     raise RuntimeRejected('Binding connection revisions differ from its immutable config.')
                 if journal_path is not None:
                     from .runtime_journal import AttemptJournal,JournalQuota
-                    quota=JournalQuota(metadata,state.root,AttemptJournal(journal_path,state.binding_id,state.owner))
+                    quota=JournalQuota(metadata,state.root,
+                        AttemptJournal(journal_path,state.binding_id,state.owner,terminal=terminal))
                 else:quota=QuotaManager(metadata,state.root)
                 with ExitStack() as owned:
                     target=owned.enter_context(revision_engine(metadata,config.target.connection_revision_id))

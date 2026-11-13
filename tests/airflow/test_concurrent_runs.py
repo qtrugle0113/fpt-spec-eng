@@ -1,6 +1,7 @@
 """T146: different managed DAGs/aliases serialize one physical target."""
 from datetime import datetime,timedelta,timezone
 import io
+import os
 import re
 import time
 from uuid import UUID,uuid4
@@ -114,15 +115,28 @@ class ConcurrentRunTests(_WorkflowFixture):
                 monitor=MonitoringClient(client.client)
                 for dag_id,run_id,run in ((first['dag'],manual,runs[0]),(second,scheduled,runs[1])):
                     if run['state']!='failed':continue
-                    try:
-                        page=monitor.client.request('GET','/dags/'+dag_id+'/dagRuns/'+run_id+
-                            '/taskInstances/execute_etl/logs/1',params={'map_index':-1,'full_content':True})
-                        content=' '.join(str(line) for line in page.get('content',[]))
-                    except Exception:content=''
-                    error_types=sorted(set(re.findall(r'\b[A-Za-z][A-Za-z0-9]*(?:Error|Exception)\b',content)))
-                    sqlstates=sorted(set(re.findall(r'\b[0-9A-Z]{5}\b',content)))
-                    messages=re.findall(r'(?:AirflowFailException|RuntimeRejected|RuntimeTaskFailed): ([^\r\n]{1,200})',content)
-                    print('CONCURRENT_RUN_FAILURE dag='+dag_id+' error_types='+','.join(error_types)+' sqlstates='+','.join(sqlstates)+' messages='+' | '.join(messages),flush=True)
+                    task=monitor.task(dag_id,run_id,'execute_etl')
+                    attempt=task.get('try_number',1)
+                    if type(attempt) is not int or attempt<1:attempt=1
+                    content=[];token=None;seen=set()
+                    while True:
+                        page=monitor.logs(dag_id,run_id,'execute_etl',attempt=attempt,token=token)
+                        content.extend(page['content'])
+                        token=page.get('continuation_token')
+                        if token is None:break
+                        if token in seen:raise RuntimeError('Airflow log pagination repeated a continuation token.')
+                        seen.add(token)
+                    lines=[str(line).strip() for line in content]
+                    diagnostic=[line for line in lines if re.search(
+                        r'AirflowFailException|RuntimeRejected|RuntimeTaskFailed|TargetBusy|Target is busy|Traceback|SQLSTATE|psycopg\.',
+                        line,re.IGNORECASE)]
+                    for key in ('AAT_TEST_AIRFLOW_PASSWORD','AAT_FOUNDATION_TEST_DSN'):
+                        secret=os.environ.get(key)
+                        if secret:
+                            diagnostic=[line.replace(secret,'[REDACTED]') for line in diagnostic]
+                    print('CONCURRENT_RUN_FAILURE dag='+dag_id+' run_state='+run['state']+
+                        ' attempt='+str(attempt)+' diagnostic_lines='+
+                        ' | '.join(diagnostic[-12:])[:1600],flush=True)
             self.assertTrue(observed,'The observer must witness an actual writer, not only idle snapshots')
             self.assertEqual([run['state'] for run in runs],['success','success'])
             with engine.connect() as reader:
