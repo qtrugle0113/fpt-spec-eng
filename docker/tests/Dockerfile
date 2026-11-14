@@ -1,5 +1,5 @@
 FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
-RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==84.2.1 wheel==0.46.2
 WORKDIR /build
 COPY packages/aat_metadata /build/packages/aat_metadata
 COPY etl_engine /build/etl_engine

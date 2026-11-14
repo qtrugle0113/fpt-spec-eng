@@ -1,0 +1,17 @@
+test_bad_types_ranges_fields_and_hosts_rejected (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_bad_types_ranges_fields_and_hosts_rejected) ... ok
+test_patch_distinguishes_omitted_nullable_and_empty_password (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_patch_distinguishes_omitted_nullable_and_empty_password) ... ok
+test_required_values_trim_and_password_is_not_in_repr (tests.unit.test_connection_schemas.ConnectionSchemaTests.test_required_values_trim_and_password_is_not_in_repr) ... ok
+test_empty_data_with_header_and_headerless_empty (tests.unit.test_delimited_reader.DelimitedReaderTests.test_empty_data_with_header_and_headerless_empty) ... ok
+test_headerless_tab_delimited_txt_and_explicit_encoding (tests.unit.test_delimited_reader.DelimitedReaderTests.test_headerless_tab_delimited_txt_and_explicit_encoding) ... ok
+test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected (tests.unit.test_delimited_reader.DelimitedReaderTests.test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected) ... ok
+test_malformed_records_have_real_position_without_raw_values (tests.unit.test_delimited_reader.DelimitedReaderTests.test_malformed_records_have_real_position_without_raw_values) ... ok
+test_multiline_unicode_bom_and_quoted_null_provenance (tests.unit.test_delimited_reader.DelimitedReaderTests.test_multiline_unicode_bom_and_quoted_null_provenance) ... ok
+test_parser_config_rejects_ambiguous_and_non_text_grammar (tests.unit.test_delimited_reader.DelimitedReaderTests.test_parser_config_rejects_ambiguous_and_non_text_grammar) ... ok
+test_preview_stops_at_requested_rows_without_validating_the_rest (tests.unit.test_delimited_reader.DelimitedReaderTests.test_preview_stops_at_requested_rows_without_validating_the_rest) ... ok
+test_quote_doubling_and_explicit_escape (tests.unit.test_delimited_reader.DelimitedReaderTests.test_quote_doubling_and_explicit_escape) ... ok
+test_record_limit_is_enforced_before_materializing_oversized_row (tests.unit.test_delimited_reader.DelimitedReaderTests.test_record_limit_is_enforced_before_materializing_oversized_row) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.104s
+
+OK

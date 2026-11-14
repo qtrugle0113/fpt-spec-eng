@@ -1,6 +1,7 @@
 .git
 .venv
 .tools
+docs
 .pytest_cache
 docker/images.lock
 **/node_modules

@@ -1,0 +1,9 @@
+test_repeated_sample_preserves_quoted_literal_and_unquoted_null (tests.unit.test_t140_extraction_source.ExtractionSourceTests.test_repeated_sample_preserves_quoted_literal_and_unquoted_null) ... ok
+test_binary_workbooks_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_binary_workbooks_match_manifest) ... ok
+test_checkout_policy_is_explicit (tests.unit.test_sample_artifacts.SampleArtifactTests.test_checkout_policy_is_explicit) ... ok
+test_raw_sample_bytes_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_raw_sample_bytes_match_manifest) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.123s
+
+OK

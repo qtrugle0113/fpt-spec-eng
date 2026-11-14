@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "images": {
+    "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+    "airflow": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+    "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+    "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+    "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+  },
+  "planned_groups": [
+    "unit-api"
+  ],
+  "selectors": [
+    {
+      "label": "unit-api",
+      "command": [
+        "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\security-remediation-82fdec4\\tests\\tools\\run_regression_profile.py",
+        "--tests-image",
+        "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "--backend-image",
+        "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "--postgres-image",
+        "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "--mysql-image",
+        "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "--ignore",
+        "tests/unit/test_dag_factory.py",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261114\\final-unit-api\\unit-api"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261114\\final-unit-api\\unit-api"
+    },
+    {
+      "label": "unit-sdk",
+      "command": [
+        "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\security-remediation-82fdec4\\tests\\tools\\run_sdk_unit.py",
+        "--image",
+        "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+        "--module",
+        "tests.unit.test_dag_factory",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261114\\final-unit-api\\unit-sdk"
+      ],
+      "exit_code": 0,
+      "evidence": "docs\\testing\\resume-20261114\\final-unit-api\\unit-sdk"
+    }
+  ],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-336939fd\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+      "status": "PASS",
+      "actual_image_id": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0"
+    },
+    {
+      "name": "backend",
+      "expected_image_id": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "status": "PASS",
+      "actual_image_id": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "status": "PASS",
+      "actual_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "status": "PASS",
+      "actual_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+    },
+    {
+      "name": "tests",
+      "expected_image_id": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+      "status": "PASS",
+      "actual_image_id": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177"
+    }
+  ],
+  "active_selector": null
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "podman",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--memory",
+    "512m",
+    "--entrypoint",
+    "python",
+    "8accccfd5d927a291ec0d57e52271f708c53c14dcfaae06aeb6d8322fa80006d",
+    "-m",
+    "unittest",
+    "tests.unit.test_connection_schemas",
+    "tests.unit.test_delimited_reader",
+    "-v"
+  ],
+  "image_id": "8accccfd5d927a291ec0d57e52271f708c53c14dcfaae06aeb6d8322fa80006d",
+  "policy_review": "docs/testing/resume-20261111/portable-0fb28a4c/partial/local-policy-review.json",
+  "exit_code": 0,
+  "application_source_overlay": false,
+  "scope": "T040 schema và parser unit; không thay duplicate/DNS/DB integration"
+}

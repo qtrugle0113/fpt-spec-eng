@@ -1,0 +1,26 @@
+{
+  "rows": [
+    {
+      "target": "backend",
+      "old": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d",
+      "candidate": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+      "identical_installed_application_files": true,
+      "modules": {
+        "aat_api": 91,
+        "aat_metadata": 26,
+        "aat_etl": 45
+      }
+    },
+    {
+      "target": "airflow",
+      "old": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa",
+      "candidate": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+      "identical_installed_application_files": true,
+      "modules": {
+        "aat_metadata": 26,
+        "aat_etl": 45
+      }
+    }
+  ],
+  "status": "PASS"
+}

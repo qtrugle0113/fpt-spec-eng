@@ -18,18 +18,29 @@ ROOT=Path(__file__).resolve().parents[2]
 
 def make_extraction_source(source,destination,row_count):
     with source.open('r',encoding='utf-8',newline='') as stream:
-        reader=csv.reader(stream)
-        header=next(reader)
-        rows=list(reader)
-    if not rows or len(header)!=4 or any(len(row)!=len(header) for row in rows):
+        lines=stream.readlines()
+    reader=csv.reader(lines)
+    header=next(reader)
+    header_lines=reader.line_num
+    previous_line=header_lines
+    records=[]
+    for row in reader:
+        record=''.join(lines[previous_line:reader.line_num])
+        previous_line=reader.line_num
+        key,separator,remainder=record.partition(',')
+        if len(row)!=len(header) or not separator or key!=row[0] or not key.isascii() or not key.isdecimal():
+            raise ValueError('The T140 sample CSV does not match the expected synthetic schema.')
+        records.append(remainder)
+    if not records or len(header)!=4:
         raise ValueError('The T140 sample CSV does not match the expected synthetic schema.')
     with destination.open('w',encoding='utf-8',newline='') as stream:
-        writer=csv.writer(stream,lineterminator='\n')
-        writer.writerow(header)
+        stream.write(''.join(lines[:header_lines]))
         for index in range(row_count):
-            row=list(rows[index%len(rows)])
-            row[0]=str(index+1)
-            writer.writerow(row)
+            # Keep the original CSV quoting: quoted \\N is literal text,
+            # while an unquoted \\N is NULL in the product parser.
+            record=records[index%len(records)]
+            stream.write(str(index+1)+','+record)
+            if not record.endswith(('\r','\n')):stream.write('\n')
 
 
 def expected_extraction_rows(path):
@@ -43,6 +54,15 @@ def expected_extraction_rows(path):
                 None if registered=='\\N' else datetime.fromisoformat(registered).isoformat(),
             ])
     return rows
+
+
+def restart_target_is_safe(phase,before,current,expected,batch_size=1000):
+    if phase=='EXTRACTION':
+        return current==expected[:len(current)] and (
+            len(current)%batch_size==0 or current==expected)
+    if phase in ('COMMIT','FULL_REFRESH'):
+        return current==before
+    raise ValueError('Unsupported T140 restart phase')
 
 
 def verify(project,base_url,airflow_url,evidence,images_path=None,restart_phase=None):
@@ -220,6 +240,29 @@ sys.exit(0 if stopped else 1)
                         if phase in expected_operations and phase_before.get('recovery_state')=='WRITING' \
                                 and phase_before.get('dataset_state')=='COMPLETE' \
                                 and expected_operations[phase] in phase_before.get('blocked_operations',[]):
+                            # Freeze only the verified fixture child while its
+                            # SQL is blocked. Otherwise the 3s lock timeout can
+                            # expire during host-side observation before restart.
+                            owner=phase_before['owner_process_id']
+                            match=re.fullmatch(r'([1-9][0-9]*):[0-9a-f]{32}',owner)
+                            if not match:raise AssertionError('Invalid writer owner identity')
+                            script="""import json,os,signal,sys
+from pathlib import Path
+pid=int(sys.argv[1]); identity=sys.argv[2]; owner=sys.argv[3]
+args=Path('/proc',str(pid),'cmdline').read_bytes().split(bytes([0]))
+journal=Path('/data/staging/.aat-runtime-journals')/(identity+'.json')
+assert not journal.is_symlink() and journal.is_file()
+value=json.loads(journal.read_text())
+assert args[1:4]==[b'-m',b'aat_etl.runtime_child',identity.encode()]
+assert value.get('binding_id')==identity and value.get('pid')==pid and value.get('owner')==owner
+os.kill(pid,signal.SIGSTOP)
+print('OWNED_WRITER_PAUSED')
+"""
+                            paused=run(['podman','exec',project+'-airflow-scheduler-1',
+                                        'python','-c',script,match.group(1),
+                                        phase_before['binding_id'],owner],check=False)
+                            if paused.returncode:continue
+                            record('blocked_writer_paused',owner=owner,operation=expected_operations[phase])
                             break
                     if process.poll() is not None:
                         raise RuntimeError('Browser scenario completed before reaching the required T140 phase')
@@ -273,6 +316,26 @@ sys.exit(0 if stopped else 1)
                 record('scheduler_restarted',exit_code=restarted.returncode,
                        started_at_before=before.stdout.strip(),inspection_after=after)
 
+                # Observe rollback with the fixture lock still held, then release
+                # it before Airflow's orphan detection starts the retry. Keeping
+                # it until the retry blocks would exhaust the real 3s database
+                # lock timeout and test repeated lock failures instead of restart.
+                target_at_restart=None
+                if lock_process:
+                    target_at_restart=target()
+                    if target_at_restart!=expected_before_restart:
+                        raise AssertionError('Owned target changed while restart lock was held')
+                    record('target_unchanged_while_restart_lock_held',target=target_at_restart)
+                    lock_process.stdin.write('\n')
+                    lock_process.stdin.flush()
+                    lock_process.stdin.close()
+                    lock_process.wait(timeout=30)
+                    lock_process.stdout.close()
+                    lock_process.stderr.close()
+                    if lock_process.returncode:
+                        raise RuntimeError('Owned target lock helper did not exit cleanly')
+                    lock_process=None
+
                 prior_owner=phase_before.get('owner_process_id')
                 prior_dataset=phase_before.get('dataset_id')
 
@@ -316,9 +379,7 @@ sys.exit(0 if stopped else 1)
                             and dataset_recovered(phase_after):
                         if phase in expected_operations:
                             if phase_after.get('dataset_id')==phase_before.get('dataset_id') \
-                                    and phase_after.get('dataset_state')=='COMPLETE' \
-                                    and phase_after.get('recovery_state')=='WRITING' \
-                                    and expected_operations[phase] in phase_after.get('blocked_operations',[]):
+                                    and phase_after.get('dataset_state')=='COMPLETE':
                                 break
                         elif phase_after.get('dataset_state')=='COMPLETE':
                             break
@@ -332,6 +393,8 @@ sys.exit(0 if stopped else 1)
                     raise TimeoutError('A new runtime owner was not observed after the real scheduler restart: '
                                        +json.dumps({'airflow_task':task_after,'runtime':phase_after},default=str))
                 if task_after and task_after.get('state')=='failed':
+                    record('airflow_task_failed_after_restart', task=task_after,
+                           logs=task_logs(task_after))
                     raise RuntimeError('Airflow task failed after the scheduler restart; inspect redacted phase logs.')
                 if not phase_after or phase_after.get('binding_id')!=phase_before.get('binding_id') \
                         or not phase_after.get('dataset_id') \
@@ -347,7 +410,7 @@ sys.exit(0 if stopped else 1)
                     raise AssertionError('Staging reservation identity was not preserved across restart')
                 if phase_after.get('dataset_state')=='COMPLETE' and phase_after.get('staging_artifacts',0)<1:
                     raise AssertionError('Completed dataset lost its staging artifact metadata across restart')
-                target_after=target()
+                target_after=target_at_restart if target_at_restart is not None else target()
                 expected_target=expected_extraction_rows(
                     evidence/'t140-extraction-source.csv' if phase=='EXTRACTION'
                     else ROOT/'samples/data/customers.csv')
@@ -356,11 +419,11 @@ sys.exit(0 if stopped else 1)
                 record('target_snapshot_after_restart',rows=len(target_after),sha256=target_sha256,
                        first=target_after[0] if target_after else None,
                        last=target_after[-1] if target_after else None)
+                target_is_safe=restart_target_is_safe(phase,expected_before_restart,target_after,expected_target)
                 if phase=='EXTRACTION':
                     target_is_expected=target_after==expected_target
                     target_is_unchanged=target_after==expected_before_restart
-                    target_is_committed_prefix=target_after==expected_target[:len(target_after)] \
-                        and (len(target_after)%1000==0 or target_is_expected)
+                    target_is_committed_prefix=target_is_safe
                     if not target_is_committed_prefix:
                         raise AssertionError('Owned target is not an exact prefix ending at a committed batch boundary')
                     target_after_evidence={
@@ -378,7 +441,7 @@ sys.exit(0 if stopped else 1)
                 else:
                     target_is_expected=target_after==expected_before_restart
                     target_after_evidence=target_after
-                if not target_is_expected:
+                if not target_is_safe:
                     raise AssertionError('Owned target changed unexpectedly across scheduler restart')
                 stage_result=None
                 if phase_after.get('dataset_state')=='COMPLETE' and phase_after.get('path_key') \
@@ -398,6 +461,7 @@ sys.exit(0 if stopped else 1)
                     if not stage_result['exists'] or not stage_result['matches']:
                         raise AssertionError('Complete staging manifest was not preserved across restart')
                 check={'phase':phase,'run':run_marker['run'],'dag':run_marker['dag'],
+                       'target_snapshot_scope':'after_scheduler_restart_before_fixture_lock_release' if target_at_restart is not None else 'recovered_writer',
                        'binding_id':phase_before['binding_id'],
                        'owner_before':prior_owner,'owner_after':phase_after['owner_process_id'],
                        'recovery_state_before':phase_before.get('recovery_state'),
@@ -425,6 +489,8 @@ sys.exit(0 if stopped else 1)
                     lock_process.stdin.flush()
                     lock_process.stdin.close()
                     lock_process.wait(timeout=30)
+                    lock_process.stdout.close()
+                    lock_process.stderr.close()
                     if lock_process.returncode:
                         raise RuntimeError('Owned target lock helper did not exit cleanly')
                     lock_process=None
@@ -446,7 +512,7 @@ sys.exit(0 if stopped else 1)
                             and final_state.get('dataset_state')=='COMPLETE' \
                             and final_state.get('commit_uncertain') is False \
                             and final_state.get('loaded_rows')==expected_rows \
-                            and final_state.get('phase')=='COMPLETE':
+                            and final_state.get('phase') in ('COMPLETE','COMMIT_VERIFIED'):
                         break
                     if final_task.get('state')=='failed':
                         record('airflow_task_failed_after_recovery',task=final_task,

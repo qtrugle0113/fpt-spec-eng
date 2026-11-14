@@ -1,0 +1,45 @@
+{
+  "checkpoint_snapshot": "docs/testing/resume-20261111/portable-a4ec9c82/source-sha256.json",
+  "scope": [
+    "backend/src/",
+    "frontend/src/",
+    "packages/",
+    "etl_engine/src/",
+    "airflow/dags/"
+  ],
+  "differences": [
+    [
+      "etl_engine/src/aat_etl/resources.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime_child.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime_journal.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime_lifecycle.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime_state.py",
+      "LINE_ENDINGS_ONLY"
+    ],
+    [
+      "etl_engine/src/aat_etl/runtime_task.py",
+      "CONTENT_CHANGED"
+    ],
+    [
+      "backend/src/aat_api/services/connections/policy.py",
+      "LINE_ENDINGS_ONLY"
+    ]
+  ],
+  "normalization_scope": "Phân tích khác biệt source; không sửa bytes hoặc thay checksum scan/approval"
+}

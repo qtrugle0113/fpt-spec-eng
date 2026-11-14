@@ -1,0 +1,32 @@
+{
+  "path": ".tools\\t140-acceptance-82fdec4",
+  "revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0",
+  "reason": "Compose cannot stat the existing root .pytest_cache; preserve its ACL and contents",
+  "copied_files": [
+    {
+      "path": "tests/tools/verify_running_workflow.py",
+      "sha256": "8d7735b97ff0f4e71e137e703c40fea7e73d9c6c253f4474830a1875c82e47f1",
+      "copy_matches": true
+    },
+    {
+      "path": "tests/unit/test_t140_extraction_source.py",
+      "sha256": "67f293a80dc67869a3e4f2ba362e558b0af1463b365b2c7e50e20722d05ab513",
+      "copy_matches": true
+    },
+    {
+      "path": ".tools/local-images.json",
+      "sha256": "da4ca2af1c89e527389b6ae35f2316a215a2b6a7cc334e87e68b376394058f5e",
+      "copy_matches": true
+    },
+    {
+      "path": ".tools/local-images-provenance.json",
+      "sha256": "549cd9dfa7fc891bb6740ef163c08569ee9ae998b0615af7cd77c3a42af7dba9",
+      "copy_matches": true
+    },
+    {
+      "path": ".tools/docker-compose-5.6.0.exe",
+      "sha256": "8aeaa0055e660e12cf07cd70680dc8333957fe6718528b91ec3da084eab62483",
+      "copy_matches": true
+    }
+  ]
+}

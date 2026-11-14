@@ -1,0 +1,35 @@
+BROTLIPATCH_OFFLINE_VERIFIED_1.0.9-2+deb12u1
+PREFLIGHT_PASS: images verified; no tests executed
+BLOCKED: required exact local images are unavailable; see regression-results.json
+BLOCKED: required exact local images are unavailable; see regression-results.json
+test_repeated_sample_preserves_quoted_literal_and_unquoted_null (tests.unit.test_t140_extraction_source.ExtractionSourceTests.test_repeated_sample_preserves_quoted_literal_and_unquoted_null) ... ok
+test_blocked_commit_and_refresh_must_preserve_previous_target (tests.unit.test_t140_extraction_source.RestartTargetTests.test_blocked_commit_and_refresh_must_preserve_previous_target) ... ok
+test_extraction_allows_exact_committed_prefix_before_final_verification (tests.unit.test_t140_extraction_source.RestartTargetTests.test_extraction_allows_exact_committed_prefix_before_final_verification) ... ok
+test_binary_workbooks_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_binary_workbooks_match_manifest) ... ok
+test_checkout_policy_is_explicit (tests.unit.test_sample_artifacts.SampleArtifactTests.test_checkout_policy_is_explicit) ... ok
+test_raw_sample_bytes_match_manifest (tests.unit.test_sample_artifacts.SampleArtifactTests.test_raw_sample_bytes_match_manifest) ... ok
+test_lock_drift_missing_and_duplicate_entries_are_rejected (tests.unit.test_image_baseline.ImageBaselineTests.test_lock_drift_missing_and_duplicate_entries_are_rejected) ... ok
+test_pinned_sources_and_internal_stages_match_lock (tests.unit.test_image_baseline.ImageBaselineTests.test_pinned_sources_and_internal_stages_match_lock) ... ok
+test_unpinned_and_conflicting_from_are_rejected (tests.unit.test_image_baseline.ImageBaselineTests.test_unpinned_and_conflicting_from_are_rejected) ... ok
+test_changed_upstream_or_extra_override_fail_closed (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_changed_upstream_or_extra_override_fail_closed) ... ok
+test_committed_override_artifacts_match_policy (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_committed_override_artifacts_match_policy) ... ok
+test_only_approved_pins_change_and_upstream_unchanged (tests.unit.test_airflow_constraints.AirflowConstraintsTests.test_only_approved_pins_change_and_upstream_unchanged) ... ok
+test_airflow_stage_patches_offline_before_first_network_command (tests.unit.test_airflow_offline_patch.AirflowOfflinePatchTests.test_airflow_stage_patches_offline_before_first_network_command) ... ok
+test_tampered_archive_fails_before_package_manager (tests.unit.test_airflow_offline_patch.AirflowOfflinePatchTests.test_tampered_archive_fails_before_package_manager) ... ok
+test_unapproved_package_version_or_architecture_fails_closed (tests.unit.test_airflow_offline_patch.AirflowOfflinePatchTests.test_unapproved_package_version_or_architecture_fails_closed) ... ok
+test_verified_archive_installs_and_checks_exact_version (tests.unit.test_airflow_offline_patch.AirflowOfflinePatchTests.test_verified_archive_installs_and_checks_exact_version) ... ok
+test_wrong_installed_version_is_not_success (tests.unit.test_airflow_offline_patch.AirflowOfflinePatchTests.test_wrong_installed_version_is_not_success) ... ok
+test_approval_hash_mismatch_is_rejected (tests.unit.test_portable_policy.PortablePolicyTests.test_approval_hash_mismatch_is_rejected) ... ok
+test_expired_approval_cannot_authorize_new_artifact (tests.unit.test_portable_policy.PortablePolicyTests.test_expired_approval_cannot_authorize_new_artifact) ... ok
+test_git_line_endings_preserve_original_approved_evidence (tests.unit.test_portable_policy.PortablePolicyTests.test_git_line_endings_preserve_original_approved_evidence) ... ok
+test_not_affected_requires_same_target_package_version_and_binary (tests.unit.test_portable_policy.PortablePolicyTests.test_not_affected_requires_same_target_package_version_and_binary) ... ok
+test_unknown_version_severity_and_target_are_blocked (tests.unit.test_portable_policy.PortablePolicyTests.test_unknown_version_severity_and_target_are_blocked) ... ok
+test_integration_does_not_require_unrelated_browser_or_airflow_images (tests.unit.test_regression_preflight.RegressionPreflightTests.test_integration_does_not_require_unrelated_browser_or_airflow_images) ... ok
+test_missing_images_records_every_blocker_without_starting_fixture (tests.unit.test_regression_preflight.RegressionPreflightTests.test_missing_images_records_every_blocker_without_starting_fixture) ... ok
+test_unit_api_requires_sdk_environment_as_well_as_backend (tests.unit.test_regression_preflight.RegressionPreflightTests.test_unit_api_requires_sdk_environment_as_well_as_backend) ... ok
+test_source_pins_match_image_lock (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.394s
+
+OK

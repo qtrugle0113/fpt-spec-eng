@@ -10,6 +10,15 @@ Bản demo hiện có: ứng dụng <http://localhost:23000>, Airflow
 <http://localhost:28080>, readiness <http://localhost:28000/api/v1/health/ready>.
 Không xóa hoặc đổi volumes của demo. Khi cần môi trường sạch, dùng project/checkout riêng.
 
+Lượt tiếp tục14/11/2026 trên máy hiện tại đã có demo READY và full workflow UI,
+Airflow, đối soát dữ liệu đích PASS. Project cụ thể đọc từ `.tools/local-demo.json`.
+Trạng thái mới nhất, runtime/provider và các gate còn mở tại
+[checkpoint14/11](../../docs/testing/product-resume-20261114.md).
+
+T140 đã PASS full fresh startup/restart/persistence/fail-closed trên Podman
+client5.8.3/server5.8.9 và Compose5.6.0; T151 sample pack đã hoàn tất.
+Gate full security/T152 còn BLOCKED; [bằng chứng](../../docs/testing/continuation-20261114.md).
+
 ## Điều kiện đầu vào
 
 - Podman engine/machine đang chạy, Compose provider đúng phiên bản đã công bố.
@@ -70,11 +79,11 @@ cô lập trước khi cho phép ghi.
 
 Full UI-to-Airflow workflow, database routes, parser, retry và FULL_REFRESH recovery đã có
 evidence trên stack local; chi tiết mới nhất tại
-[checkpoint 2026-11-13](../../docs/testing/product-resume-20261113.md). Fresh-start selector
-đã PASS, nhưng task T140 vẫn mở vì restart giữa các phase extraction/commit/refresh chưa
-được kiểm chứng đầy đủ. T146 PostgreSQL/MySQL concurrency đã PASS hai lượt module packaged.
-T147 Airflow large-data đã PASS: 22.000 hàng, 174 batch và peak RSS khoảng103MiB với
-budget512MiB.
+[kiểm chứng 2026-11-14](../../docs/testing/continuation-20261114.md). T140 đã PASS
+toàn selector: fresh startup, restart extraction/commit/FULL_REFRESH, persistence và
+fail-closed, cleanup0. T151 sample pack đã hoàn tất. T146 PostgreSQL/MySQL concurrency
+đã PASS; lượt memory mới có22.000hàng/174parts, payload1.441.792.000bytes và peak RSS
+102.817.792bytes với budget512MiB.
 
 T014_FULL security gate vẫn `BLOCKED`; local exception không phải security PASS hoặc MVP
 acceptance. Dùng các runner/fixtures cô lập trong

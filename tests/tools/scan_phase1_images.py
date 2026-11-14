@@ -52,7 +52,8 @@ def scan() -> None:
             raise ValueError('Unknown scan target')
         targets = {name: TARGETS[name] for name in names}
     source_refs = image_sources(ROOT)
-    targets = {name: source_refs[ref] if name.endswith('-build-base') else ref
+    targets = {name: (ref if re.fullmatch(r'(?:sha256:)?[0-9a-f]{64}', ref) else source_refs[ref])
+               if name.endswith('-build-base') else ref
                for name, ref in targets.items()}
     report_path = (ROOT / os.environ.get('AAT_SCAN_REPORT', 'docs/testing/phase1-security.json')).resolve()
     if not report_path.is_relative_to(ROOT):

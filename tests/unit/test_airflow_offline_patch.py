@@ -61,6 +61,8 @@ class AirflowOfflinePatchTests(unittest.TestCase):
         first_run = next(line for line in stage.splitlines() if line.startswith('RUN '))
         self.assertEqual(first_run, 'RUN --network=none python /opt/aat/security/install_security_patch.py')
         self.assertLess(stage.index('install_security_patch.py\nRUN --network=none'), stage.index('apt-get update'))
+        self.assertLess(stage.index('apt-get update'), stage.index('FROM security-patched AS runtime'),
+                        'The scanned security stage must include the locked OS fixes')
         lock = json.loads((ROOT / 'airflow/docker/security/brotli.lock.json').read_text(encoding='utf8'))
         self.assertIn(lock['url'], stage)
         self.assertEqual(lock['sha256'], 'e27b3d655fa6fadd7a56f706687e94573c0af68b7d6df394a32a381a3a6c6d8b')

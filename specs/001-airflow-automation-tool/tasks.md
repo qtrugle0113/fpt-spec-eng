@@ -1,5 +1,27 @@
 # Danh sách task: Airflow Automation Tool
 
+**Lượt tiếp tục T014/T152:** source snapshot local Windows15/Linux15 PASS;
+hồ sơ security21targets/362nhóm đã đối chiếu raw image IDs. CI remote NOT_RUN,
+security full BLOCKED; giữ150/152, không thay marker reviewer. Xem
+[hồ sơ khép cổng](../../docs/testing/resume-20261114/t014-closeout/closeout-report.md).
+
+**Kiểm chứng mới nhất14/11/2026:** build hardening wheel0.46.2/setuptools84.2.1 và bỏ rsync đã
+kiểm chứng: Unit/API225+SDK4, Airflow10case và memory stress1case PASS. Đã scan
+đủ21targets; full security vẫn BLOCKED. Local10artifacts có752findings/216nhóm,
+215nhóm chưa có FixedVersion. T140 lượt tuần tự `045d42c5` PASS đầy đủ, cleanup0; T151 đã khép prerequisite
+và verification sample pack PASS. Hiện150/152checkbox; chỉ T014/T152 còn mở,
+T040 đã hoàn tất. Xem
+[lượt kiểm chứng14/11](../../docs/testing/continuation-20261114.md).
+
+**Snapshot đầu14/11/2026 (lịch sử):** demo local mới READY và UI→Airflow→target
+desktop/mobile PASS. T040 đã `[x]`, kiểm lại22API/DB/schema/fixture checks PASS;
+ETL engine118/runtime19 và SDK runtime unit9 PASS. T140 đang rerun full trên
+checkout sạch sau sửa fixture quoted NULL và assertion observation prefix;
+T151 chờ T140, T152/T014_FULL vẫn BLOCKED. Unit/API và Airflow regression bổ sung
+đang chạy; chưa thêm checkbox hoàn tất. Chi tiết tại
+[checkpoint14/11](../../docs/testing/product-resume-20261114.md) và
+[báo cáo nghiệm thu](../../docs/testing/acceptance-report.md).
+
 **Tiếp tục2026-11-13 (mới nhất):** T146 full concurrency module PASS hai lần
 trên disposable packaged fixture. Sample hash/workbook và fresh-stack
 download/upload/checksum/target verification của T151 PASS, nhưng task còn mở
@@ -389,7 +411,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 
 - [x] T138 Mở rộng Compose test profile/Playwright runtime đã tạo T004/T011 tại `docker-compose.yml`, `docker\tests\playwright.Dockerfile`, `tests\e2e\playwright.config.ts`; giữ backend-tests root tests và e2e-tests browser/client1.65.0, bổ sung full regression/fixture namespaces/cleanup không user data; không là producer đầu tiên của runner cho E2E Phase3–7; Phụ thuộc: T132, T137, T004, T011, T013; Truy vết: FR-085, NFR-010; Kiểm chứng: đúng lệnh Quickstart unit/API/integration/ETL/Airflow/E2E/stress chạy trong container.
 - [x] T139 [P] Tạo/chạy regression UI/API mới tại `tests\e2e\history_parser_authorization.spec.ts`; browser mới history/table detail, parser candidate/PATCH/stale/active-recovery guards, ONCE reserve/retry/rerun cần quyền mới, scheduled allow_empty consent/list/revoke warning và typed fields/dashboard lifetime; Phụ thuộc: T138, T058, T067, T116, T119; Truy vết: FR-015–FR-017, FR-028, FR-053–FR-054, FR-075, BR-08; Kiểm chứng: stack thật/browser1440/390, no secret hoặc success giả, readonly/unknown/stale feedback English.
-- [ ] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
+- [x] T140 [P] Tạo/chạy fresh one-command/restart verification tại `tests\integration\test_one_command_startup.py`; default không .env, Airflow API/UI auth, migrations/seed secrets idempotent, restart extraction/commit/refresh, lost secret/volume/init failure không reset; Phụ thuộc: T138; Truy vết: US-01, FR-081–FR-083, FR-099–FR-100, SC-001, ma trận AM; Kiểm chứng: đúng `podman compose up --build -d`, ghi engine/provider đã nghiệm thu (không suy Docker-tested từ Podman), services READY thật và workflow sample sau init không setup thêm.
 - [x] T141 [P] Tạo/chạy full UI vertical workflow tại `tests\e2e\full_workflow.spec.ts`; Connections→download sample→table create→file/ETL upload→preview→deploy/parse→run→monitor/dashboard/Open Airflow; Phụ thuộc: T138; Truy vết: US-02–US-11, SC-002, SC-009; Kiểm chứng: UI/API/DB/Airflow thật, table/DAG/data values và <=10phút thao tác fixture.
 - [x] T142 [P] Tạo/chạy cross-DB Airflow regression tại `tests\airflow\test_cross_database.py`; PG→PG/MySQL→MySQL/PG→MySQL/MySQL→PG, source!=target, mappings/PK ghép/NULL/decimal/temporal; Phụ thuộc: T138; Truy vết: FR-001, SC-003, SC-015, ma trận C–F/I/AE; Kiểm chứng: 4routes target count/value/key và staging evidence thật.
 - [x] T143 [P] Tạo/chạy file-to-DB Airflow regression tại `tests\airflow\test_file_database.py`; CSV/TXT→PG/MySQL, parser checksum/quoted NULL/headerless/multiline, format/type errors và missing file; Phụ thuộc: T138; Truy vết: US-03, US-07, FR-001, ma trận G/H/U/AF; Kiểm chứng: 4routes data thật, FULL_REFRESH invalid source không empty target.
@@ -400,7 +422,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 - [x] T148 [P] Tạo/chạy security/language/contract audit tại `tests\integration\test_security_surfaces.py`, `tests\e2e\language.spec.ts`, `tests\api\test_contract_drift.py`; password DB/DAG/API/log/XCom scans, injection/macro/path/origin/service token/runtime scope grants, Markdown tiếng Việt/UI+Excel tiếng Anh; Phụ thuộc: T138; Truy vết: SC-004, SC-011, NFR-001, NFR-003, ma trận P/Y/Z/AL; Kiểm chứng: không secret leak/input nguy hiểm không side effect, runtime operations/required schemas so contract hiện tại không hardcode số lượng.
 - [x] T149 [P] Tạo/chạy performance/status regression tại `tests\integration\test_response_limits.py`; p95 list/detail/preview100<=3giây, connection<=30giây/deploy<=120giây, Dashboard all-page truth/incomplete/stale/lifetime, resources/fixture công bố; Phụ thuộc: T138; Truy vết: SC-008, SC-010, NFR-009, ma trận S/Q/W; Kiểm chứng: không dùng cached/mock số liệu thay proof hoặc timeout để giả fail đã rollback.
 - [x] T150 [P] Hoàn thiện README/architecture/API/Excel/operations docs tại `README.md`, `docs\architecture.md`, `docs\api.md`, `docs\excel-definitions.md`, `docs\operations\troubleshooting.md`; Vietnamese, startup/no hidden setup/load/keys backup-restore/recovery/cleanup/limits/revision tradeoff, không mô tả chưa test như hoàn thành; Phụ thuộc: T138; Truy vết: FR-086–FR-087, Constitution XI; Kiểm chứng: link checker và người khác theo workflow/error instructions tái hiện được.
-- [ ] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm. Verification PASS evidence: `docs/testing/resume-20261113/current-t151-sample-checks/` và fresh T140 workflow evidence tại `docs/testing/resume-20261112/aat-t140-bf3008e2/`; checkbox pending prerequisite T140.
+- [x] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm. Verification PASS evidence: `docs/testing/resume-20261113/current-t151-sample-checks/` và fresh T140 workflow evidence tại `docs/testing/resume-20261112/aat-t140-bf3008e2/`; Prerequisite T140 PASS tại `docs/testing/resume-20261112/aat-t140-045d42c5/result.json` (full selector, cleanup0).
 - [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, `T014_FULL=PASS`, checklist reviewer không tự đánh dấu; nếu gate này chưa PASS thì report BLOCKED và không claim MVP/full acceptance.
 
 ## Dependency và thứ tự thực hiện

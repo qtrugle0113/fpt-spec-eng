@@ -1,0 +1,674 @@
+STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.46.2
+Collecting build==1.3.0
+  Downloading build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting setuptools==80.9.0
+  Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting wheel==0.46.2
+  Downloading wheel-0.46.2-py3-none-any.whl.metadata (2.4 kB)
+Collecting packaging>=19.1 (from build==1.3.0)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyproject_hooks (from build==1.3.0)
+  Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+Downloading build-1.3.0-py3-none-any.whl (23 kB)
+Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 11.9 MB/s eta 0:00:00
+Downloading wheel-0.46.2-py3-none-any.whl (29 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+Installing collected packages: setuptools, pyproject_hooks, packaging, wheel, build
+Successfully installed build-1.3.0 packaging-26.3 pyproject_hooks-1.3.3 setuptools-80.9.0 wheel-0.46.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+--> e6987f297912
+STEP 3/7: WORKDIR /build
+--> 9f3826ab0653
+STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> bcc995248250
+STEP 5/7: COPY etl_engine /build/etl_engine
+--> a242d7f45270
+STEP 6/7: COPY backend /build/backend
+--> a50a5d0bafde
+STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+* Getting build dependencies for wheel...
+running egg_info
+creating ../aat_metadata.egg-info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_metadata
+copying ./network.py -> build/lib/aat_metadata
+copying ./__init__.py -> build/lib/aat_metadata
+creating build/lib/aat_metadata/secrets
+copying ./secrets/codec.py -> build/lib/aat_metadata/secrets
+copying ./secrets/__init__.py -> build/lib/aat_metadata/secrets
+creating build/lib/aat_metadata/models
+copying ./models/guards.py -> build/lib/aat_metadata/models
+copying ./models/replacement_runs.py -> build/lib/aat_metadata/models
+copying ./models/connections.py -> build/lib/aat_metadata/models
+copying ./models/authorizations.py -> build/lib/aat_metadata/models
+copying ./models/base.py -> build/lib/aat_metadata/models
+copying ./models/registry.py -> build/lib/aat_metadata/models
+copying ./models/definitions.py -> build/lib/aat_metadata/models
+copying ./models/settings.py -> build/lib/aat_metadata/models
+copying ./models/runtime.py -> build/lib/aat_metadata/models
+copying ./models/operations.py -> build/lib/aat_metadata/models
+copying ./models/etl.py -> build/lib/aat_metadata/models
+copying ./models/file_parsers.py -> build/lib/aat_metadata/models
+copying ./models/__init__.py -> build/lib/aat_metadata/models
+creating build/lib/aat_metadata/repositories
+copying ./repositories/bindings.py -> build/lib/aat_metadata/repositories
+copying ./repositories/replacement_runs.py -> build/lib/aat_metadata/repositories
+copying ./repositories/revisions.py -> build/lib/aat_metadata/repositories
+copying ./repositories/authorizations.py -> build/lib/aat_metadata/repositories
+copying ./repositories/base.py -> build/lib/aat_metadata/repositories
+copying ./repositories/metrics.py -> build/lib/aat_metadata/repositories
+copying ./repositories/grants.py -> build/lib/aat_metadata/repositories
+copying ./repositories/__init__.py -> build/lib/aat_metadata/repositories
+running egg_info
+writing ../aat_metadata.egg-info/PKG-INFO
+writing dependency_links to ../aat_metadata.egg-info/dependency_links.txt
+writing requirements to ../aat_metadata.egg-info/requires.txt
+writing top-level names to ../aat_metadata.egg-info/top_level.txt
+reading manifest file '../aat_metadata.egg-info/SOURCES.txt'
+writing manifest file '../aat_metadata.egg-info/SOURCES.txt'
+copying ./py.typed -> build/lib/aat_metadata
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_metadata
+copying build/lib/aat_metadata/network.py -> build/bdist.linux-x86_64/wheel/./aat_metadata
+creating build/bdist.linux-x86_64/wheel/aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/codec.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/secrets/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/secrets
+copying build/lib/aat_metadata/py.typed -> build/bdist.linux-x86_64/wheel/./aat_metadata
+creating build/bdist.linux-x86_64/wheel/aat_metadata/models
+copying build/lib/aat_metadata/models/guards.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/replacement_runs.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/connections.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/base.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/registry.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/definitions.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/settings.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/runtime.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/operations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/etl.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/file_parsers.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+copying build/lib/aat_metadata/models/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/models
+creating build/bdist.linux-x86_64/wheel/aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/bindings.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/replacement_runs.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/revisions.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/base.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/metrics.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/grants.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/repositories/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata/repositories
+copying build/lib/aat_metadata/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_metadata
+running install_egg_info
+Copying ../aat_metadata.egg-info to build/bdist.linux-x86_64/wheel/./aat_metadata-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_metadata-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-a0h0z_kq/aat_metadata-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_metadata/__init__.py'
+adding 'aat_metadata/network.py'
+adding 'aat_metadata/py.typed'
+adding 'aat_metadata/models/__init__.py'
+adding 'aat_metadata/models/authorizations.py'
+adding 'aat_metadata/models/base.py'
+adding 'aat_metadata/models/connections.py'
+adding 'aat_metadata/models/definitions.py'
+adding 'aat_metadata/models/etl.py'
+adding 'aat_metadata/models/file_parsers.py'
+adding 'aat_metadata/models/guards.py'
+adding 'aat_metadata/models/operations.py'
+adding 'aat_metadata/models/registry.py'
+adding 'aat_metadata/models/replacement_runs.py'
+adding 'aat_metadata/models/runtime.py'
+adding 'aat_metadata/models/settings.py'
+adding 'aat_metadata/repositories/__init__.py'
+adding 'aat_metadata/repositories/authorizations.py'
+adding 'aat_metadata/repositories/base.py'
+adding 'aat_metadata/repositories/bindings.py'
+adding 'aat_metadata/repositories/grants.py'
+adding 'aat_metadata/repositories/metrics.py'
+adding 'aat_metadata/repositories/replacement_runs.py'
+adding 'aat_metadata/repositories/revisions.py'
+adding 'aat_metadata/secrets/__init__.py'
+adding 'aat_metadata/secrets/codec.py'
+adding 'aat_metadata-0.1.0.dist-info/METADATA'
+adding 'aat_metadata-0.1.0.dist-info/WHEEL'
+adding 'aat_metadata-0.1.0.dist-info/top_level.txt'
+adding 'aat_metadata-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_metadata-0.1.0-py3-none-any.whl
+* Getting build dependencies for wheel...
+running egg_info
+creating src/aat_etl_engine.egg-info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_etl
+copying src/aat_etl/runtime_connections.py -> build/lib/aat_etl
+copying src/aat_etl/engine.py -> build/lib/aat_etl
+copying src/aat_etl/runtime_journal.py -> build/lib/aat_etl
+copying src/aat_etl/resources.py -> build/lib/aat_etl
+copying src/aat_etl/runtime_state.py -> build/lib/aat_etl
+copying src/aat_etl/runtime.py -> build/lib/aat_etl
+copying src/aat_etl/metrics.py -> build/lib/aat_etl
+copying src/aat_etl/runtime_task.py -> build/lib/aat_etl
+copying src/aat_etl/runtime_child.py -> build/lib/aat_etl
+copying src/aat_etl/runtime_lifecycle.py -> build/lib/aat_etl
+copying src/aat_etl/__init__.py -> build/lib/aat_etl
+creating build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/ledger.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/session.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/replacement_admission.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/privileges.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/upsert_postgres.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/full_refresh.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/batches.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/append.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/upsert_mysql.py -> build/lib/aat_etl/loaders
+copying src/aat_etl/loaders/__init__.py -> build/lib/aat_etl/loaders
+creating build/lib/aat_etl/staging
+copying src/aat_etl/staging/codec.py -> build/lib/aat_etl/staging
+copying src/aat_etl/staging/manager.py -> build/lib/aat_etl/staging
+copying src/aat_etl/staging/quota.py -> build/lib/aat_etl/staging
+copying src/aat_etl/staging/cleanup.py -> build/lib/aat_etl/staging
+copying src/aat_etl/staging/__init__.py -> build/lib/aat_etl/staging
+creating build/lib/aat_etl/contracts
+copying src/aat_etl/contracts/cancellation.py -> build/lib/aat_etl/contracts
+copying src/aat_etl/contracts/writer.py -> build/lib/aat_etl/contracts
+copying src/aat_etl/contracts/__init__.py -> build/lib/aat_etl/contracts
+copying src/aat_etl/contracts/config.py -> build/lib/aat_etl/contracts
+copying src/aat_etl/contracts/values.py -> build/lib/aat_etl/contracts
+creating build/lib/aat_etl/recovery
+copying src/aat_etl/recovery/coordinator.py -> build/lib/aat_etl/recovery
+copying src/aat_etl/recovery/__init__.py -> build/lib/aat_etl/recovery
+creating build/lib/aat_etl/readers
+copying src/aat_etl/readers/postgres.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/file_source.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/schema.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/database.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/delimited.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/mysql.py -> build/lib/aat_etl/readers
+copying src/aat_etl/readers/__init__.py -> build/lib/aat_etl/readers
+creating build/lib/aat_etl/mapping
+copying src/aat_etl/mapping/mapper.py -> build/lib/aat_etl/mapping
+copying src/aat_etl/mapping/types.py -> build/lib/aat_etl/mapping
+copying src/aat_etl/mapping/__init__.py -> build/lib/aat_etl/mapping
+copying src/aat_etl/mapping/validation.py -> build/lib/aat_etl/mapping
+running egg_info
+writing src/aat_etl_engine.egg-info/PKG-INFO
+writing dependency_links to src/aat_etl_engine.egg-info/dependency_links.txt
+writing requirements to src/aat_etl_engine.egg-info/requires.txt
+writing top-level names to src/aat_etl_engine.egg-info/top_level.txt
+reading manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_etl_engine.egg-info/SOURCES.txt'
+copying src/aat_etl/py.typed -> build/lib/aat_etl
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_etl
+creating build/bdist.linux-x86_64/wheel/aat_etl/loaders
+copying build/lib/aat_etl/loaders/ledger.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/session.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/replacement_admission.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/privileges.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/upsert_postgres.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/full_refresh.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/batches.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/append.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/upsert_mysql.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+copying build/lib/aat_etl/loaders/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/loaders
+creating build/bdist.linux-x86_64/wheel/aat_etl/staging
+copying build/lib/aat_etl/staging/codec.py -> build/bdist.linux-x86_64/wheel/./aat_etl/staging
+copying build/lib/aat_etl/staging/manager.py -> build/bdist.linux-x86_64/wheel/./aat_etl/staging
+copying build/lib/aat_etl/staging/quota.py -> build/bdist.linux-x86_64/wheel/./aat_etl/staging
+copying build/lib/aat_etl/staging/cleanup.py -> build/bdist.linux-x86_64/wheel/./aat_etl/staging
+copying build/lib/aat_etl/staging/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/staging
+creating build/bdist.linux-x86_64/wheel/aat_etl/contracts
+copying build/lib/aat_etl/contracts/cancellation.py -> build/bdist.linux-x86_64/wheel/./aat_etl/contracts
+copying build/lib/aat_etl/contracts/writer.py -> build/bdist.linux-x86_64/wheel/./aat_etl/contracts
+copying build/lib/aat_etl/contracts/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/contracts
+copying build/lib/aat_etl/contracts/config.py -> build/bdist.linux-x86_64/wheel/./aat_etl/contracts
+copying build/lib/aat_etl/contracts/values.py -> build/bdist.linux-x86_64/wheel/./aat_etl/contracts
+copying build/lib/aat_etl/runtime_connections.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/engine.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+creating build/bdist.linux-x86_64/wheel/aat_etl/recovery
+copying build/lib/aat_etl/recovery/coordinator.py -> build/bdist.linux-x86_64/wheel/./aat_etl/recovery
+copying build/lib/aat_etl/recovery/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/recovery
+creating build/bdist.linux-x86_64/wheel/aat_etl/readers
+copying build/lib/aat_etl/readers/postgres.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/file_source.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/schema.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/database.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/delimited.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/mysql.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/readers/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/readers
+copying build/lib/aat_etl/runtime_journal.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/resources.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/runtime_state.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/runtime.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/metrics.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+creating build/bdist.linux-x86_64/wheel/aat_etl/mapping
+copying build/lib/aat_etl/mapping/mapper.py -> build/bdist.linux-x86_64/wheel/./aat_etl/mapping
+copying build/lib/aat_etl/mapping/types.py -> build/bdist.linux-x86_64/wheel/./aat_etl/mapping
+copying build/lib/aat_etl/mapping/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl/mapping
+copying build/lib/aat_etl/mapping/validation.py -> build/bdist.linux-x86_64/wheel/./aat_etl/mapping
+copying build/lib/aat_etl/runtime_task.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/py.typed -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/runtime_child.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/runtime_lifecycle.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+copying build/lib/aat_etl/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_etl
+running install_egg_info
+Copying src/aat_etl_engine.egg-info to build/bdist.linux-x86_64/wheel/./aat_etl_engine-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_etl_engine-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-8cz42jq0/aat_etl_engine-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_etl/__init__.py'
+adding 'aat_etl/engine.py'
+adding 'aat_etl/metrics.py'
+adding 'aat_etl/py.typed'
+adding 'aat_etl/resources.py'
+adding 'aat_etl/runtime.py'
+adding 'aat_etl/runtime_child.py'
+adding 'aat_etl/runtime_connections.py'
+adding 'aat_etl/runtime_journal.py'
+adding 'aat_etl/runtime_lifecycle.py'
+adding 'aat_etl/runtime_state.py'
+adding 'aat_etl/runtime_task.py'
+adding 'aat_etl/contracts/__init__.py'
+adding 'aat_etl/contracts/cancellation.py'
+adding 'aat_etl/contracts/config.py'
+adding 'aat_etl/contracts/values.py'
+adding 'aat_etl/contracts/writer.py'
+adding 'aat_etl/loaders/__init__.py'
+adding 'aat_etl/loaders/append.py'
+adding 'aat_etl/loaders/batches.py'
+adding 'aat_etl/loaders/full_refresh.py'
+adding 'aat_etl/loaders/ledger.py'
+adding 'aat_etl/loaders/privileges.py'
+adding 'aat_etl/loaders/replacement_admission.py'
+adding 'aat_etl/loaders/session.py'
+adding 'aat_etl/loaders/upsert_mysql.py'
+adding 'aat_etl/loaders/upsert_postgres.py'
+adding 'aat_etl/mapping/__init__.py'
+adding 'aat_etl/mapping/mapper.py'
+adding 'aat_etl/mapping/types.py'
+adding 'aat_etl/mapping/validation.py'
+adding 'aat_etl/readers/__init__.py'
+adding 'aat_etl/readers/database.py'
+adding 'aat_etl/readers/delimited.py'
+adding 'aat_etl/readers/file_source.py'
+adding 'aat_etl/readers/mysql.py'
+adding 'aat_etl/readers/postgres.py'
+adding 'aat_etl/readers/schema.py'
+adding 'aat_etl/recovery/__init__.py'
+adding 'aat_etl/recovery/coordinator.py'
+adding 'aat_etl/staging/__init__.py'
+adding 'aat_etl/staging/cleanup.py'
+adding 'aat_etl/staging/codec.py'
+adding 'aat_etl/staging/manager.py'
+adding 'aat_etl/staging/quota.py'
+adding 'aat_etl_engine-0.1.0.dist-info/METADATA'
+adding 'aat_etl_engine-0.1.0.dist-info/WHEEL'
+adding 'aat_etl_engine-0.1.0.dist-info/top_level.txt'
+adding 'aat_etl_engine-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_etl_engine-0.1.0-py3-none-any.whl
+* Getting build dependencies for wheel...
+running egg_info
+creating src/aat_api.egg-info
+writing src/aat_api.egg-info/PKG-INFO
+writing dependency_links to src/aat_api.egg-info/dependency_links.txt
+writing requirements to src/aat_api.egg-info/requires.txt
+writing top-level names to src/aat_api.egg-info/top_level.txt
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+reading manifest file 'src/aat_api.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/aat_api
+copying src/aat_api/logging.py -> build/lib/aat_api
+copying src/aat_api/middleware.py -> build/lib/aat_api
+copying src/aat_api/main.py -> build/lib/aat_api
+copying src/aat_api/errors.py -> build/lib/aat_api
+copying src/aat_api/__init__.py -> build/lib/aat_api
+creating build/lib/aat_api/routes
+copying src/aat_api/routes/table_history.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/dag_builder.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/connections.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/dag_control.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/replacement_authorizations.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/monitoring.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/tables.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/settings.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/dashboard.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/runtime.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/operations.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/templates.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/file_parsers.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/health.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/definition_uploads.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/files.py -> build/lib/aat_api/routes
+copying src/aat_api/routes/__init__.py -> build/lib/aat_api/routes
+creating build/lib/aat_api/workers
+copying src/aat_api/workers/recovery.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/dag_control.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/dag_activation.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/tables.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/main.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/files.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/__init__.py -> build/lib/aat_api/workers
+copying src/aat_api/workers/deployments.py -> build/lib/aat_api/workers
+creating build/lib/aat_api/services
+copying src/aat_api/services/table_history.py -> build/lib/aat_api/services
+copying src/aat_api/services/dag_builder.py -> build/lib/aat_api/services
+copying src/aat_api/services/dag_control.py -> build/lib/aat_api/services
+copying src/aat_api/services/dag_activation.py -> build/lib/aat_api/services
+copying src/aat_api/services/confirmation.py -> build/lib/aat_api/services
+copying src/aat_api/services/replacement_authorizations.py -> build/lib/aat_api/services
+copying src/aat_api/services/etl_dependencies.py -> build/lib/aat_api/services
+copying src/aat_api/services/monitoring.py -> build/lib/aat_api/services
+copying src/aat_api/services/schedule_statistics.py -> build/lib/aat_api/services
+copying src/aat_api/services/settings.py -> build/lib/aat_api/services
+copying src/aat_api/services/dashboard.py -> build/lib/aat_api/services
+copying src/aat_api/services/table_preview.py -> build/lib/aat_api/services
+copying src/aat_api/services/runtime_binding.py -> build/lib/aat_api/services
+copying src/aat_api/services/operations.py -> build/lib/aat_api/services
+copying src/aat_api/services/file_parsers.py -> build/lib/aat_api/services
+copying src/aat_api/services/etl_validation.py -> build/lib/aat_api/services
+copying src/aat_api/services/health.py -> build/lib/aat_api/services
+copying src/aat_api/services/definition_uploads.py -> build/lib/aat_api/services
+copying src/aat_api/services/files.py -> build/lib/aat_api/services
+copying src/aat_api/services/table_introspection.py -> build/lib/aat_api/services
+copying src/aat_api/services/seed.py -> build/lib/aat_api/services
+copying src/aat_api/services/__init__.py -> build/lib/aat_api/services
+copying src/aat_api/services/etl_preview.py -> build/lib/aat_api/services
+creating build/lib/aat_api/airflow_client
+copying src/aat_api/airflow_client/client.py -> build/lib/aat_api/airflow_client
+copying src/aat_api/airflow_client/monitoring.py -> build/lib/aat_api/airflow_client
+copying src/aat_api/airflow_client/deployment.py -> build/lib/aat_api/airflow_client
+copying src/aat_api/airflow_client/__init__.py -> build/lib/aat_api/airflow_client
+creating build/lib/aat_api/deployments
+copying src/aat_api/deployments/registration.py -> build/lib/aat_api/deployments
+copying src/aat_api/deployments/factory.py -> build/lib/aat_api/deployments
+copying src/aat_api/deployments/admission.py -> build/lib/aat_api/deployments
+copying src/aat_api/deployments/storage.py -> build/lib/aat_api/deployments
+copying src/aat_api/deployments/__init__.py -> build/lib/aat_api/deployments
+creating build/lib/aat_api/schemas
+copying src/aat_api/schemas/connections.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/authorizations.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/dag_control.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/definitions.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/monitoring.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/settings.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/common.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/dashboard.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/files.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/__init__.py -> build/lib/aat_api/schemas
+copying src/aat_api/schemas/deployments.py -> build/lib/aat_api/schemas
+creating build/lib/aat_api/ddl
+copying src/aat_api/ddl/postgres.py -> build/lib/aat_api/ddl
+copying src/aat_api/ddl/common.py -> build/lib/aat_api/ddl
+copying src/aat_api/ddl/mysql.py -> build/lib/aat_api/ddl
+copying src/aat_api/ddl/__init__.py -> build/lib/aat_api/ddl
+creating build/lib/aat_api/validation
+copying src/aat_api/validation/workbook.py -> build/lib/aat_api/validation
+copying src/aat_api/validation/etl_definitions.py -> build/lib/aat_api/validation
+copying src/aat_api/validation/messages.py -> build/lib/aat_api/validation
+copying src/aat_api/validation/tables.py -> build/lib/aat_api/validation
+copying src/aat_api/validation/__init__.py -> build/lib/aat_api/validation
+creating build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/postgres.py -> build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/service.py -> build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/dependencies.py -> build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/mysql.py -> build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/policy.py -> build/lib/aat_api/services/connections
+copying src/aat_api/services/connections/__init__.py -> build/lib/aat_api/services/connections
+running egg_info
+writing src/aat_api.egg-info/PKG-INFO
+writing dependency_links to src/aat_api.egg-info/dependency_links.txt
+writing requirements to src/aat_api.egg-info/requires.txt
+writing top-level names to src/aat_api.egg-info/top_level.txt
+reading manifest file 'src/aat_api.egg-info/SOURCES.txt'
+writing manifest file 'src/aat_api.egg-info/SOURCES.txt'
+copying src/aat_api/py.typed -> build/lib/aat_api
+copying src/aat_api/airflow_client/schema-3.3.2.provenance.json -> build/lib/aat_api/airflow_client
+copying src/aat_api/airflow_client/schema-3.3.2.json -> build/lib/aat_api/airflow_client
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/routes
+copying build/lib/aat_api/routes/table_history.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/dag_builder.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/connections.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/dag_control.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/replacement_authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/monitoring.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/tables.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/settings.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/dashboard.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/runtime.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/operations.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/templates.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/file_parsers.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/health.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/definition_uploads.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/files.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/routes/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/routes
+copying build/lib/aat_api/logging.py -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/workers
+copying build/lib/aat_api/workers/recovery.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/dag_control.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/dag_activation.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/tables.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/main.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/files.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/workers/deployments.py -> build/bdist.linux-x86_64/wheel/./aat_api/workers
+copying build/lib/aat_api/middleware.py -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/main.py -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/services
+copying build/lib/aat_api/services/table_history.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+creating build/bdist.linux-x86_64/wheel/aat_api/services/connections
+copying build/lib/aat_api/services/connections/postgres.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/connections/service.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/connections/dependencies.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/connections/mysql.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/connections/policy.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/connections/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/services/connections
+copying build/lib/aat_api/services/dag_builder.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/dag_control.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/dag_activation.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/confirmation.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/replacement_authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/etl_dependencies.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/monitoring.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/schedule_statistics.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/settings.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/dashboard.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/table_preview.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/runtime_binding.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/operations.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/file_parsers.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/etl_validation.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/health.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/definition_uploads.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/files.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/table_introspection.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/seed.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+copying build/lib/aat_api/services/etl_preview.py -> build/bdist.linux-x86_64/wheel/./aat_api/services
+creating build/bdist.linux-x86_64/wheel/aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/schema-3.3.2.provenance.json -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/schema-3.3.2.json -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/client.py -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/monitoring.py -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/deployment.py -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+copying build/lib/aat_api/airflow_client/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/airflow_client
+creating build/bdist.linux-x86_64/wheel/aat_api/deployments
+copying build/lib/aat_api/deployments/registration.py -> build/bdist.linux-x86_64/wheel/./aat_api/deployments
+copying build/lib/aat_api/deployments/factory.py -> build/bdist.linux-x86_64/wheel/./aat_api/deployments
+copying build/lib/aat_api/deployments/admission.py -> build/bdist.linux-x86_64/wheel/./aat_api/deployments
+copying build/lib/aat_api/deployments/storage.py -> build/bdist.linux-x86_64/wheel/./aat_api/deployments
+copying build/lib/aat_api/deployments/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/deployments
+creating build/bdist.linux-x86_64/wheel/aat_api/schemas
+copying build/lib/aat_api/schemas/connections.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/authorizations.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/dag_control.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/definitions.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/monitoring.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/settings.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/common.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/dashboard.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/files.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+copying build/lib/aat_api/schemas/deployments.py -> build/bdist.linux-x86_64/wheel/./aat_api/schemas
+creating build/bdist.linux-x86_64/wheel/aat_api/ddl
+copying build/lib/aat_api/ddl/postgres.py -> build/bdist.linux-x86_64/wheel/./aat_api/ddl
+copying build/lib/aat_api/ddl/common.py -> build/bdist.linux-x86_64/wheel/./aat_api/ddl
+copying build/lib/aat_api/ddl/mysql.py -> build/bdist.linux-x86_64/wheel/./aat_api/ddl
+copying build/lib/aat_api/ddl/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/ddl
+copying build/lib/aat_api/py.typed -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/errors.py -> build/bdist.linux-x86_64/wheel/./aat_api
+copying build/lib/aat_api/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api
+creating build/bdist.linux-x86_64/wheel/aat_api/validation
+copying build/lib/aat_api/validation/workbook.py -> build/bdist.linux-x86_64/wheel/./aat_api/validation
+copying build/lib/aat_api/validation/etl_definitions.py -> build/bdist.linux-x86_64/wheel/./aat_api/validation
+copying build/lib/aat_api/validation/messages.py -> build/bdist.linux-x86_64/wheel/./aat_api/validation
+copying build/lib/aat_api/validation/tables.py -> build/bdist.linux-x86_64/wheel/./aat_api/validation
+copying build/lib/aat_api/validation/__init__.py -> build/bdist.linux-x86_64/wheel/./aat_api/validation
+running install_egg_info
+Copying src/aat_api.egg-info to build/bdist.linux-x86_64/wheel/./aat_api-0.1.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/aat_api-0.1.0.dist-info/WHEEL
+creating '/wheels/.tmp-maqyrev8/aat_api-0.1.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'aat_api/__init__.py'
+adding 'aat_api/errors.py'
+adding 'aat_api/logging.py'
+adding 'aat_api/main.py'
+adding 'aat_api/middleware.py'
+adding 'aat_api/py.typed'
+adding 'aat_api/airflow_client/__init__.py'
+adding 'aat_api/airflow_client/client.py'
+adding 'aat_api/airflow_client/deployment.py'
+adding 'aat_api/airflow_client/monitoring.py'
+adding 'aat_api/airflow_client/schema-3.3.2.json'
+adding 'aat_api/airflow_client/schema-3.3.2.provenance.json'
+adding 'aat_api/ddl/__init__.py'
+adding 'aat_api/ddl/common.py'
+adding 'aat_api/ddl/mysql.py'
+adding 'aat_api/ddl/postgres.py'
+adding 'aat_api/deployments/__init__.py'
+adding 'aat_api/deployments/admission.py'
+adding 'aat_api/deployments/factory.py'
+adding 'aat_api/deployments/registration.py'
+adding 'aat_api/deployments/storage.py'
+adding 'aat_api/routes/__init__.py'
+adding 'aat_api/routes/connections.py'
+adding 'aat_api/routes/dag_builder.py'
+adding 'aat_api/routes/dag_control.py'
+adding 'aat_api/routes/dashboard.py'
+adding 'aat_api/routes/definition_uploads.py'
+adding 'aat_api/routes/file_parsers.py'
+adding 'aat_api/routes/files.py'
+adding 'aat_api/routes/health.py'
+adding 'aat_api/routes/monitoring.py'
+adding 'aat_api/routes/operations.py'
+adding 'aat_api/routes/replacement_authorizations.py'
+adding 'aat_api/routes/runtime.py'
+adding 'aat_api/routes/settings.py'
+adding 'aat_api/routes/table_history.py'
+adding 'aat_api/routes/tables.py'
+adding 'aat_api/routes/templates.py'
+adding 'aat_api/schemas/__init__.py'
+adding 'aat_api/schemas/authorizations.py'
+adding 'aat_api/schemas/common.py'
+adding 'aat_api/schemas/connections.py'
+adding 'aat_api/schemas/dag_control.py'
+adding 'aat_api/schemas/dashboard.py'
+adding 'aat_api/schemas/definitions.py'
+adding 'aat_api/schemas/deployments.py'
+adding 'aat_api/schemas/files.py'
+adding 'aat_api/schemas/monitoring.py'
+adding 'aat_api/schemas/settings.py'
+adding 'aat_api/services/__init__.py'
+adding 'aat_api/services/confirmation.py'
+adding 'aat_api/services/dag_activation.py'
+adding 'aat_api/services/dag_builder.py'
+adding 'aat_api/services/dag_control.py'
+adding 'aat_api/services/dashboard.py'
+adding 'aat_api/services/definition_uploads.py'
+adding 'aat_api/services/etl_dependencies.py'
+adding 'aat_api/services/etl_preview.py'
+adding 'aat_api/services/etl_validation.py'
+adding 'aat_api/services/file_parsers.py'
+adding 'aat_api/services/files.py'
+adding 'aat_api/services/health.py'
+adding 'aat_api/services/monitoring.py'
+adding 'aat_api/services/operations.py'
+adding 'aat_api/services/replacement_authorizations.py'
+adding 'aat_api/services/runtime_binding.py'
+adding 'aat_api/services/schedule_statistics.py'
+adding 'aat_api/services/seed.py'
+adding 'aat_api/services/settings.py'
+adding 'aat_api/services/table_history.py'
+adding 'aat_api/services/table_introspection.py'
+adding 'aat_api/services/table_preview.py'
+adding 'aat_api/services/connections/__init__.py'
+adding 'aat_api/services/connections/dependencies.py'
+adding 'aat_api/services/connections/mysql.py'
+adding 'aat_api/services/connections/policy.py'
+adding 'aat_api/services/connections/postgres.py'
+adding 'aat_api/services/connections/service.py'
+adding 'aat_api/validation/__init__.py'
+adding 'aat_api/validation/etl_definitions.py'
+adding 'aat_api/validation/messages.py'
+adding 'aat_api/validation/tables.py'
+adding 'aat_api/validation/workbook.py'
+adding 'aat_api/workers/__init__.py'
+adding 'aat_api/workers/dag_activation.py'
+adding 'aat_api/workers/dag_control.py'
+adding 'aat_api/workers/deployments.py'
+adding 'aat_api/workers/files.py'
+adding 'aat_api/workers/main.py'
+adding 'aat_api/workers/recovery.py'
+adding 'aat_api/workers/tables.py'
+adding 'aat_api-0.1.0.dist-info/METADATA'
+adding 'aat_api-0.1.0.dist-info/WHEEL'
+adding 'aat_api-0.1.0.dist-info/top_level.txt'
+adding 'aat_api-0.1.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built aat_api-0.1.0-py3-none-any.whl
+COMMIT localhost/aat-portable-backend-wheels-f3809821:0.1.0
+--> 47e8a71d3997
+Successfully tagged localhost/aat-portable-backend-wheels-f3809821:0.1.0
+47e8a71d39976584f3fa06fa046aa344c5e8bbf205eb3b2b4b724c1a48fe5017

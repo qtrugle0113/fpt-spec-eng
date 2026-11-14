@@ -1,5 +1,5 @@
 FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
-RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.45.1
+RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==84.2.1 wheel==0.46.2
 WORKDIR /build
 COPY packages/aat_metadata /build/packages/aat_metadata
 COPY etl_engine /build/etl_engine
@@ -11,9 +11,9 @@ COPY airflow/docker/security/brotli.lock.json /opt/aat/security/brotli.lock.json
 ADD https://security.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli1_1.0.9-2+deb12u1_amd64.deb /opt/aat/security/libbrotli1.deb
 COPY airflow/docker/install_security_patch.py /opt/aat/security/install_security_patch.py
 RUN --network=none python /opt/aat/security/install_security_patch.py
-FROM security-patched AS runtime
 COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
 RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+FROM security-patched AS runtime
 COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/
 RUN python /opt/aat/build_constraints.py /opt/aat
 USER airflow
@@ -36,8 +36,8 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bin/bash", "/opt/aat/entrypoint.sh"]
 
 # LocalExecutor uses the local DAG volume, not Docker CLI or Git DAG bundles.
 USER root
-RUN apt-get purge -y docker-ce-cli git git-man && \
-    test ! -e /usr/bin/docker && test ! -e /usr/bin/git && \
+RUN apt-get purge -y docker-ce-cli git git-man rsync && \
+    test ! -e /usr/bin/docker && test ! -e /usr/bin/git && test ! -e /usr/bin/rsync && \
     ! dpkg-query -W -f='${Status}' git git-man 2>/dev/null | grep -q 'install ok installed'
 USER airflow
 

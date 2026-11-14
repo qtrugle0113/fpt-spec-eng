@@ -1,0 +1,15 @@
+test_repeated_sample_preserves_quoted_literal_and_unquoted_null (tests.unit.test_t140_extraction_source.ExtractionSourceTests.test_repeated_sample_preserves_quoted_literal_and_unquoted_null) ... FAIL
+
+======================================================================
+FAIL: test_repeated_sample_preserves_quoted_literal_and_unquoted_null (tests.unit.test_t140_extraction_source.ExtractionSourceTests.test_repeated_sample_preserves_quoted_literal_and_unquoted_null)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\unit\test_t140_extraction_source.py", line 19, in test_repeated_sample_preserves_quoted_literal_and_unquoted_null
+    self.assertIn(b'4,"\\N",\\N,2026-01-04T00:00:00\n', raw)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'4,"\\N",\\N,2026-01-04T00:00:00\n' not found in b'customer_id,customer_name,balance,registered_at\n1,"Nguy\xe1\xbb\x85n, An",12345.6789,2026-01-01T12:30:00.123456\n2,"Line one\nLine two",0.0000,\\N\n3,"Quote ""sample""",-12.3400,2026-01-03T00:00:00\n4,\\N,\\N,2026-01-04T00:00:00\n5,"Nguy\xe1\xbb\x85n, An",12345.6789,2026-01-01T12:30:00.123456\n6,"Line one\nLine two",0.0000,\\N\n7,"Quote ""sample""",-12.3400,2026-01-03T00:00:00\n8,\\N,\\N,2026-01-04T00:00:00\n'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (failures=1)

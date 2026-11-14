@@ -1,0 +1,23 @@
+{
+  "project": "aat-regression-ae2abf4c",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "images": {
+    "tests": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1",
+    "backend": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+  },
+  "compose_config": ".tools\\compose-aat-regression-ae2abf4c.json",
+  "startup_exit_code": 0,
+  "exit_code": 0,
+  "test_paths": [
+    "tests/unit",
+    "tests/api"
+  ],
+  "selectors_assigned_elsewhere": [
+    "tests/unit/test_dag_factory.py"
+  ],
+  "cleanup_exit_code": 0
+}

@@ -1,0 +1,6 @@
+{
+  "test_source": "tests/unit/test_runtime_task.py",
+  "sha256": "ccfd23c2f2a7bd349b4c1eb34eb8610f9bafd3f28cc013c8032ef34a6e77e94c",
+  "clean_checkout_copy_matches": true,
+  "application_image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+}

@@ -1,0 +1,32 @@
+[1/2] STEP 1/4: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS dependencies
+[1/2] STEP 2/4: WORKDIR /tests
+--> Using cache f6f891d787cd57f9e23d04c4d2aea9309d4a0e2e3fd8e5df1502432b44ebb2d8
+--> f6f891d787cd
+[1/2] STEP 3/4: COPY tests/e2e/package.json tests/e2e/package-lock.json ./
+--> Using cache 62047b093f90a07e7970b45a6b912b330593d1344ca47d9600611136daf2382b
+--> 62047b093f90
+[1/2] STEP 4/4: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+--> Using cache f3081aee7fa43fdf8fca8cb6a93b536557dc66d983592779d86e40799cc9ecc1
+--> f3081aee7fa4
+[2/2] STEP 1/8: FROM mcr.microsoft.com/playwright:v1.65.0-resolute@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218
+[2/2] STEP 2/8: COPY docker/tests/os-packages.lock /opt/aat/os-packages.lock
+--> Using cache 33aa739bbbdb5cf0465c61cdcf23dc5352900a863b0e71e5abf818ab954a635d
+--> 33aa739bbbdb
+[2/2] STEP 3/8: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/* /usr/lib/node_modules/npm /usr/local/lib/node_modules/npm && rm -f /usr/bin/npm /usr/bin/npx /usr/local/bin/npm /usr/local/bin/npx
+--> Using cache cdea469662ca16ddf7aac002a692f7c0b86a39ab1107d947321f3f0c0a823d5e
+--> cdea469662ca
+[2/2] STEP 4/8: WORKDIR /tests
+--> Using cache 50358f0a122f5f07156c12354ee83e435569bcbe095937b54a5af1c0405cb9c1
+--> 50358f0a122f
+[2/2] STEP 5/8: COPY --from=dependencies /tests/node_modules ./node_modules
+--> Using cache ea3f9d52a187ab03e25852e08fd41cbf1840d3ff99a47d4cd84bcf3efa36f63d
+--> ea3f9d52a187
+[2/2] STEP 6/8: COPY tests/e2e ./
+--> 5f71120fb309
+[2/2] STEP 7/8: ENV PLAYWRIGHT_BASE_URL=http://frontend:80
+--> 543033fa0712
+[2/2] STEP 8/8: CMD ["node", "node_modules/@playwright/test/cli.js", "test"]
+[2/2] COMMIT localhost/aat-portable-e2e-tests-ca72cf6f:0.1.0
+--> b5b3c6a03aa5
+Successfully tagged localhost/aat-portable-e2e-tests-ca72cf6f:0.1.0
+b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9

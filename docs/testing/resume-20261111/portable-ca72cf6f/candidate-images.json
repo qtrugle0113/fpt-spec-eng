@@ -1,0 +1,213 @@
+{
+  "phase": "portable",
+  "run_id": "ca72cf6f",
+  "source_context": ".tools\\portable-source-ca72cf6f",
+  "captured_at": "2026-11-14T00:56:14.212226+00:00",
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "47e8a71d39976584f3fa06fa046aa344c5e8bbf205eb3b2b4b724c1a48fe5017",
+      "image_id": "47e8a71d39976584f3fa06fa046aa344c5e8bbf205eb3b2b4b724c1a48fe5017",
+      "dockerfile": "backend/Dockerfile",
+      "target": "wheels",
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "backend",
+      "ref": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+      "image_id": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+      "dockerfile": "backend/Dockerfile",
+      "target": null,
+      "build": "REUSED_VERIFIED_SOURCE",
+      "command": null
+    },
+    {
+      "name": "airflow-wheels",
+      "ref": "localhost/aat-portable-airflow-wheels-ca72cf6f:0.1.0",
+      "image_id": "7e04ef2d0623963047ff977c2f16e98512d3153eaa19089722f56da07f8296c0",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "target": "wheels",
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "airflow/docker/Dockerfile",
+        "-t",
+        "localhost/aat-portable-airflow-wheels-ca72cf6f:0.1.0",
+        "--target",
+        "wheels",
+        "."
+      ]
+    },
+    {
+      "name": "airflow",
+      "ref": "localhost/aat-portable-airflow-ca72cf6f:0.1.0",
+      "image_id": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+      "dockerfile": "airflow/docker/Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "airflow/docker/Dockerfile",
+        "-t",
+        "localhost/aat-portable-airflow-ca72cf6f:0.1.0",
+        "."
+      ]
+    },
+    {
+      "name": "frontend-build",
+      "ref": "localhost/aat-portable-frontend-build-ca72cf6f:0.1.0",
+      "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3",
+      "dockerfile": "frontend/Dockerfile",
+      "target": "build",
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "frontend/Dockerfile",
+        "-t",
+        "localhost/aat-portable-frontend-build-ca72cf6f:0.1.0",
+        "--target",
+        "build",
+        "."
+      ]
+    },
+    {
+      "name": "frontend",
+      "ref": "localhost/aat-portable-frontend-ca72cf6f:0.1.0",
+      "image_id": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+      "dockerfile": "frontend/Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "frontend/Dockerfile",
+        "-t",
+        "localhost/aat-portable-frontend-ca72cf6f:0.1.0",
+        "."
+      ]
+    },
+    {
+      "name": "backend-tests",
+      "ref": "localhost/aat-portable-backend-tests-ca72cf6f:0.1.0",
+      "image_id": "e537a37a02d13eb180cc5215067a9bb753cca5cf407ca4e612362eae79cd003c",
+      "dockerfile": "docker/tests/Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "docker/tests/Dockerfile",
+        "-t",
+        "localhost/aat-portable-backend-tests-ca72cf6f:0.1.0",
+        "."
+      ]
+    },
+    {
+      "name": "e2e-tests",
+      "ref": "localhost/aat-portable-e2e-tests-ca72cf6f:0.1.0",
+      "image_id": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+      "dockerfile": "docker/tests/playwright.Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "docker/tests/playwright.Dockerfile",
+        "-t",
+        "localhost/aat-portable-e2e-tests-ca72cf6f:0.1.0",
+        "."
+      ]
+    },
+    {
+      "name": "postgres",
+      "ref": "localhost/aat-portable-postgres-ca72cf6f:0.1.0",
+      "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "dockerfile": "docker/gosu/Dockerfile",
+      "target": "postgres",
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "docker/gosu/Dockerfile",
+        "-t",
+        "localhost/aat-portable-postgres-ca72cf6f:0.1.0",
+        "--target",
+        "postgres",
+        "."
+      ]
+    },
+    {
+      "name": "mysql",
+      "ref": "localhost/aat-portable-mysql-ca72cf6f:0.1.0",
+      "image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "dockerfile": "docker/gosu/Dockerfile",
+      "target": "mysql",
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "docker/gosu/Dockerfile",
+        "-t",
+        "localhost/aat-portable-mysql-ca72cf6f:0.1.0",
+        "--target",
+        "mysql",
+        "."
+      ]
+    }
+  ],
+  "source_revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0",
+  "source_dirty": true,
+  "environment": {
+    "Client": {
+      "APIVersion": "5.8.3",
+      "Version": "5.8.3",
+      "GoVersion": "go1.26.4",
+      "GitCommit": "93dbfd0d86ee57f8f91801f61ce57dd880a4725f",
+      "BuiltTime": "Sat Jun 13 02:52:07 2026",
+      "Built": 1781286727,
+      "OsArch": "windows/amd64",
+      "Os": "windows"
+    },
+    "Server": {
+      "APIVersion": "5.8.9",
+      "Version": "5.8.9",
+      "GoVersion": "go1.26.9-X:nodwarf5",
+      "GitCommit": "40030f4073bd4e1bf4f2fd9df2f6952b4d9d350a",
+      "BuiltTime": "Mon Oct 12 09:00:00 2026",
+      "Built": 1791763200,
+      "OsArch": "linux/amd64",
+      "Os": "linux"
+    }
+  },
+  "compose_version": "Docker Compose version v5.6.0",
+  "existing_services_modified": false,
+  "acceptance": "PENDING_SCAN_POLICY_CHECK"
+}

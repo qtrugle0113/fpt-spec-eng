@@ -1,0 +1,33 @@
+{
+  "source_revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0",
+  "worktree": ".tools\\t140-acceptance-82fdec4",
+  "baseline_snapshot": ".tools\\t140-acceptance-82fdec4\\docs\\testing\\resume-20261112\\aat-t140-bf2939bb\\canonical-candidate\\source-sha256.json",
+  "changes": [
+    {
+      "path": "tests/e2e/full_workflow.spec.ts",
+      "previous_sha256": "b6dfb767a4ef5f091d501890efb0945a4228c898c65e30c4635a5f23203e9598",
+      "sha256": "30da741f0c5ab4f3ec8d52be766b6c8a1d14e9f0eed4570fbfa2074741ea88b6"
+    },
+    {
+      "path": "tests/tools/verify_running_workflow.py",
+      "previous_sha256": "8d7735b97ff0f4e71e137e703c40fea7e73d9c6c253f4474830a1875c82e47f1",
+      "sha256": "6d28a516f90079ae3e49804868bda24300db6a490fa8b0a62e0a77e4371f7151"
+    },
+    {
+      "path": "tests/unit/test_runtime_task.py",
+      "previous_sha256": "a1587b6ea533b2e5deff6d1ece8256e26f8bf2073174b70e8938196615863788",
+      "sha256": "ccfd23c2f2a7bd349b4c1eb34eb8610f9bafd3f28cc013c8032ef34a6e77e94c"
+    },
+    {
+      "path": "tests/unit/test_t140_extraction_source.py",
+      "previous_sha256": "67f293a80dc67869a3e4f2ba362e558b0af1463b365b2c7e50e20722d05ab513",
+      "sha256": "6d7c54a41dd3db12e52578b2915a31e7ee959f21f6176adc9933a8975c77b484"
+    },
+    {
+      "path": ".dockerignore",
+      "previous_sha256": "c3b5b86b2e2054b28136368781f7a654a567fe110bd08f8415b004fc65a63df4",
+      "sha256": "82a92aa81d757456833b3369de0da89349701f65f7f290f60848a3b0e0c86163"
+    }
+  ],
+  "scope": "Các thay đổi verifier/test và filter build context; giữ nguyên app source và exact canonical IDs đã scan; assertion cuối không đổi"
+}

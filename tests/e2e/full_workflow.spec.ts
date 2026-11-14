@@ -136,7 +136,8 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await expect(row.getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: phase ? 540000 : 130000 });
   await row.getByRole('button', { name: 'View run details', exact: true }).click();
   const evidence = page.getByRole('region', { name: 'Run details', exact: true });
-  await expect(evidence.locator('dt').filter({ hasText: /^Loaded rows$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText(String(loadedRows));
+  const displayedLoadedRows = await page.evaluate(value => value.toLocaleString(), loadedRows);
+  await expect(evidence.locator('dt').filter({ hasText: /^Loaded rows$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText(displayedLoadedRows);
   await page.goto('/');
   await page.getByRole('button', { name: 'Refresh dashboard' }).click();
   await expect(page.getByRole('row').filter({ hasText: run }).getByRole('cell', { name: 'success', exact: true })).toBeVisible({ timeout: 30000 });

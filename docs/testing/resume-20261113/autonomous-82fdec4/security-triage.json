@@ -1,0 +1,5506 @@
+{
+  "status": "REVIEW_REQUIRED_FOR_FULL_ACCEPTANCE",
+  "scope": "Kết quả scanner trên 10 artifacts local; không phải full baseline/base-stage CI acceptance hoặc kết luận exploitability",
+  "scan": "docs\\testing\\resume-20261111\\portable-66c48b64\\candidate-security.json",
+  "scan_sha256": "fd71cfd9bfc6624e027066a28f56aa6e233ed0ae88bd23562ee92192a4a5c20e",
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-66c48b64\\local-policy-review.json",
+  "scanner_version_db": "Version: 0.76.1\nVulnerability DB:\n  Version: 2\n  UpdatedAt: 2026-11-13 12:56:33.451543713 +0000 UTC\n  NextUpdate: 2026-11-14 12:56:33.451543367 +0000 UTC\n  DownloadedAt: 2026-11-13 14:38:06.703814099 +0000 UTC",
+  "raw_high_critical_occurrences": 778,
+  "group_count": 238,
+  "groups": [
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "bsdutils",
+      "InstalledVersion": "1:2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "bsdutils",
+      "InstalledVersion": "1:2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "bsdutils",
+      "InstalledVersion": "1:2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-41992",
+      "PkgName": "gzip",
+      "InstalledVersion": "1.12-1",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-41992",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-54369",
+      "PkgName": "libacl1",
+      "InstalledVersion": "2.3.1-3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-54369",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "libblkid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "libblkid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "libblkid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssapi-krb5-2",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libk5crypto3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5-3",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkrb5support0",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "libmount1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "libmount1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "libmount1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "PkgName": "libncursesw6",
+      "InstalledVersion": "6.4-4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "libsmartcols1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "libsmartcols1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "libsmartcols1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-7458",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "CRITICAL",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-7458",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-11822",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11822",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-11824",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11824",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119373",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119373",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119374",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119374",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119379",
+      "PkgName": "libsqlite3-0",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119379",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-16742",
+      "PkgName": "libsystemd0",
+      "InstalledVersion": "252.39-1~deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-16742",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "PkgName": "libtinfo6",
+      "InstalledVersion": "6.4-4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-16742",
+      "PkgName": "libudev1",
+      "InstalledVersion": "252.39-1~deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-16742",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "libuuid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "libuuid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "libuuid1",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "mount",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "mount",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "mount",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "PkgName": "ncurses-base",
+      "InstalledVersion": "6.4-4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "PkgName": "ncurses-bin",
+      "InstalledVersion": "6.4-4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-9538",
+      "PkgName": "perl-base",
+      "InstalledVersion": "5.36.0-7+deb12u4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-9538",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "util-linux",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "util-linux",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "util-linux",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53613",
+      "PkgName": "util-linux-extra",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53615",
+      "PkgName": "util-linux-extra",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-78410",
+      "PkgName": "util-linux-extra",
+      "InstalledVersion": "2.38.1-5+deb12u3",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2023-45853",
+      "PkgName": "zlib1g",
+      "InstalledVersion": "1:1.2.13.dfsg-1",
+      "FixedVersion": null,
+      "Severity": "CRITICAL",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-45853",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-76844",
+      "PkgName": "zlib1g",
+      "InstalledVersion": "1:1.2.13.dfsg-1",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-76844",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-85091",
+      "PkgName": "zlib1g",
+      "InstalledVersion": "1:1.2.13.dfsg-1",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-85091",
+      "contexts": [
+        {
+          "target": "backend-tests",
+          "image_id": "5f18a16b7bc65d808c2d1351d636d6d053ec3d354a5e341944f433834ed140d1"
+        },
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend",
+          "image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        },
+        {
+          "target": "frontend-build",
+          "image_id": "6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2023-2953",
+      "PkgName": "libldap-2.5-0",
+      "InstalledVersion": "2.5.13+dfsg-5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-2953",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-9538",
+      "PkgName": "libperl5.36",
+      "InstalledVersion": "5.36.0-7+deb12u4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-9538",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6653",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "CRITICAL",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6653",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-74860",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-74860",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86138",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86138",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86140",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86140",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86142",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86142",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86143",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86143",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-86144",
+      "PkgName": "libxml2",
+      "InstalledVersion": "2.9.14+dfsg-1.3~deb12u6",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-86144",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-9538",
+      "PkgName": "perl",
+      "InstalledVersion": "5.36.0-7+deb12u4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-9538",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-9538",
+      "PkgName": "perl-modules-5.36",
+      "InstalledVersion": "5.36.0-7+deb12u4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-9538",
+      "contexts": [
+        {
+          "target": "postgres",
+          "image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+        },
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-23949",
+      "PkgName": "jaraco.context",
+      "InstalledVersion": "5.3.0",
+      "FixedVersion": "6.1.0",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-23949",
+      "contexts": [
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-24049",
+      "PkgName": "wheel",
+      "InstalledVersion": "0.45.1",
+      "FixedVersion": "0.46.2",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24049",
+      "contexts": [
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "backend-wheels",
+          "image_id": "7aa15822a0c2a04e0788b4eefb64137fb96f717a8e412a0bafaaba01fcf6987a"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        },
+        {
+          "target": "airflow-wheels",
+          "image_id": "89adb619ad68f0f9ebce6acc4d4c1329c60e0dc597f67af6d14612b3e4dcfe56"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-12064",
+      "PkgName": "curl",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-12064",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6276",
+      "PkgName": "curl",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6276",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8286",
+      "PkgName": "curl",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8286",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8458",
+      "PkgName": "curl",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8458",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8927",
+      "PkgName": "curl",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8927",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "krb5-user",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2023-2953",
+      "PkgName": "ldap-utils",
+      "InstalledVersion": "2.5.13+dfsg-5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-2953",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-12064",
+      "PkgName": "libcurl3-gnutls",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-12064",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6276",
+      "PkgName": "libcurl3-gnutls",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6276",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8286",
+      "PkgName": "libcurl3-gnutls",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8286",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8458",
+      "PkgName": "libcurl3-gnutls",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8458",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8927",
+      "PkgName": "libcurl3-gnutls",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8927",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-12064",
+      "PkgName": "libcurl4",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-12064",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-6276",
+      "PkgName": "libcurl4",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-6276",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8286",
+      "PkgName": "libcurl4",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8286",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8458",
+      "PkgName": "libcurl4",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8458",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-8927",
+      "PkgName": "libcurl4",
+      "InstalledVersion": "7.88.1-10+deb12u15",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-8927",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-113351",
+      "PkgName": "libexpat1",
+      "InstalledVersion": "2.5.0-1+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-113351",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-115506",
+      "PkgName": "libexpat1",
+      "InstalledVersion": "2.5.0-1+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-115506",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-117610",
+      "PkgName": "libexpat1",
+      "InstalledVersion": "2.5.0-1+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-117610",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118370",
+      "PkgName": "libexpat1",
+      "InstalledVersion": "2.5.0-1+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118370",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libgssrpc4",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkadm5clnt-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkadm5srv-mit12",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-107364",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-107364",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112315",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112315",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112316",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112316",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112317",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112317",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112318",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112318",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112319",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112319",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112320",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112320",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112321",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112321",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112322",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112322",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-112323",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-112323",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-118380",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-118380",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119079",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119079",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71199",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71199",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-71200",
+      "PkgName": "libkdb5-10",
+      "InstalledVersion": "1.20.1-2+deb12u5",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-71200",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-69720",
+      "PkgName": "libncurses6",
+      "InstalledVersion": "6.4-4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-60002",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "CRITICAL",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-60002",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-106553",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-106553",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-106555",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-106555",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-106583",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-106583",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-59999",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-59999",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-60000",
+      "PkgName": "openssh-client",
+      "InstalledVersion": "1:9.2p1-2+deb12u10",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-60000",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119741",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119741",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53783",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53783",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53784",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53784",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53785",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53785",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53789",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53789",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53790",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53790",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53791",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53791",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53793",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53793",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53795",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53795",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53802",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53802",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-53803",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-53803",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70452",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70452",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70455",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70455",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70456",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70456",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70457",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70457",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70458",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70458",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70460",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70460",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70461",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70461",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70463",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70463",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-70464",
+      "PkgName": "rsync",
+      "InstalledVersion": "3.2.7-1+deb12u6",
+      "FixedVersion": "3.5.0+ds1-0+deb12u1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-70464",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-7458",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "CRITICAL",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-7458",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-11822",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11822",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-11824",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-11824",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119373",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119373",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119374",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119374",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-119379",
+      "PkgName": "sqlite3",
+      "InstalledVersion": "3.40.1-2+deb12u2",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-119379",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-96512",
+      "PkgName": "sudo",
+      "InstalledVersion": "1.9.13p3-1+deb12u4",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-96512",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-58471",
+      "PkgName": "wget",
+      "InstalledVersion": "1.21.3-1+deb12u1",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-58471",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2026-58472",
+      "PkgName": "wget",
+      "InstalledVersion": "1.21.3-1+deb12u1",
+      "FixedVersion": null,
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-58472",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    },
+    {
+      "VulnerabilityID": "CVE-2025-47273",
+      "PkgName": "setuptools",
+      "InstalledVersion": "70.3.0",
+      "FixedVersion": "78.1.1",
+      "Severity": "HIGH",
+      "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-47273",
+      "contexts": [
+        {
+          "target": "airflow",
+          "image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa"
+        }
+      ]
+    }
+  ],
+  "T014_FULL": "BLOCKED",
+  "unknown_exceptions_added": false
+}

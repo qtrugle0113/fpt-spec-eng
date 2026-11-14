@@ -1,0 +1,58 @@
+{
+  "status": "PREFLIGHT_PASS",
+  "images": {
+    "backend": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+    "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+    "airflow": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+    "tests": "e537a37a02d13eb180cc5215067a9bb753cca5cf407ca4e612362eae79cd003c",
+    "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+    "workbook_deps": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104"
+  },
+  "planned_groups": [
+    "e2e"
+  ],
+  "selectors": [],
+  "existing_services_modified": false,
+  "local_policy_review": "docs\\testing\\resume-20261111\\portable-ca72cf6f\\local-policy-review.json",
+  "preflight": [
+    {
+      "name": "airflow",
+      "expected_image_id": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+      "status": "PASS",
+      "actual_image_id": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723"
+    },
+    {
+      "name": "backend",
+      "expected_image_id": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+      "status": "PASS",
+      "actual_image_id": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104"
+    },
+    {
+      "name": "e2e",
+      "expected_image_id": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+      "status": "PASS",
+      "actual_image_id": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9"
+    },
+    {
+      "name": "frontend",
+      "expected_image_id": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+      "status": "PASS",
+      "actual_image_id": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0"
+    },
+    {
+      "name": "mysql",
+      "expected_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "status": "PASS",
+      "actual_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+    },
+    {
+      "name": "postgres",
+      "expected_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "status": "PASS",
+      "actual_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199"
+    }
+  ],
+  "tests_executed": false
+}

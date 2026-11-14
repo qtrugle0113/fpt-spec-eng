@@ -1,0 +1,9 @@
+{
+  "status": "CLEANUP_FAILED",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    125,
+    0
+  ]
+}

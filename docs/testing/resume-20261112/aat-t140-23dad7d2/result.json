@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "project": "aat-t140-23dad7d2",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ],
+  "phase_only_diagnostic": null,
+  "startup_seconds": 352.3,
+  "cleanup_exit_code": 0
+}

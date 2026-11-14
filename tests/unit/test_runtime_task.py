@@ -36,11 +36,12 @@ class RuntimeTaskTests(unittest.TestCase):
         identity=str(uuid4());pid=12345
         with tempfile.TemporaryDirectory() as root:
             directory=Path(root)/'.aat-runtime-journals'
-            directory.mkdir()
+            directory.mkdir(mode=0o700)
             journal=directory/(identity+'.json')
             journal.write_text(json.dumps({
                 'binding_id':identity,'owner':str(pid)+':'+('a'*32),'pid':pid,
                 'attempts':[],'terminal':False}))
+            journal.chmod(0o600)
             with patch('aat_etl.runtime_task._runtime_child_active',return_value=True), \
                     patch('aat_etl.runtime_lifecycle.finish_attempt') as finish:
                 with self.assertRaises(RuntimeUnavailable):
@@ -59,16 +60,36 @@ class RuntimeTaskTests(unittest.TestCase):
         identity=str(uuid4());pid=12345
         with tempfile.TemporaryDirectory() as root:
             directory=Path(root)/'.aat-runtime-journals'
-            directory.mkdir()
+            directory.mkdir(mode=0o700)
             journal=directory/(identity+'.json')
             journal.write_text(json.dumps({
                 'binding_id':identity,'owner':str(pid)+':'+('a'*32),'pid':pid,
                 'attempts':[],'exit_code':21,'terminal':False}))
+            journal.chmod(0o600)
             with patch('aat_etl.runtime_task._runtime_child_active',return_value=False), \
                     patch('aat_etl.runtime_lifecycle.finish_attempt',return_value='TERMINAL_VERIFIED') as finish:
                 self.assertEqual(_recover_interrupted_attempt(identity,Path(root),journal),'TERMINAL_VERIFIED')
                 self.assertTrue(finish.call_args.kwargs['terminal'])
                 self.assertFalse(journal.exists())
+
+    def test_publicly_readable_interrupted_journal_is_rejected_before_recovery(self):
+        if os.name!='posix':self.skipTest('POSIX journal permissions require Linux')
+        from aat_etl.runtime_task import _recover_interrupted_attempt,RuntimeTaskFailed
+        identity=str(uuid4());pid=12345
+        with tempfile.TemporaryDirectory() as root:
+            directory=Path(root)/'.aat-runtime-journals'
+            directory.mkdir(mode=0o700)
+            journal=directory/(identity+'.json')
+            journal.write_text(json.dumps({
+                'binding_id':identity,'owner':str(pid)+':'+('a'*32),'pid':pid,
+                'attempts':[],'terminal':False}))
+            journal.chmod(0o644)
+            with patch('aat_etl.runtime_task._runtime_child_active') as active, \
+                    patch('aat_etl.runtime_lifecycle.finish_attempt') as finish:
+                with self.assertRaisesRegex(RuntimeTaskFailed,'permissions are unsafe'):
+                    _recover_interrupted_attempt(identity,Path(root),journal)
+                active.assert_not_called();finish.assert_not_called()
+                self.assertTrue(journal.exists())
 
     def test_runtime_child_records_only_its_exit_classification(self):
         if sys.platform!='linux':self.skipTest('Atomic journal fsync requires Linux')

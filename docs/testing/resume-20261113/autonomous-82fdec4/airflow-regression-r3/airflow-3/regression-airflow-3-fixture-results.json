@@ -1,0 +1,37 @@
+{
+  "postgres_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+  "mysql_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+  "runner_image_id": "fd309328c4f722381d98492b277e7a51517370b3af9569b0ffb944ec1159f1fa",
+  "runner_memory_limit_bytes": 1073741824,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "ac0f5a91b9f8c79effad46c7f4873ce50d44361a2c08aa8fe0741785e80a9a3d",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "pytest_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "new anonymous disk volumes",
+  "task": "REGRESSION-AIRFLOW-3",
+  "test_paths": [
+    "tests.airflow.test_concurrent_runs"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261113\\autonomous-82fdec4\\airflow-regression-r3\\airflow-3\\regression-airflow-3-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261113\\autonomous-82fdec4\\airflow-regression-r3\\airflow-3\\regression-airflow-3-fixture-sources.json",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "status": "PASS"
+}

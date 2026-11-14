@@ -146,7 +146,9 @@ try:
         args.postgres_image)
     created.append(pg)
     for _ in range(60):
-        p = subprocess.run(['podman', 'exec', pg, 'pg_isready', '-U', 'postgres', '-d', 'app_metadata'], capture_output=True)
+        # The entrypoint's temporary initialization server accepts Unix sockets
+        # before init finishes. TCP is enabled only on the final server.
+        p = subprocess.run(['podman', 'exec', pg, 'pg_isready', '-h', '127.0.0.1', '-U', 'postgres', '-d', 'app_metadata'], capture_output=True)
         if p.returncode == 0:
             break
         time.sleep(1)
@@ -159,7 +161,7 @@ try:
     GRANT CONNECT ON DATABASE airflow_metadata TO aat_airflow;"""
     sql += ' CREATE ROLE aat_etl LOGIN;'
     p = subprocess.run(['podman', 'exec', '-i', pg, 'psql', '-U', 'postgres', '-d', 'app_metadata', '-v', 'ON_ERROR_STOP=1'], input=sql, text=True, capture_output=True)
-    assert p.returncode == 0, 'Fixture role isolation setup failed'
+    assert p.returncode == 0, 'Fixture role isolation setup failed: ' + (p.stdout + p.stderr).replace(password, '[REDACTED]')
     if args.mysql_image:
         run('run','-d','--name',mysql,'--network',network,'--network-alias','mysql','--memory','1g',
             *(['--volume','/var/lib/mysql'] if args.disk_databases else ['--tmpfs','/var/lib/mysql:rw,size=768m']),'-e','MYSQL_ROOT_PASSWORD='+password,

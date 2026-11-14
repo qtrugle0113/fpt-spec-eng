@@ -1,0 +1,26 @@
+{
+  "reviewer_checklist_hashes": {
+    "specs/001-airflow-automation-tool/checklists/requirements.md": "90af3243fe9be08cbc76abee888f5af811203c7e619718ccb9933e51b3773a2c",
+    "specs/001-airflow-automation-tool/checklists/spec-quality.md": "3e0e4395e68b14083d44a521fa59501f0e91940322b58185ea05acabfc56bb23"
+  },
+  "readiness": {
+    "status": "READY",
+    "dependencies": {
+      "application_database": "HEALTHY",
+      "migration_head": "HEALTHY",
+      "encryption_keys": "HEALTHY",
+      "worker": "HEALTHY",
+      "airflow": "HEALTHY"
+    }
+  },
+  "task_count": 152,
+  "checked_count": 150,
+  "open_tasks": [
+    "T014",
+    "T152"
+  ],
+  "diff_check_exit_code": 0,
+  "diff_check_output": "",
+  "full_acceptance": "BLOCKED",
+  "remote_ci": "NOT_RUN"
+}

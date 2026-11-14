@@ -1,0 +1,75 @@
+{
+  "phase": "portable",
+  "run_id": "f3809821",
+  "source_context": ".tools\\portable-source-f3809821",
+  "captured_at": "2026-11-14T00:52:31.530714+00:00",
+  "images": [
+    {
+      "name": "backend-wheels",
+      "ref": "localhost/aat-portable-backend-wheels-f3809821:0.1.0",
+      "image_id": "47e8a71d39976584f3fa06fa046aa344c5e8bbf205eb3b2b4b724c1a48fe5017",
+      "dockerfile": "backend/Dockerfile",
+      "target": "wheels",
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "backend/Dockerfile",
+        "-t",
+        "localhost/aat-portable-backend-wheels-f3809821:0.1.0",
+        "--target",
+        "wheels",
+        "."
+      ]
+    },
+    {
+      "name": "backend",
+      "ref": "localhost/aat-portable-backend-f3809821:0.1.0",
+      "image_id": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+      "dockerfile": "backend/Dockerfile",
+      "target": null,
+      "build": "PASS",
+      "command": [
+        "podman",
+        "build",
+        "--memory",
+        "1g",
+        "-f",
+        "backend/Dockerfile",
+        "-t",
+        "localhost/aat-portable-backend-f3809821:0.1.0",
+        "."
+      ]
+    }
+  ],
+  "source_revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0",
+  "source_dirty": true,
+  "environment": {
+    "Client": {
+      "APIVersion": "5.8.3",
+      "Version": "5.8.3",
+      "GoVersion": "go1.26.4",
+      "GitCommit": "93dbfd0d86ee57f8f91801f61ce57dd880a4725f",
+      "BuiltTime": "Sat Jun 13 02:52:07 2026",
+      "Built": 1781286727,
+      "OsArch": "windows/amd64",
+      "Os": "windows"
+    },
+    "Server": {
+      "APIVersion": "5.8.9",
+      "Version": "5.8.9",
+      "GoVersion": "go1.26.9-X:nodwarf5",
+      "GitCommit": "40030f4073bd4e1bf4f2fd9df2f6952b4d9d350a",
+      "BuiltTime": "Mon Oct 12 09:00:00 2026",
+      "Built": 1791763200,
+      "OsArch": "linux/amd64",
+      "Os": "linux"
+    }
+  },
+  "compose_version": "Docker Compose version v5.6.0",
+  "existing_services_modified": false,
+  "acceptance": "PENDING_SCAN_POLICY_CHECK"
+}

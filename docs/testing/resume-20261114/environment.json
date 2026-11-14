@@ -1,0 +1,665 @@
+{
+  "captured_at": "2026-11-14T11:23:46.579898+09:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "host_python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0",
+  "podman_version": {
+    "command": [
+      "podman",
+      "version",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"Client\":{\"APIVersion\":\"5.8.3\",\"Version\":\"5.8.3\",\"GoVersion\":\"go1.26.4\",\"GitCommit\":\"93dbfd0d86ee57f8f91801f61ce57dd880a4725f\",\"BuiltTime\":\"Sat Jun 13 02:52:07 2026\",\"Built\":1781286727,\"OsArch\":\"windows/amd64\",\"Os\":\"windows\"},\"Server\":{\"APIVersion\":\"5.8.9\",\"Version\":\"5.8.9\",\"GoVersion\":\"go1.26.9-X:nodwarf5\",\"GitCommit\":\"40030f4073bd4e1bf4f2fd9df2f6952b4d9d350a\",\"BuiltTime\":\"Mon Oct 12 09:00:00 2026\",\"Built\":1791763200,\"OsArch\":\"linux/amd64\",\"Os\":\"linux\"}}",
+    "stderr": ""
+  },
+  "compose_version": {
+    "command": [
+      "podman",
+      "compose",
+      "version"
+    ],
+    "exit_code": 0,
+    "stdout": "Docker Compose version v5.6.0",
+    "stderr": "\u001b[4m>>>> Executing external compose provider \"C:\\\\Users\\\\tieut\\\\Desktop\\\\workspace\\\\fpt-spec-eng\\\\.tools\\\\docker-compose-5.6.0.exe\". Please see podman-compose(1) for how to disable this message. <<<<\n\n\u001b[0m"
+  },
+  "wsl_version": {
+    "command": [
+      "wsl",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "WSL version: 3.0.5.0\r\nKernel version: 6.18.58.1-1\r\nWSLg version: 1.0.79\r\nMSRDC version: 1.2.7391\r\nDirect3D version: 1.611.1-81528511\r\nDXCore version: 10.0.26100.1-240331-1435.ge-release\r\nWindows version: 10.0.26200.9974",
+    "stderr": ""
+  },
+  "compose_provider_sha256": "8aeaa0055e660e12cf07cd70680dc8333957fe6718528b91ec3da084eab62483",
+  "demo_project": "aat-portable-demo-516bea17",
+  "container_observations": [
+    {
+      "service": "postgres",
+      "container": "aat-portable-demo-516bea17-postgres-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-postgres-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-postgres-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824||false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-postgres-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-postgres-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "0",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-postgres-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t999\t999\t999\t999",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-postgres-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"5432/tcp\":null}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "mysql",
+      "container": "aat-portable-demo-516bea17-mysql-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-mysql-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-mysql-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824||false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-mysql-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-mysql-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "0",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-mysql-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t999\t999\t999\t999",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-mysql-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"3306/tcp\":null,\"33060/tcp\":null}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "backend-worker",
+      "container": "aat-portable-demo-516bea17-backend-worker-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "536870912|50000:50000|false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "536870912",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "50000",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t50000\t50000\t50000\t50000",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-worker-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"8000/tcp\":null}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "airflow-apiserver",
+      "container": "aat-portable-demo-516bea17-airflow-apiserver-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824|airflow|false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "50000",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t50000\t50000\t50000\t50000",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-apiserver-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"8080/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"28080\"}]}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "airflow-scheduler",
+      "container": "aat-portable-demo-516bea17-airflow-scheduler-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "2147483648|airflow|false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "2147483648",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "50000",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t50000\t50000\t50000\t50000",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-scheduler-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"8080/tcp\":null}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "airflow-dag-processor",
+      "container": "aat-portable-demo-516bea17-airflow-dag-processor-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824|airflow|false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "1073741824",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "50000",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t50000\t50000\t50000\t50000",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-airflow-dag-processor-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"8080/tcp\":null}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "backend",
+      "container": "aat-portable-demo-516bea17-backend-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "536870912|50000:50000|false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "536870912",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "50000",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-backend-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t50000\t50000\t50000\t50000",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-backend-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"8000/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"28000\"}]}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    },
+    {
+      "service": "frontend",
+      "container": "aat-portable-demo-516bea17-frontend-1",
+      "image_id": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-frontend-1",
+          "--format",
+          "{{.Image}}"
+        ],
+        "exit_code": 0,
+        "stdout": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "stderr": ""
+      },
+      "configured_memory_user_privileged": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-frontend-1",
+          "--format",
+          "{{.HostConfig.Memory}}|{{.Config.User}}|{{.HostConfig.Privileged}}"
+        ],
+        "exit_code": 0,
+        "stdout": "134217728||false",
+        "stderr": ""
+      },
+      "cgroup_memory_max": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-frontend-1",
+          "cat",
+          "/sys/fs/cgroup/memory.max"
+        ],
+        "exit_code": 0,
+        "stdout": "134217728",
+        "stderr": ""
+      },
+      "exec_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-frontend-1",
+          "id",
+          "-u"
+        ],
+        "exit_code": 0,
+        "stdout": "0",
+        "stderr": ""
+      },
+      "pid1_uid": {
+        "command": [
+          "podman",
+          "exec",
+          "aat-portable-demo-516bea17-frontend-1",
+          "sh",
+          "-c",
+          "sed -n '/^Uid:/p' /proc/1/status"
+        ],
+        "exit_code": 0,
+        "stdout": "Uid:\t0\t0\t0\t0",
+        "stderr": ""
+      },
+      "published_ports": {
+        "command": [
+          "podman",
+          "inspect",
+          "aat-portable-demo-516bea17-frontend-1",
+          "--format",
+          "{{json .NetworkSettings.Ports}}"
+        ],
+        "exit_code": 0,
+        "stdout": "{\"80/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"23000\"}]}",
+        "stderr": ""
+      },
+      "cgroup_memory_matches_configuration": true
+    }
+  ],
+  "scope": "Chỉ đọc version, UID, cấu hình tài nguyên và cgroup thực; không đọc environment hoặc secret của container."
+}

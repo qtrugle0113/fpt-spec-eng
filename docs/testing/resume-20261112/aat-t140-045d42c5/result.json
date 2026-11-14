@@ -1,0 +1,392 @@
+{
+  "status": "PASS",
+  "project": "aat-t140-045d42c5",
+  "existing_services_modified": false,
+  "canonical_startup": [
+    "podman",
+    "compose",
+    "up",
+    "--build",
+    "-d"
+  ],
+  "phase_only_diagnostic": null,
+  "canonical_policy_manifest": "docs\\testing\\resume-20261112\\aat-t140-045d42c5\\canonical-candidate\\candidate-images.json",
+  "startup_seconds": 141.031,
+  "phase_restart_runs": {
+    "EXTRACTION": {
+      "phase": "EXTRACTION",
+      "run": "manual__aat_be37557e-02de-432b-a023-c6614241c541",
+      "dag": "aat_full_desktop_1794620800403",
+      "target_snapshot_scope": "recovered_writer",
+      "binding_id": "0711fbd9-c00e-4d9f-ae6e-b382918d496c",
+      "owner_before": "131:b4c174717af24216ba7832ad70bb0453",
+      "owner_after": "195:57e3f9d4f294494e8be6566add052cd5",
+      "recovery_state_before": "EXTRACTING",
+      "dataset_state_before": "INCOMPLETE",
+      "recovery_state_after": "WRITING",
+      "dataset_state_after": "COMPLETE",
+      "dataset_generations_after": [
+        {
+          "id": "475c089a-4045-4857-888a-79d3b2258959",
+          "generation": 1,
+          "state": "EXPIRED",
+          "manifest_sha256": null
+        },
+        {
+          "id": "027ab10c-a18c-46dd-b47e-679ab381ae46",
+          "generation": 2,
+          "state": "COMPLETE",
+          "manifest_sha256": "d0792e658d80a98f3508d09b0a56c8ec441105061648745a93fa849f49312b43"
+        }
+      ],
+      "protected_artifacts_after": 0,
+      "commit_uncertain_after_restart": true,
+      "blocked_operations_before": [],
+      "blocked_operations_after": [],
+      "target_before": [],
+      "target_after": {
+        "rows": 32000,
+        "sha256": "1626ab42b241103bd3f9a782f2ff8f0fca3338b9a3bd0e29fe3cf6103ebc9f74",
+        "first": [
+          1,
+          "Nguy\u1ec5n, An",
+          "12345.6789",
+          "2026-01-01T12:30:00.123456"
+        ],
+        "last": [
+          32000,
+          "\\N",
+          null,
+          "2026-01-04T00:00:00"
+        ],
+        "matches_expected": false,
+        "unchanged_from_before_restart": false,
+        "matches_committed_prefix": true,
+        "batch_size": 1000,
+        "expected_sha256": "9ec48ae6b75ec3aaa708701c9aa641e30206d9ce46ac402e310884b47c713b47"
+      },
+      "scheduler_started_at_before": "2026-11-14 10:44:16.389937179 +0900 KST",
+      "scheduler_started_at_after": "2026-11-14 10:47:22.021394587 +0900 KST",
+      "scheduler_health_after": "healthy",
+      "airflow_task_before": {
+        "state": "running",
+        "try_number": 1,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 130,
+        "start_date": "2026-11-14T01:47:11.798775Z",
+        "end_date": null
+      },
+      "airflow_task_after": {
+        "state": "running",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T01:52:31.990827Z",
+        "end_date": null
+      },
+      "staging_manifest_after": {
+        "exists": true,
+        "sha256": "d0792e658d80a98f3508d09b0a56c8ec441105061648745a93fa849f49312b43",
+        "matches": true
+      },
+      "reservations_before": [
+        {
+          "id": "d5e28b65-f79e-40e8-bdf6-38da2740bb7c",
+          "state": "ACTIVE",
+          "reserved_bytes": 10737418240
+        }
+      ],
+      "reservations_after": [
+        {
+          "id": "d5e28b65-f79e-40e8-bdf6-38da2740bb7c",
+          "state": "RELEASED",
+          "reserved_bytes": 10737418240
+        },
+        {
+          "id": "77973cda-fe3a-4911-bca1-72c2deb7d282",
+          "state": "PROTECTED",
+          "reserved_bytes": 4330045
+        }
+      ],
+      "final_binding_state": "COMMIT_VERIFIED",
+      "final_recovery_state": "COMMIT_VERIFIED",
+      "final_commit_uncertain": false,
+      "final_dataset_state": "COMPLETE",
+      "final_loaded_rows": 80000,
+      "final_phase": "COMPLETE",
+      "final_airflow_task": {
+        "state": "success",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T01:52:31.990827Z",
+        "end_date": "2026-11-14T01:53:08.969428Z"
+      },
+      "final_target_rows": 80000,
+      "final_target_sha256": "9ec48ae6b75ec3aaa708701c9aa641e30206d9ce46ac402e310884b47c713b47"
+    },
+    "COMMIT": {
+      "phase": "COMMIT",
+      "run": "manual__aat_f65fb5b3-3548-460b-8b62-5bc99c42c805",
+      "dag": "aat_full_desktop_1794621229851",
+      "target_snapshot_scope": "after_scheduler_restart_before_fixture_lock_release",
+      "binding_id": "f686b309-64f7-471b-8527-dc48a6bbf468",
+      "owner_before": "249:029dab6b329a4a15b0e0631ac4c2f20f",
+      "owner_after": "196:004a884c5ef8404399bbe9bafef97454",
+      "recovery_state_before": "WRITING",
+      "dataset_state_before": "COMPLETE",
+      "recovery_state_after": "WRITING",
+      "dataset_state_after": "COMPLETE",
+      "dataset_generations_after": [
+        {
+          "id": "641acf94-aa5f-41e9-b3b8-bcc8e5a4d924",
+          "generation": 1,
+          "state": "COMPLETE",
+          "manifest_sha256": "35714a689609afc089abe2a17305529e3a8a4f56080359284b53b9786ad493b0"
+        }
+      ],
+      "protected_artifacts_after": 0,
+      "commit_uncertain_after_restart": true,
+      "blocked_operations_before": [
+        "UPSERT_INSERT"
+      ],
+      "blocked_operations_after": [],
+      "target_before": [
+        [
+          1,
+          "Nguy\u1ec5n, An",
+          "12345.6789",
+          "2026-01-01T12:30:00.123456"
+        ],
+        [
+          2,
+          "old protected row",
+          "0.0000",
+          null
+        ]
+      ],
+      "target_after": [
+        [
+          1,
+          "Nguy\u1ec5n, An",
+          "12345.6789",
+          "2026-01-01T12:30:00.123456"
+        ],
+        [
+          2,
+          "old protected row",
+          "0.0000",
+          null
+        ]
+      ],
+      "scheduler_started_at_before": "2026-11-14 10:47:22.021394587 +0900 KST",
+      "scheduler_started_at_after": "2026-11-14 10:54:23.38477336 +0900 KST",
+      "scheduler_health_after": "healthy",
+      "airflow_task_before": {
+        "state": "running",
+        "try_number": 1,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 248,
+        "start_date": "2026-11-14T01:54:13.624638Z",
+        "end_date": null
+      },
+      "airflow_task_after": {
+        "state": "success",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T01:59:33.616881Z",
+        "end_date": "2026-11-14T01:59:35.598252Z"
+      },
+      "staging_manifest_after": {
+        "exists": true,
+        "sha256": "35714a689609afc089abe2a17305529e3a8a4f56080359284b53b9786ad493b0",
+        "matches": true
+      },
+      "reservations_before": [
+        {
+          "id": "77d6930e-a34c-4b15-8d15-e1777d887cee",
+          "state": "PROTECTED",
+          "reserved_bytes": 1340
+        }
+      ],
+      "reservations_after": [
+        {
+          "id": "77d6930e-a34c-4b15-8d15-e1777d887cee",
+          "state": "PROTECTED",
+          "reserved_bytes": 1340
+        }
+      ],
+      "final_binding_state": "COMMIT_VERIFIED",
+      "final_recovery_state": "COMMIT_VERIFIED",
+      "final_commit_uncertain": false,
+      "final_dataset_state": "COMPLETE",
+      "final_loaded_rows": 4,
+      "final_phase": "COMPLETE",
+      "final_airflow_task": {
+        "state": "success",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T01:59:33.616881Z",
+        "end_date": "2026-11-14T01:59:35.598252Z"
+      },
+      "final_target_rows": 4,
+      "final_target_sha256": "0869c2c1168604cc7fc5e6bac4e8ddeefab9218b43e442cb7ae7851e63f768f6"
+    },
+    "FULL_REFRESH": {
+      "phase": "FULL_REFRESH",
+      "run": "manual__aat_9bf3b693-cb09-4834-bb59-9ede941e324b",
+      "dag": "aat_full_desktop_1794621612203",
+      "target_snapshot_scope": "after_scheduler_restart_before_fixture_lock_release",
+      "binding_id": "8d7b0f17-9213-464f-9118-b725c4fb9ce1",
+      "owner_before": "239:44a3d392e7564cb5b41bc22ac89923f5",
+      "owner_after": "196:fea3252a4c304aa7bf6849fd93cea951",
+      "recovery_state_before": "WRITING",
+      "dataset_state_before": "COMPLETE",
+      "recovery_state_after": "COMMIT_VERIFIED",
+      "dataset_state_after": "COMPLETE",
+      "dataset_generations_after": [
+        {
+          "id": "0cb3db75-27bd-4e5e-8ade-bc223f00a1ad",
+          "generation": 1,
+          "state": "COMPLETE",
+          "manifest_sha256": "1e0eb3aa90a39161a23eedba9cfd5e4d56b0979f2a254a9ccb832d25728263c7"
+        }
+      ],
+      "protected_artifacts_after": 0,
+      "commit_uncertain_after_restart": false,
+      "blocked_operations_before": [
+        "FULL_REFRESH_DELETE"
+      ],
+      "blocked_operations_after": [],
+      "target_before": [
+        [
+          1,
+          "old protected row",
+          "0.0000",
+          null
+        ]
+      ],
+      "target_after": [
+        [
+          1,
+          "old protected row",
+          "0.0000",
+          null
+        ]
+      ],
+      "scheduler_started_at_before": "2026-11-14 10:54:23.38477336 +0900 KST",
+      "scheduler_started_at_after": "2026-11-14 11:00:49.426968754 +0900 KST",
+      "scheduler_health_after": "healthy",
+      "airflow_task_before": {
+        "state": "running",
+        "try_number": 1,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 238,
+        "start_date": "2026-11-14T02:00:39.080918Z",
+        "end_date": null
+      },
+      "airflow_task_after": {
+        "state": "success",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T02:05:59.017093Z",
+        "end_date": "2026-11-14T02:06:01.020113Z"
+      },
+      "staging_manifest_after": {
+        "exists": true,
+        "sha256": "1e0eb3aa90a39161a23eedba9cfd5e4d56b0979f2a254a9ccb832d25728263c7",
+        "matches": true
+      },
+      "reservations_before": [
+        {
+          "id": "5857250a-5fe5-4522-a838-71c7c1ccf672",
+          "state": "PROTECTED",
+          "reserved_bytes": 1340
+        },
+        {
+          "id": "2c986680-260d-4b5d-8407-c6f4c16c4a22",
+          "state": "PROTECTED",
+          "reserved_bytes": 1769
+        }
+      ],
+      "reservations_after": [
+        {
+          "id": "5857250a-5fe5-4522-a838-71c7c1ccf672",
+          "state": "PROTECTED",
+          "reserved_bytes": 1340
+        },
+        {
+          "id": "2c986680-260d-4b5d-8407-c6f4c16c4a22",
+          "state": "PROTECTED",
+          "reserved_bytes": 1769
+        }
+      ],
+      "final_binding_state": "COMMIT_VERIFIED",
+      "final_recovery_state": "COMMIT_VERIFIED",
+      "final_commit_uncertain": false,
+      "final_dataset_state": "COMPLETE",
+      "final_loaded_rows": 4,
+      "final_phase": "COMPLETE",
+      "final_airflow_task": {
+        "state": "success",
+        "try_number": 2,
+        "max_tries": 2,
+        "hostname": "f3930ecac9d9",
+        "pid": 194,
+        "start_date": "2026-11-14T02:05:59.017093Z",
+        "end_date": "2026-11-14T02:06:01.020113Z"
+      },
+      "final_target_rows": 4,
+      "final_target_sha256": "0869c2c1168604cc7fc5e6bac4e8ddeefab9218b43e442cb7ae7851e63f768f6"
+    }
+  },
+  "missing_secret_init_exit_code": 1,
+  "missing_key_init_exit_code": 1,
+  "missing_keyring_volume_exit_code": 1,
+  "snapshot": {
+    "connections": [
+      [
+        "06150eb4-684e-47dc-ac3b-91107d137370",
+        "full_pg_desktop_1794620800403"
+      ],
+      [
+        "369247b8-b52e-4456-815c-532d40b14d26",
+        "full_pg_desktop_1794621612203"
+      ],
+      [
+        "4240b561-c939-487d-b649-052d1e56a4ef",
+        "full_pg_desktop_1794620704369"
+      ],
+      [
+        "46bba844-c27a-48fa-836e-fc7942e27b45",
+        "pg_etl"
+      ],
+      [
+        "54c90e19-c66f-4c45-9a93-01f4440e8d32",
+        "mysql_etl"
+      ],
+      [
+        "cf99b8dd-7005-4c21-b383-d316bb432d73",
+        "full_pg_mobile_1794620743148"
+      ],
+      [
+        "f2813cbd-1d9b-4475-9bd3-3a222ab19aac",
+        "full_pg_desktop_1794621229851"
+      ]
+    ],
+    "template_sha256": "8bab3c153eae8b7ece9cdf5f454b6136463d02a45a11d1db8e2fcc7ea0f9ee83"
+  },
+  "airflow_unauthenticated_status": 401,
+  "cleanup_exit_code": 0
+}

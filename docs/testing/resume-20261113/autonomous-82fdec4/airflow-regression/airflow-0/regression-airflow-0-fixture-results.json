@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,66 @@
+[1/2] STEP 1/7: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/2] STEP 2/7: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==84.2.1 wheel==0.46.2
+--> Using cache 14e072e91be9db662d53ebf780ff841c3a90f310b2cc46d531a67399cd5a0e3b
+--> 14e072e91be9
+[1/2] STEP 3/7: WORKDIR /build
+--> Using cache 1694e0d85c8d830a51b4c2d1186674a944986ac7c13f2ed31d439865be4b02b6
+--> 1694e0d85c8d
+[1/2] STEP 4/7: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache 77f667dba8874cdf8a03fd65fe759ae4fe313af02a941db18ad5c0b2d6c0f4fb
+--> 77f667dba887
+[1/2] STEP 5/7: COPY etl_engine /build/etl_engine
+--> Using cache 4cd17297ec7e7bde090a34da861a0a8997706cf50f21dced6a76bc370208dc16
+--> 4cd17297ec7e
+[1/2] STEP 6/7: COPY backend /build/backend
+--> Using cache ea3987c627a1e92b56e89753ebf4650edb1b222d1b46a346b2a42cd8244b9f9d
+--> ea3987c627a1
+[1/2] STEP 7/7: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine &&     python -m build --wheel --no-isolation --outdir /wheels backend
+--> Using cache 7730e9135b110904c535feebf327cb4f416082e40a8306428c51ffecfd39ed8d
+--> 7730e9135b11
+[2/2] STEP 1/16: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS runtime
+[2/2] STEP 2/16: ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+--> Using cache 56194f9dd3541237e451df07d1256baf37441e012a2ffb96e2d826dd670caba5
+--> 56194f9dd354
+[2/2] STEP 3/16: COPY backend/requirements.lock /opt/aat/requirements.lock
+--> Using cache 31af44c40c40f233540939effe452065122cc64e8aabfef4bb6d60d20a8d22ea
+--> 31af44c40c40
+[2/2] STEP 4/16: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock
+--> Using cache 1745accccfddab0f650984e79fb76d751de876e8f75e661da24157ff8dc2741a
+--> 1745accccfdd
+[2/2] STEP 5/16: COPY --from=wheels /wheels /wheels
+--> d4f543591747
+[2/2] STEP 6/16: RUN python -m pip install --no-cache-dir --no-deps /wheels/*.whl && python -m pip check &&     groupadd --gid 50000 aat && useradd --uid 50000 --gid 50000 --create-home aat
+Processing /wheels/aat_api-0.1.0-py3-none-any.whl
+Processing /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+Processing /wheels/aat_metadata-0.1.0-py3-none-any.whl
+Installing collected packages: aat-metadata, aat-etl-engine, aat-api
+Successfully installed aat-api-0.1.0 aat-etl-engine-0.1.0 aat-metadata-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+--> de08a68e1ba3
+[2/2] STEP 7/16: COPY docker /opt/aat/docker
+--> a7587688ed0d
+[2/2] STEP 8/16: COPY backend/alembic /opt/aat/backend/alembic
+--> ceb19413c817
+[2/2] STEP 9/16: COPY samples /opt/aat/samples
+--> cf5748f7d063
+[2/2] STEP 10/16: COPY templates /opt/aat/templates
+--> 677585e40107
+[2/2] STEP 11/16: COPY airflow/dags/aat_wrapper_template.py /opt/aat/airflow/dags/aat_wrapper_template.py
+--> bfdc638f16a5
+[2/2] STEP 12/16: COPY specs/001-airflow-automation-tool/contracts/design-validation.json /opt/aat/specs/001-airflow-automation-tool/contracts/design-validation.json
+--> bf036a5052ee
+[2/2] STEP 13/16: WORKDIR /opt/aat
+--> bbc7b1f39c0d
+[2/2] STEP 14/16: USER 50000:50000
+--> 575bfd58afa6
+[2/2] STEP 15/16: EXPOSE 8000
+--> e0be1be961b5
+[2/2] STEP 16/16: CMD ["python", "-m", "uvicorn", "aat_api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+[2/2] COMMIT localhost/aat-portable-backend-336939fd:0.1.0
+--> ce3e993e4a8d
+Successfully tagged localhost/aat-portable-backend-336939fd:0.1.0
+ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f

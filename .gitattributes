@@ -2,6 +2,12 @@
 samples/data/*.csv text eol=lf
 samples/data/*.txt text eol=lf
 *.xlsx -text
+
+# Evidence hashes refer to original bytes, including captured terminal line endings.
+docs/testing/resume-20261111/** -text
+docs/testing/resume-20261112/** -text
+docs/testing/resume-20261113/** -text
+docs/testing/resume-20261114/** -text
 *.sh text eol=lf
 docker/tests/os-packages.lock text eol=lf
 airflow/docker/os-packages.lock text eol=lf

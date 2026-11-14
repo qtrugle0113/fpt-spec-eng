@@ -1,0 +1,137 @@
+[1/3] STEP 1/6: FROM docker.io/library/python:3.12.16-slim-bookworm@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4 AS wheels
+[1/3] STEP 2/6: RUN python -m pip install --no-cache-dir build==1.3.0 setuptools==80.9.0 wheel==0.46.2
+--> Using cache e6987f297912f0f4ce018c2c50c0c74f117cff6f36a77f951b4a2c20326b8f91
+--> e6987f297912
+[1/3] STEP 3/6: WORKDIR /build
+--> Using cache 9f3826ab06535ca44ee86dae96abd87db3ca99edce4bc5f3bce7a25bef085c9f
+--> 9f3826ab0653
+[1/3] STEP 4/6: COPY packages/aat_metadata /build/packages/aat_metadata
+--> Using cache bcc99524825061145087a8089cac36f0075c1d80204f2b7f6d7cd0cc01014a65
+--> bcc995248250
+[1/3] STEP 5/6: COPY etl_engine /build/etl_engine
+--> Using cache a242d7f452700bebfce3f56193d595a91fa4d06276fa0a186e7c05520fa2f375
+--> a242d7f45270
+[1/3] STEP 6/6: RUN python -m build --wheel --no-isolation --outdir /wheels packages/aat_metadata &&     python -m build --wheel --no-isolation --outdir /wheels etl_engine
+--> Using cache 7e04ef2d0623963047ff977c2f16e98512d3153eaa19089722f56da07f8296c0
+--> 7e04ef2d0623
+[2/3] STEP 1/6: FROM docker.io/apache/airflow:slim-3.3.2-python3.12@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f AS security-patched
+[2/3] STEP 2/6: USER root
+--> Using cache 4a4d56854ab69ad546985990dd11a9883e2bca0923009cef8078b2ad049e58f5
+--> 4a4d56854ab6
+[2/3] STEP 3/6: COPY airflow/docker/security/brotli.lock.json /opt/aat/security/brotli.lock.json
+--> Using cache ed5263a329de758aa3d9a3b99beb1767e889f48522acf87c9413bfa78f5769b6
+--> ed5263a329de
+[2/3] STEP 4/6: ADD https://security.debian.org/debian-security/pool/updates/main/b/brotli/libbrotli1_1.0.9-2+deb12u1_amd64.deb /opt/aat/security/libbrotli1.deb
+--> Using cache e025151f6e69b2dba5a85385c33732d88c3487956c0ed363e22c792d5610973a
+--> e025151f6e69
+[2/3] STEP 5/6: COPY airflow/docker/install_security_patch.py /opt/aat/security/install_security_patch.py
+--> Using cache e9f7e96af8ca288d98403646f93217b73f827b508fe039cbdfcabd11e23d3a78
+--> e9f7e96af8ca
+[2/3] STEP 6/6: RUN --network=none python /opt/aat/security/install_security_patch.py
+--> Using cache 6dd510fe0c0e87fea9fe77066083c86e51cf3b5c94abc11bcc5ac9c5ba15a507
+--> 6dd510fe0c0e
+[3/3] STEP 1/24: FROM 6dd510fe0c0e87fea9fe77066083c86e51cf3b5c94abc11bcc5ac9c5ba15a507 AS runtime
+[3/3] STEP 2/24: COPY airflow/docker/os-packages.lock /opt/aat/os-packages.lock
+--> Using cache 15106855cd192944febe12051ec42e47f53d5c61cd1bb78376b8caf838c10e7e
+--> 15106855cd19
+[3/3] STEP 3/24: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+--> Using cache f446e0c1da9df9b8514db7289c85a86811641247fb211507c6166e04f24bbacd
+--> f446e0c1da9d
+[3/3] STEP 4/24: COPY airflow/docker/constraints-3.12.txt airflow/docker/constraints-policy.json airflow/docker/build_constraints.py /opt/aat/
+--> Using cache ebb59fc71abd483bd9a1cf76895abd26146bc9cb9211f5d9475c8f713a18c65e
+--> ebb59fc71abd
+[3/3] STEP 5/24: RUN python /opt/aat/build_constraints.py /opt/aat
+--> Using cache 9aaf539f28e2ebb06982f38f666ba52016e195ed9770b46c2f50fa17c16f2db4
+--> 9aaf539f28e2
+[3/3] STEP 6/24: USER airflow
+--> Using cache 44e075deb5e1c85e31d03f6f3e06de922497fd6e3c2d7bb3e7e3907e9fc466b3
+--> 44e075deb5e1
+[3/3] STEP 7/24: COPY --chown=airflow:root airflow/docker/providers.lock /opt/aat/providers.lock
+--> Using cache 414c14f5809619f98136793aff409b419bd9a1d8b7ee80891d05b4cf7833743b
+--> 414c14f58096
+[3/3] STEP 8/24: COPY --chown=airflow:root airflow/docker/overrides.lock /opt/aat/overrides.lock
+--> Using cache a0a4cfb6fac2546496245e841cb3378523c8720580480a7cb3b39ba9543826b4
+--> a0a4cfb6fac2
+[3/3] STEP 9/24: COPY --chown=airflow:root etl_engine/requirements.lock /opt/aat/requirements.lock
+--> Using cache 57e74191683d164b394419ddf9ea6d098b1ef309db28264786df2a7bc27a5ef4
+--> 57e74191683d
+[3/3] STEP 10/24: COPY --from=wheels --chown=airflow:root /wheels/aat_metadata-0.1.0-py3-none-any.whl /wheels/aat_metadata-0.1.0-py3-none-any.whl
+--> Using cache 6a3fe33f76bde1e2012dc518d5f20832d3410dacca02394ee0fe845f2be2fd0a
+--> 6a3fe33f76bd
+[3/3] STEP 11/24: COPY --from=wheels --chown=airflow:root /wheels/aat_etl_engine-0.1.0-py3-none-any.whl /wheels/aat_etl_engine-0.1.0-py3-none-any.whl
+--> Using cache 7c6dee59768f6665cb6c16bf69a4a31da6f105468bd9122951e3476bb1a01132
+--> 7c6dee59768f
+[3/3] STEP 12/24: RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/overrides.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/providers.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-cache-dir --require-hashes -r /opt/aat/requirements.lock -c /opt/aat/constraints-effective-3.12.txt &&     python -m pip install --no-deps /wheels/*.whl && python -m pip check &&     python -c "import airflow, airflow.sdk, aat_metadata, aat_etl; assert airflow.__version__ == '3.3.2'"
+--> Using cache dc581b4ec94b83722bb44dee28124a19b4f50d66c5926650c7c476a3b559e8e7
+--> dc581b4ec94b
+[3/3] STEP 13/24: COPY --chown=airflow:root airflow/docker/entrypoint.sh /opt/aat/entrypoint.sh
+--> Using cache 51566496e93b657c801538ab3e933ab89551cce29d357b028588e6231884d3d4
+--> 51566496e93b
+[3/3] STEP 14/24: COPY --chown=airflow:root airflow/docker/initialize.sh /opt/aat/initialize.sh
+--> Using cache c8209a2ef69c4ab683923b27a33e973dc2fb1d3bf0225fb918711f532c62e7df
+--> c8209a2ef69c
+[3/3] STEP 15/24: COPY --chown=airflow:root airflow/docker/airflow.cfg /opt/airflow/airflow.cfg
+--> Using cache 4dec4fa1f92b50dc94f6f4354f539be2fbd9b2ebdfa69fb326581c4b757a5726
+--> 4dec4fa1f92b
+[3/3] STEP 16/24: COPY --chown=airflow:root airflow/docker/health.sh /opt/aat/health.sh
+--> Using cache 6ce6bd298a1becc0a209918ae83f3c29a507bab2bc77081d7c1e8e4330034a1a
+--> 6ce6bd298a1b
+[3/3] STEP 17/24: COPY --chown=airflow:root docker/bootstrap/health.py /opt/aat/health.py
+--> Using cache bf98ac7722b77a27f60e7a2a92e417501dd2e24381c64cf17cceb2e693492a59
+--> bf98ac7722b7
+[3/3] STEP 18/24: ENTRYPOINT ["/usr/bin/dumb-init", "--", "/bin/bash", "/opt/aat/entrypoint.sh"]
+--> Using cache e68f4a71c3ccb58364eaeca55fc63bd0a5cb603aabea897125e02c28d44eace5
+--> e68f4a71c3cc
+[3/3] STEP 19/24: USER root
+--> Using cache b3f4a8f4d05aa498a6c57f69cee30415267122a3e35c60c0f2cf688204a51fb4
+--> b3f4a8f4d05a
+[3/3] STEP 20/24: RUN apt-get purge -y docker-ce-cli git git-man rsync &&     test ! -e /usr/bin/docker && test ! -e /usr/bin/git && test ! -e /usr/bin/rsync &&     ! dpkg-query -W -f='${Status}' git git-man 2>/dev/null | grep -q 'install ok installed'
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libcurl3-gnutls liberror-perl libpopt0
+Use 'apt autoremove' to remove them.
+The following packages will be REMOVED:
+  docker-ce-cli* git* git-man* rsync*
+0 upgraded, 0 newly installed, 4 to remove and 0 not upgraded.
+After this operation, 96.5 MB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12572 files and directories currently installed.)
+Removing docker-ce-cli (5:29.8.1-1~debian.12~bookworm) ...
+Removing git (1:2.39.5-0+deb12u3) ...
+Removing git-man (1:2.39.5-0+deb12u3) ...
+Removing rsync (3.2.7-1+deb12u6) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of stop.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 11262 files and directories currently installed.)
+Purging configuration files for git (1:2.39.5-0+deb12u3) ...
+Purging configuration files for rsync (3.2.7-1+deb12u6) ...
+--> 5e8c6c6df452
+[3/3] STEP 21/24: USER airflow
+--> c9b47c510c07
+[3/3] STEP 22/24: RUN python -m pip uninstall -y uv && rm -rf /home/airflow/.local/share/uv/tools/prek && rm -f /home/airflow/.local/bin/prek && python -m pip check
+Found existing installation: uv 0.12.10
+Uninstalling uv-0.12.10:
+  Successfully uninstalled uv-0.12.10
+No broken requirements found.
+--> de05ecbc579a
+[3/3] STEP 23/24: COPY --chown=airflow:root airflow/docker/tooling.lock /opt/aat/tooling.lock
+--> f3236b569bac
+[3/3] STEP 24/24: RUN python -m pip install --no-cache-dir --require-hashes --no-deps -r /opt/aat/tooling.lock && python -m pip check
+Collecting pip==26.3 (from -r /opt/aat/tooling.lock (line 1))
+  Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 11.8 MB/s  0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.2.1
+    Uninstalling pip-26.2.1:
+      Successfully uninstalled pip-26.2.1
+Successfully installed pip-26.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+No broken requirements found.
+[3/3] COMMIT localhost/aat-portable-airflow-955b68bb:0.1.0
+--> 9193629b87ee
+Successfully tagged localhost/aat-portable-airflow-955b68bb:0.1.0
+9193629b87eedbd643974255244ad0fc0eaa3670c7c8cce3a57faa7d2be0581a

@@ -1,0 +1,83 @@
+[1/2] STEP 1/4: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS dependencies
+[1/2] STEP 2/4: WORKDIR /tests
+--> f6f891d787cd
+[1/2] STEP 3/4: COPY tests/e2e/package.json tests/e2e/package-lock.json ./
+--> 62047b093f90
+[1/2] STEP 4/4: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+
+removed 65 packages, and changed 92 packages in 6s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+added 3 packages in 1s
+--> f3081aee7fa4
+[2/2] STEP 1/8: FROM mcr.microsoft.com/playwright:v1.65.0-resolute@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218
+[2/2] STEP 2/8: COPY docker/tests/os-packages.lock /opt/aat/os-packages.lock
+--> 33aa739bbbdb
+[2/2] STEP 3/8: RUN apt-get update && sed "/^#/d;/^$/d" /opt/aat/os-packages.lock | xargs apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/* /usr/lib/node_modules/npm /usr/local/lib/node_modules/npm && rm -f /usr/bin/npm /usr/bin/npx /usr/local/bin/npm /usr/local/bin/npx
+Get:1 https://deb.nodesource.com/node_26.x nodistro InRelease [12.1 kB]
+Get:2 https://deb.nodesource.com/node_26.x nodistro/main amd64 Packages [5221 B]
+Get:3 http://azure.archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+Get:6 http://azure.archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+Get:7 http://azure.archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+Get:9 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:10 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [24.6 kB]
+Get:11 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [882 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
+Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [26.1 kB]
+Get:14 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [1072 kB]
+Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [491 kB]
+Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [743 kB]
+Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3308 B]
+Get:18 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [276 kB]
+Get:19 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [723 kB]
+Fetched 27.3 MB in 4s (7642 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Solving dependencies...
+The following packages will be upgraded:
+  apt libapt-pkg7.0
+2 upgraded, 0 newly installed, 0 to remove and 20 not upgraded.
+Need to get 2646 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 libapt-pkg7.0 amd64 3.2.1ubuntu0.1 [1139 kB]
+Get:2 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64 apt amd64 3.2.1ubuntu0.1 [1507 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 2646 kB in 2s (1658 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28813 files and directories currently installed.)
+Preparing to unpack .../libapt-pkg7.0_3.2.1ubuntu0.1_amd64.deb ...
+Unpacking libapt-pkg7.0:amd64 (3.2.1ubuntu0.1) over (3.2.0) ...
+Setting up libapt-pkg7.0:amd64 (3.2.1ubuntu0.1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 28813 files and directories currently installed.)
+Preparing to unpack .../apt_3.2.1ubuntu0.1_amd64.deb ...
+Unpacking apt (3.2.1ubuntu0.1) over (3.2.0) ...
+Setting up apt (3.2.1ubuntu0.1) ...
+Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+--> cdea469662ca
+[2/2] STEP 4/8: WORKDIR /tests
+--> 50358f0a122f
+[2/2] STEP 5/8: COPY --from=dependencies /tests/node_modules ./node_modules
+--> ea3f9d52a187
+[2/2] STEP 6/8: COPY tests/e2e ./
+--> 19fc1ac659ca
+[2/2] STEP 7/8: ENV PLAYWRIGHT_BASE_URL=http://frontend:80
+--> 18cec1c617f1
+[2/2] STEP 8/8: CMD ["node", "node_modules/@playwright/test/cli.js", "test"]
+[2/2] COMMIT localhost/aat-portable-e2e-tests-0fb28a4c:0.1.0
+--> 723211880a7b
+Successfully tagged localhost/aat-portable-e2e-tests-0fb28a4c:0.1.0
+723211880a7bab706f482fe0ef40428fb9f7b7bddec8cd851872db5e45e13ef3

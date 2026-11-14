@@ -1,0 +1,6 @@
+SCAN_PREFLIGHT_PASS 2 targets
+SCAN_START airflow 9193629b87eedbd643974255244ad0fc0eaa3670c7c8cce3a57faa7d2be0581a
+SCAN_COMPLETE airflow
+SCAN_START backend-tests 943c6225d7d08a72ca98f1e93517e2f5757b91bd952abd642f9215bd44c883f8
+SCAN_COMPLETE backend-tests
+SCAN_REPORT_WRITTEN docs\testing\resume-20261111\portable-955b68bb\candidate-security.json

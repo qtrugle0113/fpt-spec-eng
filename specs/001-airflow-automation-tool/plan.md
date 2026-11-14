@@ -1,5 +1,18 @@
 # Kế hoạch triển khai: Airflow Automation Tool
 
+**Remediation T014 tiếp theo:** đưa cài đặt OS packages theo lock hiện có vào
+stage `security-patched`, sau bản vá Brotli offline và trước runtime. Quét lại
+stage/runtime bằng immutable IDs; không đổi upstream refs, constraints hoặc
+thứ tự vá offline trước lệnh mạng đầu tiên. Chủ dự án đã cho phép commit/push
+lên nhánh T014 để chạy CI; không merge main hoặc public deploy.
+
+**Kiểm chứng14/11/2026:** T140 full startup/restart/fail-closed PASS trên Podman
+client5.8.3/server5.8.9 Linux/amd64, Compose5.6.0; không suy Docker-tested.
+T151 đã khép, hiện150/152tasks; T014_FULL/T152 vẫn BLOCKED. Build hardening nâng
+wheel0.46.2/setuptools84.2.1 và bỏ rsync không dùng khỏi Airflow; constraints/core/SDK runtime giữ
+baseline. Phạm vi scan21targets, source/image IDs, các regression và giới hạn tại
+[lượt kiểm chứng](../../docs/testing/continuation-20261114.md).
+
 **Remediation local2026-11-12:** scan mới phát hiện ba advisory HIGH của
 git/git-man trong Airflow. Sản phẩm dùng local DAG volume/fixed wrapper, không
 GitDagBundle hoặc git-sync; gỡ hai gói không sử dụng khỏi runtime cùng Docker

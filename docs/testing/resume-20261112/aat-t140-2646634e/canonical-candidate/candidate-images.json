@@ -1,0 +1,56 @@
+{
+  "phase": "t140",
+  "run_id": "2646634e",
+  "source_context": ".",
+  "captured_at": "2026-11-14T01:21:33.178240+00:00",
+  "images": [
+    {
+      "name": "backend",
+      "image_id": "dc1a4c79c59d7562989941f5a3ec3e5364e6c5ff564e0f0228592b7f8889e9e2",
+      "ref": "dc1a4c79c59d7562989941f5a3ec3e5364e6c5ff564e0f0228592b7f8889e9e2",
+      "build": "CANONICAL_BUILD"
+    },
+    {
+      "name": "frontend",
+      "image_id": "882bfcea5ce550ae033362f376c2574f0e1b35267c1123f672b1c5ff98cb295b",
+      "ref": "882bfcea5ce550ae033362f376c2574f0e1b35267c1123f672b1c5ff98cb295b",
+      "build": "CANONICAL_BUILD"
+    },
+    {
+      "name": "airflow",
+      "image_id": "7d94a9d87c0080fbecfaf209aff6c7916c31d436822baf8c45b96acc5d0b2750",
+      "ref": "7d94a9d87c0080fbecfaf209aff6c7916c31d436822baf8c45b96acc5d0b2750",
+      "build": "CANONICAL_BUILD"
+    },
+    {
+      "name": "postgres",
+      "image_id": "ba8f306d293e677e1a4fc99d27daa92dbca6c4003d459ec12633d02cb08c5d15",
+      "ref": "ba8f306d293e677e1a4fc99d27daa92dbca6c4003d459ec12633d02cb08c5d15",
+      "build": "CANONICAL_BUILD"
+    },
+    {
+      "name": "mysql",
+      "image_id": "85b4f66075e25236d5e109f111827c4c31bd6324ed48b780e5085859cdfb1ba7",
+      "ref": "85b4f66075e25236d5e109f111827c4c31bd6324ed48b780e5085859cdfb1ba7",
+      "build": "CANONICAL_BUILD"
+    },
+    {
+      "name": "backend-tests",
+      "image_id": "e537a37a02d13eb180cc5215067a9bb753cca5cf407ca4e612362eae79cd003c",
+      "ref": "e537a37a02d13eb180cc5215067a9bb753cca5cf407ca4e612362eae79cd003c",
+      "build": "REUSED_REVIEWED_ARTIFACT"
+    },
+    {
+      "name": "e2e-tests",
+      "image_id": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+      "ref": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+      "build": "REUSED_REVIEWED_ARTIFACT"
+    }
+  ],
+  "build_command": [
+    "podman",
+    "compose",
+    "build"
+  ],
+  "source_revision": "82fdec47568db6d2ea9cb95d822f8c13daf187c0"
+}

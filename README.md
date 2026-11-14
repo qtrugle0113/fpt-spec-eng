@@ -2,6 +2,11 @@
 
 ## Trạng thái hiện tại
 
+**Cập nhật14/11/2026:** [báo cáo tiếp tục](docs/testing/continuation-20261114.md)
+ghi build hardening, Unit/API225+SDK4, Airflow10case và memory stress đã PASS.
+Podman client5.8.3/server5.8.9, Compose5.6.0 là môi trường đo hiện tại.
+T140/T151 đã hoàn tất, hiện150/152tasks. T014_FULL/T152 vẫn BLOCKED.
+
 **Cập nhật 2026-11-13.** Bản demo local đang chạy tại <http://localhost:23000>; Airflow tại
 <http://localhost:28080>; readiness tại <http://localhost:28000/api/v1/health/ready>.
 Ứng dụng local không yêu cầu đăng nhập; chỉ sử dụng trên loopback.

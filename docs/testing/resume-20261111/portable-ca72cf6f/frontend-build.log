@@ -1,0 +1,39 @@
+[1/2] STEP 1/7: FROM docker.io/library/node:22.23.4-bookworm-slim@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292 AS build
+[1/2] STEP 2/7: WORKDIR /app
+--> Using cache bef7eccd29a5a5e251c676903eaeb3e3bae2cbfb90b78c7dcd0e985dcb9c5214
+--> bef7eccd29a5
+[1/2] STEP 3/7: COPY frontend/package.json frontend/package-lock.json ./
+--> Using cache 38df656e1e100c4121d943f9f91e4e3979539bff4089c10d78d6c6b9fab76a74
+--> 38df656e1e10
+[1/2] STEP 4/7: RUN npm install --global npm@12.2.2 && npm ci --no-audit --no-fund
+--> Using cache 633d90f1ee85e1c55e212d02b3c1f8a6d40c03b190240aa9d1b9ea0442aaae3d
+--> 633d90f1ee85
+[1/2] STEP 5/7: COPY frontend/index.html frontend/tsconfig.json frontend/vite.config.ts ./
+--> Using cache 4c353268c246fcdcaff1849510ad53405a362204a6c49e139a46c7adf3e43837
+--> 4c353268c246
+[1/2] STEP 6/7: COPY frontend/src ./src
+--> Using cache 254e4c5b52df0cbdedf8eb05593646d3fa954546e546b1cd68894f3ed558aea3
+--> 254e4c5b52df
+[1/2] STEP 7/7: RUN npm run build
+--> Using cache 6336ebaf97b5d9e1b24e239bbad8c17f4027e4d66e9450fb01aeffde52c422b3
+--> 6336ebaf97b5
+[2/2] STEP 1/6: FROM docker.io/library/nginx:1.30.6-alpine3.24@sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7
+[2/2] STEP 2/6: RUN apk add --no-cache --upgrade libxslt=1.1.43-r4
+--> Using cache ea273ec212436f0ddab902ace61f8c81403979cc92968af3ff48cc4c41d57553
+--> ea273ec21243
+[2/2] STEP 3/6: COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+--> Using cache 3edf9a26e0f3575a94e1658948fc14e361ab5b26cb8f690c03e0bce970493633
+--> 3edf9a26e0f3
+[2/2] STEP 4/6: COPY --from=build /app/dist /usr/share/nginx/html
+--> Using cache f2ce5470543c7a064464bdb0a469b4588f654c984bb63d136190737cc59e8347
+--> f2ce5470543c
+[2/2] STEP 5/6: EXPOSE 80
+--> Using cache c18dc83e6abd64ea88144d2be2e96fc01e301460f4542866f410253f96615060
+--> c18dc83e6abd
+[2/2] STEP 6/6: HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3   CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
+--> Using cache 03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0
+[2/2] COMMIT localhost/aat-portable-frontend-ca72cf6f:0.1.0
+--> 03f8c156556b
+Successfully tagged localhost/aat-portable-frontend-ca72cf6f:0.1.0
+Successfully tagged localhost/aat-portable-frontend-0fb28a4c:0.1.0
+03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0

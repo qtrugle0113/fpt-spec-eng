@@ -1,0 +1,14 @@
+{
+  "status": "BUILD_SCAN_UNIT_API_AND_UI_VERIFIED",
+  "metadata_url": "https://pypi.org/pypi/setuptools/84.2.1/json",
+  "version": "84.2.1",
+  "requires_python": ">=3.10",
+  "wheel_url": "https://files.pythonhosted.org/packages/ef/55/6dc6d6bb953bdfc52519a0059592c52b6e3b8ad51cf8256dffceb55b0610/setuptools-84.2.1-py3-none-any.whl",
+  "sha256": "ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2",
+  "vendored_metadata": [
+    "setuptools/_vendor/jaraco_context-6.1.0.dist-info/METADATA",
+    "setuptools/_vendor/wheel-0.46.3.dist-info/METADATA"
+  ],
+  "manifest": "docs/testing/resume-20261111/portable-336939fd/candidate-images.json",
+  "comparison": "docs/testing/resume-20261114/installed-source-comparison-final.json"
+}

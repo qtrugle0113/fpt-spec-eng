@@ -1,0 +1,22 @@
+{
+  "path": ".tools\\t140-acceptance-82fdec4",
+  "copied_test_sources": [
+    {
+      "path": "tests/tools/verify_running_workflow.py",
+      "sha256": "6d28a516f90079ae3e49804868bda24300db6a490fa8b0a62e0a77e4371f7151"
+    },
+    {
+      "path": "tests/unit/test_t140_extraction_source.py",
+      "sha256": "6d7c54a41dd3db12e52578b2915a31e7ee959f21f6176adc9933a8975c77b484"
+    },
+    {
+      "path": "tests/unit/test_runtime_task.py",
+      "sha256": "ccfd23c2f2a7bd349b4c1eb34eb8610f9bafd3f28cc013c8032ef34a6e77e94c"
+    }
+  ],
+  "image_provenance": {
+    "manifest": "docs\\testing\\resume-20261112\\aat-t140-bf2939bb\\canonical-candidate\\candidate-images.json",
+    "source_sha256": "docs\\testing\\resume-20261112\\aat-t140-bf2939bb\\canonical-candidate\\source-sha256.json"
+  },
+  "reason": "Reuse exact canonical IDs already scanned in the first clean-stack attempt; only verifier/unit fixtures changed; application source unchanged"
+}
