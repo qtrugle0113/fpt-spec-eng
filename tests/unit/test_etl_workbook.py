@@ -62,6 +62,14 @@ class ETLWorkbookTests(unittest.TestCase):
                 result=self.validate(book);self.assertFalse(result.definitions);self.assertTrue(result.issues)
                 self.assertTrue(all(i.get('row')==2 for i in result.issues))
 
+    def test_fully_blank_rows_are_ignored_but_partial_rows_reject_definitions(self):
+        book=workbook();book['ETL_Definitions'].append([None]*22);book['Column_Mappings'].append([None]*6)
+        result=self.validate(book)
+        self.assertFalse(result.issues);self.assertEqual(len(result.definitions),1)
+        book=workbook();book['ETL_Definitions'].append(['other_dag']+[None]*21)
+        result=self.validate(book)
+        self.assertTrue(result.issues);self.assertFalse(result.definitions)
+
     def test_file_union_disallows_db_fields_and_filter(self):
         book=workbook();sheet=book['ETL_Definitions'];sheet['C2']='CSV';sheet['G2']='11111111-1111-4111-8111-111111111111'
         result=self.validate(book);self.assertTrue(result.issues)

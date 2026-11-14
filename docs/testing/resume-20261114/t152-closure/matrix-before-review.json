@@ -1,0 +1,327 @@
+{
+  "status": "PASS_WITH_OWNER_ACCEPTED_KNOWN_RISKS",
+  "cases": [
+    {
+      "case": "A",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "B",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "T",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "C",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "D",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "E",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "F",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "I",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AA",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AB",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AG",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "G",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "H",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "U",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AE",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AF",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "J",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "K",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "L",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "M",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AC",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "N",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "V",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AI",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AJ",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AK",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "O",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AD",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AH",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "P",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "Q",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "W",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AL",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
+      "execution_scope": "Current accepted images",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "R",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/dependency-recovery-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "S",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/dashboard-truth-airflow/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "X",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/aat-t140-045d42c5/result.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "AM",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261112/aat-t140-045d42c5/result.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "Y",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/security-surfaces/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    },
+    {
+      "case": "Z",
+      "status": "PASS",
+      "evidence": "docs/testing/resume-20261113/language-e2e/regression-results.json",
+      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
+      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+    }
+  ],
+  "scope_note": "Existing acceptance matrix source is retained in acceptance-report.md. Cases are evidence reuse with explicit original scopes; application-file equivalence and fresh DNS/SDK/routes/UI tests establish changed artifact coverage. SC/US/BR08 mapping follows source task traceability, not just checkbox state.",
+  "stories": [
+    "US1",
+    "US2",
+    "US3",
+    "US4",
+    "US5",
+    "US6",
+    "US7",
+    "US8",
+    "US9",
+    "US10",
+    "US11"
+  ],
+  "success_criteria": [
+    "SC-001",
+    "SC-002",
+    "SC-003",
+    "SC-004",
+    "SC-005",
+    "SC-006",
+    "SC-007",
+    "SC-008",
+    "SC-009",
+    "SC-010",
+    "SC-011",
+    "SC-012",
+    "SC-013",
+    "SC-014",
+    "SC-015"
+  ],
+  "business_rules": [
+    "BR-08"
+  ],
+  "receipt_sha256": {
+    "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json": "b93e6c8bc76ae7831f0bcf56398b9ea26299e0a3138a12e9e1ff52aee3f8657d",
+    "docs/testing/resume-20261111/t142-cross-database/regression-results.json": "8c8292d1118fc2f0356546239d6b7f14fc4dcf11f8c5fd107d42172694992e71",
+    "docs/testing/resume-20261112/t143-airflow/regression-results.json": "8113e1f14aa7d16e98c286e706952a5adf90d470c19f68395cb159cd36a47f2b",
+    "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json": "fc2918ffdaa79c09b3c27d42205c354205ff1f9fb33f2b895043a42b4bd55433",
+    "docs/testing/resume-20261113/dependency-recovery-airflow/regression-results.json": "b21290a9de55864e4d70f66a94fe7ee3650f7aafeefdb70ae084c1b90c5e0529",
+    "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json": "fe979449f1b88c8c6a69182b1e650cac0a07e61666040769a4b99df25d07812e",
+    "docs/testing/resume-20261113/security-surfaces/regression-results.json": "e0461ed710522ee6668bbe4aa036dc780667b2bbf6b56202068fbc46e8223b9d",
+    "docs/testing/resume-20261113/response-limits-measured/regression-results.json": "6d64377775dd1749dca48b760eef41935f98b62b01580dfb5bec6292f3ffd2fe",
+    "docs/testing/resume-20261113/dashboard-truth-airflow/regression-results.json": "4565c2e3e468c1e6c492579ff47947543ed5a78546d8e11f1f1adc67c07e352b",
+    "docs/testing/resume-20261113/language-e2e/regression-results.json": "5f8351523e2b7858f385f486502dabf1d211f9a368a4ada7c4812d96ecbf5d6f",
+    "docs/testing/resume-20261112/aat-t140-045d42c5/result.json": "1089a9b8f1f49ea96866cf9a1a28462187d26f259d568545c23e54f4147af9f0",
+    "docs/testing/resume-20261114/memory-r6/regression-results.json": "962a3201ae7b9431fd0a0802f0e257649664f286bdda7bbe56600d1fed9c8a29",
+    "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json": "83a785db7dd56fb05c544ae149b9597f3f23ce79d65818bf46c49e2521e30490"
+  }
+}

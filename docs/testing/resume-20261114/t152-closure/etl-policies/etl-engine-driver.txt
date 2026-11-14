@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 41 items
+
+tests/etl/test_load_policies.py::LoadPolicyTests::test_key_only_composite_upsert_is_stable_across_three_runs PASSED [  2%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_retry_skips_verified_batches PASSED [  4%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_unique_failure_preserves_prior_batch PASSED [  7%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable PASSED [  9%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_new_append_run_can_duplicate_without_unique_constraint PASSED [ 12%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_retry_skips_verified_batches PASSED [ 14%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_unique_failure_preserves_prior_batch PASSED [ 17%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable PASSED [ 19%]
+tests/etl/test_load_policies.py::LoadPolicyTests::test_secondary_unique_collision_never_updates_wrong_row PASSED [ 21%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_confirmed_cancellation_rolls_back_and_closes_once PASSED [ 24%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits PASSED [ 26%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_csv_txt_replacement_prepares_whole_mapped_dataset PASSED [ 29%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_empty_dataset_requires_separate_allow_empty_acknowledgment PASSED [ 31%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_inbound_foreign_keys_and_triggers_block_before_admission PASSED [ 34%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_lost_replacement_commit_response_reconciles_without_second_delete PASSED [ 36%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement PASSED [ 39%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_mysql_replacement_and_consumed_once_retry PASSED [ 41%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_postgres_replacement_and_consumed_once_retry PASSED [ 43%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_revoke_after_admission_does_not_promise_cancellation PASSED [ 46%]
+tests/etl/test_full_refresh.py::FullRefreshTests::test_revoked_before_admission_preserves_old_data PASSED [ 48%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_connection_aliases_cannot_read_and_write_same_table PASSED [ 51%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_identity_pin_and_nullability_drift PASSED [ 53%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_key_drift_and_missing_used_column_fail PASSED [ 56%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_collation_drift_changes_fingerprint PASSED [ 58%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_type_drift_changes_hash_unmapped_column_does_not PASSED [ 60%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_connection_aliases_cannot_read_and_write_same_table PASSED [ 63%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_identity_pin_and_nullability_drift PASSED [ 65%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_key_drift_and_missing_used_column_fail PASSED [ 68%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_collation_drift_changes_fingerprint PASSED [ 70%]
+tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_type_drift_changes_hash_unmapped_column_does_not PASSED [ 73%]
+tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_mysql_mapping_to_disk_uses_real_introspected_types PASSED [ 75%]
+tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_postgres_mapping_to_disk_uses_real_introspected_types PASSED [ 78%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_append_late_type_error_preserves_committed_batch PASSED [ 80%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_bad_full_format_or_changed_checksum_never_loads PASSED [ 82%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_mysql PASSED [ 85%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_postgres PASSED [ 87%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_global_upsert_key_errors_precede_every_target_write PASSED [ 90%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_headerless_txt_maps_generated_columns PASSED [ 92%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_mysql PASSED [ 95%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_postgres PASSED [ 97%]
+tests/etl/test_file_transfer.py::FileTransferTests::test_upsert_late_nonkey_type_error_preserves_prior_batch PASSED [100%]
+
+==================================== PASSES ====================================
+============================= 41 passed in 52.12s ==============================
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-8a8039c2-backend-tests-run-87797ea0e4a4 Creating 
+ Container aat-regression-8a8039c2-backend-tests-run-87797ea0e4a4 Created 
+

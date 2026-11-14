@@ -1,0 +1,12 @@
+AIRFLOW_FOUNDATION_READY aat-foundation-airflow-a2ada36d-net
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=APPEND scheduled=False rows=22000 null_preserved=true disk_manifest=COMPLETE
+AIRFLOW_MEMORY_VERIFIED {"memory_budget_bytes": 536870912, "payload_bytes": 1441792000, "peak_rss_bytes": 102817792, "rows": 22000, "staging": {"allocated_bytes": 1442504704, "batch_commits": 174, "manifest_sha256": "11e456e65c186a25bd8568e623e6ca78ba22ef109b6a92a51d79d3bcfb420236", "part_count": 174, "payload_bytes": 1442022894}}
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_large_postgres_route_uses_bounded_rss_and_disk_staging (tests.airflow.test_airflow_memory.AirflowMemoryTests.test_large_postgres_route_uses_bounded_rss_and_disk_staging) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 147.876s
+
+OK
+

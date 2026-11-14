@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 15 items
+
+tests/unit/test_table_workbook.py::TableWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_the_workbook PASSED [  6%]
+tests/unit/test_table_workbook.py::TableWorkbookTests::test_repository_sample_and_template_guidance_are_reused PASSED [ 13%]
+tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables PASSED [ 20%]
+tests/unit/test_table_workbook.py::TableWorkbookTests::test_valid_workbook_typed_defaults_and_composite_key_order PASSED [ 26%]
+tests/unit/test_table_workbook.py::TableWorkbookTests::test_zip_payloads_and_formula_are_rejected_before_parse_side_effects PASSED [ 33%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions PASSED [ 40%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit PASSED [ 46%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused PASSED [ 53%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata PASSED [ 60%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row PASSED [ 66%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter PASSED [ 73%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_definitions PASSED [ 80%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets PASSED [ 86%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references PASSED [ 93%]
+tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located PASSED [100%]
+
+============================== 15 passed in 4.56s ==============================
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-e64e58c4-backend-tests-run-5816dfb622a3 Creating 
+ Container aat-regression-e64e58c4-backend-tests-run-5816dfb622a3 Created 

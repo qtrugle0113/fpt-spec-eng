@@ -1,5 +1,49 @@
 # Báo cáo nghiệm thu baseline local có rủi ro đã biết
 
+## Khép lại review T152 — evidence theo từng điều kiện
+
+Trạng thái mới nhất: **technical evidence PASS; chờ CI cho cập nhật T152**.
+Ma trận trước đây gán AH vào memory stress là thiếu sót tham chiếu, đã được lưu
+nguyên trạng tại [snapshot trước review](resume-20261114/t152-closure/matrix-before-review.json).
+Ma trận hiện hành không suy PASS từ checkbox hoặc một receipt tổng hợp.
+
+- [Ma trận v2](resume-20261114/t152-closure/acceptance-matrix-v2.json):39ca A–AM,
+  15success criteria,11user stories và BR-08, mỗi ca có expected/actual,
+  điều kiện con, test IDs, receipt/log SHA256 và phạm vi artifact thực tế.
+- AH:44test storage/snapshot/quota/recovery PASS; I/O failure, checksum, SIGKILL
+  và mất staging sau partial commit có selectors riêng. Load policies/schema/mapping41PASS.
+- AJ/timezone:63test API/schema PASS, gồm lost response, pending/expired worker,
+  stale revision và UTC/IANA/DST. Native typed DB routes4PASS, concurrency2PASS
+  trên candidate hiện hành. Dependency recovery6PASS qua Airflow thật.
+- Đổi revision và credential3test PASS trong lượt ghép; dashboard lượt đó FAIL
+  vì fixture đã có4DAG nhưng test yêu cầu fresh1DAG. Giữ nguyên FAIL và receipt
+  [selected assertions](resume-20261114/t152-closure/revision-credentials-selected-results.json)
+  chỉ ghi đúng3test đã PASS. Dashboard chạy riêng sau đó1PASS, không nới assertion.
+- Registration/workbook/settings18PASS; blank/partial workbook rows15PASS;
+  implicit mapping exact-name/type3PASS. Table UI10PASS, language UI có receipt
+  riêng; performance HTTP và security surfaces4PASS trên fixture riêng.
+- CaseO/AD và startup/restart AM dùng lại đúng artifacts gốc; physical application
+  file equivalence, thay đổi distribution và measurements được giữ trong
+  [memory equivalence](resume-20261114/t152-closure/memory-equivalence.json) và
+  [T140 equivalence](resume-20261114/accepted-handover/t140-equivalence.json).
+  Không gán image mới cho execution cũ hoặc nói đã chạy lại các lượt này.
+- [Live rollout](resume-20261114/t152-closure/live-demo-rollout.json):8services healthy,
+  Airflow đúng image a9dc2f03… được duyệt, loopback, volumes/config giữ nguyên.
+  [Read-only target verification](resume-20261114/t152-closure/live-target-verification.json)
+  xác nhận hai workflow cũ và giá trị đích nguyên vẹn. App23000/Airflow28080 READY.
+- CI bổ sung7negative/positive tests cho evidence validator và kiểm ma trận thật:
+  thiếu AH conditions, test ID không nằm trong log PASS, checksum đổi hoặc thiếu
+  SC đều bị từ chối. Scope risk acceptance và thời hạn không thay đổi.
+
+## Snapshot bàn giao62003a2 trước khi sửa mapping T152
+
+Các thông tin phía dưới giữ để truy vết; dòng “demo chưa rollout” là lịch sử.
+
+**Trạng thái mới nhất: T152 đang tái kiểm chứng** sau review evidence mapping.
+Các kết luận hoàn tất bên dưới là snapshot62003a2; kết luận mới sẽ dựa trên
+selector/test-ID và expected/actual của từng ca bắt buộc. T014 vẫn PASS theo
+phạm vi rủi ro đã được chủ dự án chấp thuận.
+
 Trạng thái hiện hành: **PASS — nghiệm thu baseline local có rủi ro đã biết;152/152task**.
 Constitution2.0.0 được chủ dự án phê duyệt trong hội thoại ngày2026-11-14.
 Security disposition: `OWNER_ACCEPTED_KNOWN_RISKS`; scan vẫn có1.669 HIGH/CRITICAL

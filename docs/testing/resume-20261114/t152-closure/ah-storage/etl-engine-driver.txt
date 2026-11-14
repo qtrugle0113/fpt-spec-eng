@@ -1,0 +1,56 @@
+s/etl/test_resource_quota.py::QuotaTests::test_reservation_overflow_cannot_publish_even_if_caller_catches_error PASSED [ 15%]
+tests/etl/test_resource_quota.py::QuotaTests::test_writer_accounts_manifest_and_retains_protected_bytes PASSED [ 18%]
+tests/etl/test_resource_quota.py::RSSSupervisionTests::test_actual_512mib_process_is_stopped_before_container_oom PASSED [ 20%]
+tests/etl/test_resource_quota.py::RSSSupervisionTests::test_normal_child_completes_without_false_memory_failure PASSED [ 22%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_filter_is_bound_and_can_use_unprojected_columns PASSED [ 25%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_midstream_session_loss_discards_incomplete_snapshot PASSED [ 27%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_nontransactional_source_is_rejected PASSED [ 29%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_oversized_cell_is_null_on_wire_before_materialization PASSED [ 31%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_session_rejects_writes PASSED [ 34%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_survives_concurrent_updates_without_primary_key PASSED [ 36%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_source_session_loss_fails_without_reconnect PASSED [ 38%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_utc_timestamp_and_unicode_are_lossless PASSED [ 40%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_filter_is_bound_and_can_use_unprojected_columns PASSED [ 43%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_midstream_session_loss_discards_incomplete_snapshot PASSED [ 45%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_oversized_cell_is_null_on_wire_before_materialization PASSED [ 47%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_session_rejects_writes PASSED [ 50%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_survives_concurrent_updates_without_primary_key PASSED [ 52%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_source_session_loss_fails_without_reconnect PASSED [ 54%]
+tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_timestamp_and_unicode_are_lossless PASSED [ 56%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_checksum_corruption_and_binding_mismatch_rejected_before_rows PASSED [ 59%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled PASSED [ 61%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_corrupt_last_part_is_rejected_before_first_row_is_yielded PASSED [ 63%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_decimal_float_and_type_coercion_fail_without_complete_publication PASSED [ 65%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_incomplete_extraction_does_not_publish_complete_manifest PASSED [ 68%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_missing_file_and_manifest_schema_drift_are_rejected PASSED [ 70%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_process_exit_before_complete_never_publishes_manifest PASSED [ 72%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_serialized_record_limit_is_enforced_without_publishing_complete PASSED [ 75%]
+tests/etl/test_snapshot_staging.py::TypedStagingTests::test_typed_roundtrip_preserves_values_null_and_safe_paths PASSED [ 77%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_backend_maintenance_applies_native_cleanup_and_persisted_retention PASSED [ 79%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_slow_target_cannot_extend_the_startup_recovery_deadline PASSED [ 81%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_startup_records_blocked_reason_without_reclaiming_unknown_owner PASSED [ 84%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_dataset_keeps_full_retention PASSED [ 86%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_reconciled_dataset_expires_after_retention PASSED [ 88%]
+tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_uncertain_dataset_is_never_deleted_to_free_capacity PASSED [ 90%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_bounded_retry_preserves_the_same_dataset_on_both_databases PASSED [ 93%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_missing_staging_after_partial_commit_blocks_until_original_files_return PASSED [ 95%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_mysql_commit_loss_reconciles_marker_before_retry PASSED [ 97%]
+tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_postgres_commit_loss_reconciles_marker_before_retry PASSED [100%]
+
+==================================== PASSES ====================================
+_ RSSSupervisionTests.test_actual_512mib_process_is_stopped_before_container_oom _
+----------------------------- Captured stdout call -----------------------------
+RSS evidence: peak=503693312, budget=536870912, reason=MEMORY_BUDGET_EXCEEDED, exit=-9
+_ StagingCleanupTests.test_slow_target_cannot_extend_the_startup_recovery_deadline _
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:148 runtime_recovery binding_id=6d8cbc30-890f-4c69-95dc-737cbba171ea state=NEEDS_RECONCILIATION reason=STARTUP_RECOVERY_BUDGET_EXHAUSTED
+_ StagingCleanupTests.test_startup_records_blocked_reason_without_reclaiming_unknown_owner _
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:recovery.py:148 runtime_recovery binding_id=6d8cbc30-890f-4c69-95dc-737cbba171ea state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+WARNING  aat.safe:recovery.py:148 runtime_recovery binding_id=f4364ac6-559d-42eb-88ad-db68072abcff state=NEEDS_RECONCILIATION reason=TARGET_OWNER_OR_EVIDENCE_UNVERIFIED
+============================= 44 passed in 13.23s ==============================
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-d3c70689-backend-tests-run-f799a80e332e Creating 
+ Container aat-regression-d3c70689-backend-tests-run-f799a80e332e Created 
+

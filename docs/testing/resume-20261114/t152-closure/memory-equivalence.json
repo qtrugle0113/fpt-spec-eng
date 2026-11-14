@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "historical_memory_image": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+  "accepted_airflow_image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "installed_application_files_equal": true,
+  "runtime_distribution_changes": {
+    "dnspython": [
+      "2.9.0",
+      "2.9.2"
+    ]
+  },
+  "historical_measurements": {
+    "memory_budget_bytes": 536870912,
+    "payload_bytes": 1441792000,
+    "peak_rss_bytes": 102817792,
+    "rows": 22000,
+    "staging": {
+      "allocated_bytes": 1442504704,
+      "batch_commits": 174,
+      "manifest_sha256": "11e456e65c186a25bd8568e623e6ca78ba22ef109b6a92a51d79d3bcfb420236",
+      "part_count": 174,
+      "payload_bytes": 1442022894
+    }
+  },
+  "reuse_scope": "Original memory result retained; no claim of rerun. Application files equal and only DNS patch differs, covered by current accepted DNS/SDK/native/full-workflow checks."
+}

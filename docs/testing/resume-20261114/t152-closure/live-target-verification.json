@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "workflows": 2,
+  "read_only": true,
+  "existing_reference_file": "docs/testing/resume-20261114/final-demo-workflow/full-workflows.json",
+  "demo_airflow_image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "scope": "Actual Airflow success and exact PostgreSQL target values retained after approved image rollout; no new browser run claimed"
+}

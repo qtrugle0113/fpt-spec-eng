@@ -1,0 +1,75 @@
+[
+  {
+    "label": "aj-ak-api",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_regression_profile.py",
+      "--tests-image",
+      "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+      "--backend-image",
+      "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "--postgres-image",
+      "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "--mysql-image",
+      "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "--path",
+      "tests/api/test_deployments.py",
+      "--path",
+      "tests/api/test_trigger.py",
+      "--path",
+      "tests/api/test_deployment_admission.py",
+      "--path",
+      "tests/api/test_dag_builder.py",
+      "--path",
+      "tests/unit/test_mapping.py",
+      "--path",
+      "tests/unit/test_etl_workbook.py",
+      "--current-test-sources",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/aj-ak-api"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "native-db-concurrency",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_regression.py",
+      "--group",
+      "airflow",
+      "--owner-accepted-handover",
+      "--images",
+      "docs/testing/resume-20261114/accepted-handover/images.json",
+      "--airflow-module",
+      "tests.airflow.test_cross_database",
+      "--airflow-module",
+      "tests.airflow.test_concurrent_runs",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/native-db-concurrency"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "table-e2e",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_regression.py",
+      "--group",
+      "e2e",
+      "--e2e-suite",
+      "tables",
+      "--owner-accepted-handover",
+      "--images",
+      "docs/testing/resume-20261114/accepted-handover/images.json",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/table-e2e"
+    ],
+    "exit_code": 0
+  }
+]

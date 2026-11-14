@@ -1,0 +1,8 @@
+test_case_mismatch_never_guesses_a_required_target (tests.unit.test_implicit_mapping_acceptance.ImplicitMappingAcceptanceTests.test_case_mismatch_never_guesses_a_required_target) ... ok
+test_empty_and_all_disabled_mapping_use_exact_names_and_keep_defaults (tests.unit.test_implicit_mapping_acceptance.ImplicitMappingAcceptanceTests.test_empty_and_all_disabled_mapping_use_exact_names_and_keep_defaults) ... ok
+test_implicit_mapping_never_coerces_numeric_text (tests.unit.test_implicit_mapping_acceptance.ImplicitMappingAcceptanceTests.test_implicit_mapping_never_coerces_numeric_text) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

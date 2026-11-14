@@ -1,327 +1,2263 @@
 {
+  "schema_version": 2,
   "status": "PASS_WITH_OWNER_ACCEPTED_KNOWN_RISKS",
   "cases": [
     {
       "case": "A",
+      "title": "Table Excel → PostgreSQL",
+      "requirements": "US-04, FR-022–FR-028",
+      "expected": "Cột/type/key ghép đúng preview và DB",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "DDL PostgreSQL/MySQL through browser",
+          "evidence_id": "tables",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
     },
     {
       "case": "B",
+      "title": "Table Excel → MySQL",
+      "requirements": "US-04, FR-023–FR-028",
+      "expected": "Đúng dialect/cấu trúc, bảo vệ table cũ",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "T",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "DDL PostgreSQL/MySQL through browser",
+          "evidence_id": "tables",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
     },
     {
       "case": "C",
+      "title": "PostgreSQL → PostgreSQL",
+      "requirements": "US-06, FR-001, FR-055–FR-062",
+      "expected": "Table khác cùng server, dữ liệu/staging đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Typed real database route",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "D",
+      "title": "MySQL → MySQL",
+      "requirements": "US-06, FR-001, FR-055–FR-062",
+      "expected": "Table khác cùng server, dữ liệu/staging đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Typed real database route",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_mysql"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "E",
+      "title": "PostgreSQL → MySQL",
+      "requirements": "US-06, FR-047, FR-055",
+      "expected": "Cross-server, conversion đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Typed real database route",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_mysql"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "F",
+      "title": "MySQL → PostgreSQL",
+      "requirements": "US-06, FR-047, FR-055",
+      "expected": "Cross-server, giá trị/NULL đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "I",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AA",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AB",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AG",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261111/t142-cross-database/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Typed real database route",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "G",
+      "title": "CSV → PostgreSQL",
+      "requirements": "US-07, FR-010–FR-017, FR-056",
+      "expected": "Parser xác nhận, streamed load đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "CSV PostgreSQL real SDK",
+          "evidence_id": "routes",
+          "selectors": [
+            "tests/airflow/test_execution.py::RouteExecutionTests::test_csv_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "H",
+      "title": "TXT → MySQL",
+      "requirements": "US-07, FR-015, FR-056",
+      "expected": "Delimiter cấu hình, target đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "TXT MySQL real SDK",
+          "evidence_id": "routes",
+          "selectors": [
+            "tests/airflow/test_execution.py::RouteExecutionTests::test_txt_to_mysql"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "U",
+      "title": "CSV → MySQL và TXT → PostgreSQL",
+      "requirements": "US-07, FR-001",
+      "expected": "Bổ sung đủ tám hướng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Remaining file directions",
+          "evidence_id": "routes",
+          "selectors": [
+            "tests/airflow/test_execution.py::RouteExecutionTests::test_csv_to_mysql",
+            "tests/airflow/test_execution.py::RouteExecutionTests::test_txt_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
     },
     {
-      "case": "AE",
+      "case": "I",
+      "title": "Cột khác tên",
+      "requirements": "US-06, FR-042–FR-047",
+      "expected": "customer_id → cust_id, customer_name → name",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AF",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/t143-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Explicit cross-database column mapping",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_mysql",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_pg",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_mysql",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 4 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "J",
+      "title": "UPSERT lặp",
+      "requirements": "US-08, FR-052, BR-07",
+      "expected": "Ba lần không duplicate, update đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Stable UPSERT across repeated runs",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_key_only_composite_upsert_is_stable_across_three_runs"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "K",
+      "title": "APPEND",
+      "requirements": "US-08, FR-050–FR-051",
+      "expected": "Giữ cũ/thêm đúng/cảnh báo, retry không replay không chắc chắn",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "APPEND preserves committed batches and duplicate semantics",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_new_append_run_can_duplicate_without_unique_constraint"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "L",
+      "title": "FULL_REFRESH success",
+      "requirements": "US-08, FR-053–FR-054",
+      "expected": "Dataset mới đúng và có ủy quyền",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Authorized complete replacement",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_mysql_replacement_and_consumed_once_retry",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_postgres_replacement_and_consumed_once_retry"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "M",
+      "title": "FULL_REFRESH failure",
+      "requirements": "US-08, FR-053–FR-054",
+      "expected": "Giữ/phục hồi cũ, kết quả recovery rõ",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Replacement failures preserve old target",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "AC",
+      "title": "FULL_REFRESH source extraction fail, MySQL DDL boundary",
+      "requirements": "FR-053, BR-06, BR-15",
+      "expected": "Target nguyên trước công bố, một commit replacement; không TRUNCATE rồi load batch",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Replacement failures preserve old target",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "N",
+      "title": "Cron schedule",
+      "requirements": "US-05, FR-034, US-09",
+      "expected": "Execution thật đúng lịch/timezone và history",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "V",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AI",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AJ",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AK",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Real scheduled execution",
+          "evidence_id": "routes",
+          "selectors": [
+            "tests/airflow/test_execution.py::ScheduledExecutionTests::test_scheduled_append",
+            "tests/airflow/test_execution.py::ScheduledExecutionTests::test_scheduled_full_refresh"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "O",
+      "title": "Vượt nhiều batch/RAM, disk staging",
+      "requirements": "US-06, FR-055–FR-062, NFR-004",
+      "expected": "File trên đĩa/path riêng/quota/cleanup",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AD",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AH",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/memory-r6/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Large dataset exceeds RAM and uses disk batches",
+          "evidence_id": "memory",
+          "selectors": [
+            "tests/airflow/test_airflow_memory.py::AirflowMemoryTests::test_large_postgres_route_uses_bounded_rss_and_disk_staging"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "P",
+      "title": "Excel sai",
+      "requirements": "US-04–US-05, FR-019–FR-020",
+      "expected": "Lỗi vị trí/phạm vi, không side effect",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "Q",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "W",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Twenty invalid workbooks and explicit ETL schema semantics",
+          "evidence_id": "registration",
+          "selectors": [
+            "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "ETL duplicate/orphan/implicit mapping guards",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 9 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "AL",
+      "title": "Version 1.0, duplicate/orphan, dòng trống, implicit mapping",
+      "requirements": "FR-019–FR-021, FR-044, FR-098, BR-22",
+      "expected": "Required/optional và vị trí thật chính xác, không last-row-wins",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
-      "execution_scope": "Current accepted images",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Twenty invalid workbooks and explicit ETL schema semantics",
+          "evidence_id": "registration",
+          "selectors": [
+            "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "ETL duplicate/orphan/implicit mapping guards",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 9 specific passed test IDs verified"
+        },
+        {
+          "condition": "Exact-name implicit mapping without coercion",
+          "evidence_id": "implicit",
+          "selectors": [
+            "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_case_mismatch_never_guesses_a_required_target",
+            "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_empty_and_all_disabled_mapping_use_exact_names_and_keep_defaults",
+            "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_implicit_mapping_never_coerces_numeric_text"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 3 specific passed test IDs verified"
+        },
+        {
+          "condition": "Blank rows ignored; partial rows reject without partial output",
+          "evidence_id": "blank",
+          "selectors": [
+            "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_definitions",
+            "tests/unit/test_table_workbook.py::TableWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_the_workbook"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "Q",
+      "title": "Connection sai",
+      "requirements": "US-02, FR-007–FR-009",
+      "expected": "Kết nối thật fail/timeout, không secret",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Real connection boundary and safe errors",
+          "evidence_id": "unit",
+          "selectors": [
+            "tests/api/test_connections.py::ConnectionAPITests::test_active_binding_blocks_location_change_and_keeps_credential_reference",
+            "tests/api/test_connections.py::ConnectionAPITests::test_connection_test_reports_real_success_and_safe_auth_failure",
+            "tests/api/test_connections.py::ConnectionAPITests::test_create_detail_and_filtered_pagination",
+            "tests/api/test_connections.py::ConnectionAPITests::test_delete_requires_current_etag_and_hides_deleted_connection",
+            "tests/api/test_connections.py::ConnectionAPITests::test_duplicate_trimmed_case_insensitive_code_conflicts",
+            "tests/api/test_connections.py::ConnectionAPITests::test_invalid_fields_hosts_and_missing_if_match_fail_safely",
+            "tests/api/test_connections.py::ConnectionAPITests::test_location_change_invalidates_scope_but_keeps_historical_config",
+            "tests/api/test_connections.py::ConnectionAPITests::test_mysql_connection_round_trip_through_http_and_real_database",
+            "tests/api/test_connections.py::ConnectionAPITests::test_patch_blank_password_preserves_secret_and_rejects_stale_etag",
+            "tests/api/test_connections.py::ConnectionAPITests::test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change",
+            "tests/api/test_connections.py::ConnectionAPITests::test_secret_is_encrypted_at_rest_and_public_projection_is_safe"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 11 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "R",
+      "title": "Source/target tạm down",
+      "requirements": "US-06–US-08, FR-060, BR-07",
+      "expected": "Partial progress/retry/rerun đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/dependency-recovery-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Actual dependency/retry recovery",
+          "evidence_id": "retry",
+          "selectors": [
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_application_projection_loss_reconciles_committed_target",
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_source_session_loss_retries_without_partial_dataset",
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_target_session_loss_never_blindly_duplicates",
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_application_projection_loss_reconciles_committed_target",
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_source_session_loss_retries_without_partial_dataset",
+            "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_target_session_loss_never_blindly_duplicates"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 6 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "S",
+      "title": "Dashboard thật",
+      "requirements": "US-10, FR-071–FR-078, BR-11–BR-12",
+      "expected": "KPI/lịch/trạng thái/phân trang/thời gian đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/dashboard-truth-airflow/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Actual Airflow inventory and dashboard truth",
+          "evidence_id": "dashboard",
+          "selectors": [
+            "tests/airflow/test_dashboard_truth.py::DashboardTruthTests::test_real_history_inventory_lifetime_and_date_filter"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Dashboard API and date windows",
+          "evidence_id": "registration",
+          "selectors": [
+            "tests/api/test_dashboard.py::DashboardContractTests::test_airflow_outage_returns_unavailable_values_not_zero",
+            "tests/api/test_dashboard.py::DashboardContractTests::test_force_refresh_outage_marks_prior_snapshot_stale",
+            "tests/api/test_dashboard.py::DashboardContractTests::test_invalid_timezone_date_range_and_scope_are_rejected",
+            "tests/api/test_dashboard.py::DashboardContractTests::test_missing_history_page_is_incomplete_and_never_a_partial_total"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 4 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "T",
+      "title": "Open in Airflow",
+      "requirements": "US-09, FR-070",
+      "expected": "Browser mở đúng DAG ID",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Open correct DAG and verify target from browser",
+          "evidence_id": "full",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
+    },
+    {
+      "case": "V",
+      "title": "Disk full/interrupt/cancel/concurrent",
+      "requirements": "FR-057–FR-062, BR-09",
+      "expected": "Commit/status thật, staging riêng/target không xen kẽ",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Disk write failure preserves evidence",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_resource_quota.py::QuotaTests::test_failed_write_keeps_reservation_and_never_publishes_manifest"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Cancellation rolls back replacement",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_confirmed_cancellation_rolls_back_and_closes_once"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Concurrent writers serialize",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_mysql_manual_and_scheduled_aliases_share_one_physical_writer",
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_postgres_manual_and_scheduled_aliases_share_one_physical_writer"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "W",
+      "title": "Parse error/timeout/old revision/external conflict",
+      "requirements": "FR-035–FR-041",
+      "expected": "Không Deployed giả hoặc ghi đè sai",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Registration bounded deadline, ownership and parse errors",
+          "evidence_id": "registration",
+          "selectors": [
+            "tests/airflow/test_registration.py::RegistrationEvidenceTests::test_expected_revision_requires_owner_file_and_parse_version_evidence",
+            "tests/airflow/test_registration.py::RegistrationPollingTests::test_bounded_backoff_and_one_deadline_across_all_http_pages",
+            "tests/airflow/test_registration.py::RegistrationPollingTests::test_current_exact_file_parse_error_is_terminal",
+            "tests/airflow/test_registration.py::RegistrationPollingTests::test_new_tags_wait_for_the_matching_serialized_task_revision",
+            "tests/airflow/test_registration.py::RegistrationPollingTests::test_retry_observes_expected_revision_without_requiring_version_increment"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 5 specific passed test IDs verified"
+        },
+        {
+          "condition": "Old revision cannot execute after redeploy",
+          "evidence_id": "revision",
+          "selectors": [
+            "tests/airflow/test_revision_lifecycle.py::RevisionLifecycleTests::test_new_revision_registers_and_old_clear_cannot_write_again"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Admission guards protect external DAGs",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_external_even_with_forged_aat_tag_is_not_claimed"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "X",
+      "title": "Retention/restart/settings/dependency",
+      "requirements": "US-01–US-03, US-11",
+      "expected": "Không mất artifact đang dùng, scope settings đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/aat-t140-045d42c5/result.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
-    },
-    {
-      "case": "AM",
-      "status": "PASS",
-      "evidence": "docs/testing/resume-20261112/aat-t140-045d42c5/result.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Retention protects uncertain datasets",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_uncertain_dataset_is_never_deleted_to_free_capacity"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Settings persist with optimistic revision",
+          "evidence_id": "registration",
+          "selectors": [
+            "tests/api/test_settings.py::SettingsContractTests::test_concurrent_edits_to_different_fields_share_one_document_revision",
+            "tests/api/test_settings.py::SettingsContractTests::test_defaults_persist_and_global_revision_changes_for_each_setting",
+            "tests/api/test_settings.py::SettingsContractTests::test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected",
+            "tests/api/test_settings.py::SettingsContractTests::test_shorter_retention_never_collects_protected_recovery_data",
+            "tests/api/test_settings.py::SettingsNewConfigTests::test_new_batch_defaults_do_not_mutate_a_validated_revision"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 5 specific passed test IDs verified"
+        },
+        {
+          "condition": "Fresh boot/restart/persistence",
+          "evidence_id": "restart",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
     },
     {
       "case": "Y",
+      "title": "Injection/macro/path traversal/secret leak",
+      "requirements": "NFR-003, EC-05–EC-06, EC-24",
+      "expected": "Input nguy hiểm chặn, không credential leak",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/security-surfaces/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Dangerous inputs and secret surfaces",
+          "evidence_id": "security",
+          "selectors": [
+            "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_credentials_are_encrypted_in_metadata_and_absent_from_public_reads",
+            "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_foreign_origin_and_unsafe_hosts_have_no_metadata_side_effect",
+            "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_private_bind_requires_authentication_and_public_alias_is_absent"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 3 specific passed test IDs verified"
+        },
+        {
+          "condition": "Macro/ZIP/path workbook guards",
+          "evidence_id": "unit",
+          "selectors": [
+            "tests/unit/test_table_workbook.py::TableWorkbookTests::test_zip_payloads_and_formula_are_rejected_before_parse_side_effects"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Current API secret redaction",
+          "evidence_id": "unit",
+          "selectors": [
+            "tests/api/test_monitoring.py::MonitoringContractTests::test_log_projection_redacts_actual_encrypted_credentials_and_caps_bytes"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
     },
     {
       "case": "Z",
+      "title": "UI/Excel/Markdown và unavailable states",
+      "requirements": "US-10–US-11, NFR-001–NFR-002",
+      "expected": "Đúng ngôn ngữ/responsive, không dữ liệu giả",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
       "status": "PASS",
-      "evidence": "docs/testing/resume-20261113/language-e2e/regression-results.json",
-      "execution_scope": "Original artifact IDs in receipt; retained acceptance evidence, not relabeled as new execution",
-      "reuse_basis": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json"
+      "checks": [
+        {
+          "condition": "Current English/responsive UI and unavailable states",
+          "evidence_id": "language",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
+    },
+    {
+      "case": "AA",
+      "title": "Update source giữa các chunk, mất snapshot",
+      "requirements": "FR-089–FR-090, BR-16, SC-013",
+      "expected": "Dataset nhất quán hoặc fail trước target; không ghép snapshot",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "One consistent snapshot under source mutation/loss",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_survives_concurrent_updates_without_primary_key",
+            "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_survives_concurrent_updates_without_primary_key"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AB",
+      "title": "UPSERT target thiếu key, key bị xóa sau deploy",
+      "requirements": "FR-052, BR-15",
+      "expected": "Chặn validation/preflight, không ALTER/index/APPEND ngầm",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Schema/key drift rejected without implicit ALTER",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_key_drift_and_missing_used_column_fail",
+            "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_key_drift_and_missing_used_column_fail"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AD",
+      "title": "Chunk/batch khác nhau và dòng vượt cap",
+      "requirements": "FR-088, NFR-004",
+      "expected": "Chunk không quyết định commit, RAM/byte cap có hiệu lực",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Oversized rows and resource limits",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_oversized_cell_is_null_on_wire_before_materialization",
+            "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_oversized_cell_is_null_on_wire_before_materialization"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        },
+        {
+          "condition": "Large batch/disk measurement",
+          "evidence_id": "memory",
+          "selectors": [
+            "tests/airflow/test_airflow_memory.py::AirflowMemoryTests::test_large_postgres_route_uses_bounded_rss_and_disk_staging"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AE",
+      "title": "NULL/Unicode/decimal/date/time và conversion lỗi",
+      "requirements": "BR-17, SC-015",
+      "expected": "Giá trị round-trip hoặc lỗi, không làm tròn/cắt âm thầm",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "NULL/Unicode/decimal/temporal values on real targets",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_mysql",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_pg",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_mysql",
+            "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_pg"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 4 specific passed test IDs verified"
+        },
+        {
+          "condition": "Unsafe coercions are rejected",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/unit/test_mapping.py::LosslessTypeTests::test_no_rounding_truncation_timezone_inference_or_invalid_calendar"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AF",
+      "title": "Header trùng/rỗng, delimiter/quote sai, schema drift",
+      "requirements": "FR-091–FR-092",
+      "expected": "Lỗi vị trí và revalidation, không sửa mapping ngầm",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Malformed/changed file cannot load",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_file_transfer.py::FileTransferTests::test_bad_full_format_or_changed_checksum_never_loads"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "Parser snapshot/revalidation",
+          "evidence_id": "unit",
+          "selectors": [
+            "tests/api/test_files.py::FilesAPITests::test_active_and_uncertain_bindings_block_parser_change_without_mutating_snapshot",
+            "tests/api/test_files.py::FilesAPITests::test_boundaries_invalid_parser_and_checksum_rejected",
+            "tests/api/test_files.py::FilesAPITests::test_candidate_preview_does_not_persist_and_patch_requires_current_etag",
+            "tests/api/test_files.py::FilesAPITests::test_expired_or_missing_source_fails_without_empty_preview",
+            "tests/api/test_files.py::FilesAPITests::test_full_validation_finds_bad_record_beyond_preview_limit",
+            "tests/api/test_files.py::FilesAPITests::test_parser_change_invalidates_future_definition_without_rewriting_its_config",
+            "tests/api/test_files.py::FilesAPITests::test_preview_uses_quoted_null_semantics_and_never_marks_file_valid",
+            "tests/api/test_files.py::FilesAPITests::test_upload_same_name_distinct_reference_and_persistent_listing",
+            "tests/api/test_files.py::FilesAPITests::test_validation_replay_keeps_snapshot_and_old_parser_cannot_mark_new_parser_valid"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 9 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AG",
+      "title": "APPEND/UPSERT/FULL_REFRESH row reconciliation",
+      "requirements": "FR-093, BR-18",
+      "expected": "Đối soát đúng mỗi strategy, không dùng affected rows hoặc live source count sai",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "All strategies reconcile target rows",
+          "evidence_id": "policies",
+          "selectors": [
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_confirmed_cancellation_rolls_back_and_closes_once",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_csv_txt_replacement_prepares_whole_mapped_dataset",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_empty_dataset_requires_separate_allow_empty_acknowledgment",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_inbound_foreign_keys_and_triggers_block_before_admission",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_lost_replacement_commit_response_reconciles_without_second_delete",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_mysql_replacement_and_consumed_once_retry",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_postgres_replacement_and_consumed_once_retry",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_revoke_after_admission_does_not_promise_cancellation",
+            "tests/etl/test_full_refresh.py::FullRefreshTests::test_revoked_before_admission_preserves_old_data",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_key_only_composite_upsert_is_stable_across_three_runs",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_retry_skips_verified_batches",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_unique_failure_preserves_prior_batch",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_new_append_run_can_duplicate_without_unique_constraint",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_retry_skips_verified_batches",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_unique_failure_preserves_prior_batch",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable",
+            "tests/etl/test_load_policies.py::LoadPolicyTests::test_secondary_unique_collision_never_updates_wrong_row"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 20 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AH",
+      "title": "Staging I/O fail/checksum sai, kill không cleanup",
+      "requirements": "FR-089, FR-094–FR-095",
+      "expected": "Không fallback RAM/re-extract sau commit; giữ recovery, cleanup sau đối soát",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "io_failure",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_resource_quota.py::QuotaTests::test_failed_write_keeps_reservation_and_never_publishes_manifest"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "checksum_failure",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_corrupt_last_part_is_rejected_before_first_row_is_yielded"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "sigkill",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_storage_failures.py::StorageFailureTests::test_sigkill_rolls_back_open_target_transaction_without_releasing_quota"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "post_commit_recovery",
+          "evidence_id": "ah",
+          "selectors": [
+            "tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_missing_staging_after_partial_commit_blocks_until_original_files_return"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AI",
+      "title": "Hai DAG/connection alias cùng physical target",
+      "requirements": "BR-09, SC-014",
+      "expected": "Tuần tự hóa; owner chưa rõ không chiếm lại, timeout đúng",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Aliases share physical target lock",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_mysql_manual_and_scheduled_aliases_share_one_physical_writer",
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_postgres_manual_and_scheduled_aliases_share_one_physical_writer"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AJ",
+      "title": "API timeout sau request, pending quá hạn, stale revision",
+      "requirements": "FR-039, FR-096–FR-097",
+      "expected": "Reconcile cùng identity, không blind retry/success giả",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "lost_response",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/api/test_deployments.py::DeploymentWorkerTests::test_response_loss_reconciles_same_file_without_republication",
+            "tests/api/test_trigger.py::TriggerTests::test_lost_post_response_is_read_back_without_another_post"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        },
+        {
+          "condition": "expired_pending",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/api/test_deployments.py::DeploymentWorkerTests::test_expired_worker_cannot_dispatch_file_after_closing_gate"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "stale_revision",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_revision_changed_during_lookup_blocks_publication"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AK",
+      "title": "Manual/scheduled chồng lấn, UTC/IANA/DST, đổi connection",
+      "requirements": "BR-04, BR-20–BR-21",
+      "expected": "Cùng concurrency/policy, revision chốt, không đổi đích giữa run",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "manual_scheduled",
+          "evidence_id": "native",
+          "selectors": [
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_mysql_manual_and_scheduled_aliases_share_one_physical_writer",
+            "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_postgres_manual_and_scheduled_aliases_share_one_physical_writer"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        },
+        {
+          "condition": "utc_iana_dst",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/unit/test_mapping.py::ExecutionContractTests::test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        },
+        {
+          "condition": "credential_revision",
+          "evidence_id": "revision",
+          "selectors": [
+            "tests/airflow/test_full_refresh_recovery.py::InvalidationBoundaryTests::test_mysql_changed_credential_invalidates_before_admission",
+            "tests/airflow/test_full_refresh_recovery.py::InvalidationBoundaryTests::test_postgres_changed_credential_invalidates_before_admission"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        },
+        {
+          "condition": "binding_snapshot",
+          "evidence_id": "unit",
+          "selectors": [
+            "tests/api/test_connections.py::ConnectionAPITests::test_active_binding_blocks_location_change_and_keeps_credential_reference"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "case": "AM",
+      "title": "First boot/restart giữa extraction/commit/refresh, mất volume/secret",
+      "requirements": "FR-099–FR-100, BR-19",
+      "expected": "Readiness thật, persistence/recovery an toàn, không reset dữ liệu",
+      "actual": "All listed condition checks have valid PASS receipts and matching selectors. See checks for actual IDs and original execution scope.",
+      "status": "PASS",
+      "checks": [
+        {
+          "condition": "Fresh startup, phase restart and secret loss fail-closed",
+          "evidence_id": "restart",
+          "selectors": [],
+          "status": "PASS",
+          "actual": "Receipt PASS; detailed browser/phase results and original artifact IDs retained"
+        }
+      ]
     }
   ],
-  "scope_note": "Existing acceptance matrix source is retained in acceptance-report.md. Cases are evidence reuse with explicit original scopes; application-file equivalence and fresh DNS/SDK/routes/UI tests establish changed artifact coverage. SC/US/BR08 mapping follows source task traceability, not just checkbox state.",
-  "stories": [
-    "US1",
-    "US2",
-    "US3",
-    "US4",
-    "US5",
-    "US6",
-    "US7",
-    "US8",
-    "US9",
-    "US10",
-    "US11"
-  ],
   "success_criteria": [
-    "SC-001",
-    "SC-002",
-    "SC-003",
-    "SC-004",
-    "SC-005",
-    "SC-006",
-    "SC-007",
-    "SC-008",
-    "SC-009",
-    "SC-010",
-    "SC-011",
-    "SC-012",
-    "SC-013",
-    "SC-014",
-    "SC-015"
+    {
+      "id": "SC-001",
+      "expected": "Khởi động môi trường mới bằng đúng một lệnh; sau sẵn sàng, chạy workflow mẫu không có cấu hình nội bộ bổ sung; restart không mất dữ liệu đã thay đổi.",
+      "case_ids": [
+        "AM",
+        "X"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-002",
+      "expected": "Với dữ liệu/workbook mẫu chuẩn bị sẵn, operator tạo table và deploy workflow đầu tiên trong tối đa 10 phút thao tác, không viết Python hay SQL.",
+      "case_ids": [
+        "A",
+        "T"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-003",
+      "expected": "100% tám hướng ETL kiểm chứng bằng bản ghi thật; target đúng số dòng/giá trị/khóa/NULL.",
+      "case_ids": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "U"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-004",
+      "expected": "20 ca workbook lỗi có 100% lỗi chỉ đúng vị trí/phạm vi và nguyên nhân; không side effect trước validation/xác nhận.",
+      "case_ids": [
+        "P",
+        "AL"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-005",
+      "expected": "Ba lần cùng dữ liệu/key ổn định không tăng số key trong chế độ insert/update; chế độ chỉ insert thể hiện đúng cảnh báo và số dòng tăng kỳ vọng.",
+      "case_ids": [
+        "J",
+        "K"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-006",
+      "expected": "Mọi ca lỗi thay toàn bộ dữ liệu trong ma trận đều giữ/phục hồi dữ liệu cũ; không báo success cho dữ liệu rỗng/partial ngoài xác nhận.",
+      "case_ids": [
+        "L",
+        "M",
+        "AC"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-007",
+      "expected": "Hoàn tất dataset lớn hơn hai lần giới hạn RAM xử lý và ít nhất 20 batch, không vượt quota, có bằng chứng lưu tạm trên đĩa và cleanup/recovery.",
+      "case_ids": [
+        "O",
+        "AD",
+        "AH"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-008",
+      "expected": "KPI/nhóm lịch/lọc ngày khớp 100% tập execution chuẩn đủ trạng thái; dữ liệu thiếu luôn có nhãn, không suy đoán.",
+      "case_ids": [
+        "S"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-009",
+      "expected": "100% workflow báo deploy thành công được nền tảng điều phối nhận diện đúng revision; link mở đúng workflow, mỗi hướng ETL có ít nhất một execution thật thành công.",
+      "case_ids": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "U",
+        "T",
+        "W"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-010",
+      "expected": "95% thao tác xem/preview mẫu trong 3 giây; test connection/deployment luôn có kết quả hoặc timeout trong hạn mức công bố của môi trường nghiệm thu.",
+      "case_ids": [
+        "S",
+        "Q",
+        "W"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes",
+      "checks": [
+        {
+          "condition": "Real HTTP list/detail/preview p95 and connection budget",
+          "evidence_id": "response",
+          "selectors": [
+            "tests/integration/test_response_limits.py::ResponseLimitTests::test_list_detail_preview_and_connection_probe_meet_published_budgets"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 1 specific passed test IDs verified"
+        }
+      ]
+    },
+    {
+      "id": "SC-011",
+      "expected": "Không tìm thấy credentials trên các bề mặt cấm khi kiểm tra dữ liệu lưu/source/ response/log/metadata task; các ca input nguy hiểm bị chặn.",
+      "case_ids": [
+        "Y"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-012",
+      "expected": "Mọi ca A–T và bổ sung U–AM có kết quả thực, tái hiện được, truy vết yêu cầu; không test bắt buộc nào bị bỏ qua khi tuyên bố MVP hoàn thành.",
+      "case_ids": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "U",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "AC",
+        "N",
+        "O",
+        "P",
+        "AL",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "AA",
+        "AB",
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AH",
+        "AI",
+        "AJ",
+        "AK",
+        "AM"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-013",
+      "expected": "Trong các ca nguồn được cập nhật đồng thời, mọi DB extraction thành công khớp một snapshot; 100% extraction fail của FULL_REFRESH giữ target cũ nguyên trạng.",
+      "case_ids": [
+        "AA",
+        "M"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-014",
+      "expected": "Mọi ca commit chưa rõ, API timeout, worker kill và target overlap đều đối soát hoặc báo bị chặn đúng thời hạn; không có duplicate replay tự động hoặc mất artifact recovery.",
+      "case_ids": [
+        "AH",
+        "AI",
+        "AJ",
+        "AK"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    },
+    {
+      "id": "SC-015",
+      "expected": "Tập fixture Unicode/NULL/decimal/temporal round-trip đúng 100% giá trị được hỗ trợ; mọi giá trị không tương thích bị từ chối rõ, không cắt/đổi kiểu âm thầm.",
+      "case_ids": [
+        "AE"
+      ],
+      "status": "PASS",
+      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes"
+    }
+  ],
+  "stories": [
+    {
+      "id": "US1",
+      "requirements": "FR-081–FR-084",
+      "expected": "Startup mới/restart/seed và chạy mẫu",
+      "case_ids": [
+        "AM",
+        "X"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US2",
+      "requirements": "FR-003–FR-009",
+      "expected": "CRUD/test thật, lỗi và dependency",
+      "case_ids": [
+        "Q"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US3",
+      "requirements": "FR-010–FR-017",
+      "expected": "Upload/parser/preview/full validation/retention",
+      "case_ids": [
+        "AF",
+        "X"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US4",
+      "requirements": "FR-018–FR-028",
+      "expected": "Template, Excel lỗi, DDL đúng hai DB, kết quả từng table",
+      "case_ids": [
+        "A",
+        "B",
+        "P",
+        "AL"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US5",
+      "requirements": "FR-018–FR-021, FR-029–FR-041",
+      "expected": "Workbook nhiều DAG, deploy/revision/parse/activation",
+      "case_ids": [
+        "N",
+        "W",
+        "AJ",
+        "AK",
+        "AL"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US6",
+      "requirements": "FR-001, FR-042–FR-048, FR-055–FR-062",
+      "expected": "Bốn DB routes, mapping/filter/metrics/staging thật",
+      "case_ids": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "I",
+        "O",
+        "AA",
+        "AB",
+        "AD",
+        "AG",
+        "AH"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US7",
+      "requirements": "FR-001, FR-010–FR-017, FR-042–FR-047, FR-056",
+      "expected": "Bốn file routes, parser/NULL/dòng lỗi",
+      "case_ids": [
+        "G",
+        "H",
+        "U",
+        "AE",
+        "AF"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US8",
+      "requirements": "FR-049–FR-054",
+      "expected": "Ba strategies, partial failure/retry/rerun/recovery",
+      "case_ids": [
+        "J",
+        "K",
+        "L",
+        "M",
+        "R",
+        "AC",
+        "AG"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US9",
+      "requirements": "FR-063–FR-070",
+      "expected": "Managed/external, history/log/task/control/link",
+      "case_ids": [
+        "N",
+        "S",
+        "T",
+        "W",
+        "AJ"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US10",
+      "requirements": "FR-071–FR-078",
+      "expected": "Tập runs chuẩn và dữ liệu thiếu/stale",
+      "case_ids": [
+        "S",
+        "Z"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    },
+    {
+      "id": "US11",
+      "requirements": "FR-002, FR-079–FR-080",
+      "expected": "Settings đúng/sai, persistence, navigation/states",
+      "case_ids": [
+        "X",
+        "Z"
+      ],
+      "status": "PASS",
+      "actual": "Every referenced case has explicit passing condition evidence"
+    }
   ],
   "business_rules": [
-    "BR-08"
+    {
+      "id": "BR-08",
+      "expected": "ONCE/SCHEDULED and confirmed replacement policies remain enforced under uncertainty/retry/revision changes",
+      "case_ids": [
+        "K",
+        "L",
+        "M",
+        "N",
+        "AI",
+        "AJ",
+        "AK"
+      ],
+      "status": "PASS",
+      "actual": "ONCE reservations and SCHEDULED scope verified on actual metadata; native overlap and credential invalidation verified through real SDK",
+      "checks": [
+        {
+          "condition": "Once reservations and scheduled/manual scope",
+          "evidence_id": "api",
+          "selectors": [
+            "tests/api/test_trigger.py::TriggerTests::test_scheduled_is_not_manual_authority",
+            "tests/api/test_trigger.py::TriggerTests::test_two_requests_cannot_transfer_one_once"
+          ],
+          "status": "PASS",
+          "actual": "Receipt PASS; 2 specific passed test IDs verified"
+        }
+      ]
+    }
   ],
-  "receipt_sha256": {
-    "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json": "b93e6c8bc76ae7831f0bcf56398b9ea26299e0a3138a12e9e1ff52aee3f8657d",
-    "docs/testing/resume-20261111/t142-cross-database/regression-results.json": "8c8292d1118fc2f0356546239d6b7f14fc4dcf11f8c5fd107d42172694992e71",
-    "docs/testing/resume-20261112/t143-airflow/regression-results.json": "8113e1f14aa7d16e98c286e706952a5adf90d470c19f68395cb159cd36a47f2b",
-    "docs/testing/resume-20261112/retry-refresh-airflow/regression-results.json": "fc2918ffdaa79c09b3c27d42205c354205ff1f9fb33f2b895043a42b4bd55433",
-    "docs/testing/resume-20261113/dependency-recovery-airflow/regression-results.json": "b21290a9de55864e4d70f66a94fe7ee3650f7aafeefdb70ae084c1b90c5e0529",
-    "docs/testing/resume-20261113/current-t146-confirmation/regression-results.json": "fe979449f1b88c8c6a69182b1e650cac0a07e61666040769a4b99df25d07812e",
-    "docs/testing/resume-20261113/security-surfaces/regression-results.json": "e0461ed710522ee6668bbe4aa036dc780667b2bbf6b56202068fbc46e8223b9d",
-    "docs/testing/resume-20261113/response-limits-measured/regression-results.json": "6d64377775dd1749dca48b760eef41935f98b62b01580dfb5bec6292f3ffd2fe",
-    "docs/testing/resume-20261113/dashboard-truth-airflow/regression-results.json": "4565c2e3e468c1e6c492579ff47947543ed5a78546d8e11f1f1adc67c07e352b",
-    "docs/testing/resume-20261113/language-e2e/regression-results.json": "5f8351523e2b7858f385f486502dabf1d211f9a368a4ada7c4812d96ecbf5d6f",
-    "docs/testing/resume-20261112/aat-t140-045d42c5/result.json": "1089a9b8f1f49ea96866cf9a1a28462187d26f259d568545c23e54f4147af9f0",
-    "docs/testing/resume-20261114/memory-r6/regression-results.json": "962a3201ae7b9431fd0a0802f0e257649664f286bdda7bbe56600d1fed9c8a29",
-    "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json": "83a785db7dd56fb05c544ae149b9597f3f23ce79d65818bf46c49e2521e30490"
-  }
+  "evidence": {
+    "ah": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/ah-storage/regression-results.json",
+      "receipt_sha256": "4a4efab40282a8e34809e8fe92ff0347807f0b9e368cd4b957363fe38b7c2fb5",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_bounded_retry_preserves_the_same_dataset_on_both_databases",
+        "tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_missing_staging_after_partial_commit_blocks_until_original_files_return",
+        "tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_mysql_commit_loss_reconciles_marker_before_retry",
+        "tests/etl/test_commit_recovery.py::CommitRecoveryTests::test_postgres_commit_loss_reconciles_marker_before_retry",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_failed_write_keeps_reservation_and_never_publishes_manifest",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_free_disk_reserve_rejects_without_allocating_metadata",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_global_20gib_counts_protected_and_active_allocations",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_idempotent_reservation_and_release_preserve_evidence",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_per_run_10gib_boundary_is_atomic_under_concurrency",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_reservation_overflow_cannot_publish_even_if_caller_catches_error",
+        "tests/etl/test_resource_quota.py::QuotaTests::test_writer_accounts_manifest_and_retains_protected_bytes",
+        "tests/etl/test_resource_quota.py::RSSSupervisionTests::test_actual_512mib_process_is_stopped_before_container_oom",
+        "tests/etl/test_resource_quota.py::RSSSupervisionTests::test_normal_child_completes_without_false_memory_failure",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_filter_is_bound_and_can_use_unprojected_columns",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_midstream_session_loss_discards_incomplete_snapshot",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_nontransactional_source_is_rejected",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_oversized_cell_is_null_on_wire_before_materialization",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_session_rejects_writes",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_snapshot_survives_concurrent_updates_without_primary_key",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_source_session_loss_fails_without_reconnect",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_mysql_utc_timestamp_and_unicode_are_lossless",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_filter_is_bound_and_can_use_unprojected_columns",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_midstream_session_loss_discards_incomplete_snapshot",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_oversized_cell_is_null_on_wire_before_materialization",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_session_rejects_writes",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_snapshot_survives_concurrent_updates_without_primary_key",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_source_session_loss_fails_without_reconnect",
+        "tests/etl/test_snapshot_staging.py::SnapshotTests::test_postgres_timestamp_and_unicode_are_lossless",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_checksum_corruption_and_binding_mismatch_rejected_before_rows",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_completed_manifest_cannot_be_rewritten_or_its_schema_relabelled",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_corrupt_last_part_is_rejected_before_first_row_is_yielded",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_decimal_float_and_type_coercion_fail_without_complete_publication",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_incomplete_extraction_does_not_publish_complete_manifest",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_missing_file_and_manifest_schema_drift_are_rejected",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_process_exit_before_complete_never_publishes_manifest",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_serialized_record_limit_is_enforced_without_publishing_complete",
+        "tests/etl/test_snapshot_staging.py::TypedStagingTests::test_typed_roundtrip_preserves_values_null_and_safe_paths",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_backend_maintenance_applies_native_cleanup_and_persisted_retention",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_slow_target_cannot_extend_the_startup_recovery_deadline",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_startup_records_blocked_reason_without_reclaiming_unknown_owner",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_dataset_keeps_full_retention",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_terminal_reconciled_dataset_expires_after_retention",
+        "tests/etl/test_staging_cleanup.py::StagingCleanupTests::test_uncertain_dataset_is_never_deleted_to_free_capacity",
+        "tests/etl/test_storage_failures.py::StorageFailureTests::test_sigkill_rolls_back_open_target_transaction_without_releasing_quota"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/ah-storage/etl-engine-driver.txt": "266fd72bcd652ee87eb2a13f277d19a73b668e3b611e01a09e7413fabf1448ee",
+        "docs/testing/resume-20261114/t152-closure/ah-storage/etl-engine/pytest.txt": "9bd47d8412b7861333c2d60458569eb5d276495483314404d2ee962d6ea942de"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "policies": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/etl-policies/regression-results.json",
+      "receipt_sha256": "c4f5a08c82ac5563905c04770b90f4498d4b3ed06a60442fce2ea517349d168d",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_append_late_type_error_preserves_committed_batch",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_bad_full_format_or_changed_checksum_never_loads",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_mysql",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_csv_to_postgres",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_global_upsert_key_errors_precede_every_target_write",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_headerless_txt_maps_generated_columns",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_mysql",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_txt_to_postgres",
+        "tests/etl/test_file_transfer.py::FileTransferTests::test_upsert_late_nonkey_type_error_preserves_prior_batch",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_confirmed_cancellation_rolls_back_and_closes_once",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_corrupt_complete_dataset_preserves_target_and_never_admits",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_csv_txt_replacement_prepares_whole_mapped_dataset",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_empty_dataset_requires_separate_allow_empty_acknowledgment",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_inbound_foreign_keys_and_triggers_block_before_admission",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_lost_replacement_commit_response_reconciles_without_second_delete",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_midinsert_failure_rolls_back_whole_replacement",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_mysql_replacement_and_consumed_once_retry",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_postgres_replacement_and_consumed_once_retry",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_revoke_after_admission_does_not_promise_cancellation",
+        "tests/etl/test_full_refresh.py::FullRefreshTests::test_revoked_before_admission_preserves_old_data",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_key_only_composite_upsert_is_stable_across_three_runs",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_retry_skips_verified_batches",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_append_unique_failure_preserves_prior_batch",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_mysql_upsert_preserves_unmapped_values_and_retry_is_stable",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_new_append_run_can_duplicate_without_unique_constraint",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_retry_skips_verified_batches",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_append_unique_failure_preserves_prior_batch",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_postgres_upsert_preserves_unmapped_values_and_retry_is_stable",
+        "tests/etl/test_load_policies.py::LoadPolicyTests::test_secondary_unique_collision_never_updates_wrong_row",
+        "tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_mysql_mapping_to_disk_uses_real_introspected_types",
+        "tests/etl/test_mapping_pipeline.py::MappingPipelineTests::test_postgres_mapping_to_disk_uses_real_introspected_types",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_connection_aliases_cannot_read_and_write_same_table",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_identity_pin_and_nullability_drift",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_key_drift_and_missing_used_column_fail",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_collation_drift_changes_fingerprint",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_mysql_used_type_drift_changes_hash_unmapped_column_does_not",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_connection_aliases_cannot_read_and_write_same_table",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_identity_pin_and_nullability_drift",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_key_drift_and_missing_used_column_fail",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_collation_drift_changes_fingerprint",
+        "tests/etl/test_schema_preflight.py::SchemaPreflightTests::test_postgres_used_type_drift_changes_hash_unmapped_column_does_not"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/etl-policies/etl-engine-driver.txt": "f70b60e6219325de609ca1a4db766ea1d17e808bda40b78afad90dd75565f95e",
+        "docs/testing/resume-20261114/t152-closure/etl-policies/etl-engine/pytest.txt": "0d19bd9f56aefed644a4555660f55acd0532402dafa22641ef1de5f7849ed60c"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "api": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/aj-ak-api/regression-profile-results.json",
+      "receipt_sha256": "1b2e426cbd2e48430ad3126b2f6c3545b6c750bba5d8834e02b65d784cbb4a2e",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_deployment_requires_valid_confirmation_and_idempotency_before_work",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_download_preserves_canonical_etl_workbook_bytes_and_etag",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_etl_upload_is_durable_and_roundtrips_the_workbook_hash",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_missing_preview_and_deployment_return_safe_contract_errors",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_sample_references_exist_in_the_actual_seeded_registry",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_connection_revision_change_during_preview_prevents_confirmation",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_duplicate_revision_fails_without_leaving_validation_stuck",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_full_refresh_with_inbound_fk_is_rejected_on_both_targets",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_invalid_workbook_does_not_create_partial_etl_definitions",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_one_invalid_dependency_prevents_publication_of_every_dag",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_preview_columns_keep_real_lengths_primary_key_and_literal_default",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_readonly_target_and_unreadable_source_fail_before_publication",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_same_physical_table_and_nonunique_upsert_keys_are_rejected",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_schema_drift_invalidates_preview_before_confirmation",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_validated_workbook_produces_typed_persisted_preview_without_target_writes",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_external_even_with_forged_aat_tag_is_not_claimed",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_failed_airflow_lookup_keeps_gate_blocked",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_new_dag_blocks_bind_gate_before_airflow_lookup",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_new_revision_redeploy_keeps_old_current_until_registration",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_redeploy_pauses_drains_and_preserves_previous_active_state",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_revision_changed_during_lookup_blocks_publication",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_running_or_unknown_runs_keep_redeploy_paused_and_blocked",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_expired_worker_cannot_dispatch_file_after_closing_gate",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_interruption_before_publication_reconciles_without_any_file_write",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_multiple_dags_share_operation_but_keep_individual_deployment_identity",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_public_multi_dag_request_is_atomic_and_replays_same_results",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_response_loss_reconciles_same_file_without_republication",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_write_uncertainty_is_not_replayed_and_gate_remains_blocked",
+        "tests/api/test_trigger.py::TriggerTests::test_activation_requires_scheduled_scope_and_is_revision_guarded",
+        "tests/api/test_trigger.py::TriggerTests::test_activation_response_loss_readback_and_pause_do_not_revoke_authority",
+        "tests/api/test_trigger.py::TriggerTests::test_lost_post_response_is_read_back_without_another_post",
+        "tests/api/test_trigger.py::TriggerTests::test_once_is_reserved_and_identity_is_stable_before_dispatch",
+        "tests/api/test_trigger.py::TriggerTests::test_revoke_before_dispatch_closes_once_without_airflow_submission",
+        "tests/api/test_trigger.py::TriggerTests::test_scheduled_is_not_manual_authority",
+        "tests/api/test_trigger.py::TriggerTests::test_two_requests_cannot_transfer_one_once",
+        "tests/api/test_trigger.py::TriggerTests::test_uncertain_trigger_is_observed_by_maintenance_without_reposting",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_canonical_hash_ignores_object_order_but_preserves_semantic_values",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_source_union_and_strategy_keys_are_strict",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_typed_literal_never_coerces_float_bool_or_numeric_string",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_constants_null_handling_and_zero_false_empty_remain_distinct",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_conversion_rejects_float_bool_exponents_and_numeric_overflow",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_direct_mapping_does_not_guess_numeric_strings",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_error_identifies_position_without_disclosing_row",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_exact_decimal_integer_unicode_and_null",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_explicit_mapping_preserves_unmapped_target_columns",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_iso_temporal_values_keep_microseconds_and_offset",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_no_rounding_truncation_timezone_inference_or_invalid_calendar",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_unmapped_required_target_without_default_is_rejected"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/aj-ak-api/pytest.txt": "dec5c601202b1092d4291ed798af40835646916261447376ba358858656996e9"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "registration": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/registration-workbook-settings/regression-profile-results.json",
+      "receipt_sha256": "377ea84bfef17778f3061c7e9759c612d8463af90f57f7196790a4b7631c9235",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_registration.py::RegistrationEvidenceTests::test_expected_revision_requires_owner_file_and_parse_version_evidence",
+        "tests/airflow/test_registration.py::RegistrationPollingTests::test_bounded_backoff_and_one_deadline_across_all_http_pages",
+        "tests/airflow/test_registration.py::RegistrationPollingTests::test_current_exact_file_parse_error_is_terminal",
+        "tests/airflow/test_registration.py::RegistrationPollingTests::test_new_tags_wait_for_the_matching_serialized_task_revision",
+        "tests/airflow/test_registration.py::RegistrationPollingTests::test_retry_observes_expected_revision_without_requiring_version_increment",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_airflow_outage_returns_unavailable_values_not_zero",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_force_refresh_outage_marks_prior_snapshot_stale",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_invalid_timezone_date_range_and_scope_are_rejected",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_missing_history_page_is_incomplete_and_never_a_partial_total",
+        "tests/api/test_settings.py::SettingsContractTests::test_concurrent_edits_to_different_fields_share_one_document_revision",
+        "tests/api/test_settings.py::SettingsContractTests::test_defaults_persist_and_global_revision_changes_for_each_setting",
+        "tests/api/test_settings.py::SettingsContractTests::test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected",
+        "tests/api/test_settings.py::SettingsContractTests::test_shorter_retention_never_collects_protected_recovery_data",
+        "tests/api/test_settings.py::SettingsNewConfigTests::test_new_batch_defaults_do_not_mutate_a_validated_revision",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_repository_sample_and_template_guidance_are_reused",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_valid_workbook_typed_defaults_and_composite_key_order",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_zip_payloads_and_formula_are_rejected_before_parse_side_effects"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/registration-workbook-settings/pytest.txt": "791dd7636fb5e7bf766d77704b75a07d838231c8744762bcac15cf087ccffa58"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "implicit": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/implicit-mapping/sdk-unit-results.json",
+      "receipt_sha256": "56d82735f26a49d142be06beecbbfb5ccfb78256026c83180a827528e510731b",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_case_mismatch_never_guesses_a_required_target",
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_empty_and_all_disabled_mapping_use_exact_names_and_keep_defaults",
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_implicit_mapping_never_coerces_numeric_text"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/implicit-mapping/sdk-unit.txt": "bc804b931d497f4ac9affa0b96e627d839669b7d86cc6e0ed7fe8728a0be0b22"
+      },
+      "artifact_ids": {
+        "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "blank": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/blank-workbook-rows/regression-profile-results.json",
+      "receipt_sha256": "5e74af87d5cc2f88a624a06e62d9a31ce67eee142a3e2a56cae046e5653f5316",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_definitions",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_the_workbook",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_repository_sample_and_template_guidance_are_reused",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_valid_workbook_typed_defaults_and_composite_key_order",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_zip_payloads_and_formula_are_rejected_before_parse_side_effects"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/blank-workbook-rows/pytest.txt": "21def56047985b3c8beb581c65d8408d3f77fdbd194b632066cc6f48df43227c"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "native": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/native-db-concurrency/regression-results.json",
+      "receipt_sha256": "3f9108a987a70da7da3593dcbdafbb8164f0e79df53ad29855f02bc72ea2439d",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_mysql_manual_and_scheduled_aliases_share_one_physical_writer",
+        "tests/airflow/test_concurrent_runs.py::ConcurrentRunTests::test_postgres_manual_and_scheduled_aliases_share_one_physical_writer",
+        "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_mysql",
+        "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_mysql_to_pg",
+        "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_mysql",
+        "tests/airflow/test_cross_database.py::CrossDatabaseTests::test_pg_to_pg"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/native-db-concurrency/airflow-0-driver.txt": "a8a444731dc6302e0b19074fae593acde6d5b161b0b50a2045fe28a297c2874a",
+        "docs/testing/resume-20261114/t152-closure/native-db-concurrency/airflow-1-driver.txt": "95be3fceed6c901c2f3bf95d9ef62dd2ed8c6e3134f293f4443ff37cc960c341",
+        "docs/testing/resume-20261114/t152-closure/native-db-concurrency/airflow-0/regression-airflow-0-green.txt": "d1f8c46577cc5f15a842a6d37a68f8e949089b76c5c11ae63231edbe5a9e51fb",
+        "docs/testing/resume-20261114/t152-closure/native-db-concurrency/airflow-1/regression-airflow-1-green.txt": "cd096231f81efe61b214dbd6616c1c9896f12595bc7a0ce95c1a8a4824e629a7"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [
+        "CONCURRENT_RUNS_VERIFIED target=MYSQL manual_and_scheduled=true distinct_aliases=true maximum_writers=1 four_exact_rows=true",
+        "CONCURRENT_RUNS_VERIFIED target=POSTGRESQL manual_and_scheduled=true distinct_aliases=true maximum_writers=1 four_exact_rows=true"
+      ],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "revision": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/revision-credentials-selected-results.json",
+      "receipt_sha256": "9768000dffa574988b3e503b15cb53625db622e575779eaba67ef2a238b49129",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_full_refresh_recovery.py::InvalidationBoundaryTests::test_mysql_changed_credential_invalidates_before_admission",
+        "tests/airflow/test_full_refresh_recovery.py::InvalidationBoundaryTests::test_postgres_changed_credential_invalidates_before_admission",
+        "tests/airflow/test_revision_lifecycle.py::RevisionLifecycleTests::test_new_revision_registers_and_old_clear_cannot_write_again"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/native-revision-credentials-dashboard/t152-revision-credentials-dashboard-green.txt": "1ce07b3671b0cd9ce02672f4e82661cff88ddfdd56c8c19fdef8724bcf89cb5e"
+      },
+      "artifact_ids": {
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [],
+      "execution_scope": "Only the three explicitly passed revision/credential test IDs, not the failed combined suite"
+    },
+    "dashboard": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/native-dashboard-r2/airflow-fixture-results.json",
+      "receipt_sha256": "6c910c093018422ce1ded3c634079178bd4de88e60c7ef9f2020946a73938c45",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_dashboard_truth.py::DashboardTruthTests::test_real_history_inventory_lifetime_and_date_filter"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/native-dashboard-r2/t152-dashboard-only-green.txt": "0783ac114938cf5ffc153d6afa9bfd5500695f51f60c49d755370d09eb09a2aa"
+      },
+      "artifact_ids": {
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "runner": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "tables": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/table-e2e/regression-results.json",
+      "receipt_sha256": "11f6ad4d146bf775723be311d62312d1c559712f4bc19854cfa602a5f5cace54",
+      "kind": "browser",
+      "passed_selectors": [],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/table-e2e/e2e-tables-driver.txt": "35690fb036b1991a6ab5e2839a872505dd84d9113df29866d4577794e807ecd8",
+        "docs/testing/resume-20261114/t152-closure/table-e2e/e2e-tables/tables-e2e.txt": "388b800a89a8393faf8ecb546c5f2999b3eeeb9bf67c06e541eca1eec5b24f72"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "language": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/language-e2e/regression-results.json",
+      "receipt_sha256": "855f6fc99c75e3daaa7a80214f687ef5acf6d0eb9d361fbcdd39cfe5052dd7dd",
+      "kind": "browser",
+      "passed_selectors": [],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/language-e2e/e2e-language-driver.txt": "a28b16277d43f90f1f7eed2d50a57e8bb7c9edd6ed50e709c4c043a7438c99e1",
+        "docs/testing/resume-20261114/t152-closure/language-e2e/e2e-language/language-e2e.txt": "e842af063d39fe8f5ad9ee1fcc1c8afcf829fcf3ef6f37e48956c0db91df60e6"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "full": {
+      "receipt": "docs/testing/resume-20261114/accepted-handover/full-workflow/regression-results.json",
+      "receipt_sha256": "b93e6c8bc76ae7831f0bcf56398b9ea26299e0a3138a12e9e1ff52aee3f8657d",
+      "kind": "browser",
+      "passed_selectors": [],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/accepted-handover/full-workflow/e2e-full_workflow-driver.txt": "928c44e3c7a7347a5c7560027e55b7971de131b90b1caa96f6114c8a901b440f",
+        "docs/testing/resume-20261114/accepted-handover/full-workflow/e2e-full_workflow/full_workflow-e2e.txt": "2c29b3e616603b69c5cfa133d88e25cbac015fed2e69d232423a70f8bb7ab2bf"
+      },
+      "artifact_ids": {
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+      },
+      "observations": [
+        "FULL_WORKFLOW_VERIFIED {\"dag\": \"aat_full_desktop_1794639617146\", \"rows\": 4, \"loaded_rows\": 4, \"real_airflow_success\": true, \"exact_target_values\": true, \"elapsed_ms\": 61952}",
+        "FULL_WORKFLOW_VERIFIED {\"dag\": \"aat_full_mobile_1794639681247\", \"rows\": 4, \"loaded_rows\": 4, \"real_airflow_success\": true, \"exact_target_values\": true, \"elapsed_ms\": 32058}"
+      ],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "unit": {
+      "receipt": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
+      "receipt_sha256": "83a785db7dd56fb05c544ae149b9597f3f23ce79d65818bf46c49e2521e30490",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/api/test_authorizations.py::AuthorizationContractTests::test_grant_cannot_acknowledge_empty_replacement_implicitly",
+        "tests/api/test_authorizations.py::AuthorizationContractTests::test_missing_authority_detail_list_and_revoke_are_safe_errors",
+        "tests/api/test_authorizations.py::AuthorizationContractTests::test_trigger_needs_an_idempotency_key_and_state_needs_if_match",
+        "tests/api/test_authorizations.py::AuthorizationCreateTests::test_empty_permission_is_separate_and_scheduled_manual_is_rejected",
+        "tests/api/test_authorizations.py::AuthorizationCreateTests::test_grant_is_persisted_and_same_request_replays_without_new_confirmation",
+        "tests/api/test_authorizations.py::AuthorizationCreateTests::test_http_grant_history_revoke_etag_and_replay",
+        "tests/api/test_authorizations.py::AuthorizationCreateTests::test_scheduled_scope_pins_schedule_and_connection_change_invalidates_grant",
+        "tests/api/test_authorizations.py::AuthorizationCreateTests::test_target_scope_and_idempotency_payload_changes_are_rejected",
+        "tests/api/test_connections.py::ConnectionAPITests::test_active_binding_blocks_location_change_and_keeps_credential_reference",
+        "tests/api/test_connections.py::ConnectionAPITests::test_connection_test_reports_real_success_and_safe_auth_failure",
+        "tests/api/test_connections.py::ConnectionAPITests::test_create_detail_and_filtered_pagination",
+        "tests/api/test_connections.py::ConnectionAPITests::test_delete_requires_current_etag_and_hides_deleted_connection",
+        "tests/api/test_connections.py::ConnectionAPITests::test_duplicate_trimmed_case_insensitive_code_conflicts",
+        "tests/api/test_connections.py::ConnectionAPITests::test_invalid_fields_hosts_and_missing_if_match_fail_safely",
+        "tests/api/test_connections.py::ConnectionAPITests::test_location_change_invalidates_scope_but_keeps_historical_config",
+        "tests/api/test_connections.py::ConnectionAPITests::test_mysql_connection_round_trip_through_http_and_real_database",
+        "tests/api/test_connections.py::ConnectionAPITests::test_patch_blank_password_preserves_secret_and_rejects_stale_etag",
+        "tests/api/test_connections.py::ConnectionAPITests::test_real_definition_dependency_is_listed_and_blocks_delete_and_code_change",
+        "tests/api/test_connections.py::ConnectionAPITests::test_secret_is_encrypted_at_rest_and_public_projection_is_safe",
+        "tests/api/test_contract_drift.py::ContractDriftTests::test_every_canonical_operation_has_a_runtime_route_and_request_fields",
+        "tests/api/test_contract_drift.py::ContractDriftTests::test_inventory_comparison_does_not_depend_on_a_hardcoded_operation_count",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_deployment_requires_valid_confirmation_and_idempotency_before_work",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_download_preserves_canonical_etl_workbook_bytes_and_etag",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_etl_upload_is_durable_and_roundtrips_the_workbook_hash",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_missing_preview_and_deployment_return_safe_contract_errors",
+        "tests/api/test_dag_builder.py::DAGBuilderContractTests::test_sample_references_exist_in_the_actual_seeded_registry",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_connection_revision_change_during_preview_prevents_confirmation",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_csv_and_txt_preview_pin_validated_parser_and_typed_mappings",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_duplicate_revision_fails_without_leaving_validation_stuck",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_full_refresh_with_inbound_fk_is_rejected_on_both_targets",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_invalid_workbook_does_not_create_partial_etl_definitions",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_one_invalid_dependency_prevents_publication_of_every_dag",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_preview_columns_keep_real_lengths_primary_key_and_literal_default",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_readonly_target_and_unreadable_source_fail_before_publication",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_safe_full_refresh_preview_requires_separate_authority_and_empty_acknowledgment",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_same_physical_table_and_nonunique_upsert_keys_are_rejected",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_schema_drift_invalidates_preview_before_confirmation",
+        "tests/api/test_dag_builder.py::ETLPreviewIntegrationTests::test_validated_workbook_produces_typed_persisted_preview_without_target_writes",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_airflow_outage_returns_unavailable_values_not_zero",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_force_refresh_outage_marks_prior_snapshot_stale",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_invalid_timezone_date_range_and_scope_are_rejected",
+        "tests/api/test_dashboard.py::DashboardContractTests::test_missing_history_page_is_incomplete_and_never_a_partial_total",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_external_even_with_forged_aat_tag_is_not_claimed",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_failed_airflow_lookup_keeps_gate_blocked",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_new_dag_blocks_bind_gate_before_airflow_lookup",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_new_revision_redeploy_keeps_old_current_until_registration",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_redeploy_pauses_drains_and_preserves_previous_active_state",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_revision_changed_during_lookup_blocks_publication",
+        "tests/api/test_deployment_admission.py::DeploymentAdmissionTests::test_running_or_unknown_runs_keep_redeploy_paused_and_blocked",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_expired_worker_cannot_dispatch_file_after_closing_gate",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_interruption_before_publication_reconciles_without_any_file_write",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_multiple_dags_share_operation_but_keep_individual_deployment_identity",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_public_multi_dag_request_is_atomic_and_replays_same_results",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_response_loss_reconciles_same_file_without_republication",
+        "tests/api/test_deployments.py::DeploymentWorkerTests::test_write_uncertainty_is_not_replayed_and_gate_remains_blocked",
+        "tests/api/test_files.py::FilesAPITests::test_active_and_uncertain_bindings_block_parser_change_without_mutating_snapshot",
+        "tests/api/test_files.py::FilesAPITests::test_boundaries_invalid_parser_and_checksum_rejected",
+        "tests/api/test_files.py::FilesAPITests::test_candidate_preview_does_not_persist_and_patch_requires_current_etag",
+        "tests/api/test_files.py::FilesAPITests::test_expired_or_missing_source_fails_without_empty_preview",
+        "tests/api/test_files.py::FilesAPITests::test_full_validation_finds_bad_record_beyond_preview_limit",
+        "tests/api/test_files.py::FilesAPITests::test_parser_change_invalidates_future_definition_without_rewriting_its_config",
+        "tests/api/test_files.py::FilesAPITests::test_preview_uses_quoted_null_semantics_and_never_marks_file_valid",
+        "tests/api/test_files.py::FilesAPITests::test_upload_same_name_distinct_reference_and_persistent_listing",
+        "tests/api/test_files.py::FilesAPITests::test_validation_replay_keeps_snapshot_and_old_parser_cannot_mark_new_parser_valid",
+        "tests/api/test_foundation_contract.py::FoundationHTTPContractTests::test_live_foundation_http_responses_match_canonical_contract",
+        "tests/api/test_health_contract.py::HealthContractTests::test_health_route_operation_ids_and_response_schemas_match_contract",
+        "tests/api/test_health_contract.py::HealthContractTests::test_liveness_is_canonical_without_claiming_foundation_ready",
+        "tests/api/test_health_contract.py::HealthContractTests::test_readiness_fails_closed_with_safe_error_until_t034",
+        "tests/api/test_monitoring.py::MonitoringContractTests::test_airflow_outage_is_not_an_empty_inventory",
+        "tests/api/test_monitoring.py::MonitoringContractTests::test_invalid_monitoring_filters_and_paging_are_rejected",
+        "tests/api/test_monitoring.py::MonitoringContractTests::test_log_projection_redacts_actual_encrypted_credentials_and_caps_bytes",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_if_match_and_idempotency_are_required",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_inventory_is_derived_and_operation_ids_unique",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_missing_operation_is_detected",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_required_field_and_extra_field_drift_are_detected",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_safe_error_and_story_selection_positive_controls",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_schema_drift_in_implementation_is_detected",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_uuid_idempotency_format_and_response_etag_drift",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_write_only_secret_cannot_be_returned",
+        "tests/api/test_openapi_contract.py::OpenAPIContractTests::test_wrong_success_status_is_not_accepted_by_default_error",
+        "tests/api/test_runtime_bind.py::RuntimeBearerTests::test_only_canonical_route_accepts_a_runtime_bearer",
+        "tests/api/test_settings.py::SettingsContractTests::test_concurrent_edits_to_different_fields_share_one_document_revision",
+        "tests/api/test_settings.py::SettingsContractTests::test_defaults_persist_and_global_revision_changes_for_each_setting",
+        "tests/api/test_settings.py::SettingsContractTests::test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected",
+        "tests/api/test_settings.py::SettingsContractTests::test_shorter_retention_never_collects_protected_recovery_data",
+        "tests/api/test_settings.py::SettingsNewConfigTests::test_new_batch_defaults_do_not_mutate_a_validated_revision",
+        "tests/api/test_tables.py::TableAPITests::test_aliases_cannot_concurrently_admit_creation_for_same_physical_table",
+        "tests/api/test_tables.py::TableAPITests::test_history_filter_pagination_and_request_boundaries",
+        "tests/api/test_tables.py::TableAPITests::test_invalid_workbook_has_safe_locations_and_no_preview",
+        "tests/api/test_tables.py::TableAPITests::test_lost_metadata_commit_ack_keeps_completed_workbook",
+        "tests/api/test_tables.py::TableAPITests::test_mysql_create_and_persistent_history",
+        "tests/api/test_tables.py::TableAPITests::test_mysql_partial_job_preserves_created_table_and_reports_permission_failure",
+        "tests/api/test_tables.py::TableAPITests::test_postgres_create_and_persistent_history",
+        "tests/api/test_tables.py::TableAPITests::test_stale_confirmation_rejects_changed_connection_without_creating_job",
+        "tests/api/test_tables.py::TableAPITests::test_template_binary_checksum_and_schema",
+        "tests/api/test_tables.py::TableAPITests::test_unknown_mysql_ddl_is_durable_and_idempotent_replay_does_not_execute",
+        "tests/api/test_trigger.py::TriggerTests::test_activation_requires_scheduled_scope_and_is_revision_guarded",
+        "tests/api/test_trigger.py::TriggerTests::test_activation_response_loss_readback_and_pause_do_not_revoke_authority",
+        "tests/api/test_trigger.py::TriggerTests::test_lost_post_response_is_read_back_without_another_post",
+        "tests/api/test_trigger.py::TriggerTests::test_once_is_reserved_and_identity_is_stable_before_dispatch",
+        "tests/api/test_trigger.py::TriggerTests::test_revoke_before_dispatch_closes_once_without_airflow_submission",
+        "tests/api/test_trigger.py::TriggerTests::test_scheduled_is_not_manual_authority",
+        "tests/api/test_trigger.py::TriggerTests::test_two_requests_cannot_transfer_one_once",
+        "tests/api/test_trigger.py::TriggerTests::test_uncertain_trigger_is_observed_by_maintenance_without_reposting",
+        "tests/unit/test_airflow_client.py::AirflowClientTests::test_401_refreshes_once_and_never_returns_credentials",
+        "tests/unit/test_airflow_client.py::AirflowClientTests::test_get_retries_are_finite_and_post_is_never_replayed",
+        "tests/unit/test_airflow_client.py::AirflowClientTests::test_path_segments_are_encoded_and_retry_after_cannot_exceed_deadline",
+        "tests/unit/test_airflow_client.py::AirflowClientTests::test_permission_error_is_not_retried_or_relabelled_as_connectivity",
+        "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_changed_upstream_or_extra_override_fail_closed",
+        "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_committed_override_artifacts_match_policy",
+        "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_import_errors_match_the_full_file_path_not_a_basename",
+        "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_inventory_reads_every_page_and_never_fakes_completeness",
+        "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_pause_requires_readback_and_health_checks_component_states",
+        "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_version_number_is_path_identity_and_uuid_remains_metadata",
+        "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_tampered_archive_fails_before_package_manager",
+        "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_unapproved_package_version_or_architecture_fails_closed",
+        "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_verified_archive_installs_and_checks_exact_version",
+        "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_wrong_installed_version_is_not_success",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_admission_unknown_outcome_requires_verification",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_close_requires_terminal_no_retry_and_known_outcome",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_completed_admission_is_never_reused_for_dml",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_created_and_verified_rejection_are_distinct",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_intent_submission_timeout_requires_reconciliation_not_new_reservation",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_once_reserves_and_safe_extraction_retry_keeps_reservation",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_only_verified_commit_consumes_once",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_reserved_once_never_returns_to_granted",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoke_and_invalidate_block_future_admission",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_invalidated_consumed_closed_never_grant_new_work",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_revoked_unknown_commit_cannot_close_but_verified_commit_can_reconcile",
+        "tests/unit/test_authorization_states.py::AuthorizationStateTests::test_scheduled_success_does_not_consume_schedule_grant",
+        "tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_idempotence_decryption_and_missing_key_fail_closed",
+        "tests/unit/test_bootstrap_secrets.py::BootstrapSecretTests::test_owner_domain_is_separate_from_backend_and_runtime",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_datetime_normalizes_offsets_and_serializes_utc_z",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_datetime_rejects_naive_date_epoch_and_invalid_values",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_error_envelope_required_uuid_fields_and_location",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_pagination_defaults_limits_and_query_strings",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_unknown_total_is_null_not_zero_and_page_forbids_extra_fields",
+        "tests/unit/test_common_schemas.py::CommonSchemaTests::test_uuid_validates_and_serializes_canonically",
+        "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_bad_types_ranges_fields_and_hosts_rejected",
+        "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_patch_distinguishes_omitted_nullable_and_empty_password",
+        "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_required_values_trim_and_password_is_not_in_repr",
+        "tests/unit/test_dag_storage.py::DAGStorageTests::test_failure_after_rename_leaves_complete_file_for_reconciliation",
+        "tests/unit/test_dag_storage.py::DAGStorageTests::test_interrupted_before_rename_keeps_previous_bytes_and_cleans_temp",
+        "tests/unit/test_dag_storage.py::DAGStorageTests::test_symlink_root_or_destination_is_rejected_without_touching_outside",
+        "tests/unit/test_dag_storage.py::DAGStorageTests::test_write_returns_exact_file_hash_and_only_internal_uuid_key",
+        "tests/unit/test_dashboard_metrics.py::DashboardMetricsTests::test_inclusive_dates_respect_dst_not_fixed_24_hour_days",
+        "tests/unit/test_dashboard_metrics.py::DashboardMetricsTests::test_run_time_uses_start_then_queue_never_logical_date",
+        "tests/unit/test_dashboard_metrics.py::DashboardMetricsTests::test_schedule_categories_do_not_guess_historical_config",
+        "tests/unit/test_dashboard_metrics.py::DashboardMetricsTests::test_success_rate_excludes_unfinished_and_unknown_states",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_empty_data_with_header_and_headerless_empty",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_headerless_tab_delimited_txt_and_explicit_encoding",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_headerless_utf8_preserves_leading_data_bom_unless_sig_codec_selected",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_malformed_records_have_real_position_without_raw_values",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_multiline_unicode_bom_and_quoted_null_provenance",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_parser_config_rejects_ambiguous_and_non_text_grammar",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_preview_stops_at_requested_rows_without_validating_the_rest",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_quote_doubling_and_explicit_escape",
+        "tests/unit/test_delimited_reader.py::DelimitedReaderTests::test_record_limit_is_enforced_before_materializing_oversized_row",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_101_dags_and_formula_never_return_partial_definitions",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_confirmation_covers_100_revisions_within_the_bounded_token_limit",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_defaults_are_typed_and_new_dag_is_always_paused",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_changed_raw_finding_or_packet_or_governance_is_rejected",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_evidence_outside_workspace_is_rejected",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_exact_approval_preserves_findings",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_new_artifact_is_rejected",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_revoked_or_expired_or_review_due_is_rejected",
+        "tests/unit/test_full_handover_policy.py::FullHandoverPolicyTests::test_scope_extension_is_rejected",
+        "tests/unit/test_health_migration_heads.py::MigrationHeadReadinessTests::test_actual_shipped_head_is_healthy_and_old_or_unknown_heads_are_not",
+        "tests/unit/test_image_baseline.py::ImageBaselineTests::test_lock_drift_missing_and_duplicate_entries_are_rejected",
+        "tests/unit/test_image_baseline.py::ImageBaselineTests::test_pinned_sources_and_internal_stages_match_lock",
+        "tests/unit/test_image_baseline.py::ImageBaselineTests::test_unpinned_and_conflicting_from_are_rejected",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_canonical_hash_ignores_object_order_but_preserves_semantic_values",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_schedule_timezone_and_numeric_ranges_reject_invalid_inputs",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_source_union_and_strategy_keys_are_strict",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_typed_literal_never_coerces_float_bool_or_numeric_string",
+        "tests/unit/test_mapping.py::ExecutionContractTests::test_valid_file_and_cron_inputs_roundtrip_canonical_openapi_schema",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_constants_null_handling_and_zero_false_empty_remain_distinct",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_conversion_rejects_float_bool_exponents_and_numeric_overflow",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_direct_mapping_does_not_guess_numeric_strings",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_error_identifies_position_without_disclosing_row",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_exact_decimal_integer_unicode_and_null",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_explicit_mapping_preserves_unmapped_target_columns",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_iso_temporal_values_keep_microseconds_and_offset",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_no_rounding_truncation_timezone_inference_or_invalid_calendar",
+        "tests/unit/test_mapping.py::LosslessTypeTests::test_unmapped_required_target_without_default_is_rejected",
+        "tests/unit/test_mysql_grants.py::MySQLGrantTests::test_literal_schema_escape_and_privilege_union",
+        "tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_distribution_boundaries",
+        "tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_frontend_manifest_uses_planned_runtime",
+        "tests/unit/test_package_boundaries.py::PackageBoundaryTests::test_shared_packages_import_without_api_or_airflow",
+        "tests/unit/test_portable_policy.py::PortablePolicyTests::test_approval_hash_mismatch_is_rejected",
+        "tests/unit/test_portable_policy.py::PortablePolicyTests::test_expired_approval_cannot_authorize_new_artifact",
+        "tests/unit/test_portable_policy.py::PortablePolicyTests::test_git_line_endings_preserve_original_approved_evidence",
+        "tests/unit/test_portable_policy.py::PortablePolicyTests::test_not_affected_requires_same_target_package_version_and_binary",
+        "tests/unit/test_portable_policy.py::PortablePolicyTests::test_unknown_version_severity_and_target_are_blocked",
+        "tests/unit/test_regression_preflight.py::RegressionPreflightTests::test_integration_does_not_require_unrelated_browser_or_airflow_images",
+        "tests/unit/test_regression_preflight.py::RegressionPreflightTests::test_missing_images_records_every_blocker_without_starting_fixture",
+        "tests/unit/test_regression_preflight.py::RegressionPreflightTests::test_unit_api_requires_sdk_environment_as_well_as_backend",
+        "tests/unit/test_regression_profile.py::RegressionIsolationTests::test_test_profile_cannot_reach_production_secret_domains",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_attempt_journal_does_not_overwrite_unreconciled_evidence",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_business_and_memory_failures_do_not_request_replay",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_child_is_killed_when_its_supervisor_dies",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_child_validation_log_contains_location_but_not_exception_text",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_interrupted_attempt_is_reconciled_only_after_child_exit",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_post_reap_metadata_outage_keeps_reconciliation_pending",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_publicly_readable_interrupted_journal_is_rejected_before_recovery",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_runtime_child_records_only_its_exit_classification",
+        "tests/unit/test_runtime_task.py::RuntimeTaskTests::test_terminal_child_outcome_is_preserved_in_interrupted_journal",
+        "tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_binary_workbooks_match_manifest",
+        "tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_checkout_policy_is_explicit",
+        "tests/unit/test_sample_artifacts.py::SampleArtifactTests::test_raw_sample_bytes_match_manifest",
+        "tests/unit/test_secret_codec.py::SecretRotationTests::test_missing_old_key_and_tampered_tokens_do_not_generate_replacements",
+        "tests/unit/test_secret_codec.py::SecretRotationTests::test_rotation_uses_existing_current_key_and_keeps_history",
+        "tests/unit/test_t140_extraction_source.py::ExtractionSourceTests::test_repeated_sample_preserves_quoted_literal_and_unquoted_null",
+        "tests/unit/test_t140_extraction_source.py::RestartTargetTests::test_blocked_commit_and_refresh_must_preserve_previous_target",
+        "tests/unit/test_t140_extraction_source.py::RestartTargetTests::test_extraction_allows_exact_committed_prefix_before_final_verification",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_repository_sample_and_template_guidance_are_reused",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_valid_workbook_typed_defaults_and_composite_key_order",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_zip_payloads_and_formula_are_rejected_before_parse_side_effects",
+        "tests/unit/test_upload_body_limit.py::UploadBodyLimitTests::test_chunked_quota_does_not_forward_excess_or_buffer_whole_upload",
+        "tests/unit/test_upload_body_limit.py::UploadBodyLimitTests::test_declared_oversize_is_rejected_before_consuming_any_body"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/accepted-handover/unit-api/unit-api-driver.txt": "ba317a318ed853af3ef9e8b6faf4d8212fa69b6f0602375e345ddecd33a7dc31",
+        "docs/testing/resume-20261114/accepted-handover/unit-api/unit-api/pytest.txt": "bcfeb7f6f505cc2f396ad008f81db87d5f117588b43a8868570e2987ea4dc26d"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "routes": {
+      "receipt": "docs/testing/resume-20261114/t014-closeout/dnspython/routes-r2-result.json",
+      "receipt_sha256": "53573e69d2a604ae55fb248e90b47bd5bc0f39815a8b58bed418b3b0c56b2a94",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_csv_to_mysql",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_csv_to_pg",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_mysql_to_mysql",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_mysql_to_pg",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_pg_to_mysql",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_pg_to_pg",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_txt_to_mysql",
+        "tests/airflow/test_execution.py::RouteExecutionTests::test_txt_to_pg",
+        "tests/airflow/test_execution.py::ScheduledExecutionTests::test_scheduled_append",
+        "tests/airflow/test_execution.py::ScheduledExecutionTests::test_scheduled_full_refresh"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t014-closeout/dnspython/airflow-routes-r2.txt": "2e70cfd9bf5431fe84b36cdb86253ea4885b618cc23429021db764352ec54f28"
+      },
+      "artifact_ids": {
+        "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "memory": {
+      "receipt": "docs/testing/resume-20261114/memory-r6/regression-results.json",
+      "receipt_sha256": "962a3201ae7b9431fd0a0802f0e257649664f286bdda7bbe56600d1fed9c8a29",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_airflow_memory.py::AirflowMemoryTests::test_large_postgres_route_uses_bounded_rss_and_disk_staging"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/memory-r6/airflow-0-driver.txt": "b933a99ba1aa3b5dba9b93f1a715efc7851bab86f9c8adcd292b2f9115beef91",
+        "docs/testing/resume-20261114/memory-r6/airflow-0/regression-airflow-0-green.txt": "a8215536fdd759851ca1e1de7f17d754a2c4569b177e99e8d82d2a080289699e"
+      },
+      "artifact_ids": {
+        "backend": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "02fc34e4b32a17380c46b5fa31207b2c4c5d8edf589a6fcc4787ca5ff4feb723",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "e537a37a02d13eb180cc5215067a9bb753cca5cf407ca4e612362eae79cd003c",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "e37714d5333267b1affc99971b31bc81ec9d961117d6f46612651d5ffb019104"
+      },
+      "observations": [
+        "AIRFLOW_MEMORY_VERIFIED {\"memory_budget_bytes\": 536870912, \"payload_bytes\": 1441792000, \"peak_rss_bytes\": 102817792, \"rows\": 22000, \"staging\": {\"allocated_bytes\": 1442504704, \"batch_commits\": 174, \"manifest_sha256\": \"11e456e65c186a25bd8568e623e6ca78ba22ef109b6a92a51d79d3bcfb420236\", \"part_count\": 174, \"payload_bytes\": 1442022894}}"
+      ],
+      "execution_scope": "Historical execution on original artifact IDs; original source/results retained; not relabeled as new execution",
+      "equivalence_proof": "docs/testing/resume-20261114/t152-closure/memory-equivalence.json",
+      "equivalence_sha256": "5865d7afeb1833aaae05bef431b798657d2e951102f21ab417c6f7c4cf0ab511"
+    },
+    "response": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/response-security/regression-profile-results.json",
+      "receipt_sha256": "dead8407e65aa18b9d0111585cbdca4defd1bf586ef91bc196ab3da5937474f6",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/integration/test_response_limits.py::ResponseLimitTests::test_list_detail_preview_and_connection_probe_meet_published_budgets",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_credentials_are_encrypted_in_metadata_and_absent_from_public_reads",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_foreign_origin_and_unsafe_hosts_have_no_metadata_side_effect",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_private_bind_requires_authentication_and_public_alias_is_absent"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/response-security/pytest.txt": "f4902b841a9342cbc0eb2bad5e72e5b830553ae01fb514c816c4aaedfda981b8"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [
+        "RESPONSE_LIMITS_VERIFIED {\"transport\": \"real loopback HTTP\", \"connection_records\": 20, \"source_rows\": 1000, \"preview_rows\": 100, \"source_bytes\": 91898, \"source_sha256\": \"bf3c7c3de654c1b9eb04ba86c79a16baf9feef0b1a9371ba54071407cdecf578\", \"observations\": {\"list\": {\"samples_ms\": [120.618, 75.257, 80.581, 74.376, 82.085, 79.641, 73.666, 78.496, 74.59, 82.276, 80.16, 129.644, 159.032, 131.132, 166.765, 172.113, 81.462, 98.962, 83.23, 95.517], \"p95_ms\": 166.765, \"max_ms\": 172.113}, \"detail\": {\"samples_ms\": [29.319, 28.142, 26.244, 25.628, 27.075, 24.513, 24.994, 26.221, 35.347, 29.019, 25.823, 29.206, 26.503, 26.089, 27.727, 26.314, 31.704, 27.376, 30.949, 27.111], \"p95_ms\": 31.704, \"max_ms\": 35.347}, \"preview100\": {\"samples_ms\": [35.677, 32.362, 43.817, 39.197, 34.658, 36.123, 44.447, 42.279, 43.608, 38.309, 39.223, 38.021, 36.963, 34.421, 34.446, 35.299, 36.984, 33.927, 32.71, 33.472], \"p95_ms\": 43.817, \"max_ms\": 44.447}}, \"connection_probe_ms\": 64.109, \"server_rss\": [\"VmRSS:\\t  118948 kB\"]}"
+      ],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "security": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/response-security/regression-profile-results.json",
+      "receipt_sha256": "dead8407e65aa18b9d0111585cbdca4defd1bf586ef91bc196ab3da5937474f6",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/integration/test_response_limits.py::ResponseLimitTests::test_list_detail_preview_and_connection_probe_meet_published_budgets",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_credentials_are_encrypted_in_metadata_and_absent_from_public_reads",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_foreign_origin_and_unsafe_hosts_have_no_metadata_side_effect",
+        "tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_private_bind_requires_authentication_and_public_alias_is_absent"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/response-security/pytest.txt": "f4902b841a9342cbc0eb2bad5e72e5b830553ae01fb514c816c4aaedfda981b8"
+      },
+      "artifact_ids": {
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+      },
+      "observations": [
+        "RESPONSE_LIMITS_VERIFIED {\"transport\": \"real loopback HTTP\", \"connection_records\": 20, \"source_rows\": 1000, \"preview_rows\": 100, \"source_bytes\": 91898, \"source_sha256\": \"bf3c7c3de654c1b9eb04ba86c79a16baf9feef0b1a9371ba54071407cdecf578\", \"observations\": {\"list\": {\"samples_ms\": [120.618, 75.257, 80.581, 74.376, 82.085, 79.641, 73.666, 78.496, 74.59, 82.276, 80.16, 129.644, 159.032, 131.132, 166.765, 172.113, 81.462, 98.962, 83.23, 95.517], \"p95_ms\": 166.765, \"max_ms\": 172.113}, \"detail\": {\"samples_ms\": [29.319, 28.142, 26.244, 25.628, 27.075, 24.513, 24.994, 26.221, 35.347, 29.019, 25.823, 29.206, 26.503, 26.089, 27.727, 26.314, 31.704, 27.376, 30.949, 27.111], \"p95_ms\": 31.704, \"max_ms\": 35.347}, \"preview100\": {\"samples_ms\": [35.677, 32.362, 43.817, 39.197, 34.658, 36.123, 44.447, 42.279, 43.608, 38.309, 39.223, 38.021, 36.963, 34.421, 34.446, 35.299, 36.984, 33.927, 32.71, 33.472], \"p95_ms\": 43.817, \"max_ms\": 44.447}}, \"connection_probe_ms\": 64.109, \"server_rss\": [\"VmRSS:\\t  118948 kB\"]}"
+      ],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "retry": {
+      "receipt": "docs/testing/resume-20261114/t152-closure/native-dependency-recovery/airflow-fixture-results.json",
+      "receipt_sha256": "366cd58ee6aae4053da92583fbbf116387a05a79448e2965bf1c5c3520c33b32",
+      "kind": "suite",
+      "passed_selectors": [
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_application_projection_loss_reconciles_committed_target",
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_source_session_loss_retries_without_partial_dataset",
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_mysql_target_session_loss_never_blindly_duplicates",
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_application_projection_loss_reconciles_committed_target",
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_source_session_loss_retries_without_partial_dataset",
+        "tests/airflow/test_retry_recovery.py::DependencyRecoveryTests::test_postgres_target_session_loss_never_blindly_duplicates"
+      ],
+      "logs_sha256": {
+        "docs/testing/resume-20261114/t152-closure/native-dependency-recovery/t152-dependency-recovery-green.txt": "37470bba027bef020e70dc544f4f9833640afb4d268e653800561ecb37037f8d"
+      },
+      "artifact_ids": {
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "runner": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28"
+      },
+      "observations": [],
+      "execution_scope": "Current accepted artifact fixture"
+    },
+    "restart": {
+      "receipt": "docs/testing/resume-20261112/aat-t140-045d42c5/result.json",
+      "receipt_sha256": "1089a9b8f1f49ea96866cf9a1a28462187d26f259d568545c23e54f4147af9f0",
+      "kind": "json",
+      "passed_selectors": [],
+      "logs_sha256": {},
+      "artifact_ids": {
+        "image": null
+      },
+      "observations": [],
+      "execution_scope": "Historical execution on original artifact IDs; original source/results retained; not relabeled as new execution",
+      "equivalence_proof": "docs/testing/resume-20261114/accepted-handover/t140-equivalence.json",
+      "equivalence_sha256": "89001ebaf2a3fe31a0e3c4d33b13d9855674d82e90568a6c7b8f6a03a0c78fb7"
+    }
+  },
+  "note": "No result inferred from checkbox state. Individual selectors required for suite evidence. Browser/phase receipts retain their detailed artifacts. Historical tests retain original IDs and are not relabeled as current executions."
 }

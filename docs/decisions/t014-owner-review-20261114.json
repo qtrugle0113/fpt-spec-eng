@@ -15,7 +15,7 @@
   "governance_proposal": "docs/proposals/t014-full-handover-known-risks-20261114.md",
   "governance_approval": "OWNER_APPROVED",
   "T014_FULL": "PASS",
-  "T152": "PASS",
+  "T152": "PENDING_CI_FOR_EVIDENCE_CORRECTION",
   "governance_approval_statement": "Phê duyệt đề xuất và tiếp tục thực hiện",
   "governance_approval_recorded_at": "2026-11-14T06:56:40.730377+00:00",
   "proposal_sha256": "1456c674b1e851960e575e65f4dcfe314c4202d2f3336576c829e941085ce1c9",

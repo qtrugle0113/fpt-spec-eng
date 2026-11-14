@@ -1,8 +1,8 @@
 {
   "recorded_at": "2026-11-14T07:13:18.871786+00:00",
   "T014_FULL": "PASS",
-  "T152": "PASS",
-  "tasks_checked": 152,
+  "T152": "PENDING_CI_FOR_EVIDENCE_CORRECTION",
+  "tasks_checked": 151,
   "tasks_total": 152,
   "security_disposition": "OWNER_ACCEPTED_KNOWN_RISKS",
   "scan_security_clean": false,

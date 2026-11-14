@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "project": "aat-portable-demo-516bea17",
+  "volumes_config_unchanged": true,
+  "idle_before": {
+    "inventory": {
+      "total": 7,
+      "active": 7,
+      "paused": 0,
+      "other": 0
+    },
+    "lifetime_metrics": {
+      "total": 7,
+      "successful": 7,
+      "failed": 0,
+      "running": 0,
+      "queued": 0,
+      "other": 0,
+      "success_rate": 100.0
+    }
+  },
+  "airflow_before": "7a55c47c2885b283f4381488fca6f0ca47437c97c8342a8db15f42fafc4439a0",
+  "airflow_after": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "command": [
+    "podman",
+    "compose",
+    "-f",
+    "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\compose-aat-portable-demo-516bea17.json",
+    "-p",
+    "aat-portable-demo-516bea17",
+    "up",
+    "-d",
+    "--no-build",
+    "--wait",
+    "--wait-timeout",
+    "180",
+    "airflow-apiserver",
+    "airflow-dag-processor",
+    "airflow-scheduler"
+  ],
+  "readiness": {
+    "status": "READY",
+    "dependencies": {
+      "application_database": "HEALTHY",
+      "migration_head": "HEALTHY",
+      "encryption_keys": "HEALTHY",
+      "worker": "HEALTHY",
+      "airflow": "HEALTHY"
+    }
+  },
+  "services": [
+    {
+      "service": "postgres",
+      "image": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "health": "healthy"
+    },
+    {
+      "service": "mysql",
+      "image": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "health": "healthy"
+    },
+    {
+      "service": "backend",
+      "image": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "health": "healthy"
+    },
+    {
+      "service": "backend-worker",
+      "image": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "health": "healthy"
+    },
+    {
+      "service": "frontend",
+      "image": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+      "health": "healthy"
+    },
+    {
+      "service": "airflow-apiserver",
+      "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "health": "healthy"
+    },
+    {
+      "service": "airflow-dag-processor",
+      "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "health": "healthy"
+    },
+    {
+      "service": "airflow-scheduler",
+      "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "health": "healthy"
+    }
+  ],
+  "existing_run_inventory_counts_preserved": true
+}

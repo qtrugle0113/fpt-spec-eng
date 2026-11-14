@@ -1,0 +1,29 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.2, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /opt/aat
+plugins: anyio-4.16.0
+collecting ... collected 4 items
+
+tests/integration/test_response_limits.py::ResponseLimitTests::test_list_detail_preview_and_connection_probe_meet_published_budgets PASSED [ 25%]
+tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_credentials_are_encrypted_in_metadata_and_absent_from_public_reads PASSED [ 50%]
+tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_foreign_origin_and_unsafe_hosts_have_no_metadata_side_effect PASSED [ 75%]
+tests/integration/test_security_surfaces.py::SecuritySurfaceTests::test_private_bind_requires_authentication_and_public_alias_is_absent PASSED [100%]
+
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+_ ResponseLimitTests.test_list_detail_preview_and_connection_probe_meet_published_budgets _
+----------------------------- Captured stdout call -----------------------------
+RESPONSE_LIMITS_VERIFIED {"transport": "real loopback HTTP", "connection_records": 20, "source_rows": 1000, "preview_rows": 100, "source_bytes": 91898, "source_sha256": "bf3c7c3de654c1b9eb04ba86c79a16baf9feef0b1a9371ba54071407cdecf578", "observations": {"list": {"samples_ms": [120.618, 75.257, 80.581, 74.376, 82.085, 79.641, 73.666, 78.496, 74.59, 82.276, 80.16, 129.644, 159.032, 131.132, 166.765, 172.113, 81.462, 98.962, 83.23, 95.517], "p95_ms": 166.765, "max_ms": 172.113}, "detail": {"samples_ms": [29.319, 28.142, 26.244, 25.628, 27.075, 24.513, 24.994, 26.221, 35.347, 29.019, 25.823, 29.206, 26.503, 26.089, 27.727, 26.314, 31.704, 27.376, 30.949, 27.111], "p95_ms": 31.704, "max_ms": 35.347}, "preview100": {"samples_ms": [35.677, 32.362, 43.817, 39.197, 34.658, 36.123, 44.447, 42.279, 43.608, 38.309, 39.223, 38.021, 36.963, 34.421, 34.446, 35.299, 36.984, 33.927, 32.71, 33.472], "p95_ms": 43.817, "max_ms": 44.447}}, "connection_probe_ms": 64.109, "server_rss": ["VmRSS:\t  118948 kB"]}
+_ SecuritySurfaceTests.test_credentials_are_encrypted_in_metadata_and_absent_from_public_reads _
+------------------------------ Captured log call -------------------------------
+WARNING  aat.safe:health.py:41 foundation_airflow_probe_failed exception_type=URLError
+========================= 4 passed, 1 warning in 9.44s =========================
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-b8ef2334-backend-tests-run-d6df47c800c5 Creating 
+ Container aat-regression-b8ef2334-backend-tests-run-d6df47c800c5 Created 

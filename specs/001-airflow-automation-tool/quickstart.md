@@ -1,5 +1,9 @@
 # Khởi động và chạy luồng mẫu
 
+**Cập nhật demo:** đã rollout Airflow candidate được duyệt a9dc2f03…;
+8service healthy, app localhost23000/Airflow28080, volumes và dữ liệu giữ nguyên.
+Ma trận T152v2 đã kiểm chứng; đang đợi CI cho lần cập nhật evidence.
+
 **152/152task hoàn tất; T014_FULL/T152 PASS** theo Constitution2.0.0: nghiệm thu
 baseline local có rủi ro đã biết, không phải security-clean/production-ready.
 Review2026-11-16, hết hạn2026-11-23T00:00:00+09:00.

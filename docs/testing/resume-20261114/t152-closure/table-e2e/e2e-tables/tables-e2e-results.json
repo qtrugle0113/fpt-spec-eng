@@ -1,0 +1,29 @@
+{
+  "project": "aat-tables-e2e-67eccbe1",
+  "status": "PASS",
+  "published_ports": false,
+  "existing_services_modified": false,
+  "execution_mode": "INSTALLED_IMAGE_PACKAGES",
+  "packaged_image_acceptance": true,
+  "images": {
+    "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+    "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+    "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+  },
+  "table_fixture_sha256": {
+    "boundary.xlsx": "f9b684460dd8a3cda4399da09256d6131105be6b2912709fe6a150eaaf3ec376",
+    "invalid.xlsx": "de24c5a04a1643eb008515885f635350758b7482aaaed5085933eaba82210acf",
+    "mysql.xlsx": "5a803ff14549bcffabe0526abe2d8eedb6b31b719105f820c3362255156ce9f2",
+    "postgres.xlsx": "57d2cbfa2d6a871efa2ca98eb66248b3fef23520bac873745e7c5e70ad5a8b2b"
+  },
+  "test_source_sha256": {
+    "tables.spec.ts": "1af75b69a74607b997d0128c7cd5c6793e8e91acd36b20267a026227e31aad0d",
+    "bootstrap.spec.ts": "dc6c88ef8870017cabe0a7905e67e1d78bc80bee29699989126bfb81385007f2",
+    "playwright.config.ts": "078af4e3b4c2e0c613c7bd5b3cc3f1cc2e35a0f1396e569142e915feee522df6"
+  },
+  "exit_code": 0,
+  "cleanup_exit_code": 0
+}

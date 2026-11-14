@@ -86,6 +86,14 @@ class TableWorkbookTests(unittest.TestCase):
                     if issue['scope']=='cell':
                         self.assertGreaterEqual(issue['row'],1);self.assertGreaterEqual(issue['column'],1)
 
+    def test_fully_blank_rows_are_ignored_but_partial_rows_reject_the_workbook(self):
+        book=workbook();book['Tables'].append([None]*4);book['Columns'].append([None]*13)
+        result=self.validate(book)
+        self.assertFalse(result.issues);self.assertEqual(len(result.tables),1)
+        book=workbook();book['Tables'].append([None,'public',None,None])
+        result=self.validate(book)
+        self.assertTrue(result.issues);self.assertFalse(result.tables)
+
     def test_zip_payloads_and_formula_are_rejected_before_parse_side_effects(self):
         for name,payload in [('../escape.xml',b'x'),('xl/vbaProject.bin',b'vba'),
                              ('xl/externalLinks/externalLink1.xml',b'<externalLink/>'),('bomb.xml',b'x'*(2*1024*1024))]:

@@ -1,0 +1,78 @@
+[
+  {
+    "label": "native-dashboard-r2",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_airflow_foundation.py",
+      "--runtime-execution-tests",
+      "--packaged-runtime",
+      "--runtime-execution-module",
+      "tests.airflow.test_dashboard_truth",
+      "--runtime-label",
+      "t152-dashboard-only",
+      "--airflow-image",
+      "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "--postgres-image",
+      "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "--mysql-image",
+      "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "--runner-image",
+      "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "--workbook-deps-image",
+      "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/native-dashboard-r2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "registration-workbook-settings",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_regression_profile.py",
+      "--tests-image",
+      "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+      "--backend-image",
+      "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "--postgres-image",
+      "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+      "--mysql-image",
+      "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+      "--path",
+      "tests/airflow/test_registration.py",
+      "--path",
+      "tests/unit/test_table_workbook.py",
+      "--path",
+      "tests/api/test_settings.py",
+      "--path",
+      "tests/api/test_dashboard.py",
+      "--current-test-sources",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/registration-workbook-settings"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "language-e2e",
+    "command": [
+      "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-X",
+      "utf8",
+      "tests/tools/run_regression.py",
+      "--group",
+      "e2e",
+      "--e2e-suite",
+      "language",
+      "--owner-accepted-handover",
+      "--images",
+      "docs/testing/resume-20261114/accepted-handover/images.json",
+      "--evidence-dir",
+      "docs/testing/resume-20261114/t152-closure/language-e2e"
+    ],
+    "exit_code": 0
+  }
+]

@@ -25,3 +25,7 @@ jobs:
         run: python -m unittest tests.unit.test_full_handover_policy -v
       - name: Đối chiếu hồ sơ đã duyệt và raw reports trên checkout thật
         run: python -m tests.tools.full_handover_policy
+      - name: Kiểm ma trận T152 và từ chối bằng chứng không đúng ca bắt buộc
+        run: python -m unittest tests.unit.test_t152_evidence -v
+      - name: Đối chiếu A–AM, SC, US, BR-08 và checksum log/receipt
+        run: python -m tests.tools.t152_evidence

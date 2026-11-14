@@ -1,0 +1,19 @@
+SDK_ROUTE_VERIFIED source=MYSQL target=MYSQL strategy=UPSERT scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+CROSS_DATABASE_TYPED_VERIFIED MYSQL->MYSQL composite_pk=true explicit_mapping=true decimal_temporal_null_exact=true
+SDK_ROUTE_VERIFIED source=MYSQL target=POSTGRESQL strategy=UPSERT scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+CROSS_DATABASE_TYPED_VERIFIED MYSQL->POSTGRESQL composite_pk=true explicit_mapping=true decimal_temporal_null_exact=true
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=UPSERT scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+CROSS_DATABASE_TYPED_VERIFIED POSTGRESQL->MYSQL composite_pk=true explicit_mapping=true decimal_temporal_null_exact=true
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=UPSERT scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+CROSS_DATABASE_TYPED_VERIFIED POSTGRESQL->POSTGRESQL composite_pk=true explicit_mapping=true decimal_temporal_null_exact=true
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_mysql_to_mysql (tests.airflow.test_cross_database.CrossDatabaseTests.test_mysql_to_mysql) ... ok
+test_mysql_to_pg (tests.airflow.test_cross_database.CrossDatabaseTests.test_mysql_to_pg) ... ok
+test_pg_to_mysql (tests.airflow.test_cross_database.CrossDatabaseTests.test_pg_to_mysql) ... ok
+test_pg_to_pg (tests.airflow.test_cross_database.CrossDatabaseTests.test_pg_to_pg) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 73.799s
+
+OK
