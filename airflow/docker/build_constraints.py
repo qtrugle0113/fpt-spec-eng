@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 
 APPROVED = {'certifi': ('2026.7.22', '2026.10.18'), 'urllib3': ('2.7.0', '2.8.0'),
-            'dnspython': ('2.8.0', '2.9.0')}
+            'dnspython': ('2.8.0', '2.9.2')}
 
 
 def derive_constraints(upstream: bytes, policy: dict) -> bytes:

@@ -21,7 +21,7 @@ class AirflowConstraintsTests(unittest.TestCase):
             'upstream_sha256': hashlib.sha256(self.upstream).hexdigest(),
             'overrides': {'certifi': {'from': '2026.7.22', 'to': '2026.10.18'},
                           'urllib3': {'from': '2.7.0', 'to': '2.8.0'},
-                          'dnspython': {'from': '2.8.0', 'to': '2.9.0'}},
+                          'dnspython': {'from': '2.8.0', 'to': '2.9.2'}},
         }
 
     def test_only_approved_pins_change_and_upstream_unchanged(self):
@@ -30,7 +30,7 @@ class AirflowConstraintsTests(unittest.TestCase):
         self.assertEqual(self.upstream, before)
         self.assertEqual(effective, before.replace(b'certifi==2026.7.22', b'certifi==2026.10.18')
                          .replace(b'urllib3==2.7.0', b'urllib3==2.8.0')
-                         .replace(b'dnspython==2.8.0', b'dnspython==2.9.0'))
+                         .replace(b'dnspython==2.8.0', b'dnspython==2.9.2'))
 
     def test_changed_upstream_or_extra_override_fail_closed(self):
         with self.assertRaises(ValueError):

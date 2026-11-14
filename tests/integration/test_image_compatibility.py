@@ -49,7 +49,7 @@ effective=(root/'constraints-effective-3.12.txt').read_bytes()
 assert effective==derive(upstream,policy)
 provenance=json.loads((root/'constraints-provenance.json').read_text())
 assert provenance['effective_sha256']==hashlib.sha256(effective).hexdigest()
-for package,version in [('certifi','2026.10.18'),('urllib3','2.8.0'),('dnspython','2.9.0'),('pip','26.3'),('apache-airflow','3.3.2')]:
+for package,version in [('certifi','2026.10.18'),('urllib3','2.8.0'),('dnspython','2.9.2'),('pip','26.3'),('apache-airflow','3.3.2')]:
  assert importlib.metadata.version(package)==version,(package,importlib.metadata.version(package))
 print(json.dumps(provenance))
 """

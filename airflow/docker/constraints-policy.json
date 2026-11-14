@@ -1,12 +1,12 @@
 {
-  "approval": ["docs/proposals/t014-round2-approval.md", "docs/proposals/t014-round3-remediation.md"],
+  "approval": ["docs/proposals/t014-round2-approval.md", "docs/proposals/t014-round3-remediation.md", "docs/decisions/t014-dnspython-remediation-20261114.md"],
   "approved_on": "2026-11-09",
   "upstream_sha256": "821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c",
   "overrides": {
     "dnspython": {
       "from": "2.8.0",
-      "to": "2.9.0",
-      "artifact_sha256": "9a4aedb833c3c1b49214d04d44d3032ab7a9135f7c1d29a549b4ff78fd82fda9"
+      "to": "2.9.2",
+      "artifact_sha256": "af15f7d385a6ae2fb35a796fde2138004c8c42c7389090e2addc83e3b3340fd8"
     },
     "certifi": {
       "from": "2026.7.22",
