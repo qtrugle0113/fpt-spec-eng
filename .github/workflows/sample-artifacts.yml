@@ -28,4 +28,4 @@ jobs:
       - name: Kiểm ma trận T152 và từ chối bằng chứng không đúng ca bắt buộc
         run: python -m unittest tests.unit.test_t152_evidence -v
       - name: Đối chiếu A–AM, SC, US, BR-08 và checksum log/receipt
-        run: python -m tests.tools.t152_evidence
+        run: python -m tests.tools.t152_evidence --require-tracked

@@ -1154,7 +1154,7 @@
         "W"
       ],
       "status": "PASS",
-      "actual": "Covered by explicit case condition checks and retained current/historical artifact scopes",
+      "actual": "Measured p95_ms={'list': 166.765, 'detail': 31.704, 'preview100': 43.817}; connection_probe_ms=64.109; registration deadline/parse guards are in case W",
       "checks": [
         {
           "condition": "Real HTTP list/detail/preview p95 and connection budget",
@@ -1873,8 +1873,8 @@
       "execution_scope": "Current accepted artifact fixture"
     },
     "unit": {
-      "receipt": "docs/testing/resume-20261114/accepted-handover/unit-api-resolution.json",
-      "receipt_sha256": "83a785db7dd56fb05c544ae149b9597f3f23ce79d65818bf46c49e2521e30490",
+      "receipt": "docs/testing/resume-20261114/t152-closure/final-unit-api/regression-results.json",
+      "receipt_sha256": "9afeff9f42743997c1e319612a9cbd77fdbb25e971920d285d994e7f2aa9807d",
       "kind": "suite",
       "passed_selectors": [
         "tests/api/test_authorizations.py::AuthorizationContractTests::test_grant_cannot_acknowledge_empty_replacement_implicitly",
@@ -1987,10 +1987,12 @@
         "tests/unit/test_airflow_client.py::AirflowClientTests::test_permission_error_is_not_retried_or_relabelled_as_connectivity",
         "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_changed_upstream_or_extra_override_fail_closed",
         "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_committed_override_artifacts_match_policy",
+        "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_only_approved_pins_change_and_upstream_unchanged",
         "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_import_errors_match_the_full_file_path_not_a_basename",
         "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_inventory_reads_every_page_and_never_fakes_completeness",
         "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_pause_requires_readback_and_health_checks_component_states",
         "tests/unit/test_airflow_deployment.py::DeploymentClientTests::test_version_number_is_path_identity_and_uuid_remains_metadata",
+        "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_airflow_stage_patches_offline_before_first_network_command",
         "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_tampered_archive_fails_before_package_manager",
         "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_unapproved_package_version_or_architecture_fails_closed",
         "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_verified_archive_installs_and_checks_exact_version",
@@ -2018,6 +2020,10 @@
         "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_bad_types_ranges_fields_and_hosts_rejected",
         "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_patch_distinguishes_omitted_nullable_and_empty_password",
         "tests/unit/test_connection_schemas.py::ConnectionSchemaTests::test_required_values_trim_and_password_is_not_in_repr",
+        "tests/unit/test_dag_factory.py::DAGFactoryTests::test_canonical_bytes_are_deterministic_and_invalid_identity_rejected",
+        "tests/unit/test_dag_factory.py::DAGFactoryTests::test_cron_timezone_catchup_and_initial_pause_follow_contract",
+        "tests/unit/test_dag_factory.py::DAGFactoryTests::test_generated_wrapper_has_one_non_xcom_task_and_finite_sdk_retries",
+        "tests/unit/test_dag_factory.py::DAGFactoryTests::test_untrusted_literal_remains_data_and_extra_credentials_are_rejected",
         "tests/unit/test_dag_storage.py::DAGStorageTests::test_failure_after_rename_leaves_complete_file_for_reconciliation",
         "tests/unit/test_dag_storage.py::DAGStorageTests::test_interrupted_before_rename_keeps_previous_bytes_and_cleans_temp",
         "tests/unit/test_dag_storage.py::DAGStorageTests::test_symlink_root_or_destination_is_rejected_without_touching_outside",
@@ -2041,6 +2047,7 @@
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_disabled_mapping_and_constant_scalar_remain_metadata",
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_duplicate_dag_rejects_whole_workbook_at_actual_row",
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_file_union_disallows_db_fields_and_filter",
+        "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_definitions",
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_mapping_reference_and_duplicate_enabled_targets",
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_repository_sample_uses_the_existing_seed_references",
         "tests/unit/test_etl_workbook.py::ETLWorkbookTests::test_unsafe_filter_bad_cron_and_ambiguous_start_are_located",
@@ -2054,6 +2061,9 @@
         "tests/unit/test_image_baseline.py::ImageBaselineTests::test_lock_drift_missing_and_duplicate_entries_are_rejected",
         "tests/unit/test_image_baseline.py::ImageBaselineTests::test_pinned_sources_and_internal_stages_match_lock",
         "tests/unit/test_image_baseline.py::ImageBaselineTests::test_unpinned_and_conflicting_from_are_rejected",
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_case_mismatch_never_guesses_a_required_target",
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_empty_and_all_disabled_mapping_use_exact_names_and_keep_defaults",
+        "tests/unit/test_implicit_mapping_acceptance.py::ImplicitMappingAcceptanceTests::test_implicit_mapping_never_coerces_numeric_text",
         "tests/unit/test_mapping.py::ExecutionContractTests::test_canonical_hash_ignores_object_order_but_preserves_semantic_values",
         "tests/unit/test_mapping.py::ExecutionContractTests::test_enabled_mapping_and_filter_grammar_require_explicit_typed_literals",
         "tests/unit/test_mapping.py::ExecutionContractTests::test_mixed_in_types_duplicate_targets_and_offset_conflict_rejected",
@@ -2100,6 +2110,14 @@
         "tests/unit/test_t140_extraction_source.py::ExtractionSourceTests::test_repeated_sample_preserves_quoted_literal_and_unquoted_null",
         "tests/unit/test_t140_extraction_source.py::RestartTargetTests::test_blocked_commit_and_refresh_must_preserve_previous_target",
         "tests/unit/test_t140_extraction_source.py::RestartTargetTests::test_extraction_allows_exact_committed_prefix_before_final_verification",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_complete_matrix_has_verified_receipts",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_forged_passed_selector_not_present_in_logs_rejected",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_memory_receipt_cannot_prove_ah",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_missing_condition_or_unknown_selector_rejected",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_missing_success_criterion_rejected",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_modified_receipt_checksum_rejected",
+        "tests/unit/test_t152_evidence.py::T152EvidenceTests::test_unknown_unexecuted_test_id_rejected",
+        "tests/unit/test_table_workbook.py::TableWorkbookTests::test_fully_blank_rows_are_ignored_but_partial_rows_reject_the_workbook",
         "tests/unit/test_table_workbook.py::TableWorkbookTests::test_repository_sample_and_template_guidance_are_reused",
         "tests/unit/test_table_workbook.py::TableWorkbookTests::test_twenty_invalid_workbooks_have_locations_and_no_validated_tables",
         "tests/unit/test_table_workbook.py::TableWorkbookTests::test_valid_workbook_typed_defaults_and_composite_key_order",
@@ -2108,14 +2126,20 @@
         "tests/unit/test_upload_body_limit.py::UploadBodyLimitTests::test_declared_oversize_is_rejected_before_consuming_any_body"
       ],
       "logs_sha256": {
-        "docs/testing/resume-20261114/accepted-handover/unit-api/unit-api-driver.txt": "ba317a318ed853af3ef9e8b6faf4d8212fa69b6f0602375e345ddecd33a7dc31",
-        "docs/testing/resume-20261114/accepted-handover/unit-api/unit-api/pytest.txt": "bcfeb7f6f505cc2f396ad008f81db87d5f117588b43a8868570e2987ea4dc26d"
+        "docs/testing/resume-20261114/t152-closure/final-unit-api/unit-api-driver.txt": "678464e959cb24e2448655a2cc48d36c418a47128bdfc2d8450644f861fcc4ef",
+        "docs/testing/resume-20261114/t152-closure/final-unit-api/unit-sdk-driver.txt": "c3100304c16f3949dae587b014a4e9f6f8bbda3868b33423dd5f45b4cf512cf4",
+        "docs/testing/resume-20261114/t152-closure/final-unit-api/unit-api/pytest.txt": "3beb279cbc0742bf15e511003c233db9b3f78e1a1ee383c566df7139ff228179",
+        "docs/testing/resume-20261114/t152-closure/final-unit-api/unit-sdk/sdk-unit.txt": "214d1a80c79b8e88ed289df8262f045fe620b98125bf9bb918a1bfe975e35074"
       },
       "artifact_ids": {
-        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
         "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+        "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
         "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
-        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4"
+        "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+        "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+        "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
       },
       "observations": [],
       "execution_scope": "Current accepted artifact fixture"

@@ -1,8 +1,8 @@
 {
   "recorded_at": "2026-11-14T07:13:18.871786+00:00",
   "T014_FULL": "PASS",
-  "T152": "PENDING_CI_FOR_EVIDENCE_CORRECTION",
-  "tasks_checked": 151,
+  "T152": "PASS",
+  "tasks_checked": 152,
   "tasks_total": 152,
   "security_disposition": "OWNER_ACCEPTED_KNOWN_RISKS",
   "scan_security_clean": false,
@@ -21,5 +21,7 @@
   },
   "ci_governance": "148e2345290e0036b74e1cc9cd73aace018822f6",
   "original_workspace_probes": "Preserved outside accepted baseline",
-  "final_commit_ci_requirement": "GitHub Actions Windows/Linux must PASS on final handover commit; final-ci.json is captured after push"
+  "final_commit_ci_requirement": "GitHub Actions Windows/Linux must PASS on final handover commit; final-ci.json is captured after push",
+  "demo_candidate_rolled_out": true,
+  "t152_evidence": "docs/testing/resume-20261114/t152-closure/acceptance-matrix-v2.json"
 }

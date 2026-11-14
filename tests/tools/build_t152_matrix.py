@@ -20,7 +20,7 @@ definitions={
  'tables':(base+'table-e2e/regression-results.json',base+'table-e2e','browser'),
  'language':(base+'language-e2e/regression-results.json',base+'language-e2e','browser'),
  'full':(accepted+'full-workflow/regression-results.json',accepted+'full-workflow','browser'),
- 'unit':(accepted+'unit-api-resolution.json',accepted+'unit-api','suite'),
+ 'unit':(base+'final-unit-api/regression-results.json',base+'final-unit-api','suite'),
  'routes':('docs/testing/resume-20261114/t014-closeout/dnspython/routes-r2-result.json','docs/testing/resume-20261114/t014-closeout/dnspython','suite'),
  'memory':('docs/testing/resume-20261114/memory-r6/regression-results.json','docs/testing/resume-20261114/memory-r6','suite'),
  'response':(base+'response-security/regression-profile-results.json',base+'response-security','suite'),
@@ -39,12 +39,13 @@ for key,(receipt,directory,kind) in definitions.items():
         for test in native:
             parts=test.split('.');passed.add('/'.join(parts[:-2])+'.py::'+parts[-2]+'::'+parts[-1])
         if py or native or re.search(r'\d+ passed',text):logs[path.relative_to(root).as_posix()]=digest(path)
-        observations.extend(line for line in text.splitlines() if line.startswith(('AIRFLOW_MEMORY_VERIFIED ','RESPONSE_LIMITS_VERIFIED ','CONCURRENT_RUNS_VERIFIED ','FULL_WORKFLOW_VERIFIED ')))
+        for line in text.splitlines():
+            for prefix in ('AIRFLOW_MEMORY_VERIFIED ','RESPONSE_LIMITS_VERIFIED ','CONCURRENT_RUNS_VERIFIED ','FULL_WORKFLOW_VERIFIED '):
+                if prefix in line:observations.append(line[line.index(prefix):])
     if kind=='suite':assert passed,(key,'no passed test IDs found')
     registry[key]={'receipt':receipt,'receipt_sha256':digest(root/receipt),'kind':kind,'passed_selectors':sorted(passed),'logs_sha256':logs,
  'artifact_ids':data.get('images') or {'image':data.get('airflow_image') or data.get('image_id')},'observations':sorted(set(observations)),
         'execution_scope':data.get('scope') or ('Current accepted artifact fixture' if key not in ('memory','restart') else 'Historical execution on original artifact IDs; original source/results retained; not relabeled as new execution')}
-    if key=='unit':registry[key]['artifact_ids']=load(accepted+'unit-api/unit-api/regression-profile-results.json')['images']
 for key,path in [('memory',base+'memory-equivalence.json'),('restart',accepted+'t140-equivalence.json')]:
     registry[key]['equivalence_proof']=path
     registry[key]['equivalence_sha256']=digest(root/path)
@@ -107,6 +108,8 @@ for m in re.finditer(r'- \*\*(SC-\d{3})\*\*: (.*?)(?=\n- \*\*SC-|\n###|\Z)',spec
     success.append({'id':code,'expected':' '.join(expected.split()),'case_ids':cases,'status':'PASS','actual':'Covered by explicit case condition checks and retained current/historical artifact scopes'})
 assert len(success)==15
 next(row for row in success if row['id']=='SC-010')['checks']=[check('Real HTTP list/detail/preview p95 and connection budget','response','test_list_detail_preview_and_connection_probe_meet_published_budgets$')]
+measurement=next(json.loads(re.search(r'RESPONSE_LIMITS_VERIFIED (\{.*\})',line)[1]) for line in registry['response']['observations'] if 'RESPONSE_LIMITS_VERIFIED ' in line)
+next(row for row in success if row['id']=='SC-010')['actual']='Measured p95_ms='+str({k:v['p95_ms'] for k,v in measurement['observations'].items()})+'; connection_probe_ms='+str(measurement['connection_probe_ms'])+'; registration deadline/parse guards are in case W'
 stories_map={1:'AM X',2:'Q',3:'AF X',4:'A B P AL',5:'N W AJ AK AL',6:'C D E F I O AA AB AD AG AH',7:'G H U AE AF',8:'J K L M R AC AG',9:'N S T W AJ',10:'S Z',11:'X Z'}
 stories=[]
 for n,codes in stories_map.items():

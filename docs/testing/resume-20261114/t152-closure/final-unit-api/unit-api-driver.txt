@@ -1,0 +1,59 @@
+/api/test_files.py::FilesAPITests::test_expired_or_missing_source_fails_without_empty_preview PASSED [ 81%]
+tests/api/test_files.py::FilesAPITests::test_full_validation_finds_bad_record_beyond_preview_limit PASSED [ 81%]
+tests/api/test_files.py::FilesAPITests::test_parser_change_invalidates_future_definition_without_rewriting_its_config PASSED [ 82%]
+tests/api/test_files.py::FilesAPITests::test_preview_uses_quoted_null_semantics_and_never_marks_file_valid PASSED [ 82%]
+tests/api/test_files.py::FilesAPITests::test_upload_same_name_distinct_reference_and_persistent_listing PASSED [ 83%]
+tests/api/test_files.py::FilesAPITests::test_validation_replay_keeps_snapshot_and_old_parser_cannot_mark_new_parser_valid PASSED [ 83%]
+tests/api/test_foundation_contract.py::FoundationHTTPContractTests::test_live_foundation_http_responses_match_canonical_contract PASSED [ 83%]
+tests/api/test_health_contract.py::HealthContractTests::test_health_route_operation_ids_and_response_schemas_match_contract PASSED [ 84%]
+tests/api/test_health_contract.py::HealthContractTests::test_liveness_is_canonical_without_claiming_foundation_ready PASSED [ 84%]
+tests/api/test_health_contract.py::HealthContractTests::test_readiness_fails_closed_with_safe_error_until_t034 PASSED [ 85%]
+tests/api/test_monitoring.py::MonitoringContractTests::test_airflow_outage_is_not_an_empty_inventory PASSED [ 85%]
+tests/api/test_monitoring.py::MonitoringContractTests::test_invalid_monitoring_filters_and_paging_are_rejected PASSED [ 86%]
+tests/api/test_monitoring.py::MonitoringContractTests::test_log_projection_redacts_actual_encrypted_credentials_and_caps_bytes PASSED [ 86%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_if_match_and_idempotency_are_required PASSED [ 86%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_inventory_is_derived_and_operation_ids_unique PASSED [ 87%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_missing_operation_is_detected PASSED [ 87%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_required_field_and_extra_field_drift_are_detected PASSED [ 88%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_safe_error_and_story_selection_positive_controls PASSED [ 88%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_schema_drift_in_implementation_is_detected PASSED [ 88%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_uuid_idempotency_format_and_response_etag_drift PASSED [ 89%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_write_only_secret_cannot_be_returned PASSED [ 89%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_wrong_success_status_is_not_accepted_by_default_error PASSED [ 90%]
+tests/api/test_runtime_bind.py::RuntimeBearerTests::test_only_canonical_route_accepts_a_runtime_bearer PASSED [ 90%]
+tests/api/test_settings.py::SettingsContractTests::test_concurrent_edits_to_different_fields_share_one_document_revision PASSED [ 90%]
+tests/api/test_settings.py::SettingsContractTests::test_defaults_persist_and_global_revision_changes_for_each_setting PASSED [ 91%]
+tests/api/test_settings.py::SettingsContractTests::test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected PASSED [ 91%]
+tests/api/test_settings.py::SettingsContractTests::test_shorter_retention_never_collects_protected_recovery_data PASSED [ 92%]
+tests/api/test_settings.py::SettingsNewConfigTests::test_new_batch_defaults_do_not_mutate_a_validated_revision PASSED [ 92%]
+tests/api/test_tables.py::TableAPITests::test_aliases_cannot_concurrently_admit_creation_for_same_physical_table PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_history_filter_pagination_and_request_boundaries PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_invalid_workbook_has_safe_locations_and_no_preview PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_lost_metadata_commit_ack_keeps_completed_workbook PASSED [ 94%]
+tests/api/test_tables.py::TableAPITests::test_mysql_create_and_persistent_history PASSED [ 94%]
+tests/api/test_tables.py::TableAPITests::test_mysql_partial_job_preserves_created_table_and_reports_permission_failure PASSED [ 95%]
+tests/api/test_tables.py::TableAPITests::test_postgres_create_and_persistent_history PASSED [ 95%]
+tests/api/test_tables.py::TableAPITests::test_stale_confirmation_rejects_changed_connection_without_creating_job PASSED [ 95%]
+tests/api/test_tables.py::TableAPITests::test_template_binary_checksum_and_schema PASSED [ 96%]
+tests/api/test_tables.py::TableAPITests::test_unknown_mysql_ddl_is_durable_and_idempotent_replay_does_not_execute PASSED [ 96%]
+tests/api/test_trigger.py::TriggerTests::test_activation_requires_scheduled_scope_and_is_revision_guarded PASSED [ 97%]
+tests/api/test_trigger.py::TriggerTests::test_activation_response_loss_readback_and_pause_do_not_revoke_authority PASSED [ 97%]
+tests/api/test_trigger.py::TriggerTests::test_lost_post_response_is_read_back_without_another_post PASSED [ 97%]
+tests/api/test_trigger.py::TriggerTests::test_once_is_reserved_and_identity_is_stable_before_dispatch PASSED [ 98%]
+tests/api/test_trigger.py::TriggerTests::test_revoke_before_dispatch_closes_once_without_airflow_submission PASSED [ 98%]
+tests/api/test_trigger.py::TriggerTests::test_scheduled_is_not_manual_authority PASSED [ 99%]
+tests/api/test_trigger.py::TriggerTests::test_two_requests_cannot_transfer_one_once PASSED [ 99%]
+tests/api/test_trigger.py::TriggerTests::test_uncertain_trigger_is_observed_by_maintenance_without_reposting PASSED [100%]
+
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================== 243 passed, 1 warning in 243.40s (0:04:03) ==================
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-e2908f7b-backend-tests-run-850534871680 Creating 
+ Container aat-regression-e2908f7b-backend-tests-run-850534871680 Created 
+

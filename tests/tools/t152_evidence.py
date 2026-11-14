@@ -97,4 +97,20 @@ def validate(root: Path,matrix=None):
             'matrix_sha256':hashlib.sha256(json.dumps(matrix,sort_keys=True).encode()).hexdigest()}
 
 
-if __name__=='__main__':print(json.dumps(validate(Path(__file__).resolve().parents[2])))
+if __name__=='__main__':
+    import sys,subprocess
+    root=Path(__file__).resolve().parents[2]
+    result=validate(root)
+    if '--require-tracked' in sys.argv:
+        matrix=json.loads((root/MATRIX).read_text(encoding='utf8'))
+        required={MATRIX,'specs/001-airflow-automation-tool/spec.md'}
+        for proof in matrix['evidence'].values():
+            required.add(proof['receipt']);required.update(proof['logs_sha256'])
+            if 'equivalence_proof' in proof:required.add(proof['equivalence_proof'])
+            receipt=json.loads((root/proof['receipt']).read_text(encoding='utf8'))
+            if 'parent_receipt' in receipt:required.update((receipt['parent_receipt'],receipt['log']))
+        tracked=set(subprocess.check_output(['git','ls-files','-z'],cwd=root).decode().split('\0'))
+        missing=required-tracked
+        if missing:raise ValueError('Evidence exists locally but is not tracked: '+', '.join(sorted(missing)))
+        result['tracked_evidence_files']=len(required)
+    print(json.dumps(result))

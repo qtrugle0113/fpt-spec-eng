@@ -2,7 +2,12 @@
 
 ## Khép lại review T152 — evidence theo từng điều kiện
 
-Trạng thái mới nhất: **technical evidence PASS; chờ CI cho cập nhật T152**.
+Trạng thái mới nhất: **T152 PASS —152/152task theo baseline local có rủi ro đã biết**.
+Full unit/API mới243PASS và SDK4PASS; không còn phải suy kết luận từ lượt229PASS
+cộng targeted rerun trước đó. [Receipt cuối](resume-20261114/t152-closure/final-unit-api/regression-results.json).
+CI lần đầu của đợt này phát hiện một raw log bị Git ignore; log đã được đưa vào
+Git và validator giờ kiểm53tệp evidence bắt buộc đã tracked. Lượt CI thất bại
+được giữ trong GitHub Actions; CI của commit sửa cuối được xác minh sau push.
 Ma trận trước đây gán AH vào memory stress là thiếu sót tham chiếu, đã được lưu
 nguyên trạng tại [snapshot trước review](resume-20261114/t152-closure/matrix-before-review.json).
 Ma trận hiện hành không suy PASS từ checkbox hoặc một receipt tổng hợp.

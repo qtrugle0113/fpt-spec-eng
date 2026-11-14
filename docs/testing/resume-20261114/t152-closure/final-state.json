@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "task": "T152",
+  "T014_FULL": "PASS",
+  "cases": 39,
+  "success_criteria": 15,
+  "stories": 11,
+  "business_rules": [
+    "BR-08"
+  ],
+  "unit_api": 243,
+  "sdk_factory": 4,
+  "evidence_guard_tests": 7,
+  "initial_combined_dashboard_failure_retained": true,
+  "dashboard_isolated_rerun": "PASS",
+  "live_demo_rollout": "PASS",
+  "old_owned_workflows_exact_target_values": "PASS",
+  "security_disposition": "OWNER_ACCEPTED_KNOWN_RISKS",
+  "scope": "one operator, loopback, synthetic data",
+  "review_due": "2026-11-16",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "matrix_raw_sha256": "793ee9a8d5dfef483a0f7ca82533c5cc0f6af7570cefdd9889740e7650ac5442",
+  "final_ci_requirement": "Both Windows/Linux must pass on the final committed source; receipt captured after push"
+}

@@ -2,7 +2,7 @@
 
 **Cập nhật demo:** đã rollout Airflow candidate được duyệt a9dc2f03…;
 8service healthy, app localhost23000/Airflow28080, volumes và dữ liệu giữ nguyên.
-Ma trận T152v2 đã kiểm chứng; đang đợi CI cho lần cập nhật evidence.
+T152 đã khép bằng ma trận v2 và kiểm chứng mới; CI commit bàn giao kiểm tra trên GitHub Actions.
 
 **152/152task hoàn tất; T014_FULL/T152 PASS** theo Constitution2.0.0: nghiệm thu
 baseline local có rủi ro đã biết, không phải security-clean/production-ready.
@@ -107,3 +107,17 @@ T014_FULL security gate vẫn `BLOCKED`; local exception không phải security 
 acceptance. Dùng các runner/fixtures cô lập trong
 [hướng dẫn kiểm thử](../../docs/operations/testing.md); không chạy failure injection trên
 demo hoặc dữ liệu người dùng. Không tuyên bố MVP hoàn thành khi mandatory task/gate còn mở.
+
+## Tái kiểm baseline đã được duyệt
+
+Các bản thử Trixie chưa commit ở workspace gốc không thuộc baseline này. Dùng
+checkout sạch của commit bàn giao và immutable images trong manifest; không lấy
+build chưa review làm artifacts nghiệm thu.
+
+```powershell
+python -m tests.tools.full_handover_policy
+python -m tests.tools.t152_evidence --require-tracked
+python -X utf8 tests/tools/run_regression.py --group e2e --e2e-suite full_workflow --owner-accepted-handover --images docs/testing/resume-20261114/accepted-handover/images.json
+```
+
+Tái kiểm không tự gia hạn approval: review2026-11-16, hạn2026-11-23T00:00:00+09:00.

@@ -1,7 +1,9 @@
 # Danh sách task: Airflow Automation Tool
 
-**T152 đang tái kiểm chứng —151/152task**. Review phát hiện tham chiếu evidence
-AH/AJ/AK chưa đủ cụ thể; đang chạy đúng selectors và hoàn thiện mapping SC/US.
+**T152 đã khép lại —152/152task**. AH/AJ/AK đã có điều kiện con, test IDs,
+expected/actual và receipt/log SHA256;15SC,11US và BR-08 đã được mapping.
+Unit/API243PASS, SDK4PASS; demo đã đúng candidate được duyệt,8services healthy.
+Xem [ma trận v2](../../docs/testing/resume-20261114/t152-closure/acceptance-matrix-v2.json).
 Approval T014 giữ nguyên, không mở rộng scope hoặc thay checklist reviewer.
 
 **Snapshot bàn giao62003a2:152/152checkbox**, T014_FULL=PASS và T152=PASS theo
@@ -448,7 +450,7 @@ dưới giữ provenance lịch sử, kết quả vòng3 được ghi cuối fil
 - [x] T149 [P] Tạo/chạy performance/status regression tại `tests\integration\test_response_limits.py`; p95 list/detail/preview100<=3giây, connection<=30giây/deploy<=120giây, Dashboard all-page truth/incomplete/stale/lifetime, resources/fixture công bố; Phụ thuộc: T138; Truy vết: SC-008, SC-010, NFR-009, ma trận S/Q/W; Kiểm chứng: không dùng cached/mock số liệu thay proof hoặc timeout để giả fail đã rollback.
 - [x] T150 [P] Hoàn thiện README/architecture/API/Excel/operations docs tại `README.md`, `docs\architecture.md`, `docs\api.md`, `docs\excel-definitions.md`, `docs\operations\troubleshooting.md`; Vietnamese, startup/no hidden setup/load/keys backup-restore/recovery/cleanup/limits/revision tradeoff, không mô tả chưa test như hoàn thành; Phụ thuộc: T138; Truy vết: FR-086–FR-087, Constitution XI; Kiểm chứng: link checker và người khác theo workflow/error instructions tái hiện được.
 - [x] T151 Hoàn thiện sample pack và đồng bộ thiết kế tại `samples\definitions\Table Definition.sample.xlsx`, `samples\definitions\ETL Definition.sample.xlsx`, `samples\data\customers.csv`, `samples\data\customers.txt`, `specs\001-airflow-automation-tool\quickstart.md`; giữ sample refs/version/English instructions, phản ánh app seed và download artifacts, cập nhật đúng tài liệu nguồn nếu implementation có thay đổi được chấp thuận; Phụ thuộc: T140, T141, T142, T143, T150; Truy vết: FR-018, FR-084, FR-087; Kiểm chứng: downloaded Excel dùng ngay trên fresh stack, references/checksums valid và không bước setup ngầm. Verification PASS evidence: `docs/testing/resume-20261113/current-t151-sample-checks/` và fresh T140 workflow evidence tại `docs/testing/resume-20261112/aat-t140-bf3008e2/`; Prerequisite T140 PASS tại `docs/testing/resume-20261112/aat-t140-045d42c5/result.json` (full selector, cleanup0).
-- [ ] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, `T014_FULL=PASS`, checklist reviewer không tự đánh dấu; nếu gate này chưa PASS thì report BLOCKED và không claim MVP/full acceptance.
+- [x] T152 Chạy stabilization/cổng bàn giao và ghi báo cáo tại `docs\testing\acceptance-report.md`; tổng hợp A–AM/BR-08/SC-001–SC-015/US1–US11, engine/client/server/Compose-provider/build/commit nếu có/locks/digest/env/commands/resources/input-checksum/expected-actual/artifacts/PASS-FAIL-NOT_RUN-BLOCKED, sửa lỗi liên quan/rerun selectors; Phụ thuộc: T140, T141, T142, T143, T144, T145, T146, T147, T148, T149, T151, T139, T119; Truy vết: SC-012, FR-085, BR-08, Constitution X; Kiểm chứng: đủ evidence không mandatory bị bỏ qua, Analyze không Critical/High unresolved, `T014_FULL=PASS`, checklist reviewer không tự đánh dấu; nếu gate này chưa PASS thì report BLOCKED và không claim MVP/full acceptance.
 
 ## Dependency và thứ tự thực hiện
 
