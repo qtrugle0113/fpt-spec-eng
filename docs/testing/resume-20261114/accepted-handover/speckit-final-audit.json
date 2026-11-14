@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "task_count": 152,
+  "completed": 152,
+  "dependencies_valid": true,
+  "cycles": 0,
+  "FR_NFR_SC_reference_coverage": 125,
+  "coverage_is_not_implementation_proof": true,
+  "reviewer_bytes_equal_7273297": true,
+  "reviewer_original_hash_verified_using_Git_EOL_representations": true,
+  "broken_links": [],
+  "Analyze_critical_high_unresolved": 0,
+  "Converge_actionable_gaps": 0,
+  "Converge_tasks_appended": 0,
+  "mandatory_acceptance_matrix": "acceptance-matrix.json",
+  "security_disposition": "OWNER_ACCEPTED_KNOWN_RISKS",
+  "scan_findings_preserved": true
+}

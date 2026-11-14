@@ -1,9 +1,12 @@
 # Báo cáo nghiệm thu baseline local có rủi ro đã biết
 
-Trạng thái hiện hành: **technical gates PASS; chờ CI cho sửa đổi quản trị và gate**.
+Trạng thái hiện hành: **PASS — nghiệm thu baseline local có rủi ro đã biết;152/152task**.
 Constitution2.0.0 được chủ dự án phê duyệt trong hội thoại ngày2026-11-14.
 Security disposition: `OWNER_ACCEPTED_KNOWN_RISKS`; scan vẫn có1.669 HIGH/CRITICAL
 occurrences/363nhóm trên21targets. Không phải security-clean hoặc production-ready.
+
+T014_FULL=PASS, T152=PASS. [CI quản trị](resume-20261114/accepted-handover/ci-governance.json)
+PASS Windows/Linux; CI của commit bàn giao cuối được xác minh sau push.
 
 ## Phạm vi, thời hạn và bằng chứng
 

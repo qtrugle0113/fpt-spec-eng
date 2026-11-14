@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-11-14T07:13:18.871786+00:00",
+  "T014_FULL": "PASS",
+  "T152": "PASS",
+  "tasks_checked": 152,
+  "tasks_total": 152,
+  "security_disposition": "OWNER_ACCEPTED_KNOWN_RISKS",
+  "scan_security_clean": false,
+  "scope": "one operator, loopback, synthetic data",
+  "review_due": "2026-11-16",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "images": {
+    "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+    "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+    "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+    "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+    "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+  },
+  "ci_governance": "148e2345290e0036b74e1cc9cd73aace018822f6",
+  "original_workspace_probes": "Preserved outside accepted baseline",
+  "final_commit_ci_requirement": "GitHub Actions Windows/Linux must PASS on final handover commit; final-ci.json is captured after push"
+}

@@ -1,5 +1,9 @@
 # Airflow Automation Tool
 
+**152/152task hoàn tất; T014_FULL/T152 PASS** theo Constitution2.0.0: nghiệm thu
+baseline local có rủi ro đã biết, không phải security-clean/production-ready.
+Review2026-11-16, hết hạn2026-11-23T00:00:00+09:00.
+
 ## Baseline nghiệm thu theo Constitution2.0.0 — 2026-11-14
 
 Chủ dự án đã phê duyệt [quyết định nghiệm thu có rủi ro đã biết](docs/decisions/t014-owner-review-20261114.json).

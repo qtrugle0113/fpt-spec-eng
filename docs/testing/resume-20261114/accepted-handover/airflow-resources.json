@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "command": [
+    "podman",
+    "run",
+    "--rm",
+    "--network=none",
+    "--memory=512m",
+    "--cpus=1",
+    "--entrypoint=python",
+    "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "-c",
+    "from pathlib import Path;import json,os; m=Path('/sys/fs/cgroup/memory.max').read_text().strip();c=Path('/sys/fs/cgroup/cpu.max').read_text().strip();assert m=='536870912';assert c.split()[0]!='max';print(json.dumps({'memory_max':m,'cpu_max':c,'effective_uid':os.geteuid()}))"
+  ],
+  "actual": {
+    "memory_max": "536870912",
+    "cpu_max": "100000 100000",
+    "effective_uid": 50000
+  }
+}

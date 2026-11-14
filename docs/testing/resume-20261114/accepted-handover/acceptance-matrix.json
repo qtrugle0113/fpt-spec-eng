@@ -1,5 +1,5 @@
 {
-  "status": "TECHNICAL_GATES_PASS_CI_PENDING",
+  "status": "PASS_WITH_OWNER_ACCEPTED_KNOWN_RISKS",
   "cases": [
     {
       "case": "A",

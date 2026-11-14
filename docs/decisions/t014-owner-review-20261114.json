@@ -14,8 +14,8 @@
   "interpretation": "Owner agrees with reviewed content and requests no additional fixes; not a claim of zero findings, not-affected, reviewer signature, or amended Constitution",
   "governance_proposal": "docs/proposals/t014-full-handover-known-risks-20261114.md",
   "governance_approval": "OWNER_APPROVED",
-  "T014_FULL": "PENDING_TECHNICAL_GATES",
-  "T152": "PENDING_TECHNICAL_GATES",
+  "T014_FULL": "PASS",
+  "T152": "PASS",
   "governance_approval_statement": "Phê duyệt đề xuất và tiếp tục thực hiện",
   "governance_approval_recorded_at": "2026-11-14T06:56:40.730377+00:00",
   "proposal_sha256": "1456c674b1e851960e575e65f4dcfe314c4202d2f3336576c829e941085ce1c9",
@@ -30,5 +30,6 @@
     "data": "synthetic",
     "public_deploy": false,
     "important_data": false
-  }
+  },
+  "technical_evidence": "docs/testing/resume-20261114/accepted-handover/acceptance-matrix.json"
 }

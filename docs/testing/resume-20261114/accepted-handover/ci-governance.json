@@ -1,0 +1,149 @@
+{
+  "sha": "148e2345290e0036b74e1cc9cd73aace018822f6",
+  "runs": [
+    {
+      "id": 43569908920,
+      "head_sha": "148e2345290e0036b74e1cc9cd73aace018822f6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/qtrugle0113/fpt-spec-eng/actions/runs/43569908920",
+      "jobs": [
+        {
+          "name": "sample-bytes (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ghi commit th\u1ef1c \u0111\u01b0\u1ee3c checkout",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m raw LF, SHA256 v\u00e0 workbook bytes sau checkout",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m lock image kh\u1edbp FROM v\u00e0 h\u1ed3i quy l\u1ec7ch pin",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "X\u00e1c nh\u1eadn ki\u1ec3m th\u1eed kh\u00f4ng s\u1eeda artifact",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m approval nghi\u1ec7m thu, gi\u1edbi h\u1ea1n scope v\u00e0 th\u1eddi h\u1ea1n UTC+09",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "\u0110\u1ed1i chi\u1ebfu h\u1ed3 s\u01a1 \u0111\u00e3 duy\u1ec7t v\u00e0 raw reports tr\u00ean checkout th\u1eadt",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        },
+        {
+          "name": "sample-bytes (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ghi commit th\u1ef1c \u0111\u01b0\u1ee3c checkout",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m raw LF, SHA256 v\u00e0 workbook bytes sau checkout",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m lock image kh\u1edbp FROM v\u00e0 h\u1ed3i quy l\u1ec7ch pin",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "X\u00e1c nh\u1eadn ki\u1ec3m th\u1eed kh\u00f4ng s\u1eeda artifact",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Ki\u1ec3m approval nghi\u1ec7m thu, gi\u1edbi h\u1ea1n scope v\u00e0 th\u1eddi h\u1ea1n UTC+09",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "\u0110\u1ed1i chi\u1ebfu h\u1ed3 s\u01a1 \u0111\u00e3 duy\u1ec7t v\u00e0 raw reports tr\u00ean checkout th\u1eadt",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}
