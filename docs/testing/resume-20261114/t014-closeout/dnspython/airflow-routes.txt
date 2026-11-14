@@ -1,0 +1,15 @@
+AIRFLOW_FOUNDATION_READY aat-foundation-airflow-47e54f68-net
+Traceback (most recent call last):
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\tools\run_metadata_foundation.py", line 206, in <module>
+    run('cp', str(ROOT / source), runner + ':/tmp/' + source)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\tools\run_metadata_foundation.py", line 137, in run
+    raise RuntimeError((p.stdout + p.stderr).replace(password, '[REDACTED]'))
+RuntimeError: Error: 1 error occurred:
+	* copying from host: copier: get: "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\backend"("C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\backend"): opening file for adding its contents to archive: open C:\Users\tieut\Desktop\workspace\fpt-spec-eng\backend\dist\aat_api-0.1.0-py3-none-any.whl: Access is denied.
+
+Traceback (most recent call last):
+  File "C:\Users\tieut\Desktop\workspace\fpt-spec-eng\tests\tools\run_airflow_foundation.py", line 185, in <module>
+    if checked.returncode:raise RuntimeError('Real task binding contract failed; inspect nested fixture evidence')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Real task binding contract failed; inspect nested fixture evidence

@@ -2,6 +2,11 @@
 
 **Trạng thái: BLOCKED — chưa nghiệm thu toàn bộ sản phẩm.**
 
+**Sau quyền commit/push mới:** CI Windows/Linux đã PASS trên commit2585bc0 và
+021a21d. Đã vá dnspython2.9.2 trên candidate, đưa OS fixes lên build stage và
+scan lại hai target; full security vẫn BLOCKED. Các ghi chú cấm push/CI NOT_RUN
+bên dưới là lịch sử. [Remediation hiện hành](resume-20261114/t014-closeout/remediation-report.md).
+
 **Lượt khép T014/T152 tiếp theo:** kiểm source local Windows15/Linux15 PASS trên
 snapshot500file; remote CI vẫn NOT_RUN. Đã tổng hợp21rawreports đúng image IDs
 thành362nhóm HIGH/CRITICAL,229nhóm không có FixedVersion. Không scan mới hoặc

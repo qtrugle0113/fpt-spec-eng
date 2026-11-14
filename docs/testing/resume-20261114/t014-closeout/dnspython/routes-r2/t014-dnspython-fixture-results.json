@@ -1,0 +1,37 @@
+{
+  "postgres_image_id": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+  "mysql_image_id": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+  "runner_image_id": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "runner_memory_limit_bytes": 1073741824,
+  "runner_oom_killed": false,
+  "engine_wheel_requested": false,
+  "wheel_snapshot": null,
+  "workbook_test_dependencies": {
+    "source_image_id": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "versions": {
+      "openpyxl": "3.1.5",
+      "et_xmlfile": "2.0.0",
+      "defusedxml": "0.7.1"
+    }
+  },
+  "pytest_test_dependencies": null,
+  "fixture": "Disposable PostgreSQL17.11,no published ports,no existing volumes/secrets mounted",
+  "database_storage": "new anonymous disk volumes",
+  "task": "T014-DNSPYTHON",
+  "test_paths": [
+    "tests.airflow.test_execution"
+  ],
+  "test_exit_code": 0,
+  "log": "docs\\testing\\resume-20261114\\t014-closeout\\dnspython\\routes-r2\\t014-dnspython-green.log",
+  "source_snapshot": "docs\\testing\\resume-20261114\\t014-closeout\\dnspython\\routes-r2\\t014-dnspython-fixture-sources.json",
+  "existing_services_modified": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "status": "PASS"
+}

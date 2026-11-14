@@ -1,0 +1,29 @@
+AIRFLOW_FOUNDATION_READY aat-foundation-airflow-3b6ac003-net
+SDK_ROUTE_VERIFIED source=CSV target=MYSQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=CSV target=POSTGRESQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=MYSQL target=MYSQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=MYSQL target=POSTGRESQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=MYSQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=TXT target=MYSQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=TXT target=POSTGRESQL strategy=APPEND scheduled=False rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=APPEND scheduled=True rows=2 null_preserved=true disk_manifest=COMPLETE
+SDK_ROUTE_VERIFIED source=POSTGRESQL target=POSTGRESQL strategy=FULL_REFRESH scheduled=True rows=2 null_preserved=true disk_manifest=COMPLETE
+/home/airflow/.local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_csv_to_mysql (tests.airflow.test_execution.RouteExecutionTests.test_csv_to_mysql) ... ok
+test_csv_to_pg (tests.airflow.test_execution.RouteExecutionTests.test_csv_to_pg) ... ok
+test_mysql_to_mysql (tests.airflow.test_execution.RouteExecutionTests.test_mysql_to_mysql) ... ok
+test_mysql_to_pg (tests.airflow.test_execution.RouteExecutionTests.test_mysql_to_pg) ... ok
+test_pg_to_mysql (tests.airflow.test_execution.RouteExecutionTests.test_pg_to_mysql) ... ok
+test_pg_to_pg (tests.airflow.test_execution.RouteExecutionTests.test_pg_to_pg) ... ok
+test_txt_to_mysql (tests.airflow.test_execution.RouteExecutionTests.test_txt_to_mysql) ... ok
+test_txt_to_pg (tests.airflow.test_execution.RouteExecutionTests.test_txt_to_pg) ... ok
+test_scheduled_append (tests.airflow.test_execution.ScheduledExecutionTests.test_scheduled_append) ... ok
+test_scheduled_full_refresh (tests.airflow.test_execution.ScheduledExecutionTests.test_scheduled_full_refresh) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 180.820s
+
+OK
+

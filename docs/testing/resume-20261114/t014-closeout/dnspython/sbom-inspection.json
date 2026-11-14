@@ -1,0 +1,13 @@
+{
+  "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "result": {
+    "setuptools_import_available": false,
+    "json_metadata_hits": [
+      {
+        "path": "/home/airflow/.local/lib/python3.12/site-packages/pip/_vendor/bom.cdx.json",
+        "bytes": 5324
+      }
+    ],
+    "disposition": "REVIEW_REQUIRED_NOT_A_NOT_AFFECTED_DECISION"
+  }
+}

@@ -2,6 +2,10 @@
 
 **150/152 task đã hoàn tất.** T140/T151 đã khép; T014_FULL/T152 còn BLOCKED.
 
+**Sau quyền push mới:** CI Windows/Linux PASS commit2585bc0/021a21d; candidate
+đã nâng dnspython2.9.2 và OS-patched stage được scan lại. Còn security full gate;
+xem [remediation mới nhất](resume-20261114/t014-closeout/remediation-report.md).
+
 Lượt tiếp tục T014/T152 đã kiểm source Windows15/Linux15 PASS và lập hồ sơ review
 đủ21targets/362nhóm HIGH/CRITICAL. Remote CI và full security vẫn chưa PASS;
 xem [báo cáo khép cổng](resume-20261114/t014-closeout/closeout-report.md).

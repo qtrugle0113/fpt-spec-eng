@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "scope": "Technical verification only; full security remains BLOCKED",
+  "checks": [
+    {
+      "label": "version-pip",
+      "command": [
+        "podman",
+        "run",
+        "--rm",
+        "--network=none",
+        "--memory=512m",
+        "--entrypoint=python",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "wks-bound-sdk",
+      "command": [
+        "podman",
+        "run",
+        "--rm",
+        "--network=none",
+        "--memory=512m",
+        "--entrypoint=python",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "-c",
+        "import importlib.metadata,json,hashlib,dns.rdata,airflow,airflow.sdk\nfrom pathlib import Path\nassert importlib.metadata.version('dnspython')=='2.9.2'\nassert airflow.__version__=='3.3.2'\nbase=Path('/opt/aat'); policy=json.loads((base/'constraints-policy.json').read_text()); upstream=(base/'constraints-3.12.txt').read_bytes(); assert hashlib.sha256(upstream).hexdigest()==policy['upstream_sha256']\ndns.rdata.from_text('IN','WKS','10.0.0.1 udp 53')\ntry: dns.rdata.from_text('IN','WKS','10.0.0.1 udp 65536')\nexcept Exception as e: print('WKS_BOUND_REJECTED',type(e).__name__)\nelse: raise AssertionError('out-of-range WKS accepted')\nprint('DNS_VERSION_AND_SDK_AND_UPSTREAM_PASS')\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "scan",
+      "command": [
+        "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "-c",
+        "from tests.tools import scan_phase1_images as s; s.TARGETS={'airflow':'a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28'}; s.scan()"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "airflow-routes-r2",
+      "exit_code": 0,
+      "receipt": "routes-r2-result.json"
+    }
+  ],
+  "airflow_image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "build_source_sha256": {
+    "airflow/docker/Dockerfile": "3cb1b9ede7be94a5dafc67886eca08f4d72da41140ffbb771509a34929490c6b",
+    "airflow/docker/constraints-policy.json": "c6c9dc6e89c17f27778a80f9682aaf61ba62fbba0f5ecd9f894ce225c67f8e45",
+    "airflow/docker/overrides.lock": "f3cd2b0ef6d77f1813aac0d1c27d111228a3fc54cc1d23c87c685973dcf4a49a",
+    "airflow/docker/build_constraints.py": "1c065012c8edb910c9f276eb889b0cc0516f8562e0cc73d1034af1297e04860b"
+  },
+  "prior_acl_failure": "verification.json",
+  "retry_receipt": "routes-r2-result.json",
+  "demo_modified": false
+}

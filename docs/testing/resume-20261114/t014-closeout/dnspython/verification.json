@@ -1,0 +1,78 @@
+{
+  "airflow_image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "stage_image": "f446e0c1da9df9b8514db7289c85a86811641247fb211507c6166e04f24bbacd",
+  "checks": [
+    {
+      "label": "version-pip",
+      "command": [
+        "podman",
+        "run",
+        "--rm",
+        "--network=none",
+        "--memory=512m",
+        "--entrypoint=python",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "wks-bound-sdk",
+      "command": [
+        "podman",
+        "run",
+        "--rm",
+        "--network=none",
+        "--memory=512m",
+        "--entrypoint=python",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "-c",
+        "import importlib.metadata,json,hashlib,dns.rdata,airflow,airflow.sdk\nfrom pathlib import Path\nassert importlib.metadata.version('dnspython')=='2.9.2'\nassert airflow.__version__=='3.3.2'\nbase=Path('/opt/aat'); policy=json.loads((base/'constraints-policy.json').read_text()); upstream=(base/'constraints-3.12.txt').read_bytes(); assert hashlib.sha256(upstream).hexdigest()==policy['upstream_sha256']\ndns.rdata.from_text('IN','WKS','10.0.0.1 udp 53')\ntry: dns.rdata.from_text('IN','WKS','10.0.0.1 udp 65536')\nexcept Exception as e: print('WKS_BOUND_REJECTED',type(e).__name__)\nelse: raise AssertionError('out-of-range WKS accepted')\nprint('DNS_VERSION_AND_SDK_AND_UPSTREAM_PASS')\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "scan",
+      "command": [
+        "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "-c",
+        "from tests.tools import scan_phase1_images as s; s.TARGETS={'airflow':'a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28'}; s.scan()"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "airflow-routes",
+      "command": [
+        "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\tests\\tools\\run_airflow_foundation.py",
+        "--runtime-execution-tests",
+        "--packaged-runtime",
+        "--runtime-execution-module",
+        "tests.airflow.test_execution",
+        "--runtime-label",
+        "t014-dnspython",
+        "--airflow-image",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "--postgres-image",
+        "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+        "--runner-image",
+        "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+        "--mysql-image",
+        "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+        "--workbook-deps-image",
+        "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+        "--evidence-dir",
+        "docs\\testing\\resume-20261114\\t014-closeout\\dnspython\\routes"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "status": "FAIL",
+  "demo_modified": false
+}

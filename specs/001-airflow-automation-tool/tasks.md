@@ -1,5 +1,10 @@
 # Danh sách task: Airflow Automation Tool
 
+**Cập nhật sau quyền commit/push:** CI Windows/Linux PASS2585bc0/021a21d;
+candidate dnspython2.9.2 đã build/scan, stage OS patches đưa lên sớm hơn.
+T014/T152 vẫn mở vì full security chưa đạt; ghi chú cấm push/CI NOT_RUN trước đó
+là lịch sử. [Remediation hiện hành](../../docs/testing/resume-20261114/t014-closeout/remediation-report.md).
+
 **Lượt tiếp tục T014/T152:** source snapshot local Windows15/Linux15 PASS;
 hồ sơ security21targets/362nhóm đã đối chiếu raw image IDs. CI remote NOT_RUN,
 security full BLOCKED; giữ150/152, không thay marker reviewer. Xem

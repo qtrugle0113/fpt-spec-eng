@@ -1,0 +1,25 @@
+{
+  "readiness": {
+    "status": "READY",
+    "dependencies": {
+      "application_database": "HEALTHY",
+      "migration_head": "HEALTHY",
+      "encryption_keys": "HEALTHY",
+      "worker": "HEALTHY",
+      "airflow": "HEALTHY"
+    }
+  },
+  "reviewer_hashes_unchanged": true,
+  "tasks_total": 152,
+  "tasks_checked": 150,
+  "open_tasks": [
+    "T014",
+    "T152"
+  ],
+  "source_ci": "PASS",
+  "source_ci_receipt": "ci-source.json",
+  "T014_FULL": "BLOCKED_SECURITY",
+  "T152": "BLOCKED_T014_FULL",
+  "candidate_technical_verification": "PASS",
+  "demo_candidate_rolled_out": false
+}

@@ -1,0 +1,20 @@
+{
+  "image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+  "observation": {
+    "sbom_path": "/home/airflow/.local/lib/python3.12/site-packages/pip/_vendor/bom.cdx.json",
+    "sbom_sha256": "5c78ac0296d2e95805bdad6b8dfbdaa292eab2506bf0e519f4a4c1a6fc4310e8",
+    "setuptools_components": [
+      {
+        "bom-ref": "pkg:pypi/setuptools@70.3.0",
+        "name": "setuptools",
+        "purl": "pkg:pypi/setuptools@70.3.0",
+        "type": "library",
+        "version": "70.3.0"
+      }
+    ],
+    "package_index_paths": [
+      "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/standard/hooks/package_index.py"
+    ]
+  },
+  "disposition": "REVIEW_REQUIRED"
+}

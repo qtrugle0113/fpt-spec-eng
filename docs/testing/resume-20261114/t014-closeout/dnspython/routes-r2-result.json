@@ -1,0 +1,31 @@
+{
+  "command": [
+    "C:\\Users\\tieut\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "-X",
+    "utf8",
+    "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\security-remediation-82fdec4\\tests\\tools\\run_airflow_foundation.py",
+    "--runtime-execution-tests",
+    "--packaged-runtime",
+    "--runtime-execution-module",
+    "tests.airflow.test_execution",
+    "--runtime-label",
+    "t014-dnspython",
+    "--airflow-image",
+    "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "--postgres-image",
+    "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "--runner-image",
+    "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "--mysql-image",
+    "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+    "--workbook-deps-image",
+    "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "--evidence-dir",
+    "docs/testing/resume-20261114/t014-closeout/dnspython/routes-r2"
+  ],
+  "cwd": "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\security-remediation-82fdec4",
+  "exit_code": 0,
+  "status": "PASS",
+  "reason_for_rerun": "Original root backend/dist ACL prevents podman cp before tests; use preserved clean worktree, no ACL reset or deleted data",
+  "airflow_image": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28"
+}
