@@ -1,13 +1,3 @@
-<!--
-Báo cáo tác động đồng bộ — D1 được chủ dự án duyệt trong hội thoại ngày2026-11-09.
-- Phiên bản đề xuất: 1.1.0 → 1.2.0 (MINOR): thêm quyền phát triển local có hạn,
-  tách khỏi nghiệm thu đầy đủ; không thay yêu cầu an toàn/chức năng hoặc task completion.
-- Đồng bộ Spec/Plan/Tasks/Research/README/Quickstart và báo cáo hiện hành.
-- Quyết định, reviewer, baseline, controls, hạn và thu hồi theo đề xuất T014 local.
-- Quyết định: docs/decisions/t014-local-gate-approval.md; local đã kích hoạt có hạn theo
-  docs/decisions/t014-local-activation.json sau xác nhận D3/LEX-003; full T014 vẫn BLOCKED.
--->
-
 # Hiến chương dự án Airflow Automation Tool
 
 ## Các nguyên tắc cốt lõi
@@ -286,7 +276,7 @@ không được dùng để bỏ yêu cầu bắt buộc của sản phẩm khi 
 - Bản 1.0.0 là lần ban hành đầu tiên theo yêu cầu của chủ dự án. Bước này chỉ thiết lập
   quy tắc quản trị; chưa phải bằng chứng triển khai hoặc nghiệm thu chức năng ứng dụng.
 
-**Phiên bản**: 1.3.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-11
+**Phiên bản**: 2.0.0 | **Ngày thông qua**: 2026-11-06 | **Ngày sửa đổi gần nhất**: 2026-11-14
 
 ## Quyền phát triển local có điều kiện, tách khỏi nghiệm thu đầy đủ
 
@@ -298,7 +288,8 @@ Mỗi artifact mới PHẢI scan riêng; đối chiếu policy đã duyệt khô
 baseline cũ tồn tại và không được gọi là delta cùng snapshot. Unknown finding,
 provenance thiếu hoặc context not-affected thay đổi phải review riêng.
 Đây không phải nghiệm thu task/sản phẩm.
-T014 đầy đủ vẫn BLOCKED và checkbox chưa hoàn thành khi security chưa đạt.
+T014 đầy đủ vẫn BLOCKED khi security chưa đạt, trừ cơ chế nghiệm thu có rủi ro
+đã biết được phê duyệt riêng tại mục Constitution2.0.0 bên dưới.
 Hồ sơ PHẢI có owner/reviewer/approval timestamp, baseline, controls, hạn và thu hồi;
 không tự duyệt/gia hạn. Finding bắt buộc trước local PHẢI được khép theo hồ sơ.
 Không miễn trừ secrets/auth/data integrity/BR-08, tests chức năng hoặc safety gates.
@@ -311,3 +302,27 @@ Sửa đổi1.3.0 được chủ dự án duyệt ngày2026-11-11 tại
 `docs/decisions/portable-local-build-20261111.md`; thay ràng buộc cùng baseline IDs
 bằng source/locks/config và scan từng artifact. Giữ nguyên hạn/controls và nghĩa
 vụ kiểm thử; các approval cũ giữ lịch sử. Đồng bộ Spec/Plan/Tasks/Quickstart.
+
+## Nghiệm thu baseline local có rủi ro đã biết — Constitution2.0.0
+
+Chủ dự án đã phê duyệt `docs/proposals/t014-full-handover-known-risks-20261114.md`
+trong hội thoại ngày2026-11-14. Cơ chế này cho phép bàn giao đầy đủ baseline local
+có rủi ro đã biết; không phải security-clean hoặc production-ready.
+
+- Mọi kiểm thử chức năng, secrets, an toàn dữ liệu, recovery, compatibility,
+  startup và CI đúng commit cuối PHẢI đạt. Không miễn mandatory test.
+- Scan findings PHẢI giữ nguyên; quyết định security disposition ghi riêng
+  `OWNER_ACCEPTED_KNOWN_RISKS`, dựa trên snapshot/hash của hồ sơ đã được chủ dự án
+  chấp thuận. Không tự ghi not-affected hoặc cấp phép cho findings/artifacts mới.
+- Approval PHẢI có nguồn quyết định, thời điểm ghi nhận, SHA256 proposal/packet,
+  immutable images/context và trạng thái thu hồi; gate PHẢI kiểm các ràng buộc đó.
+- Phạm vi CHỈ gồm một operator, loopback, dữ liệu tổng hợp; không public/LAN,
+  không dữ liệu quan trọng. Giữ review2026-11-16 và hạn2026-11-23T00:00:00+09:00.
+  Hết hạn/đến hạn review chưa tái đánh giá, thay artifact/finding hoặc thu hồi thì
+  dừng nghiệm thu theo approval này; không tự gia hạn.
+- T014_FULL CHỈ PASS khi technical gates và approval hợp lệ đều đạt. T152 CHỈ
+  hoàn tất sau T014 và mọi prerequisite/mandatory acceptance evidence đã đạt.
+- Bàn giao PHẢI công bố phạm vi, rủi ro đã biết, evidence, thời hạn và thu hồi.
+
+Sửa đổi2.0.0 thay quy tắc không cho bàn giao đầy đủ bằng rủi ro đã chấp thuận;
+các nguyên tắc còn lại giữ nguyên. Ngày thông qua ban đầu vẫn2026-11-06.

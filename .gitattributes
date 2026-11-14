@@ -2,6 +2,9 @@
 samples/data/*.csv text eol=lf
 samples/data/*.txt text eol=lf
 *.xlsx -text
+.specify/memory/constitution.md text eol=lf
+docs/proposals/t014-full-handover-known-risks-20261114.md -text whitespace=cr-at-eol
+docs/decisions/t014-owner-review-20261114.json -text
 
 # Evidence hashes refer to original bytes, including captured terminal line endings.
 docs/testing/resume-20261111/** -text

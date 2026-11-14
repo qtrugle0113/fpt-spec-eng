@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "tests": 5,
+  "images": {
+    "backend": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+    "frontend": "03f8c156556bbcd4135f95f72a74a8d451d037f95d160fe0215b16a3652b0aa0",
+    "airflow": "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+    "postgres": "50d58c446e102801a68b6a14014bfe119544f8257c3441f48668372b2e006199",
+    "mysql": "c036afeec039aef63d8c093f124ae72262fd2eec79ac6d97e1026a6f4095a0f4",
+    "tests": "3e789c8e0bbea5206975c2dfdeed07467180c90fd0c974b62205ae4b3c994177",
+    "e2e": "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+    "workbook_deps": "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f"
+  },
+  "commands": [
+    [
+      "run",
+      "--rm",
+      "--entrypoint",
+      "python",
+      "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "-c",
+      "\nimport hashlib, importlib.metadata, json, runpy\nfrom pathlib import Path\nroot=Path('/opt/aat')\npolicy=json.loads((root/'constraints-policy.json').read_text())\nupstream=(root/'constraints-3.12.txt').read_bytes()\nassert hashlib.sha256(upstream).hexdigest()=='821effd0f491975682f2774fca3427d7bc2f59ca6de68dcb413ad2c8f890e58c'\nderive=runpy.run_path(str(root/'build_constraints.py'))['derive_constraints']\neffective=(root/'constraints-effective-3.12.txt').read_bytes()\nassert effective==derive(upstream,policy)\nprovenance=json.loads((root/'constraints-provenance.json').read_text())\nassert provenance['effective_sha256']==hashlib.sha256(effective).hexdigest()\nfor package,version in [('certifi','2026.10.18'),('urllib3','2.8.0'),('dnspython','2.9.2'),('pip','26.3'),('apache-airflow','3.3.2')]:\n assert importlib.metadata.version(package)==version,(package,importlib.metadata.version(package))\nprint(json.dumps(provenance))\n"
+    ],
+    [
+      "run",
+      "--rm",
+      "--entrypoint",
+      "python",
+      "ce3e993e4a8dd7be2394927a2fc2199513e7f9a60c51c9d4876b2f3970d78f1f",
+      "-m",
+      "pip",
+      "check"
+    ],
+    [
+      "run",
+      "--rm",
+      "--entrypoint",
+      "python",
+      "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "-m",
+      "pip",
+      "check"
+    ],
+    [
+      "run",
+      "--rm",
+      "--entrypoint",
+      "python",
+      "a9dc2f031b05d2eea106adae7b9ee180a6735108d27aad2517fd1e490ff6ef28",
+      "-c",
+      "import airflow,airflow.sdk,aat_metadata,aat_etl; assert airflow.__version__=='3.3.2'"
+    ],
+    [
+      "run",
+      "--rm",
+      "-i",
+      "b5b3c6a03aa52d1ee94fa4bb13077f73b7c6a3c0e25a9ceae76c0d739a9833e9",
+      "node",
+      "-"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/python@sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/node@sha256:aaa4b5baf1ecff3b283486bb1f90405cdda225a3e6f79660d2c559fa510a7292"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/nginx@sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/apache/airflow@sha256:8177d08e713886fe1cfc4d5e2683a72725756cd8086e57af8fe163ee76e2b82f"
+    ],
+    [
+      "image",
+      "inspect",
+      "mcr.microsoft.com/playwright@sha256:fb9978a801599ea0a57079eb642ad75cb52dbe1b162c8bf1fc989a603aa39218"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/golang@sha256:0fd028db9bdd4f01657bc8047c209b04d8ce19b853d776bd6f1e76a41729b936"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/postgres@sha256:73bedc9eaa0121b92b9b26bb52e5141b3f6f37479c7ef913c0160455763ca80a"
+    ],
+    [
+      "image",
+      "inspect",
+      "docker.io/library/mysql@sha256:72c368d898861f3b3a07af0e6d690400f44f048799ed46822783d9224cc2c86d"
+    ]
+  ],
+  "mapping_only": true,
+  "assertions_unchanged": true
+}

@@ -21,3 +21,7 @@ jobs:
         run: python -m unittest tests.unit.test_image_baseline tests.unit.test_airflow_constraints tests.unit.test_airflow_offline_patch tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock -v
       - name: Xác nhận kiểm thử không sửa artifact
         run: git diff --exit-code -- samples templates
+      - name: Kiểm approval nghiệm thu, giới hạn scope và thời hạn UTC+09
+        run: python -m unittest tests.unit.test_full_handover_policy -v
+      - name: Đối chiếu hồ sơ đã duyệt và raw reports trên checkout thật
+        run: python -m tests.tools.full_handover_policy

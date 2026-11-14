@@ -1,0 +1,62 @@
+IContractTests::test_inventory_is_derived_and_operation_ids_unique PASSED [ 86%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_missing_operation_is_detected PASSED [ 87%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_required_field_and_extra_field_drift_are_detected PASSED [ 87%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_safe_error_and_story_selection_positive_controls PASSED [ 87%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_schema_drift_in_implementation_is_detected PASSED [ 88%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_uuid_idempotency_format_and_response_etag_drift PASSED [ 88%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_write_only_secret_cannot_be_returned PASSED [ 89%]
+tests/api/test_openapi_contract.py::OpenAPIContractTests::test_wrong_success_status_is_not_accepted_by_default_error PASSED [ 89%]
+tests/api/test_runtime_bind.py::RuntimeBearerTests::test_only_canonical_route_accepts_a_runtime_bearer PASSED [ 90%]
+tests/api/test_settings.py::SettingsContractTests::test_concurrent_edits_to_different_fields_share_one_document_revision PASSED [ 90%]
+tests/api/test_settings.py::SettingsContractTests::test_defaults_persist_and_global_revision_changes_for_each_setting PASSED [ 90%]
+tests/api/test_settings.py::SettingsContractTests::test_invalid_ranges_bool_timezone_and_readonly_mutations_are_rejected PASSED [ 91%]
+tests/api/test_settings.py::SettingsContractTests::test_shorter_retention_never_collects_protected_recovery_data PASSED [ 91%]
+tests/api/test_settings.py::SettingsNewConfigTests::test_new_batch_defaults_do_not_mutate_a_validated_revision PASSED [ 92%]
+tests/api/test_tables.py::TableAPITests::test_aliases_cannot_concurrently_admit_creation_for_same_physical_table PASSED [ 92%]
+tests/api/test_tables.py::TableAPITests::test_history_filter_pagination_and_request_boundaries PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_invalid_workbook_has_safe_locations_and_no_preview PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_lost_metadata_commit_ack_keeps_completed_workbook PASSED [ 93%]
+tests/api/test_tables.py::TableAPITests::test_mysql_create_and_persistent_history PASSED [ 94%]
+tests/api/test_tables.py::TableAPITests::test_mysql_partial_job_preserves_created_table_and_reports_permission_failure PASSED [ 94%]
+tests/api/test_tables.py::TableAPITests::test_postgres_create_and_persistent_history PASSED [ 95%]
+tests/api/test_tables.py::TableAPITests::test_stale_confirmation_rejects_changed_connection_without_creating_job PASSED [ 95%]
+tests/api/test_tables.py::TableAPITests::test_template_binary_checksum_and_schema PASSED [ 96%]
+tests/api/test_tables.py::TableAPITests::test_unknown_mysql_ddl_is_durable_and_idempotent_replay_does_not_execute PASSED [ 96%]
+tests/api/test_trigger.py::TriggerTests::test_activation_requires_scheduled_scope_and_is_revision_guarded PASSED [ 96%]
+tests/api/test_trigger.py::TriggerTests::test_activation_response_loss_readback_and_pause_do_not_revoke_authority PASSED [ 97%]
+tests/api/test_trigger.py::TriggerTests::test_lost_post_response_is_read_back_without_another_post PASSED [ 97%]
+tests/api/test_trigger.py::TriggerTests::test_once_is_reserved_and_identity_is_stable_before_dispatch PASSED [ 98%]
+tests/api/test_trigger.py::TriggerTests::test_revoke_before_dispatch_closes_once_without_airflow_submission PASSED [ 98%]
+tests/api/test_trigger.py::TriggerTests::test_scheduled_is_not_manual_authority PASSED [ 99%]
+tests/api/test_trigger.py::TriggerTests::test_two_requests_cannot_transfer_one_once PASSED [ 99%]
+tests/api/test_trigger.py::TriggerTests::test_uncertain_trigger_is_observed_by_maintenance_without_reposting PASSED [100%]
+
+=================================== FAILURES ===================================
+_ AirflowConstraintsTests.test_only_approved_pins_change_and_upstream_unchanged _
+tests/unit/test_airflow_constraints.py:29: in test_only_approved_pins_change_and_upstream_unchanged
+    effective = self.module.derive_constraints(self.upstream, self.policy)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+airflow/docker/build_constraints.py:22: in derive_constraints
+    raise ValueError(f'Override outside approved policy: {name}')
+E   ValueError: Override outside approved policy: dnspython
+_ AirflowOfflinePatchTests.test_airflow_stage_patches_offline_before_first_network_command _
+tests/unit/test_airflow_offline_patch.py:64: in test_airflow_stage_patches_offline_before_first_network_command
+    self.assertLess(stage.index('apt-get update'), stage.index('FROM security-patched AS runtime'),
+E   AssertionError: 610 not less than 510 : The scanned security stage must include the locked OS fixes
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /usr/local/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_only_approved_pins_change_and_upstream_unchanged
+FAILED tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_airflow_stage_patches_offline_before_first_network_command
+============= 2 failed, 229 passed, 1 warning in 279.02s (0:04:39) =============
+[4m>>>> Executing external compose provider "C:\\Users\\tieut\\Desktop\\workspace\\fpt-spec-eng\\.tools\\accepted-handover-7273297\\.tools\\docker-compose-5.6.0.exe". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m Container aat-regression-b0adc0e1-backend-tests-run-0b92e581fd52 Creating 
+ Container aat-regression-b0adc0e1-backend-tests-run-0b92e581fd52 Created 
+
+Error: executing C:\Users\tieut\Desktop\workspace\fpt-spec-eng\.tools\accepted-handover-7273297\.tools\docker-compose-5.6.0.exe -f C:\Users\tieut\Desktop\workspace\fpt-spec-eng\.tools\accepted-handover-7273297\.tools\compose-aat-regression-b0adc0e1.json -p aat-regression-b0adc0e1 --profile test run --rm --no-deps backend-tests pytest -p no:cacheprovider tests/unit tests/api --ignore tests/unit/test_dag_factory.py -v --tb=short: exit status 1
+

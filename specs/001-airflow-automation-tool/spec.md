@@ -1,5 +1,15 @@
 # Đặc tả tính năng: Airflow Automation Tool — MVP tự động hóa ETL
 
+## Baseline nghiệm thu theo Constitution2.0.0 — 2026-11-14
+
+Chủ dự án đã phê duyệt [quyết định nghiệm thu có rủi ro đã biết](../../docs/decisions/t014-owner-review-20261114.json).
+Security scan giữ nguyên findings; disposition là `OWNER_ACCEPTED_KNOWN_RISKS`,
+không phải security-clean hoặc production-ready. Phạm vi một operator, loopback,
+dữ liệu tổng hợp; review2026-11-16 và hạn2026-11-23T00:00:00+09:00, không gia hạn
+tự động. Artifact/finding mới không kế thừa approval. Mọi kiểm thử chức năng,
+secrets, an toàn dữ liệu và recovery vẫn bắt buộc trước khi đóng T014/T152.
+Các checkpoint BLOCKED trước sửa đổi này là lịch sử, không tự đổi kết quả scan.
+
 **Làm rõ môi trường2026-11-11:** chủ dự án duyệt build từ source/locks/config
 trên từng máy; IDs dùng truy vết artifact, không bắt cùng IDs giữa các môi trường.
 Mỗi artifact phải scan/test riêng theo policy có provenance; không cần registry

@@ -1,0 +1,34 @@
+{
+  "status": "OWNER_ACCEPTED_KNOWN_RISKS",
+  "authority": "Project owner statements in current conversation; no signature or message timestamp supplied",
+  "statements": [
+    "tôi review bằng mắt thôi, ko ghi lại nội dung",
+    "ko cần sửa gì nữa đâu. Tôi đồng ý với tát cả nội dung"
+  ],
+  "approval_recorded_at": "2026-11-14T03:22:31.191007+00:00",
+  "scope_packet": "docs/testing/resume-20261114/t014-closeout/current-review-packet.json",
+  "scope_packet_sha256": "c566b7067803b2a7b065e41d5afce046f9488c74fac1aede0e9a5737405bf43a",
+  "targets": 21,
+  "groups": 363,
+  "occurrences": 1669,
+  "interpretation": "Owner agrees with reviewed content and requests no additional fixes; not a claim of zero findings, not-affected, reviewer signature, or amended Constitution",
+  "governance_proposal": "docs/proposals/t014-full-handover-known-risks-20261114.md",
+  "governance_approval": "OWNER_APPROVED",
+  "T014_FULL": "PENDING_TECHNICAL_GATES",
+  "T152": "PENDING_TECHNICAL_GATES",
+  "governance_approval_statement": "Phê duyệt đề xuất và tiếp tục thực hiện",
+  "governance_approval_recorded_at": "2026-11-14T06:56:40.730377+00:00",
+  "proposal_sha256": "1456c674b1e851960e575e65f4dcfe314c4202d2f3336576c829e941085ce1c9",
+  "constitution_sha256": "1b223480eb1a9c1677a8a5953e257e4c1010b79f057d1af1932275fc38afc0ca",
+  "constitution_version": "2.0.0",
+  "revoked": false,
+  "review_due": "2026-11-16",
+  "expires_at": "2026-11-23T00:00:00+09:00",
+  "controls": {
+    "operator_count": 1,
+    "exposure": "loopback",
+    "data": "synthetic",
+    "public_deploy": false,
+    "important_data": false
+  }
+}

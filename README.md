@@ -1,5 +1,15 @@
 # Airflow Automation Tool
 
+## Baseline nghiệm thu theo Constitution2.0.0 — 2026-11-14
+
+Chủ dự án đã phê duyệt [quyết định nghiệm thu có rủi ro đã biết](docs/decisions/t014-owner-review-20261114.json).
+Security scan giữ nguyên findings; disposition là `OWNER_ACCEPTED_KNOWN_RISKS`,
+không phải security-clean hoặc production-ready. Phạm vi một operator, loopback,
+dữ liệu tổng hợp; review2026-11-16 và hạn2026-11-23T00:00:00+09:00, không gia hạn
+tự động. Artifact/finding mới không kế thừa approval. Mọi kiểm thử chức năng,
+secrets, an toàn dữ liệu và recovery vẫn bắt buộc trước khi đóng T014/T152.
+Các checkpoint BLOCKED trước sửa đổi này là lịch sử, không tự đổi kết quả scan.
+
 ## Trạng thái hiện tại
 
 **Cập nhật14/11/2026:** [báo cáo tiếp tục](docs/testing/continuation-20261114.md)

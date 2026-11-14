@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "unique_tests": 231,
+  "first_passed": 229,
+  "first_failed": [
+    "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_only_approved_pins_change_and_upstream_unchanged",
+    "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_airflow_stage_patches_offline_before_first_network_command"
+  ],
+  "focused_rerun_tests": 8,
+  "resolved_failures": [
+    "tests/unit/test_airflow_constraints.py::AirflowConstraintsTests::test_only_approved_pins_change_and_upstream_unchanged",
+    "tests/unit/test_airflow_offline_patch.py::AirflowOfflinePatchTests::test_airflow_stage_patches_offline_before_first_network_command"
+  ],
+  "first_receipt": "unit-api/unit-api/regression-profile-results.json",
+  "rerun_receipt": "static-build-r2/regression-profile-results.json",
+  "reason": "Updated test source originally read stale static build inputs from runner image. Fixture now supplies current build inputs read-only, with checksums. Application packages unchanged. Initial failure preserved."
+}

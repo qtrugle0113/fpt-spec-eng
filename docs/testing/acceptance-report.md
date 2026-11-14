@@ -1,3 +1,39 @@
+# Báo cáo nghiệm thu baseline local có rủi ro đã biết
+
+Trạng thái hiện hành: **technical gates PASS; chờ CI cho sửa đổi quản trị và gate**.
+Constitution2.0.0 được chủ dự án phê duyệt trong hội thoại ngày2026-11-14.
+Security disposition: `OWNER_ACCEPTED_KNOWN_RISKS`; scan vẫn có1.669 HIGH/CRITICAL
+occurrences/363nhóm trên21targets. Không phải security-clean hoặc production-ready.
+
+## Phạm vi, thời hạn và bằng chứng
+
+- Một operator, loopback, dữ liệu tổng hợp. Review2026-11-16, hạn2026-11-23T00:00:00+09:00.
+  Không tự gia hạn; thay artifact/finding, thu hồi hoặc đến hạn review thì gate dừng.
+- [Decision và hash snapshot](../decisions/t014-owner-review-20261114.json),
+  [images](resume-20261114/accepted-handover/images.json),
+  [ma trận39ca A–AM](resume-20261114/accepted-handover/acceptance-matrix.json).
+- Unit/API231unique đã được kiểm chứng sau sửa fixture:229PASS lượt đầu,
+  hai lỗi stale build inputs được khép bằng nhóm8test rerun PASS. Lượt FAIL giữ
+  nguyên; không cộng test trùng thành test mới.
+  [Resolution](resume-20261114/accepted-handover/unit-api-resolution.json).
+- SDK factory4PASS; compatibility5PASS (pip/dependencies/SDK/constraints provenance,
+  locked bases và actual browser); approval guard6PASS, CI kiểm raw evidence checkout thật.
+- Full workflow6browser checks desktop/mobile PASS và exact target verifier PASS,
+  cleanup0 trên candidate Airflow a9dc2f03… đã duyệt; không dùng source overlay.
+- T140 full restart/persistence/fail-closed giữ bằng chứng image gốc. Application
+  files giống candidate; chỉ dnspython2.9.0→2.9.2 đổi trong runtime distributions,
+  đã được DNS bound test, SDK,10Airflow routes và fresh UI workflow kiểm chứng.
+  [Equivalence](resume-20261114/accepted-handover/t140-equivalence.json).
+- App <http://localhost:23000>, Airflow <http://localhost:28080>. Demo cũ được giữ;
+  candidate bàn giao chưa tự thay vào demo. Artifact IDs của từng lượt ghi trong receipt.
+- Checkout bàn giao riêng: `.tools/accepted-handover-7273297`. Các thử nghiệm Trixie
+  và sửa helpers chưa commit ở workspace gốc được bảo toàn, không nằm trong baseline này.
+
+## Lịch sử trước khi phê duyệt Constitution2.0.0
+
+Các kết luận BLOCKED dưới đây phản ánh trạng thái trước quyết định mới, không
+ghi đè trạng thái hiện hành bên trên và không bị xóa khỏi evidence.
+
 # Báo cáo nghiệm thu Airflow Automation Tool
 
 **Trạng thái: BLOCKED — chưa nghiệm thu toàn bộ sản phẩm.**

@@ -14,6 +14,7 @@ parser.add_argument('--images',help='Explicit artifact manifest; default is the 
 parser.add_argument('--prepare-images',action='store_true',help='Build local images and scan policy before running tests')
 parser.add_argument('--evidence-dir')
 parser.add_argument('--preflight-only',action='store_true',help='Verify required local images without starting fixtures')
+parser.add_argument('--owner-accepted-handover',action='store_true',help='Validate exact owner-reviewed baseline under Constitution2.0.0')
 parser.add_argument('--etl-part',choices=['all','engine','runtime'],default='all',help='Rerun only the affected ETL selector after a failure')
 parser.add_argument('--etl-path',action='append',help='Focused tests/etl/test_*.py selector for the engine group')
 parser.add_argument('--airflow-module',action='append')
@@ -70,7 +71,15 @@ for group in groups:
     elif group=='e2e':required.update(('backend','frontend','e2e','airflow','postgres','mysql'))
     else:required.update(('postgres','airflow','workbook_deps'))
 provenance_path=path.parent/(path.stem+'-provenance.json')
-if not args.preflight_only or args.images is None or provenance_path.exists():
+if args.owner_accepted_handover:
+    from full_handover_policy import validate
+    try:
+        result['handover_policy']=validate(ROOT, images)
+    except (OSError,ValueError,KeyError) as error:
+        result.update(status='BLOCKED',reason='OWNER_HANDOVER_APPROVAL_INVALID',detail=str(error))
+        save_result()
+        raise SystemExit(2)
+if not args.owner_accepted_handover and (not args.preflight_only or args.images is None or provenance_path.exists()):
     import hashlib
     from portable_policy import check_expiry
     try:

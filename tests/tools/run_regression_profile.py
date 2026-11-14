@@ -12,7 +12,7 @@ for kind in ('tests','backend','postgres','mysql'):parser.add_argument('--'+kind
 parser.add_argument('--evidence-dir',required=True)
 parser.add_argument('--path',action='append',help='Repository-relative tests/ directory or module path')
 parser.add_argument('--ignore',action='append',help='Explicit selectors assigned to a different runner environment')
-parser.add_argument('--current-test-sources',action='store_true',help='Refresh only tests in a private read-only volume; application packages stay installed')
+parser.add_argument('--current-test-sources',action='store_true',help='Refresh tests and static build inputs in private read-only volumes; application packages stay installed')
 parser.add_argument('--show-passed-output',action='store_true',help='Include reviewed test measurements printed by passing selectors')
 args=parser.parse_args()
 import re
@@ -30,6 +30,7 @@ base=['podman','compose','-f',str(config_path),'-p',project,'--profile','test']
 result={'project':project,'status':'NOT_RUN','published_ports':False,'existing_services_modified':False}
 private=[];started=False
 test_source_volume=None
+build_source_volume=None
 
 def redact(value):
     for secret in private:value=value.replace(secret,'[REDACTED]')
@@ -69,6 +70,20 @@ try:
         result.update(application_source_overlay=False,current_test_sources=True,
             test_source_sha256={p.relative_to(ROOT/'tests').as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
                                for p in (ROOT/'tests').rglob('*') if p.is_file() and '__pycache__' not in p.parts})
+        build_volume=project+'_build_inputs'
+        build_source_volume=build_volume
+        run(['podman','volume','create','--label','com.docker.compose.project='+project,
+             '--label','com.docker.compose.volume=build_inputs','--label','com.docker.compose.version=5.6.0',build_volume])
+        build_loader=project+'-build-input-loader'
+        try:
+            run(['podman','create','--name',build_loader,'--network','none','-v',build_volume+':/build-inputs',
+                 '--entrypoint','/bin/true',images['tests']])
+            run(['podman','cp',str(ROOT/'airflow/docker')+'/.',build_loader+':/build-inputs'])
+        finally:run(['podman','rm','-f',build_loader],check=False)
+        config['volumes']['build_inputs']={'name':build_volume}
+        config['services']['backend-tests']['volumes'].append({'type':'volume','source':'build_inputs','target':'/opt/aat/airflow/docker','read_only':True})
+        result['current_static_build_input_sha256']={p.relative_to(ROOT/'airflow/docker').as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in (ROOT/'airflow/docker').rglob('*') if p.is_file() and '__pycache__' not in p.parts}
     config_path.write_text(json.dumps(config,indent=2)+'\n')
     result['images']=images;result['compose_config']=str(config_path.relative_to(ROOT))
     started=True
@@ -98,5 +113,7 @@ finally:
             result.update(status='CLEANUP_FAILED',test_exit_code=result.get('exit_code'),exit_code=cleanup.returncode)
     if test_source_volume and not started:
         result['test_source_cleanup_exit_code']=run(['podman','volume','rm',test_source_volume],check=False).returncode
+    if build_source_volume and not started:
+        result['build_input_cleanup_exit_code']=run(['podman','volume','rm',build_source_volume],check=False).returncode
     (evidence/'regression-profile-results.json').write_text(json.dumps(result,indent=2)+'\n')
 if result.get('exit_code',1):raise SystemExit(result.get('exit_code',1))

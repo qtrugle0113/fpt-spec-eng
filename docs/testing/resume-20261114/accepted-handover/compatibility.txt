@@ -1,0 +1,10 @@
+test_airflow_approved_overrides_and_upstream_provenance (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_airflow_approved_overrides_and_upstream_provenance) ... ok
+test_backend_and_airflow_dependencies_and_sdk (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_backend_and_airflow_dependencies_and_sdk) ... ok
+test_playwright_client_and_real_browser (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_playwright_client_and_real_browser) ... ok
+test_pulled_base_digests_match_lock_and_platform (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_pulled_base_digests_match_lock_and_platform) ... ok
+test_source_pins_match_image_lock (tests.integration.test_image_compatibility.ImageCompatibilityTests.test_source_pins_match_image_lock) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 16.071s
+
+OK
