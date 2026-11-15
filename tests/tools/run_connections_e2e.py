@@ -12,7 +12,7 @@ parser=argparse.ArgumentParser(description=__doc__)
 for name in ('backend','frontend','e2e','airflow','postgres','mysql'):
     parser.add_argument('--'+name+'-image',required=True)
 parser.add_argument('--evidence-dir',required=True)
-parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow','language'],default='connections')
+parser.add_argument('--suite',choices=['connections','tables','files','dag_builder','monitoring','phase7','full_workflow','language','definition_admin'],default='connections')
 parser.add_argument('--source-overlay',action='store_true',help='Run current source read-only on existing dependency images; not packaged-image acceptance')
 parser.add_argument('--frontend-artifact',help='Workspace-relative dist from the pinned offline frontend build')
 parser.add_argument('--keep-running',action='store_true',help='Keep this new local demo and its volumes after tests; publish loopback 13000/18000/18080')
@@ -110,6 +110,9 @@ try:
                 service.setdefault('volumes',[]).append({'type':'volume','source':'current_source','target':'/current','read_only':True,'volume':{'nocopy':True}})
                 service.setdefault('environment',{}).update(PYTHONPATH='/current/backend/src:/current/packages:/current/etl_engine/src:/current',AAT_ASSETS_ROOT='/current')
                 if name in ('secrets-init','db-init','app-init'):service['working_dir']='/current'
+                if name.startswith('airflow-'):
+                    service['entrypoint']=['/usr/bin/dumb-init','--','/bin/bash','/current/airflow/docker/entrypoint.sh']
+                    service['environment']['AAT_LOCAL_AUTH_HELPER']='/current/docker/bootstrap/local_airflow_admin.py'
             if name=='frontend' and args.frontend_artifact:
                 service.setdefault('volumes',[]).append({'type':'volume','source':'current_source','target':'/usr/share/nginx/html','read_only':True,'volume':{'nocopy':True,'subpath':'frontend-dist'}})
         result['execution_mode']='CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES'

@@ -27,3 +27,6 @@ npm.cmd --prefix frontend run test:ui
 
 Không cần công cụ đặc biệt này nếu máy đã có Node22.23.4 trong PATH. Dependency theo lock; không có dependency giao diện mới.
 
+## Airflow admin/admin
+
+Feature003 bổ sung yêu cầu bắt buộc admin/admin cho Airflow local/demo và thay thế hạn chế trước đây của feature002. Xem [hướng dẫn tài khoản local](local-airflow-admin.md) để cập nhật demo cũ, khởi tạo mới và restore. Service account/operator và dữ liệu hiện hữu giữ nguyên; bootstrap thường không reset mật khẩu tùy chỉnh.

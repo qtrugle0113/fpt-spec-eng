@@ -4,11 +4,27 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 class BootstrapSecretTests(unittest.TestCase):
+    def test_local_demo_admin_opt_in_and_no_implicit_reset(self):
+        import json
+        spec=importlib.util.spec_from_file_location('bootstrap_secrets',ROOT/'docker/bootstrap/secrets.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as tmp, patch.dict('os.environ', {'AAT_LOCAL_DEMO_AUTH': '1'}):
+            root=Path(tmp); module.initialize(root)
+            store=root/'airflow_secrets/simple_auth_passwords.json'
+            data=json.loads(store.read_text()); self.assertEqual(data['admin'],'admin')
+            data['admin']='custom-private'; store.chmod(0o600); store.write_text(json.dumps(data))
+            module.initialize(root)
+            self.assertEqual(json.loads(store.read_text())['admin'],'custom-private')
+        with tempfile.TemporaryDirectory() as tmp, patch.dict('os.environ', {'AAT_LOCAL_DEMO_AUTH': '0'}):
+            root=Path(tmp); module.initialize(root)
+            self.assertNotIn('admin',json.loads((root/'airflow_secrets/simple_auth_passwords.json').read_text()))
+
     def test_owner_domain_is_separate_from_backend_and_runtime(self):
         spec=importlib.util.spec_from_file_location('bootstrap_secrets',ROOT/'docker/bootstrap/secrets.py')
         module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)

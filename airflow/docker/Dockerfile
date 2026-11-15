@@ -28,6 +28,7 @@ RUN python -m pip install --no-cache-dir --require-hashes -r /opt/aat/overrides.
     python -m pip install --no-deps /wheels/*.whl && python -m pip check && \
     python -c "import airflow, airflow.sdk, aat_metadata, aat_etl; assert airflow.__version__ == '3.3.2'"
 COPY --chown=airflow:root airflow/docker/entrypoint.sh /opt/aat/entrypoint.sh
+COPY --chown=airflow:root docker/bootstrap/local_airflow_admin.py /opt/aat/local_demo_auth.py
 COPY --chown=airflow:root airflow/docker/initialize.sh /opt/aat/initialize.sh
 COPY --chown=airflow:root airflow/docker/airflow.cfg /opt/airflow/airflow.cfg
 COPY --chown=airflow:root airflow/docker/health.sh /opt/aat/health.sh
