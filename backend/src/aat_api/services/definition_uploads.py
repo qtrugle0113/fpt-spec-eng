@@ -45,9 +45,9 @@ async def store(file, kind):
     if kind not in ('TABLE','ETL'): raise APIError('UNSUPPORTED_DEFINITION_KIND', 'Unsupported definition kind.', 422)
     name = (file.filename or '').replace('\\', '/').split('/')[-1]
     if not name.lower().endswith('.xlsx') or len(name) > 255 or '\0' in name:
-        raise APIError('INVALID_WORKBOOK_NAME', 'An XLSX workbook filename is required.', 422)
+        raise APIError('INVALID_WORKBOOK_NAME', 'Choose a Definition file with an .xlsx filename.', 422)
     try: name.encode('utf-8')
-    except UnicodeError: raise APIError('INVALID_WORKBOOK_NAME', 'Workbook filename must contain valid Unicode text.', 422) from None
+    except UnicodeError: raise APIError('INVALID_WORKBOOK_NAME', 'The Definition filename must contain valid Unicode text.', 422) from None
     key = uuid4().hex
     path = storage() / key
     checksum = hashlib.sha256(); size = 0; created = False; metadata_started = False
@@ -77,7 +77,7 @@ async def store(file, kind):
         if created and not uncertain:path.unlink(missing_ok=True)
         if uncertain and isinstance(error, Exception):
             logger.error('definition_upload_publication_uncertain')
-            raise APIError('UPLOAD_PUBLICATION_UNCERTAIN','Workbook publication could not be confirmed. Check definition uploads before retrying.',503) from None
+            raise APIError('UPLOAD_PUBLICATION_UNCERTAIN','Definition file publication could not be confirmed. Check definition uploads before retrying.',503) from None
         raise
     finally:
         try: await file.close()
@@ -128,16 +128,16 @@ def request_validation(identity, value, key):
         connection, revision = active(session, value.target_connection_id, lock=True)
         if upload.kind != 'TABLE': raise APIError('INVALID_UPLOAD_KIND', 'A Table Definition upload is required.', 409)
         if value.expected_sha256 and value.expected_sha256 != upload.workbook_sha256:
-            raise APIError('CHECKSUM_MISMATCH', 'Workbook checksum changed.', 409)
+            raise APIError('CHECKSUM_MISMATCH', 'Definition file checksum changed.', 409)
         if revision.test_status != 'SUCCESS' or not revision.physical_server_fingerprint:
             raise APIError('TARGET_NOT_VERIFIED', 'Test the selected target connection first.', 409)
         payload = dict(upload_id=str(identity), target_revision_id=str(revision.id), sha256=upload.workbook_sha256, phase='VALIDATION')
         operation, created = enqueue(session, 'TABLE_VALIDATE', key, payload)
         if created:
             if upload.status not in ('UPLOADED', 'INVALID'):
-                raise APIError('VALIDATION_CONFLICT', 'Workbook validation is already running or complete.', 409)
+                raise APIError('VALIDATION_CONFLICT', 'Definition file validation is already running or complete.', 409)
             if session.scalar(select(TableDefinition.id).where(TableDefinition.upload_id == identity).limit(1)):
-                raise APIError('REUPLOAD_REQUIRED', 'A previously validated definition changed dependencies. Upload a new workbook to preserve its history.', 409)
+                raise APIError('REUPLOAD_REQUIRED', 'A previously validated definition changed dependencies. Upload a new Definition file to preserve its history.', 409)
             session.execute(delete(DefinitionIssue).where(DefinitionIssue.upload_id == identity))
             upload.status = 'VALIDATING'
         return operation.id
@@ -148,25 +148,25 @@ def issues(identity, limit, offset):
         require(session, identity)
         def public(issue):
             # message_key resolves to a fixed safe English message; never echo cells.
-            return dict(scope=issue.scope, code=issue.code, message=MESSAGES.get(issue.message_key, 'Invalid workbook field.'),
+            return dict(scope=issue.scope, code=issue.code, message=MESSAGES.get(issue.message_key, 'Invalid Definition file field.'),
                         **{name:getattr(issue, name) for name in ('sheet', 'row', 'column', 'column_name') if getattr(issue, name) is not None})
         return page(session, select(DefinitionIssue).where(DefinitionIssue.upload_id == identity)
                     .order_by(DefinitionIssue.created_at, DefinitionIssue.id), limit, offset, public)
 
 
-MESSAGES = {'workbook.invalid': 'Workbook validation failed. Check the indicated location and template requirements.',
+MESSAGES = {'workbook.invalid': 'Definition file validation failed. Check the indicated location and template requirements.',
             'etl.INVALID_ETL_DEFINITION':'Invalid ETL field or incompatible ETL configuration. Check the indicated location.',
-            'etl.TARGET_TABLE_MISSING':'Create the target in Table Management before validating this ETL workbook.',
+            'etl.TARGET_TABLE_MISSING':'Create the target in Table Management before validating this ETL Definition.',
             'etl.EXCEL_REFERENCE_NOT_FOUND':'A referenced DAG or connection does not exist.',
-            'etl.CONNECTION_NOT_VERIFIED':'Test every referenced connection before validating this ETL workbook.',
+            'etl.CONNECTION_NOT_VERIFIED':'Test every referenced connection before validating this ETL Definition.',
             'etl.TARGET_NOT_WRITABLE':'Target permissions do not allow the selected load strategy.',
             'etl.ETL_DEPENDENCY_INVALID':'Source, target, mapping, key or replacement safety checks failed.',
-            'etl.DEPENDENCY_CHANGED':'A referenced connection, schema or source file changed. Validate a new workbook.',
+            'etl.DEPENDENCY_CHANGED':'A referenced connection, schema or source file changed. Validate a new Definition file.',
             'etl.ETL_REVISION_EXISTS':'This configuration already has an immutable revision. Reuse its original upload.',
-            'etl.TARGET_BUSY':'The target is in use by another operation. Wait for it to finish, then validate this workbook again.',
-            'etl.FILE_NOT_VALID':'Validate the unexpired source file before validating this ETL workbook.',
-            'target.changed': 'Target connection changed. Upload and validate the workbook again.',
-            'workbook.checksum': 'Stored workbook checksum does not match the immutable upload.', **VALIDATION_MESSAGES}
+            'etl.TARGET_BUSY':'The target is in use by another operation. Wait for it to finish, then validate this Definition file again.',
+            'etl.FILE_NOT_VALID':'Validate the unexpired source file before validating this ETL Definition.',
+            'target.changed': 'Target connection changed. Upload and validate the Definition file again.',
+            'workbook.checksum': 'Stored Definition file checksum does not match the immutable upload.', **VALIDATION_MESSAGES}
 
 
 def fence(session, operation, owner):

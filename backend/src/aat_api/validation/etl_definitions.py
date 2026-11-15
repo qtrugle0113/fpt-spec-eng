@@ -76,13 +76,13 @@ def validate(path,*,default_batch_size=1000):
         issues.append(dict(scope='cell',sheet=sheet,row=row,column=column,column_name=ETL_HEADERS[sheet][column-1],code=code,message=message))
     records=data['ETL_Definitions']
     if not 1<=len(records)<=100:
-        return ValidationResult(issues=[dict(scope='sheet',sheet='ETL_Definitions',code='DAG_COUNT_LIMIT',message='An ETL workbook must define one to one hundred DAGs.')])
+        return ValidationResult(issues=[dict(scope='sheet',sheet='ETL_Definitions',code='DAG_COUNT_LIMIT',message='An ETL Definition must define one to one hundred DAGs.')])
     for row,cells in records:
         column=1
         try:
             dag=text(cells[0]);
             if not re.fullmatch(r'[A-Za-z0-9_.-]{1,200}',dag):raise ValueError('DAG ID contains unsupported characters.')
-            if dag in definitions:raise ValueError('DAG ID is duplicated in this workbook.')
+            if dag in definitions:raise ValueError('DAG ID is duplicated in this Definition file.')
             values={'dag_id':dag};column=2;values['description']=_description(cells[1])
             column=7;file=text(cells[6],required=False,maximum=36)
             if file is not None:file=str(UUID(file))

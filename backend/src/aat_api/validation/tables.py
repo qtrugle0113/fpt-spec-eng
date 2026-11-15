@@ -120,7 +120,7 @@ def validate(path:Path,target:TargetContext) -> ValidationResult:
         resolved=identifier(resolved or 'public',target);name=identifier(name,target)
         return (resolved,name) if target.case_sensitive else (resolved.lower(),name.lower())
     if not data['Tables']:issue('Tables',2,3,'At least one table is required.')
-    if len(data['Tables'])>100:issue('Tables',data['Tables'][100][0],3,'A workbook may contain at most 100 tables.')
+    if len(data['Tables'])>100:issue('Tables',data['Tables'][100][0],3,'A Table Definition may contain at most 100 tables.')
     for row,values in data['Tables']:
         try:
             key=reference(*values[:3])

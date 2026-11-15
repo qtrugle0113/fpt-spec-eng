@@ -4,8 +4,8 @@
   "workbooks": [
     {
       "path": "templates/ETL Definition.xlsx",
-      "sha256": "8bab3c153eae8b7ece9cdf5f454b6136463d02a45a11d1db8e2fcc7ea0f9ee83",
-      "bytes": 13067,
+      "sha256": "e3374bfd4e5bbbdeafe191397e60de1f470ac6e276274a671028c2d39cab14e0",
+      "bytes": 13072,
       "sheets": [
         "Instructions",
         "ETL_Definitions",
@@ -15,8 +15,8 @@
     },
     {
       "path": "templates/Table Definition.xlsx",
-      "sha256": "562702c2d717ec0be87a5f0027b32eb0d7ad33375c11c24ce423e28950e435b1",
-      "bytes": 11600,
+      "sha256": "884fa99b5bd145e82184f27bf7e2300d93bdbd0e7f03bb4752e9cd39233c73a6",
+      "bytes": 11599,
       "sheets": [
         "Instructions",
         "Tables",
@@ -26,8 +26,8 @@
     },
     {
       "path": "samples/definitions/ETL Definition.sample.xlsx",
-      "sha256": "76f0f069713c040b44a512376169fadfa85b2b3fa79527cceb2a84d3e10a98bd",
-      "bytes": 13622,
+      "sha256": "970333d17afa1967e1fd9ec209a46bce3f12d30a3bc42a7a0d9901979f586d20",
+      "bytes": 13627,
       "sheets": [
         "Instructions",
         "ETL_Definitions",
@@ -37,8 +37,8 @@
     },
     {
       "path": "samples/definitions/Table Definition.sample.xlsx",
-      "sha256": "57d2cbfa2d6a871efa2ca98eb66248b3fef23520bac873745e7c5e70ad5a8b2b",
-      "bytes": 12133,
+      "sha256": "409d5149bb67bda405e649bc0132c3ef083b1b7d29aa5bff364ff5f9122916d2",
+      "bytes": 12132,
       "sheets": [
         "Instructions",
         "Tables",

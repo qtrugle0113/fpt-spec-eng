@@ -1,8 +1,8 @@
-import { ActionLink } from '../../components/ActionLink';
 import { useEffect, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { listConnections, newIdempotencyKey, pollOperation, requestJSON } from '../../lib/api';
 import type { components } from '../../lib/api.generated';
+import { ActionLink } from '../../components/ActionLink';
 
 type S = components['schemas'];
 type TableItem = Extract<S['DefinitionPreview']['items'][number], { table_name: string }>;
@@ -80,10 +80,10 @@ export function TableWizard({ upload, onChange }: { upload: S['DefinitionUpload'
       if (!file) return;
       const form = new FormData(); form.set('kind', 'TABLE'); form.set('file', file);
       const result = await requestJSON<S['DefinitionUpload']>('/definition-uploads', { method: 'POST', form, signal });
-      onChange(result.data); setNotice('Workbook uploaded. Select a target and validate it.'); await cache.invalidateQueries({ queryKey: ['table-uploads'] });
+      onChange(result.data); setNotice('Table Definition uploaded. Select a target and validate it.'); await cache.invalidateQueries({ queryKey: ['table-uploads'] });
     }); }}>
-      <label>Table Definition workbook<input type="file" accept=".xlsx" required disabled={busy} onChange={event => setFile(event.target.files?.[0] ?? null)} /></label>
-      <button disabled={busy || !file}>Upload workbook</button>
+      <label>Table Definition file (.xlsx)<input type="file" accept=".xlsx" required disabled={busy} onChange={event => setFile(event.target.files?.[0] ?? null)} /></label>
+      <button disabled={busy || !file}>Upload Table Definition</button>
     </form>
     {upload && <>
       <p>Selected upload: <code>{upload.id}</code> · {upload.status}</p>
@@ -96,9 +96,9 @@ export function TableWizard({ upload, onChange }: { upload: S['DefinitionUpload'
           setPreview(null); setConfirmed(false);
           const started = (await requestJSON<S['Operation']>(`/definition-uploads/${upload.id}/validate`, { method: 'POST', body: { target_connection_id: target, expected_sha256: upload.sha256 }, key: idempotency(`validate:${upload.id}:${target}`), signal })).data;
           const result = await complete(started, signal);
-          if (result.state === 'SUCCEEDED') { await getPreview(); setNotice('Workbook validated. Review every table before confirming.'); }
+          if (result.state === 'SUCCEEDED') { await getPreview(); setNotice('Table Definition validated. Review every table before confirming.'); }
           else { await loadIssues(0); setError(`Validation ${result.state.toLowerCase()}. Review the issues below.`); }
-        })}>Validate workbook</button>
+        })}>Validate Table Definition</button>
         <button disabled={busy || upload.status !== 'VALIDATED'} onClick={() => void run(async () => getPreview())}>Refresh preview</button>
         <button disabled={busy} onClick={() => void run(async () => loadIssues(0))}>View validation issues</button>
       </div>

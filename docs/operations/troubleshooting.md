@@ -15,7 +15,7 @@ là23000/28000/28080; không dừng stack khác chỉ để chiếm cổng.
 
 - Connection fail: kiểm hostname trong network Compose, database/user và quyền;
   không dùng localhost để trỏ sang container khác.
-- Mapping text sang số/ngày: dùng `Type Conversion` trong workbook; xem
+- Mapping text sang số/ngày: dùng `Type Conversion` trong file Definition; xem
   [Excel](../excel-definitions.md).
 - Stale412 hoặc stale confirmation409: đọc lại revision, review thay đổi và
   xác nhận scope mới. Không retry mù bằng token cũ.

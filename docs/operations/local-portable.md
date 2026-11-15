@@ -21,8 +21,8 @@ thật đã mở6trang trên1440/390px,12checks PASS, không horizontal overflow
 Điều này không thay kiểm thử ETL trọn luồng; regression đang chạy riêng.
 
 Để thao tác: bắt đầu ở Connections với các connection mẫu được seed tự động;
-test nguồn/đích, tải workbook từ Table Management/DAG Builder và làm theo
-[luồng workbook](dag-deployment.md#luồng-thao-tác). Giữ xác nhận load policy và
+test nguồn/đích, tải file Definition từ Table Management/DAG Builder và làm theo
+[luồng file Definition](dag-deployment.md#luồng-thao-tác). Giữ xác nhận load policy và
 quyền FULL_REFRESH riêng. Các địa chỉ13000 trong tài liệu cũ là demo máy trước.
 
 ## Chuẩn bị artifact khi đổi máy hoặc sửa source
@@ -66,7 +66,7 @@ podman compose -f $demo.compose_config -p $demo.project up -d --no-build
 
 Dừng bằng cùng config/project với `down`, không thêm `--volumes`. Không dùng
 prune hoặc xóa key để xử lý lỗi. Password Airflow được giữ trong secret volume;
-không in vào log, workbook hoặc tài liệu.
+không in vào log, file Definition hoặc tài liệu.
 
 ## Luồng đã kiểm chứng và giới hạn hiện tại
 

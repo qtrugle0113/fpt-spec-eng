@@ -145,7 +145,7 @@ def compile_definition(spec):
         target_engine_=owned.enter_context(target_engine(UUID(target_ref['connection_revision_id'])))
         inspector=inspect(target_engine_)
         if not inspector.has_table(target_ref['table'],schema=target_ref['schema']):
-            raise APIError('TARGET_TABLE_MISSING','Create the target in Table Management before validating this ETL workbook.',409)
+            raise APIError('TARGET_TABLE_MISSING','Create the target in Table Management before validating this ETL Definition.',409)
         target_columns=inspector.get_columns(target_ref['table'],schema=target_ref['schema'])
         enabled=[mapping for mapping in spec.mappings if mapping['enabled']]
         target_names={mapping['target_column'] for mapping in enabled}
@@ -243,7 +243,7 @@ def compile_definition(spec):
 def preview(upload_id):
     with transaction() as session:
         upload=uploads.require(session,upload_id)
-        if upload.kind!='ETL' or upload.status!='VALIDATED':raise APIError('PREVIEW_UNAVAILABLE','Validate the ETL Definition workbook first.',409)
+        if upload.kind!='ETL' or upload.status!='VALIDATED':raise APIError('PREVIEW_UNAVAILABLE','Validate the ETL Definition first.',409)
         revisions=session.scalars(select(ETLDefinitionRevision).where(ETLDefinitionRevision.upload_id==upload_id).order_by(ETLDefinitionRevision.created_at,ETLDefinitionRevision.id)).all()
         if not revisions:raise APIError('PREVIEW_UNAVAILABLE','No validated ETL definitions are available.',409)
         parents={revision.definition_id:session.get(ETLDefinition,revision.definition_id).current_revision_id for revision in revisions}
@@ -252,9 +252,9 @@ def preview(upload_id):
         file=session.get(uploads.UploadedFile,upload.uploaded_file_id)
         path=uploads.storage()/file.safe_storage_key;expected=upload.workbook_sha256
     import hashlib
-    if hashlib.sha256(path.read_bytes()).hexdigest()!=expected:raise APIError('CHECKSUM_MISMATCH','Workbook checksum changed.',409)
+    if hashlib.sha256(path.read_bytes()).hexdigest()!=expected:raise APIError('CHECKSUM_MISMATCH','ETL Definition checksum changed.',409)
     parsed=validate(path)
-    if parsed.issues:raise APIError('WORKBOOK_INVALID','Workbook cannot be previewed.',409)
+    if parsed.issues:raise APIError('WORKBOOK_INVALID','ETL Definition cannot be previewed.',409)
     specs={spec.values['dag_id']:spec for spec in parsed.definitions};items=[];identities=[];dependencies=[]
     for revision in revisions:
         spec=specs[revision.config_json['dag_id']]
@@ -263,7 +263,7 @@ def preview(upload_id):
         if spec.batch_defaulted:spec.values['batch_size']=revision.config_json['batch_size']
         compiled=compile_definition(spec)
         if compiled.config.model_dump(mode='json',by_alias=True,exclude_none=True)!=revision.config_json or digest(compiled.dependency)!=revision.dependency_fingerprint:
-            raise APIError('DEPENDENCY_CHANGED','ETL dependencies changed. Validate a new workbook.',409)
+            raise APIError('DEPENDENCY_CHANGED','ETL dependencies changed. Validate a new ETL Definition.',409)
         dependencies.append(compiled.dependency)
         current=parents[revision.definition_id]
         if current and current!=revision.id:

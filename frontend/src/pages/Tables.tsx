@@ -54,14 +54,14 @@ export function Tables() {
         <label>From date (UTC)<input type="date" value={from} onChange={event => { setFrom(event.target.value); setUploadOffset(0); setJobOffset(0); }} /></label>
         <label>To date (UTC)<input type="date" value={to} onChange={event => { setTo(event.target.value); setUploadOffset(0); setJobOffset(0); }} /></label>
       </div>
-      <div className="workspace-grid history-grid"><div><h3>Workbook uploads</h3>
+      <div className="workspace-grid history-grid"><div><h3>Table Definition history</h3>
       <label>Upload status<select value={status} onChange={event => { setStatus(event.target.value); setUploadOffset(0); }}><option value="">All statuses</option>{['UPLOADED','VALIDATING','VALIDATED','INVALID'].map(value => <option key={value}>{value}</option>)}</select></label>
       {uploads.error && <p role="alert">{message(uploads.error)}</p>}
       {uploads.isPending && <p role="status">Loading uploads…</p>}
       {uploads.data && <>
-        <div className="table-scroll" tabIndex={0} aria-label="Workbook upload history"><table><thead><tr><th>Uploaded</th><th>Upload</th><th>Status</th><th>Actions</th></tr></thead><tbody>
-          {uploads.data.items.map(item => <tr key={item.id}><td>{item.created_at ? new Date(item.created_at).toLocaleString() : '—'}</td><td><code>{item.id}</code></td><td><StatusBadge value={item.status} /></td><td><button onClick={() => setUpload(item)}>Open workbook</button></td></tr>)}
-        </tbody></table></div>{uploads.data.items.length === 0 && <p>No workbook uploads match these filters.</p>}
+        <div className="table-scroll" tabIndex={0} aria-label="Table Definition upload history"><table><thead><tr><th>Uploaded</th><th>Upload</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+          {uploads.data.items.map(item => <tr key={item.id}><td>{item.created_at ? new Date(item.created_at).toLocaleString() : '—'}</td><td><code>{item.id}</code></td><td><StatusBadge value={item.status} /></td><td><button onClick={() => setUpload(item)}>Open Table Definition</button></td></tr>)}
+        </tbody></table></div>{uploads.data.items.length === 0 && <p>No Table Definition uploads match these filters.</p>}
         <p>Uploads: {uploads.data.total ?? 'Unknown'}</p><div className="connection-actions"><button disabled={uploadOffset === 0} onClick={() => setUploadOffset(Math.max(0, uploadOffset - 20))}>Previous uploads</button><button disabled={uploads.data.next_offset === null} onClick={() => setUploadOffset(uploads.data?.next_offset ?? 0)}>Next uploads</button><button onClick={() => void uploads.refetch()}>Refresh uploads</button></div>
       </>}
       </div><div><h3>Table creation jobs</h3>

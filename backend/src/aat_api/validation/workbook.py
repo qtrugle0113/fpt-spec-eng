@@ -45,7 +45,7 @@ def _elements(stream):
 
 def _column(value:str) -> tuple[int,int]:
     found=re.fullmatch(r'([A-Z]+)([1-9][0-9]*)',value)
-    if not found:raise WorkbookFailure('INVALID_CELL_REFERENCE','Workbook contains an invalid cell reference.')
+    if not found:raise WorkbookFailure('INVALID_CELL_REFERENCE','Definition file contains an invalid cell reference.')
     number=0
     for character in found[1]:number=number*26+ord(character)-64
     return int(found[2]),number
@@ -56,15 +56,15 @@ def preflight(path:Path,headers:dict[str,list[str]]) -> None:
     with zipfile.ZipFile(path) as archive:
         entries=archive.infolist()
         if len(entries)>2000 or sum(e.file_size for e in entries)>100*1024*1024:
-            raise WorkbookFailure('WORKBOOK_LIMIT','Workbook expanded size or entry limit exceeded.')
+            raise WorkbookFailure('WORKBOOK_LIMIT','Definition file expanded size or entry limit exceeded.')
         seen=set()
         for entry in entries:
             name=entry.filename;folded=name.casefold()
             if folded in seen or '\\' in name or PurePosixPath(name).is_absolute() or '..' in PurePosixPath(name).parts or ':' in name:
-                raise WorkbookFailure('UNSAFE_ARCHIVE_PATH','Workbook archive paths are invalid or ambiguous.')
+                raise WorkbookFailure('UNSAFE_ARCHIVE_PATH','Definition file archive paths are invalid or ambiguous.')
             seen.add(folded)
             if entry.flag_bits&1 or entry.file_size/max(entry.compress_size,1)>100:
-                raise WorkbookFailure('UNSAFE_ARCHIVE','Encrypted or excessively compressed workbook is not supported.')
+                raise WorkbookFailure('UNSAFE_ARCHIVE','Encrypted or excessively compressed Definition file is not supported.')
             if any(value in folded for value in ('vbaproject','/embeddings/','/externallinks/')) or Path(folded).suffix in ('.exe','.dll','.js','.vbs','.py','.ps1','.bat','.cmd','.sh'):
                 raise WorkbookFailure('EXECUTABLE_WORKBOOK','Macro, embedded payload or external link is not allowed.')
         names=set(archive.namelist())
@@ -81,7 +81,7 @@ def preflight(path:Path,headers:dict[str,list[str]]) -> None:
                     target=element.attrib.get('Target','')
                     relationships[element.attrib.get('Id')]=target.lstrip('/') if target.startswith('/') else posixpath.normpath('xl/'+target)
         if [s[0] for s in sheets]!=['Instructions',*headers]:
-            raise WorkbookFailure('INVALID_SHEETS','Workbook sheets and order must match the template.')
+            raise WorkbookFailure('INVALID_SHEETS','Definition file sheets and order must match the template.')
         limits={relationships.get(rid):(name,2 if name=='Instructions' else len(headers[name])) for name,rid in sheets}
         rows=0
         for entry in entries:
@@ -101,12 +101,12 @@ def preflight(path:Path,headers:dict[str,list[str]]) -> None:
                             raise WorkbookFailure('EXTERNAL_WORKBOOK','External relationships and macros are not allowed.')
                         if sheet and tag=='row':
                             number=int(element.attrib.get('r','0'))
-                            if number<=last_row:raise WorkbookFailure('DUPLICATE_ROW','Workbook rows are duplicated or out of order.')
+                            if number<=last_row:raise WorkbookFailure('DUPLICATE_ROW','Definition file rows are duplicated or out of order.')
                             last_row=number;columns=set();rows+=1
-                            if rows>100000:raise WorkbookFailure('WORKBOOK_ROW_LIMIT','Workbook metadata exceeds 100000 rows.')
+                            if rows>100000:raise WorkbookFailure('WORKBOOK_ROW_LIMIT','Definition file metadata exceeds 100000 rows.')
                         if sheet and tag=='c':
                             current=_column(element.attrib.get('r',''));has_value=False
-                            if current[0]!=last_row or current[1] in columns:raise WorkbookFailure('DUPLICATE_CELL','Workbook cell coordinates are invalid or duplicated.')
+                            if current[0]!=last_row or current[1] in columns:raise WorkbookFailure('DUPLICATE_CELL','Definition file cell coordinates are invalid or duplicated.')
                             columns.add(current[1])
                     else:
                         if tag=='f':
@@ -115,12 +115,12 @@ def preflight(path:Path,headers:dict[str,list[str]]) -> None:
                         if current and tag in ('t','v') and element.text not in (None,''):has_value=True
                         if sheet and tag=='c':
                             if has_value and current[1]>maximum:
-                                raise WorkbookFailure('EXTRA_COLUMN','Workbook contains data outside the declared columns.',sheet=sheet,row=current[0],column=current[1])
+                                raise WorkbookFailure('EXTRA_COLUMN','Definition file contains data outside the declared columns.',sheet=sheet,row=current[0],column=current[1])
                             current=None
 
 
 def read(path:Path,kind='TABLE') -> dict[str,list[tuple[int,tuple]]]:
-    if kind not in ('TABLE','ETL'):raise WorkbookFailure('UNSUPPORTED_WORKBOOK','Workbook kind is not supported by this validator.')
+    if kind not in ('TABLE','ETL'):raise WorkbookFailure('UNSUPPORTED_WORKBOOK','Definition file kind is not supported by this validator.')
     headers=TABLE_HEADERS if kind=='TABLE' else ETL_HEADERS
     label='Table Definition' if kind=='TABLE' else 'ETL Definition'
     try:
@@ -137,7 +137,7 @@ def read(path:Path,kind='TABLE') -> dict[str,list[tuple[int,tuple]]]:
                 records=[]
                 for number,cells in enumerate(sheet.iter_rows(max_col=len(expected)),start=1):
                     count+=1
-                    if count>100000:raise WorkbookFailure('WORKBOOK_ROW_LIMIT','Workbook metadata exceeds 100000 rows.')
+                    if count>100000:raise WorkbookFailure('WORKBOOK_ROW_LIMIT','Definition file metadata exceeds 100000 rows.')
                     values=tuple(cell.value for cell in cells)
                     if number==1:
                         if list(values)!=expected:raise WorkbookFailure('INVALID_HEADERS','Sheet headers must match the template exactly.',sheet=name,row=1,column=1)
@@ -152,4 +152,4 @@ def read(path:Path,kind='TABLE') -> dict[str,list[tuple[int,tuple]]]:
         finally:book.close()
     except WorkbookFailure:raise
     except (zipfile.BadZipFile,DefusedXmlException,ParseError,KeyError,ValueError,OSError,NotImplementedError):
-        raise WorkbookFailure('INVALID_XLSX','Workbook package could not be parsed safely.') from None
+        raise WorkbookFailure('INVALID_XLSX','Definition file package could not be parsed safely.') from None

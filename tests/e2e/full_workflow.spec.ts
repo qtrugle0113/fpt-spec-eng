@@ -40,12 +40,12 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
   await page.getByRole('link', { name: 'Download Table Definition template' }).click();
   await (await tableDownload).saveAs(`${folder}/table-template.xlsx`);
   workbook('table', `${folder}/table-template.xlsx`, `${folder}/table.xlsx`, { code, table });
-  await page.getByLabel('Table Definition workbook', { exact: true }).setInputFiles(`${folder}/table.xlsx`);
+  await page.getByLabel('Table Definition file (.xlsx)', { exact: true }).setInputFiles(`${folder}/table.xlsx`);
   const tableUploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/definition-uploads') && r.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Upload workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Upload Table Definition', exact: true }).click();
   const tableUpload = await (await tableUploaded).json();
   await page.getByRole('combobox', { name: 'Target connection', exact: true }).selectOption(connection.id);
-  await page.getByRole('button', { name: 'Validate workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate Table Definition', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Review tables', exact: true })).toBeVisible({ timeout: 35000 });
   await page.getByRole('checkbox', { name: 'I reviewed the target tables and generated SQL.' }).check();
   const tableCreated = page.waitForResponse(r => r.url().endsWith('/api/v1/table-creation-jobs') && r.request().method() === 'POST');
@@ -94,11 +94,11 @@ test('An operator creates a connection and table, loads the uploaded CSV, and fo
     retry_count: phase ? 2 : 0,
     retry_delay: 1,
   });
-  await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`${folder}/etl.xlsx`);
+  await page.getByLabel('ETL Definition file (.xlsx)', { exact: true }).setInputFiles(`${folder}/etl.xlsx`);
   const etlUploaded = page.waitForResponse(r => r.url().endsWith('/api/v1/definition-uploads') && r.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Upload ETL Definition', exact: true }).click();
   const etlUpload = await (await etlUploaded).json();
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
   const support = page.getByRole('checkbox', { name: 'I reviewed and authorize creating the displayed support objects in the target database.' });

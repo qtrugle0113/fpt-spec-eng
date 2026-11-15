@@ -7,13 +7,13 @@ revision cũ và không optimistic update.
 
 | Trường | Giới hạn và phạm vi |
 | --- | --- |
-| Default Batch Size | 1–10.000 dòng; mặc định ban đầu1.000. Chỉ dùng khi validation workbook mới có Batch Size trống; giá trị workbook tường minh được ưu tiên. |
+| Default Batch Size | 1–10.000 dòng; mặc định ban đầu1.000. Chỉ dùng khi validation file Definition mới có Batch Size trống; giá trị file Definition tường minh được ưu tiên. |
 | Dashboard Refresh Interval | 5–3.600 giây; mặc định30. Có hiệu lực ở chu kỳ refresh tiếp theo, khi bật Auto Refresh. |
-| Default Timezone | IANA timezone, mặc định UTC. Dashboard dùng khi không nhập timezone filter. Workbook vẫn yêu cầu Timezone tường minh. |
+| Default Timezone | IANA timezone, mặc định UTC. Dashboard dùng khi không nhập timezone filter. file Definition vẫn yêu cầu Timezone tường minh. |
 | Staging Retention | 1–365 ngày; mặc định7. Không xóa artifact được bảo vệ cho recovery. |
 
 Revision/config đã validate hoặc deploy giữ nguyên giá trị, không bị Settings
-thay đổi hồi tố. Preview đọc lại workbook để kiểm tra dependency nhưng giữ batch
+thay đổi hồi tố. Preview đọc lại file Definition để kiểm tra dependency nhưng giữ batch
 size đã resolve trong revision bất biến. Muốn thay cấu hình workflow, upload và
 validate revision mới theo quy trình DAG Builder.
 
