@@ -22,7 +22,7 @@ MESSAGES = {
     'validation.d5cabd381963bf29d354': 'Definition upload exceeds 10 MiB.',
     'validation.97e413a2663b4459cdd9': 'Description must be text within 1000 characters.',
     'validation.c84683cb928f7ca98a97': 'Duplicate physical table reference.',
-    'validation.1d0ba0ce8e46c54429a6': 'Encrypted or excessively compressed workbook is not supported.',
+    'validation.1d0ba0ce8e46c54429a6': 'Encrypted or excessively compressed Definition file is not supported.',
     'validation.12ab2e1f04b105449d8a': 'Executable or OLE payload is not allowed.',
     'validation.9d0c2701563af552076e': 'External relationships and macros are not allowed.',
     'validation.18b9d05ad60a2fc0911b': 'Formula cells are not allowed.',
@@ -38,18 +38,24 @@ MESSAGES = {
     'validation.f1b03d2d35e0d2a5e6b3': 'This logical type requires a lossless JSON string default.',
     'validation.5cbe5b62b0e567d2c1fd': 'Timestamp default must not have a timezone.',
     'validation.1ae71ec6cf96bac0486b': 'Timestamp default must use ISO8601.',
-    'validation.dc0172aae729eb9f06da': 'Workbook archive paths are invalid or ambiguous.',
-    'validation.06d4c213f3858066e803': 'Workbook cell coordinates are invalid or duplicated.',
-    'validation.792dcc8f8466cc102281': 'Workbook contains an invalid cell reference.',
-    'validation.3d1ebd794dcbfcb86640': 'Workbook contains data outside the declared columns.',
-    'validation.dee7a378e480d7a45a58': 'Workbook expanded size or entry limit exceeded.',
-    'validation.5d424b6492d3eb6a8ec1': 'Workbook kind is not supported by this validator.',
-    'validation.be5ef33bbe95107e5a80': 'Workbook metadata exceeds 100000 rows.',
-    'validation.8043cc9db8d1690a2e50': 'Workbook package could not be parsed safely.',
-    'validation.79f6b058271ce0bfbeac': 'Workbook rows are duplicated or out of order.',
-    'validation.8e3faa49f6d252342d61': 'Workbook sheets and order must match the template.',
+    'validation.dc0172aae729eb9f06da': 'Definition file archive paths are invalid or ambiguous.',
+    'validation.06d4c213f3858066e803': 'Definition file cell coordinates are invalid or duplicated.',
+    'validation.792dcc8f8466cc102281': 'Definition file contains an invalid cell reference.',
+    'validation.3d1ebd794dcbfcb86640': 'Definition file contains data outside the declared columns.',
+    'validation.dee7a378e480d7a45a58': 'Definition file expanded size or entry limit exceeded.',
+    'validation.5d424b6492d3eb6a8ec1': 'Definition file kind is not supported by this validator.',
+    'validation.be5ef33bbe95107e5a80': 'Definition file metadata exceeds 100000 rows.',
+    'validation.8043cc9db8d1690a2e50': 'Definition file package could not be parsed safely.',
+    'validation.79f6b058271ce0bfbeac': 'Definition file rows are duplicated or out of order.',
+    'validation.8e3faa49f6d252342d61': 'Definition file sheets and order must match the template.',
 }
+
+CURRENT_MESSAGE_KEYS = {
+    'validation.' + hashlib.sha256(value.encode()).hexdigest()[:20]: key
+    for key, value in MESSAGES.items()
+}
+
 
 def message_key(value):
     key = 'validation.' + hashlib.sha256(value.encode()).hexdigest()[:20]
-    return key if key in MESSAGES else 'workbook.invalid'
+    return key if key in MESSAGES else CURRENT_MESSAGE_KEYS.get(key, 'workbook.invalid')

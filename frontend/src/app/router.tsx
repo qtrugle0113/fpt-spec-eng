@@ -10,7 +10,7 @@ import { Settings } from "../pages/Settings";
 export const sections = [
   { path: "/", label: "Dashboard", detail: "An overview of your workflows and executions." },
   { path: "/connections", label: "Connections", detail: "Manage the databases your workflows use." },
-  { path: "/tables", label: "Table Management", detail: "Define and create tables from Excel workbooks." },
+  { path: "/tables", label: "Table Management", detail: "Define and create tables from Excel Definition files." },
   { path: "/dag-builder", label: "DAG Builder", detail: "Prepare source files and define your data workflows." },
   { path: "/monitoring", label: "DAG Monitoring", detail: "Follow executions, task attempts, and logs." },
   { path: "/settings", label: "Settings", detail: "Manage defaults for your workspace." },

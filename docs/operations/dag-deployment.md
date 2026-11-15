@@ -1,4 +1,4 @@
-# Tạo, triển khai và chạy DAG từ workbook
+# Tạo, triển khai và chạy DAG từ ETL Definition
 
 ## Mở bản local
 
@@ -23,12 +23,12 @@ Không thêm `--volumes`; dữ liệu, uploads, keys và recovery evidence phả
 ## Luồng thao tác
 
 1. Trong Connections, test connection nguồn và đích. Bản local có `pg_etl` và
-   `mysql_etl`; không đưa mật khẩu vào workbook.
+   `mysql_etl`; không đưa mật khẩu vào file Definition.
 2. Chọn **Download ETL Definition template**. Điền Excel theo schema1.0;
    DAG ID duy nhất, nguồn/đích thực, mapping và load policy được kiểm soát.
-3. **Upload ETL workbook** → **Validate ETL workbook**. Nếu lỗi, đọc mã lỗi và
+3. **Upload ETL Definition** → **Validate ETL Definition**. Nếu lỗi, đọc mã lỗi và
    sheet/dòng/cột. `TARGET_BUSY` nghĩa là target có writer; đợi rồi validate lại.
-   `ETL_REVISION_EXISTS` yêu cầu mở upload gốc trong **ETL workbook history**.
+   `ETL_REVISION_EXISTS` yêu cầu mở upload gốc trong **ETL Definition history**.
 4. Kiểm nguồn, đích, mapping, khóa, schedule/timezone/catchup và load policy.
    Chọn **Review schedules and load policies** rồi xác nhận từng phạm vi.
 5. Khi cần support objects, đọc SQL và xác nhận riêng trước **Confirm and deploy
@@ -45,7 +45,7 @@ run giữ queued cho tới khi operator xác nhận unpause riêng. Không cần
 mới; giữ reservation/identity cũ. Cron FULL_REFRESH vẫn cần SCHEDULED authority
 để bật lịch; ONCE không thay quyền đó.
 
-Các workbook test nằm trong `.tools/dag-e2e-fixtures/`, cùng `index.json` ghi DAG ID.
+Các file Definition test nằm trong `.tools/dag-e2e-fixtures/`, cùng `index.json` ghi DAG ID.
 Mở lại upload đã validate từ history thay vì upload lại cùng cấu hình. Sample pack
 chuẩn của repository vẫn cần nghiệm thu riêng; tải template thành công không chứng
 minh toàn bộ sample workflow đã chạy.
@@ -74,7 +74,7 @@ làm hết lỗi.
 
 [Checkpoint sản phẩm](../testing/product-resume-20261111.md) và
 [lượt tiếp nhận hiện tại](../testing/product-resume-20261112.md) ghi selector và kết
-quả thực tế. Playwright kiểm desktop1440/mobile390, invalid workbook, validation
+quả thực tế. Playwright kiểm desktop1440/mobile390, invalid file Definition, validation
 retry, cấp/list/detail/revoke quyền qua trình duyệt mới, deploy/activation/trigger.
 Host verifier đối chiếu public Airflow success, binding/metrics và giá trị target;
 không dùng trạng thái Operation thay kết quả ETL.

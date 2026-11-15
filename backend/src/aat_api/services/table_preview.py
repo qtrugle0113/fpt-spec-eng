@@ -40,15 +40,15 @@ def columns_public(definition):
 def snapshot(session, upload_id):
     upload=require(session,upload_id)
     if upload.status!='VALIDATED' or upload.kind!='TABLE':
-        raise APIError('PREVIEW_UNAVAILABLE','Validate the Table Definition workbook first.',409)
+        raise APIError('PREVIEW_UNAVAILABLE','Validate the Table Definition first.',409)
     definitions=session.scalars(select(TableDefinition).where(TableDefinition.upload_id==upload_id).order_by(TableDefinition.created_at,TableDefinition.id)).all()
     if not definitions: raise APIError('PREVIEW_UNAVAILABLE','No validated table definitions are available.',409)
     revision=session.get(ConnectionRevision,definitions[0].target_connection_revision_id)
     connection=session.get(Connection,revision.connection_id)
     if connection.deleted_at or connection.current_revision_id!=revision.id or revision.test_status!='SUCCESS':
-        raise APIError('TARGET_CHANGED','Target connection changed. Validate a new workbook.',409)
+        raise APIError('TARGET_CHANGED','Target connection changed. Validate a new Table Definition.',409)
     if any(definition.target_connection_revision_id!=revision.id for definition in definitions):
-        raise APIError('INVALID_TARGET_SET','Workbook targets must refer to one connection revision.',409)
+        raise APIError('INVALID_TARGET_SET','Table Definition targets must refer to one connection revision.',409)
     scope=dict(upload_id=str(upload_id),sha256=upload.workbook_sha256,target_revision_id=str(revision.id),
                server_fingerprint=revision.physical_server_fingerprint,
                definitions=[dict(id=str(d.id),hash=d.definition_hash,physical_target_id=d.physical_table_identity) for d in definitions])

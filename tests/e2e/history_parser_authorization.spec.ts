@@ -25,10 +25,10 @@ test('A fresh browser reconstructs workbook history and typed table details', as
     await expect(details).toContainText('registered_at');
     await expect(details).toContainText(/timestamp/i);
     await fresh.goto(new URL('/dag-builder', fresh.url()).href);
-    const history = fresh.getByRole('region', { name: 'ETL workbook history', exact: true });
+    const history = fresh.getByRole('region', { name: 'ETL Definition history', exact: true });
     await history.getByRole('row').filter({ hasText: reference.etl_upload })
-      .getByRole('button', { name: 'Open ETL workbook', exact: true }).click();
-    await fresh.getByRole('button', { name: 'Review validated workbook', exact: true }).click();
+      .getByRole('button', { name: 'Open ETL Definition', exact: true }).click();
+    await fresh.getByRole('button', { name: 'Review validated ETL Definition', exact: true }).click();
     await expect(fresh.getByRole('button', { name: 'Review schedules and load policies', exact: true })).toBeVisible();
     expect(await fresh.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     expect(await fresh.locator('body').innerText()).not.toContain('Traceback');

@@ -49,7 +49,7 @@ def _existing(session,kind,key,fingerprint):
 def _scope(session,upload_id):
     upload=session.get(DefinitionUpload,upload_id)
     if upload is None or upload.kind!='ETL' or upload.status!='VALIDATED':
-        raise APIError('PREVIEW_UNAVAILABLE','Validate the workbook first.',409)
+        raise APIError('PREVIEW_UNAVAILABLE','Validate the ETL Definition first.',409)
     revisions=session.scalars(select(ETLDefinitionRevision).where(ETLDefinitionRevision.upload_id==upload_id)
         .order_by(ETLDefinitionRevision.created_at,ETLDefinitionRevision.id)).all()
     parents={}

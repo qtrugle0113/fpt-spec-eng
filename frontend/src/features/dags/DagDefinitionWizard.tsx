@@ -1,9 +1,9 @@
-import { ActionLink } from '../../components/ActionLink';
 import { useEffect, useRef, useState } from 'react';
 import { newIdempotencyKey, pollOperation, requestJSON } from '../../lib/api';
 import { ColumnList } from '../tables/TableWizard';
 import { failure, isETLItem } from './types';
 import type { DagReview, ETLItem, Schema } from './types';
+import { ActionLink } from '../../components/ActionLink';
 
 function MappingReview({ item }: { item: ETLItem }) {
   const config = item.config;
@@ -55,9 +55,9 @@ export function DagDefinitionWizard({ upload, onChange, onReview, locked = false
   }
   const items = preview?.items.filter(isETLItem) ?? [];
   return <section className="connection-panel" aria-labelledby="dag-definition-title">
-    <fieldset disabled={locked} className="dag-workspace"><legend>ETL workbook</legend>
+    <fieldset disabled={locked} className="dag-workspace"><legend>ETL Definition</legend>
     <h2 id="dag-definition-title">Define your workflows</h2>
-    <p>Use an Excel Definition workbook to set sources, mappings, schedules and load policies. Edit the workbook and upload a new revision to change these values.</p>
+    <p>Use an ETL Definition to set sources, mappings, schedules and load policies. Edit the ETL Definition and upload a new revision to change these values.</p>
     <ActionLink href="/api/v1/templates/etl-definition" download>Download ETL Definition template</ActionLink>
     <nav className="connection-actions dag-steps" aria-label="Workflow definition steps">{['Upload and validate', 'Sources and mappings', 'Schedules and load'].map((label, index) => <button key={label} type="button" aria-current={step === index + 1 ? 'step' : undefined} disabled={busy || index > 0 && !preview} onClick={() => setStep(index + 1)}>{index + 1}. {label}</button>)}</nav>
     {error && <p role="alert" className="error-message">{error}</p>}
@@ -67,9 +67,9 @@ export function DagDefinitionWizard({ upload, onChange, onReview, locked = false
         if (!file) return;
         const form = new FormData(); form.set('kind', 'ETL'); form.set('file', file);
         const result = await requestJSON<Schema['DefinitionUpload']>('/definition-uploads', { method: 'POST', form, signal });
-        onChange(result.data); setNotice('Workbook uploaded. Validate it before reviewing the workflows.');
-      }); }}><label>ETL Definition workbook<input type="file" accept=".xlsx" required disabled={busy} onChange={event => setFile(event.target.files?.[0] ?? null)} /></label><button disabled={busy || !file}>Upload ETL workbook</button></form>
-      {upload && <><p>Workbook status: <strong>{upload.status}</strong></p><details><summary>Workbook reference</summary><code>{upload.id}</code><p>SHA-256: <code>{upload.sha256}</code></p></details>
+        onChange(result.data); setNotice('ETL Definition uploaded. Validate it before reviewing the workflows.');
+      }); }}><label>ETL Definition file (.xlsx)<input type="file" accept=".xlsx" required disabled={busy} onChange={event => setFile(event.target.files?.[0] ?? null)} /></label><button disabled={busy || !file}>Upload ETL Definition</button></form>
+      {upload && <><p>ETL Definition status: <strong>{upload.status}</strong></p><details><summary>ETL Definition reference</summary><code>{upload.id}</code><p>SHA-256: <code>{upload.sha256}</code></p></details>
         <div className="connection-actions"><button disabled={busy || !['UPLOADED', 'INVALID'].includes(upload.status)} onClick={() => void run(async signal => {
           setPreview(null); setSelected([]); onReview(null);
           const scope = `validate:${upload.id}:${upload.sha256}`;
@@ -78,15 +78,15 @@ export function DagDefinitionWizard({ upload, onChange, onReview, locked = false
           if (result.state === 'SUCCEEDED' || result.state === 'FAILED') keys.current.delete(scope);
           onChange((await requestJSON<Schema['DefinitionUpload']>(`/definition-uploads/${upload.id}`, { signal })).data);
           if (result.state === 'SUCCEEDED') { await loadPreview(signal); setIssues(null); }
-          else { await loadIssues(0, signal); setError(`Validation ${result.state.toLowerCase()}. Review the workbook issues before continuing.`); }
-        })}>Validate ETL workbook</button>
-          <button disabled={busy} onClick={() => void run(async signal => onChange((await requestJSON<Schema['DefinitionUpload']>(`/definition-uploads/${upload.id}`, { signal })).data))}>Refresh workbook status</button>
-          <button disabled={busy || upload.status !== 'VALIDATED'} onClick={() => void run(loadPreview)}>Review validated workbook</button>
+          else { await loadIssues(0, signal); setError(`Validation ${result.state.toLowerCase()}. Review the ETL Definition issues before continuing.`); }
+        })}>Validate ETL Definition</button>
+          <button disabled={busy} onClick={() => void run(async signal => onChange((await requestJSON<Schema['DefinitionUpload']>(`/definition-uploads/${upload.id}`, { signal })).data))}>Refresh ETL Definition status</button>
+          <button disabled={busy || upload.status !== 'VALIDATED'} onClick={() => void run(loadPreview)}>Review validated ETL Definition</button>
           <button disabled={busy} onClick={() => void run(signal => loadIssues(0, signal))}>View ETL validation issues</button></div>
       </>}
     </>}
     {operation && <p role="status">Validation operation: {operation.state}</p>}
-    {issues && <section aria-label="ETL validation issues"><h3>Workbook issues ({issues.total ?? 'unknown total'})</h3>
+    {issues && <section aria-label="ETL validation issues"><h3>ETL Definition issues ({issues.total ?? 'unknown total'})</h3>
       {issues.items.length === 0 && <p>No validation issues.</p>}<ul>{issues.items.map((issue, index) => <li key={index}><strong>{issue.code}</strong>: {issue.message}{issue.sheet && ` — ${issue.sheet}, row ${issue.row ?? '—'}, column ${issue.column ?? '—'}`}</li>)}</ul>
       <div className="connection-actions"><button disabled={busy || issueOffset === 0} onClick={() => void run(signal => loadIssues(Math.max(0, issueOffset - 200), signal))}>Previous ETL issues</button><button disabled={busy || issues.next_offset === null} onClick={() => void run(signal => loadIssues(issues.next_offset ?? 0, signal))}>Next ETL issues</button></div>
     </section>}
@@ -99,7 +99,7 @@ export function DagDefinitionWizard({ upload, onChange, onReview, locked = false
       </article>)}
       <div className="connection-actions"><button disabled={busy} onClick={() => void run(loadPreview)}>Refresh ETL preview</button>{step === 2 && <button disabled={selected.length === 0} onClick={() => setStep(3)}>Review schedules and load policies</button>}</div>
     </>}
-    {busy && <p role="status">Processing workbook…</p>}
+    {busy && <p role="status">Processing ETL Definition…</p>}
     </fieldset>
   </section>;
 }

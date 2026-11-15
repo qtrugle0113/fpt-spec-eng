@@ -25,7 +25,7 @@ def create(value,key):
     current=preview(value.upload_id)
     selected={item['config']['dag_id']:item for item in current['items'] if item['config']['dag_id'] in value.dag_ids}
     if set(selected)!=set(value.dag_ids):
-        raise APIError('DAG_SELECTION_INVALID','Every selected DAG must belong to this validated workbook.',409)
+        raise APIError('DAG_SELECTION_INVALID','Every selected DAG must belong to this validated ETL Definition.',409)
     if not value.support_objects_acknowledged and any(item['support_ddl'] for item in selected.values()):
         raise APIError('SUPPORT_OBJECTS_ACKNOWLEDGMENT_REQUIRED','Review and acknowledge the support object DDL before deployment.',409)
     with transaction() as session:

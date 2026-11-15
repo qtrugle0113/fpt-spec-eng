@@ -34,10 +34,10 @@ export function Settings() {
       } finally { setBusy(false); }
     }}><fieldset disabled={busy || conflict || Boolean(query.error)}><legend>Default configuration</legend>
       <div className="settings-field"><label>Default Batch Size (rows)<input required type="number" min={1} max={10000} step={1} value={value.default_batch_size ?? ''} onChange={event => setDraft({ ...draft, default_batch_size: event.target.valueAsNumber })} /></label>
-      <p>1–10,000 rows. Applies when a new workbook leaves Batch Size blank; byte limits still apply.</p></div>
+      <p>1–10,000 rows. Applies when a new ETL Definition leaves Batch Size blank; byte limits still apply.</p></div>
       <div className="settings-field"><label>Dashboard Refresh Interval (seconds)<input required type="number" min={5} max={3600} step={1} value={value.dashboard_refresh_interval ?? ''} onChange={event => setDraft({ ...draft, dashboard_refresh_interval: event.target.valueAsNumber })} /></label></div>
       <div className="settings-field"><label>Default Timezone<input required value={value.default_timezone ?? ''} onChange={event => setDraft({ ...draft, default_timezone: event.target.value })} placeholder="Asia/Seoul" /></label>
-      <p>Use an IANA timezone. Workbook Timezone remains explicit; existing workflows do not change.</p></div>
+      <p>Use an IANA timezone. ETL Definition Timezone remains explicit; existing workflows do not change.</p></div>
       <div className="settings-field"><label>Staging Retention (days)<input required type="number" min={1} max={365} step={1} value={value.staging_retention_days ?? ''} onChange={event => setDraft({ ...draft, staging_retention_days: event.target.valueAsNumber })} /></label>
       <p>1–365 days. Protected recovery artifacts are retained regardless of this setting.</p></div>
       <button className="primary-button full-width" type="submit" disabled={Object.keys(draft).length === 0}>{busy ? 'Saving…' : 'Save settings'}</button>

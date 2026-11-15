@@ -5,13 +5,13 @@ test.use({ actionTimeout: 15000 });
 
 async function reviewWorkbook(page: Page, fixture: string) {
   await page.goto('/dag-builder');
-  await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
-  await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByLabel('ETL Definition file (.xlsx)', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
+  await page.getByRole('button', { name: 'Upload ETL Definition', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   await expect.poll(async () => {
     if (await page.getByRole('button', { name: 'Review schedules and load policies' }).count()) return true;
     if (await page.getByText('TARGET_BUSY', { exact: true }).count()) {
-      const retry = page.getByRole('button', { name: 'Validate ETL workbook', exact: true });
+      const retry = page.getByRole('button', { name: 'Validate ETL Definition', exact: true });
       if (await retry.isEnabled()) await retry.click();
     }
     return false;
@@ -42,10 +42,10 @@ test('ETL wizard validates, deploys and submits a real Airflow run', async ({ pa
   expect((await download).suggestedFilename()).toBe('ETL Definition.xlsx');
   const fixture = 'append-' + testInfo.project.name;
   const fixtures = JSON.parse(await readFile('/tests/dag-fixtures/index.json', 'utf8'));
-  await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
-  await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Validate ETL workbook', exact: true })).toBeEnabled();
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByLabel('ETL Definition file (.xlsx)', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
+  await page.getByRole('button', { name: 'Upload ETL Definition', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Validate ETL Definition', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Review schedules and load policies' })).toBeVisible({ timeout: 45000 });
   await page.getByRole('button', { name: 'Review schedules and load policies' }).click();
   const support = page.getByRole('checkbox', { name: 'I reviewed and authorize creating the displayed support objects in the target database.' });
@@ -74,15 +74,15 @@ test('Replacement authority persists across a fresh browser and revokes explicit
   const fixture = 'refresh-' + testInfo.project.name;
   const fixtures = JSON.parse(await readFile('/tests/dag-fixtures/index.json', 'utf8'));
   await page.goto('/dag-builder');
-  await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
+  await page.getByLabel('ETL Definition file (.xlsx)', { exact: true }).setInputFiles(`/tests/dag-fixtures/${fixture}.xlsx`);
   const uploaded = page.waitForResponse(response => response.url().endsWith('/definition-uploads') && response.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Upload ETL Definition', exact: true }).click();
   const upload = await (await uploaded).json();
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   await expect.poll(async () => {
     if (await page.getByRole('button', { name: 'Review schedules and load policies' }).count()) return 'READY';
     if (await page.getByText('TARGET_BUSY', { exact: true }).count()) {
-      const retry = page.getByRole('button', { name: 'Validate ETL workbook', exact: true });
+      const retry = page.getByRole('button', { name: 'Validate ETL Definition', exact: true });
       if (await retry.isEnabled()) await retry.click();
     }
     return 'WAITING';
@@ -105,7 +105,7 @@ test('Replacement authority persists across a fresh browser and revokes explicit
   try {
     const fresh = await context.newPage();
     await fresh.goto(new URL('/dag-builder', page.url()).href);
-    const history = fresh.getByRole('region', { name: 'ETL workbook history' });
+    const history = fresh.getByRole('region', { name: 'ETL Definition history' });
     await expect(history.getByRole('table')).toBeVisible();
     const row = history.getByRole('row').filter({ hasText: upload.id });
     // The retained demo has multiple history pages. A fresh browser must find
@@ -118,8 +118,8 @@ test('Replacement authority persists across a fresh browser and revokes explicit
       await next.click();
       await expect(first).not.toHaveText(previous);
     }
-    await row.getByRole('button', { name: 'Open ETL workbook' }).click();
-    await fresh.getByRole('button', { name: 'Review validated workbook', exact: true }).click();
+    await row.getByRole('button', { name: 'Open ETL Definition' }).click();
+    await fresh.getByRole('button', { name: 'Review validated ETL Definition', exact: true }).click();
     await fresh.getByRole('button', { name: 'Review schedules and load policies' }).click();
     const saved = fresh.getByRole('region', { name: 'Replacement authorization for ' + fixtures[fixture] });
     await expect(saved.getByRole('cell', { name: 'GRANTED', exact: true })).toBeVisible();
@@ -133,16 +133,16 @@ test('Replacement authority persists across a fresh browser and revokes explicit
 
 test('Invalid workbook shows actionable errors without deployment', async ({ page }) => {
   await page.goto('/dag-builder');
-  await page.getByLabel('ETL Definition workbook', { exact: true }).setInputFiles('/tests/dag-fixtures/invalid.xlsx');
-  await page.getByRole('button', { name: 'Upload ETL workbook', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Validate ETL workbook', exact: true })).toBeEnabled();
+  await page.getByLabel('ETL Definition file (.xlsx)', { exact: true }).setInputFiles('/tests/dag-fixtures/invalid.xlsx');
+  await page.getByRole('button', { name: 'Upload ETL Definition', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Validate ETL Definition', exact: true })).toBeEnabled();
   const first = page.waitForResponse(response => response.url().endsWith('/validate') && response.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   const initial = await (await first).json();
   await expect(page.getByText(/Validation failed/)).toBeVisible({ timeout: 45000 });
   await expect(page.getByRole('button', { name: 'Confirm and deploy workflows', exact: true })).toHaveCount(0);
   const second = page.waitForResponse(response => response.url().endsWith('/validate') && response.request().method() === 'POST');
-  await page.getByRole('button', { name: 'Validate ETL workbook', exact: true }).click();
+  await page.getByRole('button', { name: 'Validate ETL Definition', exact: true }).click();
   expect((await (await second).json()).id).not.toBe(initial.id);
   await expect(page.getByText(/Validation failed/)).toBeVisible({ timeout: 45000 });
 });

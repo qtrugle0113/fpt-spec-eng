@@ -16,17 +16,17 @@ from aat_api.validation.etl_definitions import validate
 
 def request_validation(identity,value,key):
     if value.target_connection_id is not None or value.parser_revision is not None:
-        raise APIError('INVALID_ETL_VALIDATION','ETL connections and file parser revisions are resolved from workbook references.',422)
+        raise APIError('INVALID_ETL_VALIDATION','ETL connections and file parser revisions are resolved from ETL Definition references.',422)
     with transaction() as session:
         upload=uploads.require(session,identity,True)
         if value.expected_sha256 and value.expected_sha256!=upload.workbook_sha256:
-            raise APIError('CHECKSUM_MISMATCH','Workbook checksum changed.',409)
+            raise APIError('CHECKSUM_MISMATCH','ETL Definition checksum changed.',409)
         payload=dict(upload_id=str(identity),sha256=upload.workbook_sha256,phase='VALIDATION')
         operation,created=uploads.enqueue(session,'ETL_VALIDATE',key,payload)
         if created:
-            if upload.status not in ('UPLOADED','INVALID'):raise APIError('VALIDATION_CONFLICT','Workbook validation is already running or complete.',409)
+            if upload.status not in ('UPLOADED','INVALID'):raise APIError('VALIDATION_CONFLICT','ETL Definition validation is already running or complete.',409)
             if session.scalar(select(ETLDefinitionRevision.id).where(ETLDefinitionRevision.upload_id==identity).limit(1)):
-                raise APIError('REUPLOAD_REQUIRED','Upload a new workbook to preserve revision history.',409)
+                raise APIError('REUPLOAD_REQUIRED','Upload a new ETL Definition to preserve revision history.',409)
             session.execute(delete(DefinitionIssue).where(DefinitionIssue.upload_id==identity))
             upload.status='VALIDATING'
         return operation.id
@@ -82,7 +82,7 @@ def execute(operation,owner):
     issues=[];compiled=[]
     try:
         with path.open('rb') as source:actual=hashlib.file_digest(source,'sha256').hexdigest()
-        if actual!=expected:raise APIError('CHECKSUM_MISMATCH','Stored workbook checksum changed.',409)
+        if actual!=expected:raise APIError('CHECKSUM_MISMATCH','Stored ETL Definition checksum changed.',409)
         parsed=validate(path,default_batch_size=default_batch_size);issues=list(parsed.issues)
         if not issues:
             for spec in parsed.definitions:

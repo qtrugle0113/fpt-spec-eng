@@ -1,14 +1,14 @@
-# Quản lý bảng từ workbook
+# Quản lý bảng từ Table Definition
 
 Mở **Table Management**, tải **Table Definition template** và giữ nguyên schema 1.0:
 ba sheet `Instructions`, `Tables`, `Columns`, đúng thứ tự và header. Version trong
 `Instructions!B1` phải là chuỗi `1.0`. Có thể dùng ngay
 `samples/definitions/Table Definition.sample.xlsx` với connection `pg_etl` đã seed.
 
-Upload workbook `.xlsx` tối đa 10 MiB, chọn connection đã Test Connection thành
-công rồi bấm **Validate workbook**. Upload được lưu bằng khóa ngẫu nhiên, không
-dùng tên file làm đường dẫn. Worker kiểm tra toàn workbook trước khi công bố các
-table definition. Workbook lỗi không tạo bảng đích; **View validation issues** cho
+Upload Table Definition `.xlsx` tối đa 10 MiB, chọn connection đã Test Connection thành
+công rồi bấm **Validate Table Definition**. Upload được lưu bằng khóa ngẫu nhiên, không
+dùng tên file làm đường dẫn. Worker kiểm tra toàn bộ Table Definition trước khi công bố các
+định nghĩa bảng. Table Definition lỗi không tạo bảng đích; **View validation issues** cho
 biết sheet, row, column và thông báo English an toàn, tối đa 200 issue mỗi trang.
 Sửa file rồi upload lại để giữ được lịch sử bản cũ.
 
@@ -33,7 +33,7 @@ Idempotency-Key trả lại operation cũ. Worker mất lease không được th
 DDL; dispatch đang dở được cách ly để đối chiếu. Việc xác minh live schema chỉ mô
 tả schema hiện tại, không chứng minh ai đã tạo bảng hoặc thay thế bằng chứng commit.
 
-**Workbook uploads** và **Table creation jobs** đọc từ DB, có phân trang và bộ lọc
+**Table Definition history** và **Table creation jobs** đọc từ DB, có phân trang và bộ lọc
 ngày UTC/status/state. Mở browser mới vẫn xem được lịch sử, không cần nhớ ID từ
 phiên trước. Trong **View table details**, **Stored definition** tách biệt với
 **Live database verification**: `VERIFIED`, `DRIFTED`, `UNAVAILABLE` hoặc
@@ -51,7 +51,7 @@ Các module Table là `tests.api.test_tables`, `tests.integration.test_table_ddl
 `tests.unit.test_table_workbook`. Evidence ở `docs/testing/resume-20261109/` gồm
 fixture results và log; các lượt lỗi được giữ riêng.
 
-Chuẩn bị workbook công khai cho browser bằng
+Chuẩn bị file Definition công khai cho browser bằng
 `python tests/tools/prepare_table_fixtures.py --image <reviewed-backend-tests-id>`.
 Fixture PostgreSQL giữ nguyên sample của repo; fixture MySQL chỉ đổi connection,
 schema và prefix tên bảng để tránh trùng bảng mẫu seed có cấu trúc khác.
