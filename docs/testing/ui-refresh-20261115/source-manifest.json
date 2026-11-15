@@ -1,0 +1,26 @@
+{
+  "files": {
+    "frontend/package.json": "08266c0bb4788748a12ace95afa3e0b1622f683dc88b87acfeed96da20d6ead4",
+    "frontend/scripts/verify-shell.cjs": "a0597e6584f3c5b0f43cdbf2d61f4ff32c521c4908b0e6ecd7dae64bc705839a",
+    "frontend/scripts/verify-ui.cjs": "e8f40c20b2ccd0665f97446c2510171b4811df4dee1c8258c617d5ea594e13de",
+    "frontend/src/app/App.tsx": "890916520c4efcc2de77665bfb48e5958665a781466d8ca17ada16d1939ded35",
+    "frontend/src/app/styles.css": "565a885ed610e36e06788de4584e85786ecceb42675d0f2084ce15017eb54e21",
+    "frontend/src/components/ActionLink.tsx": "09540643168d0c5a93878c59a400dac1e10e7377536f616dfb6321b54bd9fcc2",
+    "frontend/src/components/StatusBadge.tsx": "710b8e9001f9b5665aa853c6f47210be06eb47fbe3eb6c251a2de63e9cc12d52",
+    "frontend/src/features/dags/DagDefinitionWizard.tsx": "190b1e14f72944453d9f57208232b246210e48dbe4b1d2c3cae11b6c344398a9",
+    "frontend/src/features/dags/DeploymentPanel.tsx": "f762c0f1c7f81a8f68489c68891a97ae9a3b4048f879131d1c3224944ca01eb5",
+    "frontend/src/features/dashboard/Metrics.tsx": "7625af51889970c27514d3d5c7f1bec9c0cb08d1e875a42579d69e5389714433",
+    "frontend/src/features/tables/TableWizard.tsx": "107d13f2d87c2c0d24642fbcbd1cd3403e8aea26335d80b3b1ac4eb76309d09a",
+    "frontend/src/pages/Connections.tsx": "8a6be6f1a6390d2e2a064bc86406e88749aea1c7889ee4e56a6eced0174df3de",
+    "frontend/src/pages/DagBuilder.tsx": "f59db3852ebce5344af8e2d5b748437dbc79f71121c46c7e089870abccdebed7",
+    "frontend/src/pages/Dashboard.tsx": "aced708e475b2335000545a815e62886ba8c0fd4cd4bd738a5cee50a5c218922",
+    "frontend/src/pages/Monitoring.tsx": "138d39c57412101e02492daeaba22460217a88545dd9dfbe2f0292b1b7a3bf35",
+    "frontend/src/pages/Settings.tsx": "da1ea0affb05bd2786bfed5315fb805ebb052c2581b98acd783c7ac657d0c021",
+    "frontend/src/pages/Tables.tsx": "3488db0cfb30825915f944adad165bb739a1c7c4852400498f9552008b16956c"
+  },
+  "dist": {
+    "frontend/dist/assets/index-BblBNNB3.js": "94556ecd961203e4d12e004a81298b9733bebc7ac70a89ad09dbbb8aca0801cd",
+    "frontend/dist/assets/index-BINLLVzK.css": "4d813c49f8c769f805c2a36d838b94e1f883d6286e6776f32f6753a035d62aa6",
+    "frontend/dist/index.html": "fbe0a6e6acc9a155d6388bd4517f0031c84f163f4b37df11373ce8f5f01f2637"
+  }
+}

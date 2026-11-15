@@ -43,7 +43,7 @@ export function App() {
         </form>
         <nav id="workspace-navigation" aria-label="Main navigation">
           {visible.map(([path, label]) => (
-            <NavLink key={path} to={path} end={path === "/"} onClick={() => setMenuOpen(false)}>{label}</NavLink>
+            <NavLink key={path} to={path} end={path === "/"} onClick={() => setMenuOpen(false)}><svg className="nav-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={path === '/' ? 'M2 2h6v6H2zM12 2h6v6h-6zM2 12h6v6H2zM12 12h6v6h-6z' : path === '/connections' ? 'M4 5c0-4 12-4 12 0v10c0 4-12 4-12 0V5m0 0c0 4 12 4 12 0M4 10c0 4 12 4 12 0' : path === '/tables' ? 'M2 3h16v14H2zM2 8h16M7 8v9M12 8v9' : path === '/dag-builder' ? 'M8 2h4v4H8zM2 14h4v4H2zM14 14h4v4h-4zM10 6v4M4 14v-4h12v4' : path === '/monitoring' ? 'M2 16h16M4 12V8M10 12V3M16 12V6' : 'M3 5h14M3 15h14M7 2v6M13 12v6'} /></svg>{label}</NavLink>
           ))}
           {visible.length === 0 && <p className="nav-empty" role="status">No matching pages.</p>}
         </nav>

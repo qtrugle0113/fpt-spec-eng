@@ -24,14 +24,16 @@ const server = process.env.AAT_SHELL_BASE_URL ? null : spawn(process.execPath, [
     assert.ok(ready, 'Preview must become ready');
     browser = await chromium.launch({ headless: true });
     const results = [];
-    for (const width of [1440, 390]) {
-      const page = await browser.newPage({ viewport: { width, height: 900 } });
+    for (const width of [1440, 1366, 390]) {
+      const page = await browser.newPage({ viewport: { width, height: width === 1366 ? 768 : width === 390 ? 844 : 900 } });
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
       for (const [route, title] of [['/', 'Dashboard'], ['/connections', 'Connections'], ['/tables', 'Table Management'], ['/dag-builder', 'DAG Builder'], ['/monitoring', 'DAG Monitoring'], ['/settings', 'Settings']]) {
         await page.goto(`${baseURL}${route}`);
         await page.getByRole('heading', { name: title, exact: true }).waitFor();
-        assert.ok(await page.getByRole('status').isVisible());
+        // Thông tin backend tồn tại ổn định; loading status có thể nhiều hoặc không có.
+        assert.ok(await page.locator('.service-label').isVisible());
+        assert.match(await page.locator('.service-label').innerText(), /Checking backend|Backend available|Backend unavailable/);
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
         results.push({ width, route, heading: title, noHorizontalOverflow: true });
       }

@@ -1,3 +1,4 @@
+import { ActionLink } from '../../components/ActionLink';
 import { useEffect, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { listConnections, newIdempotencyKey, pollOperation, requestJSON } from '../../lib/api';
@@ -69,12 +70,13 @@ export function TableWizard({ upload, onChange }: { upload: S['DefinitionUpload'
     return result;
   }
   return <section className="connection-panel" aria-labelledby="table-wizard-title">
-    <h2 id="table-wizard-title">Define tables</h2>
-    <p>Download the template, describe your tables, then review the generated SQL before creating them.</p>
-    <a href="/api/v1/templates/table-definition" download>Download Table Definition template</a>
+    <div className="section-heading"><div><h2 id="table-wizard-title">Define tables</h2>
+    <p>Download the template, describe your tables, then review the generated SQL before creating them.</p></div>
+    <ActionLink href="/api/v1/templates/table-definition" download>Download Table Definition template</ActionLink>
+    </div>
     {error && <p role="alert" className="error-message">{error}</p>}
     {notice && <p role="status">{notice}</p>}
-    <form onSubmit={event => { event.preventDefault(); void run(async signal => {
+    <form className="upload-form" onSubmit={event => { event.preventDefault(); void run(async signal => {
       if (!file) return;
       const form = new FormData(); form.set('kind', 'TABLE'); form.set('file', file);
       const result = await requestJSON<S['DefinitionUpload']>('/definition-uploads', { method: 'POST', form, signal });

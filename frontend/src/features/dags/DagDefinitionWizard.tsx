@@ -1,3 +1,4 @@
+import { ActionLink } from '../../components/ActionLink';
 import { useEffect, useRef, useState } from 'react';
 import { newIdempotencyKey, pollOperation, requestJSON } from '../../lib/api';
 import { ColumnList } from '../tables/TableWizard';
@@ -57,12 +58,12 @@ export function DagDefinitionWizard({ upload, onChange, onReview, locked = false
     <fieldset disabled={locked} className="dag-workspace"><legend>ETL workbook</legend>
     <h2 id="dag-definition-title">Define your workflows</h2>
     <p>Use an Excel Definition workbook to set sources, mappings, schedules and load policies. Edit the workbook and upload a new revision to change these values.</p>
-    <a href="/api/v1/templates/etl-definition" download>Download ETL Definition template</a>
+    <ActionLink href="/api/v1/templates/etl-definition" download>Download ETL Definition template</ActionLink>
     <nav className="connection-actions dag-steps" aria-label="Workflow definition steps">{['Upload and validate', 'Sources and mappings', 'Schedules and load'].map((label, index) => <button key={label} type="button" aria-current={step === index + 1 ? 'step' : undefined} disabled={busy || index > 0 && !preview} onClick={() => setStep(index + 1)}>{index + 1}. {label}</button>)}</nav>
     {error && <p role="alert" className="error-message">{error}</p>}
     {notice && <p role="status">{notice}</p>}
     {step === 1 && <>
-      <form onSubmit={event => { event.preventDefault(); void run(async signal => {
+      <form className="upload-form" onSubmit={event => { event.preventDefault(); void run(async signal => {
         if (!file) return;
         const form = new FormData(); form.set('kind', 'ETL'); form.set('file', file);
         const result = await requestJSON<Schema['DefinitionUpload']>('/definition-uploads', { method: 'POST', form, signal });

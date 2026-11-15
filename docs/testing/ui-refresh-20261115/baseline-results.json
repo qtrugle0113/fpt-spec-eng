@@ -1,0 +1,142 @@
+{
+  "mode": "isolated-fixtures-only",
+  "node": "v24.22.1",
+  "browser": "158.0.8127.18",
+  "apiTarget": "http://127.0.0.1:28000",
+  "results": [
+    {
+      "name": "1366:Connections",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 166.640625,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:Table Management",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 266.890625,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:DAG Builder",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 330.890625,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:DAG Monitoring",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 74,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:Settings",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 181.984375,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "390:Dashboard",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 249.875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Connections",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 276.6875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Table Management",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 312.375,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:DAG Builder",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 350.78125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:DAG Monitoring",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 245.875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Settings",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 259.46875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:empty",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:error",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:loading",
+      "status": "PASS"
+    }
+  ],
+  "failures": [
+    {
+      "name": "1366:Dashboard",
+      "message": "All overview metrics fit compactly"
+    },
+    {
+      "name": "Download Table Definition template",
+      "message": "Download has button appearance\n\nfalse !== true\n"
+    },
+    {
+      "name": "Download ETL Definition template",
+      "message": "Download has button appearance\n\nfalse !== true\n"
+    }
+  ],
+  "downloads": []
+}
