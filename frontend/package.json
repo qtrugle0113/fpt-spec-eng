@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test:shell": "node scripts/verify-shell.cjs"
+    "test:shell": "node scripts/verify-shell.cjs",
+    "test:ui": "node scripts/verify-ui.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",

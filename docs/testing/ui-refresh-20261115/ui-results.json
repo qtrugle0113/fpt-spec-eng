@@ -1,0 +1,238 @@
+{
+  "mode": "real-api-read-only",
+  "node": "v22.23.4",
+  "browser": "158.0.8127.18",
+  "apiTarget": "http://127.0.0.1:28000",
+  "results": [
+    {
+      "name": "1366:Dashboard",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 104.640625,
+        "firstRowBottom": 736.71875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:Connections",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 115.609375,
+        "firstRowBottom": 419.828125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:Table Management",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 185.40625,
+        "firstRowBottom": 690.0625,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:DAG Builder",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 282.3125,
+        "firstRowBottom": 401.53125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:DAG Monitoring",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 92.5625,
+        "firstRowBottom": 376.03125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:Settings",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 181.28125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "1366:navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "390:Dashboard",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 221.28125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Connections",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 220.1875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Table Management",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 263.953125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:DAG Builder",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 303.59375,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:DAG Monitoring",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 217.28125,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:Settings",
+      "status": "PASS",
+      "detail": {
+        "noOverflow": true,
+        "firstControlY": 245.421875,
+        "keyboard": true
+      }
+    },
+    {
+      "name": "390:navigation",
+      "status": "PASS"
+    },
+    {
+      "name": "Download Table Definition template",
+      "status": "PASS"
+    },
+    {
+      "name": "Download ETL Definition template",
+      "status": "PASS"
+    },
+    {
+      "name": "Airflow popup from real inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "Read-only workflow and connection details",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:long-identifiers",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:settings-busy-conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:empty",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:error",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:loading",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated:dashboard-stale",
+      "status": "PASS"
+    },
+    {
+      "name": "Theme contrast and Airflow link inventory",
+      "status": "PASS",
+      "detail": {
+        "textRatios": [
+          {
+            "pair": [
+              "ffffff",
+              "007f79"
+            ],
+            "ratio": 4.870306086740119
+          },
+          {
+            "pair": [
+              "586d79",
+              "ffffff"
+            ],
+            "ratio": 5.4144750928763665
+          },
+          {
+            "pair": [
+              "006963",
+              "ffffff"
+            ],
+            "ratio": 6.560858512097025
+          },
+          {
+            "pair": [
+              "263d49",
+              "ffffff"
+            ],
+            "ratio": 11.375214404310585
+          },
+          {
+            "pair": [
+              "236544",
+              "e7f5ed"
+            ],
+            "ratio": 6.193337200650902
+          },
+          {
+            "pair": [
+              "992e2e",
+              "fff0f0"
+            ],
+            "ratio": 6.813739073216071
+          },
+          {
+            "pair": [
+              "795018",
+              "fff5df"
+            ],
+            "ratio": 6.516754984350352
+          }
+        ],
+        "focusMinimum": 3
+      }
+    }
+  ],
+  "failures": [],
+  "downloads": [
+    {
+      "name": "Table Definition.xlsx",
+      "bytes": 11600
+    },
+    {
+      "name": "ETL Definition.xlsx",
+      "bytes": 13067
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Airflow Automation Tool
 
+**UI — 2026-11-15:** Đã refactor source của sáu màn hình theo theme trắng/teal, bố cục gọn và button download/Airflow. Xem [hướng dẫn UI](docs/operations/ui-refresh.md), [đặc tả riêng](specs/002-ui-refresh/spec.md) và [báo cáo kiểm chứng](docs/testing/ui-refresh-20261115.md). UI đang ở source/preview, chưa rollout frontend demo.
+
 **Cập nhật demo:** đã rollout Airflow candidate được duyệt a9dc2f03…;
 8service healthy, app localhost23000/Airflow28080, volumes và dữ liệu giữ nguyên.
 T152 đã khép bằng ma trận v2 và kiểm chứng mới; CI commit bàn giao kiểm tra trên GitHub Actions.

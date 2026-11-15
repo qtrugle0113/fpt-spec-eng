@@ -3,6 +3,7 @@ import { newIdempotencyKey, pollOperation, requestJSON } from '../../lib/api';
 import { AuthorizationPanel } from './AuthorizationPanel';
 import { failure } from './types';
 import type { DagReview, Schema } from './types';
+import { ActionLink } from '../../components/ActionLink';
 
 type Result = { data: Schema['Deployment']; etag: string | null };
 type Choice = { once?: string; scheduled?: string };
@@ -72,7 +73,7 @@ export function DeploymentPanel({ review, onBusy, locked = false }: { review: Da
     <p>Registration in Airflow is verified before deployment succeeds. New workflows remain paused until activation is confirmed. FULL_REFRESH authority is managed separately.</p>
     <p>A manual trigger does not unpause a workflow. A run submitted while paused remains queued until unpause is separately confirmed.</p>
     {error && <p role="alert" className="error-message">{error}</p>}{notice && <p role="status">{notice}</p>}
-    {!review && <p>Upload and validate an ETL workbook to review a deployment.</p>}
+    {!review && <p>Upload and validate an ETL Definition to review a deployment.</p>}
     {review && <><p>Selected workflows: {items.map(item => item.config.dag_id).join(', ') || 'None'}</p>
       {!review.ready && <p>Complete the schedules and load review before confirming deployment.</p>}
       {items.map(item => <details key={item.id}><summary>{item.config.dag_id} · {item.target} · {item.config.load_strategy}</summary>{item.warnings.map(warning => <p key={warning}>{warning}</p>)}{item.support_ddl.length > 0 && <><h3>Support object SQL</h3><pre>{item.support_ddl.join('\n\n')}</pre></>}</details>)}
@@ -116,14 +117,14 @@ export function DeploymentPanel({ review, onBusy, locked = false }: { review: Da
       return <article className="dag-result" key={deployed.id} aria-label={'Deployment result for ' + deployed.dag_id}><h3>{deployed.dag_id}</h3><p>Registration: <strong>{deployed.state}</strong>{deployed.reconcile_required ? ' · reconciliation required' : ''}</p>
         {deployed.error_summary && <p role="alert">{deployed.error_summary}</p>}
         <details><summary>Deployment evidence</summary><p>Revision: <code>{deployed.revision}</code></p><p>Airflow version: {deployed.airflow_version_id ?? 'Not verified'}</p><p>Last verified: {deployed.last_verified_at ? new Date(deployed.last_verified_at).toLocaleString() : 'Not verified'}</p></details>
-        {deployed.state === 'DEPLOYED' && deployed.airflow_url && <a href={deployed.airflow_url} target="_blank" rel="noreferrer">Open Airflow</a>}
+        {deployed.state === 'DEPLOYED' && deployed.airflow_url && <ActionLink href={deployed.airflow_url} target="_blank" rel="noreferrer">Open Airflow</ActionLink>}
         <div className="connection-actions"><button disabled={busy} onClick={() => void run(refreshResults)}>Refresh deployment results</button><button disabled={busy || !review} onClick={() => void run(refreshControls)}>Refresh action review</button>
           {deployed.reconcile_required && <button disabled={busy} onClick={() => void run(async signal => {
             const scope = 'reconcile:' + deployed.id;
             const started = (await requestJSON<Schema['Operation']>(`/dag-deployments/${deployed.id}/reconcile`, { method: 'POST', key: key(scope), signal })).data;
             await complete(started, signal); keys.current.delete(scope); await refreshResults(signal);
           })}>Reconcile this deployment</button>}</div>
-        {deployed.state === 'PARSE_ERROR' || deployed.state === 'DEPLOYMENT_FAILED' ? <p>Review the error, correct or revalidate the workbook, then explicitly confirm a new deployment. A failed deployment is not automatically retried.</p> : null}
+        {deployed.state === 'PARSE_ERROR' || deployed.state === 'DEPLOYMENT_FAILED' ? <p>Review the error, correct or revalidate the ETL Definition, then explicitly confirm a new deployment. A failed deployment is not automatically retried.</p> : null}
         {deployed.state === 'DEPLOYED' && <fieldset disabled={busy || !canControl || Boolean(pending)}><legend>Workflow commands</legend>
           {full && <p>Selected ONCE authority: {selected.once ?? 'None'}. Selected SCHEDULED authority: {selected.scheduled ?? 'None'}.</p>}
           <label><input type="checkbox" checked={stateAck[deployed.id] ?? false} onChange={event => setStateAck(previous => ({ ...previous, [deployed.id]: event.target.checked }))} />I confirm the schedule state change for {deployed.dag_id}. Pausing only stops future scheduling; it does not cancel runs or revoke authority.</label>
