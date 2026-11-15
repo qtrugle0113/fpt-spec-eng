@@ -1,6 +1,8 @@
 # Airflow Automation Tool
 
-**UI — 2026-11-15:** Đã refactor source của sáu màn hình theo theme trắng/teal, bố cục gọn và button download/Airflow. Xem [hướng dẫn UI](docs/operations/ui-refresh.md), [đặc tả riêng](specs/002-ui-refresh/spec.md) và [báo cáo kiểm chứng](docs/testing/ui-refresh-20261115.md). UI đang ở source/preview, chưa rollout frontend demo.
+**Tên và tài khoản local — 2026-11-15:** UI dùng thống nhất ETL Definition/Table Definition; file mẫu gọi là template. Airflow demo tại <http://localhost:28080> dùng **admin/admin**, quyền quản trị; service account và dữ liệu giữ nguyên. Fresh local Compose cũng tạo tài khoản này khi `AAT_LOCAL_DEMO_AUTH=1`; init lại không reset mật khẩu tùy chỉnh. Xem [cập nhật/khôi phục tài khoản](docs/operations/local-airflow-admin.md) và [kiểm chứng](docs/testing/definition-admin-20261115.md).
+
+**UI — 2026-11-15:** Đã refactor source của sáu màn hình theo theme trắng/teal, bố cục gọn và button download/Airflow. Xem [hướng dẫn UI](docs/operations/ui-refresh.md), [đặc tả riêng](specs/002-ui-refresh/spec.md) và [báo cáo kiểm chứng](docs/testing/ui-refresh-20261115.md). UI đang ở source/preview, chưa rollout frontend demo; tài khoản Airflow đã được cập nhật bằng feature003 như phần trên.
 
 **Cập nhật demo:** đã rollout Airflow candidate được duyệt a9dc2f03…;
 8service healthy, app localhost23000/Airflow28080, volumes và dữ liệu giữ nguyên.

@@ -1,0 +1,54 @@
+{
+  "admin_login": true,
+  "role": "admin",
+  "service_auth": true,
+  "auth_enabled": true,
+  "backup_restore_roundtrip": true,
+  "other_accounts_unchanged": true,
+  "real_bootstrap_idempotent": true,
+  "project": "aat-definition_admin-e2e-6089c136",
+  "status": "PASS",
+  "restart_login": true,
+  "data_ids_unchanged": true,
+  "volumes_unchanged": true,
+  "password_store_unchanged": true,
+  "image_unchanged": true,
+  "before": {
+    "connections": [
+      "5038ce03-f14a-4172-814f-5732f90ae64e",
+      "c036d660-2215-441e-a204-23ef185e1818"
+    ],
+    "definitions": [
+      "50275ff2-d2ed-40a1-8459-61d65dd75fb2",
+      "5949f8bc-4b4d-4369-b188-33e3482e3207",
+      "9a34daa3-8bd4-47f0-a43e-e569d0ec09b8",
+      "a48f9476-020b-4013-bbbe-71270269cd19"
+    ],
+    "jobs": [],
+    "files": [
+      "11111111-1111-4111-8111-111111111111",
+      "22222222-2222-4222-8222-222222222222"
+    ],
+    "dags": [],
+    "runs": {}
+  },
+  "after": {
+    "connections": [
+      "5038ce03-f14a-4172-814f-5732f90ae64e",
+      "c036d660-2215-441e-a204-23ef185e1818"
+    ],
+    "definitions": [
+      "50275ff2-d2ed-40a1-8459-61d65dd75fb2",
+      "5949f8bc-4b4d-4369-b188-33e3482e3207",
+      "9a34daa3-8bd4-47f0-a43e-e569d0ec09b8",
+      "a48f9476-020b-4013-bbbe-71270269cd19"
+    ],
+    "jobs": [],
+    "files": [
+      "11111111-1111-4111-8111-111111111111",
+      "22222222-2222-4222-8222-222222222222"
+    ],
+    "dags": [],
+    "runs": {}
+  }
+}

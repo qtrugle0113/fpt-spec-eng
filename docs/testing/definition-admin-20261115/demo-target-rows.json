@@ -1,0 +1,1 @@
+{"status": "PASS", "read_only": true, "targets": [{"table": "public.full_desktop_1794495308921", "rows": 4, "successful_run_loaded_rows": 4, "matches_run_evidence": true}, {"table": "public.full_mobile_1794495345481", "rows": 4, "successful_run_loaded_rows": 4, "matches_run_evidence": true}]}

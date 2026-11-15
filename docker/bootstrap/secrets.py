@@ -54,10 +54,13 @@ def initialize(root: Path) -> None:
         value = Fernet.generate_key().decode() if filename == 'fernet_key' else os.urandom(32).hex()
         write('airflow_secrets', filename, value)
     write('backend_secrets', 'airflow_service_password', (root / 'airflow_secrets/service_password').read_text())
-    write('airflow_secrets', 'simple_auth_passwords.json', json.dumps({
+    passwords = {
         'aat_service': (root / 'airflow_secrets/service_password').read_text(),
         'operator': (root / 'airflow_secrets/operator_password').read_text(),
-    }))
+    }
+    if os.environ.get('AAT_LOCAL_DEMO_AUTH', '0') == '1':
+        passwords['admin'] = 'admin'
+    write('airflow_secrets', 'simple_auth_passwords.json', json.dumps(passwords))
     token = write('runtime_secrets', 'runtime_token', os.urandom(32).hex())
     write('backend_secrets', 'runtime_token', token)
     current = root / 'app_keyring/current.json'
@@ -79,6 +82,8 @@ if __name__ == '__main__':
                 os.chown(domain, 50000, 50000)
                 domain.chmod(0o700)
                 for path in domain.iterdir():
+                    if path.is_dir():
+                        continue  # Backup riêng giữ quyền bảo vệ; không đổi thành file mode.
                     os.chown(path, 50000, 50000)
                     path.chmod(0o400)
         print('Bootstrap secrets initialized; values suppressed')

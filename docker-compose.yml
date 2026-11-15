@@ -11,6 +11,8 @@ x-backend: &backend
 
 x-airflow: &airflow
   environment:
+    # Compose này chỉ dành local loopback; ngoài local phải opt-out rõ ràng.
+    AAT_LOCAL_DEMO_AUTH: ${AAT_LOCAL_DEMO_AUTH:-1}
     AIRFLOW__API__BASE_URL: http://localhost:${AAT_AIRFLOW_PORT:-8080}
     AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL: '5'
   image: localhost/aat-airflow:0.1.0
@@ -37,6 +39,8 @@ x-airflow: &airflow
 services:
   secrets-init:
     <<: *backend
+    environment:
+      AAT_LOCAL_DEMO_AUTH: ${AAT_LOCAL_DEMO_AUTH:-1}
     user: '0:0'
     restart: 'no'
     command: [python, -m, docker.bootstrap.secrets]

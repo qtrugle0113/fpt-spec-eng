@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "project": "aat-portable-demo-a7f852ae",
+  "execution_mode": "CURRENT_SOURCE_ON_EXISTING_DEPENDENCY_IMAGES",
+  "source_volume": "aat-portable-demo-a7f852ae_definition_source_9aa2f832",
+  "compose_backup": ".tools\\compose-definition-before-9aa2f832.json",
+  "data_ids_unchanged": true,
+  "image_unchanged": true,
+  "before": {
+    "connections": [
+      "21bd17c3-4235-420c-9971-5732bc8faf57",
+      "4e38116a-5a06-4732-a994-c4f3e0e30424",
+      "55cb63e9-4512-48ca-bee3-868052afa54f",
+      "7b13594b-ec6b-45fc-a876-9f48ac43e0c3"
+    ],
+    "definitions": [
+      "605b4d7f-be05-4cf0-b923-5ebc189f7595",
+      "b50e0101-8e18-4bea-af23-e2ee2cf590e9",
+      "d46b5a2d-b028-4f71-a110-0eb2ad2ffbc0",
+      "e638fd88-445d-4f96-ae37-0c34cd82a5cc"
+    ],
+    "jobs": [
+      "1503ab40-3d06-4bb8-9c91-b86ac90226f7",
+      "1eb56f81-5c18-416e-9057-9db4c99873c4"
+    ],
+    "files": [
+      "11111111-1111-4111-8111-111111111111",
+      "22222222-2222-4222-8222-222222222222",
+      "891e371b-639a-4d58-9dd1-49111a9d0cf3",
+      "ef609349-784c-4f0c-a373-ce64465ace40"
+    ],
+    "dags": [
+      "aat_full_desktop_1794495308921",
+      "aat_full_mobile_1794495345481"
+    ],
+    "runs": {
+      "aat_full_desktop_1794495308921": [
+        "manual__aat_e54a9aef-9392-4a98-8681-0322289db838"
+      ],
+      "aat_full_mobile_1794495345481": [
+        "manual__aat_338d3db5-c8b1-4b1d-b329-cd9b66e32bb5"
+      ]
+    }
+  },
+  "after": {
+    "connections": [
+      "21bd17c3-4235-420c-9971-5732bc8faf57",
+      "4e38116a-5a06-4732-a994-c4f3e0e30424",
+      "55cb63e9-4512-48ca-bee3-868052afa54f",
+      "7b13594b-ec6b-45fc-a876-9f48ac43e0c3"
+    ],
+    "definitions": [
+      "605b4d7f-be05-4cf0-b923-5ebc189f7595",
+      "b50e0101-8e18-4bea-af23-e2ee2cf590e9",
+      "d46b5a2d-b028-4f71-a110-0eb2ad2ffbc0",
+      "e638fd88-445d-4f96-ae37-0c34cd82a5cc"
+    ],
+    "jobs": [
+      "1503ab40-3d06-4bb8-9c91-b86ac90226f7",
+      "1eb56f81-5c18-416e-9057-9db4c99873c4"
+    ],
+    "files": [
+      "11111111-1111-4111-8111-111111111111",
+      "22222222-2222-4222-8222-222222222222",
+      "891e371b-639a-4d58-9dd1-49111a9d0cf3",
+      "ef609349-784c-4f0c-a373-ce64465ace40"
+    ],
+    "dags": [
+      "aat_full_desktop_1794495308921",
+      "aat_full_mobile_1794495345481"
+    ],
+    "runs": {
+      "aat_full_desktop_1794495308921": [
+        "manual__aat_e54a9aef-9392-4a98-8681-0322289db838"
+      ],
+      "aat_full_mobile_1794495345481": [
+        "manual__aat_338d3db5-c8b1-4b1d-b329-cd9b66e32bb5"
+      ]
+    }
+  }
+}
