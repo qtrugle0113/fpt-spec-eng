@@ -4,6 +4,7 @@ import { NavLink, Outlet, useLocation } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { requestJSON } from "../lib/api";
 import type { components } from "../lib/api.generated";
+import { ActionLink } from "../components/ActionLink";
 
 // Danh sách navigation không là dữ liệu nghiệp vụ hoặc mock API.
 const navigation = [
@@ -50,7 +51,13 @@ export function App() {
         <div className="sidebar-footer"><span className="local-dot" aria-hidden="true" />Local workspace</div>
       </aside>
       <main id="main-content" tabIndex={-1}>
-        <div className="workspace-bar"><span>Workspace</span><span className="service-label">{backend.isPending ? 'Checking backend…' : backend.data?.status === 'ALIVE' ? 'Backend available' : 'Backend unavailable'}</span></div>
+        <div className="workspace-bar">
+          <span>Workspace</span>
+          <div className="workspace-actions">
+            <span className="service-label">{backend.isPending ? 'Checking backend…' : backend.data?.status === 'ALIVE' ? 'Backend available' : 'Backend unavailable'}</span>
+            <ActionLink href={`${import.meta.env.BASE_URL}user-guide/Airflow-Automation-Tool-Huong-dan-su-dung.html`} download="Airflow-Automation-Tool-Huong-dan-su-dung.html">Download User Guide</ActionLink>
+          </div>
+        </div>
         <Outlet />
       </main>
     </div>

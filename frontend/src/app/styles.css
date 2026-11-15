@@ -48,7 +48,8 @@ small { font-size: 12px; }
 .sidebar-footer { margin-top: auto; padding: 28px 10px 0; font-size: 12px; color: var(--muted); }
 .local-dot { display: inline-block; margin-right: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 main { flex: 1; min-width: 0; }
-.workspace-bar { min-height: 56px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); background: #fff; font-size: 13px; color: var(--muted); }
+.workspace-bar { min-height: 56px; padding: 8px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; border-bottom: 1px solid var(--border); background: #fff; font-size: 13px; color: var(--muted); }
+.workspace-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; margin-left: auto; max-width: 100%; }
 .service-label { border: 1px solid var(--border); border-radius: 20px; padding: 5px 10px; background: #fafcfc; font-size: 12px; }
 .workspace-page, .connections-page { width: 100%; max-width: 1600px; padding: 24px; margin: 0 auto; min-width: 0; }
 .eyebrow { color: var(--accent); font-size: 11px; letter-spacing: .12em; margin: 0 0 6px; font-weight: 650; text-transform: uppercase; }
@@ -197,7 +198,7 @@ dialog::backdrop { background: #17353b88; }
   .sidebar { display: none; width: 100%; padding: 16px; border-bottom: 1px solid var(--border); border-right: 0; }
   .sidebar.is-open { display: flex; }
   .sidebar .brand, .nav-caption, .sidebar-footer { display: none; }
-  .workspace-bar { min-height: 48px; padding: 0 16px; font-size: 12px; }
+  .workspace-bar { min-height: 48px; padding: 8px 16px; font-size: 12px; }
   .service-label { font-size: 11px; padding: 5px 8px; }
   .workspace-page, .connections-page { padding: 20px 16px; }
   .connection-panel { padding: 14px; }

@@ -76,6 +76,23 @@ Khởi động lại không kèm `--volumes` để giữ metadata, secrets, DAG 
 hình local loopback này để public ra Internet. PASS trên Podman không chứng minh Docker đã
 được nghiệm thu.
 
+## Tải hướng dẫn sử dụng
+
+Bấm **Download User Guide** trên thanh Workspace phía trên mọi màn hình để tải
+hướng dẫn tiếng Việt dạng HTML. File có sẵn ảnh, mở offline bằng trình duyệt,
+bấm ảnh để phóng to hoặc chọn **In / Lưu thành PDF**. Tải giữ nguyên trang và
+dữ liệu đang nhập, không cần backend/Airflow sẵn sàng.
+
+Bản bàn giao: [User Guide](outputs/user-guide/Airflow-Automation-Tool-Huong-dan-su-dung.html).
+Bản đóng gói: `frontend/public/user-guide/`; Vite và Dockerfile bao gồm file này.
+Builder `docs/user-guide/build_guide.py` ghi đồng thời hai bản khi tái sinh;
+cần ảnh nguồn `.tools/user-guide/` để chạy builder. Build frontend bình thường
+không cần ảnh nguồn/Python.
+
+Kiểm chứng: `npm --prefix frontend run build` rồi
+`npm --prefix frontend run test:user-guide`. Xem [đặc tả Spec Kit](specs/004-user-guide-download/spec.md)
+và [báo cáo kiểm thử](docs/testing/user-guide-download-20261115.md).
+
 ## An toàn và kiểm chứng
 
 Ứng dụng chỉ dành cho một operator local. Airflow có xác thực riêng; credentials database

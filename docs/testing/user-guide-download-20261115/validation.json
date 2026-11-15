@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "sha256": "eab34cc68ec74e9465652a40e4cc2119a14d2d5e9e615c1f56084a4eb839b6ec",
+  "bytes": 645922,
+  "http": "PASS",
+  "dockerCopy": "PASS (static check only)",
+  "downloads": [
+    {
+      "width": 1366,
+      "route": "/",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 1366,
+      "route": "/connections",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 1366,
+      "route": "/tables",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 1366,
+      "route": "/dag-builder",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 1366,
+      "route": "/monitoring",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 1366,
+      "route": "/settings",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": true
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 390,
+      "route": "/connections",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 390,
+      "route": "/tables",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 390,
+      "route": "/dag-builder",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 390,
+      "route": "/monitoring",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": false
+    },
+    {
+      "width": 390,
+      "route": "/settings",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": true
+    },
+    {
+      "width": 320,
+      "route": "/settings",
+      "download": "PASS",
+      "unchangedPage": true,
+      "backendUnavailable": true,
+      "keyboard": true
+    }
+  ],
+  "offline": {
+    "sections": 16,
+    "images": 12,
+    "zoom": true,
+    "networkRequests": 0
+  },
+  "writes": 0
+}

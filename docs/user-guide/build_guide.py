@@ -242,6 +242,9 @@ document=document.replace('<h2>Mục lục</h2><nav>', '<h2>Mục lục</h2><but
 document=document.replace('<strong id="viewer-title"></strong>', '<strong id="viewer-title"></strong>')
 OUTPUT.parent.mkdir(parents=True,exist_ok=True)
 OUTPUT.write_text(document,encoding='utf-8')
+PUBLIC=ROOT/'frontend/public/user-guide'/OUTPUT.name
+PUBLIC.parent.mkdir(parents=True,exist_ok=True)
+PUBLIC.write_text(document,encoding='utf-8')
 summary={'output':str(OUTPUT.relative_to(ROOT)),'sections':len(sections),'images':used,'bytes':OUTPUT.stat().st_size,'self_contained':True}
 (ASSETS/'build.json').write_text(json.dumps(summary,indent=2,ensure_ascii=False),encoding='utf-8')
 print(json.dumps(summary,ensure_ascii=False))
