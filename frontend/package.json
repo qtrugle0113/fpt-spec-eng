@@ -12,7 +12,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test:shell": "node scripts/verify-shell.cjs",
-    "test:ui": "node scripts/verify-ui.cjs"
+    "test:ui": "node scripts/verify-ui.cjs",
+    "test:user-guide": "node scripts/verify-user-guide.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",
