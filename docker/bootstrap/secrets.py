@@ -38,8 +38,10 @@ def initialize(root: Path) -> None:
     write('postgres_secrets', 'postgres_admin', pg_admin)
     write('mysql_secrets', 'mysql_admin', mysql_admin)
     # Giữ domain riêng; không mount admin credential vào backend/Airflow.
+    local_etl_password = os.environ.get('AAT_LOCAL_ETL_PASSWORD')
     for filename in ('app_owner', 'app_runtime', 'pg_etl', 'mysql_etl'):
-        value = write('bootstrap_secrets', filename, os.urandom(32).hex())
+        password = local_etl_password if filename in ('pg_etl', 'mysql_etl') else None
+        value = write('bootstrap_secrets', filename, password or os.urandom(32).hex())
         if filename != 'app_owner':
             write('backend_secrets', filename, value)
         else:
