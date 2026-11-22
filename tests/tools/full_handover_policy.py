@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
-DECISION = 'docs/decisions/t014-owner-review-20261114.json'
+DECISION = 'docs/decisions/t014-owner-review-20261122.json'
 
 
 def validate(root: Path, images: dict, now=None):
@@ -30,13 +30,13 @@ def validate(root: Path, images: dict, now=None):
         raise ValueError('Owner approval expired')
     if now.astimezone(timezone(timedelta(hours=9))).date().isoformat() >= decision['review_due']:
         raise ValueError('Owner review due; new review required')
-    if decision['expires_at'] != '2026-11-23T00:00:00+09:00' or decision['review_due'] != '2026-11-16':
+    if decision['expires_at'] != '2026-12-06T00:00:00+09:00' or decision['review_due'] != '2026-11-29':
         raise ValueError('Approval deadline changed')
     if decision['controls'] != {'operator_count': 1, 'exposure': 'loopback', 'data': 'synthetic',
                                 'public_deploy': False, 'important_data': False}:
         raise ValueError('Approval scope changed')
     constitution = read('.specify/memory/constitution.md', decision['constitution_sha256'])
-    if b'2.0.0' not in constitution:
+    if b'2.0.1' not in constitution:
         raise ValueError('Approved governance missing')
     read(decision['governance_proposal'], decision['proposal_sha256'])
     packet = json.loads(read(decision['scope_packet'], decision['scope_packet_sha256']))

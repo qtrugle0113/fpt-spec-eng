@@ -1,0 +1,34 @@
+{
+  "status": "OWNER_ACCEPTED_KNOWN_RISKS",
+  "authority": "Project owner confirmation in the 2026-11-22 conversation",
+  "statements": [
+    "t?i ?? x?c nh?n, ti?p t?c ?i",
+    "ok"
+  ],
+  "approval_recorded_at": "2026-11-22T05:33:55.387202+00:00",
+  "scope_packet": "docs/testing/resume-20261114/t014-closeout/current-review-packet.json",
+  "scope_packet_sha256": "c566b7067803b2a7b065e41d5afce046f9488c74fac1aede0e9a5737405bf43a",
+  "targets": 21,
+  "groups": 363,
+  "occurrences": 1669,
+  "interpretation": "Renewed acceptance of the existing snapshot and known risks within the approved local-only scope.",
+  "governance_proposal": "docs/proposals/t014-full-handover-known-risks-20261114.md",
+  "governance_approval": "OWNER_APPROVED",
+  "governance_approval_statement": "Owner confirmed renewed approval and agreed to the review and expiration dates.",
+  "governance_approval_recorded_at": "2026-11-22T05:33:55.387202+00:00",
+  "proposal_sha256": "1456c674b1e851960e575e65f4dcfe314c4202d2f3336576c829e941085ce1c9",
+  "constitution_sha256": "84e22bb4bd8281d2e9abf73cb6d200fb8f2248bd85c99697146943693dd5b55b",
+  "constitution_version": "2.0.1",
+  "revoked": false,
+  "review_due": "2026-11-29",
+  "expires_at": "2026-12-06T00:00:00+09:00",
+  "controls": {
+    "operator_count": 1,
+    "exposure": "loopback",
+    "data": "synthetic",
+    "public_deploy": false,
+    "important_data": false
+  },
+  "technical_evidence": "docs/testing/resume-20261114/accepted-handover/acceptance-matrix.json",
+  "supersedes": "docs/decisions/t014-owner-review-20261114.json"
+}

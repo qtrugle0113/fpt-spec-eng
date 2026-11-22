@@ -326,3 +326,12 @@ có rủi ro đã biết; không phải security-clean hoặc production-ready.
 
 Sửa đổi2.0.0 thay quy tắc không cho bàn giao đầy đủ bằng rủi ro đã chấp thuận;
 các nguyên tắc còn lại giữ nguyên. Ngày thông qua ban đầu vẫn2026-11-06.
+
+## T014 owner re-review ? Constitution2.0.1
+
+On 2026-11-22, the project owner confirmed renewed approval of the T014
+review packet identified in the 2026-11-14 decision, with the existing
+local-only controls. For this renewal, the next review is due 2026-11-29
+(UTC+09) and approval expires at 2026-12-06T00:00:00+09:00. These dates
+supersede the prior dates for this decision. The existing requirements for
+revocation, scope, mandatory tests, and evidence integrity continue to apply.
